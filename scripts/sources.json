@@ -22,8 +22,10 @@
     "models": [
       { "name": "gemini-3-flash", "base": "https://generativelanguage.googleapis.com/v1beta/openai", "model": "gemini-3-flash-preview", "key_env": "GEMINI_API_KEY" },
       { "name": "agnes-3.0-flash", "base": "https://apihub.agnes-ai.com/v1", "model": "agnes-3.0-flash", "key_env": "AGNES_API_KEY" },
-      { "name": "gemini-3.5-flash-lite", "base": "https://generativelanguage.googleapis.com/v1beta/openai", "model": "gemini-3.5-flash-lite", "key_env": "GEMINI_API_KEY" }
-    ]
+      { "name": "gemini-3.5-flash-lite", "base": "https://generativelanguage.googleapis.com/v1beta/openai", "model": "gemini-3.5-flash-lite", "key_env": "GEMINI_API_KEY" },
+      { "name": "agnes-2.5-flash", "base": "https://apihub.agnes-ai.com/v1", "model": "agnes-2.5-flash", "key_env": "AGNES_API_KEY" }
+    ],
+    "models_note": "四档链，与 portfolio 的第 ④ 档对齐（news-feed 为三档）。全部复用现有 GEMINI_API_KEY / AGNES_API_KEY，无需新增 Secret。⚠️ 参考 portfolio 实测：agnes-3.0-flash 是推理模型，超长输入（58K tokens）会 90s 超时 —— 本管线每批仅 25 条（约 12K 字符），实测正常；agnes-2.5-flash 则作为长输入场景的稳妥兜底。⚠️ Gemini 3 系无法关闭思考（官方限制），只能靠降级链兜。"
   },
   "lanes": [
     { "id": "model", "name": "模型发布", "weight": 9 },
@@ -101,35 +103,29 @@
       "note": "Actions 实测 331 条/次（曾误记 cs.LG 无内容，cs.AI 正常）；条量大，启用后必须靠 LLM 打分硬筛"
     },
     {
-      "id": "llm-leaderboard", "lane": "model", "block": "模型排行榜", "enabled": false,
-      "mode": "direct", "kind": "json", "parser": "leaderboard",
+      "id": "llm-leaderboard", "lane": "model", "block": "模型上架", "enabled": true,
+      "mode": "direct", "kind": "json", "parser": "leaderboard", "recent_days": 21,
       "urls": ["https://raw.githubusercontent.com/AmigaMeow/llm-leaderboard-data/main/data/latest.json"],
       "take": 12, "translate": true,
       "note": "【候选·本机实测可用 75 模型】直接吸纳第三方项目 AmigaMeow/llm-leaderboard-data（MIT，每日自动更新）：它聚合 LMArena Elo + OpenRouter 定价/上下文/上架时间。两个关键价值：① 含 listed_at_iso（上架时间）—— OpenRouter 官方 API 无此字段，免去自己做跨日 diff；② LMArena 是 JS 渲染无公开 API，该仓已代抓，免去 Playwright+Chromium 300MB 重依赖。用于产出「最近上架模型」与「Arena 榜变化」"
     },
     {
-      "id": "openrouter-stealth", "lane": "model", "block": "OpenRouter 匿名模型", "enabled": false,
+      "id": "openrouter-stealth", "lane": "model", "block": "匿名公测", "enabled": true,
       "mode": "direct", "kind": "json", "parser": "openrouter", "filter": "stealth",
       "urls": ["https://openrouter.ai/api/v1/models"],
       "take": 10, "translate": true,
       "note": "【候选·待 probe 验证】正在公测的匿名模型的结构化入口。filter=stealth 只保留 id 以 stealth/ 开头、或 name 含 Alpha/Preview 的条目。本机实测可抓（460 条模型，含 stealth/space-bunny-alpha）；历史上 Union Alpha 已揭晓为 Pareto、Ox Alpha 仍在公测"
     },
     {
-      "id": "openrouter-new", "lane": "model", "block": "OpenRouter 新上架", "enabled": false,
-      "mode": "direct", "kind": "json", "parser": "openrouter", "filter": "new",
-      "urls": ["https://openrouter.ai/api/v1/models"],
-      "take": 10, "translate": true,
-      "note": "【候选·待 probe 验证】与昨日快照做差集识别新上架模型 —— API 无上架时间字段，只能跨日 diff，复用 docs/daily 归档，不需要新存储"
-    },
-    {
-      "id": "hf-new-models", "lane": "model", "block": "Hugging Face 新模型", "enabled": false,
-      "mode": "direct", "kind": "json", "parser": "hf-models",
+      "id": "hf-new-models", "lane": "model", "block": "新权重", "enabled": true,
+      "mode": "direct", "kind": "json", "parser": "hf-models", "desc_min": 0,
       "urls": ["https://huggingface.co/api/models?sort=createdAt&direction=-1&limit=30"],
-      "take": 10, "translate": true,
-      "note": "【候选·待 probe 验证】开源模型的「无声发布」第一现场（有模型卡、无新闻稿）；需过滤微调/量化衍生品噪音"
+      "take": 8, "translate": true,
+      "exclude_tags": ["gguf", "awq", "gptq", "exl2", "quantized", "lora", "merge", "mlx"],
+      "note": "开源模型的「无声发布」第一现场（有模型卡、无新闻稿）。Actions 实测 30 条。exclude_tags 用于过滤量化/微调衍生品噪音"
     },
     {
-      "id": "hf-trending-models", "lane": "model", "block": "Hugging Face 趋势", "enabled": false,
+      "id": "hf-trending-models", "lane": "model", "block": "HF 趋势", "enabled": false,
       "mode": "direct", "kind": "json", "parser": "hf-models",
       "urls": ["https://huggingface.co/api/models?sort=trendingScore&direction=-1&limit=25"],
       "take": 8, "translate": true,
@@ -272,10 +268,10 @@
       "note": "Actions 实测 20 条 desc 607、最新条 7 小时前"
     },
     {
-      "id": "solidot", "lane": "cn", "block": "Solidot", "enabled": false,
+      "id": "solidot", "lane": "cn", "block": "Solidot", "enabled": true,
       "mode": "rsshub", "route": "/solidot/", "urls": [],
-      "take": 6, "dedupe": true, "sort_desc": true, "translate": false, "desc_min": 0,
-      "note": "⚠️ 本机可用（isrss 20 条）、但 Actions 侧全实例失败 —— 环境依赖极强，先禁用"
+      "take": 5, "dedupe": true, "sort_desc": true, "translate": false, "desc_min": 0,
+      "note": "2026-09-29 重新启用：此前 Actions 侧全实例失败被禁用，本次在 rsshub-balancer 上通了（20 条）"
     },
     {
       "id": "oschina", "lane": "cn", "block": "开源中国", "enabled": false,
