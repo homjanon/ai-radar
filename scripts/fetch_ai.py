@@ -253,7 +253,9 @@ def fetch_source(src, pool):
 # --------------------------------------------------------------------------- #
 # 正文补抓（Jina Reader）—— 治 desc 为 0 或过短的源
 # --------------------------------------------------------------------------- #
-def jina_fetch(url, cap=4000):
+def jina_fetch(url, cap=1500):
+    """补抓正文。cap 取 1500 字：足够 P2 生成 40–80 字摘要，
+    又不至于让产物体积和后续 token 消耗失控（实测不设限时每条都顶到 4000）。"""
     clean = re.sub(r"^https?://", "", url)
     body = http_get(f"https://r.jina.ai/https://{clean}", timeout=30)
     text = body.decode("utf-8", "ignore")
@@ -418,7 +420,7 @@ def main():
         i["id"] = item_id(i["title"])
         i["pubTime"] = bj_pub(i["dt"])
         i["pubTs"] = i["dt"].astimezone(TZ_CN).isoformat() if i["dt"] else ""
-        i["desc"] = i["desc"][:4000]
+        i["desc"] = i["desc"][:2000]
         i.pop("dt", None)
 
     doc = {

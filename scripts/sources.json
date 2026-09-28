@@ -48,9 +48,9 @@
     },
     {
       "id": "deepmind-blog", "lane": "official", "block": "Google DeepMind", "enabled": true,
-      "mode": "direct", "urls": ["https://deepmind.google/blog/rss.xml"],
+      "mode": "auto", "route": "/deepmind/blog", "urls": ["https://deepmind.google/blog/rss.xml"],
       "take": 8, "dedupe": true, "sort_desc": true, "translate": true, "desc_min": 0,
-      "note": "Actions 实测直连稳（100 条，desc 106 偏短）"
+      "note": "Actions 探测时直连 100 条（desc 106 偏短）；抓取阶段出现过 ParseError（直连返回非 XML），故加 rsshub /deepmind/blog 作兜底"
     },
     {
       "id": "google-ai-blog", "lane": "official", "block": "Google", "enabled": true,
