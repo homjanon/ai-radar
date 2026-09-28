@@ -10,9 +10,7 @@
     --bg:#f6f7f9; --card:#fff; --line:#e6e8ec; --line-2:#f0f2f5;
     --tx:#1b1f24; --tx-2:#5b6472; --tx-3:#8f98a5;
     --accent:#0d9488;
-    --mono:ui-monospace,SFMono-Regular,Consolas,monospace;
-    --lane-official:#2563eb; --lane-paper:#7c3aed; --lane-community:#059669;
-    --lane-media:#d97706; --lane-cn:#0d9488;
+    --lv-top:#dc2626; --lv-watch:#d97706;
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   body{margin:0;background:var(--bg);color:var(--tx);
@@ -20,17 +18,21 @@
     -webkit-font-smoothing:antialiased;padding-bottom:40px}
   .wrap{max-width:880px;margin:0 auto;padding:20px 16px 0}
 
-  header{padding:6px 0 16px}
+  header{padding:6px 0 14px}
   .top{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
   h1{font-size:21px;margin:0;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
   h1 .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none;
            box-shadow:0 0 0 3px rgba(13,148,136,.15)}
   .gen{font-size:12.5px;color:var(--tx-3)}
-  .stats{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-  .stat{background:#fff;border:1px solid var(--line);border-radius:8px;padding:7px 11px;
-         font-size:12.5px;color:var(--tx-2);display:flex;align-items:center;gap:6px}
-  .stat b{color:var(--tx);font-size:14px;font-weight:600}
-  .stat .sw{width:7px;height:7px;border-radius:2px;flex:none}
+  .sumline{display:flex;gap:8px;flex-wrap:wrap;margin-top:11px;align-items:center}
+  .pill{background:#fff;border:1px solid var(--line);border-radius:20px;padding:4px 11px;
+        font-size:12.5px;color:var(--tx-2);display:flex;align-items:center;gap:5px}
+  .pill b{color:var(--tx);font-weight:600}
+  .pill .sw{width:7px;height:7px;border-radius:50%;flex:none}
+  .pill.lv-top{border-color:#fecaca;background:#fef2f2;color:#991b1b}
+  .pill.lv-top b{color:#991b1b}
+  .pill.lv-watch{border-color:#fde68a;background:#fffbeb;color:#92400e}
+  .pill.lv-watch b{color:#92400e}
 
   nav.tabs{display:flex;gap:6px;overflow-x:auto;padding:14px 0 10px;
            position:sticky;top:0;background:linear-gradient(var(--bg) 78%,rgba(246,247,249,0));
@@ -41,47 +43,50 @@
   .tab.on{background:var(--tx);border-color:var(--tx);color:#fff}
   .tab .c{opacity:.6;margin-left:4px;font-size:11.5px}
 
-  section.lane{margin:0 0 26px}
+  section.lane{margin:0 0 24px}
   .lane-h{display:flex;align-items:center;gap:8px;margin:18px 0 10px}
   .lane-h .bar{width:3px;height:15px;border-radius:2px;flex:none}
-  .lane-h h2{font-size:14.5px;margin:0;font-weight:600;letter-spacing:.01em}
+  .lane-h h2{font-size:14.5px;margin:0;font-weight:600}
   .lane-h .n{font-size:12px;color:var(--tx-3);font-variant-numeric:tabular-nums}
 
   .item{background:var(--card);border:1px solid var(--line);border-radius:11px;
         padding:13px 15px;margin-bottom:9px;transition:.15s}
-  .item:active{background:#fcfcfd}
-  .item.repeat{opacity:.55}
-  .it-top{display:flex;gap:8px;align-items:baseline;justify-content:space-between}
+  .item.lvl-top{border-left:3px solid var(--lv-top);padding-left:13px}
+  .item.lvl-watch{border-left:3px solid var(--lv-watch);padding-left:13px}
+  .item.repeat{opacity:.5}
+  .it-top{display:flex;gap:8px;align-items:flex-start;justify-content:space-between}
   .it-title{font-size:15px;font-weight:600;line-height:1.5;margin:0 0 6px;letter-spacing:-.005em}
   .it-title a{color:inherit;text-decoration:none}
-  .it-title a:hover{color:var(--lane-cn)}
-  .badge{flex:none;font-size:11px;padding:1px 7px;border-radius:20px;border:1px solid;
-          white-space:nowrap;font-weight:500;transform:translateY(-1px)}
+  .it-title a:hover{color:var(--accent)}
+  .lvl{flex:none;font-size:11px;padding:1px 7px;border-radius:5px;white-space:nowrap;
+       font-weight:600;transform:translateY(2px)}
+  .lvl.top{color:#fff;background:var(--lv-top)}
+  .lvl.watch{color:#fff;background:var(--lv-watch)}
   .meta{font-size:12px;color:var(--tx-3);display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin-bottom:7px}
-  .meta .src{color:var(--tx-2);font-weight:500}
-  .desc{font-size:13.5px;color:var(--tx-2);line-height:1.72;margin:0;
-        display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-  .item.open .desc{-webkit-line-clamp:unset;display:block}
-  .more{font-size:12px;color:var(--lane-cn);margin-top:5px;cursor:pointer;user-select:none}
+  .meta .blk{font-weight:500}
+  .topic{font-size:11px;padding:0 6px;border-radius:4px;background:var(--line-2);color:var(--tx-2)}
+  .summary{font-size:13.5px;color:var(--tx-2);line-height:1.75;margin:0}
   .alsoin{font-size:11.5px;color:var(--tx-3);margin-top:6px}
 
   details.fold{margin-top:2px}
-  details.fold>summary{font-size:12.5px;color:var(--tx-3);cursor:pointer;padding:7px 0;
+  details.fold>summary{font-size:12.5px;color:var(--tx-3);cursor:pointer;padding:8px 0;
                         list-style:none;user-select:none}
   details.fold>summary::-webkit-details-marker{display:none}
-  details.fold>summary:before{content:"▸ ";color:var(--tx-3)}
-  details.fold[open]>summary:before{content:"▾ "}
+  details.fold>summary:before{content:"▸ ";}
+  details.fold[open]>summary:before{content:"▾ ";}
 
   .notice{background:#fff;border:1px solid var(--line);border-left:3px solid #d97706;
-          border-radius:10px;padding:12px 15px;font-size:12.5px;color:var(--tx-2);margin:6px 0 22px}
+          border-radius:10px;padding:12px 15px;font-size:12.5px;color:var(--tx-2);margin:6px 0 18px}
   .notice b{color:var(--tx)}
   .empty,.load{text-align:center;color:var(--tx-3);font-size:13.5px;padding:56px 20px}
   footer{margin-top:30px;padding-top:16px;border-top:1px solid var(--line);
          font-size:11.5px;color:var(--tx-3);text-align:center;line-height:1.9}
+  footer a{color:inherit}
   @media(max-width:560px){
     .wrap{padding:14px 12px 0}
     h1{font-size:19px}
     .item{padding:12px 13px}
+    .item.lvl-top,.item.lvl-watch{padding-left:11px}
   }
 </style>
 </head>
@@ -92,7 +97,7 @@
       <h1><span class="dot"></span>AI 前沿雷达</h1>
       <div class="gen" id="gen">加载中…</div>
     </div>
-    <div class="stats" id="stats"></div>
+    <div class="sumline" id="sumline"></div>
   </header>
 
   <nav class="tabs" id="tabs"></nav>
@@ -101,7 +106,8 @@
 
   <footer>
     五车道：官方一手 · 论文基准 · 社区开源 · 媒体分析 · 中文动态<br>
-    选条为确定性规则（时间窗 / 去重 / 跨源折叠），源与实例顺序见仓库 <a href="https://github.com/homjanon/ai-radar" style="color:inherit">homjanon/ai-radar</a>
+    硬规则选条（时间窗/去重/跨源折叠）+ LLM 只做摘要与三维评分，不参与选条<br>
+    源与实例顺序见 <a href="https://github.com/homjanon/ai-radar">homjanon/ai-radar</a>
   </footer>
 </div>
 
@@ -109,6 +115,7 @@
 const LANE_COLOR = {
   official:'#2563eb', paper:'#7c3aed', community:'#059669', media:'#d97706', cn:'#0d9488'
 };
+const LVL = { top:{n:'重磅'}, watch:{n:'关注'} };
 // 外部文本一律转义后再插入 —— 永不当作可信 HTML（防 XSS）
 const esc = s => String(s == null ? '' : s)
   .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
@@ -116,101 +123,101 @@ const esc = s => String(s == null ? '' : s)
 
 let DOC = null, FILTER = 'all';
 
-function ageLabel(h){
-  if (h == null || h < 0) return '';
-  if (h < 1) return '刚刚';
-  if (h < 24) return h + ' 小时前';
-  return Math.floor(h / 24) + ' 天前';
-}
-
 function renderItem(i){
   const color = LANE_COLOR[i.lane] || '#5b6472';
+  const lv = LVL[i.level];
+  const title = i.titleCn || i.title;
   const also = (i.alsoIn && i.alsoIn.length)
     ? `<div class="alsoin">另有 ${i.alsoIn.map(esc).join('、')} 报道同一事件</div>` : '';
-  const long = (i.desc || '').length > 150;
-  return `<article class="item${i.isRepeat ? ' repeat' : ''}" data-id="${esc(i.id)}">
+  return `<article class="item${i.level ? ' lvl-' + esc(i.level) : ''}${i.isRepeat ? ' repeat' : ''}">
     <div class="it-top">
-      <h3 class="it-title"><a href="${esc(i.url)}" target="_blank" rel="noopener noreferrer">${esc(i.title)}</a></h3>
+      <h3 class="it-title"><a href="${esc(i.url)}" target="_blank" rel="noopener noreferrer">${esc(title)}</a></h3>
+      ${lv ? `<span class="lvl ${esc(i.level)}">${lv.n}</span>` : ''}
     </div>
     <div class="meta">
-      <span class="badge" style="color:${color};border-color:${color}33;background:${color}0f">${esc(i.block)}</span>
+      <span class="blk" style="color:${color}">${esc(i.block)}</span>
       <span>${esc(i.pubTime || '')}</span>
-      ${i.ageH >= 0 && !i.pubTime ? `<span>${ageLabel(i.ageH)}</span>` : ''}
       ${i.stale ? '<span>· 较早</span>' : ''}
       ${i.isRepeat ? '<span>· 昨日已收录</span>' : ''}
-      ${i.descFrom === 'jina' ? '<span>· 已补正文</span>' : ''}
+      ${i.topic ? `<span class="topic">${esc(i.topic)}</span>` : ''}
     </div>
-    ${i.desc ? `<p class="desc">${esc(i.desc)}</p>` : ''}
+    ${i.summary ? `<p class="summary">${esc(i.summary)}</p>` : ''}
     ${also}
-    ${long ? '<div class="more">展开摘要</div>' : ''}
   </article>`;
 }
 
-function render(){
-  const items = (DOC.items || []);
-  const lanes = DOC.lanes || [];
-  const q = FILTER;
-  const main = document.getElementById('main');
+function split(arr){
+  return {
+    top: arr.filter(x => x.level === 'top'),
+    watch: arr.filter(x => x.level === 'watch'),
+    normal: arr.filter(x => !x.level || x.level === 'normal'),
+  };
+}
 
-  if (!items.length){
-    main.innerHTML = '<div class="empty">暂无条目</div>';
-    return;
-  }
-  const show = items.filter(i => q === 'all' || i.lane === q);
-  if (!show.length){
-    main.innerHTML = '<div class="empty">该车道本期没有条目</div>';
-    return;
-  }
-  const groups = q === 'all' ? lanes : lanes.filter(l => l.id === q);
+function render(){
+  const items = DOC.items || [];
+  const lanes = DOC.lanes || [];
+  const main = document.getElementById('main');
+  if (!items.length){ main.innerHTML = '<div class="empty">暂无条目</div>'; return; }
+
+  const show = items.filter(i => FILTER === 'all' || i.lane === FILTER);
+  if (!show.length){ main.innerHTML = '<div class="empty">该车道本期没有条目</div>'; return; }
+
+  const groups = FILTER === 'all' ? lanes : lanes.filter(l => l.id === FILTER);
   let html = '';
   for (const l of groups){
     const arr = show.filter(i => i.lane === l.id);
     if (!arr.length) continue;
-    const fresh = arr.filter(i => !i.isRepeat);
+    const g = split(arr.filter(i => !i.isRepeat));
     const rep = arr.filter(i => i.isRepeat);
     html += `<section class="lane">
       <div class="lane-h">
         <span class="bar" style="background:${LANE_COLOR[l.id]}"></span>
         <h2>${esc(l.name)}</h2><span class="n">${arr.length} 条</span>
       </div>
-      ${fresh.map(renderItem).join('')}
-      ${rep.length ? `<details class="fold"><summary>昨日已收录 ${rep.length} 条（点开查看）</summary>
+      ${g.top.map(renderItem).join('')}
+      ${g.watch.map(renderItem).join('')}
+      ${g.normal.length ? `<details class="fold"><summary>其他 ${g.normal.length} 条（未进精选）</summary>
+        ${g.normal.map(renderItem).join('')}</details>` : ''}
+      ${rep.length ? `<details class="fold"><summary>昨日已收录 ${rep.length} 条</summary>
         ${rep.map(renderItem).join('')}</details>` : ''}
     </section>`;
   }
   main.innerHTML = html;
-
-  main.querySelectorAll('.more').forEach(el => {
-    el.onclick = () => {
-      const art = el.closest('.item');
-      art.classList.toggle('open');
-      el.textContent = art.classList.contains('open') ? '收起摘要' : '展开摘要';
-    };
-  });
 }
 
 function renderChrome(){
   const lanes = DOC.lanes || [];
-  const tabs = [{ id:'all', name:'全部', count: DOC.counts.total }]
-    .concat(lanes.map(l => ({ id:l.id, name:l.name, count:l.count })));
-  document.getElementById('tabs').innerHTML = tabs.map(t =>
-    `<button class="tab${FILTER === t.id ? ' on' : ''}" data-lane="${esc(t.id)}">
-      ${esc(t.name)}<span class="c">${t.count || 0}</span></button>`).join('');
+  const c = DOC.counts || {};
+  const bl = c.byLevel || {};
+
+  document.getElementById('tabs').innerHTML =
+    [{id:'all', name:'全部', count:c.total}]
+      .concat(lanes.map(l => ({id:l.id, name:l.name, count:l.count})))
+      .map(t => `<button class="tab${FILTER===t.id?' on':''}" data-lane="${esc(t.id)}">
+        ${esc(t.name)}<span class="c">${t.count||0}</span></button>`).join('');
   document.querySelectorAll('.tab').forEach(b => {
-    b.onclick = () => { FILTER = b.dataset.lane; renderChrome(); render(); window.scrollTo({top:0,behavior:'smooth'}); };
+    b.onclick = () => { FILTER = b.dataset.lane; renderChrome(); render();
+                        window.scrollTo({top:0, behavior:'smooth'}); };
   });
 
-  document.getElementById('stats').innerHTML = lanes.map(l =>
-    `<span class="stat"><span class="sw" style="background:${LANE_COLOR[l.id]}"></span>
-      ${esc(l.name)} <b>${l.count || 0}</b></span>`).join('');
+  const pills = [];
+  if (bl.top) pills.push(`<span class="pill lv-top">重磅 <b>${bl.top}</b></span>`);
+  if (bl.watch) pills.push(`<span class="pill lv-watch">关注 <b>${bl.watch}</b></span>`);
+  pills.push(`<span class="pill">共 <b>${c.total||0}</b> 条</span>`);
+  lanes.forEach(l => pills.push(
+    `<span class="pill"><span class="sw" style="background:${LANE_COLOR[l.id]}"></span>${esc(l.name)} <b>${l.count||0}</b></span>`));
+  document.getElementById('sumline').innerHTML = pills.join('');
 
-  document.getElementById('gen').textContent =
-    (DOC.generated_at ? DOC.generated_at + ' 更新' : '');
+  document.getElementById('gen').textContent = DOC.generated_at ? DOC.generated_at + ' 更新' : '';
 
   const dg = DOC.degraded || [];
-  document.getElementById('notice').innerHTML = dg.length
-    ? `<div class="notice"><b>本期 ${dg.length} 个源降级</b>（${dg.map(d => esc(d.id)).join('、')}）——
-       对应车道可能不完整，下期自动重试。</div>` : '';
+  const tr = DOC.translator || '';
+  let notice = '';
+  if (dg.length) notice += `<div class="notice"><b>本期 ${dg.length} 个源降级</b>（${dg.map(d => esc(d.id)).join('、')}）—— 对应车道可能不完整，下期自动重试。</div>`;
+  if (tr.indexOf('none') === 0 || tr.indexOf('降级') >= 0)
+    notice += `<div class="notice">AI 摘要未完全生效（${esc(tr)}）—— 已降级为原文，下期自动重试。</div>`;
+  document.getElementById('notice').innerHTML = notice;
 }
 
 (async function(){
