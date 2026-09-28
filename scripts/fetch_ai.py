@@ -37,7 +37,8 @@ UTC = datetime.timezone.utc
 # 各车道的默认时间窗（小时）。官方源发布频率天然低（实测 OpenAI Research 12 天
 # 一条），若统一用短窗会被整体过滤干净 —— 必须按车道区分。中文媒体实测日更节奏
 # 差异大（36氪 30 条 / 雷锋网 1 条），36h 会把慢的那几家压缩到只能靠保底，故放宽到 72h。
-LANE_MAX_AGE = {"official": 168, "paper": 72, "community": 48, "media": 96, "cn": 72}
+LANE_MAX_AGE = {"model": 504, "official": 168, "paper": 72, "community": 48,
+                "media": 96, "cn": 72}
 DEFAULT_MAX_AGE = 48
 
 ATOM = "{http://www.w3.org/2005/Atom}"
@@ -52,8 +53,12 @@ def log(m):
 # 基础工具
 # --------------------------------------------------------------------------- #
 def http_get(url, timeout=25, retry=1):
-    """带一次重试的 GET —— 偶发的瞬时失败（实测 deepmind RSS 单次 ParseError 致整源降级）
-    不该直接判定该通路失败。"""
+    """带一次重试的 GET。
+
+    ⚠️ 永久性错误（403 无权限 / 404 不存在 / 410 已下线）**不重试** —— 重试不会自愈，
+    只会白白拖延（借鉴 portfolio 的踩坑复盘：MiniMax-M3 EOL 时靠重试掩盖了 410）。
+    瞬时错误（超时/断连/5xx）才值得重试。
+    """
     last = None
     for attempt in range(retry + 1):
         try:
@@ -63,10 +68,14 @@ def http_get(url, timeout=25, retry=1):
                 if r.status != 200:
                     raise RuntimeError(f"HTTP {r.status}")
                 return r.read()
+        except urllib.error.HTTPError as e:
+            if e.code in (403, 404, 410):
+                raise
+            last = e
         except Exception as e:
             last = e
-            if attempt < retry:
-                time.sleep(1.5)
+        if attempt < retry:
+            time.sleep(1.5)
     raise last
 
 
@@ -199,11 +208,145 @@ def parse_json_feed(body):
 
 
 # --------------------------------------------------------------------------- #
+# 专用解析器（模型发布类源）：这些源的响应结构与 RSS 差得很远，需专门拍平。
+# 统一产出 [{title, desc, url, dt}]，与 parse_feed 同构 —— 下游全部逻辑直接复用。
+# --------------------------------------------------------------------------- #
+def parse_leaderboard(body, cfg):
+    """llm-leaderboard-data 的 latest.json → 「最近上架的模型」。
+
+    这个源的核心价值是它有 listed_at_iso（上架时间）—— OpenRouter 官方 API
+    没有这个字段，原方案要靠跨日快照做差集才能算出来，现在直接读即可。
+    """
+    j = json.loads(body)
+    ms = j.get("models") or []
+    days = int(cfg.get("recent_days", 21))
+    cutoff = datetime.datetime.now(UTC) - datetime.timedelta(days=days)
+    out = []
+    for m in ms:
+        iso = (m.get("listed_at_iso") or "").strip()
+        dt = parse_dt(iso) if iso else None
+        if dt and dt < cutoff:
+            continue
+        name = m.get("display_name") or m.get("id") or ""
+        if not name:
+            continue
+        bits = [f"{m.get('org') or '未知厂商'} 出品"]
+        if iso:
+            bits.append(f"{iso[:10]} 上架")
+        if m.get("arena_score"):
+            rk = f"（LMArena 第 {m['arena_rank']}）" if m.get("arena_rank") else ""
+            bits.append(f"LMArena Elo {m['arena_score']}{rk}")
+        bits.append("开源权重" if m.get("open_weights") else "闭源")
+        if m.get("context_length"):
+            bits.append(f"上下文 {int(m['context_length']):,} tokens")
+        if m.get("price_in") is not None:
+            bits.append(f"定价 ${m['price_in']}/${m.get('price_out')} 每百万 tokens")
+        out.append({
+            "title": f"新模型上架：{name}",
+            "desc": "；".join(bits),
+            "url": f"https://openrouter.ai/{m.get('id', '')}",
+            "dt": dt,
+        })
+    out.sort(key=lambda x: x["dt"] or datetime.datetime(1970, 1, 1, tzinfo=UTC),
+             reverse=True)
+    return out[: int(cfg.get("take", 12))]
+
+
+def parse_openrouter(body, cfg):
+    """OpenRouter /api/v1/models → 条目。
+
+    filter=stealth 时只保留匿名公测模型 —— 实测这些条目 id 一律以 stealth/ 开头
+    （如 stealth/space-bunny-alpha）。这是「有个模型正在匿名公测」的唯一结构化
+    入口：规律是匿名免费预览 → 免费期结束揭晓身份（Union Alpha→Pareto 即此路径）。
+    """
+    j = json.loads(body)
+    arr = j.get("data") or []
+    stealth = cfg.get("filter") == "stealth"
+    out = []
+    for m in arr:
+        mid = (m.get("id") or "").strip()
+        name = (m.get("name") or mid).strip()
+        if not mid:
+            continue
+        # 严格只认 stealth/ 前缀：名字里带 alpha 的普通模型（如 Mancer: Weaver (alpha)）
+        # 不是匿名公测，按名字匹配会误捞。
+        if stealth and not mid.lower().startswith("stealth/"):
+            continue
+        pr = m.get("pricing") or {}
+        bits = []
+        if m.get("context_length"):
+            bits.append(f"上下文 {int(m['context_length']):,} tokens")
+        if pr.get("prompt") not in (None, ""):
+            bits.append(f"输入 ${pr.get('prompt')} / 输出 ${pr.get('completion')} 每百万 tokens")
+        mods = (m.get("architecture") or {}).get("input_modalities") or []
+        if mods:
+            bits.append("输入模态 " + "/".join(str(x) for x in mods))
+        if m.get("description"):
+            bits.append(re.sub(r"\s+", " ", str(m["description"]))[:260])
+        out.append({
+            "title": (f"匿名公测模型：{name}" if stealth else f"模型上架：{name}"),
+            "desc": "；".join(bits),
+            "url": f"https://openrouter.ai/{mid}",
+            "dt": None,          # OpenRouter 不提供上架时间，由 leaderboard 源补足
+        })
+    return out[: int(cfg.get("take", 10))]
+
+
+def parse_hf_models(body, cfg):
+    """Hugging Face /api/models → 新上架权重。
+
+    开源模型的「无声发布」现场：传了权重、有模型卡，但没有一篇新闻稿。
+    用 exclude_tags 剔掉量化/微调衍生品（gguf/awq/lora…），否则会被刷屏。
+    """
+    j = json.loads(body)
+    arr = j if isinstance(j, list) else []
+    excl = set(str(t).lower() for t in (cfg.get("exclude_tags") or []))
+    out = []
+    for m in arr:
+        mid = (m.get("modelId") or m.get("id") or "").strip()
+        if not mid:
+            continue
+        tags = [str(t).lower() for t in (m.get("tags") or [])]
+        if excl & set(tags):
+            continue
+        bits = []
+        if m.get("createdAt"):
+            bits.append(f"创建于 {str(m['createdAt'])[:10]}")
+        if m.get("downloads") is not None:
+            bits.append(f"下载 {int(m['downloads']):,}")
+        if m.get("likes") is not None:
+            bits.append(f"点赞 {int(m['likes'])}")
+        keep = [t for t in tags if t not in excl][:6]
+        if keep:
+            bits.append("标签 " + ", ".join(keep))
+        out.append({
+            "title": f"新权重：{mid}",
+            "desc": "；".join(bits),
+            "url": f"https://huggingface.co/{mid}",
+            "dt": parse_dt(str(m["createdAt"])) if m.get("createdAt") else None,
+        })
+    return out[: int(cfg.get("take", 8))]
+
+
+PARSERS = {
+    "leaderboard": parse_leaderboard,
+    "openrouter": parse_openrouter,
+    "hf-models": parse_hf_models,
+}
+
+
+# --------------------------------------------------------------------------- #
 # 抓取：双通路 + desc 门槛
 # --------------------------------------------------------------------------- #
-def try_once(url, kind):
+def try_once(url, kind, src=None):
     body = http_get(url)
-    items = parse_json_feed(body) if kind == "json" else parse_feed(body)
+    p = (src or {}).get("parser")
+    if p in PARSERS:
+        items = PARSERS[p](body, src)
+    elif kind == "json":
+        items = parse_json_feed(body)
+    else:
+        items = parse_feed(body)
     if not items:
         raise RuntimeError("200 但 0 条（疑似 HTML 错误页）")
     return items
@@ -235,7 +378,7 @@ def fetch_source(src, pool):
 
     for url, host in candidates:
         try:
-            items = try_once(url, kind)
+            items = try_once(url, kind, src)
             dm = desc_median(items)
             # desc 门槛：不达标继续试下一通路（防锁死导语版实例）
             if dmin and dm < dmin:
@@ -458,9 +601,13 @@ def _total_of(it, tcfg):
     """
     sc = it.get("score") or {}
     if sc:
-        return round(sc.get("rel", 0) * 0.45 + sc.get("info", 0) * 0.30
-                     + sc.get("fresh", 0) * 0.25, 1)
-    base = {"official": 7.6, "paper": 6.2, "cn": 6.2, "community": 5.4,
+        total = sc.get("rel", 0) * 0.45 + sc.get("info", 0) * 0.30 + sc.get("fresh", 0) * 0.25
+        # 「模型发布」车道加权：新模型上架 / 匿名公测是"技术领先"最直接的信息，
+        # 应当优先浮到首屏（受名额上限约束，不会失控）。
+        if it.get("lane") == "model":
+            total += 0.5
+        return round(min(10.0, total), 1)
+    base = {"model": 9.0, "official": 7.6, "paper": 6.2, "cn": 6.2, "community": 5.4,
             "media": 5.4}.get(it.get("lane"), 5.4)
     age = it.get("ageH", -1)
     bonus = 1.2 if 0 <= age <= 12 else (0.6 if 0 <= age <= 36 else 0.0)
