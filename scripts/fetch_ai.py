@@ -275,10 +275,14 @@ def _sys_prompt(smin, smax, mode):
     base = (
         f"② summary：{smin}~{smax} 字的中文摘要，讲清核心事实（谁做了什么 + 关键数字或结论）；"
         "信息完整优先于字数，不逐字照抄、不以半句截断。"
-        "③ rel/info/fresh：三个 0-10 的整数评分 —— "
-        "rel = 与「AI 前沿（大模型 / Agent / Skill / 论文 / 开源生态）」的相关度；"
-        "info = 信息密度（有具体数据、技术细节、可操作结论者高分；纯观点、营销、科普教程低分）；"
-        "fresh = 时效性（新发布 / 新论文 / 新事件高分；回顾、长期教程低分）。"
+        "③ rel/info/fresh：三个 0-10 的**整数**评分。"
+        "**必须严格区分档位，不要普遍给高分** —— 实测若评分集中在 8-9 分，筛选就失去意义。各档定义："
+        "rel（与 AI 前沿的相关度）：直接涉及大模型 / Agent / Skill / 论文 / 开源生态的**实质进展** = 8-10；"
+        "行业应用、商业案例、人物观点、活动与招聘 = 5-7；与 AI 关联很弱或纯营销 = 0-4。"
+        "info（信息密度）：含具体数字、技术细节、可复现结论 = 8-10；有信息但较浅 = 5-7；"
+        "纯观点、宣传、入门科普 = 0-4。"
+        "fresh（时效性）：首次发布或刚发生的事件 = 8-10；一周内的持续讨论 = 5-7；"
+        "回顾、长期有效内容 = 0-4。"
         "④ topic：4-8 字的中文主题标签（如 模型发布 / 开源权重 / Agent 框架 / 融资并购 / 政策监管 / 论文方法 / 工程实践）。"
         "只输出 JSON 数组本身，不要任何解释、不要 markdown 代码块。")
     if mode == "translate":
@@ -293,6 +297,36 @@ def _sys_prompt(smin, smax, mode):
             "输出 JSON 数组 [{\"i\":序号,\"title\":标题,\"summary\":中文摘要,"
             "\"rel\":整数,\"info\":整数,\"fresh\":整数,\"topic\":中文标签}]，规则："
             "① title：**必须一字不改原样返回输入标题**，不要改写、不要润色、不要增删字词。" + base)
+
+
+def _loads_array(text):
+    """宽松解析模型返回的 JSON 数组。
+
+    实测踩坑：agnes-3.0-flash 在条数较多时会返回**被 max_tokens 截断**的 JSON
+    （`JSONDecodeError: Expecting ':' delimiter`），整批因此判失败、白跑一趟。
+    这里回退到「从后往前找最后一个完整的 }，截断后补 ]」，把前面完整的条目救回来。
+    """
+    try:
+        v = json.loads(text)
+        if isinstance(v, list):
+            return v
+    except Exception:
+        pass
+    tried = 0
+    for cut in range(len(text) - 1, -1, -1):
+        if text[cut] != "}":
+            continue
+        tried += 1
+        if tried > 40:                    # 限制回退次数，避免大文本上反复解析
+            break
+        cand = text[:cut + 1].rstrip().rstrip(",") + "]"
+        try:
+            v = json.loads(cand)
+            if isinstance(v, list) and v:
+                return v
+        except Exception:
+            continue
+    raise RuntimeError("无法解析模型返回的 JSON 数组")
 
 
 def _call_llm_batch(batch, tcfg, mode):
@@ -316,7 +350,7 @@ def _call_llm_batch(batch, tcfg, mode):
                      for n, i in enumerate(batch)], ensure_ascii=False)},
             ],
             "temperature": 0.2,
-            "max_tokens": 8000,
+            "max_tokens": 12000,          # 给足：思考链 + 25 条的 JSON 会吃不少预算
         }
         try:
             req = urllib.request.Request(
@@ -330,11 +364,13 @@ def _call_llm_batch(batch, tcfg, mode):
             # 商汤系答案在 reasoning_content（见实测记录），一并兼容
             text = (msg.get("content") or msg.get("reasoning_content") or "").strip()
             text = re.sub(r"^```(json)?|```$", "", text.strip(), flags=re.M).strip()
-            arr = json.loads(text)
-            if not isinstance(arr, list) or len(arr) != len(batch):
-                raise RuntimeError(
-                    f"返回条数不符（期望 {len(batch)}，得 "
-                    f"{len(arr) if isinstance(arr, list) else '非数组'}）")
+            arr = _loads_array(text)
+            # 允许部分成功：模型偶发只返回部分条目（或 JSON 被截断），
+            # 只要过半就采纳，缺失的条目保留原文 —— 比整批作废划算得多。
+            if len(arr) < max(1, len(batch) // 2):
+                raise RuntimeError(f"返回条数过少（期望 {len(batch)}，得 {len(arr)}）")
+            if len(arr) < len(batch):
+                log(f"  ℹ️ {m['name']} 仅返回 {len(arr)}/{len(batch)} 条，其余保留原文")
             n_title = 0
             for row in arr:
                 i = int(row.get("i", -1))
@@ -400,47 +436,82 @@ def llm_enhance(items, tcfg):
     return out, failed
 
 
-# 重磅关键词（硬规则提级）：命中即判 top，不受 LLM 打分波动影响 ——
-# 保证「我关心的那类事」一定浮到首屏，不会因为模型某次给分偏低就沉底。
-TOP_KW = ("发布", "推出", "开源", "权重", "基准", "融资", "收购", "并购", "政策", "监管",
-          "上市", "ipo", "反垄断", "算力",
-          "release", "launch", "open-source", "open source", "weights", "benchmark",
-          "acquire", "acquisition", "raises", "funding", "general availability",
-          "state-of-the-art", "sota", "breakthrough")
+# 重磅关键词（硬规则提级）：只保留**高精度**的词 —— 「发布 / 推出 / 政策」这类太常见，
+# 会把"发布一个活动计划"也提成重磅，那类判断交给 LLM 分数。命中即判 top，
+# 保证「我关心的那类事」一定浮到首屏，不受模型某次给分偏低的影响。
+TOP_KW = ("开源", "权重", "融资", "收购", "并购", "ipo", "反垄断", "监管",
+          "open-source", "open source", "open weights", "open-weight", "weights",
+          "release", "benchmark", "state-of-the-art", "sota", "breakthrough",
+          "acquisition", "acquires", "raises", "funding round", "general availability")
 
 
-def level_of(it, tcfg):
-    """分级：硬规则优先，其次看加权总分。权重 rel .45 / info .30 / fresh .25。
+def _total_of(it, tcfg):
+    """加权总分 rel .45 / info .30 / fresh .25。无 LLM 分时用「车道基线 + 新鲜度」兜底。
 
     ⚠️ 降级路径必须也有分级 —— 若 LLM 未配置/全失败则没有 score，此时若一律判
-    normal，首屏就只剩一个折叠条、页面等于空白。故按「车道权重 + 新鲜度」给兜底分。
+    normal，首屏就只剩一个折叠条、页面等于空白。
     """
-    th = tcfg.get("level_thresholds", {}) or {}
-    t_top = float(th.get("top", 8.0))
-    t_watch = float(th.get("watch", 6.5))
     sc = it.get("score") or {}
     if sc:
-        total = round(sc.get("rel", 0) * 0.45 + sc.get("info", 0) * 0.30
-                      + sc.get("fresh", 0) * 0.25, 1)
-    else:
-        # 兜底打分：车道基线 + 新鲜度奖励（+ 多源报道加成）
-        base = {"official": 7.6, "paper": 6.2, "cn": 6.2, "community": 5.4,
-                "media": 5.4}.get(it.get("lane"), 5.4)
-        age = it.get("ageH", -1)
-        bonus = 1.2 if 0 <= age <= 12 else (0.6 if 0 <= age <= 36 else 0.0)
-        if it.get("alsoIn"):
-            bonus += 0.5                      # 多源同时报道 = 重要性信号
-        total = round(min(9.5, base + bonus), 1)
-        it["fallbackScore"] = True
-    it["total"] = total
+        return round(sc.get("rel", 0) * 0.45 + sc.get("info", 0) * 0.30
+                     + sc.get("fresh", 0) * 0.25, 1)
+    base = {"official": 7.6, "paper": 6.2, "cn": 6.2, "community": 5.4,
+            "media": 5.4}.get(it.get("lane"), 5.4)
+    age = it.get("ageH", -1)
+    bonus = 1.2 if 0 <= age <= 12 else (0.6 if 0 <= age <= 36 else 0.0)
+    if it.get("alsoIn"):
+        bonus += 0.5                          # 多源同时报道 = 重要性信号
+    it["fallbackScore"] = True
+    return round(min(9.5, base + bonus), 1)
+
+
+def _hits_kw(it):
     hay = (it.get("title", "") + " " + it.get("titleCn", "")).lower()
-    if any(k in hay for k in TOP_KW):
-        return "top"
-    if total >= t_top:
-        return "top"
-    if total >= t_watch:
-        return "watch"
-    return "normal"
+    return any(k in hay for k in TOP_KW)
+
+
+def assign_levels(items, tcfg):
+    """分级 = 分数下限 + 名额上限。
+
+    只用绝对阈值会在模型整体给分偏高时失控 —— 实测首轮 top 达 50/90（占 56%），
+    因为打分集中在 8-9 分。加名额上限后，每天首屏条数恒定，不受打分漂移影响。
+    返回 (top 数, watch 数)。
+    """
+    th = tcfg.get("level_thresholds", {}) or {}
+    q = tcfg.get("quota", {}) or {}
+    floor_top = float(th.get("top", 8.0))
+    floor_watch = float(th.get("watch", 6.5))
+    n = len(items)
+    cap_top = min(int(q.get("top_max", 15)),
+                  max(int(q.get("top_min", 4)), round(n * float(q.get("top_ratio", 0.12)))))
+    cap_watch = max(0, round(n * float(q.get("watch_ratio", 0.35))))
+
+    for i in items:
+        i["total"] = _total_of(i, tcfg)
+        i["_kw"] = _hits_kw(i)
+
+    ranked = sorted(items, key=lambda x: -x["total"])
+    n_top = n_watch = 0
+    # ① 硬规则命中的先占 top（不受名额限制 —— 这类"我关心的事"必须浮上来）
+    for i in ranked:
+        if i["_kw"]:
+            i["level"] = "top"
+            n_top += 1
+    # ② 其余按分数 + 名额分配
+    for i in ranked:
+        if i.get("level"):
+            continue
+        if n_top < cap_top and i["total"] >= floor_top:
+            i["level"] = "top"
+            n_top += 1
+        elif n_top + n_watch < cap_top + cap_watch and i["total"] >= floor_watch:
+            i["level"] = "watch"
+            n_watch += 1
+        else:
+            i["level"] = "normal"
+    for i in items:
+        i.pop("_kw", None)
+    return n_top, n_watch
 
 
 # --------------------------------------------------------------------------- #
@@ -605,11 +676,11 @@ def main():
 
     # ⑧ 分级与排序
     for i in merged:
-        i["level"] = level_of(i, tcfg)
         if not i.get("summary"):
             i["summary"] = i["desc"][:200]        # LLM 失败时降级用正文开头，绝不空窗
         if not i.get("titleCn") and not i["_translate_title"]:
             i["titleCn"] = ""
+    assign_levels(merged, tcfg)
     lvl_rank = {"top": 0, "watch": 1, "normal": 2}
     merged.sort(key=lambda x: (lane_order.index(x["lane"]) if x["lane"] in lane_order else 99,
                                lvl_rank.get(x["level"], 9), -x.get("total", 0)))
