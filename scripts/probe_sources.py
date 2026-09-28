@@ -138,8 +138,8 @@ def probe_source(src, pool):
     kind = src.get("kind", "rss")
     rows = []
 
-    # 通路 1：rsshub 实例池
-    if src.get("mode") == "rsshub" and src.get("route"):
+    # 通路 1：rsshub 实例池（有 route 就测，兼容 auto / rsshub 两种模式）
+    if src.get("route"):
         for host in pool:
             url = f"https://{host}{src['route']}"
             r = probe_url(url, kind)
@@ -189,8 +189,8 @@ def main():
 
     tasks = []
     for s in srcs:
-        n = (len(pool) if s.get("mode") == "rsshub" else 0) + len(s.get("urls", []) or [])
-        if s.get("mode") == "rsshub" and s.get("lane") == "cn":
+        n = (len(pool) if s.get("route") else 0) + len(s.get("urls", []) or [])
+        if s.get("route") and s.get("lane") == "cn":
             n += 1
         tasks.append((s, n))
     total = sum(n for _, n in tasks)
@@ -235,10 +235,18 @@ def main():
             continue
         best = max(rows, key=lambda r: (r["desc"], r["n"]))
         fh = best.get("fresh_h", -1)
+        # 僵尸源识别：源"活着"（能取到条目）但久不更新 —— 比彻底失败更隐蔽，
+        # 会让面板长期显示同一批旧内容而不报错。
+        stale = ""
+        if isinstance(fh, int):
+            if fh > 240:
+                stale = "  ⚠️僵尸源(超10天未更新)"
+            elif fh > 72:
+                stale = "  ⚠️低频"
         log(f"{s['id']:22} {s.get('lane',''):9} {best['via']:26} {best['n']:>5} "
-            f"{best['desc']:>9} {fh:>6}  {best['title'][:44]}")
+            f"{best['desc']:>9} {fh:>6}{stale}  {best['title'][:40]}")
         lines.append(f"| `{s['id']}` | {s.get('lane','')} | {best['via']} | {best['n']} "
-                     f"| {best['desc']} | {fh} | {best['title'][:40]} |")
+                     f"| {best['desc']} | {fh}{stale} | {best['title'][:40]} |")
 
     # 失败通路明细
     bad = [r for r in all_rows if not r["ok"]]
