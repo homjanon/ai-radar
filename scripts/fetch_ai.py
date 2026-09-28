@@ -35,8 +35,9 @@ TZ_CN = datetime.timezone(datetime.timedelta(hours=8))
 UTC = datetime.timezone.utc
 
 # 各车道的默认时间窗（小时）。官方源发布频率天然低（实测 OpenAI Research 12 天
-# 一条），若统一用短窗会被整体过滤干净 —— 必须按车道区分。
-LANE_MAX_AGE = {"official": 168, "paper": 72, "community": 48, "media": 96, "cn": 36}
+# 一条），若统一用短窗会被整体过滤干净 —— 必须按车道区分。中文媒体实测日更节奏
+# 差异大（36氪 30 条 / 雷锋网 1 条），36h 会把慢的那几家压缩到只能靠保底，故放宽到 72h。
+LANE_MAX_AGE = {"official": 168, "paper": 72, "community": 48, "media": 96, "cn": 72}
 DEFAULT_MAX_AGE = 48
 
 ATOM = "{http://www.w3.org/2005/Atom}"
@@ -50,13 +51,23 @@ def log(m):
 # --------------------------------------------------------------------------- #
 # 基础工具
 # --------------------------------------------------------------------------- #
-def http_get(url, timeout=25):
-    req = urllib.request.Request(
-        url, headers={"User-Agent": "Mozilla/5.0 (ai-radar/1.0)", "Accept": "*/*"})
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        if r.status != 200:
-            raise RuntimeError(f"HTTP {r.status}")
-        return r.read()
+def http_get(url, timeout=25, retry=1):
+    """带一次重试的 GET —— 偶发的瞬时失败（实测 deepmind RSS 单次 ParseError 致整源降级）
+    不该直接判定该通路失败。"""
+    last = None
+    for attempt in range(retry + 1):
+        try:
+            req = urllib.request.Request(
+                url, headers={"User-Agent": "Mozilla/5.0 (ai-radar/1.0)", "Accept": "*/*"})
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                if r.status != 200:
+                    raise RuntimeError(f"HTTP {r.status}")
+                return r.read()
+        except Exception as e:
+            last = e
+            if attempt < retry:
+                time.sleep(1.5)
+    raise last
 
 
 def strip_tags(s):
@@ -362,19 +373,27 @@ def main():
         log(f"🔁 跨源去重折叠 {len(all_items) - len(merged)} 条")
 
     # ⑤ 跨日折叠：与最近一份归档比对，重复的标记而非丢弃
-    prev = os.path.join(a.outdir, "latest.json")
-    prev_titles = set()
-    if os.path.exists(prev):
+    #    比对对象必须是「日期不是今天」的 daily 归档 —— 不能拿 latest.json 充当，
+    #    它会被同日多次运行覆盖，导致同一天的内容互相标记为重复（实测踩过：首次运行
+    #    误标 59/87 条重复，全是本地测试产物造成的假信号）。
+    today = now.strftime("%Y-%m-%d")
+    prev_titles, prev_name = set(), None
+    cands = sorted(glob.glob(os.path.join(a.outdir, "daily", "*.json")), reverse=True)
+    prev_path = next((f for f in cands if not os.path.basename(f).startswith(today)), None)
+    if prev_path:
+        prev_name = os.path.basename(prev_path)
         try:
-            with open(prev, encoding="utf-8") as f:
+            with open(prev_path, encoding="utf-8") as f:
                 prev_titles = {norm_title(x["title"]) for x in json.load(f).get("items", [])}
         except Exception as e:
-            log(f"  ⚠️ 读上一份产物失败：{e}")
+            log(f"  ⚠️ 读上一份归档失败（{prev_name}）：{e}")
     for i in merged:
         i["isRepeat"] = norm_title(i["title"]) in prev_titles
     n_rep = sum(1 for i in merged if i["isRepeat"])
-    if n_rep:
-        log(f"♻️ 跨日重复标记 {n_rep} 条（保留但降权展示）")
+    if prev_name:
+        log(f"♻️ 跨日比对 {prev_name}：重复 {n_rep} 条（保留但降权展示）")
+    else:
+        log("♻️ 无历史归档可比（首次运行），跳过跨日折叠")
 
     # ⑥ 正文补抓（仅对 desc 过短且非重复的条目，限量）
     if not a.no_jina:

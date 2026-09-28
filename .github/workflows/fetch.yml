@@ -50,5 +50,8 @@ jobs:
             echo "本次无变化，跳过提交"
           else
             git commit -m "ai-radar: $(TZ=Asia/Shanghai date +%F)"
+            # 必须 rebase 后再推：抓取期间可能有人（或另一个 workflow）往 main 推了东西，
+            # 直接 push 会被拒（实测踩过：与本地的 .gitignore 提交撞车导致整次运行失败）
+            git pull --rebase --autostash origin main
             git push
           fi
