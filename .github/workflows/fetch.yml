@@ -33,6 +33,10 @@ jobs:
           python-version: '3.12'
 
       - name: 抓取并生成 JSON
+        env:
+          # P2 LLM 增强用。未配置时自动跳过该模型并降级为原文，不影响抓取主流程。
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}
         run: python scripts/fetch_ai.py --outdir docs
 
       - name: 清理超过 30 天的归档
