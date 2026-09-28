@@ -1,8 +1,14 @@
 # AI 前沿雷达（ai-radar）
 
-持续追踪大模型 / Agent / Skill 生态的自动化聚合站。**当前 P1：抓取 → 过滤 → JSON → 网页面板已跑通；LLM 摘要与打分留待 P2。**
+持续追踪大模型 / Agent / Skill 生态的自动化聚合站。**当前 P2：抓取 → 硬规则筛选 → LLM 增强（中文摘要 / 三维评分 / 分级）→ JSON → 网页面板，全链路已跑通。**
 
 线上面板：https://homjanon.github.io/ai-radar/
+
+> **首次部署需配两个 Secret**（未配置时自动降级为原文，不影响抓取）：
+> ```bash
+> gh secret set GEMINI_API_KEY --repo homjanon/ai-radar   # 交互式输入，不落 shell 历史
+> gh secret set AGNES_API_KEY  --repo homjanon/ai-radar
+> ```
 
 ## 这个仓要做什么
 
@@ -16,16 +22,26 @@
 ## 目录
 
 ```
-scripts/sources.json          源配置（单一数据源）· 五车道 · 每源带 desc_min 门槛
+scripts/sources.json          源配置（单一数据源）· 五车道 · desc_min 门槛 · LLM 模型链
 scripts/probe_sources.py      源可用性探测（只读，P0）
-scripts/fetch_ai.py           抓取与产物生成（P1 · 纯硬规则，无 LLM）
-docs/index.html               网页面板（读 latest.json 渲染）
+scripts/fetch_ai.py           抓取与产物生成（硬规则选条 + LLM 增强）
+docs/index.html               网页面板（读 latest.json 渲染，支持车道筛选与分级折叠）
 docs/latest.json              最新一期产物
 docs/daily/{date}.json        当日归档（保留 30 天）
 docs/data/reports/{ts}.json   运行报告（每源通路/条数/降级原因，可回溯）
 .github/workflows/probe-sources.yml   源探测（手动 + 每月自动）
 .github/workflows/fetch.yml           抓取发布（每日 08:10 北京）
 ```
+
+## 三层处理链路
+
+| 层 | 职责 | 谁来做 |
+|---|---|---|
+| **选条** | 时间窗（含保底）→ 标题去重 → 跨源折叠 → 跨日标记 | **纯硬规则**，确定性、可复现 |
+| **分级** | 重磅关键词硬规则 > 加权总分（rel .45 / info .30 / fresh .25） | 硬规则 + LLM 分数；无 LLM 时用「车道基线 + 新鲜度」兜底打分 |
+| **表达** | 中文摘要（40–80 字）· 英文标题中文化 · 主题标签 | **只由 LLM 做**，失败即降级为原文 |
+
+LLM 按语言拆批（英文 `translate` / 中文 `summarize`）——两种指令绝不混批，否则模型会整批统一处理、造成英文标题漏译。模型链逐档降级，全失败也不空窗。
 
 ## 五条车道
 
@@ -94,6 +110,6 @@ HTTPS_PROXY=http://127.0.0.1:7890 python scripts/fetch_ai.py --outdir docs
 
 - **P0 已完成** 源基线探测 —— 建仓 + probe workflow，32 源实测基线（两环境结论相反，见下）
 - **P1 已完成** 抓取 → 时间窗（含保底）→ 去重 → 跨源折叠 → 跨日标记 → JSON → Pages 面板
-- **P2** LLM 增强：中文摘要 + 三维打分（相关度/信息密度/时效性）+ 分级
+- **P2 已完成** LLM 增强：中文摘要 + 英文标题中文化 + 三维打分（相关度/信息密度/时效性）+ 主题标签 + 分级折叠展示
 - **P3** 接入 `nav` 宫格与 Android App + 邮件日报（可选）
 - **P4** 趋势量化：周报四指标（厂商发布频率 / 开源权重占比 / 星标增速 / 主题热度）
