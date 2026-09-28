@@ -1,0 +1,40 @@
+name: probe-sources
+
+# AI 前沿雷达 · 源可用性探测 —— 只读，不写任何文件、不提交、不碰 docs/。
+#
+# 定位与 news-feed 的 probe-models.yml 相同：换源/加源之前先验证「源还活着吗、
+# 哪个实例最稳、desc 深浅如何」，避免改完 sources.json 才发现静默断流。
+#
+# 为什么必须在 Actions 上跑（而不是本机）：
+#   本机经代理的实测结果不可信 —— 实测中 19 个源报 `Tunnel connection failed: 502`，
+#   但其中 news.google.com 在 news-feed 生产环境稳定可用。Actions 走直连（美国 IP），
+#   才是真实基线。
+on:
+  workflow_dispatch:
+  schedule:
+    # 每月 1 号 11:00 北京（03:00 UTC）：定期体检，及时发现失效源
+    - cron: '0 3 1 * *'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: probe-sources
+  cancel-in-progress: false
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+
+      - name: 探测源可用性（全源 · 全通路）
+        run: python scripts/probe_sources.py
+
+      - name: 打印配置摘要（人工核对用）
+        if: always()
+        run: python -c "import json;c=json.load(open('scripts/sources.json',encoding='utf-8'));s=c['sources'];print(f'源 {len(s)} 个，启用 {sum(1 for x in s if x.get(\"enabled\"))} 个');[print(f'  [{\"ON \" if x.get(\"enabled\") else \"off\"}] {x[\"id\"]:22} {x[\"lane\"]:10} {x.get(\"mode\")}') for x in s]"

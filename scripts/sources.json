@@ -1,0 +1,215 @@
+{
+  "note": "AI 前沿雷达 · 源配置（单一数据源，改配置不改代码）。mode=direct 走 urls[] 顺序兜底；mode=rsshub 走 rsshub_pool 实例顺序兜底（命中即止）。desc_min 为该源可接受的 desc 中位长度门槛（字），低于门槛继续试下一实例——沿用 portfolio 的踩坑经验：各 rsshub 实例返回的 desc 深浅不一（导语版 vs 全文版），若不设门槛会锁死在导语版实例上，直接损害 LLM 摘要质量。enabled=false 为候选源（P0 探测后再决定是否启用）。",
+  "version": "2026-09-28",
+  "rsshub_pool": [
+    "hub.slarker.me",
+    "rsshub.rssforever.com",
+    "rsshub.umzzz.com",
+    "rsshub.isrss.com",
+    "rsshub.ktachibana.party",
+    "rsshub-balancer.virworks.moe"
+  ],
+  "translate": {
+    "summary_min": 40,
+    "summary_max": 80,
+    "models": [
+      { "name": "gemini-3-flash", "base": "https://generativelanguage.googleapis.com/v1beta/openai", "model": "gemini-3-flash-preview", "key_env": "GEMINI_API_KEY" },
+      { "name": "agnes-3.0-flash", "base": "https://apihub.agnes-ai.com/v1", "model": "agnes-3.0-flash", "key_env": "AGNES_API_KEY" },
+      { "name": "gemini-3.5-flash-lite", "base": "https://generativelanguage.googleapis.com/v1beta/openai", "model": "gemini-3.5-flash-lite", "key_env": "GEMINI_API_KEY" }
+    ]
+  },
+  "lanes": [
+    { "id": "official", "name": "官方一手", "weight": 10 },
+    { "id": "paper", "name": "论文与基准", "weight": 8 },
+    { "id": "community", "name": "社区与开源", "weight": 6 },
+    { "id": "media", "name": "媒体与分析", "weight": 5 },
+    { "id": "cn", "name": "中文动态", "weight": 7 }
+  ],
+  "sources": [
+    {
+      "id": "openai-news", "lane": "official", "block": "OpenAI", "enabled": true,
+      "mode": "rsshub", "route": "/openai/news",
+      "urls": ["https://openai.com/news/rss.xml"],
+      "take": 10, "dedupe": true, "sort_desc": true, "translate": true, "desc_min": 300
+    },
+    {
+      "id": "openai-research", "lane": "official", "block": "OpenAI", "enabled": true,
+      "mode": "rsshub", "route": "/openai/research",
+      "urls": [], "take": 6, "dedupe": true, "sort_desc": true, "translate": true, "desc_min": 300
+    },
+    {
+      "id": "anthropic-news", "lane": "official", "block": "Anthropic", "enabled": true,
+      "mode": "rsshub", "route": "/anthropic/news",
+      "urls": [], "take": 8, "dedupe": true, "sort_desc": true, "translate": true, "desc_min": 300,
+      "note": "Anthropic 无官方 RSS（实锤双 404），rsshub 路由是唯一稳定通路"
+    },
+    {
+      "id": "deepmind-blog", "lane": "official", "block": "Google DeepMind", "enabled": true,
+      "mode": "direct", "urls": ["https://deepmind.google/blog/rss.xml"],
+      "take": 8, "dedupe": true, "sort_desc": true, "translate": true, "desc_min": 0
+    },
+    {
+      "id": "google-ai-blog", "lane": "official", "block": "Google", "enabled": true,
+      "mode": "direct", "urls": ["https://blog.google/technology/ai/rss/"],
+      "take": 6, "dedupe": true, "sort_desc": true, "translate": true, "desc_min": 0
+    },
+    {
+      "id": "hf-blog", "lane": "official", "block": "Hugging Face", "enabled": true,
+      "mode": "rsshub", "route": "/huggingface/blog",
+      "urls": ["https://huggingface.co/blog/feed.xml"],
+      "take": 8, "dedupe": true, "sort_desc": true, "translate": true, "desc_min": 500,
+      "note": "直连在部分网络环境 502；rsshub 实例返回全文版（实测 desc 中位 11148）"
+    },
+    {
+      "id": "aws-ml-blog", "lane": "official", "block": "AWS", "enabled": false,
+      "mode": "direct", "urls": ["https://aws.amazon.com/blogs/machine-learning/feed/"],
+      "take": 6, "dedupe": true, "sort_desc": true, "translate": true, "desc_min": 0
+    },
+    {
+      "id": "nvidia-blog", "lane": "official", "block": "NVIDIA", "enabled": false,
+      "mode": "direct", "urls": ["https://blogs.nvidia.com/feed/"],
+      "take": 5, "dedupe": true, "sort_desc": true, "translate": true, "desc_min": 0
+    },
+
+    {
+      "id": "hf-daily-papers", "lane": "paper", "block": "HF 每日论文", "enabled": true,
+      "mode": "rsshub", "route": "/huggingface/daily-papers",
+      "urls": ["https://huggingface.co/api/daily_papers"],
+      "take": 10, "dedupe": true, "sort_desc": false, "translate": true, "desc_min": 200,
+      "note": "本车道信噪比最高的源：HF 人工精选的每日论文"
+    },
+    {
+      "id": "arxiv-cs-cl", "lane": "paper", "block": "arXiv", "enabled": true,
+      "mode": "direct", "urls": ["http://export.arxiv.org/rss/cs.CL"],
+      "take": 8, "dedupe": true, "sort_desc": false, "translate": true, "desc_min": 0
+    },
+    {
+      "id": "arxiv-cs-ai", "lane": "paper", "block": "arXiv", "enabled": false,
+      "mode": "direct", "urls": ["http://export.arxiv.org/rss/cs.AI"],
+      "take": 8, "dedupe": true, "sort_desc": false, "translate": true, "desc_min": 0,
+      "note": "条量大（实测 331 条/次），启用后必须靠 LLM 打分筛"
+    },
+    {
+      "id": "openrouter-models", "lane": "paper", "block": "OpenRouter", "enabled": false,
+      "mode": "direct", "urls": ["https://openrouter.ai/api/v1/models"],
+      "take": 0, "kind": "json", "translate": false,
+      "note": "用于周报的用量份额趋势，不产出每日条目"
+    },
+
+    {
+      "id": "hn-frontpage", "lane": "community", "block": "Hacker News", "enabled": true,
+      "mode": "direct", "urls": ["https://hnrss.org/frontpage"],
+      "take": 8, "dedupe": true, "sort_desc": true, "translate": true, "desc_min": 0
+    },
+    {
+      "id": "hn-llm", "lane": "community", "block": "Hacker News", "enabled": true,
+      "mode": "direct", "urls": ["https://hnrss.org/newest?q=LLM", "https://hnrss.org/newest?q=AI+model"],
+      "take": 6, "dedupe": true, "sort_desc": true, "translate": true, "desc_min": 0
+    },
+    {
+      "id": "github-trending", "lane": "community", "block": "GitHub Trending", "enabled": true,
+      "mode": "direct", "urls": ["https://mshibanami.github.io/GitHubTrendingRSS/daily/python.xml"],
+      "take": 8, "dedupe": true, "sort_desc": false, "translate": true, "desc_min": 0,
+      "note": "第三方维护，需兜底；日榜对 AI 项目的曝光最直接"
+    },
+    {
+      "id": "github-releases", "lane": "community", "block": "GitHub Releases", "enabled": true,
+      "mode": "direct",
+      "urls": [
+        "https://github.com/ollama/ollama/releases.atom",
+        "https://github.com/vllm-project/vllm/releases.atom",
+        "https://github.com/langchain-ai/langchain/releases.atom",
+        "https://github.com/openai/openai-python/releases.atom"
+      ],
+      "take": 6, "dedupe": true, "sort_desc": true, "translate": false, "desc_min": 0,
+      "note": "实测 .atom 在部分网络超时，Actions 侧复核；备选改 api.github.com/repos/X/releases"
+    },
+
+    {
+      "id": "simonwillison", "lane": "media", "block": "Simon Willison", "enabled": true,
+      "mode": "direct", "urls": ["https://simonwillison.net/atom/everything/"],
+      "take": 6, "dedupe": true, "sort_desc": true, "translate": true, "desc_min": 0
+    },
+    {
+      "id": "tldr-ai", "lane": "media", "block": "TLDR AI", "enabled": true,
+      "mode": "direct", "urls": ["https://tldr.tech/api/rss/ai"],
+      "take": 5, "dedupe": true, "sort_desc": true, "translate": true, "desc_min": 0,
+      "note": "本身已是精编摘要，省 token"
+    },
+    {
+      "id": "arstechnica-ai", "lane": "media", "block": "Ars Technica", "enabled": false,
+      "mode": "direct", "urls": ["https://arstechnica.com/ai/feed/"],
+      "take": 5, "dedupe": true, "sort_desc": true, "translate": true, "desc_min": 0
+    },
+    {
+      "id": "techcrunch-ai", "lane": "media", "block": "TechCrunch", "enabled": false,
+      "mode": "direct", "urls": ["https://techcrunch.com/category/artificial-intelligence/feed/"],
+      "take": 5, "dedupe": true, "sort_desc": true, "translate": true, "desc_min": 0
+    },
+    {
+      "id": "techreview-ai", "lane": "media", "block": "MIT Tech Review", "enabled": false,
+      "mode": "direct", "urls": ["https://www.technologyreview.com/topic/artificial-intelligence/feed"],
+      "take": 5, "dedupe": true, "sort_desc": true, "translate": true, "desc_min": 0
+    },
+    {
+      "id": "theverge-ai", "lane": "media", "block": "The Verge", "enabled": false,
+      "mode": "direct", "urls": ["https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"],
+      "take": 5, "dedupe": true, "sort_desc": true, "translate": true, "desc_min": 0
+    },
+    {
+      "id": "latent-space", "lane": "media", "block": "Latent Space", "enabled": false,
+      "mode": "direct", "urls": ["https://www.latent.space/feed"],
+      "take": 4, "dedupe": true, "sort_desc": true, "translate": true, "desc_min": 0
+    },
+    {
+      "id": "sebastianraschka", "lane": "media", "block": "Sebastian Raschka", "enabled": false,
+      "mode": "direct", "urls": ["https://magazine.sebastianraschka.com/feed"],
+      "take": 4, "dedupe": true, "sort_desc": true, "translate": true, "desc_min": 0
+    },
+    {
+      "id": "bair", "lane": "media", "block": "BAIR", "enabled": false,
+      "mode": "direct", "urls": ["https://bair.berkeley.edu/blog/feed.xml"],
+      "take": 4, "dedupe": true, "sort_desc": true, "translate": true, "desc_min": 0
+    },
+
+    {
+      "id": "qbitai", "lane": "cn", "block": "量子位", "enabled": true,
+      "mode": "rsshub", "route": "/qbitai/tag/AI",
+      "urls": [], "take": 8, "dedupe": true, "sort_desc": true, "translate": false, "desc_min": 0,
+      "note": "实测 desc 为空（仅标题），摘要需回抓正文或用标题生成"
+    },
+    {
+      "id": "leiphone-ai", "lane": "cn", "block": "雷锋网 AI", "enabled": true,
+      "mode": "rsshub", "route": "/leiphone/category/ai",
+      "urls": [], "take": 8, "dedupe": true, "sort_desc": true, "translate": false, "desc_min": 300,
+      "note": "实测全文（desc 中位 8949）"
+    },
+    {
+      "id": "36kr-ai", "lane": "cn", "block": "36氪 AI", "enabled": true,
+      "mode": "rsshub", "route": "/36kr/information/AI",
+      "urls": [], "take": 6, "dedupe": true, "sort_desc": true, "translate": false, "desc_min": 300,
+      "note": "产业与融资视角"
+    },
+    {
+      "id": "infoq", "lane": "cn", "block": "InfoQ", "enabled": true,
+      "mode": "rsshub", "route": "/infoq/recommend",
+      "urls": [], "take": 6, "dedupe": true, "sort_desc": true, "translate": false, "desc_min": 300,
+      "note": "工程架构视角，与资讯类互补"
+    },
+    {
+      "id": "ithome-ai", "lane": "cn", "block": "IT之家 AI", "enabled": false,
+      "mode": "rsshub", "route": "/ithome/tag/AI",
+      "urls": [], "take": 6, "dedupe": true, "sort_desc": true, "translate": false, "desc_min": 0
+    },
+    {
+      "id": "solidot", "lane": "cn", "block": "Solidot", "enabled": false,
+      "mode": "rsshub", "route": "/solidot/",
+      "urls": [], "take": 6, "dedupe": true, "sort_desc": true, "translate": false, "desc_min": 0
+    },
+    {
+      "id": "oschina", "lane": "cn", "block": "开源中国", "enabled": false,
+      "mode": "rsshub", "route": "/oschina/news",
+      "urls": [], "take": 6, "dedupe": true, "sort_desc": true, "translate": false, "desc_min": 0
+    }
+  ]
+}
