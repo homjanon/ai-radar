@@ -266,6 +266,184 @@ def jina_fetch(url, cap=1500):
 
 
 # --------------------------------------------------------------------------- #
+# LLM 增强（P2）：中文摘要 + 三维打分 + 主题标签
+#   分工原则：LLM 只做「表达与评分」，不做选条 —— 选条仍是上一步的硬规则。
+#   按语言拆批（学自 news-feed 的教训）：同一 prompt 里混"译标题"与"标题原样"
+#   两条互斥指令，模型会整批统一处理，导致英文标题漏译。
+# --------------------------------------------------------------------------- #
+def _sys_prompt(smin, smax, mode):
+    base = (
+        f"② summary：{smin}~{smax} 字的中文摘要，讲清核心事实（谁做了什么 + 关键数字或结论）；"
+        "信息完整优先于字数，不逐字照抄、不以半句截断。"
+        "③ rel/info/fresh：三个 0-10 的整数评分 —— "
+        "rel = 与「AI 前沿（大模型 / Agent / Skill / 论文 / 开源生态）」的相关度；"
+        "info = 信息密度（有具体数据、技术细节、可操作结论者高分；纯观点、营销、科普教程低分）；"
+        "fresh = 时效性（新发布 / 新论文 / 新事件高分；回顾、长期教程低分）。"
+        "④ topic：4-8 字的中文主题标签（如 模型发布 / 开源权重 / Agent 框架 / 融资并购 / 政策监管 / 论文方法 / 工程实践）。"
+        "只输出 JSON 数组本身，不要任何解释、不要 markdown 代码块。")
+    if mode == "translate":
+        return ("你是 AI 技术情报编辑。输入是 JSON 数组 [{\"i\":序号,\"title\":英文标题,\"desc\":正文片段}]。"
+                "**本批全部条目均为英文。**"
+                "输出 JSON 数组 [{\"i\":序号,\"title\":中文标题,\"summary\":中文摘要,"
+                "\"rel\":整数,\"info\":整数,\"fresh\":整数,\"topic\":中文标签}]，规则："
+                "① title：**必须译成简洁中文**（专有名词保留通用写法，如 GPT-6、Claude、LangChain），"
+                "不得原样保留英文、不得留英文残句。" + base)
+    return ("你是 AI 技术情报编辑。输入是 JSON 数组 [{\"i\":序号,\"title\":中文标题,\"desc\":正文片段}]。"
+            "**本批全部条目均为中文。**"
+            "输出 JSON 数组 [{\"i\":序号,\"title\":标题,\"summary\":中文摘要,"
+            "\"rel\":整数,\"info\":整数,\"fresh\":整数,\"topic\":中文标签}]，规则："
+            "① title：**必须一字不改原样返回输入标题**，不要改写、不要润色、不要增删字词。" + base)
+
+
+def _call_llm_batch(batch, tcfg, mode):
+    """对一批条目依次尝试模型链。返回 (模型名, 是否成功, 实际发起请求的模型数)。"""
+    smin = int(tcfg.get("summary_min", 40))
+    smax = int(tcfg.get("summary_max", 80))
+    sys_prompt = _sys_prompt(smin, smax, mode)
+    tried = 0
+    for m in tcfg.get("models", []):
+        key = os.environ.get(m.get("key_env", ""))
+        if not key:
+            log(f"  ⏭️ 跳过 {m['name']}：环境变量 {m.get('key_env')} 未设置（Secret 未配置时属预期）")
+            continue
+        tried += 1
+        payload = {
+            "model": m["model"],
+            "messages": [
+                {"role": "system", "content": sys_prompt},
+                {"role": "user", "content": json.dumps(
+                    [{"i": n, "title": i["title"], "desc": i["desc"][:400]}
+                     for n, i in enumerate(batch)], ensure_ascii=False)},
+            ],
+            "temperature": 0.2,
+            "max_tokens": 8000,
+        }
+        try:
+            req = urllib.request.Request(
+                m["base"].rstrip("/") + "/chat/completions",
+                data=json.dumps(payload).encode(),
+                headers={"Content-Type": "application/json",
+                         "Authorization": f"Bearer {key}"})
+            with urllib.request.urlopen(req, timeout=180) as r:
+                data = json.loads(r.read().decode())
+            msg = data["choices"][0]["message"]
+            # 商汤系答案在 reasoning_content（见实测记录），一并兼容
+            text = (msg.get("content") or msg.get("reasoning_content") or "").strip()
+            text = re.sub(r"^```(json)?|```$", "", text.strip(), flags=re.M).strip()
+            arr = json.loads(text)
+            if not isinstance(arr, list) or len(arr) != len(batch):
+                raise RuntimeError(
+                    f"返回条数不符（期望 {len(batch)}，得 "
+                    f"{len(arr) if isinstance(arr, list) else '非数组'}）")
+            n_title = 0
+            for row in arr:
+                i = int(row.get("i", -1))
+                if not (0 <= i < len(batch)):
+                    continue
+                it = batch[i]
+                ti = str(row.get("title", "")).strip()
+                s = str(row.get("summary", "")).strip()
+                if it["_translate_title"] and ti:
+                    # 译文必须含中文，否则判失败（防模型原样回吐英文被当作成功）
+                    if not re.search(r"[\u4e00-\u9fff]", ti):
+                        raise RuntimeError(f"第 {i} 条英文标题未译成中文（疑似原样返回）：{ti[:50]}")
+                    it["titleCn"] = ti
+                    n_title += 1
+                if s:
+                    it["summary"] = s
+                try:
+                    it["score"] = {
+                        "rel": max(0, min(10, int(row.get("rel", 0)))),
+                        "info": max(0, min(10, int(row.get("info", 0)))),
+                        "fresh": max(0, min(10, int(row.get("fresh", 0)))),
+                    }
+                except Exception:
+                    pass
+                tp = str(row.get("topic", "")).strip()
+                if tp:
+                    it["topic"] = tp[:12]
+            if mode == "translate" and n_title == 0:
+                raise RuntimeError(f"整批 {len(batch)} 条无任何标题被翻译，判定失败")
+            log(f"  🌐 AI 增强完成（{m['name']}，{len(batch)} 条，译标题 {n_title} 条）")
+            return m["name"], True, tried
+        except Exception as e:
+            log(f"  ⚠️ {m['name']} 失败：{type(e).__name__}: {str(e)[:120]}")
+    return None, False, tried
+
+
+def llm_enhance(items, tcfg):
+    """按语言分组 → 分批 → 逐批走模型链。返回 (translator 记账串, 降级批次)。"""
+    if not tcfg.get("enabled", True):
+        return "off", []
+    size = int(tcfg.get("batch_size", 25))
+    en = [i for i in items if i["_translate_title"]]
+    cn = [i for i in items if not i["_translate_title"]]
+    log(f"🧠 LLM 增强：英文 {len(en)} 条 / 中文 {len(cn)} 条，批大小 {size}")
+
+    done, failed = {}, []
+    for grp, mode in ((en, "translate"), (cn, "summarize")):
+        for k in range(0, len(grp), size):
+            part = grp[k:k + size]
+            name, ok, tried = _call_llm_batch(part, tcfg, mode=mode)
+            if ok:
+                done[name] = done.get(name, 0) + len(part)
+            else:
+                failed.append(f"{mode}:{len(part)}")
+                if tried == 0:
+                    log(f"  ⏭️ {mode} 批（{len(part)} 条）无可用模型：Key 均未配置")
+
+    if not done:
+        return "none(原文)", failed
+    out = " + ".join(f"{n}({c}条)" for n, c in done.items())
+    if failed:
+        out += f" ⚠️降级[{'、'.join(failed)}]"
+    return out, failed
+
+
+# 重磅关键词（硬规则提级）：命中即判 top，不受 LLM 打分波动影响 ——
+# 保证「我关心的那类事」一定浮到首屏，不会因为模型某次给分偏低就沉底。
+TOP_KW = ("发布", "推出", "开源", "权重", "基准", "融资", "收购", "并购", "政策", "监管",
+          "上市", "ipo", "反垄断", "算力",
+          "release", "launch", "open-source", "open source", "weights", "benchmark",
+          "acquire", "acquisition", "raises", "funding", "general availability",
+          "state-of-the-art", "sota", "breakthrough")
+
+
+def level_of(it, tcfg):
+    """分级：硬规则优先，其次看加权总分。权重 rel .45 / info .30 / fresh .25。
+
+    ⚠️ 降级路径必须也有分级 —— 若 LLM 未配置/全失败则没有 score，此时若一律判
+    normal，首屏就只剩一个折叠条、页面等于空白。故按「车道权重 + 新鲜度」给兜底分。
+    """
+    th = tcfg.get("level_thresholds", {}) or {}
+    t_top = float(th.get("top", 8.0))
+    t_watch = float(th.get("watch", 6.5))
+    sc = it.get("score") or {}
+    if sc:
+        total = round(sc.get("rel", 0) * 0.45 + sc.get("info", 0) * 0.30
+                      + sc.get("fresh", 0) * 0.25, 1)
+    else:
+        # 兜底打分：车道基线 + 新鲜度奖励（+ 多源报道加成）
+        base = {"official": 7.6, "paper": 6.2, "cn": 6.2, "community": 5.4,
+                "media": 5.4}.get(it.get("lane"), 5.4)
+        age = it.get("ageH", -1)
+        bonus = 1.2 if 0 <= age <= 12 else (0.6 if 0 <= age <= 36 else 0.0)
+        if it.get("alsoIn"):
+            bonus += 0.5                      # 多源同时报道 = 重要性信号
+        total = round(min(9.5, base + bonus), 1)
+        it["fallbackScore"] = True
+    it["total"] = total
+    hay = (it.get("title", "") + " " + it.get("titleCn", "")).lower()
+    if any(k in hay for k in TOP_KW):
+        return "top"
+    if total >= t_top:
+        return "top"
+    if total >= t_watch:
+        return "watch"
+    return "normal"
+
+
+# --------------------------------------------------------------------------- #
 # 主流程
 # --------------------------------------------------------------------------- #
 def main():
@@ -357,6 +535,12 @@ def main():
         log("⛔ 全部源失败：不写任何文件（保留上一份产物，latest.json 不被覆盖）")
         sys.exit(1)
 
+    # 语言标记：标题含 CJK 的按「中文条目」处理（标题原样 + 摘要 + 打分），
+    # 纯英文的走 translate（译标题 + 摘要 + 打分）。两种指令绝不能混在同一批，
+    # 否则模型会整批统一处理、造成英文标题漏译（news-feed 的实测教训）。
+    for i in all_items:
+        i["_translate_title"] = not re.search(r"[\u4e00-\u9fff]", i["title"])
+
     # ④ 跨源去重：同一事件多源报道，只留车道权重最高的（lane 声明顺序即权重）；
     #    车道内按新鲜度升序（ageH 小 = 新，排前面），无时间的排最后。
     lane_order = [l["id"] for l in cfg["lanes"]]
@@ -415,21 +599,40 @@ def main():
         if need:
             log(f"  ✅ 补抓成功 {ok_j}/{len(need)}")
 
-    # ⑦ 产物（ageH 保留给前端做"x 小时前"显示；-1 表示源未提供时间）
+    # ⑦ LLM 增强（P2）：中文摘要 / 英文标题中文化 / 三维打分 / 主题标签
+    tcfg = cfg.get("translate", {})
+    translator, failed_batches = llm_enhance(merged, tcfg)
+
+    # ⑧ 分级与排序
+    for i in merged:
+        i["level"] = level_of(i, tcfg)
+        if not i.get("summary"):
+            i["summary"] = i["desc"][:200]        # LLM 失败时降级用正文开头，绝不空窗
+        if not i.get("titleCn") and not i["_translate_title"]:
+            i["titleCn"] = ""
+    lvl_rank = {"top": 0, "watch": 1, "normal": 2}
+    merged.sort(key=lambda x: (lane_order.index(x["lane"]) if x["lane"] in lane_order else 99,
+                               lvl_rank.get(x["level"], 9), -x.get("total", 0)))
+    n_lvl = {k: sum(1 for i in merged if i["level"] == k) for k in ("top", "watch", "normal")}
+
+    # ⑨ 产物（ageH 保留给前端做"x 小时前"显示；-1 表示源未提供时间）
     for i in merged:
         i["id"] = item_id(i["title"])
         i["pubTime"] = bj_pub(i["dt"])
         i["pubTs"] = i["dt"].astimezone(TZ_CN).isoformat() if i["dt"] else ""
         i["desc"] = i["desc"][:2000]
+        i["summary"] = (i.get("summary") or "")[:300]
         i.pop("dt", None)
+        i.pop("_translate_title", None)     # 内部标记不外泄
 
     doc = {
-        "version": 1,
+        "version": 2,
         "generated_at": now.strftime("%Y-%m-%d %H:%M"),
         "date": now.strftime("%Y-%m-%d"),
+        "translator": translator,
         "lanes": [{"id": l["id"], "name": l["name"],
                    "count": sum(1 for i in merged if i["lane"] == l["id"])} for l in cfg["lanes"]],
-        "counts": {"total": len(merged), "repeat": n_rep},
+        "counts": {"total": len(merged), "repeat": n_rep, "byLevel": n_lvl},
         "degraded": degraded,
         "items": merged,
     }
@@ -453,8 +656,9 @@ def main():
                   ensure_ascii=False, indent=1)
 
     log("-" * 100)
-    log(f"✅ 产出 {len(merged)} 条（跨日重复 {n_rep}）→ latest.json + "
-        f"daily/{doc['date']}.json + 运行报告")
+    log(f"✅ 产出 {len(merged)} 条 → latest.json + daily/{doc['date']}.json + 运行报告")
+    log(f"   分级：重磅 {n_lvl['top']} · 关注 {n_lvl['watch']} · 常规 {n_lvl['normal']}"
+        f" ｜ 跨日重复 {n_rep} ｜ AI 增强：{translator}")
     for l in doc["lanes"]:
         log(f"   {l['name']:8} {l['count']:>3} 条")
     if degraded:
