@@ -2,3 +2,5 @@ __pycache__/
 *.pyc
 probe_log.txt
 probe_clean.txt
+r2.txt
+debug_*.txt
