@@ -486,6 +486,10 @@ def assign_levels(items, tcfg):
     q = tcfg.get("quota", {}) or {}
     floor_top = float(th.get("top", 8.0))
     floor_watch = float(th.get("watch", 6.5))
+    # 硬规则提级的分数下限：关键词能保证"不遗漏"，但也会误伤
+    # （实测「AI Engineering from Scratch 开源教程」仅 4.7 分却因含"开源"进了重磅）。
+    # 用宽松下限 5.0 兜住 —— 只挡明显低质/不相关的，不影响关键词的召回作用。
+    kw_floor = float(th.get("kw_floor", 5.0))
     n = len(items)
     cap_top = min(int(q.get("top_max", 15)),
                   max(int(q.get("top_min", 4)), round(n * float(q.get("top_ratio", 0.12)))))
@@ -497,9 +501,10 @@ def assign_levels(items, tcfg):
 
     ranked = sorted(items, key=lambda x: -x["total"])
     n_top = n_watch = 0
-    # ① 硬规则命中的先占 top（不受名额限制 —— 这类"我关心的事"必须浮上来）
+    # ① 硬规则命中的先占 top（不受名额限制 —— 这类"我关心的事"必须浮上来），
+    #    但仍要过 kw_floor，防低质内容靠关键词上位
     for i in ranked:
-        if i["_kw"]:
+        if i["_kw"] and i["total"] >= kw_floor:
             i["level"] = "top"
             n_top += 1
     # ② 其余按分数 + 名额分配
