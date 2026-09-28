@@ -31,7 +31,7 @@
     {
       "id": "openai-news", "lane": "official", "block": "OpenAI", "enabled": true,
       "mode": "auto", "route": "/openai/news", "urls": ["https://openai.com/news/rss.xml"],
-      "take": 10, "dedupe": true, "sort_desc": true, "translate": true, "desc_min": 300,
+      "take": 6, "dedupe": true, "sort_desc": true, "translate": true, "desc_min": 300,
       "note": "Actions 实测：rsshub 10 条全文(desc 6128)优于直连 1230 条全量；直连须配时间窗"
     },
     {
@@ -79,8 +79,8 @@
     {
       "id": "hf-daily-papers", "lane": "paper", "block": "HF 每日论文", "enabled": true,
       "mode": "auto", "route": "/huggingface/daily-papers", "urls": ["https://huggingface.co/api/daily_papers"],
-      "take": 10, "dedupe": true, "sort_desc": false, "translate": true, "desc_min": 200,
-      "note": "本车道信噪比最高的源（HF 人工精选）；Actions 实测 27 条 desc 1465"
+      "take": 10, "max_age_h": 240, "dedupe": true, "sort_desc": false, "translate": true, "desc_min": 200,
+      "note": "本车道信噪比最高的源（HF 人工精选）；Actions 实测 27 条 desc 1465。⚠️ 它是跨多天的精选池，默认时间窗会把它清空（实测 28→0），故单独放宽到 240h"
     },
     {
       "id": "arxiv-cs-cl", "lane": "paper", "block": "arXiv", "enabled": true,
@@ -104,7 +104,7 @@
     {
       "id": "hn-frontpage", "lane": "community", "block": "Hacker News", "enabled": true,
       "mode": "direct", "urls": ["https://hnrss.org/frontpage"],
-      "take": 8, "dedupe": true, "sort_desc": true, "translate": true, "desc_min": 0,
+      "take": 6, "dedupe": true, "sort_desc": true, "translate": true, "desc_min": 0,
       "note": "Actions 实测 20 条、最新条 0 小时前；desc 仅 165 字，正文需另抓"
     },
     {
@@ -115,7 +115,7 @@
     {
       "id": "github-trending", "lane": "community", "block": "GitHub Trending", "enabled": true,
       "mode": "direct", "urls": ["https://mshibanami.github.io/GitHubTrendingRSS/daily/python.xml"],
-      "take": 8, "dedupe": true, "sort_desc": false, "translate": true, "desc_min": 0,
+      "take": 6, "dedupe": true, "sort_desc": false, "translate": true, "desc_min": 0,
       "note": "Actions 实测 9 条、desc 中位 7839（含 README 全文，适合做 deep-dive）；第三方维护，需兜底"
     },
     {

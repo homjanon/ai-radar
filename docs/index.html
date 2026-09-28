@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>AI 前沿雷达</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📡</text></svg>">
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --line:#e6e8ec; --line-2:#f0f2f5;
+    --tx:#1b1f24; --tx-2:#5b6472; --tx-3:#8f98a5;
+    --accent:#0d9488;
+    --mono:ui-monospace,SFMono-Regular,Consolas,monospace;
+    --lane-official:#2563eb; --lane-paper:#7c3aed; --lane-community:#059669;
+    --lane-media:#d97706; --lane-cn:#0d9488;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{margin:0;background:var(--bg);color:var(--tx);
+    font:15px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;padding-bottom:40px}
+  .wrap{max-width:880px;margin:0 auto;padding:20px 16px 0}
+
+  header{padding:6px 0 16px}
+  .top{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  h1{font-size:21px;margin:0;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+  h1 .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none;
+           box-shadow:0 0 0 3px rgba(13,148,136,.15)}
+  .gen{font-size:12.5px;color:var(--tx-3)}
+  .stats{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+  .stat{background:#fff;border:1px solid var(--line);border-radius:8px;padding:7px 11px;
+         font-size:12.5px;color:var(--tx-2);display:flex;align-items:center;gap:6px}
+  .stat b{color:var(--tx);font-size:14px;font-weight:600}
+  .stat .sw{width:7px;height:7px;border-radius:2px;flex:none}
+
+  nav.tabs{display:flex;gap:6px;overflow-x:auto;padding:14px 0 10px;
+           position:sticky;top:0;background:linear-gradient(var(--bg) 78%,rgba(246,247,249,0));
+           z-index:9;scrollbar-width:none}
+  nav.tabs::-webkit-scrollbar{display:none}
+  .tab{flex:none;font-size:13px;padding:6px 13px;border-radius:20px;border:1px solid var(--line);
+       background:#fff;color:var(--tx-2);cursor:pointer;white-space:nowrap;transition:.15s}
+  .tab.on{background:var(--tx);border-color:var(--tx);color:#fff}
+  .tab .c{opacity:.6;margin-left:4px;font-size:11.5px}
+
+  section.lane{margin:0 0 26px}
+  .lane-h{display:flex;align-items:center;gap:8px;margin:18px 0 10px}
+  .lane-h .bar{width:3px;height:15px;border-radius:2px;flex:none}
+  .lane-h h2{font-size:14.5px;margin:0;font-weight:600;letter-spacing:.01em}
+  .lane-h .n{font-size:12px;color:var(--tx-3);font-variant-numeric:tabular-nums}
+
+  .item{background:var(--card);border:1px solid var(--line);border-radius:11px;
+        padding:13px 15px;margin-bottom:9px;transition:.15s}
+  .item:active{background:#fcfcfd}
+  .item.repeat{opacity:.55}
+  .it-top{display:flex;gap:8px;align-items:baseline;justify-content:space-between}
+  .it-title{font-size:15px;font-weight:600;line-height:1.5;margin:0 0 6px;letter-spacing:-.005em}
+  .it-title a{color:inherit;text-decoration:none}
+  .it-title a:hover{color:var(--lane-cn)}
+  .badge{flex:none;font-size:11px;padding:1px 7px;border-radius:20px;border:1px solid;
+          white-space:nowrap;font-weight:500;transform:translateY(-1px)}
+  .meta{font-size:12px;color:var(--tx-3);display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin-bottom:7px}
+  .meta .src{color:var(--tx-2);font-weight:500}
+  .desc{font-size:13.5px;color:var(--tx-2);line-height:1.72;margin:0;
+        display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .item.open .desc{-webkit-line-clamp:unset;display:block}
+  .more{font-size:12px;color:var(--lane-cn);margin-top:5px;cursor:pointer;user-select:none}
+  .alsoin{font-size:11.5px;color:var(--tx-3);margin-top:6px}
+
+  details.fold{margin-top:2px}
+  details.fold>summary{font-size:12.5px;color:var(--tx-3);cursor:pointer;padding:7px 0;
+                        list-style:none;user-select:none}
+  details.fold>summary::-webkit-details-marker{display:none}
+  details.fold>summary:before{content:"▸ ";color:var(--tx-3)}
+  details.fold[open]>summary:before{content:"▾ "}
+
+  .notice{background:#fff;border:1px solid var(--line);border-left:3px solid #d97706;
+          border-radius:10px;padding:12px 15px;font-size:12.5px;color:var(--tx-2);margin:6px 0 22px}
+  .notice b{color:var(--tx)}
+  .empty,.load{text-align:center;color:var(--tx-3);font-size:13.5px;padding:56px 20px}
+  footer{margin-top:30px;padding-top:16px;border-top:1px solid var(--line);
+         font-size:11.5px;color:var(--tx-3);text-align:center;line-height:1.9}
+  @media(max-width:560px){
+    .wrap{padding:14px 12px 0}
+    h1{font-size:19px}
+    .item{padding:12px 13px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="top">
+      <h1><span class="dot"></span>AI 前沿雷达</h1>
+      <div class="gen" id="gen">加载中…</div>
+    </div>
+    <div class="stats" id="stats"></div>
+  </header>
+
+  <nav class="tabs" id="tabs"></nav>
+  <div id="notice"></div>
+  <main id="main"><div class="load">正在加载…</div></main>
+
+  <footer>
+    五车道：官方一手 · 论文基准 · 社区开源 · 媒体分析 · 中文动态<br>
+    选条为确定性规则（时间窗 / 去重 / 跨源折叠），源与实例顺序见仓库 <a href="https://github.com/homjanon/ai-radar" style="color:inherit">homjanon/ai-radar</a>
+  </footer>
+</div>
+
+<script>
+const LANE_COLOR = {
+  official:'#2563eb', paper:'#7c3aed', community:'#059669', media:'#d97706', cn:'#0d9488'
+};
+// 外部文本一律转义后再插入 —— 永不当作可信 HTML（防 XSS）
+const esc = s => String(s == null ? '' : s)
+  .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+  .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+
+let DOC = null, FILTER = 'all';
+
+function ageLabel(h){
+  if (h == null || h < 0) return '';
+  if (h < 1) return '刚刚';
+  if (h < 24) return h + ' 小时前';
+  return Math.floor(h / 24) + ' 天前';
+}
+
+function renderItem(i){
+  const color = LANE_COLOR[i.lane] || '#5b6472';
+  const also = (i.alsoIn && i.alsoIn.length)
+    ? `<div class="alsoin">另有 ${i.alsoIn.map(esc).join('、')} 报道同一事件</div>` : '';
+  const long = (i.desc || '').length > 150;
+  return `<article class="item${i.isRepeat ? ' repeat' : ''}" data-id="${esc(i.id)}">
+    <div class="it-top">
+      <h3 class="it-title"><a href="${esc(i.url)}" target="_blank" rel="noopener noreferrer">${esc(i.title)}</a></h3>
+    </div>
+    <div class="meta">
+      <span class="badge" style="color:${color};border-color:${color}33;background:${color}0f">${esc(i.block)}</span>
+      <span>${esc(i.pubTime || '')}</span>
+      ${i.ageH >= 0 && !i.pubTime ? `<span>${ageLabel(i.ageH)}</span>` : ''}
+      ${i.stale ? '<span>· 较早</span>' : ''}
+      ${i.isRepeat ? '<span>· 昨日已收录</span>' : ''}
+      ${i.descFrom === 'jina' ? '<span>· 已补正文</span>' : ''}
+    </div>
+    ${i.desc ? `<p class="desc">${esc(i.desc)}</p>` : ''}
+    ${also}
+    ${long ? '<div class="more">展开摘要</div>' : ''}
+  </article>`;
+}
+
+function render(){
+  const items = (DOC.items || []);
+  const lanes = DOC.lanes || [];
+  const q = FILTER;
+  const main = document.getElementById('main');
+
+  if (!items.length){
+    main.innerHTML = '<div class="empty">暂无条目</div>';
+    return;
+  }
+  const show = items.filter(i => q === 'all' || i.lane === q);
+  if (!show.length){
+    main.innerHTML = '<div class="empty">该车道本期没有条目</div>';
+    return;
+  }
+  const groups = q === 'all' ? lanes : lanes.filter(l => l.id === q);
+  let html = '';
+  for (const l of groups){
+    const arr = show.filter(i => i.lane === l.id);
+    if (!arr.length) continue;
+    const fresh = arr.filter(i => !i.isRepeat);
+    const rep = arr.filter(i => i.isRepeat);
+    html += `<section class="lane">
+      <div class="lane-h">
+        <span class="bar" style="background:${LANE_COLOR[l.id]}"></span>
+        <h2>${esc(l.name)}</h2><span class="n">${arr.length} 条</span>
+      </div>
+      ${fresh.map(renderItem).join('')}
+      ${rep.length ? `<details class="fold"><summary>昨日已收录 ${rep.length} 条（点开查看）</summary>
+        ${rep.map(renderItem).join('')}</details>` : ''}
+    </section>`;
+  }
+  main.innerHTML = html;
+
+  main.querySelectorAll('.more').forEach(el => {
+    el.onclick = () => {
+      const art = el.closest('.item');
+      art.classList.toggle('open');
+      el.textContent = art.classList.contains('open') ? '收起摘要' : '展开摘要';
+    };
+  });
+}
+
+function renderChrome(){
+  const lanes = DOC.lanes || [];
+  const tabs = [{ id:'all', name:'全部', count: DOC.counts.total }]
+    .concat(lanes.map(l => ({ id:l.id, name:l.name, count:l.count })));
+  document.getElementById('tabs').innerHTML = tabs.map(t =>
+    `<button class="tab${FILTER === t.id ? ' on' : ''}" data-lane="${esc(t.id)}">
+      ${esc(t.name)}<span class="c">${t.count || 0}</span></button>`).join('');
+  document.querySelectorAll('.tab').forEach(b => {
+    b.onclick = () => { FILTER = b.dataset.lane; renderChrome(); render(); window.scrollTo({top:0,behavior:'smooth'}); };
+  });
+
+  document.getElementById('stats').innerHTML = lanes.map(l =>
+    `<span class="stat"><span class="sw" style="background:${LANE_COLOR[l.id]}"></span>
+      ${esc(l.name)} <b>${l.count || 0}</b></span>`).join('');
+
+  document.getElementById('gen').textContent =
+    (DOC.generated_at ? DOC.generated_at + ' 更新' : '');
+
+  const dg = DOC.degraded || [];
+  document.getElementById('notice').innerHTML = dg.length
+    ? `<div class="notice"><b>本期 ${dg.length} 个源降级</b>（${dg.map(d => esc(d.id)).join('、')}）——
+       对应车道可能不完整，下期自动重试。</div>` : '';
+}
+
+(async function(){
+  try{
+    const r = await fetch('latest.json?ts=' + Math.floor(Date.now() / 60000), {cache:'no-store'});
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    DOC = await r.json();
+    renderChrome(); render();
+    document.title = 'AI 前沿雷达 · ' + (DOC.counts ? DOC.counts.total : 0) + ' 条';
+  }catch(e){
+    document.getElementById('main').innerHTML =
+      '<div class="empty">加载失败：' + esc(e.message) + '<br>请稍后刷新</div>';
+  }
+})();
+</script>
+</body>
+</html>

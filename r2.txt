@@ -1,0 +1,362 @@
+﻿2026-09-28T14:47:48.7315813Z Current runner version: '2.337.0'
+2026-09-28T14:47:48.7343201Z ##[group]Runner Image Provisioner
+2026-09-28T14:47:48.7344982Z Hosted Compute Agent
+2026-09-28T14:47:48.7345968Z Version: 20260828.587
+2026-09-28T14:47:48.7347187Z Commit: abac92662cab4cc7352de4f9f9d2e2419aad9c29
+2026-09-28T14:47:48.7348457Z Build Date: 2026-08-28T16:44:25Z
+2026-09-28T14:47:48.7349348Z Worker ID: {991ccf07-375d-4550-acfa-6059b8323993}
+2026-09-28T14:47:48.7350056Z Azure Region: eastus
+2026-09-28T14:47:48.7350702Z ##[endgroup]
+2026-09-28T14:47:48.7352592Z ##[group]Operating System
+2026-09-28T14:47:48.7353394Z Ubuntu
+2026-09-28T14:47:48.7353921Z 24.04.5
+2026-09-28T14:47:48.7354457Z LTS
+2026-09-28T14:47:48.7354984Z ##[endgroup]
+2026-09-28T14:47:48.7355538Z ##[group]Runner Image
+2026-09-28T14:47:48.7356545Z Image: ubuntu-24.04
+2026-09-28T14:47:48.7357158Z Version: 20260920.314.1
+2026-09-28T14:47:48.7358217Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260920.314/images/ubuntu/Ubuntu2404-Readme.md
+2026-09-28T14:47:48.7360077Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260920.314
+2026-09-28T14:47:48.7361143Z ##[endgroup]
+2026-09-28T14:47:48.7362267Z ##[group]GITHUB_TOKEN Permissions
+2026-09-28T14:47:48.7364483Z Contents: read
+2026-09-28T14:47:48.7365136Z Metadata: read
+2026-09-28T14:47:48.7365784Z ##[endgroup]
+2026-09-28T14:47:48.7368034Z Secret source: Actions
+2026-09-28T14:47:48.7369074Z Cache mode: write
+2026-09-28T14:47:48.7370163Z Prepare workflow directory
+2026-09-28T14:47:48.7709715Z Prepare all required actions
+2026-09-28T14:47:48.7779672Z Getting action download info
+2026-09-28T14:47:49.0484779Z Download action repository 'actions/checkout@v7' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+2026-09-28T14:47:49.1543835Z Download action repository 'actions/setup-python@v7' (SHA:5fda3b95a4ea91299a34e894583c3862153e4b97)
+2026-09-28T14:47:49.3928266Z Complete job name: probe
+﻿2026-09-28T14:47:49.4683255Z ##[group]Run actions/checkout@v7
+2026-09-28T14:47:49.4684152Z with:
+2026-09-28T14:47:49.4684637Z   repository: homjanon/ai-radar
+2026-09-28T14:47:49.4688482Z   token: ***
+2026-09-28T14:47:49.4688933Z   ssh-strict: true
+2026-09-28T14:47:49.4689372Z   ssh-user: git
+2026-09-28T14:47:49.4689816Z   persist-credentials: true
+2026-09-28T14:47:49.4690296Z   clean: true
+2026-09-28T14:47:49.4690735Z   sparse-checkout-cone-mode: true
+2026-09-28T14:47:49.4691245Z   fetch-depth: 1
+2026-09-28T14:47:49.4691663Z   fetch-tags: false
+2026-09-28T14:47:49.4692098Z   show-progress: true
+2026-09-28T14:47:49.4692537Z   lfs: false
+2026-09-28T14:47:49.4692941Z   submodules: false
+2026-09-28T14:47:49.4693387Z   set-safe-directory: true
+2026-09-28T14:47:49.4693890Z   allow-unsafe-pr-checkout: false
+2026-09-28T14:47:49.4694657Z ##[endgroup]
+2026-09-28T14:47:49.5679887Z Syncing repository: homjanon/ai-radar
+2026-09-28T14:47:49.5682592Z ##[group]Getting Git version info
+2026-09-28T14:47:49.5683813Z Working directory is '/home/runner/work/ai-radar/ai-radar'
+2026-09-28T14:47:49.5685609Z [command]/usr/bin/git version
+2026-09-28T14:47:49.5746737Z git version 2.55.0
+2026-09-28T14:47:49.5770427Z ##[endgroup]
+2026-09-28T14:47:49.5781731Z Temporarily overriding HOME='/home/runner/work/_temp/fe178e93-96bd-4836-9673-e19d95298f4f' before making global git config changes
+2026-09-28T14:47:49.5783845Z Adding repository directory to the temporary git global config as a safe directory
+2026-09-28T14:47:49.5788026Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ai-radar/ai-radar
+2026-09-28T14:47:49.5840398Z Deleting the contents of '/home/runner/work/ai-radar/ai-radar'
+2026-09-28T14:47:49.5844376Z ##[group]Determining repository object format
+2026-09-28T14:47:49.5846770Z ##[endgroup]
+2026-09-28T14:47:49.5849022Z ##[group]Initializing the repository
+2026-09-28T14:47:49.5858014Z [command]/usr/bin/git init /home/runner/work/ai-radar/ai-radar
+2026-09-28T14:47:49.5965341Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-09-28T14:47:49.5967093Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-09-28T14:47:49.5968634Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-09-28T14:47:49.5969422Z hint: call:
+2026-09-28T14:47:49.5969847Z hint:
+2026-09-28T14:47:49.5970435Z hint: 	git config --global init.defaultBranch <name>
+2026-09-28T14:47:49.5971098Z hint:
+2026-09-28T14:47:49.5971716Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-09-28T14:47:49.5972712Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-09-28T14:47:49.5973508Z hint:
+2026-09-28T14:47:49.5973949Z hint: 	git branch -m <name>
+2026-09-28T14:47:49.5974463Z hint:
+2026-09-28T14:47:49.5975136Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-09-28T14:47:49.5981214Z Initialized empty Git repository in /home/runner/work/ai-radar/ai-radar/.git/
+2026-09-28T14:47:49.5992279Z [command]/usr/bin/git remote add origin https://github.com/homjanon/ai-radar
+2026-09-28T14:47:49.6044189Z ##[endgroup]
+2026-09-28T14:47:49.6045535Z ##[group]Disabling automatic garbage collection
+2026-09-28T14:47:49.6048617Z [command]/usr/bin/git config --local gc.auto 0
+2026-09-28T14:47:49.6083629Z ##[endgroup]
+2026-09-28T14:47:49.6085026Z ##[group]Setting up auth
+2026-09-28T14:47:49.6086022Z Removing SSH command configuration
+2026-09-28T14:47:49.6092277Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-09-28T14:47:49.6129607Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-09-28T14:47:49.6521922Z Removing HTTP extra header
+2026-09-28T14:47:49.6528758Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-09-28T14:47:49.6570361Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-09-28T14:47:49.6794917Z Removing includeIf entries pointing to credentials config files
+2026-09-28T14:47:49.6800279Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-09-28T14:47:49.6835157Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-09-28T14:47:49.7075708Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-ab3af29a-b58f-429f-a4ff-d2ac2053a469.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-09-28T14:47:49.7120015Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/ai-radar/ai-radar/.git.path /home/runner/work/_temp/git-credentials-ab3af29a-b58f-429f-a4ff-d2ac2053a469.config
+2026-09-28T14:47:49.7154829Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/ai-radar/ai-radar/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-ab3af29a-b58f-429f-a4ff-d2ac2053a469.config
+2026-09-28T14:47:49.7195579Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-ab3af29a-b58f-429f-a4ff-d2ac2053a469.config
+2026-09-28T14:47:49.7235460Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-ab3af29a-b58f-429f-a4ff-d2ac2053a469.config
+2026-09-28T14:47:49.7272253Z ##[endgroup]
+2026-09-28T14:47:49.7273921Z ##[group]Fetching the repository
+2026-09-28T14:47:49.7279299Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +9bc01e06292a2a5a056265292c6336149f2da6d1:refs/remotes/origin/main
+2026-09-28T14:47:50.1245734Z From https://github.com/homjanon/ai-radar
+2026-09-28T14:47:50.1248033Z  * [new ref]         9bc01e06292a2a5a056265292c6336149f2da6d1 -> origin/main
+2026-09-28T14:47:50.1277668Z [command]/usr/bin/git branch --list --remote origin/main
+2026-09-28T14:47:50.1291615Z   origin/main
+2026-09-28T14:47:50.1302120Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+2026-09-28T14:47:50.1330814Z 9bc01e06292a2a5a056265292c6336149f2da6d1
+2026-09-28T14:47:50.1339077Z ##[endgroup]
+2026-09-28T14:47:50.1340592Z ##[group]Determining the checkout info
+2026-09-28T14:47:50.1342249Z ##[endgroup]
+2026-09-28T14:47:50.1343161Z [command]/usr/bin/git sparse-checkout disable
+2026-09-28T14:47:50.1396555Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-09-28T14:47:50.1431359Z ##[group]Checking out the ref
+2026-09-28T14:47:50.1436433Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-09-28T14:47:50.1501093Z Switched to a new branch 'main'
+2026-09-28T14:47:50.1506796Z branch 'main' set up to track 'origin/main'.
+2026-09-28T14:47:50.1514343Z ##[endgroup]
+2026-09-28T14:47:50.1561443Z [command]/usr/bin/git log -1 --format=%H
+2026-09-28T14:47:50.1590459Z 9bc01e06292a2a5a056265292c6336149f2da6d1
+﻿2026-09-28T14:47:50.1904494Z ##[group]Run actions/setup-python@v7
+2026-09-28T14:47:50.1905203Z with:
+2026-09-28T14:47:50.1905641Z   python-version: 3.12
+2026-09-28T14:47:50.1906488Z   check-latest: false
+2026-09-28T14:47:50.1911361Z   token: ***
+2026-09-28T14:47:50.1911832Z   update-environment: true
+2026-09-28T14:47:50.1912391Z   allow-prereleases: false
+2026-09-28T14:47:50.1912930Z   freethreaded: false
+2026-09-28T14:47:50.1913404Z ##[endgroup]
+2026-09-28T14:47:50.3077233Z ##[group]Installed versions
+2026-09-28T14:47:50.3161256Z Successfully set up CPython (3.12.14)
+2026-09-28T14:47:50.3163750Z ##[endgroup]
+﻿2026-09-28T14:47:50.3354157Z ##[group]Run python scripts/probe_sources.py
+2026-09-28T14:47:50.3355483Z [36;1mpython scripts/probe_sources.py[0m
+2026-09-28T14:47:50.3743284Z shell: /usr/bin/bash -e {0}
+2026-09-28T14:47:50.3744173Z env:
+2026-09-28T14:47:50.3744933Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-09-28T14:47:50.3746400Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib/pkgconfig
+2026-09-28T14:47:50.3747683Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-09-28T14:47:50.3748766Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-09-28T14:47:50.3749844Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-09-28T14:47:50.3750936Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib
+2026-09-28T14:47:50.3751850Z ##[endgroup]
+2026-09-28T14:47:51.3426359Z ============================================================================================================
+2026-09-28T14:47:51.3428303Z AI 前沿雷达 · 源探测（Actions 侧基线）  2026-09-28 22:47 北京
+2026-09-28T14:47:51.3428945Z 环境：Linux  源数：32  实例池：7
+2026-09-28T14:47:51.3429408Z ============================================================================================================
+2026-09-28T14:47:51.3429953Z 共 118 个通路待测（workers=4）
+2026-09-28T14:47:51.3430165Z 
+2026-09-28T14:47:51.4824629Z [1/32] deepmind-blog          OK  共1/1通路可用  最优 @deepmind.google (100条 desc106)
+2026-09-28T14:47:52.2483075Z [2/32] google-ai-blog         OK  共1/1通路可用  最优 @blog.google (20条 desc116)
+2026-09-28T14:48:35.0342024Z [3/32] anthropic-news         OK  共3/7通路可用  最优 @rsshub.ktachibana.party (10条 desc9438)
+2026-09-28T14:48:35.1618818Z [4/32] aws-ml-blog            OK  共1/1通路可用  最优 @aws.amazon.com (20条 desc323)
+2026-09-28T14:48:35.3025762Z [5/32] nvidia-blog            OK  共1/1通路可用  最优 @blogs.nvidia.com (18条 desc378)
+2026-09-28T14:48:39.4694991Z [6/32] hf-blog                OK  共2/8通路可用  最优 @rsshub.rssforever.com (14条 desc11148)
+2026-09-28T14:48:39.5255926Z [7/32] arxiv-cs-cl            OK  共1/1通路可用  最优 @export.arxiv.org (132条 desc1404)
+2026-09-28T14:48:39.5898632Z [8/32] arxiv-cs-ai            OK  共1/1通路可用  最优 @export.arxiv.org (331条 desc1501)
+2026-09-28T14:48:39.6405553Z [9/32] openrouter-models      OK  共1/1通路可用  最优 @openrouter.ai (458条 desc0)
+2026-09-28T14:48:39.7106745Z [10/32] hn-frontpage           OK  共1/1通路可用  最优 @hnrss.org (20条 desc165)
+2026-09-28T14:48:39.8458138Z [11/32] hn-llm                 OK  共2/2通路可用  最优 @hnrss.org (20条 desc161)
+2026-09-28T14:48:39.9000535Z [12/32] github-trending        OK  共1/1通路可用  最优 @mshibanami.github.io (9条 desc7839)
+2026-09-28T14:48:41.5001107Z [13/32] openai-news            OK  共2/8通路可用  最优 @rsshub.rssforever.com (10条 desc6128)
+2026-09-28T14:48:41.6297722Z [14/32] simonwillison          OK  共1/1通路可用  最优 @simonwillison.net (30条 desc726)
+2026-09-28T14:48:41.7339083Z [15/32] tldr-ai                OK  共1/1通路可用  最优 @tldr.tech (20条 desc0)
+2026-09-28T14:48:41.8905920Z [16/32] arstechnica-ai         OK  共1/1通路可用  最优 @arstechnica.com (20条 desc77)
+2026-09-28T14:48:42.0659912Z [17/32] techcrunch-ai          OK  共1/1通路可用  最优 @techcrunch.com (20条 desc122)
+2026-09-28T14:48:42.2423400Z [18/32] techreview-ai          OK  共1/1通路可用  最优 @www.technologyreview.com (10条 desc356)
+2026-09-28T14:48:42.3008685Z [19/32] theverge-ai            OK  共1/1通路可用  最优 @www.theverge.com (10条 desc348)
+2026-09-28T14:48:42.4143285Z [20/32] github-releases        OK  共4/4通路可用  最优 @github.com (10条 desc328)
+2026-09-28T14:48:42.4764559Z [21/32] sebastianraschka       OK  共1/1通路可用  最优 @magazine.sebastianraschka.com (20条 desc79)
+2026-09-28T14:48:43.2731503Z [22/32] bair                   OK  共1/1通路可用  最优 @bair.berkeley.edu (10条 desc16825)
+2026-09-28T14:48:43.3756609Z [23/32] latent-space           OK  共1/1通路可用  最优 @www.latent.space (20条 desc55)
+2026-09-28T14:48:50.6382608Z [24/32] openai-research        OK  共1/7通路可用  最优 @rsshub.rssforever.com (10条 desc15059)
+2026-09-28T14:49:04.8929065Z [25/32] hf-daily-papers        OK  共2/8通路可用  最优 @rsshub.ktachibana.party (27条 desc1465)
+2026-09-28T14:49:23.7038664Z [26/32] qbitai                 OK  共4/8通路可用  最优 @rss.injahow.cn (10条 desc30)
+2026-09-28T14:49:40.6195815Z [27/32] leiphone-ai            OK  共5/8通路可用  最优 @rsshub.ktachibana.party (10条 desc5785)
+2026-09-28T14:49:54.9485857Z [28/32] infoq                  OK  共2/8通路可用  最优 @rsshub.ktachibana.party (30条 desc2373)
+2026-09-28T14:49:59.1313840Z [29/32] 36kr-ai                OK  共4/8通路可用  最优 @rsshub.ktachibana.party (30条 desc3611)
+2026-09-28T14:50:28.6998038Z [30/32] solidot                XX  全部不可用：rsshub.ktachibana.party=HTTPError: HTTP Error 429: T ; rsshub.rssforever.com=HTTPError: HTTP Error 503: S
+2026-09-28T14:50:30.7450166Z [31/32] oschina                OK  共4/8通路可用  最优 @rsshub.rssforever.com (30条 desc2102)
+2026-09-28T14:50:35.2507917Z [32/32] ithome-ai              OK  共2/8通路可用  最优 @rsshub.ktachibana.party (20条 desc607)
+2026-09-28T14:50:35.2521306Z 
+2026-09-28T14:50:35.2521748Z ============================================================================================================
+2026-09-28T14:50:35.2522779Z 汇总：每个源的最优通路（可直接写进 sources.json 的实例顺序）
+2026-09-28T14:50:35.2523361Z ============================================================================================================
+2026-09-28T14:50:35.2524101Z 源                      车道        最优实例                          条数    desc中位    最新h  标题
+2026-09-28T14:50:35.2524921Z openai-news            official  rsshub.rssforever.com         10      6128     67  Proaction boosts sales 60% and saves 75+
+2026-09-28T14:50:35.2526438Z openai-research        official  rsshub.rssforever.com         10     15059    285  ⚠️僵尸源(超10天未更新)  Our framework for reporting model misali
+2026-09-28T14:50:35.2527686Z anthropic-news         official  rsshub.ktachibana.party       10      9438    142  ⚠️低频  Claude discovers a novel enzyme system w
+2026-09-28T14:50:35.2528845Z deepmind-blog          official  deepmind.google              100       106     94  ⚠️低频  Introducing Gemini 3.8 Live with Live Av
+2026-09-28T14:50:35.2530043Z google-ai-blog         official  blog.google                   20       116    116  ⚠️低频  Google Beam expands with new regions, pa
+2026-09-28T14:50:35.2531098Z hf-blog                official  rsshub.rssforever.com         14     11148      5  Holo4: powering generalist computer-use 
+2026-09-28T14:50:35.2532114Z aws-ml-blog            official  aws.amazon.com                20       323     70  Scaling MoE reinforcement learning on Am
+2026-09-28T14:50:35.2533512Z nvidia-blog            official  blogs.nvidia.com              18       378     96  ⚠️低频  How Open Science Can Help Researchers Pr
+2026-09-28T14:50:35.2534732Z hf-daily-papers        paper     rsshub.ktachibana.party       27      1465     90  ⚠️低频  FuseReg: Regularizing Layer Fusion Mitig
+2026-09-28T14:50:35.2535841Z arxiv-cs-cl            paper     export.arxiv.org             132      1404     10  A Mechanistic Study of AI-Text Detection
+2026-09-28T14:50:35.2537015Z arxiv-cs-ai            paper     export.arxiv.org             331      1501     10  Bringing AI to Autonomous Systems -- Fro
+2026-09-28T14:50:35.2537977Z openrouter-models      paper     openrouter.ai                458         0     -1  typesafe/jev-router
+2026-09-28T14:50:35.2538936Z hn-frontpage           community hnrss.org                     20       165      0  Israel Keeps Expanding into Gaza Despite
+2026-09-28T14:50:35.2539763Z hn-llm                 community hnrss.org                     20       161     69  The cheap new AI model taking aim at Ope
+2026-09-28T14:50:35.2540440Z github-trending        community mshibanami.github.io           9      7839     -1  vectorize-io/hindsight
+2026-09-28T14:50:35.2541061Z github-releases        community github.com                    10       328     -1  v3.19.2
+2026-09-28T14:50:35.2541651Z simonwillison          media     simonwillison.net             30       726     -1  Quoting Muse AI Agent
+2026-09-28T14:50:35.2542373Z tldr-ai                media     tldr.tech                     20         0     14  Muse manifesto 📜, OpenAI training pause 
+2026-09-28T14:50:35.2543022Z arstechnica-ai         media     arstechnica.com               20        77      3  Microsoft goes quiet after church groups
+2026-09-28T14:50:35.2543865Z techcrunch-ai          media     techcrunch.com                20       122      0  Modulate raises $25M for its voice model
+2026-09-28T14:50:35.2544652Z techreview-ai          media     www.technologyreview.com      10       356      6  Who’s liable when AI agents go rogue?
+2026-09-28T14:50:35.2545363Z theverge-ai            media     www.theverge.com              10       348     -1  The SaaSpocalypse that wasn&#8217;t, wit
+2026-09-28T14:50:35.2546373Z latent-space           media     www.latent.space              20        55     63  OpenRouter: from Seed to Stripe — with O
+2026-09-28T14:50:35.2547278Z sebastianraschka       media     magazine.sebastianraschka.com    20        79    459  ⚠️僵尸源(超10天未更新)  GPT-6 Astra, Looped Transformers, and Hi
+2026-09-28T14:50:35.2548169Z bair                   media     bair.berkeley.edu             10     16825   1469  ⚠️僵尸源(超10天未更新)  From CUDA to MLX: How K-Search Brings De
+2026-09-28T14:50:35.2548913Z qbitai                 cn        rss.injahow.cn                10        30     55  在云栖大会，我终于看懂了米哈游千亿AI野心
+2026-09-28T14:50:35.2549625Z leiphone-ai            cn        rsshub.ktachibana.party       10      5785      1  中训练、后训练持续升温，模型快速迭代，成为 AI for AI 最佳试炼场
+2026-09-28T14:50:35.2550402Z 36kr-ai                cn        rsshub.ktachibana.party       30      3611      1  单月收入破千万，AI应用公司智灵新境完成数千万元天使轮融资｜36氪首发
+2026-09-28T14:50:35.2551138Z infoq                  cn        rsshub.ktachibana.party       30      2373      0  Cloudflare 推出智能体开发栈生命周期，以取代传统 SDLC
+2026-09-28T14:50:35.2551883Z ithome-ai              cn        rsshub.ktachibana.party       20       607      7  英伟达黄仁勋反驳“AI 教父”辛顿：我爱他，但我恨他的末日论预测
+2026-09-28T14:50:35.2552419Z solidot                cn        —— 全部失败 ——                
+2026-09-28T14:50:35.2552995Z oschina                cn        rsshub.rssforever.com         30      2102      4  OpenAI 暂停最新模型训练，称 Agent 曾尝试黑进教育部网站
+2026-09-28T14:50:35.2553352Z 
+2026-09-28T14:50:35.2553578Z ------------------------------------------------------------------------------------------------------------
+2026-09-28T14:50:35.2554033Z 失败通路明细（63 条）
+2026-09-28T14:50:35.2554361Z ------------------------------------------------------------------------------------------------------------
+2026-09-28T14:50:35.2554891Z   anthropic-news         @rss.injahow.cn             HTTPError: HTTP Error 404: Not Found
+2026-09-28T14:50:35.2555579Z   anthropic-news         @rsshub.isrss.com           HTTPError: HTTP Error 403: Forbidden
+2026-09-28T14:50:35.2556295Z   anthropic-news         @rsshub.umzzz.com           HTTPError: HTTP Error 403: Forbidden
+2026-09-28T14:50:35.2556848Z   anthropic-news         @hub.slarker.me             TimeoutError: The read operation timed out
+2026-09-28T14:50:35.2557407Z   hf-blog                @rsshub.ktachibana.party    TimeoutError: The read operation timed out
+2026-09-28T14:50:35.2557919Z   hf-blog                @rss.injahow.cn             HTTPError: HTTP Error 404: Not Found
+2026-09-28T14:50:35.2558525Z   hf-blog                @rsshub.isrss.com           HTTPError: HTTP Error 403: Forbidden
+2026-09-28T14:50:35.2559003Z   hf-blog                @rsshub.umzzz.com           HTTPError: HTTP Error 403: Forbidden
+2026-09-28T14:50:35.2559490Z   hf-blog                @hub.slarker.me             TimeoutError: The read operation timed out
+2026-09-28T14:50:35.2560041Z   hf-blog                @rsshub-balancer.virworks.moe ParseError: syntax error: line 1, column 0
+2026-09-28T14:50:35.2560620Z   openai-news            @rsshub.ktachibana.party    TimeoutError: The read operation timed out
+2026-09-28T14:50:35.2561157Z   openai-news            @rss.injahow.cn             HTTPError: HTTP Error 404: Not Found
+2026-09-28T14:50:35.2561653Z   openai-news            @rsshub.isrss.com           HTTPError: HTTP Error 403: Forbidden
+2026-09-28T14:50:35.2562153Z   openai-news            @rsshub.umzzz.com           HTTPError: HTTP Error 403: Forbidden
+2026-09-28T14:50:35.2562663Z   openai-news            @hub.slarker.me             TimeoutError: The read operation timed out
+2026-09-28T14:50:35.2563236Z   openai-news            @rsshub-balancer.virworks.moe ParseError: syntax error: line 1, column 0
+2026-09-28T14:50:35.2563835Z   openai-research        @rsshub.ktachibana.party    TimeoutError: The read operation timed out
+2026-09-28T14:50:35.2564422Z   openai-research        @rss.injahow.cn             HTTPError: HTTP Error 503: Service Unavailable
+2026-09-28T14:50:35.2564982Z   openai-research        @rsshub.isrss.com           HTTPError: HTTP Error 403: Forbidden
+2026-09-28T14:50:35.2565508Z   openai-research        @rsshub.umzzz.com           HTTPError: HTTP Error 403: Forbidden
+2026-09-28T14:50:35.2566191Z   openai-research        @hub.slarker.me             TimeoutError: The read operation timed out
+2026-09-28T14:50:35.2566784Z   openai-research        @rsshub-balancer.virworks.moe ParseError: syntax error: line 1, column 0
+2026-09-28T14:50:35.2567379Z   hf-daily-papers        @rss.injahow.cn             HTTPError: HTTP Error 503: Service Unavailable
+2026-09-28T14:50:35.2567933Z   hf-daily-papers        @rsshub.isrss.com           HTTPError: HTTP Error 403: Forbidden
+2026-09-28T14:50:35.2568454Z   hf-daily-papers        @rsshub.umzzz.com           HTTPError: HTTP Error 403: Forbidden
+2026-09-28T14:50:35.2569015Z   hf-daily-papers        @hub.slarker.me             TimeoutError: The read operation timed out
+2026-09-28T14:50:35.2569799Z   hf-daily-papers        @rsshub-balancer.virworks.moe ParseError: syntax error: line 1, column 0
+2026-09-28T14:50:35.2570391Z   hf-daily-papers        @huggingface.co             ParseError: syntax error: line 1, column 0
+2026-09-28T14:50:35.2570909Z   qbitai                 @rsshub.isrss.com           HTTPError: HTTP Error 403: Forbidden
+2026-09-28T14:50:35.2571380Z   qbitai                 @rsshub.umzzz.com           HTTPError: HTTP Error 403: Forbidden
+2026-09-28T14:50:35.2571900Z   qbitai                 @rsshub-balancer.virworks.moe ParseError: syntax error: line 1, column 0
+2026-09-28T14:50:35.2572505Z   qbitai                 @rss.injahow.cn             URLError: <urlopen error _ssl.c:993: The handshake operation
+2026-09-28T14:50:35.2573112Z   leiphone-ai            @rss.injahow.cn             TimeoutError: The read operation timed out
+2026-09-28T14:50:35.2573634Z   leiphone-ai            @rsshub.isrss.com           HTTPError: HTTP Error 403: Forbidden
+2026-09-28T14:50:35.2574139Z   leiphone-ai            @rsshub.umzzz.com           HTTPError: HTTP Error 403: Forbidden
+2026-09-28T14:50:35.2574644Z   infoq                  @rss.injahow.cn             TimeoutError: The read operation timed out
+2026-09-28T14:50:35.2575126Z   infoq                  @rsshub.isrss.com           HTTPError: HTTP Error 403: Forbidden
+2026-09-28T14:50:35.2575603Z   infoq                  @rsshub.umzzz.com           HTTPError: HTTP Error 403: Forbidden
+2026-09-28T14:50:35.2576228Z   infoq                  @hub.slarker.me             TimeoutError: The read operation timed out
+2026-09-28T14:50:35.2576774Z   infoq                  @rsshub-balancer.virworks.moe ParseError: syntax error: line 1, column 0
+2026-09-28T14:50:35.2577459Z   infoq                  @rss.injahow.cn             HTTPError: HTTP Error 503: Service Unavailable
+2026-09-28T14:50:35.2577973Z   36kr-ai                @rss.injahow.cn             TimeoutError: The read operation timed out
+2026-09-28T14:50:35.2578470Z   36kr-ai                @rsshub.isrss.com           HTTPError: HTTP Error 403: Forbidden
+2026-09-28T14:50:35.2578940Z   36kr-ai                @rsshub.umzzz.com           HTTPError: HTTP Error 403: Forbidden
+2026-09-28T14:50:35.2579423Z   36kr-ai                @hub.slarker.me             TimeoutError: The read operation timed out
+2026-09-28T14:50:35.2579953Z   solidot                @rsshub.ktachibana.party    HTTPError: HTTP Error 429: Too Many Requests
+2026-09-28T14:50:35.2580521Z   solidot                @rsshub.rssforever.com      HTTPError: HTTP Error 503: Service Unavailable
+2026-09-28T14:50:35.2581038Z   solidot                @rss.injahow.cn             HTTPError: HTTP Error 404: Not Found
+2026-09-28T14:50:35.2581519Z   solidot                @rsshub.isrss.com           HTTPError: HTTP Error 403: Forbidden
+2026-09-28T14:50:35.2581994Z   solidot                @rsshub.umzzz.com           HTTPError: HTTP Error 403: Forbidden
+2026-09-28T14:50:35.2582484Z   solidot                @hub.slarker.me             TimeoutError: The read operation timed out
+2026-09-28T14:50:35.2583033Z   solidot                @rsshub-balancer.virworks.moe ParseError: syntax error: line 1, column 0
+2026-09-28T14:50:35.2583631Z   solidot                @rss.injahow.cn             URLError: <urlopen error _ssl.c:993: The handshake operation
+2026-09-28T14:50:35.2584225Z   oschina                @rsshub.ktachibana.party    HTTPError: HTTP Error 429: Too Many Requests
+2026-09-28T14:50:35.2584748Z   oschina                @rsshub.isrss.com           HTTPError: HTTP Error 403: Forbidden
+2026-09-28T14:50:35.2585229Z   oschina                @rsshub.umzzz.com           HTTPError: HTTP Error 403: Forbidden
+2026-09-28T14:50:35.2585715Z   oschina                @hub.slarker.me             HTTPError: HTTP Error 502: Bad Gateway
+2026-09-28T14:50:35.2586529Z   ithome-ai              @rsshub.rssforever.com      TimeoutError: The read operation timed out
+2026-09-28T14:50:35.2587071Z   ithome-ai              @rsshub.isrss.com           HTTPError: HTTP Error 403: Forbidden
+2026-09-28T14:50:35.2587694Z   ithome-ai              @rsshub.umzzz.com           HTTPError: HTTP Error 403: Forbidden
+2026-09-28T14:50:35.2587995Z 
+2026-09-28T14:50:35.2588150Z ✅ 已写入 GITHUB_STEP_SUMMARY
+2026-09-28T14:50:35.2588294Z 
+2026-09-28T14:50:35.2588416Z 探测完成（只读，未写入任何文件）
+﻿2026-09-28T14:50:35.2709775Z ##[group]Run python -c "import json;c=json.load(open('scripts/sources.json',encoding='utf-8'));s=c['sources'];print(f'源 {len(s)} 个，启用 {sum(1 for x in s if x.get(\"enabled\"))} 个');[print(f'  [{\"ON \" if x.get(\"enabled\") else \"off\"}] {x[\"id\"]:22} {x[\"lane\"]:10} {x.get(\"mode\")}') for x in s]"
+2026-09-28T14:50:35.2711572Z [36;1mpython -c "import json;c=json.load(open('scripts/sources.json',encoding='utf-8'));s=c['sources'];print(f'源 {len(s)} 个，启用 {sum(1 for x in s if x.get(\"enabled\"))} 个');[print(f'  [{\"ON \" if x.get(\"enabled\") else \"off\"}] {x[\"id\"]:22} {x[\"lane\"]:10} {x.get(\"mode\")}') for x in s]"[0m
+2026-09-28T14:50:35.2776694Z shell: /usr/bin/bash -e {0}
+2026-09-28T14:50:35.2776972Z env:
+2026-09-28T14:50:35.2777250Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-09-28T14:50:35.2777715Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib/pkgconfig
+2026-09-28T14:50:35.2778179Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-09-28T14:50:35.2778622Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-09-28T14:50:35.2779038Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-09-28T14:50:35.2779444Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib
+2026-09-28T14:50:35.2779787Z ##[endgroup]
+2026-09-28T14:50:35.3035030Z 源 32 个，启用 18 个
+2026-09-28T14:50:35.3035685Z   [ON ] openai-news            official   auto
+2026-09-28T14:50:35.3036668Z   [ON ] openai-research        official   rsshub
+2026-09-28T14:50:35.3037428Z   [ON ] anthropic-news         official   rsshub
+2026-09-28T14:50:35.3038153Z   [ON ] deepmind-blog          official   direct
+2026-09-28T14:50:35.3038708Z   [ON ] google-ai-blog         official   direct
+2026-09-28T14:50:35.3039179Z   [ON ] hf-blog                official   auto
+2026-09-28T14:50:35.3039645Z   [off] aws-ml-blog            official   direct
+2026-09-28T14:50:35.3040176Z   [off] nvidia-blog            official   direct
+2026-09-28T14:50:35.3040629Z   [ON ] hf-daily-papers        paper      auto
+2026-09-28T14:50:35.3041113Z   [ON ] arxiv-cs-cl            paper      direct
+2026-09-28T14:50:35.3041548Z   [off] arxiv-cs-ai            paper      direct
+2026-09-28T14:50:35.3041988Z   [off] openrouter-models      paper      direct
+2026-09-28T14:50:35.3042433Z   [ON ] hn-frontpage           community  direct
+2026-09-28T14:50:35.3042873Z   [ON ] hn-llm                 community  direct
+2026-09-28T14:50:35.3043299Z   [ON ] github-trending        community  direct
+2026-09-28T14:50:35.3043730Z   [ON ] github-releases        community  direct
+2026-09-28T14:50:35.3044160Z   [ON ] simonwillison          media      direct
+2026-09-28T14:50:35.3044578Z   [ON ] tldr-ai                media      direct
+2026-09-28T14:50:35.3045008Z   [off] arstechnica-ai         media      direct
+2026-09-28T14:50:35.3045436Z   [off] techcrunch-ai          media      direct
+2026-09-28T14:50:35.3045864Z   [off] techreview-ai          media      direct
+2026-09-28T14:50:35.3046719Z   [off] theverge-ai            media      direct
+2026-09-28T14:50:35.3047193Z   [off] latent-space           media      direct
+2026-09-28T14:50:35.3047658Z   [off] sebastianraschka       media      direct
+2026-09-28T14:50:35.3048087Z   [off] bair                   media      direct
+2026-09-28T14:50:35.3048495Z   [ON ] qbitai                 cn         rsshub
+2026-09-28T14:50:35.3048908Z   [ON ] leiphone-ai            cn         rsshub
+2026-09-28T14:50:35.3049316Z   [ON ] 36kr-ai                cn         rsshub
+2026-09-28T14:50:35.3049716Z   [ON ] infoq                  cn         rsshub
+2026-09-28T14:50:35.3050121Z   [off] ithome-ai              cn         rsshub
+2026-09-28T14:50:35.3050530Z   [off] solidot                cn         rsshub
+2026-09-28T14:50:35.3051155Z   [off] oschina                cn         rsshub
+﻿2026-09-28T14:50:35.3169647Z Post job cleanup.
+﻿2026-09-28T14:50:35.4564447Z Post job cleanup.
+2026-09-28T14:50:35.5476049Z [command]/usr/bin/git version
+2026-09-28T14:50:35.5524382Z git version 2.55.0
+2026-09-28T14:50:35.5576513Z Temporarily overriding HOME='/home/runner/work/_temp/3ac6fcc4-1eed-4c65-8caa-9ff546189752' before making global git config changes
+2026-09-28T14:50:35.5578219Z Adding repository directory to the temporary git global config as a safe directory
+2026-09-28T14:50:35.5582550Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ai-radar/ai-radar
+2026-09-28T14:50:35.5619086Z Removing SSH command configuration
+2026-09-28T14:50:35.5626342Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-09-28T14:50:35.5666710Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-09-28T14:50:35.5912154Z Removing HTTP extra header
+2026-09-28T14:50:35.5919308Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-09-28T14:50:35.5959409Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-09-28T14:50:35.6218140Z Removing includeIf entries pointing to credentials config files
+2026-09-28T14:50:35.6226281Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-09-28T14:50:35.6264584Z includeif.gitdir:/home/runner/work/ai-radar/ai-radar/.git.path
+2026-09-28T14:50:35.6265778Z includeif.gitdir:/home/runner/work/ai-radar/ai-radar/.git/worktrees/*.path
+2026-09-28T14:50:35.6267069Z includeif.gitdir:/github/workspace/.git.path
+2026-09-28T14:50:35.6268102Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-09-28T14:50:35.6277625Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/ai-radar/ai-radar/.git.path
+2026-09-28T14:50:35.6302153Z /home/runner/work/_temp/git-credentials-ab3af29a-b58f-429f-a4ff-d2ac2053a469.config
+2026-09-28T14:50:35.6313220Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/ai-radar/ai-radar/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-ab3af29a\-b58f\-429f\-a4ff\-d2ac2053a469\.config
+2026-09-28T14:50:35.6368850Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/ai-radar/ai-radar/.git/worktrees/*.path
+2026-09-28T14:50:35.6399611Z /home/runner/work/_temp/git-credentials-ab3af29a-b58f-429f-a4ff-d2ac2053a469.config
+2026-09-28T14:50:35.6409299Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/ai-radar/ai-radar/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-ab3af29a\-b58f\-429f\-a4ff\-d2ac2053a469\.config
+2026-09-28T14:50:35.6463894Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-09-28T14:50:35.6494698Z /github/runner_temp/git-credentials-ab3af29a-b58f-429f-a4ff-d2ac2053a469.config
+2026-09-28T14:50:35.6503547Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-ab3af29a\-b58f\-429f\-a4ff\-d2ac2053a469\.config
+2026-09-28T14:50:35.6559775Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-09-28T14:50:35.6577091Z /github/runner_temp/git-credentials-ab3af29a-b58f-429f-a4ff-d2ac2053a469.config
+2026-09-28T14:50:35.6604483Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-ab3af29a\-b58f\-429f\-a4ff\-d2ac2053a469\.config
+2026-09-28T14:50:35.6631541Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-09-28T14:50:35.6874604Z Removing credentials config '/home/runner/work/_temp/git-credentials-ab3af29a-b58f-429f-a4ff-d2ac2053a469.config'
+﻿2026-09-28T14:50:35.7043734Z Cleaning up orphan processes

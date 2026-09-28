@@ -1,6 +1,8 @@
 # AI 前沿雷达（ai-radar）
 
-持续追踪大模型 / Agent / Skill 生态的自动化聚合站。**当前处于 P0 阶段：源基线探测，尚无抓取与前端。**
+持续追踪大模型 / Agent / Skill 生态的自动化聚合站。**当前 P1：抓取 → 过滤 → JSON → 网页面板已跑通；LLM 摘要与打分留待 P2。**
+
+线上面板：https://homjanon.github.io/ai-radar/
 
 ## 这个仓要做什么
 
@@ -15,8 +17,14 @@
 
 ```
 scripts/sources.json          源配置（单一数据源）· 五车道 · 每源带 desc_min 门槛
-scripts/probe_sources.py      源可用性探测（只读）
-.github/workflows/probe-sources.yml   探测 workflow（手动 + 每月自动）
+scripts/probe_sources.py      源可用性探测（只读，P0）
+scripts/fetch_ai.py           抓取与产物生成（P1 · 纯硬规则，无 LLM）
+docs/index.html               网页面板（读 latest.json 渲染）
+docs/latest.json              最新一期产物
+docs/daily/{date}.json        当日归档（保留 30 天）
+docs/data/reports/{ts}.json   运行报告（每源通路/条数/降级原因，可回溯）
+.github/workflows/probe-sources.yml   源探测（手动 + 每月自动）
+.github/workflows/fetch.yml           抓取发布（每日 08:10 北京）
 ```
 
 ## 五条车道
@@ -66,21 +74,26 @@ hub.slarker.me → rsshub.rssforever.com → rsshub.umzzz.com
 ## 怎么跑
 
 ```bash
-# Actions 页面手动触发（推荐，拿到的是真实基线）
-#   Actions → probe-sources → Run workflow
+# 抓取并生成产物（Actions 每日自动跑；也可手动触发 Actions → fetch-ai → Run workflow）
+python scripts/fetch_ai.py --outdir docs
+python scripts/fetch_ai.py --only cn              # 只抓中文车道
+python scripts/fetch_ai.py --id hf-blog,arxiv-cs-cl   # 只抓指定源（调试）
+python scripts/fetch_ai.py --no-jina              # 关闭正文补抓
 
-# 本机调试（需先开代理）
+# 源可用性探测（只读，不写文件）
 python scripts/probe_sources.py
-python scripts/probe_sources.py --only cn      # 只测中文车道
-python scripts/probe_sources.py --id hf-blog   # 只测某个源
+python scripts/probe_sources.py --only cn         # 只测中文车道
+
+# 本机调试需先开代理（谷歌系/部分源在国内直连不通）
+HTTPS_PROXY=http://127.0.0.1:7890 python scripts/fetch_ai.py --outdir docs
 ```
 
 探测结果会写进 Actions 的 **Step Summary**（表格形式），并打印完整日志，**不落任何文件**。
 
 ## 路线
 
-- **P0（当前）** 源基线探测 —— 建仓 + 本 workflow，确定最终源清单与实例顺序
-- **P1** 抓取 → 时间窗 → 去重 → JSON → Pages 面板（纯硬规则）
-- **P2** LLM 增强：中文摘要 + 相关性打分 + 跨源聚类折叠 + 分级
+- **P0 已完成** 源基线探测 —— 建仓 + probe workflow，32 源实测基线（两环境结论相反，见下）
+- **P1 已完成** 抓取 → 时间窗（含保底）→ 去重 → 跨源折叠 → 跨日标记 → JSON → Pages 面板
+- **P2** LLM 增强：中文摘要 + 三维打分（相关度/信息密度/时效性）+ 分级
 - **P3** 接入 `nav` 宫格与 Android App + 邮件日报（可选）
 - **P4** 趋势量化：周报四指标（厂商发布频率 / 开源权重占比 / 星标增速 / 主题热度）
