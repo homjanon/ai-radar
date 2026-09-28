@@ -26,6 +26,7 @@
     ]
   },
   "lanes": [
+    { "id": "model", "name": "模型发布", "weight": 9 },
     { "id": "official", "name": "官方一手", "weight": 10 },
     { "id": "paper", "name": "论文与基准", "weight": 8 },
     { "id": "community", "name": "社区与开源", "weight": 6 },
@@ -100,10 +101,63 @@
       "note": "Actions 实测 331 条/次（曾误记 cs.LG 无内容，cs.AI 正常）；条量大，启用后必须靠 LLM 打分硬筛"
     },
     {
-      "id": "openrouter-models", "lane": "paper", "block": "OpenRouter", "enabled": false,
-      "mode": "direct", "urls": ["https://openrouter.ai/api/v1/models"],
-      "take": 0, "kind": "json", "translate": false,
-      "note": "用于周报的用量份额趋势，不产出每日条目（Actions 实测 458 条）"
+      "id": "llm-leaderboard", "lane": "model", "block": "模型排行榜", "enabled": false,
+      "mode": "direct", "kind": "json", "parser": "leaderboard",
+      "urls": ["https://raw.githubusercontent.com/AmigaMeow/llm-leaderboard-data/main/data/latest.json"],
+      "take": 12, "translate": true,
+      "note": "【候选·本机实测可用 75 模型】直接吸纳第三方项目 AmigaMeow/llm-leaderboard-data（MIT，每日自动更新）：它聚合 LMArena Elo + OpenRouter 定价/上下文/上架时间。两个关键价值：① 含 listed_at_iso（上架时间）—— OpenRouter 官方 API 无此字段，免去自己做跨日 diff；② LMArena 是 JS 渲染无公开 API，该仓已代抓，免去 Playwright+Chromium 300MB 重依赖。用于产出「最近上架模型」与「Arena 榜变化」"
+    },
+    {
+      "id": "openrouter-stealth", "lane": "model", "block": "OpenRouter 匿名模型", "enabled": false,
+      "mode": "direct", "kind": "json", "parser": "openrouter", "filter": "stealth",
+      "urls": ["https://openrouter.ai/api/v1/models"],
+      "take": 10, "translate": true,
+      "note": "【候选·待 probe 验证】正在公测的匿名模型的结构化入口。filter=stealth 只保留 id 以 stealth/ 开头、或 name 含 Alpha/Preview 的条目。本机实测可抓（460 条模型，含 stealth/space-bunny-alpha）；历史上 Union Alpha 已揭晓为 Pareto、Ox Alpha 仍在公测"
+    },
+    {
+      "id": "openrouter-new", "lane": "model", "block": "OpenRouter 新上架", "enabled": false,
+      "mode": "direct", "kind": "json", "parser": "openrouter", "filter": "new",
+      "urls": ["https://openrouter.ai/api/v1/models"],
+      "take": 10, "translate": true,
+      "note": "【候选·待 probe 验证】与昨日快照做差集识别新上架模型 —— API 无上架时间字段，只能跨日 diff，复用 docs/daily 归档，不需要新存储"
+    },
+    {
+      "id": "hf-new-models", "lane": "model", "block": "Hugging Face 新模型", "enabled": false,
+      "mode": "direct", "kind": "json", "parser": "hf-models",
+      "urls": ["https://huggingface.co/api/models?sort=createdAt&direction=-1&limit=30"],
+      "take": 10, "translate": true,
+      "note": "【候选·待 probe 验证】开源模型的「无声发布」第一现场（有模型卡、无新闻稿）；需过滤微调/量化衍生品噪音"
+    },
+    {
+      "id": "hf-trending-models", "lane": "model", "block": "Hugging Face 趋势", "enabled": false,
+      "mode": "direct", "kind": "json", "parser": "hf-models",
+      "urls": ["https://huggingface.co/api/models?sort=trendingScore&direction=-1&limit=25"],
+      "take": 8, "translate": true,
+      "note": "【候选·待 probe 验证】社区热度上升中的模型（比下载量榜更早反映风向）"
+    },
+    {
+      "id": "qwen-blog", "lane": "model", "block": "通义千问", "enabled": false,
+      "mode": "direct", "urls": ["https://qwenlm.github.io/blog/index.xml"],
+      "take": 6, "translate": false, "desc_min": 0,
+      "note": "【候选·本机实测可用 44 条】国内唯一确认有官方 RSS 的大模型厂商"
+    },
+    {
+      "id": "reddit-localllama", "lane": "community", "block": "r/LocalLLaMA", "enabled": false,
+      "mode": "direct", "urls": ["https://www.reddit.com/r/LocalLLaMA/.rss"],
+      "take": 8, "translate": true, "desc_min": 0,
+      "note": "【候选·待 probe 验证】开源模型实测与爆料第一现场；Reddit 对云端 IP 可能返 403，需 Actions 侧确认"
+    },
+    {
+      "id": "vllm-releases", "lane": "community", "block": "vLLM", "enabled": false,
+      "mode": "direct", "urls": ["https://github.com/vllm-project/vllm/releases.atom"],
+      "take": 5, "translate": false, "desc_min": 0,
+      "note": "【候选·本机实测可用 10 条】推理栈风向标：新模型支持通常先落在这里"
+    },
+    {
+      "id": "llamacpp-releases", "lane": "community", "block": "llama.cpp", "enabled": false,
+      "mode": "direct", "urls": ["https://github.com/ggml-org/llama.cpp/releases.atom"],
+      "take": 5, "translate": false, "desc_min": 0,
+      "note": "【候选·本机实测可用 10 条】本地推理生态风向"
     },
 
     {
