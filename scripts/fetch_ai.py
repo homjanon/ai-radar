@@ -380,11 +380,13 @@ def _call_llm_batch(batch, tcfg, mode):
                 ti = str(row.get("title", "")).strip()
                 s = str(row.get("summary", "")).strip()
                 if it["_translate_title"] and ti:
-                    # 译文必须含中文，否则判失败（防模型原样回吐英文被当作成功）
-                    if not re.search(r"[\u4e00-\u9fff]", ti):
-                        raise RuntimeError(f"第 {i} 条英文标题未译成中文（疑似原样返回）：{ti[:50]}")
-                    it["titleCn"] = ti
-                    n_title += 1
+                    # 含中文才采纳。纯专有名词标题（如 "Microsoft Data Formulator"）
+                    # 本就不该硬译 —— 跳过该条、保留英文原标题，不影响整批。
+                    # （原先「单条未译即抛异常」会让整批白跑并降级到下一个模型，
+                    #  实测因此损失了一整批 43 条。）
+                    if re.search(r"[\u4e00-\u9fff]", ti):
+                        it["titleCn"] = ti
+                        n_title += 1
                 if s:
                     it["summary"] = s
                 try:
@@ -398,8 +400,11 @@ def _call_llm_batch(batch, tcfg, mode):
                 tp = str(row.get("topic", "")).strip()
                 if tp:
                     it["topic"] = tp[:12]
-            if mode == "translate" and n_title == 0:
-                raise RuntimeError(f"整批 {len(batch)} 条无任何标题被翻译，判定失败")
+            # 整批译出率过低才判失败（防模型整体原样回吐英文而未被察觉）
+            if mode == "translate":
+                need = sum(1 for x in batch if x["_translate_title"])
+                if need and n_title < max(1, int(need * 0.3)):
+                    raise RuntimeError(f"整批仅 {n_title}/{need} 条译出（低于 30%），判定失败")
             log(f"  🌐 AI 增强完成（{m['name']}，{len(batch)} 条，译标题 {n_title} 条）")
             return m["name"], True, tried
         except Exception as e:
