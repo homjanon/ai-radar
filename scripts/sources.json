@@ -12,8 +12,12 @@
     "rsshub-balancer.virworks.moe"
   ],
   "translate": {
+    "enabled": true,
     "summary_min": 40,
     "summary_max": 80,
+    "batch_size": 25,
+    "level_thresholds": { "top": 8.0, "watch": 6.5 },
+    "note": "P2 LLM 增强：中文摘要 + 英文标题中文化 + 三维打分(rel/info/fresh) + 主题标签。按语言拆批（英文 translate / 中文 summarize），两种指令绝不混批——news-feed 实测过混批会导致英文标题漏译。模型链逐档降级，全失败则保留原文（绝不空窗）。level_thresholds 为加权总分阈值（rel.45/info.30/fresh.25）；此外命中 TOP_KW 硬规则关键词直接判 top，保证关键事件不受打分波动影响。batch_size=25 兼顾成功率与调用次数（gemini 免费额度 20 RPD，要留给 news-feed）。",
     "models": [
       { "name": "gemini-3-flash", "base": "https://generativelanguage.googleapis.com/v1beta/openai", "model": "gemini-3-flash-preview", "key_env": "GEMINI_API_KEY" },
       { "name": "agnes-3.0-flash", "base": "https://apihub.agnes-ai.com/v1", "model": "agnes-3.0-flash", "key_env": "AGNES_API_KEY" },
