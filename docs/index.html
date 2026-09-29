@@ -371,6 +371,11 @@ function renderCases(){
   }
   var chips = ['<button class="chip' + (caseType === 'all' ? ' on' : '') +
     '" data-type="all">全部<span class="c">' + all.length + '</span></button>'];
+  types.sort(function(a, b){
+    var ca = all.filter(function(c){ return c.type === a; }).length;
+    var cb = all.filter(function(c){ return c.type === b; }).length;
+    return cb - ca;                       // 条目多的排前面，更常用的先被点到
+  });
   types.forEach(function(t){
     var n = all.filter(function(c){ return c.type === t; }).length;
     chips.push('<button class="chip' + (caseType === t ? ' on' : '') + '" data-type="' + attr(t) + '">' +
