@@ -737,8 +737,8 @@ def _total_of(it, tcfg):
         if it.get("lane") == "model":
             total += 0.5
         return round(min(10.0, total), 1)
-    base = {"model": 9.0, "official": 7.6, "paper": 6.2, "cn": 6.2, "community": 5.4,
-            "media": 5.4}.get(it.get("lane"), 5.4)
+    base = {"model": 9.0, "official": 7.6, "apps": 6.6, "paper": 6.2, "cn": 6.2,
+            "community": 5.4, "media": 5.4}.get(it.get("lane"), 5.4)
     age = it.get("ageH", -1)
     bonus = 1.2 if 0 <= age <= 12 else (0.6 if 0 <= age <= 36 else 0.0)
     if it.get("alsoIn"):
@@ -833,7 +833,7 @@ def main():
     log(f"AI 前沿雷达 · 抓取  {now.strftime('%Y-%m-%d %H:%M')} 北京   启用源 {len(srcs)}")
     log("=" * 100)
 
-    all_items, degraded, reports = [], [], []
+    all_items, degraded, reports, lib_items = [], [], [], []
 
     for src in srcs:
         if src.get("take") == 0:          # 纯数据源（如 OpenRouter），不产出条目
@@ -881,7 +881,12 @@ def main():
         for i in kept:
             i.update({"lane": src["lane"], "block": src["block"],
                       "source": src.get("default_source") or src["block"], "via": via})
-        all_items.extend(kept)
+        if src.get("library_only"):
+            # 只进案例库、不进每日简报：这类源是无日期的一次性沉淀（如 awesome-llm-apps
+            # 的 100+ 模板），塞进日常流会天天重复占版面。
+            lib_items.extend(kept)
+        else:
+            all_items.extend(kept)
         n_stale = sum(1 for i in kept if i.get("stale"))
         extra = f"（含 {n_stale} 条保底旧文）" if n_stale else ""
         log(f"  ✅ @{via}  取 {len(items)} → 去重 {len(dedup)} → "
@@ -1027,7 +1032,8 @@ def main():
         i["desc"] = i["desc"][:2000]
         i["summary"] = (i.get("summary") or "")[:300]
         i.pop("dt", None)
-        i.pop("_translate_title", None)     # 内部标记不外泄
+        for _k in ("_translate_title", "_want_type", "_lib", "_skip_llm"):
+            i.pop(_k, None)                 # 内部标记一律不外泄（漏一个就会写进产物）
 
     doc = {
         "version": 2,
