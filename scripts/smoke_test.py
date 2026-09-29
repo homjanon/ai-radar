@@ -181,9 +181,14 @@ def main():
         check(all(i.get("level") in ("top", "watch", "normal") for i in items),
               "每条都有 level", problems)
         check(len(cl) >= 4, f"案例库有种子条目（{len(cl)} 条）", problems)
-        check(any(c.get("type") for c in cl), "案例库存在带 type 的条目", problems)
-        check(all(c.get("type") for c in seed0) if (seed0 := [c for c in cl if c.get("block") == "案例库种子"])
-              else False, "种子源条目都带 type（节名分类）", problems)
+        check(all(c.get("type") for c in cl),
+              f"案例库条目全部带 type（LLM 或关键词兜底，{len(cl)} 条）", problems)
+        apps_it = [i for i in items if i["lane"] == "apps"]
+        check(apps_it and all(i.get("apptype") for i in apps_it),
+              f"apps 简报条目全部带应用形态（兜底，{len(apps_it)} 条）", problems)
+        # 兜底分类要可解释：至少出现两种形态，而不是全被丢进同一个桶
+        n_kind = len({i["apptype"] for i in apps_it})
+        check(n_kind >= 2, f"兜底分类有区分度（{n_kind} 种形态）", problems)
         seed = [c for c in cl if c.get("block") == "案例库种子"]
         check(len(seed) >= 4, f"library_only 源进了案例库（{len(seed)} 条）", problems)
         check(all("awesome-llm-apps" not in (i.get("url") or "") for i in items),
