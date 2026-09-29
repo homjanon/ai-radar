@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-29 19:33",
+ "updated": "2026-09-29 21:18",
  "count": 158,
  "types": [
   "Agent 工作流",
@@ -8,7 +8,9 @@
   "RAG 检索增强",
   "Web 应用",
   "其他",
+  "内容生成",
   "教程与学习",
+  "数据分析",
   "桌面工具",
   "模型与推理",
   "浏览器插件",
@@ -24,7 +26,8 @@
    "topic": "Agent 技能",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1wt5m8e/i_built_a_recipe_api_for_your_apps_and_agents/",
@@ -46,7 +49,8 @@
    "topic": "进阶 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/agent_skills/thinking-out-loud",
@@ -57,7 +61,8 @@
    "topic": "Agent 技能",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/voice_ai_agents/voice_rag_openaisdk",
@@ -68,7 +73,8 @@
    "topic": "语音 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/rag_tutorials/vision_rag",
@@ -79,7 +85,8 @@
    "topic": "RAG 检索增强",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/starter_ai_agents/ai_data_analysis_agent",
@@ -90,7 +97,8 @@
    "topic": "入门 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/agent_skills/self-improving-agent-skills",
@@ -101,7 +109,8 @@
    "topic": "Agent 技能",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/rag_tutorials/autonomous_rag",
@@ -112,7 +121,8 @@
    "topic": "RAG 检索增强",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/rag_tutorials/corrective_rag",
@@ -123,18 +133,8 @@
    "topic": "RAG 检索增强",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
-  },
-  {
-   "url": "https://sspai.com/post/115153",
-   "title": "社区速递 160 | 水月雨首款游戏耳机与八月派友剁手清单",
-   "titleEn": "",
-   "summary": "Matrix 社区周报介绍水月雨 Gaming Maestro 01 Pro 游戏耳机，该设备解决了协作游戏开麦沟通的降噪需求。此外，本期还展示了多位读者分享的便携充电卡片及八月购物清单等新品资讯。",
-   "type": "其他",
-   "topic": "数码评测",
-   "block": "少数派",
-   "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/generative_ui_agents/generative-ui-starter-project",
@@ -145,7 +145,8 @@
    "topic": "生成式 UI",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1wt6231/social_media_sweet_spot_for_a_solo_builder_spread/",
@@ -167,7 +168,8 @@
    "topic": "入门 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/starter_ai_agents/ai_meme_generator_agent_browseruse",
@@ -178,29 +180,8 @@
    "topic": "入门 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
-  },
-  {
-   "url": "https://sspai.com/post/115094",
-   "title": "派评 | 近期值得关注的 App",
-   "titleEn": "",
-   "summary": "推荐近期值得关注的应用更新，重点介绍 F-Droid 2.0 版本。该开源安卓应用商店经过一年开发完成重大更新，界面设计与使用体验大幅优化，使其在开源应用分发领域的权威性进一步提升。",
-   "type": "移动 App",
-   "topic": "应用推荐",
-   "block": "少数派",
-   "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
-  },
-  {
-   "url": "https://sspai.com/post/115134",
-   "title": "派早报：荣耀发布荣耀 Magic9 系列，鸿蒙智行发布智界 RX 等",
-   "titleEn": "",
-   "summary": "荣耀发布 Magic9 系列，超能版搭载第五代骁龙 8 至尊版及 11000mAh 电池，支持 80W 快充，定价 4499 元起。同时，鸿蒙智行发布智界 RX，科技早报还涵盖了近期其他重要硬件新品发布资讯。",
-   "type": "其他",
-   "topic": "行业资讯",
-   "block": "少数派",
-   "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/rag_tutorials/local_hybrid_search_rag",
@@ -211,7 +192,8 @@
    "topic": "RAG 检索增强",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/rag_tutorials/local_rag_agent",
@@ -222,7 +204,8 @@
    "topic": "RAG 检索增强",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://www.v2ex.com/t/1245555#reply0",
@@ -239,23 +222,15 @@
    "url": "https://www.v2ex.com/t/1245582#reply0",
    "title": "最近看到 Hotel Lobby AI 挺火，顺手做了个教程 + Prompt 工具",
    "titleEn": "",
-   "summary": "基于 Codex 开发的辅助站点提供 Hotel Lobby AI 视频制作教程，包含免费 Prompt 生成器及 Kling 等方案的对比。工具重点解决了人物一致性、换脸及手部变形等生成难题，整理了低成本免费的制作路径。",
-   "type": "Web 应用",
-   "topic": "内容生成",
+   "summary": "针对 Hotel Lobby AI 视频热潮，作者提供制作教程及免费 Prompt 生成器。对比 Kling、Higgsfield 等方案，整理换脸、人物一致性常见问题及低成本解法，帮助新手快速入门，降低了此类创意视频的生产门槛与技术复杂度。",
+   "type": "内容生成",
+   "topic": "视频教程",
    "block": "V2EX 分享创造",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
-  },
-  {
-   "url": "https://sspai.com/post/115061",
-   "title": "更懂你的心，也更懂你：Apple Watch Series 12 体验",
-   "titleEn": "",
-   "summary": "深度评测 Apple Watch Series 12 的体验，指出其边框变大及重量增加的特点。该代产品主打健康感测系统升级，包括心率传感器优化、新增准备指数 App 及回归陶瓷表壳选项，整体设计延续方形风格。",
-   "type": "其他",
-   "topic": "硬件评测",
-   "block": "少数派",
-   "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "apps",
+   "score": 5.3,
+   "rel": 4
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1wt65tq/my_friend_made_this_hand_drawn_video_app/",
@@ -280,25 +255,45 @@
    "firstSeen": "2026-09-29"
   },
   {
-   "url": "https://www.v2ex.com/t/1245591#reply11",
-   "title": "我用 AI 解决了 Java 开发里几个困扰多年的问题",
+   "url": "https://www.v2ex.com/t/1245611#reply3",
+   "title": "手势结印释放忍术小游戏",
    "titleEn": "",
-   "summary": "利用大模型开发 Java 辅助工具，实现输入数据库表结构自动生成完整的 Bean 代码，以及自动完成 JSON 到 XML 再到 Java 对象的全链路转换。开发者计划进一步实现根据上下文自动判断字符串拼接方式的智能化优化。",
+   "summary": "开源手势识别小游戏，基于摄像头动作捕捉技术。用户录入手印后，通过手势识别释放忍术技能，支持宽松度调节及图鉴练习。项目代码已公开于 GitHub，提供网页地址直接访问，展示了计算机视觉在互动娱乐中的应用潜力。",
    "type": "Web 应用",
-   "topic": "Agent 工作流",
+   "topic": "交互创新",
    "block": "V2EX 分享创造",
+   "src": "apps",
    "lastSeen": "2026-09-29",
+   "score": 5.2,
+   "rel": 5,
    "firstSeen": "2026-09-29"
   },
   {
-   "url": "https://www.v2ex.com/t/1245573#reply1",
-   "title": "微信多人 AA 账本,支持公费池",
+   "url": "https://www.v2ex.com/t/1245591#reply11",
+   "title": "我用 AI 解决了 Java 开发里几个困扰多年的问题",
    "titleEn": "",
-   "summary": "开发微信小程序“搭子 A 账”处理多人旅游费用分摊，支持公费池、特定人员平摊设置及提前还款记录。该工具针对旅行场景下的复杂账目逻辑，提供在线建团、实时记账及最终账目清算功能。",
-   "type": "移动 App",
-   "topic": "效率工具",
+   "summary": "利用大模型自动化生成 Java Bean，涵盖 Getter、Setter 及哈希方法，解决长期编码痛点。构建 Agent 实现 JSON/XML 互转并映射至 Java 对象，智能化处理数据链路。下一步计划让 AI 自动决策字符串拼接方式，持续提升工程开发效率。",
+   "type": "CLI 工具",
+   "topic": "开发辅助",
    "block": "V2EX 分享创造",
    "lastSeen": "2026-09-29",
+   "firstSeen": "2026-09-29",
+   "src": "apps",
+   "score": 5.2,
+   "rel": 5
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1wt9giq/built_a_microsaas_to_stop_ai_from_breaking/",
+   "title": "微 SaaS 解决 AI 批量翻译破坏 Shopify 主题问题",
+   "titleEn": "Built a micro-SaaS to stop AI from breaking Shopify themes during bulk translation. Would love your brutal feedback!",
+   "summary": "针对 ChatGPT 等 AI 翻译破坏 Shopify Liquid 标签及 HTML 结构的问题，开发微 SaaS 工具，确保在批量翻译商品目录时保持主题代码完整性。",
+   "type": "Web 应用",
+   "topic": "工程实践",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-09-29",
+   "score": 6.0,
+   "rel": 6,
    "firstSeen": "2026-09-29"
   },
   {
@@ -310,7 +305,8 @@
    "topic": "RAG 检索增强",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/multi_agent_apps/agent_teams/multimodal_design_agent_team",
@@ -321,7 +317,8 @@
    "topic": "多 Agent 协作",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/multi_agent_apps/agent_teams/multimodal_coding_agent_team",
@@ -332,7 +329,8 @@
    "topic": "多 Agent 协作",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/rag_tutorials/multimodal_agentic_rag",
@@ -343,7 +341,8 @@
    "topic": "RAG 检索增强",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/multi_agent_apps/agent_teams/multimodal_uiux_feedback_agent_team",
@@ -354,7 +353,8 @@
    "topic": "多 Agent 协作",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/mcp_ai_agents/multi_mcp_agent_router",
@@ -365,7 +365,8 @@
    "topic": "MCP Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/rag_tutorials/rag_chain",
@@ -376,7 +377,8 @@
    "topic": "RAG 检索增强",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/voice_ai_agents/customer_support_voice_agent",
@@ -387,7 +389,8 @@
    "topic": "语音 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://nowherern.vercel.app/",
@@ -404,12 +407,15 @@
    "url": "https://sspai.com/post/114749",
    "title": "基于 Termux 的 Android 手机开发服务器实操",
    "titleEn": "",
-   "summary": "介绍在小米 15 Ultra 上通过 Termux 运行 Hermes 等终端 AI Agent 并作为开发服务器的实操记录。通过内网穿透技术实现远程 SSH 连接，有效解决了 Android 系统后台查杀及底层命令行工具兼容性问题。",
-   "type": "桌面工具",
+   "summary": "教程展示如何利用 Termux 在 Android 手机上部署终端 AI Agent（如 Hermes），实现不刷机不 Root 的随身开发服务器功能。通过配置后台保活与内网穿透，解决系统杀后台问题，让用户可通过 SSH 远程连接手机执行脚本与代码修改。",
+   "type": "CLI 工具",
    "topic": "工程实践",
    "block": "少数派",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "apps",
+   "score": 6.6,
+   "rel": 6
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/rag_tutorials/agentic_typed_rag_pydanticai",
@@ -420,7 +426,8 @@
    "topic": "RAG 检索增强",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/multi_agent_apps/ai_home_renovation_agent",
@@ -431,7 +438,8 @@
    "topic": "进阶 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/mcp_ai_agents/browser_mcp_agent",
@@ -442,7 +450,8 @@
    "topic": "MCP Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/autonomous_game_playing_agent_apps/ai_3dpygame_r1",
@@ -453,7 +462,8 @@
    "topic": "游戏 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/multi_agent_apps/agent_teams/ai_services_agency",
@@ -464,7 +474,8 @@
    "topic": "多 Agent 协作",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/rag_tutorials/rag_agent_cohere",
@@ -475,7 +486,8 @@
    "topic": "RAG 检索增强",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1wt72hy/built_a_windows_video_and_photo_editor_with_c_wpf/",
@@ -489,17 +501,6 @@
    "firstSeen": "2026-09-29"
   },
   {
-   "url": "https://sspai.com/post/114728",
-   "title": "可塑的白昼：ColorOS17 深度评测",
-   "titleEn": "",
-   "summary": "深度评测 ColorOS17 的 UI 设计，探讨安卓厂商对 Apple Liquid Glass 风格的模仿与超越。文中对比了 iOS 27 在玻璃材质功耗与可读性上的调整，分析了系统底层对三维视觉统一设计语言的支持差异。",
-   "type": "其他",
-   "topic": "系统评测",
-   "block": "少数派",
-   "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
-  },
-  {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_llm_apps/llm_apps_with_memory_tutorials/local_chatgpt_with_memory",
    "title": "具备记忆功能的本地 ChatGPT 克隆",
    "titleEn": "Local ChatGPT Clone with Memory",
@@ -508,7 +509,8 @@
    "topic": "带记忆的应用",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_llm_apps/llm_apps_with_memory_tutorials/ai_arxiv_agent_memory",
@@ -519,7 +521,8 @@
    "topic": "带记忆的应用",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_llm_apps/llm_apps_with_memory_tutorials/ai_travel_agent_memory",
@@ -530,7 +533,8 @@
    "topic": "带记忆的应用",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/rag_tutorials/rag_database_routing",
@@ -541,7 +545,8 @@
    "topic": "RAG 检索增强",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/rag_tutorials/agentic_rag_with_reasoning",
@@ -552,7 +557,8 @@
    "topic": "RAG 检索增强",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_llm_apps/llm_apps_with_memory_tutorials/llm_app_personalized_memory",
@@ -563,7 +569,8 @@
    "topic": "带记忆的应用",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_llm_apps/llm_apps_with_memory_tutorials/multi_llm_memory",
@@ -574,18 +581,22 @@
    "topic": "带记忆的应用",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://www.v2ex.com/t/1245576#reply1",
    "title": "做了个漫画生成器：基于 HF AI Comic Factory，补了角色一致性和故事连续性",
    "titleEn": "",
-   "summary": "在 Hugging Face AI Comic Factory 基础上开发的漫画生成器，重点优化了角色一致性和故事连续性。通过拆分角色分镜并建立视觉参考，确保多格漫画中人物形象稳定，提升叙事的连贯性而非单帧抽卡。",
-   "type": "Web 应用",
-   "topic": "开源项目",
+   "summary": "基于 Hugging Face AI Comic Factory 进行产品化改造，重点优化角色一致性与故事连续性。通过建立角色视觉参考锁定形象，强化从故事到分镜脚本的逻辑连贯性，解决原项目角色漂移及叙事断裂问题，提升生成漫画的质量。",
+   "type": "内容生成",
+   "topic": "模型应用",
    "block": "V2EX 分享创造",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "apps",
+   "score": 5.5,
+   "rel": 5
   },
   {
    "url": "https://www.v2ex.com/t/1245602#reply5",
@@ -599,17 +610,6 @@
    "firstSeen": "2026-09-29"
   },
   {
-   "url": "https://www.v2ex.com/t/1245616#reply0",
-   "title": "做了一个 Hotel Lobby AI 视频生成器，欢迎大家试用和反馈",
-   "titleEn": "",
-   "summary": "开发者发布 Migos AI，通过上传两张人物照片生成特定风格的双人视频。产品采用一次性积分购买模式，单条视频定价 5 美元，包 5 条价格 20 美元，支持在线预览和下载，目前处于早期阶段寻求用户反馈。",
-   "type": "Web 应用",
-   "topic": "AI 视频生成",
-   "block": "V2EX 分享创造",
-   "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
-  },
-  {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/multi_agent_apps/trust_gated_agent_team",
    "title": "信任门控多智能体研究团队",
    "titleEn": "Trust-Gated Multi-Agent Research Team",
@@ -618,7 +618,8 @@
    "topic": "进阶 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/voice_ai_agents/insurance_claim_live_agent_team",
@@ -629,7 +630,8 @@
    "topic": "语音 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/agent_skills/dependency-doctor",
@@ -640,7 +642,8 @@
    "topic": "Agent 技能",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/agent_skills/commit-archaeologist",
@@ -651,7 +654,8 @@
    "topic": "Agent 技能",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/rag_tutorials/hybrid_search_rag",
@@ -662,7 +666,8 @@
    "topic": "RAG 检索增强",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://www.v2ex.com/t/1245610#reply0",
@@ -676,6 +681,20 @@
    "firstSeen": "2026-09-29"
   },
   {
+   "url": "https://www.v2ex.com/t/1245610#reply1",
+   "title": "不买 Figma 会员，也能给 vibe coding 作品配上设计流程：开源本地工具 local-figma",
+   "titleEn": "",
+   "summary": "开源工具 local-figma 将运行中的网页还原为可编辑 Figma 设计稿，支持本地运行及 CLI 调用。开发者无需付费席位，利用 Agent 生成代码后进行视觉方案对比与调整，实现低成本设计迭代，显著提升 Vibe Coding 效率。",
+   "type": "CLI 工具",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-09-29",
+   "score": 6.2,
+   "rel": 6,
+   "firstSeen": "2026-09-29"
+  },
+  {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/rag_tutorials/contextualai_rag_agent",
    "title": "上下文 AI RAG 智能体",
    "titleEn": "Contextual AI RAG Agent",
@@ -684,7 +703,8 @@
    "topic": "RAG 检索增强",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/starter_ai_agents/xai_finance_agent",
@@ -695,7 +715,8 @@
    "topic": "入门 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_llm_apps/chat_with_X_tutorials/chat_with_youtube_videos",
@@ -706,7 +727,8 @@
    "topic": "数据问答",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1wt6if8/i_built_a_photo_app_with_one_rule_everyone_gets/",
@@ -721,14 +743,17 @@
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1wt7cm4/im_building_a_civilengineering_cad_app_with_an_ai/",
-   "title": "Vectoria Civil：AI 代理自动化处理土木工程 CAD 道路设计",
+   "title": "Vectoria Civil：AI Agent 驱动土木工程 CAD 应用",
    "titleEn": "I'm building a civil-engineering CAD app with an AI agent — here's a roundabout request in action",
-   "summary": "Vectoria Civil 桌面 CAD 软件引入 AI 代理，接收自然语言指令后自动完成道路项目修改。演示显示代理能根据需求创建交叉平纵线、匹配标高并生成环岛及对应道路线形，展示了 AI 在工程领域的落地。",
+   "summary": "商用桌面 CAD 应用 Vectoria Civil 展示 AI Agent 根据自然语言指令（如“在 700 米处创建路口”）自动修改道路项目，生成立交及其对齐线。",
    "type": "桌面工具",
-   "topic": "Agent 应用",
+   "topic": "Agent 工作流",
    "block": "r/SideProject",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "apps",
+   "score": 6.7,
+   "rel": 7
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_llm_apps/llm_optimization_tools/toonify_token_optimization",
@@ -739,7 +764,8 @@
    "topic": "推理优化",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_llm_apps/chat_with_X_tutorials/chat_with_substack",
@@ -750,72 +776,77 @@
    "topic": "数据问答",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
-  },
-  {
-   "url": "https://huggingface.co/spaces/multimodalart/jev-decision-index",
-   "title": "Spaces 应用：multimodalart/jev-decision-index",
-   "titleEn": "",
-   "summary": "Hugging Face Spaces 平台托管的多模态决策索引应用，基于 static 技术栈开发。该应用目前获得 313 个点赞，作为开源模型推理界面，用于展示多模态数据在决策任务中的应用效果。",
-   "type": "Web 应用",
-   "topic": "模型应用",
-   "block": "HF Spaces",
-   "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://huggingface.co/spaces/kulkas2pintu/QWEN_EDIT_IMAGE",
    "title": "Spaces 应用：kulkas2pintu/QWEN_EDIT_IMAGE",
    "titleEn": "",
-   "summary": "基于 Gradio 的 Qwen 图像编辑功能演示应用，支持用户在线操作。该 Hugging Face Space 自 7 月创建以来获得 593 个点赞，展示了 Qwen 大模型在图像内容生成与语义级编辑方面的处理能力。",
-   "type": "Web 应用",
-   "topic": "图像生成",
+   "summary": "Hugging Face Spaces 上的 Gradio 应用，专注于 Qwen 模型的图像编辑功能。该项目创建于 2026 年 7 月，获得 594 点赞，提供基于大模型的图像局部修改与重绘能力，是社区中较为热门的图像处理实验平台。",
+   "type": "模型与推理",
+   "topic": "图像编辑",
    "block": "HF Spaces",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
-  },
-  {
-   "url": "https://huggingface.co/spaces/convaiinnovations/laya-demo",
-   "title": "Spaces 应用：convaiinnovations/laya-demo",
-   "titleEn": "",
-   "summary": "Conversational AI Innovations 团队开发的 Laya 演示应用，托管于 Hugging Face Spaces 平台，采用 Gradio 作为交互界面。该应用获得 243 个点赞，主要用于展示对话式 AI 在具体业务场景中的交互原型。",
-   "type": "Web 应用",
-   "topic": "模型应用",
-   "block": "HF Spaces",
-   "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "apps",
+   "score": 5.2,
+   "rel": 5
   },
   {
    "url": "https://huggingface.co/spaces/Viggle/Qwen-Image-2.1-viggle-turbo",
    "title": "Spaces 应用：Viggle/Qwen-Image-2.1-viggle-turbo",
    "titleEn": "",
-   "summary": "Viggle 团队基于 Qwen-Image-2.1 开发的高性能 Turbo 变体应用，通过 Gradio 框架部署。该优化版本将推理速度提升并降低了延迟，目前获得 110 个点赞，面向对响应速度有较高要求的应用场景。",
-   "type": "Web 应用",
-   "topic": "模型推理",
+   "summary": "Viggle 团队在 Hugging Face 部署的 Qwen-Image-2.1 加速版应用，集成 Turbo 推理优化。该空间创建于 2026 年 9 月，点赞 111，旨在提供更高效率的图像生成服务，结合 Viggle 技术在视频或动态图像生成领域进行探索。",
+   "type": "模型与推理",
+   "topic": "模型优化",
    "block": "HF Spaces",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "apps",
+   "score": 5.5,
+   "rel": 5
   },
   {
    "url": "https://huggingface.co/spaces/Qwen/Qwen-Image-2.1",
    "title": "Spaces 应用：Qwen/Qwen-Image-2.1",
    "titleEn": "",
-   "summary": "Hugging Face 托管的通义千问 Qwen-Image-2.1 图像生成模型官方空间，基于 Gradio 框架部署。该应用已运行至 9 月 20 日，获得 294 个点赞，支持用户在线体验最新版通义千问的图像生成能力。",
-   "type": "Web 应用",
-   "topic": "图像生成",
+   "summary": "Hugging Face 官方 Spaces 部署 Qwen-Image-2.1 图像生成模型，基于 Gradio 界面提供服务。该应用创建于 2026 年 9 月，获得 297 点赞，允许用户在线体验通义千问最新图像模型的生成效果，支持文本到图像的即时转换任务。",
+   "type": "模型与推理",
+   "topic": "模型发布",
    "block": "HF Spaces",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "apps",
+   "score": 5.9,
+   "rel": 6
   },
   {
    "url": "https://huggingface.co/spaces/Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
    "title": "Spaces 应用：Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
    "titleEn": "",
-   "summary": "基于 Gradio 部署的 MiniMax-H3-Turbo 模型 LoRA 微调应用，移除内容审查限制。该 Hugging Face Space 获得 850 个点赞，为用户提供无需付费墙即可访问的高性能去审查模型交互体验。",
-   "type": "Web 应用",
-   "topic": "模型微调",
+   "summary": "Hugging Face Spaces 部署的 Gradio 应用，运行 MiniMax-H3-Turbo 未经审查的 LoRA 模型版本。该项目创建于 2026 年 8 月，累计点赞 853，提供基于特定微调模型的内容生成能力，面向需要无限制输出的用户群体。",
+   "type": "模型与推理",
+   "topic": "模型推理",
    "block": "HF Spaces",
    "lastSeen": "2026-09-29",
+   "firstSeen": "2026-09-29",
+   "src": "apps",
+   "score": 5.5,
+   "rel": 5
+  },
+  {
+   "url": "https://sliderino.embornal.com/",
+   "title": "Sliderino：面向 Agent 时代的演示软件",
+   "titleEn": "Show HN: Sliderino, presentation software for the age of agents",
+   "summary": "Agent-first 的演示软件，通过基础原语组合生成视觉幻灯片，支持 CLI 和 MCP 接口操作，意外发现 Shader 填充功能使用率较高，优化 AI 迭代效率。",
+   "type": "桌面工具",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-09-29",
+   "score": 6.7,
+   "rel": 7,
    "firstSeen": "2026-09-29"
   },
   {
@@ -827,7 +858,8 @@
    "topic": "Agent 技能",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_llm_apps/ripple",
@@ -838,7 +870,8 @@
    "topic": "浏览器工具",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/always_on_agents/release_radar_agent",
@@ -849,7 +882,8 @@
    "topic": "常驻 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/EverMind-AI/Raven",
@@ -871,7 +905,8 @@
    "topic": "RAG 检索增强",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/rag_tutorials/rag-as-a-service",
@@ -882,7 +917,8 @@
    "topic": "RAG 检索增强",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/agent_skills/project-graveyard",
@@ -893,18 +929,8 @@
    "topic": "Agent 技能",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1245598#reply2",
-   "title": "PaperCard: 随手写的推特截图小插件，没想到被群友追着要，干脆上架了",
-   "titleEn": "",
-   "summary": "开发者利用 Codex 编写 Chrome 插件 PaperCard，将推文排版为类似微信读书的卡片样式并复制到剪贴板。该工具解决推特截图杂乱痛点，已通过支付 5 美元开发者费上架 Chrome 商店供用户免费安装使用。",
-   "type": "浏览器插件",
-   "topic": "效率工具",
-   "block": "V2EX 分享创造",
-   "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_llm_apps/chat_with_X_tutorials/chat_with_pdf",
@@ -915,7 +941,8 @@
    "topic": "数据问答",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/richardgill/overmux",
@@ -937,7 +964,8 @@
    "topic": "MCP Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/starter_ai_agents/openai_research_agent",
@@ -948,7 +976,8 @@
    "topic": "入门 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/ai_agent_framework_crash_course/openai_sdk_crash_course",
@@ -959,7 +988,8 @@
    "topic": "框架教程",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/mcp_ai_agents/notion_mcp_agent",
@@ -970,7 +1000,8 @@
    "topic": "MCP Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://noise.ryan-schachte.com",
@@ -992,7 +1023,8 @@
    "topic": "浏览器工具",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://ascreenrecorder.com/",
@@ -1014,6 +1046,21 @@
    "topic": "生成式 UI",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
+   "firstSeen": "2026-09-29",
+   "src": "seed"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1wt83ek/lunavect_see_which_claude_code_or_codex_session/",
+   "title": "Lunavect：菜单栏监控 Claude/Codex 会话状态",
+   "titleEn": "Lunavect - see which Claude Code or Codex session needs you, from the Mac menu bar",
+   "summary": "Mac 菜单栏工具 Lunavect，集中监控 Claude Code 和 Codex 的多个并行会话，通过状态筛选（如等待权限）快速定位需要人工干预的 AI 编码代理。",
+   "type": "桌面工具",
+   "topic": "Agent 工作流",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-09-29",
+   "score": 6.7,
+   "rel": 7,
    "firstSeen": "2026-09-29"
   },
   {
@@ -1025,7 +1072,8 @@
    "topic": "微调",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/rag_tutorials/llama3.1_local_rag",
@@ -1036,7 +1084,8 @@
    "topic": "RAG 检索增强",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_llm_apps/llm_apps_with_memory_tutorials/llama3_stateful_chat",
@@ -1047,7 +1096,8 @@
    "topic": "带记忆的应用",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1wt6k79/i_built_a_tool_that_turns_my_online_french/",
@@ -1069,6 +1119,21 @@
    "topic": "多 Agent 协作",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
+   "firstSeen": "2026-09-29",
+   "src": "seed"
+  },
+  {
+   "url": "https://jevstiller.pages.dev/posts/the-guarantee/",
+   "title": "Jevstiller：带分歧界限的本地模型蒸馏方案",
+   "titleEn": "Show HN: Jevstiller – Distill Jev into a local model, with a disagreement bound",
+   "summary": "提出将 Jev 模型蒸馏至本地模型的方法，创新点在于引入“分歧界限”概念，确保在模型压缩过程中保持输出一致性，提升本地推理的可靠性。",
+   "type": "模型与推理",
+   "topic": "论文方法",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-09-29",
+   "score": 7.5,
+   "rel": 8,
    "firstSeen": "2026-09-29"
   },
   {
@@ -1091,7 +1156,8 @@
    "topic": "推理优化",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/always_on_agents/always_on_hn_briefing_agent",
@@ -1102,6 +1168,21 @@
    "topic": "常驻 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
+   "firstSeen": "2026-09-29",
+   "src": "seed"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1wt8b9y/ive_spent_last_8_months_building_an_intelligence/",
+   "title": "HYFOS：基于主题投资的结构化智能平台",
+   "titleEn": "I’ve spent last 8 months building an intelligence platform around thematic investing.",
+   "summary": "前交易员开发的 HYFOS 平台，将 SEC 等分散数据转化为结构化上下文，解决散户投资缺乏背景知识的问题，聚焦于 AI、数据中心等主题的深度分析。",
+   "type": "Web 应用",
+   "topic": "数据分析",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-09-29",
+   "score": 5.5,
+   "rel": 5,
    "firstSeen": "2026-09-29"
   },
   {
@@ -1113,7 +1194,8 @@
    "topic": "框架教程",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_llm_apps/chat_with_X_tutorials/chat_with_gmail",
@@ -1124,7 +1206,8 @@
    "topic": "数据问答",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/mcp_ai_agents/github_mcp_agent",
@@ -1135,7 +1218,8 @@
    "topic": "MCP Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/rag_tutorials/agentic_rag_embedding_gemma",
@@ -1146,7 +1230,8 @@
    "topic": "RAG 检索增强",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_llm_apps/llm_finetuning_tutorials/gemma3_finetuning",
@@ -1157,7 +1242,8 @@
    "topic": "微调",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/rag_tutorials/gemini_agentic_rag",
@@ -1168,7 +1254,8 @@
    "topic": "RAG 检索增强",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/starter_ai_agents/multimodal_ai_agent",
@@ -1179,7 +1266,8 @@
    "topic": "入门 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/agent_skills/first-reader",
@@ -1190,7 +1278,8 @@
    "topic": "Agent 技能",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/multi_agent_apps/devpulse_ai",
@@ -1201,7 +1290,8 @@
    "topic": "进阶 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/rag_tutorials/deepseek_local_rag_agent",
@@ -1212,7 +1302,8 @@
    "topic": "RAG 检索增强",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://apps.apple.com/ph/app/daily-planner-zesfy/id6479947874",
@@ -1223,6 +1314,20 @@
    "topic": "效率工具",
    "block": "Show HN",
    "lastSeen": "2026-09-29",
+   "firstSeen": "2026-09-29"
+  },
+  {
+   "url": "https://github.com/ivankovic/codediff",
+   "title": "CodeDiff：支持语法感知的极速代码差异工具",
+   "titleEn": "Show HN: CodeDiff – Fast (<100ms), robust (99.95%) syntax-aware code diff",
+   "summary": "Rust 编写的 CodeDiff 工具，针对 AI 生成代码审查痛点，利用 TreeSitter 解析 24 种语言，实现小于 100ms 且准确率 99.95% 的语法感知差异对比。",
+   "type": "CLI 工具",
+   "topic": "工程实践",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-09-29",
+   "score": 7.3,
+   "rel": 7,
    "firstSeen": "2026-09-29"
   },
   {
@@ -1248,6 +1353,20 @@
    "firstSeen": "2026-09-29"
   },
   {
+   "url": "https://github.com/nickelsec/bough",
+   "title": "Bough：可视化 Vibe Coding 项目进度与成本",
+   "titleEn": "Show HN: Bough, Visualize your vibe coded project: progress, time, cost and more",
+   "summary": "开源工具 Bough 旨在帮助追踪“氛围编程”项目，提供进度、时间、成本等多维度可视化数据，辅助开发者管理由 AI 辅助生成的代码项目状态。",
+   "type": "数据分析",
+   "topic": "工程实践",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-09-29",
+   "score": 5.4,
+   "rel": 6,
+   "firstSeen": "2026-09-29"
+  },
+  {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_llm_apps/chat_with_X_tutorials/chat_with_research_papers",
    "title": "ArXiv 论文对话工具",
    "titleEn": "Chat with Research Papers (ArXiv) (GPT & Llama3)",
@@ -1256,7 +1375,8 @@
    "topic": "数据问答",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1wt641g/looking_for_1020_genai_developers_to_test_a/",
@@ -1289,7 +1409,8 @@
    "topic": "游戏 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/multi_agent_apps/agent_teams/ai_vc_due_diligence_agent_team",
@@ -1300,7 +1421,8 @@
    "topic": "进阶 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/starter_ai_agents/ai_music_generator_agent",
@@ -1311,7 +1433,8 @@
    "topic": "入门 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/multi_agent_apps/agent_teams/ai_sales_intelligence_agent_team",
@@ -1322,7 +1445,8 @@
    "topic": "进阶 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/generative_ui_agents/ai-financial-coach-agent",
@@ -1333,7 +1457,8 @@
    "topic": "生成式 UI",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/voice_ai_agents/ai_audio_tour_agent",
@@ -1344,7 +1469,8 @@
    "topic": "语音 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/single_agent_apps/ai_journalist_agent",
@@ -1355,7 +1481,8 @@
    "topic": "进阶 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/multi_agent_apps/ai_self_evolving_agent",
@@ -1366,7 +1493,8 @@
    "topic": "进阶 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/starter_ai_agents/web_scraping_ai_agent",
@@ -1377,7 +1505,8 @@
    "topic": "入门 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/single_agent_apps/ai_system_architect_r1",
@@ -1388,7 +1517,8 @@
    "topic": "进阶 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/multi_agent_apps/agent_teams/ai_competitor_intelligence_agent_team",
@@ -1399,7 +1529,8 @@
    "topic": "多 Agent 协作",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/multi_agent_apps/ai_news_and_podcast_agents",
@@ -1410,7 +1541,8 @@
    "topic": "进阶 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/single_agent_apps/research_agent_gemini_interaction_api",
@@ -1421,7 +1553,8 @@
    "topic": "进阶 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/generative_ui_agents/ai-dashboard-canvas-agent",
@@ -1432,7 +1565,8 @@
    "topic": "生成式 UI",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/single_agent_apps/ai_movie_production_agent",
@@ -1443,7 +1577,8 @@
    "topic": "进阶 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/multi_agent_apps/agent_teams/ai_game_design_agent_team",
@@ -1454,7 +1589,8 @@
    "topic": "多 Agent 协作",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/single_agent_apps/ai_deep_research_agent",
@@ -1476,7 +1612,8 @@
    "topic": "生成式 UI",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/multi_agent_apps/agent_teams/ai_legal_agent_team",
@@ -1487,7 +1624,8 @@
    "topic": "多 Agent 协作",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/single_agent_apps/ai_fraud_investigation_agent",
@@ -1498,7 +1636,8 @@
    "topic": "进阶 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/mcp_ai_agents/ai_travel_planner_mcp_agent_team",
@@ -1509,7 +1648,8 @@
    "topic": "MCP Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/multi_agent_apps/agent_teams/ai_travel_planner_agent_team",
@@ -1520,7 +1660,8 @@
    "topic": "多 Agent 协作",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/starter_ai_agents/ai_travel_agent",
@@ -1531,7 +1672,8 @@
    "topic": "入门 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/multi_agent_apps/agent_teams/ai_teaching_agent_team",
@@ -1542,7 +1684,8 @@
    "topic": "多 Agent 协作",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/multi_agent_apps/agent_teams/ai_recruitment_agent_team",
@@ -1553,7 +1696,8 @@
    "topic": "多 Agent 协作",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/single_agent_apps/ai_investment_agent",
@@ -1564,7 +1708,8 @@
    "topic": "进阶 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/multi_agent_apps/agent_teams/ai_real_estate_agent_team",
@@ -1575,7 +1720,8 @@
    "topic": "多 Agent 协作",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/multi_agent_apps/ai_mental_wellbeing_agent",
@@ -1586,7 +1732,8 @@
    "topic": "进阶 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/starter_ai_agents/ai_breakup_recovery_agent",
@@ -1597,7 +1744,8 @@
    "topic": "入门 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/single_agent_apps/ai_consultant_agent",
@@ -1608,7 +1756,8 @@
    "topic": "进阶 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/starter_ai_agents/ai_blog_to_podcast_agent",
@@ -1619,7 +1768,8 @@
    "topic": "入门 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/rag_tutorials/ai_blog_search",
@@ -1630,7 +1780,8 @@
    "topic": "RAG 检索增强",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/starter_ai_agents/ai_medical_imaging_agent",
@@ -1641,7 +1792,8 @@
    "topic": "入门 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/single_agent_apps/ai_health_fitness_agent",
@@ -1652,7 +1804,8 @@
    "topic": "进阶 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/single_agent_apps/ai_meeting_agent",
@@ -1663,7 +1816,8 @@
    "topic": "进阶 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/multi_agent_apps/product_launch_intelligence_agent",
@@ -1674,7 +1828,8 @@
    "topic": "进阶 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/autonomous_game_playing_agent_apps/ai_tic_tac_toe_agent",
@@ -1685,7 +1840,8 @@
    "topic": "游戏 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/starter_ai_agents/ai_x402_paying_agent",
@@ -1696,7 +1852,8 @@
    "topic": "入门 Agent",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/generative_ui_agents/ai-shadcn-component-generator",
@@ -1707,7 +1864,8 @@
    "topic": "生成式 UI",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/generative_ui_agents/ai-mcp-app-builder",
@@ -1718,7 +1876,8 @@
    "topic": "生成式 UI",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/multi_agent_apps/agent_teams/ag2_adaptive_research_team",
@@ -1729,6 +1888,21 @@
    "topic": "多 Agent 协作",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
+   "firstSeen": "2026-09-29",
+   "src": "seed"
+  },
+  {
+   "url": "https://fata.app/daily",
+   "title": "5 分钟每日编程测验防止 AI 侵蚀编程技能",
+   "titleEn": "Show HN: 5 mins daily programming quiz to prevent skill rot from AI coding",
+   "summary": "开发者发布 fata.app，提供无需登录的每日 TypeScript 等语言编程测验，旨在防止开发者因过度依赖 AI 编码导致基础技能退化，用户可分享挑战结果。",
+   "type": "Web 应用",
+   "topic": "效率工具",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-09-29",
+   "score": 5.4,
+   "rel": 6,
    "firstSeen": "2026-09-29"
   },
   {
@@ -1740,7 +1914,8 @@
    "topic": "数据问答",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/multi_agent_apps/agent_teams/ai_finance_agent_team",
@@ -1751,7 +1926,8 @@
    "topic": "多 Agent 协作",
    "block": "案例库种子",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "src": "seed"
   }
  ]
 }
