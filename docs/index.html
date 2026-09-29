@@ -74,7 +74,9 @@ h1 .hl{color:var(--acc);text-shadow:0 0 22px rgba(46,230,168,.5),0 0 3px rgba(46
 .stat{display:grid;grid-template-columns:repeat(auto-fit,minmax(122px,1fr));gap:1px;background:var(--line);border-top:1px solid var(--line)}
 .stat div{background:var(--panel);padding:11px 14px}
 .stat .k{font-family:var(--mono);font-size:9.5px;color:var(--fg3);letter-spacing:.19em;text-transform:uppercase;margin-bottom:3px}
-.stat .v{font-family:var(--mono);font-size:14.5px;color:var(--fg);font-variant-numeric:tabular-nums;word-break:break-all;line-height:1.35}
+.stat .v{font-family:var(--mono);font-size:14.5px;color:var(--fg);font-variant-numeric:tabular-nums;overflow-wrap:anywhere;line-height:1.35}
+.stat .v.sm{font-size:11.5px;line-height:1.45}
+.stat .v.nowrap{white-space:nowrap;font-size:13px}
 .stat .v.g{color:var(--acc)}.stat .v.a{color:var(--amber)}.stat .v.r{color:var(--red)}
 
 /* ── Tab ──────────────────────────────────────────── */
@@ -158,6 +160,7 @@ details.more .list{padding:0 10px 12px}
 .case .cs{color:var(--fg2);font-size:12.2px;line-height:1.65;flex:1}
 .case .cf{display:flex;gap:7px;align-items:center;flex-wrap:wrap;font-family:var(--mono);font-size:10px;color:var(--fg3);border-top:1px dashed var(--line2);padding-top:8px}
 .case .cf .ty{color:var(--acc);border:1px solid rgba(46,230,168,.26);border-radius:3px;padding:0 5px}
+.case .cf .ty.none{color:var(--fg3);border-color:var(--line2)}
 
 .empty{padding:44px 18px;text-align:center;font-family:var(--mono);color:var(--fg3);font-size:12.5px;line-height:2}
 .empty .b{color:var(--fg4);font-size:26px;display:block;margin-bottom:10px}
@@ -239,14 +242,15 @@ function host(u){ try { return new URL(u).hostname.replace(/^www\./,''); } catch
 function renderStat(d, casesN){
   var L = (d.counts && d.counts.byLevel) || {};
   var deg = (d.degraded || []).length;
+  var modelTxt = String(d.translator || '—');
   var rows = [
-    ['generated', esc(d.generated_at || '—'), ''],
+    ['generated', esc(d.generated_at || '—'), 'nowrap'],
     ['items', esc((d.counts && d.counts.total) || 0), 'g'],
     ['heavy / watch', (L.top || 0) + ' / ' + (L.watch || 0), 'a'],
     ['lanes', (d.lanes || []).length, ''],
     ['repeat', esc((d.counts && d.counts.repeat) || 0), ''],
     ['cases', casesN == null ? '…' : casesN, ''],
-    ['model', esc(d.translator || '—'), ''],
+    ['model', esc(modelTxt), modelTxt.length > 20 ? 'sm' : ''],
     ['degraded', deg, deg ? 'r' : 'g']
   ];
   $('#stat').innerHTML = rows.map(function(r){
@@ -353,8 +357,11 @@ function renderCases(){
     box.innerHTML = '<div class="empty"><span class="b">…</span>正在读取 data/cases.json</div>';
     return;
   }
-  var all = CASES.cases || [], types = CASES.types || [];
-  var list = all.filter(function(c){ return caseType === 'all' || c.type === caseType; });
+  var all = CASES.cases || [];
+  var types = (CASES.types || []).filter(function(t){ return t; });
+  var keyOf = function(c){ return c.type || ''; };
+  var nNone = all.filter(function(c){ return !c.type; }).length;
+  var list = all.filter(function(c){ return caseType === 'all' || keyOf(c) === caseType; });
   if (caseQ){
     var q = caseQ.toLowerCase();
     list = list.filter(function(c){
@@ -369,6 +376,10 @@ function renderCases(){
     chips.push('<button class="chip' + (caseType === t ? ' on' : '') + '" data-type="' + attr(t) + '">' +
       esc(t) + '<span class="c">' + n + '</span></button>');
   });
+  if (nNone){
+    chips.push('<button class="chip' + (caseType === '' ? ' on' : '') +
+      '" data-type="">未分类<span class="c">' + nNone + '</span></button>');
+  }
 
   box.innerHTML =
     '<div class="term" style="margin-top:14px">' +
@@ -385,7 +396,7 @@ function renderCases(){
             (c.titleEn ? '<div class="cen">' + esc(c.titleEn) + '</div>' : '') +
             (c.summary ? '<div class="cs">' + esc(c.summary) + '</div>' : '') +
             '<div class="cf">' +
-              (c.type ? '<span class="ty">' + esc(c.type) + '</span>' : '') +
+              '<span class="ty' + (c.type ? '' : ' none') + '">' + esc(c.type || '未分类') + '</span>' +
               '<span>' + esc(c.block || host(c.url)) + '</span>' +
               '<span style="margin-left:auto;opacity:.7">' + esc(c.lastSeen || '') + '</span>' +
             '</div></article>';
