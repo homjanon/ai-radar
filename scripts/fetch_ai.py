@@ -415,13 +415,14 @@ def parse_awesome_list(body, cfg):
         if not title or rel.startswith("http"):
             continue
         rel = rel.rstrip("/")
-        t = AWESOME_SECTION_CN.get(section.lower(), section or "其他")
+        fine = AWESOME_SECTION_CN.get(section.lower(), section or "其他")
         out.append({
             "title": title,
             "desc": desc or title,
             "url": f"https://github.com/{repo}/tree/{branch}/{rel}",
             "dt": None,
-            "apptype": t,          # 节名即分类
+            "apptype": AWESOME_SECTION_COARSE.get(section.lower(), "效率工具"),  # 筛选轴
+            "topic": fine,          # 原节名（如「进阶 Agent」），细标签、供展示
         })
     # 按分类轮转取样：README 里各节长度悬殊（RAG 21 条 vs 微调 2 条），
     # 直接取前 N 条会让大节挤掉其它形态，案例库就失衡了。
@@ -721,6 +722,30 @@ def llm_enhance(items, tcfg):
     return out, failed
 
 
+# 粗分类（案例库的筛选轴）。两套分类曾经并存 —— 种子源用 README 节名（"进阶 Agent"、
+# "RAG 检索增强"…），LLM 返回的是应用形态词表，结果案例库冒出 25 个筛选项，手机上要
+# 滚三四行才看完，等于没法筛。改法：apptype 统一走这张粗表（筛选轴上），原节名保留到
+# topic 字段（展示用），信息不丢、筛选可用。
+AWESOME_SECTION_COARSE = {
+    "agent skills": "Agent 技能",
+    "starter ai agents": "Agent 工作流",
+    "advanced ai agents": "Agent 工作流",
+    "always-on agents": "Agent 工作流",
+    "multi-agent teams": "Agent 工作流",
+    "voice ai agents": "Agent 工作流",
+    "autonomous game-playing agents": "Agent 工作流",
+    "mcp ai agents": "Agent 工作流",
+    "generative ui and agentic frontends": "Web 应用",
+    "rag (retrieval augmented generation)": "RAG 检索增强",
+    "chat with x": "RAG 检索增强",
+    "llm apps with memory": "RAG 检索增强",
+    "ai browser tools": "浏览器插件",
+    "llm optimization tools": "模型与推理",
+    "llm fine-tuning": "模型与推理",
+    "ai agent framework crash courses": "教程与学习",
+}
+
+
 # 应用形态的兜底判定。为什么必须有：LLM 对「额外输出一个字段」的服从度不稳定 ——
 # 实测首轮 6 个含 type 指令的批次**全部没返回** type，38 条 apps 条目全是空的。
 # 而「按形态筛选」正是案例库的核心用途，不能押在模型身上。词表与给 LLM 的完全一致，
@@ -1000,7 +1025,7 @@ def main():
                 i["titleCn"] = prev["title"]
             if prev.get("summary"):
                 i["summary"] = prev["summary"]
-            if prev.get("type"):
+            if prev.get("type") and not i.get("apptype"):
                 i["apptype"] = prev["type"]
         lib_new.append(i)
     if lib_new:
