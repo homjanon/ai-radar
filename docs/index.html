@@ -397,6 +397,7 @@ function renderCases(){
             (c.summary ? '<div class="cs">' + esc(c.summary) + '</div>' : '') +
             '<div class="cf">' +
               '<span class="ty' + (c.type ? '' : ' none') + '">' + esc(c.type || '未分类') + '</span>' +
+              (c.topic ? '<span style="color:var(--fg3)">' + esc(c.topic) + '</span>' : '') +
               '<span>' + esc(c.block || host(c.url)) + '</span>' +
               '<span style="margin-left:auto;opacity:.7">' + esc(c.lastSeen || '') + '</span>' +
             '</div></article>';
