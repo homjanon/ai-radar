@@ -33,6 +33,7 @@
   --l-model:#0369a1; --l-official:#6d28d9; --l-apps:#0f766e; --l-paper:#b45309;
   --l-community:#be185d; --l-media:#a16207; --l-cn:#b91c1c;
   /* 以下为深/浅两版差异最大的一组：深色靠「发光」,浅色必须换成「着色」 */
+  --on-acc:#fbf8f2;      /* 强调底上的文字色（浅色主题用近白；深色主题换成深底） */
   --title:#26221c;
   --grid:rgba(80,64,42,.055);
   --scan:rgba(120,104,80,.05);
@@ -117,7 +118,7 @@ h1 .hl{color:var(--acc);text-shadow:var(--hl-shadow)}
 .bar .lbl{font-family:var(--mono);font-size:10px;color:var(--fg3);letter-spacing:.18em;text-transform:uppercase;flex:0 0 auto}
 .chip{font-family:var(--mono);font-size:11.5px;cursor:pointer;user-select:none;color:var(--fg2);background:var(--chip-bg);border:1px solid var(--chip-line);border-radius:3px;padding:3px 10px;transition:.15s;white-space:nowrap}
 .chip:hover{color:var(--fg);border-color:var(--line3);background:var(--chip-bg-h)}
-.chip.on{color:var(--bg);background:var(--acc);border-color:var(--acc);font-weight:600}
+.chip.on{color:var(--on-acc);background:var(--acc);border-color:var(--acc);font-weight:600}
 .chip .c{opacity:.62;margin-left:5px;font-size:10.5px}
 .dot{width:7px;height:7px;border-radius:2px;display:inline-block;margin-right:6px;vertical-align:0}
 .search{font-family:var(--mono);font-size:12.5px;color:var(--fg);background:var(--bg);border:1px solid var(--line2);border-radius:3px;padding:5px 10px;outline:none;flex:1 1 190px;min-width:120px}
@@ -158,11 +159,11 @@ h1 .hl{color:var(--acc);text-shadow:var(--hl-shadow)}
 .it .meta .lv{font-weight:700;letter-spacing:.06em}
 .it .meta .lv.top{color:var(--red);border-color:var(--red-line);background:var(--red-tint)}
 .it .meta .lv.watch{color:var(--amber);border-color:var(--amber-line);background:var(--amber-tint)}
-.it .meta .sc{color:var(--fg4)}
+.it .meta .sc{color:var(--fg3)}
 .it .meta .sc b{color:var(--fg2);font-weight:600}
 .it .meta .tp{color:var(--acc2);border-color:var(--acc2-line);background:var(--acc2-tint)}
 .it .meta .at{color:var(--acc);border-color:var(--acc-line);background:var(--tint-a)}
-.it .meta .sta{color:var(--fg4)}
+.it .meta .sta{color:var(--fg3)}
 
 details.more{border:1px solid var(--line);border-radius:6px;background:var(--panel);margin-top:4px}
 details.more>summary{cursor:pointer;list-style:none;padding:11px 14px;font-family:var(--mono);font-size:11.5px;color:var(--fg3);letter-spacing:.08em}
@@ -180,7 +181,7 @@ details.more .list{padding:0 10px 12px}
 .case .ct{font-size:14px;font-weight:600;color:var(--title);line-height:1.5}
 .case .ct a{color:inherit;text-decoration:none}
 .case .ct a:hover{color:var(--acc)}
-.case .cen{font-family:var(--mono);font-size:10px;color:var(--fg4);line-height:1.45;word-break:break-word}
+.case .cen{font-family:var(--mono);font-size:10px;color:var(--fg3);line-height:1.45;word-break:break-word}
 .case .cs{color:var(--fg2);font-size:12.6px;line-height:1.7;flex:1}
 .case .cf{display:flex;gap:7px;align-items:center;flex-wrap:wrap;font-family:var(--mono);font-size:10px;color:var(--fg3);border-top:1px dashed var(--line2);padding-top:8px}
 .case .cf .ty{color:var(--acc);border:1px solid var(--acc-line);border-radius:3px;padding:0 5px}
@@ -189,7 +190,7 @@ details.more .list{padding:0 10px 12px}
 .empty{padding:44px 18px;text-align:center;font-family:var(--mono);color:var(--fg3);font-size:12.5px;line-height:2}
 .empty .b{color:var(--fg4);font-size:26px;display:block;margin-bottom:10px}
 
-.ft{margin-top:34px;padding-top:14px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10.5px;color:var(--fg4);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.ft{margin-top:34px;padding-top:14px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10.5px;color:var(--fg3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .hide{display:none!important}
 
 @media(max-width:640px){
