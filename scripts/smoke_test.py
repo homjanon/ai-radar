@@ -11,6 +11,7 @@
   · 双通路与 desc 门槛、时间窗保底、跨源去重、跨日折叠
   · library_only 源只进案例库、不进简报
   · LLM 增强两条路径：① 无 Key 全降级 ② 正常返回（含 want_type 分组）
+  · 案例库入库门槛（低质 apps 条目只进简报、不进库；library_only 种子无条件入库）
   · 案例库累积与缓存复用（第二次运行应命中缓存、不重复入库）
   · 产物字段无内部标记外泄（_lib / _want_type / _skip_llm）
 
@@ -55,6 +56,9 @@ FIX = {
     "https://www.v2ex.com/feed/tab/creative.xml": rss([
         ("我用 AI 做了个记账小程序", "把流水截图丢进去自动分类。" * 20, 1),
         ("分享一个自用的论文摘要插件", "在 arXiv 页面就地叠加中文摘要。" * 20, 5),
+        # 故意混入一条与 AI 无关的数码推荐（复刻线上实测：少数派的「耳机剁手清单」）。
+        # 它应该**进简报、不进案例库** —— 用来守门案例库的入库门槛。
+        ("派早报 | 蓝牙耳机剁手清单", "与 AI 无关的消费电子推荐。" * 20, 2),
     ]),
     "https://hnrss.org/show": rss([
         ("Show HN: I built a local-first notes app",
@@ -142,8 +146,11 @@ def run(tmp, llm_stub):
                 if it["_translate_title"]:
                     it["titleCn"] = "【中】" + it["title"][:20]
                 it["summary"] = "摘要：" + it["title"][:30]
-                it["score"] = {"rel": 9 if i == 0 else 6, "info": 8 if i == 0 else 6,
-                               "fresh": 9 if i == 0 else 5}
+                # 与 AI 无关的条目给 rel=0（复刻线上实测的低质 apps 条目）
+                junk = "耳机" in it["title"]
+                it["score"] = {"rel": 0 if junk else (9 if i == 0 else 6),
+                               "info": 1 if junk else (8 if i == 0 else 6),
+                               "fresh": 2 if junk else (9 if i == 0 else 5)}
                 it["topic"] = "测试主题"
                 if want_type:
                     it["apptype"] = "Web 应用"
@@ -191,6 +198,12 @@ def main():
         check(n_kind >= 2, f"兜底分类有区分度（{n_kind} 种形态）", problems)
         seed = [c for c in cl if c.get("block") == "案例库种子"]
         check(len(seed) >= 4, f"library_only 源进了案例库（{len(seed)} 条）", problems)
+        check(all(c.get("src") in ("seed", "apps") for c in cl),
+              "案例库记录都带 src（淘汰时据此保护种子）", problems)
+        check(all(c.get("src") == "seed" for c in cl if c.get("block") == "案例库种子"),
+              "种子条目 src=seed", problems)
+        check(all("score" in c for c in cl if c.get("src") == "apps"),
+              "apps 案例记录带 score（淘汰按分数排，不按 lastSeen）", problems)
         check(all("awesome-llm-apps" not in (i.get("url") or "") for i in items),
               "library_only 条目未混入简报", problems)
         internal = {"_lib", "_want_type", "_skip_llm", "_translate_title", "dt"}
@@ -247,6 +260,21 @@ def main():
             check(lv["top"] >= 1, "至少有一条重磅", problems)
             # 排序：分级优先（首屏第一条必须是 top）
             check(items[0]["level"] == "top", "首屏第一条是重磅", problems)
+            # ── 案例库入库门槛：与 AI 无关的低质条目必须「进简报、不进库」──
+            # 简报要宽（不漏信息），案例库要严（宁缺毋滥），这是两者唯一的规则差异。
+            cl2 = json.load(io.open(os.path.join(tmp2, "data", "cases.json"),
+                                    encoding="utf-8"))["cases"]
+            junk = [i for i in items if "耳机" in i["title"]]
+            check(len(junk) == 1, "低质 apps 条目仍留在简报里（简报要宽）", problems)
+            check(not any("耳机" in (c.get("title") or "") for c in cl2),
+                  "低质 apps 条目被案例库挡掉（案例库要严）", problems)
+            apps_c = [c for c in cl2 if c.get("src") == "apps"]
+            check(bool(apps_c) and all(c.get("score", 0) >= 5.0 for c in apps_c),
+                  f"库里 apps 条目分数均达门槛（{len(apps_c)} 条）", problems)
+            check(all(c.get("rel", 99) >= 3 for c in apps_c),
+                  "库里 apps 条目 rel 均达门槛", problems)
+            check(any(c.get("src") == "seed" for c in cl2),
+                  "种子与 apps 条目在库里共存", problems)
         finally:
             shutil.rmtree(tmp2, ignore_errors=True)
 
