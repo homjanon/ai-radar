@@ -30,6 +30,10 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import fetch_ai as F          # noqa: E402
 
+# ⚠️ run() 会把 F._call_llm_batch 换成桩（各用例共用），所以想测**真实**的批调用逻辑
+# （如配额熔断）必须提前抓住原始引用 —— 否则测到的是桩，断言会假通过。
+_REAL_BATCH = F._call_llm_batch
+
 NOW = datetime.datetime.now(F.UTC)
 
 
@@ -320,6 +324,33 @@ def main():
         check(P.F is F or P.F.PARSERS is F.PARSERS,
               "probe_sources 复用 fetch_ai 的 PARSERS", problems)
         check(len(F.PARSERS) == 5, f"解析器注册表 5 项（{sorted(F.PARSERS)}）", problems)
+
+        # ---------- 用例 4b：模型配额熔断与 429 诊断 ----------
+        # 实测教训：gemini-3-flash 额度耗尽后若不熔断，每批都会再去撞一次 429
+        # （一次运行白撞 7 次）。这条断言保证「已熔断的模型不再发起任何请求」。
+        print("\n[4b/4] 模型配额熔断与 429 诊断")
+        check(_REAL_BATCH is not F._call_llm_batch,
+              "本用例用的是**原始**批调用（run() 已把模块属性换成桩）", problems)
+        check(F._is_quota_err("HTTP Error 429: Too Many Requests"), "识别 429 为配额类", problems)
+        check(F._is_quota_err("Resource exhausted: quota exceeded"), "识别 quota 字样", problems)
+        check(not F._is_quota_err("HTTP Error 500: Internal Server Error"),
+              "500 不算配额类（应继续尝试其它模型）", problems)
+        import io as _io
+        import urllib.error as _ue
+        _e = _ue.HTTPError("https://x/v1/chat/completions", 429, "Too Many Requests", {},
+                           _io.BytesIO(b'{"error":{"message":"Quota exceeded for model gemini-3-flash"}}'))
+        check("Quota exceeded" in F._err_detail(_e),
+              "429 的响应体被带进日志（否则只能看到 Too Many Requests）", problems)
+        _fake = {"models": [{"name": "smoke-dead", "model": "x",
+                             "base": "https://invalid.example", "key_env": "SMOKE_KEY"}]}
+        os.environ["SMOKE_KEY"] = "k"
+        F._DEAD_MODELS.add("smoke-dead")
+        _n, _ok, _tried = _REAL_BATCH(
+            [{"title": "t", "desc": "d", "_translate_title": False}], _fake, mode="summarize")
+        check((not _ok) and _tried == 0,
+              f"已熔断的模型不再发起请求（tried={_tried}，应为 0）", problems)
+        F._DEAD_MODELS.discard("smoke-dead")
+        os.environ.pop("SMOKE_KEY", None)
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
 
