@@ -1012,8 +1012,11 @@ def main():
             i["titleCn"] = ""
     assign_levels(merged, tcfg)
     lvl_rank = {"top": 0, "watch": 1, "normal": 2}
-    merged.sort(key=lambda x: (lane_order.index(x["lane"]) if x["lane"] in lane_order else 99,
-                               lvl_rank.get(x["level"], 9), -x.get("total", 0)))
+    # 全局按「分级 → 总分 → 新鲜度」排。原来以车道为主键，结果是首屏「重磅」被
+    # 单条车道的条目按车道聚成一堆（实测：前 7 条全是模型发布）。首屏最上面
+    # 应该是当下最该看的那几条，与来自哪条车道无关；车道筛选交给前端 chip。
+    merged.sort(key=lambda x: (lvl_rank.get(x["level"], 9), -x.get("total", 0),
+                               x.get("ageH") if (x.get("ageH") or -1) >= 0 else 9999))
     n_lvl = {k: sum(1 for i in merged if i["level"] == k) for k in ("top", "watch", "normal")}
 
     # ⑨ 产物（ageH 保留给前端做"x 小时前"显示；-1 表示源未提供时间）
