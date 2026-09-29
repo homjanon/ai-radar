@@ -240,6 +240,31 @@ def main():
               f"二次运行案例库命中缓存、不新增（{n_before} → {len(cases2['cases'])}）", problems)
         check(any(i.get("isRepeat") for i in d2["items"]), "跨日折叠：二次运行识别出重复", problems)
 
+        # ---------- 用例 1b：老记录补分（换口径前入库的条目没有 score） ----------
+        # 没有这一步，老记录就永远判不了质量、永久留在库里（实测漏了 21 条，含一条
+        # 与 AI 无关的「社媒营销策略」）。
+        print("\n[1b/4] 案例库补分：无分老记录 → 补分后按门槛判")
+        tmp3 = tempfile.mkdtemp(prefix="airadar-smoke3-")
+        try:
+            run(tmp3, llm_stub=False)                      # 先用无 LLM 造一个库
+            cp3 = os.path.join(tmp3, "data", "cases.json")
+            j3 = json.load(io.open(cp3, encoding="utf-8"))
+            j3["cases"].append({                           # 注入一条"换口径前"的老记录
+                "url": "https://example.com/legacy-junk", "title": "派早报 | 蓝牙耳机剁手清单",
+                "titleEn": "", "summary": "与 AI 无关的消费电子推荐。", "type": "其他",
+                "topic": "", "block": "少数派",
+                "firstSeen": "2026-01-01", "lastSeen": "2026-01-01",
+            })
+            io.open(cp3, "w", encoding="utf-8").write(json.dumps(j3, ensure_ascii=False))
+            run(tmp3, llm_stub=True)                       # 第二次跑到 LLM → 触发补分
+            c3 = json.load(io.open(cp3, encoding="utf-8"))["cases"]
+            check(not any("耳机" in (r.get("title") or "") for r in c3),
+                  "无分老记录补分后被门槛剔除（不再永久留存）", problems)
+            check(any(isinstance(r.get("score"), (int, float)) for r in c3 if not r.get("src") == "seed"),
+                  "补分结果写回了 score 字段", problems)
+        finally:
+            shutil.rmtree(tmp3, ignore_errors=True)
+
         # ---------- 用例 2：LLM 正常返回 ----------
         print("\n[2/4] LLM 正常返回（含 want_type 分组）")
         tmp2 = tempfile.mkdtemp(prefix="airadar-smoke2-")
