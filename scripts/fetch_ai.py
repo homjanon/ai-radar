@@ -1186,6 +1186,12 @@ def main():
                 added += 1
         lib = sorted(by_url.values(),
                      key=lambda c: (c.get("lastSeen") or "", c.get("title") or ""), reverse=True)
+        # 整库归一化：换过分类口径后，URL 已失效的老条目不会再被上面的循环碰到，
+        # 只靠「命中即更新」会留下永久孤儿（实测：「进阶 Agent」这种旧细分类名长期占着
+        # 一个筛选位、底下只有 1 条）。落盘前统一折算。
+        for _c in lib:
+            _old = _c.get("type") or ""
+            _c["type"] = COARSE_BY_FINE.get(_old, _old)
         maxn = int(cases_cfg.get("max", 400))
         trimmed = max(0, len(lib) - maxn)
         lib = lib[:maxn]
