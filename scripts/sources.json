@@ -18,11 +18,11 @@
     "batch_size": 25,
     "level_thresholds": { "top": 8.0, "watch": 6.5, "kw_floor": 6.5 },
     "quota": { "top_ratio": 0.12, "top_min": 4, "top_max": 15, "watch_ratio": 0.35 },
-    "note": "P2 LLM 增强：中文摘要 + 英文标题中文化 + 三维打分(rel/info/fresh) + 主题标签。按语言拆批（英文 translate / 中文 summarize），两种指令绝不混批——news-feed 实测过混批会导致英文标题漏译。模型链逐档降级，全失败则保留原文（绝不空窗）。level_thresholds 为加权总分下限（rel.45/info.30/fresh.25），quota 为名额上限：分级同时受「分数下限 + 名额」约束，否则模型某天整体给分偏高时重磅会失控（实测首轮 top 达 50/90，占 56%）。命中 TOP_KW 硬规则关键词的直接判 top，不受名额限制。batch_size=25 兼顾成功率与调用次数（gemini 免费额度 20 RPD，要留给 news-feed）。",
+    "note": "★ 链序（2026-09-29 调整）：agnes-3.0-flash 免费不限量故放首位；两个 gemini 居中（额度互相独立、互为备份）；agnes-2.5-flash 兜底。原 gemini-3-flash 排首位，但它的免费额度（约 20 RPD，且与 news-feed 共用同一个 GEMINI_API_KEY）在一天多跑几轮后必然耗尽 —— 实测同一天从「处理 216 条、仅 2 批失败」一路退化到「每批全 429」，而排首位的模型失效时会对每一批都重撞一次。改链序 + 配额熔断后，失效模型当轮最多只损失 1 次请求。★ P2 LLM 增强：中文摘要 + 英文标题中文化 + 三维打分(rel/info/fresh) + 主题标签。按语言拆批（英文 translate / 中文 summarize），两种指令绝不混批——news-feed 实测过混批会导致英文标题漏译。模型链逐档降级，全失败则保留原文（绝不空窗）。level_thresholds 为加权总分下限（rel.45/info.30/fresh.25），quota 为名额上限：分级同时受「分数下限 + 名额」约束，否则模型某天整体给分偏高时重磅会失控（实测首轮 top 达 50/90，占 56%）。命中 TOP_KW 硬规则关键词的直接判 top，不受名额限制。batch_size=25 兼顾成功率与调用次数（gemini 免费额度 20 RPD，要留给 news-feed）。",
     "models": [
-      { "name": "gemini-3-flash", "base": "https://generativelanguage.googleapis.com/v1beta/openai", "model": "gemini-3-flash-preview", "key_env": "GEMINI_API_KEY" },
       { "name": "agnes-3.0-flash", "base": "https://apihub.agnes-ai.com/v1", "model": "agnes-3.0-flash", "key_env": "AGNES_API_KEY" },
       { "name": "gemini-3.5-flash-lite", "base": "https://generativelanguage.googleapis.com/v1beta/openai", "model": "gemini-3.5-flash-lite", "key_env": "GEMINI_API_KEY" },
+      { "name": "gemini-3-flash", "base": "https://generativelanguage.googleapis.com/v1beta/openai", "model": "gemini-3-flash-preview", "key_env": "GEMINI_API_KEY" },
       { "name": "agnes-2.5-flash", "base": "https://apihub.agnes-ai.com/v1", "model": "agnes-2.5-flash", "key_env": "AGNES_API_KEY" }
     ],
     "models_note": "四档链，与 portfolio 的第 ④ 档对齐（news-feed 为三档）。全部复用现有 GEMINI_API_KEY / AGNES_API_KEY，无需新增 Secret。⚠️ 参考 portfolio 实测：agnes-3.0-flash 是推理模型，超长输入（58K tokens）会 90s 超时 —— 本管线每批仅 25 条（约 12K 字符），实测正常；agnes-2.5-flash 则作为长输入场景的稳妥兜底。⚠️ Gemini 3 系无法关闭思考（官方限制），只能靠降级链兜。"
@@ -32,9 +32,9 @@
     "file": "data/cases.json",
     "max": 600,
     "min_total": 5.0,
-    "min_rel": 3,
+    "min_rel": 5,
     "rescore_max": 30,
-    "note": "「应用案例库」：把 apps 车道的条目按 url 去重累积成可检索的库。与每日简报的分工——简报是「今天有什么新东西」（会滚走，要宽不漏），案例库是「攒下来的作品集」（可反复翻，要严不滥）。★ 入库门槛 min_total/min_rel：apps 条目须过分数门槛，library_only 种子无条件入库。实测不过滤时 38 条里 20 条 total<5，把「耳机剁手清单 / 手机评测」这类与 AI 无关的推荐流内容也收了进来（少数派是「效率工具+数码生活」版块，非 AI 源）。max 上限按**分数**淘汰、种子永久保护，不按 lastSeen —— 后者是「新的留老的扔」，与作品集用途相反。★ rescore_max：换口径前入库的老记录没有 score，无法判质量；每次运行自动补一小批分（上限此值）后立即按门槛判，自然收敛，不需要人工做一次性迁移。"
+    "note": "「应用案例库」：把 apps 车道的条目按 url 去重累积成可检索的库。与每日简报的分工——简报是「今天有什么新东西」（会滚走，要宽不漏），案例库是「攒下来的作品集」（可反复翻，要严不滥）。★ 入库门槛 min_total/min_rel（现为 5.0 / 5）：apps 条目须过分数门槛，library_only 种子无条件入库。min_rel 由 3 收到 5 —— 实测 rel=4 的多是「OS 评测 / .NET WASM 运行时 / 3D 打印机器人」这类与 AI 关联很弱的东西，对「学别人的 AI 应用」没有价值；收紧后日入库约 17→14 条。实测不过滤时 38 条里 20 条 total<5，把「耳机剁手清单 / 手机评测」这类与 AI 无关的推荐流内容也收了进来（少数派是「效率工具+数码生活」版块，非 AI 源）。max 上限按**分数**淘汰、种子永久保护，不按 lastSeen —— 后者是「新的留老的扔」，与作品集用途相反。★ rescore_max：换口径前入库的老记录没有 score，无法判质量；每次运行自动补一小批分（上限此值）后立即按门槛判，自然收敛，不需要人工做一次性迁移。"
   },
   "lanes": [
     { "id": "model", "name": "模型发布", "weight": 9 },
