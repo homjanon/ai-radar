@@ -1240,6 +1240,40 @@ def main():
                 rec["firstSeen"] = doc["date"]
                 by_url[u] = rec
                 added += 1
+
+        # 补分：换口径前入库的老记录**没有 score**，就无从判质量 —— 它们会永久躺在库里。
+        # 实测：本轮 38 条里 10 条因「今天又被抓到且不达标」被剔除，但余下 21 条没再被任何
+        # 源抓到，永远判不了。每次运行补一小批（上限 rescore_max）、补完立刻按门槛判，
+        # 自然收敛：既不用人工做一次性迁移，也不会一次烧掉全部额度。
+        rescore_max = int(cases_cfg.get("rescore_max", 30))
+        todo = [c for c in by_url.values()
+                if not _is_seed(c)
+                and not isinstance(c.get("score"), (int, float))][:rescore_max]
+        n_scored = 0
+        if todo and tcfg.get("enabled", True):
+            pseudo = []
+            for c in todo:
+                ps = {"title": c.get("titleEn") or c.get("title") or "",
+                      "desc": (c.get("summary") or "")[:1200],
+                      "lane": "apps", "block": c.get("block") or "",
+                      "url": c.get("url") or "", "source": c.get("block") or ""}
+                ps["_translate_title"] = not re.search(r"[\u4e00-\u9fff]", ps["title"])
+                ps["_c"] = c
+                pseudo.append(ps)
+            log(f"🩹 案例库补分：{len(pseudo)} 条老记录无分数（换口径前入库），走 LLM 补一次")
+            _bsz = int(tcfg.get("batch_size", 25))
+            for _k in range(0, len(pseudo), _bsz):
+                _call_llm_batch(pseudo[_k:_k + _bsz], tcfg, mode="summarize")
+            for ps in pseudo:
+                c = ps.pop("_c")
+                if not ps.get("score"):
+                    continue
+                c["score"] = _total_of(ps, tcfg)
+                c["rel"] = int(ps["score"].get("rel", 0))
+                if ps.get("summary") and len(ps["summary"]) > len(c.get("summary") or ""):
+                    c["summary"] = ps["summary"][:300]
+                n_scored += 1
+            log(f"   补分成功 {n_scored}/{len(pseudo)}（随后按同一门槛判去留）")
         # 存量清理：库里**已存在**但不达标的条目必须显式剔掉 —— 它们在 lib_cache 里，
         # 只做「不新增」不删就会永久留存（实测首轮 38 条全进，含 20 条低分）。
         cut = {i["url"] for i in merged_all
@@ -1280,6 +1314,7 @@ def main():
                        "cases": lib}, f, ensure_ascii=False, indent=1)
         n_seed = sum(1 for c in lib if _is_seed(c))
         log(f"📚 案例库：共 {len(lib)} 条（种子 {n_seed} · 新增 {added} · 当日过滤 {n_cut}"
+            + (f" · 补分 {n_scored}" if n_scored else "")
             + (f" · 裁剪 {trimmed}" if trimmed else "") + "）→ data/cases.json")
 
     log("-" * 100)
