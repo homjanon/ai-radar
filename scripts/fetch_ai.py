@@ -789,6 +789,30 @@ def guess_apptype(it):
     return "效率工具"
 
 
+def _is_seed(c):
+    """种子条目 = library_only 源（awesome-llm-apps 的人工精选清单）。
+    优先看落盘时写的 src；老记录没这个字段时退回 block 名。"""
+    return c.get("src") == "seed" or c.get("block") == "案例库种子"
+
+
+def _keep_case(c, min_total, min_rel):
+    """存量条目的留存判定（只对非种子生效）。
+
+    为什么必须有这一步：入库门槛只挡「新增」是不够的 —— 库里已有的低质条目躺在
+    缓存里，不显式剔除就会永久留着（实测首轮不过滤，38 条全进、含 20 条 total<5）。
+    老记录若没写 score，无法判断 ⇒ 保留（宁可不误杀）。
+    """
+    if _is_seed(c):
+        return True
+    s = c.get("score")
+    if not isinstance(s, (int, float)):
+        return True
+    if s < min_total:
+        return False
+    r = c.get("rel")
+    return not (isinstance(r, (int, float)) and r < min_rel)
+
+
 # 重磅关键词（硬规则提级）：只保留**高精度**的词 —— 「发布 / 推出 / 政策」这类太常见，
 # 会把"发布一个活动计划"也提成重磅，那类判断交给 LLM 分数。命中即判 top，
 # 保证「我关心的那类事」一定浮到首屏，不受模型某次给分偏低的影响。
@@ -1160,7 +1184,30 @@ def main():
     #     案例库回答「这段时间攒下了哪些作品」（可反复翻、可按形态筛选）。
     if cases_cfg.get("enabled", True):
         by_url = dict(lib_cache)
-        fresh = [i for i in merged_all if i.get("_lib") or i["lane"] == "apps"]
+        # 入库门槛：**简报要宽（不漏），案例库要严（宁缺毋滥）**。
+        #   - library_only 种子（awesome-llm-apps 的人工精选清单）无条件入库；
+        #   - apps 车道的条目必须过分数门槛。实测不过滤时 38 条里有 20 条 total<5，
+        #     把「耳机剁手清单 / 手机评测 / 社媒营销策略」这类与 AI 无关的推荐流内容
+        #     也收了进来 —— 少数派是「效率工具+数码生活」版块，本身不是 AI 源。
+        min_total = float(cases_cfg.get("min_total", 5.0))
+        min_rel = float(cases_cfg.get("min_rel", 3))
+
+        def _lib_ok(it):
+            if it.get("_lib"):
+                return True
+            if (it.get("total") or 0) < min_total:
+                return False
+            sc = it.get("score")
+            if not sc:
+                # LLM 不可用（降级路径）：没有 rel 可判 —— 只按兜底总分把关。
+                # 否则 LLM 一挂，案例库就会静默停止增长（不报错、只是不再有新条目）。
+                return True
+            return sc.get("rel", 0) >= min_rel
+
+        fresh = [i for i in merged_all
+                 if i.get("_lib") or (i["lane"] == "apps" and _lib_ok(i))]
+        n_cut = sum(1 for i in merged_all
+                    if i["lane"] == "apps" and not i.get("_lib") and not _lib_ok(i))
         added = 0
         for i in fresh:
             u = i.get("url") or ""
@@ -1175,8 +1222,17 @@ def main():
                                            i.get("apptype") or "")[:16],
                 "topic": (i.get("topic") or "")[:16],
                 "block": i.get("block", ""),
+                # 分数一并入库：淘汰要按质量排。老实现只按 lastSeen —— 那是「新的留
+                # 老的扔」，与作品集的用途相反（老的优质条目被新的平庸条目挤掉，且
+                # 被挤掉后若源里不再出现就永远回不来）。
+                "src": "seed" if i.get("_lib") else "apps",
                 "lastSeen": doc["date"],
             }
+            if i.get("total") is not None:
+                rec["score"] = round(float(i["total"]), 1)
+            _rel = (i.get("score") or {}).get("rel")
+            if _rel is not None:
+                rec["rel"] = int(_rel)
             prev = by_url.get(u)
             if prev:
                 prev.update({k: v for k, v in rec.items() if v})
@@ -1184,6 +1240,16 @@ def main():
                 rec["firstSeen"] = doc["date"]
                 by_url[u] = rec
                 added += 1
+        # 存量清理：库里**已存在**但不达标的条目必须显式剔掉 —— 它们在 lib_cache 里，
+        # 只做「不新增」不删就会永久留存（实测首轮 38 条全进，含 20 条低分）。
+        cut = {i["url"] for i in merged_all
+               if i.get("url") and i["lane"] == "apps" and not i.get("_lib") and not _lib_ok(i)}
+        before = len(by_url)
+        by_url = {u: c for u, c in by_url.items()
+                  if u not in cut and _keep_case(c, min_total, min_rel)}
+        n_purge = before - len(by_url)
+        if n_purge:
+            log(f"🧹 案例库剔除 {n_purge} 条不达标条目（门槛 total≥{min_total} 且 rel≥{min_rel}）")
         lib = sorted(by_url.values(),
                      key=lambda c: (c.get("lastSeen") or "", c.get("title") or ""), reverse=True)
         # 整库归一化：换过分类口径后，URL 已失效的老条目不会再被上面的循环碰到，
@@ -1192,16 +1258,29 @@ def main():
         for _c in lib:
             _old = _c.get("type") or ""
             _c["type"] = COARSE_BY_FINE.get(_old, _old)
-        maxn = int(cases_cfg.get("max", 400))
-        trimmed = max(0, len(lib) - maxn)
-        lib = lib[:maxn]
+        maxn = int(cases_cfg.get("max", 600))
+        trimmed = 0
+        if len(lib) > maxn:
+            # 淘汰按质量：种子永久保护；其余按分数降序，同分老的先走。
+            # 展示顺序仍按 lastSeen（新的在前）—— 淘汰策略不该改变浏览顺序。
+            def _rank(c):
+                if _is_seed(c):
+                    return 99.0
+                s = c.get("score")
+                return float(s) if isinstance(s, (int, float)) else 5.5
+            keep = sorted(lib, key=lambda c: (_rank(c), c.get("lastSeen") or ""),
+                          reverse=True)[:maxn]
+            trimmed = len(lib) - len(keep)
+            lib = sorted(keep, key=lambda c: (c.get("lastSeen") or "", c.get("title") or ""),
+                         reverse=True)
         os.makedirs(os.path.dirname(lib_path), exist_ok=True)
         with open(lib_path, "w", encoding="utf-8") as f:
             json.dump({"updated": doc["generated_at"], "count": len(lib),
                        "types": sorted({c["type"] for c in lib if c.get("type")}),
                        "cases": lib}, f, ensure_ascii=False, indent=1)
-        log(f"📚 案例库：共 {len(lib)} 条（新增 {added}"
-            + (f"，裁剪 {trimmed}" if trimmed else "") + "）→ data/cases.json")
+        n_seed = sum(1 for c in lib if _is_seed(c))
+        log(f"📚 案例库：共 {len(lib)} 条（种子 {n_seed} · 新增 {added} · 当日过滤 {n_cut}"
+            + (f" · 裁剪 {trimmed}" if trimmed else "") + "）→ data/cases.json")
 
     log("-" * 100)
     log(f"✅ 产出 {len(merged)} 条 → latest.json + daily/{doc['date']}.json + 运行报告")
