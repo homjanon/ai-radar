@@ -32,6 +32,13 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: 离线冒烟测试（抓取前的守门）
+        # 为什么要有这一步：py_compile 只查语法，查不出 NameError。实测踩过 ——
+        # 同一文件的多条并行编辑互相覆盖，`lib_items = []` 的初始化丢了而引用还在，
+        # 本地「语法通过」，线上正式抓取直接 NameError 崩掉、当天没有产物。
+        # smoke_test.py 用预置数据把 main() 全流程跑一遍（不联网、不需要 Secret）。
+        run: python scripts/smoke_test.py
+
       - name: 抓取并生成 JSON
         env:
           # P2 LLM 增强用。未配置时自动跳过该模型并降级为原文，不影响抓取主流程。
