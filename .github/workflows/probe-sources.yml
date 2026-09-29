@@ -35,6 +35,5 @@ jobs:
       - name: 探测源可用性（全源 · 全通路）
         run: python scripts/probe_sources.py
 
-      - name: 打印配置摘要（人工核对用）
-        if: always()
-        run: python -c "import json;c=json.load(open('scripts/sources.json',encoding='utf-8'));s=c['sources'];print(f'源 {len(s)} 个，启用 {sum(1 for x in s if x.get(\"enabled\"))} 个');[print(f'  [{\"ON \" if x.get(\"enabled\") else \"off\"}] {x[\"id\"]:22} {x[\"lane\"]:10} {x.get(\"mode\")}') for x in s]"
+      # 配置摘要（车道/源清单/模型链/案例库）由 probe_sources.py 自己打印 —— 不在这里
+      # 另写一份：摘要必须与探测结果同源，否则「配置里有什么」会与「实测到什么」对不上。
