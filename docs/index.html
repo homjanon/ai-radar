@@ -79,10 +79,14 @@ body::after{ /* 极轻扫描线，只做质感、不干扰阅读 */
 .dots{display:flex;gap:6px;flex:0 0 auto}
 .dots i{width:10px;height:10px;border-radius:50%;display:block;opacity:.85}
 .dots i:nth-child(1){background:#ff5f56}.dots i:nth-child(2){background:#f5b544}.dots i:nth-child(3){background:#2ee6a8}
-.path{font-family:var(--mono);font-size:11.5px;color:var(--fg3);letter-spacing:.02em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1 1 auto;min-width:0}
-.path b{color:var(--acc);font-weight:600}
-.online{font-family:var(--mono);font-size:10.5px;color:var(--acc);letter-spacing:.14em;border:1px solid var(--acc-line);border-radius:3px;padding:2px 7px;background:var(--tint-a);flex:0 0 auto}
+.online{font-family:var(--mono);font-size:10.5px;color:var(--acc);letter-spacing:.14em;border:1px solid var(--acc-line);border-radius:3px;padding:2px 7px;background:var(--tint-a);flex:0 0 auto;margin-left:auto}
 .online::before{content:"●";margin-right:5px;animation:blink 2.4s steps(1) infinite}
+/* 三态：ONLINE 今日已更新 / STALE 超 24h 未更新 / OFFLINE 数据读取失败。
+   原实现是纯装饰（绿灯恒闪、与数据无关），抓取全失败也显示 ONLINE —— 假信号。 */
+.online.warn{color:var(--amber);border-color:#e2cfa8;background:#fdf8ee}
+.online.warn::before{animation:none}
+.online.off{color:var(--red);border-color:#e0b4b4;background:#fbf2f2}
+.online.off::before{animation:none}
 @keyframes blink{0%,62%{opacity:1}63%,100%{opacity:.22}}
 
 /* ── 头部 ─────────────────────────────────────────── */
@@ -91,9 +95,6 @@ body::after{ /* 极轻扫描线，只做质感、不干扰阅读 */
 h1{margin:0 0 8px;font-size:30px;font-weight:700;letter-spacing:-.01em;line-height:1.15;font-family:var(--mono)}
 h1 .br{color:var(--fg4)}
 h1 .hl{color:var(--acc);text-shadow:var(--hl-shadow)}
-.prompt{font-family:var(--mono);font-size:12.5px;color:var(--fg2);display:flex;align-items:center;gap:7px;flex-wrap:wrap}
-.prompt .u{color:var(--acc)}
-.cur{display:inline-block;width:8px;height:15px;background:var(--acc);vertical-align:-2px;animation:blink 1.06s steps(1) infinite}
 
 /* ── 状态条（像系统监控面板）───────────────────────── */
 .stat{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:1px;background:var(--line);border-top:1px solid var(--line)}
@@ -218,17 +219,12 @@ details.more .list{padding:0 10px 12px}
   <div class="term">
     <div class="tbar">
       <div class="dots"><i></i><i></i><i></i></div>
-      <div class="path">~/ai-radar <b>$</b> tail -n 100 briefing.log</div>
-      <div class="online" id="live">ONLINE</div>
+      <div class="online" id="live">…</div>
     </div>
 
     <div class="head">
       <div class="eyebrow">LLM · Agent · Skill — 前沿情报管道</div>
       <h1><span class="br">[</span> <span class="hl">AI 前沿雷达</span> <span class="br">]</span></h1>
-      <div class="prompt">
-        <span><span class="u">ai-radar</span>@homjanon:~$ ./fetch --brief</span>
-        <span class="cur"></span>
-      </div>
     </div>
 
     <div class="stat" id="stat"></div>
@@ -259,6 +255,8 @@ var LANE = {
   community:'#f472b6', media:'#f5b544', cn:'#fb7185'
 };
 var LV = { top:'重磅', watch:'关注', normal:'常规' };
+/* 车道 id → 中文名，加载 latest.json 时按 d.lanes 填充（否则条目上显示的是 apps/model 这种英文 id）*/
+var LANE_NAME = {};
 
 function ageLabel(h){
   if (h == null || h < 0) return '';
@@ -274,14 +272,14 @@ function renderStat(d, casesN){
   var deg = (d.degraded || []).length;
   var modelTxt = String(d.translator || '—');
   var rows = [
-    ['generated', esc(d.generated_at || '—'), 'nowrap'],
-    ['items', esc((d.counts && d.counts.total) || 0), 'g'],
-    ['heavy/watch', (L.top || 0) + ' / ' + (L.watch || 0), 'a'],
-    ['lanes', (d.lanes || []).length, ''],
-    ['repeat', esc((d.counts && d.counts.repeat) || 0), ''],
-    ['cases', casesN == null ? '…' : casesN, ''],
-    ['model', esc(modelTxt), modelTxt.length > 20 ? 'sm' : ''],
-    ['degraded', deg, deg ? 'r' : 'g']
+    ['更新时间', esc(d.generated_at || '—'), 'nowrap'],
+    ['本期条目', esc((d.counts && d.counts.total) || 0), 'g'],
+    ['重磅 / 关注', (L.top || 0) + ' / ' + (L.watch || 0), 'a'],
+    ['车道', (d.lanes || []).length, ''],
+    ['昨日重复', esc((d.counts && d.counts.repeat) || 0), ''],
+    ['案例库', casesN == null ? '…' : casesN, ''],
+    ['增强模型', esc(modelTxt), modelTxt.length > 20 ? 'sm' : ''],
+    ['降级源', deg, deg ? 'r' : 'g']
   ];
   $('#stat').innerHTML = rows.map(function(r){
     return '<div><div class="k">' + r[0] + '</div><div class="v ' + r[2] + '">' + r[1] + '</div></div>';
@@ -298,9 +296,9 @@ function itemHTML(i){
   var mk = i.level === 'top' ? '▲' : (i.level === 'watch' ? '▸' : '·');
   var meta = [];
   meta.push('<span class="tg"><span class="dot" style="background:' + col + '"></span>' +
-            esc(i.lane) + ' · ' + esc(i.block || i.source || '') + '</span>');
+            esc(LANE_NAME[i.lane] || i.lane) + ' · ' + esc(i.block || i.source || '') + '</span>');
   if (LV[i.level]) meta.push('<span class="tg lv ' + esc(i.level) + '">' + LV[i.level] + '</span>');
-  if (i.total != null) meta.push('<span class="sc">score <b>' + esc(i.total) + '</b>' +
+  if (i.total != null) meta.push('<span class="sc">得分 <b>' + esc(i.total) + '</b>' +
             (sc ? ' <span style="opacity:.6">' + esc(sc) + '</span>' : '') + '</span>');
   if (i.apptype) meta.push('<span class="tg at">' + esc(i.apptype) + '</span>');
   if (i.topic) meta.push('<span class="tg tp">' + esc(i.topic) + '</span>');
@@ -359,7 +357,7 @@ function renderBrief(){
   var deg = d.degraded || [];
   $('#view-brief').innerHTML =
     '<div class="term" style="margin-top:14px">' +
-      '<div class="bar"><span class="lbl">lane filter</span>' + chips.join('') + '</div>' +
+      '<div class="bar"><span class="lbl">车道筛选</span>' + chips.join('') + '</div>' +
     '</div>' +
     sec('h-top', '▲ 重磅', top) +
     sec('h-watch', '▸ 值得关注', watch) +
@@ -473,6 +471,30 @@ function showTab(name){
   window.scrollTo({top:0});
 }
 
+/* ── 数据新鲜度（顶栏状态灯）───────────────────────
+   改前是纯装饰：绿灯恒闪、与数据无关，抓取全失败也显示 ONLINE。
+   注意 generated_at 是「北京时间」字符串且无时区标记，直接 new Date() 会按**设备时区**
+   解析（读者不在东八区就会算错），所以显式补 +08:00 后交给 Date.parse。 */
+function renderLive(d){
+  var el = $('#live'); if (!el) return;
+  if (!d || !d.generated_at){
+    el.className = 'online off'; el.textContent = 'OFFLINE'; el.title = '数据读取失败';
+    return;
+  }
+  var t = Date.parse(String(d.generated_at).replace(' ', 'T') + ':00+08:00');
+  if (!isFinite(t)){
+    el.className = 'online off'; el.textContent = 'OFFLINE'; el.title = '时间字段无法解析';
+    return;
+  }
+  var h = (Date.now() - t) / 3600000;
+  if (h <= 24){
+    el.className = 'online'; el.textContent = 'ONLINE'; el.title = '今日已更新';
+  } else {
+    el.className = 'online warn'; el.textContent = 'STALE';
+    el.title = '已 ' + Math.floor(h / 24) + ' 天未更新';
+  }
+}
+
 /* ── 启动 ─────────────────────────────────────────── */
 function loadCases(){
   if (CASES !== null) return Promise.resolve();
@@ -494,6 +516,9 @@ function main(){
     .then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
     .then(function(j){
       DATA = j;
+      LANE_NAME = {};
+      (j.lanes || []).forEach(function(l){ LANE_NAME[l.id] = l.name; });
+      renderLive(j);
       renderStat(DATA, null);
       $('#tabs').innerHTML =
         '<button class="tab on" data-tab="brief">简报<span class="n">' +
@@ -505,12 +530,13 @@ function main(){
           if (t.dataset.tab === 'cases') loadCases();
         };
       });
-      $('#ft-gen').textContent = 'generated_at ' + (DATA.generated_at || '—');
+      $('#ft-gen').textContent = '更新时间 ' + (DATA.generated_at || '—');
       renderBrief();
       if (location.hash === '#cases'){ showTab('cases'); loadCases(); }
       else loadCases();
     })
     .catch(function(e){
+      renderLive(null);
       $('#view-brief').innerHTML = '<div class="empty"><span class="b">✗</span>读取 latest.json 失败：' +
         esc(e.message) + '<br>产物尚未生成，或 Pages 仍在构建</div>';
     });
