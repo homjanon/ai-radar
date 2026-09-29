@@ -1,6 +1,6 @@
 {
- "updated": "2026-09-29 21:18",
- "count": 158,
+ "updated": "2026-09-29 21:41",
+ "count": 148,
  "types": [
   "Agent 工作流",
   "Agent 技能",
@@ -8,7 +8,7 @@
   "RAG 检索增强",
   "Web 应用",
   "其他",
-  "内容生成",
+  "效率工具",
   "教程与学习",
   "数据分析",
   "桌面工具",
@@ -28,17 +28,6 @@
    "lastSeen": "2026-09-29",
    "firstSeen": "2026-09-29",
    "src": "seed"
-  },
-  {
-   "url": "https://www.reddit.com/r/SideProject/comments/1wt5m8e/i_built_a_recipe_api_for_your_apps_and_agents/",
-   "title": "面向应用与智能体的食谱 API",
-   "titleEn": "I built a Recipe API for your apps and agents",
-   "summary": "开发者推出一款专为第三方应用程序和AI智能体设计的高效结构化食谱数据接口。",
-   "type": "Web 应用",
-   "topic": "数据服务",
-   "block": "r/SideProject",
-   "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/single_agent_apps/earnings_call_analyst_agent",
@@ -149,17 +138,6 @@
    "src": "seed"
   },
   {
-   "url": "https://www.reddit.com/r/SideProject/comments/1wt6231/social_media_sweet_spot_for_a_solo_builder_spread/",
-   "title": "独立开发者社交媒体营销策略：广撒网还是垂直聚焦",
-   "titleEn": "Social media sweet spot for a solo builder: spread thinly or focus on a few?",
-   "summary": "独立开发者探讨首款游戏应用的营销困境，权衡在 Reddit、Discord 等平台广撒网与垂直聚焦的成本效益。结论倾向于在特定社区进行深度对话获取反馈，而非单纯追求受众规模，以平衡时间投入与长期留存。",
-   "type": "其他",
-   "topic": "行业观察",
-   "block": "r/SideProject",
-   "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
-  },
-  {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/starter_ai_agents/mixture_of_agents",
    "title": "混合专家模型 (MoA)",
    "titleEn": "Mixture of Agents",
@@ -208,92 +186,45 @@
    "src": "seed"
   },
   {
-   "url": "https://www.v2ex.com/t/1245555#reply0",
-   "title": "有没有开车的时候喜欢听「IN 核公园」的朋友，我开发了一款沉浸式播客收听工具，欢迎体验。",
-   "titleEn": "",
-   "summary": "针对悬疑播客开发的沉浸式收听工具 cuepod.cn，核心功能是在音频播放至关键线索时自动弹出相关的图像补充内容。该工具通过解决翻找图片的痛点，提供了一套自动化 Studio 以提升特定场景下的收听体验。",
-   "type": "Web 应用",
-   "topic": "工具开发",
-   "block": "V2EX 分享创造",
-   "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
-  },
-  {
    "url": "https://www.v2ex.com/t/1245582#reply0",
    "title": "最近看到 Hotel Lobby AI 挺火，顺手做了个教程 + Prompt 工具",
    "titleEn": "",
-   "summary": "针对 Hotel Lobby AI 视频热潮，作者提供制作教程及免费 Prompt 生成器。对比 Kling、Higgsfield 等方案，整理换脸、人物一致性常见问题及低成本解法，帮助新手快速入门，降低了此类创意视频的生产门槛与技术复杂度。",
-   "type": "内容生成",
-   "topic": "视频教程",
+   "summary": "针对 Hotel Lobby AI 视频制作痛点，开发者整理了完整教程与免费 Prompt Generator。对比 Kling 等主流工具方案，提供低成本替代方法，并解析换脸、人物一致性等技术难点，帮助新手快速入门视频生成流程。",
+   "type": "Web 应用",
+   "topic": "内容生成",
    "block": "V2EX 分享创造",
    "lastSeen": "2026-09-29",
    "firstSeen": "2026-09-29",
    "src": "apps",
-   "score": 5.3,
-   "rel": 4
-  },
-  {
-   "url": "https://www.reddit.com/r/SideProject/comments/1wt65tq/my_friend_made_this_hand_drawn_video_app/",
-   "title": "手绘风格视频生成工具分享",
-   "titleEn": "My friend made this hand drawn video app",
-   "summary": "开发者分享一款支持手绘风格视频制作的应用程序。该工具旨在通过算法或模板将普通影像转化为手绘视觉效果，简化创意视频制作流程。发布者因朋友未使用社交平台，代为在技术社区推广并寻求用户反馈。",
-   "type": "其他",
-   "topic": "内容生成",
-   "block": "r/SideProject",
-   "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1245611#reply1",
-   "title": "手势结印释放忍术小游戏",
-   "titleEn": "",
-   "summary": "开源一个基于摄像头手势识别的网页小游戏，用户需录入手势训练数据，通过识别宽松度设置，实现特定手势释放虚拟忍术的效果，代码已发布于 GitHub 供社区使用和二次开发。",
-   "type": "其他",
-   "topic": "开源项目",
-   "block": "V2EX 分享创造",
-   "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1245611#reply3",
-   "title": "手势结印释放忍术小游戏",
-   "titleEn": "",
-   "summary": "开源手势识别小游戏，基于摄像头动作捕捉技术。用户录入手印后，通过手势识别释放忍术技能，支持宽松度调节及图鉴练习。项目代码已公开于 GitHub，提供网页地址直接访问，展示了计算机视觉在互动娱乐中的应用潜力。",
-   "type": "Web 应用",
-   "topic": "交互创新",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-09-29",
-   "score": 5.2,
-   "rel": 5,
-   "firstSeen": "2026-09-29"
+   "score": 6.3,
+   "rel": 5
   },
   {
    "url": "https://www.v2ex.com/t/1245591#reply11",
    "title": "我用 AI 解决了 Java 开发里几个困扰多年的问题",
    "titleEn": "",
-   "summary": "利用大模型自动化生成 Java Bean，涵盖 Getter、Setter 及哈希方法，解决长期编码痛点。构建 Agent 实现 JSON/XML 互转并映射至 Java 对象，智能化处理数据链路。下一步计划让 AI 自动决策字符串拼接方式，持续提升工程开发效率。",
-   "type": "CLI 工具",
-   "topic": "开发辅助",
+   "summary": "开发者利用 AI 工具实现 Java Bean 自动生成，涵盖 getter 及 equals 等方法。构建了 JSON 转 XML 再转 Java 对象的 Agent 工作流。下一步计划让 AI 自动判断字符串拼接策略，提升工程效率，已提供在线体验链接。",
+   "type": "Agent 工作流",
+   "topic": "Agent 工作流",
    "block": "V2EX 分享创造",
    "lastSeen": "2026-09-29",
    "firstSeen": "2026-09-29",
    "src": "apps",
-   "score": 5.2,
-   "rel": 5
+   "score": 6.2,
+   "rel": 6
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1wt9giq/built_a_microsaas_to_stop_ai_from_breaking/",
-   "title": "微 SaaS 解决 AI 批量翻译破坏 Shopify 主题问题",
+   "title": "微 SaaS 工具：修复 AI 批量翻译导致的主题损坏",
    "titleEn": "Built a micro-SaaS to stop AI from breaking Shopify themes during bulk translation. Would love your brutal feedback!",
-   "summary": "针对 ChatGPT 等 AI 翻译破坏 Shopify Liquid 标签及 HTML 结构的问题，开发微 SaaS 工具，确保在批量翻译商品目录时保持主题代码完整性。",
+   "summary": "针对 ChatGPT 等 AI 在批量翻译中破坏 Shopify Liquid 标签及 HTML 结构的问题，该微 SaaS 提供专门保护，确保电商主题完整性。",
    "type": "Web 应用",
-   "topic": "工程实践",
+   "topic": "行业应用",
    "block": "r/SideProject",
    "src": "apps",
    "lastSeen": "2026-09-29",
-   "score": 6.0,
-   "rel": 6,
+   "score": 5.5,
+   "rel": 5,
    "firstSeen": "2026-09-29"
   },
   {
@@ -401,21 +332,23 @@
    "topic": "内容生成",
    "block": "Show HN",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "score": 5.5,
+   "rel": 5
   },
   {
    "url": "https://sspai.com/post/114749",
    "title": "基于 Termux 的 Android 手机开发服务器实操",
    "titleEn": "",
-   "summary": "教程展示如何利用 Termux 在 Android 手机上部署终端 AI Agent（如 Hermes），实现不刷机不 Root 的随身开发服务器功能。通过配置后台保活与内网穿透，解决系统杀后台问题，让用户可通过 SSH 远程连接手机执行脚本与代码修改。",
+   "summary": "指南介绍在小米 15 Ultra 上基于 Termux 部署终端 AI Agent（如 Hermes/Pi），无需 Root 即可实现手机变随身开发服务器。涵盖后台保活、内网穿透配置，解决系统杀后台及兼容性问题，通过 SSH 远程连接修改代码。",
    "type": "CLI 工具",
    "topic": "工程实践",
    "block": "少数派",
    "lastSeen": "2026-09-29",
    "firstSeen": "2026-09-29",
    "src": "apps",
-   "score": 6.6,
-   "rel": 6
+   "score": 8.0,
+   "rel": 8
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/rag_tutorials/agentic_typed_rag_pydanticai",
@@ -490,14 +423,17 @@
    "src": "seed"
   },
   {
-   "url": "https://www.reddit.com/r/SideProject/comments/1wt72hy/built_a_windows_video_and_photo_editor_with_c_wpf/",
-   "title": "基于 C# 与 FFmpeg 开发的 Windows 视频照片编辑器",
-   "titleEn": "Built a Windows video and photo editor with C#, WPF and FFmpeg, looking for feedback!",
-   "summary": "开发者使用 C#、WPF 框架和 FFmpeg 库构建了一款 Windows 桌面视频与照片编辑工具，界面风格模仿 Instagram 编辑功能。项目已发布在微软商店，目前寻求社区反馈以优化功能体验和修复潜在问题。",
-   "type": "桌面工具",
-   "topic": "开发日志",
-   "block": "r/SideProject",
+   "url": "https://sspai.com/post/114728",
+   "title": "可塑的白昼：ColorOS17 深度评测",
+   "titleEn": "",
+   "summary": "ColorOS 17 深度评测，探讨其 UI 设计在安卓平台的实现。文中提及 Apple Event 2026 发布的 Siri AI 及 iOS 27 设计语言变化，对比指出安卓厂商在 Liquid Glass 风格上的跟进策略与设计取舍，涉及系统视觉体验分析。",
+   "type": "其他",
+   "topic": "系统评测",
+   "block": "少数派",
+   "src": "apps",
    "lastSeen": "2026-09-29",
+   "score": 5.1,
+   "rel": 4,
    "firstSeen": "2026-09-29"
   },
   {
@@ -588,25 +524,28 @@
    "url": "https://www.v2ex.com/t/1245576#reply1",
    "title": "做了个漫画生成器：基于 HF AI Comic Factory，补了角色一致性和故事连续性",
    "titleEn": "",
-   "summary": "基于 Hugging Face AI Comic Factory 进行产品化改造，重点优化角色一致性与故事连续性。通过建立角色视觉参考锁定形象，强化从故事到分镜脚本的逻辑连贯性，解决原项目角色漂移及叙事断裂问题，提升生成漫画的质量。",
-   "type": "内容生成",
+   "summary": "基于 Hugging Face AI Comic Factory 改造的漫画生成器 comicfactory.app，重点优化角色视觉一致性与故事连续性。通过建立角色参考及强化分镜逻辑，解决原项目人物漂移问题，实现从故事到多格页面的完整生成流程。",
+   "type": "Web 应用",
    "topic": "模型应用",
    "block": "V2EX 分享创造",
    "lastSeen": "2026-09-29",
    "firstSeen": "2026-09-29",
    "src": "apps",
-   "score": 5.5,
-   "rel": 5
+   "score": 7.2,
+   "rel": 7
   },
   {
-   "url": "https://www.v2ex.com/t/1245602#reply5",
-   "title": "做了一个每天查看新游戏的网站，包含一些小工具",
+   "url": "https://www.v2ex.com/t/1245616#reply0",
+   "title": "做了一个 Hotel Lobby AI 视频生成器，欢迎大家试用和反馈",
    "titleEn": "",
-   "summary": "开发者构建 New Games Hub 网站，每日自动提取新发布游戏信息。该站点已收录一千多条记录，支持 Steam 登录订阅，利用 Jev 模型进行嵌入并基于余弦相似度推荐相似游戏，支持 RSS 和 Webhook 通知。",
+   "summary": "Migos AI 网站上线，支持上传两张人物照片生成 Hotel Lobby 风格的双人视频。采用一次性购买积分模式，1 条视频 5 美元，5 条 20 美元，无需订阅。目前处于早期阶段，面向用户收集生成质量与交互体验的真实反馈。",
    "type": "Web 应用",
-   "topic": "数据聚合",
+   "topic": "内容生成",
    "block": "V2EX 分享创造",
+   "src": "apps",
    "lastSeen": "2026-09-29",
+   "score": 6.0,
+   "rel": 5,
    "firstSeen": "2026-09-29"
   },
   {
@@ -678,20 +617,22 @@
    "topic": "开发工具",
    "block": "V2EX 分享创造",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "score": 6.0,
+   "rel": 6
   },
   {
    "url": "https://www.v2ex.com/t/1245610#reply1",
    "title": "不买 Figma 会员，也能给 vibe coding 作品配上设计流程：开源本地工具 local-figma",
    "titleEn": "",
-   "summary": "开源工具 local-figma 将运行中的网页还原为可编辑 Figma 设计稿，支持本地运行及 CLI 调用。开发者无需付费席位，利用 Agent 生成代码后进行视觉方案对比与调整，实现低成本设计迭代，显著提升 Vibe Coding 效率。",
-   "type": "CLI 工具",
+   "summary": "开源工具 local-figma 允许将运行中的网页还原为 Figma 原生可编辑设计稿。基于 Apache-2.0 协议，支持本地运行，无需付费席位。配合 Claude Code 等 Agent 使用，实现页面布局快速迭代，成本仅限 Token 消耗。",
+   "type": "桌面工具",
    "topic": "工程实践",
    "block": "V2EX 分享创造",
    "src": "apps",
    "lastSeen": "2026-09-29",
-   "score": 6.2,
-   "rel": 6,
+   "score": 8.2,
+   "rel": 8,
    "firstSeen": "2026-09-29"
   },
   {
@@ -731,29 +672,18 @@
    "src": "seed"
   },
   {
-   "url": "https://www.reddit.com/r/SideProject/comments/1wt6if8/i_built_a_photo_app_with_one_rule_everyone_gets/",
-   "title": "What We Saw：每日统一摄影任务的移动端应用",
-   "titleEn": "I built a photo app with one rule: everyone gets the same quest each day.",
-   "summary": "What We Saw 是一款移动摄影应用，每日向所有用户推送相同摄影主题，用户提交一张照片。所有照片在当日结束后统一解锁展示，该机制鼓励捕捉日常普通瞬间，通过社区一致性视角探索视觉多样性。",
-   "type": "移动 App",
-   "topic": "社交应用",
-   "block": "r/SideProject",
-   "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
-  },
-  {
    "url": "https://www.reddit.com/r/SideProject/comments/1wt7cm4/im_building_a_civilengineering_cad_app_with_an_ai/",
-   "title": "Vectoria Civil：AI Agent 驱动土木工程 CAD 应用",
+   "title": "Vectoria Civil：AI Agent 驱动的 CAD 设计",
    "titleEn": "I'm building a civil-engineering CAD app with an AI agent — here's a roundabout request in action",
-   "summary": "商用桌面 CAD 应用 Vectoria Civil 展示 AI Agent 根据自然语言指令（如“在 700 米处创建路口”）自动修改道路项目，生成立交及其对齐线。",
+   "summary": "土木工程 CAD 应用展示 AI Agent 根据自然语言指令自动完成道路交叉点标匹配及环形交叉口创建，实现工程设计的自动化操作。",
    "type": "桌面工具",
-   "topic": "Agent 工作流",
+   "topic": "行业应用",
    "block": "r/SideProject",
    "lastSeen": "2026-09-29",
    "firstSeen": "2026-09-29",
    "src": "apps",
-   "score": 6.7,
-   "rel": 7
+   "score": 7.4,
+   "rel": 8
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_llm_apps/llm_optimization_tools/toonify_token_optimization",
@@ -783,57 +713,43 @@
    "url": "https://huggingface.co/spaces/kulkas2pintu/QWEN_EDIT_IMAGE",
    "title": "Spaces 应用：kulkas2pintu/QWEN_EDIT_IMAGE",
    "titleEn": "",
-   "summary": "Hugging Face Spaces 上的 Gradio 应用，专注于 Qwen 模型的图像编辑功能。该项目创建于 2026 年 7 月，获得 594 点赞，提供基于大模型的图像局部修改与重绘能力，是社区中较为热门的图像处理实验平台。",
+   "summary": "基于 Gradio 的 QWEN_EDIT_IMAGE 演示应用，由 kulkas2pintu 创建，创建于 2026 年 7 月 29 日。该应用聚焦于使用 Qwen 模型进行图像编辑任务，目前累积 594 个点赞，是社区中较受欢迎的图像生成类工具之一。",
    "type": "模型与推理",
-   "topic": "图像编辑",
+   "topic": "模型应用",
    "block": "HF Spaces",
    "lastSeen": "2026-09-29",
    "firstSeen": "2026-09-29",
    "src": "apps",
-   "score": 5.2,
-   "rel": 5
+   "score": 5.0,
+   "rel": 7
   },
   {
    "url": "https://huggingface.co/spaces/Viggle/Qwen-Image-2.1-viggle-turbo",
    "title": "Spaces 应用：Viggle/Qwen-Image-2.1-viggle-turbo",
    "titleEn": "",
-   "summary": "Viggle 团队在 Hugging Face 部署的 Qwen-Image-2.1 加速版应用，集成 Turbo 推理优化。该空间创建于 2026 年 9 月，点赞 111，旨在提供更高效率的图像生成服务，结合 Viggle 技术在视频或动态图像生成领域进行探索。",
+   "summary": "Viggle 团队在 Hugging Face 推出的 Qwen-Image-2.1-viggle-turbo 应用，结合 Viggle 运动模型与 Qwen 图像能力。Gradio 界面，获 111 点赞，创建于 2026 年 9 月 22 日，旨在实现高效的动态图像生成或视频处理。",
    "type": "模型与推理",
-   "topic": "模型优化",
+   "topic": "模型应用",
    "block": "HF Spaces",
    "lastSeen": "2026-09-29",
    "firstSeen": "2026-09-29",
    "src": "apps",
-   "score": 5.5,
-   "rel": 5
+   "score": 6.0,
+   "rel": 7
   },
   {
    "url": "https://huggingface.co/spaces/Qwen/Qwen-Image-2.1",
    "title": "Spaces 应用：Qwen/Qwen-Image-2.1",
    "titleEn": "",
-   "summary": "Hugging Face 官方 Spaces 部署 Qwen-Image-2.1 图像生成模型，基于 Gradio 界面提供服务。该应用创建于 2026 年 9 月，获得 297 点赞，允许用户在线体验通义千问最新图像模型的生成效果，支持文本到图像的即时转换任务。",
+   "summary": "阿里 Qwen 团队在 Hugging Face Spaces 上线 Qwen-Image-2.1 官方演示应用，采用 Gradio 技术栈。创建时间为 2026 年 9 月 20 日，目前累积 297 点赞，提供图像生成模型的在线交互体验，方便用户测试最新版本功能。",
    "type": "模型与推理",
    "topic": "模型发布",
    "block": "HF Spaces",
    "lastSeen": "2026-09-29",
    "firstSeen": "2026-09-29",
    "src": "apps",
-   "score": 5.9,
-   "rel": 6
-  },
-  {
-   "url": "https://huggingface.co/spaces/Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
-   "title": "Spaces 应用：Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
-   "titleEn": "",
-   "summary": "Hugging Face Spaces 部署的 Gradio 应用，运行 MiniMax-H3-Turbo 未经审查的 LoRA 模型版本。该项目创建于 2026 年 8 月，累计点赞 853，提供基于特定微调模型的内容生成能力，面向需要无限制输出的用户群体。",
-   "type": "模型与推理",
-   "topic": "模型推理",
-   "block": "HF Spaces",
-   "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29",
-   "src": "apps",
-   "score": 5.5,
-   "rel": 5
+   "score": 6.2,
+   "rel": 8
   },
   {
    "url": "https://sliderino.embornal.com/",
@@ -894,7 +810,9 @@
    "topic": "Agent 框架",
    "block": "Show HN",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "score": 6.2,
+   "rel": 7
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/rag_tutorials/rag_failure_diagnostics_clinic",
@@ -921,6 +839,20 @@
    "src": "seed"
   },
   {
+   "url": "https://pyunto.com/",
+   "title": "Pyunto：AI 智能体加密日记应用",
+   "titleEn": "Show HN: Pyunto – invite an AI agent and a robot into an encrypted diary",
+   "summary": "Pyunto 允许用户邀请 AI 智能体和机器人进入加密日记环境，探讨人机交互边界，提供隐私保护的新型数字记录体验。",
+   "type": "移动 App",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-09-29",
+   "score": 5.4,
+   "rel": 6,
+   "firstSeen": "2026-09-29"
+  },
+  {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/agent_skills/project-graveyard",
    "title": "Project Graveyard：废弃项目复活助手",
    "titleEn": "Project Graveyard",
@@ -931,6 +863,20 @@
    "lastSeen": "2026-09-29",
    "firstSeen": "2026-09-29",
    "src": "seed"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1245598#reply2",
+   "title": "PaperCard: 随手写的推特截图小插件，没想到被群友追着要，干脆上架了",
+   "titleEn": "",
+   "summary": "PaperCard 是 Chrome 浏览器插件，将推文排版为干净卡片并复制到剪贴板，解决直接截图杂乱问题。开发者使用 Codex 辅助编写，上架商店后收费 5 美元。旨在优化社媒分享体验，让用户能更美观地转发推文内容与配图。",
+   "type": "浏览器插件",
+   "topic": "效率工具",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-09-29",
+   "score": 5.3,
+   "rel": 4,
+   "firstSeen": "2026-09-29"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_llm_apps/chat_with_X_tutorials/chat_with_pdf",
@@ -953,7 +899,9 @@
    "topic": "工程实践",
    "block": "Show HN",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "score": 5.7,
+   "rel": 6
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/mcp_ai_agents/openai_remote_mcp_bridge",
@@ -1004,14 +952,17 @@
    "src": "seed"
   },
   {
-   "url": "https://noise.ryan-schachte.com",
-   "title": "Noise：用于专注的静态噪音应用",
-   "titleEn": "Show HN: Noise – Static Noise for Focusing",
-   "summary": "开发者推出名为 Noise 的网页应用，通过播放静态噪音帮助用户提升专注力。该条目在 Hacker News 获得 1 点热度，目前评论数为 0，属于典型的个人独立开发工具展示。",
-   "type": "Web 应用",
-   "topic": "效率工具",
+   "url": "https://playground.netwasm.com/",
+   "title": "NetWasm：仅 82KB 的 .NET WebAssembly 运行时",
+   "titleEn": "Show HN: NetWasm – New .NET Compiler/Runtime (82.5 KB Hello World WASM/WASI)",
+   "summary": "NetWasm 是独立 .NET 编译器与运行时，专为 WebAssembly 设计，无需 CoreCLR，Hello World 体积仅 82.5KB，支持 WASI 2 标准。",
+   "type": "模型与推理",
+   "topic": "开源权重",
    "block": "Show HN",
+   "src": "apps",
    "lastSeen": "2026-09-29",
+   "score": 5.4,
+   "rel": 4,
    "firstSeen": "2026-09-29"
   },
   {
@@ -1027,17 +978,6 @@
    "src": "seed"
   },
   {
-   "url": "https://ascreenrecorder.com/",
-   "title": "Mac 平台新增屏幕录制工具展示",
-   "titleEn": "Show HN: I built another screen recorder for Mac",
-   "summary": "开发者在 Hacker News 展示其为 macOS 系统制作的屏幕录制应用程序，承认市场上同类工具众多。该条目目前获得 1 点热度和 1 条评论，主要目的是推广新工具并寻找早期用户体验反馈。",
-   "type": "桌面工具",
-   "topic": "效率工具",
-   "block": "Show HN",
-   "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
-  },
-  {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/generative_ui_agents/mcp-apps-generative-ui-showcase",
    "title": "MCP 应用生成式 UI 展示",
    "titleEn": "MCP Apps Generative UI Showcase",
@@ -1051,16 +991,16 @@
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1wt83ek/lunavect_see_which_claude_code_or_codex_session/",
-   "title": "Lunavect：菜单栏监控 Claude/Codex 会话状态",
+   "title": "Lunavect：Mac 菜单栏 AI 会话监控",
    "titleEn": "Lunavect - see which Claude Code or Codex session needs you, from the Mac menu bar",
-   "summary": "Mac 菜单栏工具 Lunavect，集中监控 Claude Code 和 Codex 的多个并行会话，通过状态筛选（如等待权限）快速定位需要人工干预的 AI 编码代理。",
-   "type": "桌面工具",
-   "topic": "Agent 工作流",
+   "summary": "在 Mac 菜单栏统一监控 Claude Code 与 Codex 会话状态，快速识别并高亮需要用户授权的等待任务，解决多 Agent 并行管理难题。",
+   "type": "效率工具",
+   "topic": "Agent 框架",
    "block": "r/SideProject",
    "src": "apps",
    "lastSeen": "2026-09-29",
-   "score": 6.7,
-   "rel": 7,
+   "score": 7.4,
+   "rel": 8,
    "firstSeen": "2026-09-29"
   },
   {
@@ -1108,7 +1048,9 @@
    "topic": "教育应用",
    "block": "r/SideProject",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "score": 5.5,
+   "rel": 5
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/multi_agent_apps/agent_teams/llm_panel_agent_team",
@@ -1145,7 +1087,9 @@
    "topic": "开源硬件",
    "block": "Show HN",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "score": 5.1,
+   "rel": 4
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_llm_apps/llm_optimization_tools/headroom_context_optimization",
@@ -1170,20 +1114,6 @@
    "lastSeen": "2026-09-29",
    "firstSeen": "2026-09-29",
    "src": "seed"
-  },
-  {
-   "url": "https://www.reddit.com/r/SideProject/comments/1wt8b9y/ive_spent_last_8_months_building_an_intelligence/",
-   "title": "HYFOS：基于主题投资的结构化智能平台",
-   "titleEn": "I’ve spent last 8 months building an intelligence platform around thematic investing.",
-   "summary": "前交易员开发的 HYFOS 平台，将 SEC 等分散数据转化为结构化上下文，解决散户投资缺乏背景知识的问题，聚焦于 AI、数据中心等主题的深度分析。",
-   "type": "Web 应用",
-   "topic": "数据分析",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-09-29",
-   "score": 5.5,
-   "rel": 5,
-   "firstSeen": "2026-09-29"
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/ai_agent_framework_crash_course/google_adk_crash_course",
@@ -1270,6 +1200,20 @@
    "src": "seed"
   },
   {
+   "url": "https://github.com/charlesabarnes/gangway",
+   "title": "Gangway：本地文件夹与 Agent 部署应用",
+   "titleEn": "Show HN: Gangway, self-hosted artifacts and apps from folders, PRs, and agents",
+   "summary": "Gangway 是一个自托管服务，支持从本地文件夹、Pull Request 或 AI Agent 输出快速启动临时容器，用于预览和分享应用程序制品。",
+   "type": "Agent 工作流",
+   "topic": "工程实践",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-09-29",
+   "score": 5.7,
+   "rel": 6,
+   "firstSeen": "2026-09-29"
+  },
+  {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/agent_skills/first-reader",
    "title": "First Reader 读者注意力模拟分析",
    "titleEn": "First Reader",
@@ -1306,17 +1250,6 @@
    "src": "seed"
   },
   {
-   "url": "https://apps.apple.com/ph/app/daily-planner-zesfy/id6479947874",
-   "title": "Daily Planner Zesfy：支持单事件多任务规划的日历应用",
-   "titleEn": "Show HN: I built a calendar that lets you plan multiple tasks in one event",
-   "summary": "开发者发布 iOS 日历应用 Zesfy，核心功能允许用户在单一日程事件内规划多个任务。该应用旨在解决传统日历单事件单任务限制，提升时间管理灵活性，目前已上线苹果应用商店供用户下载体验。",
-   "type": "移动 App",
-   "topic": "效率工具",
-   "block": "Show HN",
-   "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
-  },
-  {
    "url": "https://github.com/ivankovic/codediff",
    "title": "CodeDiff：支持语法感知的极速代码差异工具",
    "titleEn": "Show HN: CodeDiff – Fast (<100ms), robust (99.95%) syntax-aware code diff",
@@ -1339,18 +1272,9 @@
    "topic": "安全合规",
    "block": "Show HN",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
-  },
-  {
-   "url": "https://www.reddit.com/r/SideProject/comments/1wt7ava/i_made_my_distractions_help_me_get_things_done/",
-   "title": "Caliph：将干扰网站转化为任务执行入口的效率应用",
-   "titleEn": "I made my distractions help me get things done",
-   "summary": "开发者因频繁被社交网络分心，构建了 Caliph 应用。当用户访问指定干扰网站时，界面强制展示待办任务列表，允许用户启动计时器并立即开始工作。该工具将被动干扰转化为主动执行动力，无需手动记忆任务。",
-   "type": "浏览器插件",
-   "topic": "效率工具",
-   "block": "r/SideProject",
-   "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "score": 7.7,
+   "rel": 8
   },
   {
    "url": "https://github.com/nickelsec/bough",
@@ -1387,18 +1311,9 @@
    "topic": "安全合规",
    "block": "r/SideProject",
    "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
-  },
-  {
-   "url": "https://www.reddit.com/r/SideProject/comments/1wt5z6u/lets_share_our_projects_in_the_comments_and_give/",
-   "title": "AnnotateJobs：AI 标注与训练职位搜索工具",
-   "titleEn": "Let's share our projects in the comments and give eachother construcitve feedback",
-   "summary": "AnnotateJobs 是一款旨在简化 AI 训练和数据标注职位搜索的工具，通过整合多样化的招聘信息，帮助开发者和标注员更高效地对接 AI 行业用工需求。",
-   "type": "Web 应用",
-   "topic": "招聘工具",
-   "block": "r/SideProject",
-   "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29"
+   "firstSeen": "2026-09-29",
+   "score": 7.2,
+   "rel": 7
   },
   {
    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/autonomous_game_playing_agent_apps/ai_chess_agent",
