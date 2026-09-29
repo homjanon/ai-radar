@@ -293,18 +293,24 @@ def parse_openrouter(body, cfg):
 
 
 def parse_hf_models(body, cfg):
-    """Hugging Face /api/models → 新上架权重。
+    """Hugging Face /api/models → 新上架的模型权重。
 
     开源模型的「无声发布」现场：传了权重、有模型卡，但没有一篇新闻稿。
-    用 exclude_tags 剔掉量化/微调衍生品（gguf/awq/lora…），否则会被刷屏。
+    两道降噪（实测必需）：① exclude_tags 剔掉量化/微调衍生品（gguf/awq/lora…）；
+    ② min_likes 门槛 —— `sort=createdAt` 返回的绝大多数是个人测试仓库
+    （实测首批 8 条全是 downloads=0 / likes=0 的占位仓），不设门槛会直接刷屏。
+    真正的机构发布在几小时内就会有点赞，所以这个门槛不会漏掉有价值的。
     """
     j = json.loads(body)
     arr = j if isinstance(j, list) else []
     excl = set(str(t).lower() for t in (cfg.get("exclude_tags") or []))
+    min_likes = int(cfg.get("min_likes", 2))
     out = []
     for m in arr:
         mid = (m.get("modelId") or m.get("id") or "").strip()
         if not mid:
+            continue
+        if int(m.get("likes") or 0) < min_likes:
             continue
         tags = [str(t).lower() for t in (m.get("tags") or [])]
         if excl & set(tags):
@@ -320,7 +326,9 @@ def parse_hf_models(body, cfg):
         if keep:
             bits.append("标签 " + ", ".join(keep))
         out.append({
-            "title": f"新权重：{mid}",
+            # 标题刻意不含"权重"二字 —— 否则会命中 TOP_KW 里的关键词，
+            # 把一堆个人测试仓库硬提成"重磅"（实测踩过）
+            "title": f"HF 新模型：{mid}",
             "desc": "；".join(bits),
             "url": f"https://huggingface.co/{mid}",
             "dt": parse_dt(str(m["createdAt"])) if m.get("createdAt") else None,
@@ -328,10 +336,112 @@ def parse_hf_models(body, cfg):
     return out[: int(cfg.get("take", 8))]
 
 
+def parse_hf_spaces(body, cfg):
+    """Hugging Face /api/spaces → AI 应用（Spaces 是「AI 应用」的托管现场）。
+
+    与 hf-models 的区别：那边是模型权重（谁训了模型），这边是**能直接用的应用**
+    （谁做出了东西）。trendingScore 比下载量更早反映风向。
+    """
+    j = json.loads(body)
+    arr = j if isinstance(j, list) else []
+    out = []
+    for s in arr:
+        sid = (s.get("id") or "").strip()
+        if not sid:
+            continue
+        bits = []
+        if s.get("sdk"):
+            bits.append(f"技术栈 {s['sdk']}")
+        if s.get("likes") is not None:
+            bits.append(f"点赞 {int(s['likes'])}")
+        if s.get("createdAt"):
+            bits.append(f"创建于 {str(s['createdAt'])[:10]}")
+        if s.get("lastModified"):
+            bits.append(f"最近更新 {str(s['lastModified'])[:10]}")
+        out.append({
+            "title": f"Spaces 应用：{sid}",
+            "desc": "；".join(bits),
+            "url": f"https://huggingface.co/spaces/{sid}",
+            "dt": parse_dt(str(s["lastModified"])) if s.get("lastModified") else None,
+        })
+    return out[: int(cfg.get("take", 6))]
+
+
+# awesome-llm-apps 的分节名 → 中文类型。节名自带分类信息，比让 LLM 猜准得多。
+AWESOME_SECTION_CN = {
+    "agent skills": "Agent 技能",
+    "starter ai agents": "入门 Agent",
+    "advanced ai agents": "进阶 Agent",
+    "always-on agents": "常驻 Agent",
+    "multi-agent teams": "多 Agent 协作",
+    "voice ai agents": "语音 Agent",
+    "generative ui and agentic frontends": "生成式 UI",
+    "autonomous game-playing agents": "游戏 Agent",
+    "mcp ai agents": "MCP Agent",
+    "rag (retrieval augmented generation)": "RAG 检索增强",
+    "ai browser tools": "浏览器工具",
+    "llm apps with memory": "带记忆的应用",
+    "chat with x": "数据问答",
+    "llm optimization tools": "推理优化",
+    "llm fine-tuning": "微调",
+    "ai agent framework crash courses": "框架教程",
+}
+
+
+def parse_awesome_list(body, cfg):
+    """解析 awesome 类 README（markdown）→ 案例条目。
+
+    格式实测为：
+        ### 🌱 Starter AI Agents
+        *   [🎙️ AI Blog to Podcast Agent](starter_ai_agents/xxx/) - Turn any blog URL into...
+    节名即分类（直接拿来当 type），条目即案例。这类源无日期、非新闻，故在配置里标
+    library_only=true —— 只进案例库、不进每日简报。
+    """
+    text = body.decode("utf-8", "replace") if isinstance(body, bytes) else str(body)
+    repo = (cfg.get("repo") or "Shubhamsaboo/awesome-llm-apps")
+    branch = cfg.get("branch") or "main"
+    section, out = "", []
+    for line in text.splitlines():
+        h = re.match(r"^#{2,3}\s+(.+?)\s*$", line)
+        if h:
+            section = re.sub(r"[^\w\s()\-/]", "", h.group(1)).strip()   # 去 emoji
+            continue
+        m = re.match(r"^\s*[-*]\s+\[(.+?)\]\(([^)]+)\)\s*(?:[-–—]\s*(.*))?$", line)
+        if not m:
+            continue
+        title = re.sub(r"[^\w\s()\-/+.&:'!?,]", "", m.group(1)).strip()
+        rel = m.group(2).strip()
+        desc = (m.group(3) or "").strip()
+        if not title or rel.startswith("http"):
+            continue
+        rel = rel.rstrip("/")
+        t = AWESOME_SECTION_CN.get(section.lower(), section or "其他")
+        out.append({
+            "title": title,
+            "desc": desc or title,
+            "url": f"https://github.com/{repo}/tree/{branch}/{rel}",
+            "dt": None,
+            "apptype": t,          # 节名即分类
+        })
+    # 按分类轮转取样：README 里各节长度悬殊（RAG 21 条 vs 微调 2 条），
+    # 直接取前 N 条会让大节挤掉其它形态，案例库就失衡了。
+    buckets = {}
+    for it in out:
+        buckets.setdefault(it["apptype"], []).append(it)
+    keys, ordered = list(buckets), []
+    while any(buckets[k] for k in keys):
+        for k in keys:
+            if buckets[k]:
+                ordered.append(buckets[k].pop(0))
+    return ordered[: int(cfg.get("take", 40))]
+
+
 PARSERS = {
     "leaderboard": parse_leaderboard,
     "openrouter": parse_openrouter,
     "hf-models": parse_hf_models,
+    "hf-spaces": parse_hf_spaces,
+    "awesome-list": parse_awesome_list,
 }
 
 
@@ -342,11 +452,10 @@ def try_once(url, kind, src=None):
     body = http_get(url)
     p = (src or {}).get("parser")
     if p in PARSERS:
-        items = PARSERS[p](body, src)
-    elif kind == "json":
-        items = parse_json_feed(body)
-    else:
-        items = parse_feed(body)
+        # 专用解析器允许返回空 —— "过滤后没有合格条目"是正常结果（如 HF 当天
+        # 只有个人测试仓），不能等同于抓取失败
+        return PARSERS[p](body, src)
+    items = parse_json_feed(body) if kind == "json" else parse_feed(body)
     if not items:
         raise RuntimeError("200 但 0 条（疑似 HTML 错误页）")
     return items
@@ -414,7 +523,10 @@ def jina_fetch(url, cap=1500):
 #   按语言拆批（学自 news-feed 的教训）：同一 prompt 里混"译标题"与"标题原样"
 #   两条互斥指令，模型会整批统一处理，导致英文标题漏译。
 # --------------------------------------------------------------------------- #
-def _sys_prompt(smin, smax, mode):
+def _sys_prompt(smin, smax, mode, want_type=False):
+    extra = ("⑤ type：该案例的**应用形态**，必须从以下固定词表里选一个（不要自创、不要组合）："
+             "Web 应用 / 移动 App / 浏览器插件 / 桌面工具 / CLI 工具 / Agent 工作流 / "
+             "模型与推理 / 数据分析 / 内容生成 / 效率工具 / 其他。")
     base = (
         f"② summary：{smin}~{smax} 字的中文摘要，讲清核心事实（谁做了什么 + 关键数字或结论）；"
         "信息完整优先于字数，不逐字照抄、不以半句截断。"
@@ -427,18 +539,20 @@ def _sys_prompt(smin, smax, mode):
         "fresh（时效性）：首次发布或刚发生的事件 = 8-10；一周内的持续讨论 = 5-7；"
         "回顾、长期有效内容 = 0-4。"
         "④ topic：4-8 字的中文主题标签（如 模型发布 / 开源权重 / Agent 框架 / 融资并购 / 政策监管 / 论文方法 / 工程实践）。"
-        "只输出 JSON 数组本身，不要任何解释、不要 markdown 代码块。")
+        + (extra if want_type else "")
+        + "只输出 JSON 数组本身，不要任何解释、不要 markdown 代码块。")
+    tn = ",\"type\":形态" if want_type else ""
     if mode == "translate":
         return ("你是 AI 技术情报编辑。输入是 JSON 数组 [{\"i\":序号,\"title\":英文标题,\"desc\":正文片段}]。"
                 "**本批全部条目均为英文。**"
                 "输出 JSON 数组 [{\"i\":序号,\"title\":中文标题,\"summary\":中文摘要,"
-                "\"rel\":整数,\"info\":整数,\"fresh\":整数,\"topic\":中文标签}]，规则："
+                "\"rel\":整数,\"info\":整数,\"fresh\":整数,\"topic\":中文标签" + tn + "}]，规则："
                 "① title：**必须译成简洁中文**（专有名词保留通用写法，如 GPT-6、Claude、LangChain），"
                 "不得原样保留英文、不得留英文残句。" + base)
     return ("你是 AI 技术情报编辑。输入是 JSON 数组 [{\"i\":序号,\"title\":中文标题,\"desc\":正文片段}]。"
             "**本批全部条目均为中文。**"
             "输出 JSON 数组 [{\"i\":序号,\"title\":标题,\"summary\":中文摘要,"
-            "\"rel\":整数,\"info\":整数,\"fresh\":整数,\"topic\":中文标签}]，规则："
+            "\"rel\":整数,\"info\":整数,\"fresh\":整数,\"topic\":中文标签" + tn + "}]，规则："
             "① title：**必须一字不改原样返回输入标题**，不要改写、不要润色、不要增删字词。" + base)
 
 
@@ -472,11 +586,11 @@ def _loads_array(text):
     raise RuntimeError("无法解析模型返回的 JSON 数组")
 
 
-def _call_llm_batch(batch, tcfg, mode):
+def _call_llm_batch(batch, tcfg, mode, want_type=False):
     """对一批条目依次尝试模型链。返回 (模型名, 是否成功, 实际发起请求的模型数)。"""
     smin = int(tcfg.get("summary_min", 40))
     smax = int(tcfg.get("summary_max", 80))
-    sys_prompt = _sys_prompt(smin, smax, mode)
+    sys_prompt = _sys_prompt(smin, smax, mode, want_type)
     tried = 0
     for m in tcfg.get("models", []):
         key = os.environ.get(m.get("key_env", ""))
@@ -556,25 +670,41 @@ def _call_llm_batch(batch, tcfg, mode):
 
 
 def llm_enhance(items, tcfg):
-    """按语言分组 → 分批 → 逐批走模型链。返回 (translator 记账串, 降级批次)。"""
+    """按 (语言 × 是否应用案例) 分组 → 分批 → 逐批走模型链。
+
+    为什么还要按「是否应用案例」再拆一次：只有 apps 车道需要多输出一个 type
+    （应用形态），而输出 schema 一旦混批，模型会对整批都套用同一套字段解释。
+    宁可多切几组，也不要把两种 schema 混在一批（与「按语言拆批」同源的理由）。
+    _skip_llm 的条目（案例库中已处理过的）直接跳过，避免每天重译上百条。
+    """
     if not tcfg.get("enabled", True):
         return "off", []
     size = int(tcfg.get("batch_size", 25))
-    en = [i for i in items if i["_translate_title"]]
-    cn = [i for i in items if not i["_translate_title"]]
-    log(f"🧠 LLM 增强：英文 {len(en)} 条 / 中文 {len(cn)} 条，批大小 {size}")
+    pend = [i for i in items if not i.get("_skip_llm")]
+    groups = []
+    for want_cn, mode in ((True, "translate"), (False, "summarize")):
+        grp = [i for i in pend if bool(i["_translate_title"]) == want_cn]
+        for wt in (True, False):
+            sub = [i for i in grp if bool(i.get("_want_type")) == wt]
+            if sub:
+                groups.append((sub, mode, wt))
+    n_en = sum(1 for i in pend if i["_translate_title"])
+    n_app = sum(1 for i in pend if i.get("_want_type"))
+    log(f"🧠 LLM 增强：待处理 {len(pend)} 条（英文 {n_en} / 应用案例 {n_app} / "
+        f"已缓存跳过 {len(items) - len(pend)}），批大小 {size}")
 
     done, failed = {}, []
-    for grp, mode in ((en, "translate"), (cn, "summarize")):
+    for grp, mode, wt in groups:
         for k in range(0, len(grp), size):
             part = grp[k:k + size]
-            name, ok, tried = _call_llm_batch(part, tcfg, mode=mode)
+            tag = f"{mode}{'+type' if wt else ''}"
+            name, ok, tried = _call_llm_batch(part, tcfg, mode=mode, want_type=wt)
             if ok:
                 done[name] = done.get(name, 0) + len(part)
             else:
-                failed.append(f"{mode}:{len(part)}")
+                failed.append(f"{tag}:{len(part)}")
                 if tried == 0:
-                    log(f"  ⏭️ {mode} 批（{len(part)} 条）无可用模型：Key 均未配置")
+                    log(f"  ⏭️ {tag} 批（{len(part)} 条）无可用模型：Key 均未配置")
 
     if not done:
         return "none(原文)", failed
@@ -587,8 +717,8 @@ def llm_enhance(items, tcfg):
 # 重磅关键词（硬规则提级）：只保留**高精度**的词 —— 「发布 / 推出 / 政策」这类太常见，
 # 会把"发布一个活动计划"也提成重磅，那类判断交给 LLM 分数。命中即判 top，
 # 保证「我关心的那类事」一定浮到首屏，不受模型某次给分偏低的影响。
-TOP_KW = ("开源", "权重", "融资", "收购", "并购", "ipo", "反垄断", "监管",
-          "open-source", "open source", "open weights", "open-weight", "weights",
+TOP_KW = ("开源", "融资", "收购", "并购", "ipo", "反垄断", "监管",
+          "open-source", "open source", "open weights", "open-weight",
           "release", "benchmark", "state-of-the-art", "sota", "breakthrough",
           "acquisition", "acquires", "raises", "funding round", "general availability")
 
@@ -766,8 +896,10 @@ def main():
     # 语言标记：标题含 CJK 的按「中文条目」处理（标题原样 + 摘要 + 打分），
     # 纯英文的走 translate（译标题 + 摘要 + 打分）。两种指令绝不能混在同一批，
     # 否则模型会整批统一处理、造成英文标题漏译（news-feed 的实测教训）。
-    for i in all_items:
+    for i in all_items + lib_items:
         i["_translate_title"] = not re.search(r"[\u4e00-\u9fff]", i["title"])
+        # 应用案例车道额外要一个「应用形态」标签（案例库要靠它分类检索）
+        i["_want_type"] = (i["lane"] == "apps")
 
     # ④ 跨源去重：同一事件多源报道，只留车道权重最高的（lane 声明顺序即权重）；
     #    车道内按新鲜度升序（ageH 小 = 新，排前面），无时间的排最后。
@@ -785,6 +917,42 @@ def main():
         merged.append(i)
     if len(merged) < len(all_items):
         log(f"🔁 跨源去重折叠 {len(all_items) - len(merged)} 条")
+
+    # ④b 案例库条目并入（library_only 源）—— 与既有库比对，命中的直接复用中文标题
+    #     与摘要并跳过 LLM，否则每天重译上百条会白烧免费额度。
+    cases_cfg = cfg.get("cases", {}) or {}
+    lib_path = os.path.join(a.outdir, cases_cfg.get("file", "data/cases.json"))
+    lib_cache = {}
+    if cases_cfg.get("enabled", True) and os.path.exists(lib_path):
+        try:
+            with open(lib_path, encoding="utf-8") as f:
+                for c in json.load(f).get("cases", []):
+                    if c.get("url"):
+                        lib_cache[c["url"]] = c
+        except Exception as e:
+            log(f"  ⚠️ 读案例库失败（将重建）：{e}")
+    lib_new, seen_lib, n_cached = [], set(), 0
+    for i in lib_items:
+        u = i.get("url") or ""
+        if not u or u in seen_lib:
+            continue
+        seen_lib.add(u)
+        i["_lib"] = True
+        prev = lib_cache.get(u)
+        if prev:
+            i["_skip_llm"] = True
+            n_cached += 1
+            if prev.get("title"):
+                i["titleCn"] = prev["title"]
+            if prev.get("summary"):
+                i["summary"] = prev["summary"]
+            if prev.get("type"):
+                i["apptype"] = prev["type"]
+        lib_new.append(i)
+    if lib_new:
+        log(f"📚 案例库：候选 {len(lib_new)} 条（{len(lib_new) - n_cached} 条新增待 AI 处理、"
+            f"{n_cached} 条命中缓存复用）")
+    merged_all = merged + lib_new
 
     # ⑤ 跨日折叠：与最近一份归档比对，重复的标记而非丢弃
     #    比对对象必须是「日期不是今天」的 daily 归档 —— 不能拿 latest.json 充当，
@@ -827,9 +995,14 @@ def main():
         if need:
             log(f"  ✅ 补抓成功 {ok_j}/{len(need)}")
 
-    # ⑦ LLM 增强（P2）：中文摘要 / 英文标题中文化 / 三维打分 / 主题标签
+    # ⑦ LLM 增强（P2）：中文摘要 / 英文标题中文化 / 三维打分 / 主题标签 / 应用形态
     tcfg = cfg.get("translate", {})
-    translator, failed_batches = llm_enhance(merged, tcfg)
+    translator, failed_batches = llm_enhance(merged_all, tcfg)
+
+    # ⑦b 简报只收非 library_only 的条目；案例库条目（含缓存复用）留待第 ⑩ 步入库
+    merged = [i for i in merged_all if not i.get("_lib")]
+    if len(merged) != len(merged_all):
+        log(f"📚 简报 {len(merged)} 条 ｜ 案例库条目 {len(merged_all) - len(merged)} 条另行入库")
 
     # ⑧ 分级与排序
     for i in merged:
@@ -882,6 +1055,47 @@ def main():
         json.dump({"generated_at": doc["generated_at"], "counts": doc["counts"],
                    "sources": reports, "degraded": degraded}, f,
                   ensure_ascii=False, indent=1)
+
+    # ⑩ 案例库累积：apps 车道的当日条目 + library_only 源的条目，按 url 去重后落盘
+    #     与简报的分工：简报回答「今天有什么新东西」（会滚走），
+    #     案例库回答「这段时间攒下了哪些作品」（可反复翻、可按形态筛选）。
+    if cases_cfg.get("enabled", True):
+        by_url = dict(lib_cache)
+        fresh = [i for i in merged_all if i.get("_lib") or i["lane"] == "apps"]
+        added = 0
+        for i in fresh:
+            u = i.get("url") or ""
+            if not u:
+                continue
+            rec = {
+                "url": u,
+                "title": (i.get("titleCn") or i["title"])[:120],
+                "titleEn": i["title"][:150] if i.get("titleCn") else "",
+                "summary": re.sub(r"\s+", " ", i.get("summary") or i.get("desc") or "")[:300],
+                "type": (i.get("apptype") or "")[:16],
+                "topic": (i.get("topic") or "")[:16],
+                "block": i.get("block", ""),
+                "lastSeen": doc["date"],
+            }
+            prev = by_url.get(u)
+            if prev:
+                prev.update({k: v for k, v in rec.items() if v})
+            else:
+                rec["firstSeen"] = doc["date"]
+                by_url[u] = rec
+                added += 1
+        lib = sorted(by_url.values(),
+                     key=lambda c: (c.get("lastSeen") or "", c.get("title") or ""), reverse=True)
+        maxn = int(cases_cfg.get("max", 400))
+        trimmed = max(0, len(lib) - maxn)
+        lib = lib[:maxn]
+        os.makedirs(os.path.dirname(lib_path), exist_ok=True)
+        with open(lib_path, "w", encoding="utf-8") as f:
+            json.dump({"updated": doc["generated_at"], "count": len(lib),
+                       "types": sorted({c["type"] for c in lib if c.get("type")}),
+                       "cases": lib}, f, ensure_ascii=False, indent=1)
+        log(f"📚 案例库：共 {len(lib)} 条（新增 {added}"
+            + (f"，裁剪 {trimmed}" if trimmed else "") + "）→ data/cases.json")
 
     log("-" * 100)
     log(f"✅ 产出 {len(merged)} 条 → latest.json + daily/{doc['date']}.json + 运行报告")
