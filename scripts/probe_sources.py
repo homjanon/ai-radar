@@ -37,6 +37,13 @@ UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/126.0 Safari/537.36")
 TZ_CN = datetime.timezone(datetime.timedelta(hours=8))
 
+# 复用生产管线的解析器与统计口径 —— 探测结论必须与生产一致。
+# 踩过的坑：probe 曾自带一套 parse_json（只数数组长度），于是对 openrouter / hf-models
+# 这类源报出「460 条 / 30 条」的乐观数字，而生产要过 exclude_tags / min_likes / stealth
+# 前缀等过滤，实际产出可能只有个位数。探测与生产用两套口径＝持续误导。
+sys.path.insert(0, HERE)
+import fetch_ai as F          # noqa: E402
+
 ctx = ssl.create_default_context()
 ctx.check_hostname = False
 ctx.verify_mode = ssl.CERT_NONE
@@ -108,28 +115,61 @@ def oldest_age_h(items):
     return int(best) if best is not None else -1
 
 
-def probe_url(url, kind="rss"):
-    """测一个 URL，返回 dict。"""
+def probe_url(url, kind="rss", src=None):
+    """测一个 URL，返回 dict。
+
+    解析走 fetch_ai.try_once —— 与生产完全同一套代码（含专用 parser 与过滤），
+    这样「探测说几条、生产就产出几条」。专用 parser 允许返回空列表（过滤后无合格
+    条目属正常），故 0 条不算失败、只在 err 里注明。
+    """
     t0 = time.time()
     try:
-        st, body = http_get(url)
-        if kind == "json":
-            arr = parse_json(body)
-            first = ""
-            if arr:
-                first = norm(str(arr[0].get("title") or arr[0].get("id") or "")) if isinstance(arr[0], dict) else str(arr[0])[:60]
-            return {"ok": True, "status": st, "n": len(arr), "desc": 0,
-                    "title": first[:60], "cost": time.time() - t0, "err": ""}
-        items = parse_feed(body)
-        if not items:
-            return {"ok": False, "status": st, "n": 0, "desc": 0, "title": "",
-                    "cost": time.time() - t0, "err": "200 但 0 条目（疑似 HTML 错误页）"}
-        return {"ok": True, "status": st, "n": len(items), "desc": med_desc(items),
-                "title": items[0][0][:60], "cost": time.time() - t0,
-                "fresh_h": oldest_age_h(items), "err": ""}
+        items = F.try_once(url, kind, src or {})
+        n = len(items)
+        desc = F.desc_median(items)
+        fh = -1
+        for it in items:
+            d = it.get("dt")
+            if d:
+                h = int((datetime.datetime.now(datetime.timezone.utc)
+                         - d).total_seconds() // 3600)
+                if fh < 0 or h < fh:
+                    fh = h
+        title = norm(str(items[0].get("title") or "")) if items else ""
+        err = "" if n else "0 条（过滤后无合格条目，非抓取失败）"
+        return {"ok": True, "status": 200, "n": n, "desc": desc, "title": title[:60],
+                "cost": time.time() - t0, "fresh_h": fh, "err": err}
     except Exception as e:
         return {"ok": False, "status": 0, "n": 0, "desc": 0, "title": "",
                 "cost": time.time() - t0, "err": f"{type(e).__name__}: {str(e)[:70]}"}
+
+
+def config_summary(cfg):
+    """打印配置全貌（车道 / 源清单 / 模型链 / 案例库）。
+
+    合到这里而不是写在 workflow 里：配置摘要必须和探测结果出自同一处，
+    否则「配置里有什么」和「实测到什么」会各说各话。
+    """
+    from collections import Counter
+    s = cfg["sources"]
+    on = [x for x in s if x.get("enabled")]
+    log(f"配置版本 {cfg.get('version')} ｜ 源 {len(s)} 个，启用 {len(on)} 个（其余为候选）")
+    cn_on, cn_all = Counter(x["lane"] for x in on), Counter(x["lane"] for x in s)
+    log("车道（声明顺序 = 展示与跨源去重优先级）：")
+    for l in cfg["lanes"]:
+        log(f"   {l['id']:10} {l['name']:8} 启用 {cn_on.get(l['id'], 0):>2} / 共 "
+            f"{cn_all.get(l['id'], 0):>2}   weight={l.get('weight')}")
+    log("源清单：")
+    for x in s:
+        log(f"   [{'ON ' if x.get('enabled') else 'cand'}] {x['id']:22} {x['lane']:10} "
+            f"{x.get('mode', 'auto'):7} {x.get('kind', 'rss'):5} "
+            f"{x.get('parser', '-'):13} {x.get('block', '')}")
+    t = cfg.get("translate", {})
+    log("模型链：" + " → ".join(m["name"] for m in t.get("models", [])))
+    cases = cfg.get("cases", {})
+    log(f"案例库：enabled={cases.get('enabled')} file={cases.get('file')} "
+        f"max={cases.get('max')}")
+    log("=" * 108 + "\n")
 
 
 def probe_source(src, pool):
@@ -142,19 +182,19 @@ def probe_source(src, pool):
     if src.get("route"):
         for host in pool:
             url = f"https://{host}{src['route']}"
-            r = probe_url(url, kind)
+            r = probe_url(url, kind, src)
             r.update({"id": sid, "via": host, "mode": "rsshub"})
             rows.append(r)
         # 中文源额外试 .cn 专属实例（portfolio 经验：对中文路由更稳）
         if src.get("lane") == "cn":
             url = f"https://rss.injahow.cn{src['route']}"
-            r = probe_url(url, kind)
+            r = probe_url(url, kind, src)
             r.update({"id": sid, "via": "rss.injahow.cn", "mode": "rsshub"})
             rows.append(r)
 
     # 通路 2：直连兜底
     for url in src.get("urls", []) or []:
-        r = probe_url(url, kind)
+        r = probe_url(url, kind, src)
         host = re.sub(r"^https?://", "", url).split("/")[0]
         r.update({"id": sid, "via": host, "mode": "direct"})
         rows.append(r)
@@ -238,6 +278,8 @@ def main():
         # 僵尸源识别：源"活着"（能取到条目）但久不更新 —— 比彻底失败更隐蔽，
         # 会让面板长期显示同一批旧内容而不报错。
         stale = ""
+        if best["n"] == 0:
+            stale += "  ⚠️过滤后无合格条目（该源当日产出 0 条）"
         if isinstance(fh, int):
             if fh > 240:
                 stale = "  ⚠️僵尸源(超10天未更新)"
