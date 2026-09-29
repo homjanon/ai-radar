@@ -27,6 +27,7 @@ import re
 import statistics
 import sys
 import time
+import urllib.error
 import urllib.request
 import xml.etree.ElementTree as ET
 
@@ -587,6 +588,38 @@ def _loads_array(text):
     raise RuntimeError("无法解析模型返回的 JSON 数组")
 
 
+# ── 模型配额熔断 ──────────────────────────────────────────────────────────
+# 实测教训：gemini-3-flash 的免费额度在一天多跑几轮后会被耗尽，此后**每一批都会再去撞
+# 一次 429** —— 一次运行 7 批就是 7 次无效请求加 7 行噪声日志，还挤掉了真正有用的信息。
+# 配额类错误在当轮内不会自愈，所以一旦命中就在本轮跳过该模型（新进程运行时自动复位）。
+_DEAD_MODELS = set()
+_QUOTA_HINTS = ("429", "too many requests", "quota", "rate limit", "resource_exhausted",
+                "capacity", "overloaded")
+
+
+def _is_quota_err(msg):
+    m = str(msg).lower()
+    return any(k in m for k in _QUOTA_HINTS)
+
+
+def _err_detail(e):
+    """把 HTTPError 的**响应体**带出来。
+
+    `str(HTTPError)` 只有 "HTTP Error 429: Too Many Requests"，把 body 丢掉了 ——
+    而 body 里才写着配额指标与重试建议。不打出来就只能靠猜（实测正是这样绕了一圈才
+    确认是配额而非配置错误）。
+    """
+    if isinstance(e, urllib.error.HTTPError):
+        try:
+            body = e.read().decode("utf-8", "replace")[:2000]
+        except Exception:
+            body = ""
+        m = re.search(r'"message"\s*:\s*"([^"]{0,220})"', body)
+        extra = m.group(1) if m else (body.strip()[:160] or str(getattr(e, "reason", "")))
+        return f"HTTP {e.code}: {extra}"
+    return f"{type(e).__name__}: {str(e)[:140]}"
+
+
 def _call_llm_batch(batch, tcfg, mode, want_type=False):
     """对一批条目依次尝试模型链。返回 (模型名, 是否成功, 实际发起请求的模型数)。"""
     smin = int(tcfg.get("summary_min", 40))
@@ -594,6 +627,8 @@ def _call_llm_batch(batch, tcfg, mode, want_type=False):
     sys_prompt = _sys_prompt(smin, smax, mode, want_type)
     tried = 0
     for m in tcfg.get("models", []):
+        if m["name"] in _DEAD_MODELS:
+            continue                      # 本轮已判定配额耗尽，不重复去撞
         key = os.environ.get(m.get("key_env", ""))
         if not key:
             log(f"  ⏭️ 跳过 {m['name']}：环境变量 {m.get('key_env')} 未设置（Secret 未配置时属预期）")
@@ -673,7 +708,12 @@ def _call_llm_batch(batch, tcfg, mode, want_type=False):
             log(f"  🌐 AI 增强完成（{m['name']}，{len(batch)} 条，译标题 {n_title} 条）")
             return m["name"], True, tried
         except Exception as e:
-            log(f"  ⚠️ {m['name']} 失败：{type(e).__name__}: {str(e)[:120]}")
+            detail = _err_detail(e)
+            if _is_quota_err(detail):
+                _DEAD_MODELS.add(m["name"])
+                log(f"  ⛔ {m['name']} 配额/限流 → 本轮跳过后续批次：{detail[:110]}")
+            else:
+                log(f"  ⚠️ {m['name']} 失败：{detail[:130]}")
     return None, False, tried
 
 
@@ -687,6 +727,7 @@ def llm_enhance(items, tcfg):
     """
     if not tcfg.get("enabled", True):
         return "off", []
+    _DEAD_MODELS.clear()          # 每轮抓取复位（进程内只跑一轮，这里是双保险）
     size = int(tcfg.get("batch_size", 25))
     pend = [i for i in items if not i.get("_skip_llm")]
     groups = []
