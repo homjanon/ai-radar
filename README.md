@@ -22,7 +22,7 @@
 ## 目录
 
 ```
-scripts/sources.json          源配置（单一数据源）· 五车道 · desc_min 门槛 · LLM 模型链
+scripts/sources.json          源配置（单一数据源）· 七车道 · desc_min 门槛 · LLM 模型链
 scripts/probe_sources.py      源可用性探测（只读，P0）
 scripts/fetch_ai.py           抓取与产物生成（硬规则选条 + LLM 增强）
 docs/index.html               网页面板（读 latest.json 渲染，支持车道筛选与分级折叠）
@@ -30,7 +30,7 @@ docs/latest.json              最新一期产物
 docs/daily/{date}.json        当日归档（保留 30 天）
 docs/data/reports/{ts}.json   运行报告（每源通路/条数/降级原因，可回溯）
 .github/workflows/probe-sources.yml   源探测（手动 + 每月自动）
-.github/workflows/fetch.yml           抓取发布（每日 08:10 北京）
+.github/workflows/fetch.yml           抓取发布（每日 07:30 北京；GitHub cron 常延迟，故提前一档）
 ```
 
 ## 三层处理链路
