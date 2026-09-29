@@ -1,8 +1,10 @@
 # AI 前沿雷达（ai-radar）
 
-持续追踪大模型 / Agent / Skill 生态的自动化聚合站。**当前 P2：抓取 → 硬规则筛选 → LLM 增强（中文摘要 / 三维评分 / 分级）→ JSON → 网页面板，全链路已跑通。**
+持续追踪大模型 / Agent / Skill 生态的自动化聚合站。**当前 P3：抓取 → 硬规则筛选 → LLM 增强（中文摘要 / 三维评分 / 分级）→ JSON → 双视图面板（简报 + 应用案例库），全链路已跑通。**
 
-线上面板：https://homjanon.github.io/ai-radar/
+线上面板：**https://ai-radar.hellohopo.dpdns.org/**（老地址 `homjanon.github.io/ai-radar/` 仍可访问、不跳转）
+
+> 已接入 `nav` 首页第 3 位，并被「老张工具箱」App 收纳（`app.phase=4`、WebView 打开）。
 
 > **首次部署需配两个 Secret**（未配置时自动降级为原文，不影响抓取）：
 > ```bash
@@ -22,13 +24,16 @@
 ## 目录
 
 ```
-scripts/sources.json          源配置（单一数据源）· 七车道 · desc_min 门槛 · LLM 模型链
-scripts/probe_sources.py      源可用性探测（只读，P0）
-scripts/fetch_ai.py           抓取与产物生成（硬规则选条 + LLM 增强）
-docs/index.html               网页面板（读 latest.json 渲染，支持车道筛选与分级折叠）
+scripts/sources.json          源配置（单一数据源）· 七车道 · desc_min 门槛 · 案例库门槛 · LLM 模型链
+scripts/probe_sources.py      源可用性探测（只读，复用 fetch_ai 的解析器，不再自带一套口径）
+scripts/fetch_ai.py           抓取与产物生成（硬规则选条 + LLM 增强 + 案例库累积）
+scripts/smoke_test.py         离线冒烟测试（抓取前的守门；不联网、不需要 Secret）
+docs/index.html               双视图面板（简报 / 案例库，读 latest.json 与 data/cases.json）
 docs/latest.json              最新一期产物
 docs/daily/{date}.json        当日归档（保留 30 天）
+docs/data/cases.json          应用案例库（跨日累积，按质量保留）
 docs/data/reports/{ts}.json   运行报告（每源通路/条数/降级原因，可回溯）
+docs/CNAME                    自定义域（ai-radar.hellohopo.dpdns.org）
 .github/workflows/probe-sources.yml   源探测（手动 + 每月自动）
 .github/workflows/fetch.yml           抓取发布（每日 07:30 北京；GitHub cron 常延迟，故提前一档）
 ```
@@ -44,6 +49,27 @@ docs/data/reports/{ts}.json   运行报告（每源通路/条数/降级原因，
 LLM 按**语言 × 是否应用案例**四组拆批（英文 `translate` / 中文 `summarize`，各自再分
 「要 type」与「不要 type」）——指令一旦混批，模型会整批统一处理：要么英文标题漏译，
 要么给新闻也硬塞一个「应用形态」。模型链逐档降级，全失败也不空窗。
+
+## 双视图：简报 与 案例库
+
+同一个页面上有两个 Tab，**同一批源、同一套打分，差别只在门槛**：
+
+| | 简报（时间流） | 案例库（沉淀库） |
+|---|---|---|
+| 回答 | 今天有什么新东西 | 攒下了哪些值得反复翻的作品 |
+| 取舍 | **要宽**（不漏信息） | **要严**（宁缺毋滥） |
+| 上限 | 每日滚动，跨日重复降权折叠 | 600 条，按分数淘汰 |
+
+**案例库的入库门槛**（`cases.min_total` / `cases.min_rel`，默认 5.0 / 3）：
+
+- `library_only` 源（`awesome-llm-apps` 的人工精选清单）**无条件入库**；
+- `apps` 车道的条目须过门槛，否则**只进简报、不进库**（实测 38 → 入库 18 / 挡掉 20，
+  挡掉的正是「耳机剁手清单 / 手机评测」这类推荐流内容 —— 少数派是「效率工具+数码生活」版块，本身不是 AI 源）；
+- 种子条目带 `src: "seed"` 永久保护；淘汰按**分数**降序，不按 `lastSeen`
+  （后者是「新的留老的扔」，与作品集用途相反）；
+- `cases.rescore_max`：换口径前入库、没有 `score` 的老记录，每次运行自动补一小批分
+  （走同一套 LLM 打分）后立即按门槛判去留 —— **只过滤"新增"是不够的**，
+  已在库里的差条目必须显式剔除，否则永久留存。
 
 ## 七条车道
 
@@ -122,6 +148,12 @@ HTTPS_PROXY=http://127.0.0.1:7890 python scripts/fetch_ai.py --outdir docs
 
 探测结果会写进 Actions 的 **Step Summary**（表格形式），并打印完整日志，**不落任何文件**。
 
+**定时**：GitHub Actions `schedule`（`30 23 * * *` UTC = 北京 **07:30**）。为什么是 07:30 而不是
+08:10 —— GitHub 的 schedule 要排共享队列、实测经常延迟十几到几十分钟，往前留一档才能保证
+08:00 前拿到产物。本 workflow 也开着 `workflow_dispatch`，可接外部触发（如 Cloudflare 定时），
+但**一旦启用必须同时删掉 `schedule`**：两边各跑一次而 `concurrency` 只排队不合并，
+会导致 LLM 免费额度翻倍消耗、产物提交两次。
+
 ## 路线
 
 - **P0 已完成** 源基线探测 —— 建仓 + probe workflow，源实测基线（两环境结论相反，见下）
@@ -129,6 +161,7 @@ HTTPS_PROXY=http://127.0.0.1:7890 python scripts/fetch_ai.py --outdir docs
 - **P2 已完成** LLM 增强：中文摘要 + 英文标题中文化 + 三维打分 + 主题标签 + 分级折叠
 - **P2.5 已完成** 「模型发布」车道：三种专用解析器 + 匿名公测识别 + 模型链补第 4 档
 - **P3 已完成** 「应用案例」车道 + 案例库累积 + 终端风格前端（简报 / 案例库双视图）
+- **P3.5 已完成** 案例库选条规则（入库门槛 + 按分数淘汰 + 补分自愈）· 米白主题 · 自定义域
 - **P4** 趋势量化：周报四指标（厂商发布频率 / 开源权重占比 / 星标增速 / 主题热度）
 
 ## 新增「应用案例」车道的踩坑
@@ -142,3 +175,16 @@ HTTPS_PROXY=http://127.0.0.1:7890 python scripts/fetch_ai.py --outdir docs
   会被误报为抓取失败，污染降级告警。
 - **awesome 类 README 要按分类轮转取样** —— 各节长度悬殊（RAG 21 条 vs 微调 2 条），
   直接取前 N 条会让大节挤掉其它形态，案例库就失衡了。
+
+## 新增「累积型数据集」的坑（案例库）
+
+与"每日产物"不同，**数据集是增量的**，加规则时的迁移成本高一个量级：
+
+- **「不新增」≠「删除」** —— 只改入库条件，已在库里的差条目躺在缓存里永不消失。
+  必须显式剔除当轮命中的不达标项，并给无判据的老记录**补分**（见「双视图」一节）。
+- **门槛要留「判不了就不杀」的口子** —— 老记录、LLM 不可用时都没有分数，此时一律保留，
+  否则会误删种子和全部历史。同理入库门槛在 LLM 不可用时只按兜底总分把关，
+  否则 **LLM 一挂案例库就静默停止增长**（不报错、只是不再有新条目）。
+- **分类口径变更要整库归一化** —— URL 已失效的老条目永不进入写库循环，
+  只靠"命中即更新"会留下永久孤儿筛选项（实测过一个只占 1 条的孤儿分类长期占着筛选位）。
+
