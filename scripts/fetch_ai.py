@@ -746,6 +746,13 @@ AWESOME_SECTION_COARSE = {
 }
 
 
+# 细分类名 → 粗分类的反查表。用途：库里可能有「URL 已不在源里、但已入库」的历史条目，
+# 它们存的是旧口径的细分类名（如「进阶 Agent」）。写库时统一折算，否则筛选轴里会长期
+# 混着这些孤儿值，每个都只占 1 条却各占一个筛选项。
+COARSE_BY_FINE = {v: AWESOME_SECTION_COARSE.get(k, "效率工具")
+                  for k, v in AWESOME_SECTION_CN.items()}
+
+
 # 应用形态的兜底判定。为什么必须有：LLM 对「额外输出一个字段」的服从度不稳定 ——
 # 实测首轮 6 个含 type 指令的批次**全部没返回** type，38 条 apps 条目全是空的。
 # 而「按形态筛选」正是案例库的核心用途，不能押在模型身上。词表与给 LLM 的完全一致，
@@ -1164,7 +1171,8 @@ def main():
                 "title": (i.get("titleCn") or i["title"])[:120],
                 "titleEn": i["title"][:150] if i.get("titleCn") else "",
                 "summary": re.sub(r"\s+", " ", i.get("summary") or i.get("desc") or "")[:300],
-                "type": (i.get("apptype") or "")[:16],
+                "type": COARSE_BY_FINE.get(i.get("apptype") or "",
+                                           i.get("apptype") or "")[:16],
                 "topic": (i.get("topic") or "")[:16],
                 "block": i.get("block", ""),
                 "lastSeen": doc["date"],
