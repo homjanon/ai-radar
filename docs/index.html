@@ -1,238 +1,473 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>AI 前沿雷达</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📡</text></svg>">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>AI 前沿雷达 · ai-radar</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%2305080a'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='%232ee6a8' font-family='monospace'>&gt;_</text></svg>">
 <style>
-  :root{
-    --bg:#f6f7f9; --card:#fff; --line:#e6e8ec; --line-2:#f0f2f5;
-    --tx:#1b1f24; --tx-2:#5b6472; --tx-3:#8f98a5;
-    --accent:#0d9488;
-    --lv-top:#dc2626; --lv-watch:#d97706;
-  }
-  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-  body{margin:0;background:var(--bg);color:var(--tx);
-    font:15px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-    -webkit-font-smoothing:antialiased;padding-bottom:40px}
-  .wrap{max-width:880px;margin:0 auto;padding:20px 16px 0}
+/* ════════════════════════════════════════════════════════════════════
+   AI 前沿雷达 · 极客终端主题
+   两条硬约束（与抓取脚本的字段一一对应，改样式不要改字段名）：
+   ① 所有外部文本必须经 esc() 转义后再插入 —— RSS/API 内容永不可信
+      （借鉴 agent-pulse：外部文本永不当可信 HTML）
+   ② 深色 + 等宽 + 霓虹强调；信息密度优先，动效克制
+   ════════════════════════════════════════════════════════════════════ */
+:root{
+  --bg:#05080a; --panel:#0a1117; --panel2:#0d1720;
+  --line:#14212a; --line2:#1d2f3b; --line3:#28424f;
+  --fg:#b7d2ca; --fg2:#7e9a95; --fg3:#4d6866; --fg4:#33484a;
+  --acc:#2ee6a8;      /* 主强调：霓虹青绿 */
+  --acc2:#22d3ee;     /* 次强调：青 */
+  --amber:#f5b544; --red:#ff5f56;
+  --l-model:#22d3ee; --l-official:#5b9dff; --l-apps:#2ee6a8; --l-paper:#a78bfa;
+  --l-community:#f472b6; --l-media:#f5b544; --l-cn:#fb7185;
+  --mono:ui-monospace,"JetBrains Mono","Cascadia Mono","SF Mono",Menlo,Consolas,"Microsoft YaHei UI",monospace;
+  --sans:"Microsoft YaHei UI","PingFang SC",-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg);color:var(--fg);font-family:var(--sans);
+  font-size:14px;line-height:1.65;min-height:100vh;
+  background-image:
+    linear-gradient(rgba(46,230,168,.028) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(46,230,168,.028) 1px,transparent 1px);
+  background-size:44px 44px;
+}
+body::after{ /* 极轻扫描线，只做质感、不干扰阅读 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:99;
+  background:repeating-linear-gradient(0deg,rgba(0,0,0,.16) 0 1px,transparent 1px 3px);
+  opacity:.3;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 18px 72px}
 
-  header{padding:6px 0 14px}
-  .top{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
-  h1{font-size:21px;margin:0;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
-  h1 .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none;
-           box-shadow:0 0 0 3px rgba(13,148,136,.15)}
-  .gen{font-size:12.5px;color:var(--tx-3)}
-  .sumline{display:flex;gap:8px;flex-wrap:wrap;margin-top:11px;align-items:center}
-  .pill{background:#fff;border:1px solid var(--line);border-radius:20px;padding:4px 11px;
-        font-size:12.5px;color:var(--tx-2);display:flex;align-items:center;gap:5px}
-  .pill b{color:var(--tx);font-weight:600}
-  .pill .sw{width:7px;height:7px;border-radius:50%;flex:none}
-  .pill.lv-top{border-color:#fecaca;background:#fef2f2;color:#991b1b}
-  .pill.lv-top b{color:#991b1b}
-  .pill.lv-watch{border-color:#fde68a;background:#fffbeb;color:#92400e}
-  .pill.lv-watch b{color:#92400e}
+/* ── 终端窗框 ─────────────────────────────────────── */
+.term{
+  margin-top:20px;border:1px solid var(--line2);border-radius:10px;
+  background:linear-gradient(180deg,var(--panel2),#060a0d 62%);
+  box-shadow:0 0 0 1px rgba(46,230,168,.045),0 18px 50px -28px rgba(46,230,168,.28);
+  overflow:hidden;
+}
+.tbar{display:flex;align-items:center;gap:10px;padding:9px 13px;border-bottom:1px solid var(--line);background:var(--panel)}
+.dots{display:flex;gap:6px;flex:0 0 auto}
+.dots i{width:10px;height:10px;border-radius:50%;display:block;opacity:.85}
+.dots i:nth-child(1){background:#ff5f56}.dots i:nth-child(2){background:#f5b544}.dots i:nth-child(3){background:#2ee6a8}
+.path{font-family:var(--mono);font-size:11.5px;color:var(--fg3);letter-spacing:.02em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1 1 auto;min-width:0}
+.path b{color:var(--acc);font-weight:600}
+.online{font-family:var(--mono);font-size:10.5px;color:var(--acc);letter-spacing:.14em;border:1px solid rgba(46,230,168,.3);border-radius:3px;padding:2px 7px;background:rgba(46,230,168,.07);flex:0 0 auto}
+.online::before{content:"●";margin-right:5px;animation:blink 2.4s steps(1) infinite}
+@keyframes blink{0%,62%{opacity:1}63%,100%{opacity:.22}}
 
-  nav.tabs{display:flex;gap:6px;overflow-x:auto;padding:14px 0 10px;
-           position:sticky;top:0;background:linear-gradient(var(--bg) 78%,rgba(246,247,249,0));
-           z-index:9;scrollbar-width:none}
-  nav.tabs::-webkit-scrollbar{display:none}
-  .tab{flex:none;font-size:13px;padding:6px 13px;border-radius:20px;border:1px solid var(--line);
-       background:#fff;color:var(--tx-2);cursor:pointer;white-space:nowrap;transition:.15s}
-  .tab.on{background:var(--tx);border-color:var(--tx);color:#fff}
-  .tab .c{opacity:.6;margin-left:4px;font-size:11.5px}
+/* ── 头部 ─────────────────────────────────────────── */
+.head{padding:24px 26px 20px;border-bottom:1px solid var(--line)}
+.eyebrow{font-family:var(--mono);font-size:10.5px;color:var(--fg3);letter-spacing:.3em;text-transform:uppercase;margin-bottom:9px}
+h1{margin:0 0 8px;font-size:30px;font-weight:700;letter-spacing:-.01em;line-height:1.15;font-family:var(--mono)}
+h1 .br{color:var(--fg4)}
+h1 .hl{color:var(--acc);text-shadow:0 0 22px rgba(46,230,168,.5),0 0 3px rgba(46,230,168,.65)}
+.prompt{font-family:var(--mono);font-size:12.5px;color:var(--fg2);display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.prompt .u{color:var(--acc)}
+.cur{display:inline-block;width:8px;height:15px;background:var(--acc);vertical-align:-2px;animation:blink 1.06s steps(1) infinite}
 
-  section.lane{margin:0 0 24px}
-  .lane-h{display:flex;align-items:center;gap:8px;margin:18px 0 10px}
-  .lane-h .bar{width:3px;height:15px;border-radius:2px;flex:none}
-  .lane-h h2{font-size:14.5px;margin:0;font-weight:600}
-  .lane-h .n{font-size:12px;color:var(--tx-3);font-variant-numeric:tabular-nums}
+/* ── 状态条（像系统监控面板）───────────────────────── */
+.stat{display:grid;grid-template-columns:repeat(auto-fit,minmax(122px,1fr));gap:1px;background:var(--line);border-top:1px solid var(--line)}
+.stat div{background:var(--panel);padding:11px 14px}
+.stat .k{font-family:var(--mono);font-size:9.5px;color:var(--fg3);letter-spacing:.19em;text-transform:uppercase;margin-bottom:3px}
+.stat .v{font-family:var(--mono);font-size:14.5px;color:var(--fg);font-variant-numeric:tabular-nums;word-break:break-all;line-height:1.35}
+.stat .v.g{color:var(--acc)}.stat .v.a{color:var(--amber)}.stat .v.r{color:var(--red)}
 
-  .item{background:var(--card);border:1px solid var(--line);border-radius:11px;
-        padding:13px 15px;margin-bottom:9px;transition:.15s}
-  .item.lvl-top{border-left:3px solid var(--lv-top);padding-left:13px}
-  .item.lvl-watch{border-left:3px solid var(--lv-watch);padding-left:13px}
-  .item.repeat{opacity:.5}
-  .it-top{display:flex;gap:8px;align-items:flex-start;justify-content:space-between}
-  .it-title{font-size:15px;font-weight:600;line-height:1.5;margin:0 0 6px;letter-spacing:-.005em}
-  .it-title a{color:inherit;text-decoration:none}
-  .it-title a:hover{color:var(--accent)}
-  .lvl{flex:none;font-size:11px;padding:1px 7px;border-radius:5px;white-space:nowrap;
-       font-weight:600;transform:translateY(2px)}
-  .lvl.top{color:#fff;background:var(--lv-top)}
-  .lvl.watch{color:#fff;background:var(--lv-watch)}
-  .meta{font-size:12px;color:var(--tx-3);display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin-bottom:7px}
-  .meta .blk{font-weight:500}
-  .topic{font-size:11px;padding:0 6px;border-radius:4px;background:var(--line-2);color:var(--tx-2)}
-  .summary{font-size:13.5px;color:var(--tx-2);line-height:1.75;margin:0}
-  .alsoin{font-size:11.5px;color:var(--tx-3);margin-top:6px}
+/* ── Tab ──────────────────────────────────────────── */
+.tabs{display:flex;gap:0;border-bottom:1px solid var(--line);background:var(--panel);overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{font-family:var(--mono);font-size:12.5px;color:var(--fg3);cursor:pointer;padding:12px 18px;border:0;background:none;white-space:nowrap;border-right:1px solid var(--line);border-bottom:2px solid transparent;transition:color .16s,background .16s;letter-spacing:.02em}
+.tab:hover{color:var(--fg);background:var(--panel2)}
+.tab.on{color:var(--acc);border-bottom-color:var(--acc);background:rgba(46,230,168,.055);text-shadow:0 0 14px rgba(46,230,168,.42)}
+.tab .n{font-size:10.5px;color:var(--fg3);margin-left:6px;border:1px solid var(--line2);border-radius:3px;padding:0 4px}
+.tab.on .n{color:var(--acc);border-color:rgba(46,230,168,.35)}
 
-  details.fold{margin-top:2px}
-  details.fold>summary{font-size:12.5px;color:var(--tx-3);cursor:pointer;padding:8px 0;
-                        list-style:none;user-select:none}
-  details.fold>summary::-webkit-details-marker{display:none}
-  details.fold>summary:before{content:"▸ ";}
-  details.fold[open]>summary:before{content:"▾ ";}
+/* ── 工具行 / 筛选 ─────────────────────────────────── */
+.bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--panel)}
+.bar .lbl{font-family:var(--mono);font-size:10px;color:var(--fg3);letter-spacing:.18em;text-transform:uppercase;flex:0 0 auto}
+.chip{font-family:var(--mono);font-size:11.5px;cursor:pointer;user-select:none;color:var(--fg2);background:transparent;border:1px solid var(--line2);border-radius:3px;padding:3px 9px;transition:.15s;white-space:nowrap}
+.chip:hover{color:var(--fg);border-color:var(--line3);background:var(--panel2)}
+.chip.on{color:var(--bg);background:var(--acc);border-color:var(--acc);font-weight:600}
+.chip .c{opacity:.62;margin-left:5px;font-size:10.5px}
+.dot{width:7px;height:7px;border-radius:2px;display:inline-block;margin-right:6px;vertical-align:0}
+.search{font-family:var(--mono);font-size:12.5px;color:var(--fg);background:var(--bg);border:1px solid var(--line2);border-radius:3px;padding:5px 10px;outline:none;flex:1 1 190px;min-width:120px}
+.search:focus{border-color:var(--acc);box-shadow:0 0 0 2px rgba(46,230,168,.12)}
+.search::placeholder{color:var(--fg4)}
 
-  .notice{background:#fff;border:1px solid var(--line);border-left:3px solid #d97706;
-          border-radius:10px;padding:12px 15px;font-size:12.5px;color:var(--tx-2);margin:6px 0 18px}
-  .notice b{color:var(--tx)}
-  .empty,.load{text-align:center;color:var(--tx-3);font-size:13.5px;padding:56px 20px}
-  footer{margin-top:30px;padding-top:16px;border-top:1px solid var(--line);
-         font-size:11.5px;color:var(--tx-3);text-align:center;line-height:1.9}
-  footer a{color:inherit}
-  @media(max-width:560px){
-    .wrap{padding:14px 12px 0}
-    h1{font-size:19px}
-    .item{padding:12px 13px}
-    .item.lvl-top,.item.lvl-watch{padding-left:11px}
-  }
+/* ── 分组 ──────────────────────────────────────────── */
+.grp{padding:22px 18px 0}
+.grp .h{display:flex;align-items:center;gap:10px;margin-bottom:12px;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.grp .h .t{font-weight:700}
+.grp .h .line{flex:1;height:1px;background:linear-gradient(90deg,var(--line2),transparent)}
+.grp .h .cnt{color:var(--fg3);font-size:11px;letter-spacing:0}
+.h-top .t{color:var(--red);text-shadow:0 0 14px rgba(255,95,86,.42)}
+.h-watch .t{color:var(--amber)}
+.h-normal .t{color:var(--fg3)}
+.h-lib .t{color:var(--acc2)}
+
+/* ── 条目 ──────────────────────────────────────────── */
+.list{display:flex;flex-direction:column;gap:7px}
+.it{position:relative;border:1px solid var(--line);border-radius:6px;background:linear-gradient(180deg,var(--panel),#070c10);padding:12px 14px 12px 15px;transition:border-color .16s,transform .16s}
+.it:hover{border-color:var(--line3);transform:translateX(2px)}
+.it::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--lane,var(--line2))}
+.it.top{border-color:rgba(255,95,86,.32);background:linear-gradient(180deg,rgba(255,95,86,.055),transparent 70%);box-shadow:inset 0 0 34px -22px rgba(255,95,86,.6)}
+.it.top::before{background:var(--red);box-shadow:0 0 12px rgba(255,95,86,.75)}
+.it.watch::before{background:var(--amber)}
+.it.rep{opacity:.52}
+.it.rep:hover{opacity:.82}
+.it .t1{font-size:14.5px;font-weight:600;color:#dcefe9;line-height:1.5;display:flex;gap:8px;align-items:flex-start}
+.it .t1 .mk{font-family:var(--mono);color:var(--fg4);flex:0 0 auto;font-size:12px;line-height:1.75}
+.it.top .t1 .mk{color:var(--red)}
+.it .t1 a{color:inherit;text-decoration:none}
+.it .t1 a:hover{color:var(--acc);text-decoration:underline;text-decoration-color:rgba(46,230,168,.5)}
+.it .t1 .en{display:block;font-family:var(--mono);font-size:10.5px;color:var(--fg3);font-weight:400;margin-top:3px;line-height:1.5;word-break:break-word}
+.it .sm{margin:7px 0 0;color:var(--fg2);font-size:12.8px;line-height:1.7}
+.it .sm2{margin:6px 0 0;color:var(--fg3);font-size:12px;line-height:1.65}
+.it .meta{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-top:9px;font-family:var(--mono);font-size:10.5px;color:var(--fg3)}
+.it .meta .tg{border:1px solid var(--line2);border-radius:3px;padding:1px 6px;display:inline-flex;align-items:center;gap:5px}
+.it .meta .lv{font-weight:700;letter-spacing:.06em}
+.it .meta .lv.top{color:var(--red);border-color:rgba(255,95,86,.34);background:rgba(255,95,86,.08)}
+.it .meta .lv.watch{color:var(--amber);border-color:rgba(245,181,68,.3);background:rgba(245,181,68,.07)}
+.it .meta .sc{color:var(--fg4)}
+.it .meta .sc b{color:var(--fg2);font-weight:600}
+.it .meta .tp{color:var(--acc2);border-color:rgba(34,211,238,.28);background:rgba(34,211,238,.06)}
+.it .meta .at{color:var(--acc);border-color:rgba(46,230,168,.28);background:rgba(46,230,168,.06)}
+.it .meta .sta{color:var(--fg4)}
+
+details.more{border:1px solid var(--line);border-radius:6px;background:var(--panel);margin-top:4px}
+details.more>summary{cursor:pointer;list-style:none;padding:11px 14px;font-family:var(--mono);font-size:11.5px;color:var(--fg3);letter-spacing:.08em}
+details.more>summary::-webkit-details-marker{display:none}
+details.more>summary:hover{color:var(--fg)}
+details.more>summary::before{content:"▸ ";color:var(--acc)}
+details.more[open]>summary::before{content:"▾ "}
+details.more>summary::after{content:"  [ 展开 / 收起 ]";font-size:9.5px;color:var(--fg4);letter-spacing:.1em}
+details.more .list{padding:0 10px 12px}
+
+/* ── 案例库 ───────────────────────────────────────── */
+.cases{display:grid;grid-template-columns:repeat(auto-fill,minmax(272px,1fr));gap:10px;padding:16px 18px 0}
+.case{position:relative;border:1px solid var(--line);border-radius:6px;background:linear-gradient(180deg,var(--panel),#070c10);padding:13px 14px;display:flex;flex-direction:column;gap:7px;transition:border-color .16s,box-shadow .16s,transform .16s}
+.case:hover{border-color:rgba(46,230,168,.4);transform:translateY(-2px);box-shadow:0 12px 30px -20px rgba(46,230,168,.6)}
+.case .ct{font-size:13.6px;font-weight:600;color:#dcefe9;line-height:1.5}
+.case .ct a{color:inherit;text-decoration:none}
+.case .ct a:hover{color:var(--acc)}
+.case .cen{font-family:var(--mono);font-size:10px;color:var(--fg4);line-height:1.45;word-break:break-word}
+.case .cs{color:var(--fg2);font-size:12.2px;line-height:1.65;flex:1}
+.case .cf{display:flex;gap:7px;align-items:center;flex-wrap:wrap;font-family:var(--mono);font-size:10px;color:var(--fg3);border-top:1px dashed var(--line2);padding-top:8px}
+.case .cf .ty{color:var(--acc);border:1px solid rgba(46,230,168,.26);border-radius:3px;padding:0 5px}
+
+.empty{padding:44px 18px;text-align:center;font-family:var(--mono);color:var(--fg3);font-size:12.5px;line-height:2}
+.empty .b{color:var(--fg4);font-size:26px;display:block;margin-bottom:10px}
+
+.ft{margin-top:34px;padding-top:14px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10.5px;color:var(--fg4);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.hide{display:none!important}
+
+@media(max-width:640px){
+  .wrap{padding:0 11px 56px}
+  .head{padding:18px 16px 16px}
+  h1{font-size:22px}
+  .stat{grid-template-columns:repeat(2,1fr)}
+  .cases{grid-template-columns:1fr;padding:14px 12px 0}
+  .grp{padding:16px 12px 0}
+  .bar{padding:10px 12px}
+  .tab{padding:11px 13px;font-size:12px}
+  .it{padding:11px 12px 11px 13px}
+  .it .t1{font-size:13.6px}
+}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <header>
-    <div class="top">
-      <h1><span class="dot"></span>AI 前沿雷达</h1>
-      <div class="gen" id="gen">加载中…</div>
+
+  <div class="term">
+    <div class="tbar">
+      <div class="dots"><i></i><i></i><i></i></div>
+      <div class="path">~/ai-radar <b>$</b> tail -n 100 briefing.log</div>
+      <div class="online" id="live">ONLINE</div>
     </div>
-    <div class="sumline" id="sumline"></div>
-  </header>
 
-  <nav class="tabs" id="tabs"></nav>
-  <div id="notice"></div>
-  <main id="main"><div class="load">正在加载…</div></main>
+    <div class="head">
+      <div class="eyebrow">LLM · Agent · Skill — 前沿情报管道</div>
+      <h1><span class="br">[</span> <span class="hl">AI 前沿雷达</span> <span class="br">]</span></h1>
+      <div class="prompt">
+        <span><span class="u">ai-radar</span>@homjanon:~$ ./fetch --brief</span>
+        <span class="cur"></span>
+      </div>
+    </div>
 
-  <footer>
-    五车道：官方一手 · 论文基准 · 社区开源 · 媒体分析 · 中文动态<br>
-    硬规则选条（时间窗/去重/跨源折叠）+ LLM 只做摘要与三维评分，不参与选条<br>
-    源与实例顺序见 <a href="https://github.com/homjanon/ai-radar">homjanon/ai-radar</a>
-  </footer>
+    <div class="stat" id="stat"></div>
+    <div class="tabs" id="tabs"></div>
+  </div>
+
+  <div id="view-brief"></div>
+  <div id="view-cases" class="hide"></div>
+
+  <div class="ft">
+    <span>ai-radar · 源基线由 Actions 侧探测确认 · 选条走硬规则、表达由 LLM</span>
+    <span id="ft-gen">—</span>
+  </div>
 </div>
 
 <script>
-const LANE_COLOR = {
-  model:'#db2777', official:'#2563eb', paper:'#7c3aed', community:'#059669',
-  media:'#d97706', cn:'#0d9488'
+/* ── 工具 ─────────────────────────────────────────── */
+var $ = function(s){ return document.querySelector(s); };
+var esc = function(s){
+  return String(s == null ? '' : s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
 };
-const LVL = { top:{n:'重磅'}, watch:{n:'关注'} };
-// 外部文本一律转义后再插入 —— 永不当作可信 HTML（防 XSS）
-const esc = s => String(s == null ? '' : s)
-  .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-  .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+var attr = function(s){ return esc(s).replace(/`/g,'&#96;'); };
 
-let DOC = null, FILTER = 'all';
+var LANE = {
+  model:'#22d3ee', official:'#5b9dff', apps:'#2ee6a8', paper:'#a78bfa',
+  community:'#f472b6', media:'#f5b544', cn:'#fb7185'
+};
+var LV = { top:'重磅', watch:'关注', normal:'常规' };
 
-function renderItem(i){
-  const color = LANE_COLOR[i.lane] || '#5b6472';
-  const lv = LVL[i.level];
-  const title = i.titleCn || i.title;
-  const also = (i.alsoIn && i.alsoIn.length)
-    ? `<div class="alsoin">另有 ${i.alsoIn.map(esc).join('、')} 报道同一事件</div>` : '';
-  return `<article class="item${i.level ? ' lvl-' + esc(i.level) : ''}${i.isRepeat ? ' repeat' : ''}">
-    <div class="it-top">
-      <h3 class="it-title"><a href="${esc(i.url)}" target="_blank" rel="noopener noreferrer">${esc(title)}</a></h3>
-      ${lv ? `<span class="lvl ${esc(i.level)}">${lv.n}</span>` : ''}
-    </div>
-    <div class="meta">
-      <span class="blk" style="color:${color}">${esc(i.block)}</span>
-      <span>${esc(i.pubTime || '')}</span>
-      ${i.stale ? '<span>· 较早</span>' : ''}
-      ${i.isRepeat ? '<span>· 昨日已收录</span>' : ''}
-      ${i.topic ? `<span class="topic">${esc(i.topic)}</span>` : ''}
-    </div>
-    ${i.summary ? `<p class="summary">${esc(i.summary)}</p>` : ''}
-    ${also}
-  </article>`;
+function ageLabel(h){
+  if (h == null || h < 0) return '';
+  if (h < 1) return '刚刚';
+  if (h < 24) return h + ' 小时前';
+  return Math.floor(h / 24) + ' 天前';
+}
+function host(u){ try { return new URL(u).hostname.replace(/^www\./,''); } catch(e){ return ''; } }
+
+/* ── 状态条 ───────────────────────────────────────── */
+function renderStat(d, casesN){
+  var L = (d.counts && d.counts.byLevel) || {};
+  var deg = (d.degraded || []).length;
+  var rows = [
+    ['generated', esc(d.generated_at || '—'), ''],
+    ['items', esc((d.counts && d.counts.total) || 0), 'g'],
+    ['heavy / watch', (L.top || 0) + ' / ' + (L.watch || 0), 'a'],
+    ['lanes', (d.lanes || []).length, ''],
+    ['repeat', esc((d.counts && d.counts.repeat) || 0), ''],
+    ['cases', casesN == null ? '…' : casesN, ''],
+    ['model', esc(d.translator || '—'), ''],
+    ['degraded', deg, deg ? 'r' : 'g']
+  ];
+  $('#stat').innerHTML = rows.map(function(r){
+    return '<div><div class="k">' + r[0] + '</div><div class="v ' + r[2] + '">' + r[1] + '</div></div>';
+  }).join('');
 }
 
-function split(arr){
-  return {
-    top: arr.filter(x => x.level === 'top'),
-    watch: arr.filter(x => x.level === 'watch'),
-    normal: arr.filter(x => !x.level || x.level === 'normal'),
-  };
+/* ── 条目 ─────────────────────────────────────────── */
+function itemHTML(i){
+  var col = LANE[i.lane] || 'var(--line2)';
+  var title = i.titleCn || i.title || '';
+  var altEn = (i.titleCn && i.title) ? i.title : '';
+  var href = i.url || '#';
+  var sc = i.score ? (i.score.rel + '/' + i.score.info + '/' + i.score.fresh) : '';
+  var mk = i.level === 'top' ? '▲' : (i.level === 'watch' ? '▸' : '·');
+  var meta = [];
+  meta.push('<span class="tg"><span class="dot" style="background:' + col + '"></span>' +
+            esc(i.lane) + ' · ' + esc(i.block || i.source || '') + '</span>');
+  if (LV[i.level]) meta.push('<span class="tg lv ' + esc(i.level) + '">' + LV[i.level] + '</span>');
+  if (i.total != null) meta.push('<span class="sc">score <b>' + esc(i.total) + '</b>' +
+            (sc ? ' <span style="opacity:.6">' + esc(sc) + '</span>' : '') + '</span>');
+  if (i.apptype) meta.push('<span class="tg at">' + esc(i.apptype) + '</span>');
+  if (i.topic) meta.push('<span class="tg tp">' + esc(i.topic) + '</span>');
+  var t = i.pubTime || (i.ageH >= 0 ? ageLabel(i.ageH) : '');
+  if (t) meta.push('<span class="sta">' + esc(t) + '</span>');
+  if (i.stale) meta.push('<span class="sta">较早</span>');
+  if (i.isRepeat) meta.push('<span class="sta">昨日已收录</span>');
+  if ((i.alsoIn || []).length) meta.push('<span class="sta">另 ' + i.alsoIn.length + ' 源</span>');
+  if (i.descFrom) meta.push('<span class="sta">正文已补抓</span>');
+
+  var desc = (i.desc && i.desc !== i.summary) ? String(i.desc) : '';
+  return '<article class="it ' + esc(i.level || '') + (i.isRepeat ? ' rep' : '') + '" style="--lane:' + col + '">' +
+    '<div class="t1"><span class="mk">' + mk + '</span><span style="min-width:0">' +
+      '<a href="' + attr(href) + '" target="_blank" rel="noopener noreferrer">' + esc(title) + '</a>' +
+      (altEn ? '<span class="en">' + esc(altEn) + '</span>' : '') +
+    '</span></div>' +
+    (i.summary ? '<p class="sm">' + esc(i.summary) + '</p>' : '') +
+    (desc ? '<p class="sm2">' + esc(desc.slice(0, 220)) + (desc.length > 220 ? '…' : '') + '</p>' : '') +
+    '<div class="meta">' + meta.join('') + '</div>' +
+  '</article>';
 }
 
-function render(){
-  const items = DOC.items || [];
-  const lanes = DOC.lanes || [];
-  const main = document.getElementById('main');
-  if (!items.length){ main.innerHTML = '<div class="empty">暂无条目</div>'; return; }
+/* ── 简报 ─────────────────────────────────────────── */
+var DATA = null, laneFilter = 'all';
 
-  const show = items.filter(i => FILTER === 'all' || i.lane === FILTER);
-  if (!show.length){ main.innerHTML = '<div class="empty">该车道本期没有条目</div>'; return; }
+function renderBrief(){
+  var d = DATA, items = d.items || [], lanes = d.lanes || [];
+  var pick = items.filter(function(i){ return laneFilter === 'all' || i.lane === laneFilter; });
+  var top = pick.filter(function(i){ return i.level === 'top'; });
+  var watch = pick.filter(function(i){ return i.level === 'watch'; });
+  var normal = pick.filter(function(i){ return i.level === 'normal' && !i.isRepeat; });
+  var rep = pick.filter(function(i){ return i.isRepeat; });
 
-  const groups = FILTER === 'all' ? lanes : lanes.filter(l => l.id === FILTER);
-  let html = '';
-  for (const l of groups){
-    const arr = show.filter(i => i.lane === l.id);
-    if (!arr.length) continue;
-    const g = split(arr.filter(i => !i.isRepeat));
-    const rep = arr.filter(i => i.isRepeat);
-    html += `<section class="lane">
-      <div class="lane-h">
-        <span class="bar" style="background:${LANE_COLOR[l.id]}"></span>
-        <h2>${esc(l.name)}</h2><span class="n">${arr.length} 条</span>
-      </div>
-      ${g.top.map(renderItem).join('')}
-      ${g.watch.map(renderItem).join('')}
-      ${g.normal.length ? `<details class="fold"><summary>其他 ${g.normal.length} 条（未进精选）</summary>
-        ${g.normal.map(renderItem).join('')}</details>` : ''}
-      ${rep.length ? `<details class="fold"><summary>昨日已收录 ${rep.length} 条</summary>
-        ${rep.map(renderItem).join('')}</details>` : ''}
-    </section>`;
-  }
-  main.innerHTML = html;
-}
-
-function renderChrome(){
-  const lanes = DOC.lanes || [];
-  const c = DOC.counts || {};
-  const bl = c.byLevel || {};
-
-  document.getElementById('tabs').innerHTML =
-    [{id:'all', name:'全部', count:c.total}]
-      .concat(lanes.map(l => ({id:l.id, name:l.name, count:l.count})))
-      .map(t => `<button class="tab${FILTER===t.id?' on':''}" data-lane="${esc(t.id)}">
-        ${esc(t.name)}<span class="c">${t.count||0}</span></button>`).join('');
-  document.querySelectorAll('.tab').forEach(b => {
-    b.onclick = () => { FILTER = b.dataset.lane; renderChrome(); render();
-                        window.scrollTo({top:0, behavior:'smooth'}); };
+  var chips = ['<button class="chip' + (laneFilter === 'all' ? ' on' : '') +
+    '" data-lane="all">全部<span class="c">' + items.length + '</span></button>'];
+  lanes.forEach(function(l){
+    var n = items.filter(function(i){ return i.lane === l.id; }).length;
+    if (!n) return;
+    chips.push('<button class="chip' + (laneFilter === l.id ? ' on' : '') + '" data-lane="' + attr(l.id) + '">' +
+      '<span class="dot" style="background:' + (LANE[l.id] || 'var(--line2)') + '"></span>' +
+      esc(l.name) + '<span class="c">' + n + '</span></button>');
   });
 
-  const pills = [];
-  if (bl.top) pills.push(`<span class="pill lv-top">重磅 <b>${bl.top}</b></span>`);
-  if (bl.watch) pills.push(`<span class="pill lv-watch">关注 <b>${bl.watch}</b></span>`);
-  pills.push(`<span class="pill">共 <b>${c.total||0}</b> 条</span>`);
-  lanes.forEach(l => pills.push(
-    `<span class="pill"><span class="sw" style="background:${LANE_COLOR[l.id]}"></span>${esc(l.name)} <b>${l.count||0}</b></span>`));
-  document.getElementById('sumline').innerHTML = pills.join('');
+  function sec(cls, name, arr, collapsible){
+    if (!arr.length) return '';
+    var body = arr.map(itemHTML).join('');
+    if (!collapsible){
+      return '<section class="grp"><div class="h ' + cls + '"><span class="t">' + name +
+        '</span><span class="line"></span><span class="cnt">' + arr.length + '</span></div>' +
+        '<div class="list">' + body + '</div></section>';
+    }
+    return '<section class="grp"><details class="more"><summary>' + name + ' · ' + arr.length +
+      ' 条</summary><div class="list">' + body + '</div></details></section>';
+  }
 
-  document.getElementById('gen').textContent = DOC.generated_at ? DOC.generated_at + ' 更新' : '';
+  var deg = d.degraded || [];
+  $('#view-brief').innerHTML =
+    '<div class="term" style="margin-top:14px">' +
+      '<div class="bar"><span class="lbl">lane filter</span>' + chips.join('') + '</div>' +
+    '</div>' +
+    sec('h-top', '▲ 重磅', top) +
+    sec('h-watch', '▸ 值得关注', watch) +
+    sec('h-normal', '· 其他条目', normal, true) +
+    sec('h-normal', '· 昨日已收录', rep, true) +
+    (deg.length ? '<section class="grp"><div class="h h-normal"><span class="t">⚠ 本次降级源</span>' +
+      '<span class="line"></span><span class="cnt">' + deg.length + '</span></div><div class="list">' +
+      deg.map(function(x){
+        return '<div class="it" style="--lane:var(--amber)"><div class="t1"><span class="mk">!</span>' +
+          '<span>' + esc(x.id) + '<span class="en">' + esc(String(x.reason || '').slice(0, 170)) + '</span></span></div></div>';
+      }).join('') + '</div></section>' : '') +
+    (pick.length ? '' : '<div class="empty"><span class="b">∅</span>该筛选下没有条目</div>');
 
-  const dg = DOC.degraded || [];
-  const tr = DOC.translator || '';
-  let notice = '';
-  if (dg.length) notice += `<div class="notice"><b>本期 ${dg.length} 个源降级</b>（${dg.map(d => esc(d.id)).join('、')}）—— 对应车道可能不完整，下期自动重试。</div>`;
-  if (tr.indexOf('none') === 0 || tr.indexOf('降级') >= 0)
-    notice += `<div class="notice">AI 摘要未完全生效（${esc(tr)}）—— 已降级为原文，下期自动重试。</div>`;
-  document.getElementById('notice').innerHTML = notice;
+  $('#view-brief').querySelectorAll('.chip').forEach(function(b){
+    b.onclick = function(){ laneFilter = b.dataset.lane; renderBrief(); window.scrollTo({top:0, behavior:'smooth'}); };
+  });
 }
 
-(async function(){
-  try{
-    const r = await fetch('latest.json?ts=' + Math.floor(Date.now() / 60000), {cache:'no-store'});
-    if (!r.ok) throw new Error('HTTP ' + r.status);
-    DOC = await r.json();
-    renderChrome(); render();
-    document.title = 'AI 前沿雷达 · ' + (DOC.counts ? DOC.counts.total : 0) + ' 条';
-  }catch(e){
-    document.getElementById('main').innerHTML =
-      '<div class="empty">加载失败：' + esc(e.message) + '<br>请稍后刷新</div>';
+/* ── 案例库 ───────────────────────────────────────── */
+var CASES = null, caseType = 'all', caseQ = '';
+
+function renderCases(){
+  var box = $('#view-cases');
+  if (CASES == null){
+    box.innerHTML = '<div class="empty"><span class="b">…</span>正在读取 data/cases.json</div>';
+    return;
   }
-})();
+  var all = CASES.cases || [], types = CASES.types || [];
+  var list = all.filter(function(c){ return caseType === 'all' || c.type === caseType; });
+  if (caseQ){
+    var q = caseQ.toLowerCase();
+    list = list.filter(function(c){
+      return ((c.title || '') + ' ' + (c.titleEn || '') + ' ' + (c.summary || '') + ' ' + (c.type || ''))
+        .toLowerCase().indexOf(q) >= 0;
+    });
+  }
+  var chips = ['<button class="chip' + (caseType === 'all' ? ' on' : '') +
+    '" data-type="all">全部<span class="c">' + all.length + '</span></button>'];
+  types.forEach(function(t){
+    var n = all.filter(function(c){ return c.type === t; }).length;
+    chips.push('<button class="chip' + (caseType === t ? ' on' : '') + '" data-type="' + attr(t) + '">' +
+      esc(t) + '<span class="c">' + n + '</span></button>');
+  });
+
+  box.innerHTML =
+    '<div class="term" style="margin-top:14px">' +
+      '<div class="bar"><span class="lbl">grep</span>' +
+        '<input class="search" id="q" placeholder="搜标题 / 摘要 / 分类…" value="' + attr(caseQ) + '">' +
+        '<span class="lbl" style="margin-left:6px">type</span></div>' +
+      '<div class="bar" style="border-bottom:0">' + chips.join('') + '</div>' +
+    '</div>' +
+    (list.length
+      ? '<div class="cases">' + list.map(function(c){
+          return '<article class="case">' +
+            '<div class="ct"><a href="' + attr(c.url) + '" target="_blank" rel="noopener noreferrer">' +
+              esc(c.title) + '</a></div>' +
+            (c.titleEn ? '<div class="cen">' + esc(c.titleEn) + '</div>' : '') +
+            (c.summary ? '<div class="cs">' + esc(c.summary) + '</div>' : '') +
+            '<div class="cf">' +
+              (c.type ? '<span class="ty">' + esc(c.type) + '</span>' : '') +
+              '<span>' + esc(c.block || host(c.url)) + '</span>' +
+              '<span style="margin-left:auto;opacity:.7">' + esc(c.lastSeen || '') + '</span>' +
+            '</div></article>';
+        }).join('') + '</div>'
+      : '<div class="empty"><span class="b">∅</span>' +
+        (CASES.err ? '读取案例库失败：' + esc(CASES.err) + '<br>首次运行后生成' : '没有匹配的案例') + '</div>') +
+    '<div class="ft"><span>案例库 · 每次运行自动累积（按链接去重）</span>' +
+      '<span>共 ' + all.length + ' 条 · 更新于 ' + esc(CASES.updated || '—') + '</span></div>';
+
+  box.querySelectorAll('.chip').forEach(function(b){
+    b.onclick = function(){ caseType = b.dataset.type; renderCases(); };
+  });
+  var qi = box.querySelector('#q');
+  if (qi){
+    var tm = null;
+    qi.oninput = function(){
+      clearTimeout(tm);
+      tm = setTimeout(function(){
+        caseQ = qi.value.trim();
+        renderCases();
+        var n2 = document.querySelector('#q');
+        if (n2){ n2.focus(); n2.setSelectionRange(n2.value.length, n2.value.length); }
+      }, 280);
+    };
+  }
+}
+
+/* ── Tab ──────────────────────────────────────────── */
+function showTab(name){
+  var isBrief = name !== 'cases';
+  $('#view-brief').classList.toggle('hide', !isBrief);
+  $('#view-cases').classList.toggle('hide', isBrief);
+  document.querySelectorAll('#tabs .tab').forEach(function(t){
+    t.classList.toggle('on', (t.dataset.tab === 'cases') === !isBrief);
+  });
+  if (location.hash !== '#' + name) history.replaceState(null, '', '#' + name);
+  window.scrollTo({top:0});
+}
+
+/* ── 启动 ─────────────────────────────────────────── */
+function loadCases(){
+  if (CASES !== null) return Promise.resolve();
+  return fetch('data/cases.json?t=' + Date.now())
+    .then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(function(j){
+      CASES = j; CASES.max = CASES.max || 400;
+      var n = $('#cn'); if (n) n.textContent = CASES.count || (CASES.cases || []).length;
+    })
+    .catch(function(e){ CASES = { cases: [], types: [], count: 0, updated: '', err: e.message }; })
+    .then(function(){
+      renderStat(DATA, (CASES.cases || []).length);
+      renderCases();
+    });
+}
+
+function main(){
+  fetch('latest.json?t=' + Date.now())
+    .then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(function(j){
+      DATA = j;
+      renderStat(DATA, null);
+      $('#tabs').innerHTML =
+        '<button class="tab on" data-tab="brief">简报<span class="n">' +
+          ((DATA.counts && DATA.counts.total) || 0) + '</span></button>' +
+        '<button class="tab" data-tab="cases">案例库<span class="n" id="cn">…</span></button>';
+      $('#tabs').querySelectorAll('.tab').forEach(function(t){
+        t.onclick = function(){
+          showTab(t.dataset.tab);
+          if (t.dataset.tab === 'cases') loadCases();
+        };
+      });
+      $('#ft-gen').textContent = 'generated_at ' + (DATA.generated_at || '—');
+      renderBrief();
+      if (location.hash === '#cases'){ showTab('cases'); loadCases(); }
+      else loadCases();
+    })
+    .catch(function(e){
+      $('#view-brief').innerHTML = '<div class="empty"><span class="b">✗</span>读取 latest.json 失败：' +
+        esc(e.message) + '<br>产物尚未生成，或 Pages 仍在构建</div>';
+    });
+}
+main();
 </script>
 </body>
 </html>
