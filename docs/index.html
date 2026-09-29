@@ -26,11 +26,11 @@
   --card:#f8f5ee;        /* 条目卡 / 案例卡 */
   --card-bot:#f1ece1;
   --line:#dcd3c1; --line2:#c9bfa9; --line3:#b3a68c;
-  --fg:#2b2721; --fg2:#5b5346; --fg3:#6f6555; --fg4:#8a8071;
-  --acc:#0f766e;         /* 主强调：墨绿 */
+  --fg:#2b2721; --fg2:#5b5346; --fg3:#6a6050; --fg4:#8a8071;
+  --acc:#0d6a63;         /* 主强调：墨绿（比 #0f766e 再深一档，保证小字号标签也过 4.5:1） */
   --acc2:#1d4ed8;        /* 次强调：靛蓝 */
   --amber:#b45309; --red:#b91c1c;
-  --l-model:#0369a1; --l-official:#6d28d9; --l-apps:#0f766e; --l-paper:#b45309;
+  --l-model:#0369a1; --l-official:#6d28d9; --l-apps:#0d6a63; --l-paper:#b45309;
   --l-community:#be185d; --l-media:#a16207; --l-cn:#b91c1c;
   /* 以下为深/浅两版差异最大的一组：深色靠「发光」,浅色必须换成「着色」 */
   --on-acc:#fbf8f2;      /* 强调底上的文字色（浅色主题用近白；深色主题换成深底） */
@@ -109,7 +109,7 @@ h1 .hl{color:var(--acc);text-shadow:var(--hl-shadow)}
 .tabs::-webkit-scrollbar{display:none}
 .tab{font-family:var(--mono);font-size:12.5px;color:var(--fg3);cursor:pointer;padding:12px 18px;border:0;background:none;white-space:nowrap;border-right:1px solid var(--line);border-bottom:2px solid transparent;transition:color .16s,background .16s;letter-spacing:.02em}
 .tab:hover{color:var(--fg);background:var(--panel2)}
-.tab.on{color:var(--acc);border-bottom-color:var(--acc);background:var(--tint-a);text-shadow:var(--hl-shadow)}
+.tab.on{color:var(--acc);border-bottom-color:var(--acc);background:var(--stage);text-shadow:var(--hl-shadow)}
 .tab .n{font-size:10.5px;color:var(--fg3);margin-left:6px;border:1px solid var(--line2);border-radius:3px;padding:0 4px}
 .tab.on .n{color:var(--acc);border-color:var(--acc-line)}
 
@@ -144,8 +144,13 @@ h1 .hl{color:var(--acc);text-shadow:var(--hl-shadow)}
 .it.top{border-color:var(--red-line);background:linear-gradient(180deg,var(--red-tint),transparent 72%)}
 .it.top::before{background:var(--red)}
 .it.watch::before{background:var(--amber)}
-.it.rep{opacity:.52}
-.it.rep:hover{opacity:.82}
+/* 「昨日已收录」的弱化：**不能靠 opacity** —— 深色主题下 52% 透明还能看清，
+   浅色主题下会把深字压到 2.4:1（实测像素），直接读不了。改成换字色 + 虚线边。 */
+.it.rep{border-style:dashed;background:var(--panel2);box-shadow:none}
+.it.rep .t1{font-weight:500;color:var(--fg2)}
+.it.rep .sm{color:var(--fg3)}
+.it.rep .sm2{color:var(--fg4)}
+.it.rep:hover{background:var(--panel)}
 .it .t1{font-size:15px;font-weight:600;color:var(--title);line-height:1.5;display:flex;gap:8px;align-items:flex-start}
 .it .t1 .mk{font-family:var(--mono);color:var(--fg4);flex:0 0 auto;font-size:12px;line-height:1.75}
 .it.top .t1 .mk{color:var(--red)}
@@ -157,12 +162,12 @@ h1 .hl{color:var(--acc);text-shadow:var(--hl-shadow)}
 .it .meta{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-top:9px;font-family:var(--mono);font-size:10.5px;color:var(--fg3)}
 .it .meta .tg{border:1px solid var(--line2);border-radius:3px;padding:1px 6px;display:inline-flex;align-items:center;gap:5px}
 .it .meta .lv{font-weight:700;letter-spacing:.06em}
-.it .meta .lv.top{color:var(--red);border-color:var(--red-line);background:var(--red-tint)}
-.it .meta .lv.watch{color:var(--amber);border-color:var(--amber-line);background:var(--amber-tint)}
+.it .meta .lv.top{color:var(--red);border-color:var(--red-line)}
+.it .meta .lv.watch{color:var(--amber);border-color:var(--amber-line)}
 .it .meta .sc{color:var(--fg3)}
 .it .meta .sc b{color:var(--fg2);font-weight:600}
-.it .meta .tp{color:var(--acc2);border-color:var(--acc2-line);background:var(--acc2-tint)}
-.it .meta .at{color:var(--acc);border-color:var(--acc-line);background:var(--tint-a)}
+.it .meta .tp{color:var(--acc2);border-color:var(--acc2-line)}
+.it .meta .at{color:var(--acc);border-color:var(--acc-line)}
 .it .meta .sta{color:var(--fg3)}
 
 details.more{border:1px solid var(--line);border-radius:6px;background:var(--panel);margin-top:4px}
