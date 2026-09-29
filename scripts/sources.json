@@ -1,6 +1,6 @@
 {
   "note": "AI 前沿雷达 · 源配置（单一数据源，改配置不改代码）。mode：auto=先试 urls 直连、再试 route 走 rsshub 池（推荐，两个环境都能覆盖）；direct=仅直连；rsshub=仅池子（如 Anthropic 无官方 RSS）。desc_min=该源可接受的 desc 中位长度门槛（字），低于门槛继续试下一实例——沿用 portfolio 踩坑经验：各实例返回的 desc 深浅不一（导语版 vs 全文版），不设门槛会锁死在导语版实例上、静默毁掉摘要质量。enabled=false 为候选源。",
-  "version": "2026-09-28",
+  "version": "2026-09-29",
   "pool_note": "实例可用性随网络环境而变，2026-09-28 两环境实测结论相反：本机经代理时 isrss/umzzz 命中最多；Actions（美国 IP）时 ktachibana/rssforever 最好，而 isrss/umzzz 返回 403、slarker 大量超时、balancer 返回非 XML。因此顺序只是起点，每次 probe-sources 会重新确认，务必以最近一次探测为准。",
   "rsshub_pool": [
     "rsshub.ktachibana.party",
@@ -288,66 +288,66 @@
     },
 
     {
-      "id": "hn-show", "lane": "apps", "block": "Show HN", "enabled": false,
+      "id": "hn-show", "lane": "apps", "block": "Show HN", "enabled": true,
       "mode": "direct", "urls": ["https://hnrss.org/show"],
       "take": 8, "dedupe": true, "sort_desc": true, "translate": true, "desc_min": 0,
-      "note": "【候选·待 probe】英文世界最标准的「我做了个东西」现场：Show HN 是 HN 专门让人展示作品的频道。与 hn-frontpage 的本质区别——那里是「有人在讨论 AI」，这里是「有人做出来了」"
+      "note": "Actions 实测 20 条 desc 143 最新 0h ✅。英文世界最标准的「我做了个东西」现场：Show HN 是 HN 专门让人展示作品的频道。与 hn-frontpage 的本质区别——那里是「有人在讨论 AI」，这里是「有人做出来了」"
     },
     {
       "id": "hn-show-top", "lane": "apps", "block": "Show HN 精选", "enabled": false,
       "mode": "direct", "urls": ["https://hnrss.org/show?points=100"],
       "take": 6, "dedupe": true, "sort_desc": true, "translate": true, "desc_min": 0,
-      "note": "【候选·待 probe】只看 100+ 赞的 Show HN。质量门槛靠 HN 社区自己投出来，是本车道信噪比最高的一条"
+      "note": "⚠️ Actions 实测 502（同主机的 hn-show 同时段正常 → 被判为 hnrss 的瞬时 502，非源失效）。但结论仍是暂不启用：hn-show 已覆盖同一频道，本源的唯一增量只是「按 100+ 赞过滤」，而 HN 榜单本身就已把高赞项排前面。用途重叠 + 有失效风险，不值得多一条通路"
     },
     {
-      "id": "v2ex-create", "lane": "apps", "block": "V2EX 分享创造", "enabled": false,
+      "id": "v2ex-create", "lane": "apps", "block": "V2EX 分享创造", "enabled": true,
       "mode": "direct", "urls": ["https://www.v2ex.com/feed/tab/creative.xml"],
-      "take": 8, "dedupe": true, "sort_desc": true, "translate": false, "desc_min": 0,
-      "note": "【候选·待 probe】中文最对口的源：V2EX「分享创造」节点就是国内开发者贴自己作品的地方（附站点、截图、技术栈）。中文条目为主，无需翻译"
+      "take": 10, "dedupe": true, "sort_desc": true, "translate": false, "desc_min": 0,
+      "note": "Actions 实测 **50 条** desc 592 ✅（本车道条量最大）。中文最对口的源：V2EX「分享创造」节点就是国内开发者贴自己作品的地方（附站点、截图、技术栈）。中文条目为主，无需翻译"
     },
     {
-      "id": "reddit-sideproject", "lane": "apps", "block": "r/SideProject", "enabled": false,
+      "id": "reddit-sideproject", "lane": "apps", "block": "r/SideProject", "enabled": true,
       "mode": "direct", "urls": ["https://www.reddit.com/r/SideProject/.rss"],
       "take": 8, "dedupe": true, "sort_desc": true, "translate": true, "desc_min": 0,
-      "note": "【候选·待 probe】独立开发者的侧项目展示板。⚠️ Reddit 对云端 IP 可能返 403（r/LocalLLaMA 曾在 Actions 侧实测通过，故值得一试）"
+      "note": "Actions 实测 25 条 desc 933 ✅。⚠️ Reddit 有 IP 级限流：同一轮探测里本源（第一个）成功、后面的 reddit-vibecoding / chatgptcoding 全返 429。故**只启用这一个 reddit 源**，避免自我限流"
     },
     {
       "id": "reddit-vibecoding", "lane": "apps", "block": "r/vibecoding", "enabled": false,
       "mode": "direct", "urls": ["https://www.reddit.com/r/vibecoding/.rss"],
       "take": 6, "dedupe": true, "sort_desc": true, "translate": true, "desc_min": 0,
-      "note": "【候选·待 probe】专谈「用 AI 把东西做出来」的社区 —— 与 polo 自己的做法最同源，可对比别人的工作流"
+      "note": "⚠️ Actions 实测 429 Too Many Requests —— 不是源失效，是 Reddit 的 IP 级限流（同一轮里前一个 reddit 源成功）。内容最对口（专谈「用 AI 把东西做出来」），**若将来要换掉 r/SideProject，优先换它，但两个 reddit 源不要同时开**"
     },
     {
       "id": "reddit-chatgptcoding", "lane": "apps", "block": "r/ChatGPTCoding", "enabled": false,
       "mode": "direct", "urls": ["https://www.reddit.com/r/ChatGPTCoding/.rss"],
       "take": 6, "dedupe": true, "sort_desc": true, "translate": true, "desc_min": 0,
-      "note": "【候选·待 probe】AI 辅助编程实践社区，偏「怎么用」"
+      "note": "⚠️ Actions 实测 429（同 reddit 限流，见 reddit-vibecoding 的说明）。内容偏「怎么用」的实践讨论，与「案例展示」的定位略偏，优先级最低"
     },
     {
       "id": "rh-producthunt", "lane": "apps", "block": "Product Hunt", "enabled": false,
       "mode": "rsshub", "route": "/producthunt/today", "urls": [],
       "take": 8, "dedupe": true, "sort_desc": true, "translate": true, "desc_min": 0,
-      "note": "【候选·待 probe】产品化程度最高的案例（已上线、有 landing page）。无官方 RSS，走池子路由"
+      "note": "⛔ Actions 实测全部实例失败 —— 该路由在公共实例上不存在（或已下线）。Product Hunt 无官方 RSS，若要补回需另找路由（如 /producthunt/posts 之类）再验。暂不启用"
     },
     {
-      "id": "rh-sspai", "lane": "apps", "block": "少数派", "enabled": false,
+      "id": "rh-sspai", "lane": "apps", "block": "少数派", "enabled": true,
       "mode": "rsshub", "route": "/sspai/index", "urls": [],
       "take": 6, "dedupe": true, "sort_desc": true, "translate": false, "desc_min": 300,
-      "note": "【候选·待 probe】中文效率工具与应用生态，常有「我用 AI 做了个…」的实录文章"
+      "note": "Actions 实测 @rsshub.rssforever.com 10 条 desc 6465（全文）最新 1h ✅。中文效率工具与应用生态，常有「我用 AI 做了个…」的实录文章"
     },
     {
-      "id": "hf-spaces-trend", "lane": "apps", "block": "HF Spaces", "enabled": false,
+      "id": "hf-spaces-trend", "lane": "apps", "block": "HF Spaces", "enabled": true,
       "mode": "direct", "kind": "json", "parser": "hf-spaces",
       "urls": ["https://huggingface.co/api/spaces?sort=trendingScore&direction=-1&limit=25"],
       "take": 6, "translate": true, "desc_min": 0,
-      "note": "【候选·待 probe】Hugging Face Spaces = AI 应用的托管现场。趋势榜反映「社区这阵子在玩什么」，比下载榜更早"
+      "note": "Actions 实测 25 条 ✅。Hugging Face Spaces = AI 应用的托管现场。趋势榜反映「社区这阵子在玩什么」，比下载榜更早。解析后按 lastModified 取最新"
     },
     {
-      "id": "awesome-llm-apps", "lane": "apps", "block": "案例库种子", "enabled": false,
+      "id": "awesome-llm-apps", "lane": "apps", "block": "案例库种子", "enabled": true,
       "mode": "direct", "kind": "text", "parser": "awesome-list", "library_only": true,
       "urls": ["https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/main/README.md"],
       "take": 120, "translate": true, "desc_min": 0,
-      "note": "【候选·待 probe】140k★ 的 awesome-llm-apps：100+ 个**可运行**的 AI 应用模板（实测解析出 119 条 / 16 类），原 README 按「Agent Skills / Starter Agents / RAG / MCP / Generative UI…」分节。它是案例库的种子，故 library_only=true —— 只入库不进每日简报（无日期、非新闻）。节名直接当 type（比让 LLM 猜更准）；解析时按分类轮转取样，避免 RAG（21 条）这类大节挤掉其它形态。首次运行会一次性译完，之后命中缓存、不再消耗额度"
+      "note": "140k★ 的 awesome-llm-apps：100+ 个**可运行**的 AI 应用模板（离线用真实 README 解析出 119 条 / 16 类），按「Agent Skills / Starter Agents / RAG / MCP / Generative UI…」分节。library_only=true —— 只入库不进每日简报（无日期、非新闻）。节名直接当 type（比让 LLM 猜更准）；解析时按分类轮转取样，避免 RAG（21 条）这类大节挤掉其它形态。⚠️ 首轮 probe 报「全部失败」是**探测脚本自身的问题**（它没接专用解析器，拿 XML 解析器去解 markdown）—— 已修：probe 现在直接复用 fetch_ai 的解析器。同主机的 llm-leaderboard 实测可通，故 raw.githubusercontent.com 通路是好的。首次运行一次性译完，之后命中缓存不再消耗额度"
     }
   ]
 }
