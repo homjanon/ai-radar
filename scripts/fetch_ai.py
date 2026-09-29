@@ -657,6 +657,13 @@ def _call_llm_batch(batch, tcfg, mode, want_type=False):
                 tp = str(row.get("topic", "")).strip()
                 if tp:
                     it["topic"] = tp[:12]
+                if want_type:
+                    # 模型对字段名的服从度不一，多收几个别名；全拿不到还有关键词兜底
+                    for _k in ("type", "apptype", "app_type", "kind", "形态", "应用形态"):
+                        _ty = str(row.get(_k) or "").strip()
+                        if _ty:
+                            it["apptype"] = _ty[:14]
+                            break
             # 整批译出率过低才判失败（防模型整体原样回吐英文而未被察觉）
             if mode == "translate":
                 need = sum(1 for x in batch if x["_translate_title"])
@@ -712,6 +719,42 @@ def llm_enhance(items, tcfg):
     if failed:
         out += f" ⚠️降级[{'、'.join(failed)}]"
     return out, failed
+
+
+# 应用形态的兜底判定。为什么必须有：LLM 对「额外输出一个字段」的服从度不稳定 ——
+# 实测首轮 6 个含 type 指令的批次**全部没返回** type，38 条 apps 条目全是空的。
+# 而「按形态筛选」正是案例库的核心用途，不能押在模型身上。词表与给 LLM 的完全一致，
+# 保证两条来源的分类能混在一起筛选。顺序即优先级（从具体到宽泛）。
+APP_TYPE_RULES = (
+    ("浏览器插件", ("浏览器插件", "浏览器扩展", "extension", "userscript", "油猴",
+                    "tampermonkey", "chrome 插件", "插件")),
+    ("移动 App", ("小程序", "安卓", "android", "ios", "手机 app", "手机端", "移动端",
+                  "app store", "鸿蒙")),
+    ("CLI 工具", ("cli", "命令行", "终端工具", "shell 脚本", "npm i", "pip install",
+                  "安装即用", "一行命令")),
+    ("Agent 工作流", ("agent", "智能体", "工作流", "workflow", "mcp", "multi-agent",
+                      "自动化流程", "编排")),
+    ("桌面工具", ("桌面应用", "desktop", "mac app", "windows app", "客户端", "macos")),
+    ("数据分析", ("看板", "dashboard", "可视化", "图表", "数据分析", "报表", "统计",
+                  "csv", "excel")),
+    ("模型与推理", ("微调", "量化", "推理", "训练", "fine-tun", "gguf", "权重",
+                    "benchmark", "评测", "模型权重")),
+    ("内容生成", ("写作", "摘要", "翻译", "生成器", "作图", "视频生成", "播客", "漫画",
+                  "语音合成", "图像生成", "绘图")),
+    ("Web 应用", ("网站", "web 应用", "网页", "在线工具", "saas", "landing page")),
+)
+
+
+def guess_apptype(it):
+    """按关键词猜应用形态（LLM 缺失时的兜底）。标题 + 摘要 + 来源 + 链接一起判。"""
+    hay = " ".join([
+        it.get("title") or "", it.get("titleCn") or "", it.get("summary") or "",
+        (it.get("desc") or "")[:400], it.get("block") or "", it.get("url") or "",
+    ]).lower()
+    for label, kws in APP_TYPE_RULES:
+        if any(k in hay for k in kws):
+            return label
+    return "效率工具"
 
 
 # 重磅关键词（硬规则提级）：只保留**高精度**的词 —— 「发布 / 推出 / 政策」这类太常见，
@@ -840,10 +883,16 @@ def main():
             continue
         log(f"[{src['lane']:9}] {src['id']:20} {src['block']}")
         items, via, diag = fetch_source(src, pool)
-        if not items:
+        if items is None:
             degraded.append({"id": src["id"], "lane": src["lane"], "reason": "; ".join(diag)[:200]})
             log(f"  ⛔ 全部通路失败：{'; '.join(diag)[:160]}")
             reports.append({"id": src["id"], "ok": False, "via": None, "n": 0, "diag": diag})
+            continue
+        if not items:
+            # 通路是通的，只是过完过滤后没有合格条目（如 HF 当天只有个人测试仓）。
+            # 这是**正常结果**，不能计入「降级源」——否则告警天天误报、信号就废了。
+            log(f"  ○ @{via} 通路可用，但过滤后 0 条（不计入降级）")
+            reports.append({"id": src["id"], "ok": True, "via": via, "n": 0, "diag": diag})
             continue
 
         max_age = src.get("max_age_h") or LANE_MAX_AGE.get(src["lane"], DEFAULT_MAX_AGE)
@@ -1003,6 +1052,15 @@ def main():
     # ⑦ LLM 增强（P2）：中文摘要 / 英文标题中文化 / 三维打分 / 主题标签 / 应用形态
     tcfg = cfg.get("translate", {})
     translator, failed_batches = llm_enhance(merged_all, tcfg)
+
+    # ⑦a 应用形态兜底：LLM 没给就按关键词判，保证「按形态筛选」永远可用。
+    #     必须在 merged 拆分之前做，这样简报与案例库拿到的是同一个值。
+    for i in merged_all:
+        if i.get("lane") == "apps" and not i.get("apptype"):
+            i["apptype"] = guess_apptype(i)
+    n_typed = sum(1 for i in merged_all if i.get("lane") == "apps" and i.get("apptype"))
+    log(f"🏷️ 应用形态：{n_typed} 条已标注"
+        f"（{sum(1 for i in merged_all if i.get('lane') == 'apps')} 条 apps 条目）")
 
     # ⑦b 简报只收非 library_only 的条目；案例库条目（含缓存复用）留待第 ⑩ 步入库
     merged = [i for i in merged_all if not i.get("_lib")]
