@@ -131,7 +131,7 @@ def make_config(path):
 
 def stub_http():
     """替换网络层：命中 FIX 返回对应 body，未命中抛错（暴露漏配的用例）。"""
-    def _get(url, timeout=25, retry=1):
+    def _get(url, timeout=25, retry=1, extra_headers=None):
         for k, v in FIX.items():
             if url.startswith(k) or k in url:
                 return v
@@ -323,7 +323,7 @@ def main():
         import probe_sources as P
         check(P.F is F or P.F.PARSERS is F.PARSERS,
               "probe_sources 复用 fetch_ai 的 PARSERS", problems)
-        check(len(F.PARSERS) == 5, f"解析器注册表 5 项（{sorted(F.PARSERS)}）", problems)
+        check(len(F.PARSERS) == 6, f"解析器注册表 6 项（{sorted(F.PARSERS)}）", problems)
 
         # ---------- 用例 4b：模型配额熔断与 429 诊断 ----------
         # 实测教训：gemini-3-flash 额度耗尽后若不熔断，每批都会再去撞一次 429
@@ -349,6 +349,62 @@ def main():
             [{"title": "t", "desc": "d", "_translate_title": False}], _fake, mode="summarize")
         check((not _ok) and _tried == 0,
               f"已熔断的模型不再发起请求（tried={_tried}，应为 0）", problems)
+        # ---------- 用例 4c：GitHub 搜索源（gh-search）----------
+        # 本轮新增 gh-search 解析器与 API token 注入。两者都是新的外部依赖，必须守住 ——
+        # 尤其「token 不发给非 GitHub 域名」：漏了就等于把凭据交给任意第三方源。
+        print("\n[4c/4] GitHub 搜索源：解析器与 token 注入")
+        _raw = json.dumps({"total_count": 3, "items": [
+            {"full_name": "acme/live", "stargazers_count": 1300,
+             "pushed_at": "2026-09-30T02:00:00Z", "language": "Python", "forks_count": 42,
+             "topics": ["ai-agents", "llm"], "description": "An agent platform",
+             "html_url": "https://github.com/acme/live"},
+            {"full_name": "acme/big", "stargazers_count": 9000,
+             "pushed_at": "2026-09-29T02:00:00Z", "language": "TypeScript",
+             "description": "Big thing", "html_url": "https://github.com/acme/big"},
+            {"full_name": "acme/dead", "stargazers_count": 5000,
+             "pushed_at": "2026-09-01T00:00:00Z", "archived": True,
+             "description": "Archived", "html_url": "https://github.com/acme/dead"},
+        ]}).encode()
+        _gi = F.parse_gh_search(_raw, {"take": 12, "apptype": "Agent 工作流"})
+        check(len(_gi) == 2, f"归档仓库被跳过（3 条里取到 {len(_gi)} 条）", problems)
+        check([x["title"] for x in _gi] == ["acme/big", "acme/live"],
+              "按星数降序（同一天推送里星高的更值得看）", problems)
+        check(_gi[0]["stars"] == 9000 and _gi[0]["pushed"] == "2026-09-29"
+              and _gi[0]["dt"] is None,
+              "stars/pushed 落到条目、dt 保持 None（不参与时间窗、不会被标 stale）", problems)
+        check(F._is_seed({"src": "seed"}) and not F._is_seed({"src": "apps"}),
+              "种子/项目来源可区分（决定是否豁免质量门槛）", problems)
+
+        # token 注入：只有 api.github.com 才带 Authorization
+        _seen = {}
+        _old_http = F.http_get
+
+        def _rec(url, timeout=25, retry=1, extra_headers=None):
+            _seen["url"], _seen["hdr"] = url, extra_headers
+            return b'{"items": []}'
+
+        _old_tok = os.environ.get("GITHUB_TOKEN")
+        F.http_get = _rec
+        os.environ["GITHUB_TOKEN"] = "smoke-token"
+        try:
+            F.try_once("https://api.github.com/search/repositories?q=x", "json",
+                       {"parser": "gh-search"})
+            check((_seen.get("hdr") or {}).get("Authorization") == "Bearer smoke-token",
+                  "GitHub API 请求带上 Bearer（匿名 60 次/小时且按 IP 计，runner 共享 IP 会 403）",
+                  problems)
+            try:
+                F.try_once("https://example.com/rss.xml", "rss", {})
+            except Exception:
+                pass                      # 内容解析失败无所谓，只看 header
+            check(not _seen.get("hdr"),
+                  "非 GitHub 域名**不带** token（凭据绝不发给第三方源）", problems)
+        finally:
+            F.http_get = _old_http
+            if _old_tok is None:
+                os.environ.pop("GITHUB_TOKEN", None)
+            else:
+                os.environ["GITHUB_TOKEN"] = _old_tok
+
         F._DEAD_MODELS.discard("smoke-dead")
         os.environ.pop("SMOKE_KEY", None)
     finally:
