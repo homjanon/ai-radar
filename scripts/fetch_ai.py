@@ -1325,6 +1325,20 @@ def main():
             return sc.get("rel", 0) >= min_rel
 
         # 候选与过滤用**同一个判定**（_lib_ok 内部已含「种子豁免 / 搜索源须过门槛」）。
+        # 搜索源（lib_gate）的诊断：它的分数语义与新闻不同 —— 项目「持续维护」不等于
+        # 「刚发生的事件」，时效性维度对它未必成立。门槛合不合适必须用数据说话，不能猜。
+        _gated = [i for i in merged_all if i.get("_lib_gate")]
+        if _gated:
+            _ok_n = sum(1 for i in _gated if _lib_ok(i))
+            _sc = [i.get("score") or {} for i in _gated]
+            log(f"   🔬 带门槛搜索源 {len(_gated)} 条 → 通过 {_ok_n} / 拦掉 {len(_gated) - _ok_n}")
+            for _k in ("rel", "info", "fresh"):
+                _v = sorted((x.get(_k) for x in _sc if x.get(_k) is not None))
+                if _v:
+                    log(f"      {_k:5} 均值 {sum(_v) / len(_v):4.1f}  分布 {_v}")
+            log(f"      total {sorted(round(float(i.get('total') or 0), 1) for i in _gated)}")
+            log(f"      样例 {[(str(i.get('title'))[:18], i.get('total')) for i in _gated[:3]]}")
+
         fresh = [i for i in merged_all if i["lane"] == "apps" and _lib_ok(i)]
         n_cut = sum(1 for i in merged_all if i["lane"] == "apps" and not _lib_ok(i))
         if n_cut:
