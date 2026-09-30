@@ -265,23 +265,6 @@ function ageLabel(h){
   return Math.floor(h / 24) + ' 天前';
 }
 function host(u){ try { return new URL(u).hostname.replace(/^www\./,''); } catch(e){ return ''; } }
-function starTxt(n){                      // 18700 -> 18.7k
-  n = Number(n) || 0;
-  if (n >= 1000) return (n/1000).toFixed(1).replace(/\.0$/,'') + 'k';
-  return String(n);
-}
-function agoDays(d){                      // '2026-09-25' -> '5 天前'
-  if (!d) return '';
-  var t = Date.parse(d + 'T00:00:00+08:00');
-  if (isNaN(t)) return d;
-  var n = Math.floor((Date.now() - t) / 86400000);
-  if (n <= 0) return '今天';
-  if (n === 1) return '昨天';
-  if (n < 30) return n + ' 天前';
-  if (n < 365) return Math.floor(n/30) + ' 个月前';
-  return Math.floor(n/365) + ' 年前';
-}
-
 /* ── 状态条 ───────────────────────────────────────── */
 function renderStat(d, casesN){
   var L = (d.counts && d.counts.byLevel) || {};
@@ -452,14 +435,12 @@ function renderCases(){
               (c.topic && c.topic !== c.type
                 ? '<span style="color:var(--fg3)">' + esc(c.topic) + '</span>' : '') +
               '<span>' + esc(c.block || host(c.url)) + '</span>' +
-              (c.stars ? '<span>★ ' + starTxt(c.stars) + '</span>' : '') +
-              '<span style="margin-left:auto;opacity:.7">' +
-                esc(c.pushed ? ('更新 ' + agoDays(c.pushed)) : (c.lastSeen || '')) + '</span>' +
+              '<span style="margin-left:auto;opacity:.7">' + esc(c.lastSeen || '') + '</span>' +
             '</div></article>';
         }).join('') + '</div>'
       : '<div class="empty"><span class="b">∅</span>' +
         (CASES.err ? '读取案例库失败：' + esc(CASES.err) + '<br>首次运行后生成' : '没有匹配的案例') + '</div>') +
-    '<div class="ft"><span>案例库 · 累积「持续维护的活跃项目」与「可运行模板」（按链接去重 · 过质量门槛）</span>' +
+    '<div class="ft"><span>案例库 · 累积别人做出来的 AI 应用（按链接去重 · 过质量门槛）</span>' +
       '<span>共 ' + all.length + ' 条 · 更新于 ' + esc(CASES.updated || '—') + '</span></div>';
 
   box.querySelectorAll('.chip').forEach(function(b){
