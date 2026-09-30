@@ -5,19 +5,17 @@ name: fetch-ai
 # 每天一次早报：北京 08:10（UTC 00:10）
 #   ① 为什么是早报：美国实验室多在美东/美西上午发模型，换算成北京是深夜到清晨，
 #      早上跑正好一网打尽前一天的发布；08:10 也贴合上班路上的阅读节奏。
-#   ② 定时器改由 **Cloudflare Worker 心跳**触发（qdii-dispatch，与 news-feed 同一套）。
+#   ② 定时器由 **Cloudflare Worker 心跳**触发（qdii-dispatch，与 news-feed 同一套）。
 #      原用 GitHub 自带 schedule，实测延迟极大 —— 2026-09-30 应 07:30、实际 10:18
 #      （晚 2 小时 48 分）；同账号由 CF 触发的 news-feed 则是秒级准点。
-#   ③ ⚠️ CF 侧验证通过后**必须删掉下方 schedule**：两边各跑一次而 concurrency 只排队
-#      不合并，会导致 LLM 免费额度翻倍消耗、产物提交两次。
-#      **顺序不可颠倒** —— 先验证 CF 通了再删；反了会空窗。
+#   ③ ✅ 2026-09-30 已删除下方 schedule，单通道完成（CF 侧通路经实测验证后才删，无空窗）。
+#      **不要再用 GitHub schedule** —— 两边各跑一次而 concurrency 只排队不合并，
+#      会导致 LLM 免费额度翻倍消耗、产物提交两次。
 #   ④ 外部触发方式：POST
 #      /repos/homjanon/ai-radar/actions/workflows/fetch.yml/dispatches
 #      body {"ref":"main"} —— 本 workflow **没有 inputs**，漏传 ref 会 422。
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '10 0 * * *'
 
 permissions:
   contents: write
