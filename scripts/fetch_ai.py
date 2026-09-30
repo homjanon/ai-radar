@@ -53,7 +53,7 @@ def log(m):
 # --------------------------------------------------------------------------- #
 # 基础工具
 # --------------------------------------------------------------------------- #
-def http_get(url, timeout=25, retry=1):
+def http_get(url, timeout=25, retry=1, extra_headers=None):
     """带一次重试的 GET。
 
     ⚠️ 永久性错误（403 无权限 / 404 不存在 / 410 已下线）**不重试** —— 重试不会自愈，
@@ -63,8 +63,12 @@ def http_get(url, timeout=25, retry=1):
     last = None
     for attempt in range(retry + 1):
         try:
-            req = urllib.request.Request(
-                url, headers={"User-Agent": "Mozilla/5.0 (ai-radar/1.0)", "Accept": "*/*"})
+            # extra_headers 用于需要鉴权的端点：GitHub 搜索 API 匿名 60 次/小时且
+            # **按 IP** 计，Actions runner 是共享 IP，匿名极易被打满返 403。
+            _h = {"User-Agent": "Mozilla/5.0 (ai-radar/1.0)", "Accept": "*/*"}
+            if extra_headers:
+                _h.update(extra_headers)
+            req = urllib.request.Request(url, headers=_h)
             with urllib.request.urlopen(req, timeout=timeout) as r:
                 if r.status != 200:
                     raise RuntimeError(f"HTTP {r.status}")
@@ -368,6 +372,57 @@ def parse_hf_spaces(body, cfg):
     return out[: int(cfg.get("take", 6))]
 
 
+def parse_gh_search(body, cfg):
+    """GitHub 搜索 API → 「活跃 + 精华」的 AI 应用项目。
+
+    与 hf-spaces 的分工：那边看「谁在 HF 上摆了个 demo」，这边看「谁在 GitHub 上
+    持续维护一个真东西」。核心设计是**不用日期过滤**：查询固定为
+    `topic:X stars:A..B` + `sort=updated`，于是每天返回的都是「最近有推送的高星项目」，
+    活跃度维护就自动化了（项目一停更就自然从结果里消失），不必逐条体检。
+
+    代价与对策：结果里会有「高星但与 AI 无关」（实测有 WhatsApp HTTP API、
+    身份认证服务、加密新闻聚合器），星数下限挡不住。故本类源在配置里标
+    lib_gate=true —— 与人工精选的种子不同，**必须过分数门槛才入库**。
+
+    为什么不设 dt：日期语义在这里不成立（「当前活跃」不是某个时刻发生的事件），
+    dt=None 既不参与时间窗过滤、也不会被标 stale。
+    """
+    j = json.loads(body)
+    arr = j.get("items") if isinstance(j, dict) else None
+    if not isinstance(arr, list):
+        return []
+    out = []
+    for r in arr:
+        full = (r.get("full_name") or "").strip()
+        if not full or r.get("archived") or r.get("disabled"):
+            continue
+        stars = int(r.get("stargazers_count") or 0)
+        pushed = str(r.get("pushed_at") or "")[:10]
+        bits = [f"★ {stars}"]
+        if r.get("language"):
+            bits.append(str(r["language"]))
+        if pushed:
+            bits.append(f"最近推送 {pushed}")
+        if r.get("forks_count"):
+            bits.append(f"Fork {int(r['forks_count'])}")
+        tps = r.get("topics") or []
+        if tps:
+            bits.append("标签 " + "/".join(str(x) for x in tps[:6]))
+        d = re.sub(r"\s+", " ", str(r.get("description") or "")).strip()
+        out.append({
+            "title": full,
+            "desc": (d + " ｜ " if d else "") + "；".join(bits),
+            "url": r.get("html_url") or f"https://github.com/{full}",
+            "dt": None,
+            "stars": stars,              # 落进案例库供卡片显示
+            "pushed": pushed,            # 同上：最近推送日期
+            "apptype": cfg.get("apptype") or "",
+            "source": "GitHub",
+        })
+    out.sort(key=lambda x: -(x.get("stars") or 0))    # 同一天推送里，星数高的更值得看
+    return out[: int(cfg.get("take", 12))]
+
+
 # awesome-llm-apps 的分节名 → 中文类型。节名自带分类信息，比让 LLM 猜准得多。
 AWESOME_SECTION_CN = {
     "agent skills": "Agent 技能",
@@ -444,6 +499,7 @@ PARSERS = {
     "hf-models": parse_hf_models,
     "hf-spaces": parse_hf_spaces,
     "awesome-list": parse_awesome_list,
+    "gh-search": parse_gh_search,
 }
 
 
@@ -451,7 +507,16 @@ PARSERS = {
 # 抓取：双通路 + desc 门槛
 # --------------------------------------------------------------------------- #
 def try_once(url, kind, src=None):
-    body = http_get(url)
+    hdr = None
+    if "api.github.com" in url:
+        # GitHub 搜索 API 有配额差异：匿名 60 次/小时（**按 IP 计**，Actions runner 用的
+        # 是共享 IP，匿名几乎必然被打满并返 403），认证后 30 次/分钟。workflow 里注入
+        # GITHUB_TOKEN，本机调试时用 GH_TOKEN/gh 的登录态。
+        _tok = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN") or ""
+        if _tok:
+            hdr = {"Authorization": f"Bearer {_tok}",
+                   "X-GitHub-Api-Version": "2022-11-28"}
+    body = http_get(url, extra_headers=hdr)
     p = (src or {}).get("parser")
     if p in PARSERS:
         # 专用解析器允许返回空 —— "过滤后没有合格条目"是正常结果（如 HF 当天
@@ -1026,7 +1091,8 @@ def main():
             kept += outw[: min_take - len(kept)]
         for i in kept:
             i.update({"lane": src["lane"], "block": src["block"],
-                      "source": src.get("default_source") or src["block"], "via": via})
+                      "source": src.get("default_source") or src["block"], "via": via,
+                      "_lib_gate": bool(src.get("lib_gate"))})
         if src.get("library_only"):
             # 只进案例库、不进每日简报：这类源是无日期的一次性沉淀（如 awesome-llm-apps
             # 的 100+ 模板），塞进日常流会天天重复占版面。
@@ -1187,7 +1253,7 @@ def main():
         i["desc"] = i["desc"][:2000]
         i["summary"] = (i.get("summary") or "")[:300]
         i.pop("dt", None)
-        for _k in ("_translate_title", "_want_type", "_lib", "_skip_llm"):
+        for _k in ("_translate_title", "_want_type", "_lib", "_lib_gate", "_skip_llm"):
             i.pop(_k, None)                 # 内部标记一律不外泄（漏一个就会写进产物）
 
     doc = {
@@ -1234,7 +1300,10 @@ def main():
         min_rel = float(cases_cfg.get("min_rel", 3))
 
         def _lib_ok(it):
-            if it.get("_lib"):
+            # 人工精选清单（awesome-llm-apps 的模板）无条件入库；GitHub 搜索来的项目
+            # （配置里标了 lib_gate=true）**必须过门槛** —— 星数下限只挡得住玩具，
+            # 挡不住「高星但与 AI 无关」（实测：WhatsApp HTTP API、身份认证服务）。
+            if it.get("_lib") and not it.get("_lib_gate"):
                 return True
             if (it.get("total") or 0) < min_total:
                 return False
@@ -1245,10 +1314,9 @@ def main():
                 return True
             return sc.get("rel", 0) >= min_rel
 
-        fresh = [i for i in merged_all
-                 if i.get("_lib") or (i["lane"] == "apps" and _lib_ok(i))]
-        n_cut = sum(1 for i in merged_all
-                    if i["lane"] == "apps" and not i.get("_lib") and not _lib_ok(i))
+        # 候选与过滤用**同一个判定**（_lib_ok 内部已含「种子豁免 / 搜索源须过门槛」）。
+        fresh = [i for i in merged_all if i["lane"] == "apps" and _lib_ok(i)]
+        n_cut = sum(1 for i in merged_all if i["lane"] == "apps" and not _lib_ok(i))
         added = 0
         for i in fresh:
             u = i.get("url") or ""
@@ -1269,6 +1337,11 @@ def main():
                 "src": "seed" if i.get("_lib") else "apps",
                 "lastSeen": doc["date"],
             }
+            # 星数与最近推送：GitHub 类源的卡片显示用（「★ 13.6k · 更新 2 天前」）
+            if i.get("stars") is not None:
+                rec["stars"] = int(i["stars"])
+            if i.get("pushed"):
+                rec["pushed"] = str(i["pushed"])[:10]
             if i.get("total") is not None:
                 rec["score"] = round(float(i["total"]), 1)
             _rel = (i.get("score") or {}).get("rel")
@@ -1318,15 +1391,36 @@ def main():
         # 存量清理：库里**已存在**但不达标的条目必须显式剔掉 —— 它们在 lib_cache 里，
         # 只做「不新增」不删就会永久留存（实测首轮 38 条全进，含 20 条低分）。
         cut = {i["url"] for i in merged_all
-               if i.get("url") and i["lane"] == "apps" and not i.get("_lib") and not _lib_ok(i)}
+               if i.get("url") and i["lane"] == "apps" and not _lib_ok(i)}
         before = len(by_url)
         by_url = {u: c for u, c in by_url.items()
                   if u not in cut and _keep_case(c, min_total, min_rel)}
         n_purge = before - len(by_url)
         if n_purge:
             log(f"🧹 案例库剔除 {n_purge} 条不达标条目（门槛 total≥{min_total} 且 rel≥{min_rel}）")
-        lib = sorted(by_url.values(),
-                     key=lambda c: (c.get("lastSeen") or "", c.get("title") or ""), reverse=True)
+        # 种子存量收敛：awesome-llm-apps 本质是「教程合集」，单个案例多无人维护
+        # （抽样 12 条有 8 条 >60 天没提交、最老 590 天）。take 降到 20 只管住新增，
+        # 存量仍需给上限，否则 118 条模板长期占着库的八成、把「持续维护的精华项目」稀释掉。
+        seed_max = int(cases_cfg.get("seed_max", 60))
+        _seeds = [u for u, c in by_url.items() if _is_seed(c)]
+        n_seed_cut = 0
+        if len(_seeds) > seed_max:
+            _keep_seeds = set(sorted(_seeds, key=lambda u: (by_url[u].get("lastSeen") or ""),
+                                     reverse=True)[:seed_max])
+            n_seed_cut = len(_seeds) - len(_keep_seeds)
+            for u in _seeds:
+                if u not in _keep_seeds:
+                    del by_url[u]
+            log(f"🌱 种子收敛：{len(_seeds)} → {seed_max} 条（保留最近仍在源清单里的）")
+        # 浏览顺序：**有分数的（活跃项目）在前、按分降序**，模板清单沉底。
+        # 按 lastSeen 排是不行的 —— 种子每天都命中缓存、lastSeen 永远是最新，会一直霸着首屏，
+        # 而案例库的用途是「看别人做出了什么」，不是「翻模板目录」。
+        def _show_key(c):
+            s = c.get("score")
+            has = 1 if isinstance(s, (int, float)) else 0
+            return (has, float(s) if isinstance(s, (int, float)) else 0.0,
+                    c.get("lastSeen") or "")
+        lib = sorted(by_url.values(), key=_show_key, reverse=True)
         # 整库归一化：换过分类口径后，URL 已失效的老条目不会再被上面的循环碰到，
         # 只靠「命中即更新」会留下永久孤儿（实测：「进阶 Agent」这种旧细分类名长期占着
         # 一个筛选位、底下只有 1 条）。落盘前统一折算。
@@ -1356,6 +1450,7 @@ def main():
         n_seed = sum(1 for c in lib if _is_seed(c))
         log(f"📚 案例库：共 {len(lib)} 条（种子 {n_seed} · 新增 {added} · 当日过滤 {n_cut}"
             + (f" · 补分 {n_scored}" if n_scored else "")
+            + (f" · 种子收敛 {n_seed_cut}" if n_seed_cut else "")
             + (f" · 裁剪 {trimmed}" if trimmed else "") + "）→ data/cases.json")
 
     log("-" * 100)
