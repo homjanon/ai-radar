@@ -2,23 +2,22 @@ name: fetch-ai
 
 # AI 前沿雷达 · 抓取与发布
 #
-# 每天一次早报：北京 07:30（UTC 前一天 23:30）
+# 每天一次早报：北京 08:10（UTC 00:10）
 #   ① 为什么是早报：美国实验室多在美东/美西上午发模型，换算成北京是深夜到清晨，
-#      早上跑正好一网打尽前一天的发布。
-#   ② 为什么是 07:30 而不是 08:10：**GitHub 的 schedule 要排共享队列、实测经常延迟**
-#      （多次遇到延后十几到几十分钟）。往前留一档，才能保证 08:00 前拿到产物。
-#   ③ 为什么不走 Cloudflare 定时触发（与 news-feed 的做法不同）：本情报对分钟级精度
-#      没有要求（news-feed 的 15:20 有盘中含义，所以那边必须精确）。少一个外部依赖
-#      和一次 token 轮转，就少一处会坏的地方。
-#   ④ 外部触发（备用，需要时再启）：POST
+#      早上跑正好一网打尽前一天的发布；08:10 也贴合上班路上的阅读节奏。
+#   ② 定时器改由 **Cloudflare Worker 心跳**触发（qdii-dispatch，与 news-feed 同一套）。
+#      原用 GitHub 自带 schedule，实测延迟极大 —— 2026-09-30 应 07:30、实际 10:18
+#      （晚 2 小时 48 分）；同账号由 CF 触发的 news-feed 则是秒级准点。
+#   ③ ⚠️ CF 侧验证通过后**必须删掉下方 schedule**：两边各跑一次而 concurrency 只排队
+#      不合并，会导致 LLM 免费额度翻倍消耗、产物提交两次。
+#      **顺序不可颠倒** —— 先验证 CF 通了再删；反了会空窗。
+#   ④ 外部触发方式：POST
 #      /repos/homjanon/ai-radar/actions/workflows/fetch.yml/dispatches
 #      body {"ref":"main"} —— 本 workflow **没有 inputs**，漏传 ref 会 422。
-#      ⚠️ 一旦启用外部触发，务必同时删掉下方 schedule：两边各跑一次而 concurrency
-#      只排队不合并，会导致 LLM 免费额度翻倍消耗、产物提交两次。
 on:
   workflow_dispatch:
   schedule:
-    - cron: '30 23 * * *'
+    - cron: '10 0 * * *'
 
 permissions:
   contents: write
@@ -49,6 +48,10 @@ jobs:
           # P2 LLM 增强用。未配置时自动跳过该模型并降级为原文，不影响抓取主流程。
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}
+          # GitHub 搜索源（gh-search）用：匿名 60 次/小时且**按 IP** 计，runner 共享
+          # IP 极易被打满返 403；认证后 30 次/分钟。该 token 由 Actions 自动提供，
+          # 只读公开仓库，无需自定义 Secret。
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python scripts/fetch_ai.py --outdir docs
 
       - name: 清理超过 30 天的归档
