@@ -53,7 +53,7 @@ def log(m):
 # --------------------------------------------------------------------------- #
 # 基础工具
 # --------------------------------------------------------------------------- #
-def http_get(url, timeout=25, retry=1, extra_headers=None):
+def http_get(url, timeout=25, retry=1):
     """带一次重试的 GET。
 
     ⚠️ 永久性错误（403 无权限 / 404 不存在 / 410 已下线）**不重试** —— 重试不会自愈，
@@ -63,12 +63,8 @@ def http_get(url, timeout=25, retry=1, extra_headers=None):
     last = None
     for attempt in range(retry + 1):
         try:
-            # extra_headers 用于需要鉴权的端点：GitHub 搜索 API 匿名 60 次/小时且
-            # **按 IP** 计，Actions runner 是共享 IP，匿名极易被打满返 403。
-            _h = {"User-Agent": "Mozilla/5.0 (ai-radar/1.0)", "Accept": "*/*"}
-            if extra_headers:
-                _h.update(extra_headers)
-            req = urllib.request.Request(url, headers=_h)
+            req = urllib.request.Request(
+                url, headers={"User-Agent": "Mozilla/5.0 (ai-radar/1.0)", "Accept": "*/*"})
             with urllib.request.urlopen(req, timeout=timeout) as r:
                 if r.status != 200:
                     raise RuntimeError(f"HTTP {r.status}")
@@ -372,57 +368,6 @@ def parse_hf_spaces(body, cfg):
     return out[: int(cfg.get("take", 6))]
 
 
-def parse_gh_search(body, cfg):
-    """GitHub 搜索 API → 「活跃 + 精华」的 AI 应用项目。
-
-    与 hf-spaces 的分工：那边看「谁在 HF 上摆了个 demo」，这边看「谁在 GitHub 上
-    持续维护一个真东西」。核心设计是**不用日期过滤**：查询固定为
-    `topic:X stars:A..B` + `sort=updated`，于是每天返回的都是「最近有推送的高星项目」，
-    活跃度维护就自动化了（项目一停更就自然从结果里消失），不必逐条体检。
-
-    代价与对策：结果里会有「高星但与 AI 无关」（实测有 WhatsApp HTTP API、
-    身份认证服务、加密新闻聚合器），星数下限挡不住。故本类源在配置里标
-    lib_gate=true —— 与人工精选的种子不同，**必须过分数门槛才入库**。
-
-    为什么不设 dt：日期语义在这里不成立（「当前活跃」不是某个时刻发生的事件），
-    dt=None 既不参与时间窗过滤、也不会被标 stale。
-    """
-    j = json.loads(body)
-    arr = j.get("items") if isinstance(j, dict) else None
-    if not isinstance(arr, list):
-        return []
-    out = []
-    for r in arr:
-        full = (r.get("full_name") or "").strip()
-        if not full or r.get("archived") or r.get("disabled"):
-            continue
-        stars = int(r.get("stargazers_count") or 0)
-        pushed = str(r.get("pushed_at") or "")[:10]
-        bits = [f"★ {stars}"]
-        if r.get("language"):
-            bits.append(str(r["language"]))
-        if pushed:
-            bits.append(f"最近推送 {pushed}")
-        if r.get("forks_count"):
-            bits.append(f"Fork {int(r['forks_count'])}")
-        tps = r.get("topics") or []
-        if tps:
-            bits.append("标签 " + "/".join(str(x) for x in tps[:6]))
-        d = re.sub(r"\s+", " ", str(r.get("description") or "")).strip()
-        out.append({
-            "title": full,
-            "desc": (d + " ｜ " if d else "") + "；".join(bits),
-            "url": r.get("html_url") or f"https://github.com/{full}",
-            "dt": None,
-            "stars": stars,              # 落进案例库供卡片显示
-            "pushed": pushed,            # 同上：最近推送日期
-            "apptype": cfg.get("apptype") or "",
-            "source": "GitHub",
-        })
-    out.sort(key=lambda x: -(x.get("stars") or 0))    # 同一天推送里，星数高的更值得看
-    return out[: int(cfg.get("take", 12))]
-
-
 # awesome-llm-apps 的分节名 → 中文类型。节名自带分类信息，比让 LLM 猜准得多。
 AWESOME_SECTION_CN = {
     "agent skills": "Agent 技能",
@@ -444,62 +389,11 @@ AWESOME_SECTION_CN = {
 }
 
 
-def parse_awesome_list(body, cfg):
-    """解析 awesome 类 README（markdown）→ 案例条目。
-
-    格式实测为：
-        ### 🌱 Starter AI Agents
-        *   [🎙️ AI Blog to Podcast Agent](starter_ai_agents/xxx/) - Turn any blog URL into...
-    节名即分类（直接拿来当 type），条目即案例。这类源无日期、非新闻，故在配置里标
-    library_only=true —— 只进案例库、不进每日简报。
-    """
-    text = body.decode("utf-8", "replace") if isinstance(body, bytes) else str(body)
-    repo = (cfg.get("repo") or "Shubhamsaboo/awesome-llm-apps")
-    branch = cfg.get("branch") or "main"
-    section, out = "", []
-    for line in text.splitlines():
-        h = re.match(r"^#{2,3}\s+(.+?)\s*$", line)
-        if h:
-            section = re.sub(r"[^\w\s()\-/]", "", h.group(1)).strip()   # 去 emoji
-            continue
-        m = re.match(r"^\s*[-*]\s+\[(.+?)\]\(([^)]+)\)\s*(?:[-–—]\s*(.*))?$", line)
-        if not m:
-            continue
-        title = re.sub(r"[^\w\s()\-/+.&:'!?,]", "", m.group(1)).strip()
-        rel = m.group(2).strip()
-        desc = (m.group(3) or "").strip()
-        if not title or rel.startswith("http"):
-            continue
-        rel = rel.rstrip("/")
-        fine = AWESOME_SECTION_CN.get(section.lower(), section or "其他")
-        out.append({
-            "title": title,
-            "desc": desc or title,
-            "url": f"https://github.com/{repo}/tree/{branch}/{rel}",
-            "dt": None,
-            "apptype": AWESOME_SECTION_COARSE.get(section.lower(), "效率工具"),  # 筛选轴
-            "topic": fine,          # 原节名（如「进阶 Agent」），细标签、供展示
-        })
-    # 按分类轮转取样：README 里各节长度悬殊（RAG 21 条 vs 微调 2 条），
-    # 直接取前 N 条会让大节挤掉其它形态，案例库就失衡了。
-    buckets = {}
-    for it in out:
-        buckets.setdefault(it["apptype"], []).append(it)
-    keys, ordered = list(buckets), []
-    while any(buckets[k] for k in keys):
-        for k in keys:
-            if buckets[k]:
-                ordered.append(buckets[k].pop(0))
-    return ordered[: int(cfg.get("take", 40))]
-
-
 PARSERS = {
     "leaderboard": parse_leaderboard,
     "openrouter": parse_openrouter,
     "hf-models": parse_hf_models,
     "hf-spaces": parse_hf_spaces,
-    "awesome-list": parse_awesome_list,
-    "gh-search": parse_gh_search,
 }
 
 
@@ -507,16 +401,7 @@ PARSERS = {
 # 抓取：双通路 + desc 门槛
 # --------------------------------------------------------------------------- #
 def try_once(url, kind, src=None):
-    hdr = None
-    if "api.github.com" in url:
-        # GitHub 搜索 API 有配额差异：匿名 60 次/小时（**按 IP 计**，Actions runner 用的
-        # 是共享 IP，匿名几乎必然被打满并返 403），认证后 30 次/分钟。workflow 里注入
-        # GITHUB_TOKEN，本机调试时用 GH_TOKEN/gh 的登录态。
-        _tok = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN") or ""
-        if _tok:
-            hdr = {"Authorization": f"Bearer {_tok}",
-                   "X-GitHub-Api-Version": "2022-11-28"}
-    body = http_get(url, extra_headers=hdr)
+    body = http_get(url)
     p = (src or {}).get("parser")
     if p in PARSERS:
         # 专用解析器允许返回空 —— "过滤后没有合格条目"是正常结果（如 HF 当天
@@ -788,24 +673,21 @@ def llm_enhance(items, tcfg):
     为什么还要按「是否应用案例」再拆一次：只有 apps 车道需要多输出一个 type
     （应用形态），而输出 schema 一旦混批，模型会对整批都套用同一套字段解释。
     宁可多切几组，也不要把两种 schema 混在一批（与「按语言拆批」同源的理由）。
-    _skip_llm 的条目（案例库中已处理过的）直接跳过，避免每天重译上百条。
     """
     if not tcfg.get("enabled", True):
         return "off", []
     _DEAD_MODELS.clear()          # 每轮抓取复位（进程内只跑一轮，这里是双保险）
     size = int(tcfg.get("batch_size", 25))
-    pend = [i for i in items if not i.get("_skip_llm")]
     groups = []
     for want_cn, mode in ((True, "translate"), (False, "summarize")):
-        grp = [i for i in pend if bool(i["_translate_title"]) == want_cn]
+        grp = [i for i in items if bool(i["_translate_title"]) == want_cn]
         for wt in (True, False):
             sub = [i for i in grp if bool(i.get("_want_type")) == wt]
             if sub:
                 groups.append((sub, mode, wt))
-    n_en = sum(1 for i in pend if i["_translate_title"])
-    n_app = sum(1 for i in pend if i.get("_want_type"))
-    log(f"🧠 LLM 增强：待处理 {len(pend)} 条（英文 {n_en} / 应用案例 {n_app} / "
-        f"已缓存跳过 {len(items) - len(pend)}），批大小 {size}")
+    n_en = sum(1 for i in items if i["_translate_title"])
+    n_app = sum(1 for i in items if i.get("_want_type"))
+    log(f"🧠 LLM 增强：待处理 {len(items)} 条（英文 {n_en} / 应用案例 {n_app}），批大小 {size}")
 
     done, failed = {}, []
     for grp, mode, wt in groups:
@@ -895,21 +777,13 @@ def guess_apptype(it):
     return "效率工具"
 
 
-def _is_seed(c):
-    """种子条目 = library_only 源（awesome-llm-apps 的人工精选清单）。
-    优先看落盘时写的 src；老记录没这个字段时退回 block 名。"""
-    return c.get("src") == "seed" or c.get("block") == "案例库种子"
-
-
 def _keep_case(c, min_total, min_rel):
-    """存量条目的留存判定（只对非种子生效）。
+    """存量条目的留存判定。
 
     为什么必须有这一步：入库门槛只挡「新增」是不够的 —— 库里已有的低质条目躺在
     缓存里，不显式剔除就会永久留着（实测首轮不过滤，38 条全进、含 20 条 total<5）。
     老记录若没写 score，无法判断 ⇒ 保留（宁可不误杀）。
     """
-    if _is_seed(c):
-        return True
     s = c.get("score")
     if not isinstance(s, (int, float)):
         return True
@@ -1038,7 +912,7 @@ def main():
     log(f"AI 前沿雷达 · 抓取  {now.strftime('%Y-%m-%d %H:%M')} 北京   启用源 {len(srcs)}")
     log("=" * 100)
 
-    all_items, degraded, reports, lib_items = [], [], [], []
+    all_items, degraded, reports = [], [], []
 
     for src in srcs:
         if src.get("take") == 0:          # 纯数据源（如 OpenRouter），不产出条目
@@ -1091,14 +965,8 @@ def main():
             kept += outw[: min_take - len(kept)]
         for i in kept:
             i.update({"lane": src["lane"], "block": src["block"],
-                      "source": src.get("default_source") or src["block"], "via": via,
-                      "_lib_gate": bool(src.get("lib_gate"))})
-        if src.get("library_only"):
-            # 只进案例库、不进每日简报：这类源是无日期的一次性沉淀（如 awesome-llm-apps
-            # 的 100+ 模板），塞进日常流会天天重复占版面。
-            lib_items.extend(kept)
-        else:
-            all_items.extend(kept)
+                      "source": src.get("default_source") or src["block"], "via": via})
+        all_items.extend(kept)
         n_stale = sum(1 for i in kept if i.get("stale"))
         extra = f"（含 {n_stale} 条保底旧文）" if n_stale else ""
         log(f"  ✅ @{via}  取 {len(items)} → 去重 {len(dedup)} → "
@@ -1106,17 +974,14 @@ def main():
         reports.append({"id": src["id"], "ok": True, "via": via, "n": len(kept),
                         "raw": len(items), "diag": diag})
 
-    # ⚠️ 判据要含 lib_items：若启用的源**全是 library_only**（如本地用 --id 只跑搜索源
-    #    调试），all_items 必然为空 —— 但那是正常结果（案例库照样该更新），
-    #    只判 all_items 会误报"全源失败"并 exit，把调试挡住。
-    if not all_items and not lib_items:
+    if not all_items:
         log("⛔ 全部源失败：不写任何文件（保留上一份产物，latest.json 不被覆盖）")
         sys.exit(1)
 
     # 语言标记：标题含 CJK 的按「中文条目」处理（标题原样 + 摘要 + 打分），
     # 纯英文的走 translate（译标题 + 摘要 + 打分）。两种指令绝不能混在同一批，
     # 否则模型会整批统一处理、造成英文标题漏译（news-feed 的实测教训）。
-    for i in all_items + lib_items:
+    for i in all_items:
         i["_translate_title"] = not re.search(r"[\u4e00-\u9fff]", i["title"])
         # 应用案例车道额外要一个「应用形态」标签（案例库要靠它分类检索）
         i["_want_type"] = (i["lane"] == "apps")
@@ -1138,8 +1003,7 @@ def main():
     if len(merged) < len(all_items):
         log(f"🔁 跨源去重折叠 {len(all_items) - len(merged)} 条")
 
-    # ④b 案例库条目并入（library_only 源）—— 与既有库比对，命中的直接复用中文标题
-    #     与摘要并跳过 LLM，否则每天重译上百条会白烧免费额度。
+    # ④b 读案例库既有记录：入库时按 url 比对，用于跨日累积（命中即更新 lastSeen）。
     cases_cfg = cfg.get("cases", {}) or {}
     lib_path = os.path.join(a.outdir, cases_cfg.get("file", "data/cases.json"))
     lib_cache = {}
@@ -1151,28 +1015,6 @@ def main():
                         lib_cache[c["url"]] = c
         except Exception as e:
             log(f"  ⚠️ 读案例库失败（将重建）：{e}")
-    lib_new, seen_lib, n_cached = [], set(), 0
-    for i in lib_items:
-        u = i.get("url") or ""
-        if not u or u in seen_lib:
-            continue
-        seen_lib.add(u)
-        i["_lib"] = True
-        prev = lib_cache.get(u)
-        if prev:
-            i["_skip_llm"] = True
-            n_cached += 1
-            if prev.get("title"):
-                i["titleCn"] = prev["title"]
-            if prev.get("summary"):
-                i["summary"] = prev["summary"]
-            if prev.get("type") and not i.get("apptype"):
-                i["apptype"] = prev["type"]
-        lib_new.append(i)
-    if lib_new:
-        log(f"📚 案例库：候选 {len(lib_new)} 条（{len(lib_new) - n_cached} 条新增待 AI 处理、"
-            f"{n_cached} 条命中缓存复用）")
-    merged_all = merged + lib_new
 
     # ⑤ 跨日折叠：与最近一份归档比对，重复的标记而非丢弃
     #    比对对象必须是「日期不是今天」的 daily 归档 —— 不能拿 latest.json 充当，
@@ -1217,31 +1059,15 @@ def main():
 
     # ⑦ LLM 增强（P2）：中文摘要 / 英文标题中文化 / 三维打分 / 主题标签 / 应用形态
     tcfg = cfg.get("translate", {})
-    translator, failed_batches = llm_enhance(merged_all, tcfg)
+    translator, failed_batches = llm_enhance(merged, tcfg)
 
     # ⑦a 应用形态兜底：LLM 没给就按关键词判，保证「按形态筛选」永远可用。
-    #     必须在 merged 拆分之前做，这样简报与案例库拿到的是同一个值。
-    for i in merged_all:
+    for i in merged:
         if i.get("lane") == "apps" and not i.get("apptype"):
             i["apptype"] = guess_apptype(i)
-    n_typed = sum(1 for i in merged_all if i.get("lane") == "apps" and i.get("apptype"))
+    n_typed = sum(1 for i in merged if i.get("lane") == "apps" and i.get("apptype"))
     log(f"🏷️ 应用形态：{n_typed} 条已标注"
-        f"（{sum(1 for i in merged_all if i.get('lane') == 'apps')} 条 apps 条目）")
-
-    # ⑦b 简报只收非 library_only 的条目；案例库条目（含缓存复用）留待第 ⑩ 步入库
-    merged = [i for i in merged_all if not i.get("_lib")]
-    if len(merged) != len(merged_all):
-        log(f"📚 简报 {len(merged)} 条 ｜ 案例库条目 {len(merged_all) - len(merged)} 条另行入库")
-
-    # ⑦c 案例库条目也要算总分 —— 它们不参与简报分级，但 `_lib_ok` 的门槛判定要读 total。
-    #     ⚠️ assign_levels 只跑在 merged（简报）上，lib 条目的 total 从来没人算；而缺
-    #     失时 `(it.get("total") or 0) < min_total` 恒为真，于是带 lib_gate 的源
-    #     **整源被静默拦掉**（实测：3 个搜索源各取 12 条、一条都没入库，日志只说
-    #     「当日过滤 48」，从数字上完全看不出来）。加门槛时最容易漏的就是这一步 ——
-    #     新判据依赖的字段必须先确认它真的被赋值过。
-    for _i in merged_all:
-        if _i.get("total") is None:
-            _i["total"] = _total_of(_i, tcfg)
+        f"（{sum(1 for i in merged if i.get('lane') == 'apps')} 条 apps 条目）")
 
     # ⑧ 分级与排序
     for i in merged:
@@ -1266,7 +1092,7 @@ def main():
         i["desc"] = i["desc"][:2000]
         i["summary"] = (i.get("summary") or "")[:300]
         i.pop("dt", None)
-        for _k in ("_translate_title", "_want_type", "_lib", "_lib_gate", "_skip_llm"):
+        for _k in ("_translate_title", "_want_type"):
             i.pop(_k, None)                 # 内部标记一律不外泄（漏一个就会写进产物）
 
     doc = {
@@ -1299,25 +1125,20 @@ def main():
                    "sources": reports, "degraded": degraded}, f,
                   ensure_ascii=False, indent=1)
 
-    # ⑩ 案例库累积：apps 车道的当日条目 + library_only 源的条目，按 url 去重后落盘
-    #     与简报的分工：简报回答「今天有什么新东西」（会滚走），
-    #     案例库回答「这段时间攒下了哪些作品」（可反复翻、可按形态筛选）。
+    # ⑩ 案例库累积：把 apps 车道的当日条目按 url 去重后累积落盘。
+    #     与简报的分工：简报回答「今天有什么新东西」（会滚走，要宽不漏），
+    #     案例库回答「攒下了哪些作品」（可反复翻，要严不滥）。
     if cases_cfg.get("enabled", True):
         by_url = dict(lib_cache)
         # 入库门槛：**简报要宽（不漏），案例库要严（宁缺毋滥）**。
-        #   - library_only 种子（awesome-llm-apps 的人工精选清单）无条件入库；
-        #   - apps 车道的条目必须过分数门槛。实测不过滤时 38 条里有 20 条 total<5，
+        #   apps 车道的条目必须过分数门槛。实测不过滤时 38 条里有 20 条 total<5，
         #     把「耳机剁手清单 / 手机评测 / 社媒营销策略」这类与 AI 无关的推荐流内容
         #     也收了进来 —— 少数派是「效率工具+数码生活」版块，本身不是 AI 源。
         min_total = float(cases_cfg.get("min_total", 5.0))
         min_rel = float(cases_cfg.get("min_rel", 3))
 
         def _lib_ok(it):
-            # 人工精选清单（awesome-llm-apps 的模板）无条件入库；GitHub 搜索来的项目
-            # （配置里标了 lib_gate=true）**必须过门槛** —— 星数下限只挡得住玩具，
-            # 挡不住「高星但与 AI 无关」（实测：WhatsApp HTTP API、身份认证服务）。
-            if it.get("_lib") and not it.get("_lib_gate"):
-                return True
+            """够格入库吗？分数门槛 + 相关度门槛。"""
             if (it.get("total") or 0) < min_total:
                 return False
             sc = it.get("score")
@@ -1327,29 +1148,8 @@ def main():
                 return True
             return sc.get("rel", 0) >= min_rel
 
-        # 候选与过滤用**同一个判定**（_lib_ok 内部已含「种子豁免 / 搜索源须过门槛」）。
-        # 搜索源（lib_gate）的诊断：它的分数语义与新闻不同 —— 项目「持续维护」不等于
-        # 「刚发生的事件」，时效性维度对它未必成立。门槛合不合适必须用数据说话，不能猜。
-        _gated = [i for i in merged_all if i.get("_lib_gate")]
-        if _gated:
-            _ok_n = sum(1 for i in _gated if _lib_ok(i))
-            _sc = [i.get("score") or {} for i in _gated]
-            log(f"   🔬 带门槛搜索源 {len(_gated)} 条 → 通过 {_ok_n} / 拦掉 {len(_gated) - _ok_n}")
-            for _k in ("rel", "info", "fresh"):
-                _v = sorted((x.get(_k) for x in _sc if x.get(_k) is not None))
-                if _v:
-                    log(f"      {_k:5} 均值 {sum(_v) / len(_v):4.1f}  分布 {_v}")
-            log(f"      total {sorted(round(float(i.get('total') or 0), 1) for i in _gated)}")
-            log(f"      样例 {[(str(i.get('title'))[:18], i.get('total')) for i in _gated[:3]]}")
-
-        fresh = [i for i in merged_all if i["lane"] == "apps" and _lib_ok(i)]
-        n_cut = sum(1 for i in merged_all if i["lane"] == "apps" and not _lib_ok(i))
-        if n_cut:
-            # 把被拦条目的分数打出来 —— 否则「拦掉了但不知道为什么」只能靠猜（踩过）
-            _samples = [(str(i.get("title"))[:20], i.get("total"),
-                         (i.get("score") or {}).get("rel"))
-                        for i in merged_all if i["lane"] == "apps" and not _lib_ok(i)][:3]
-            log(f"   拦掉的样例（标题/total/rel）：{_samples}")
+        fresh = [i for i in merged if i["lane"] == "apps" and _lib_ok(i)]
+        n_cut = sum(1 for i in merged if i["lane"] == "apps" and not _lib_ok(i))
         added = 0
         for i in fresh:
             u = i.get("url") or ""
@@ -1367,14 +1167,9 @@ def main():
                 # 分数一并入库：淘汰要按质量排。老实现只按 lastSeen —— 那是「新的留
                 # 老的扔」，与作品集的用途相反（老的优质条目被新的平庸条目挤掉，且
                 # 被挤掉后若源里不再出现就永远回不来）。
-                "src": "seed" if i.get("_lib") else "apps",
+                "src": "apps",
                 "lastSeen": doc["date"],
             }
-            # 星数与最近推送：GitHub 类源的卡片显示用（「★ 13.6k · 更新 2 天前」）
-            if i.get("stars") is not None:
-                rec["stars"] = int(i["stars"])
-            if i.get("pushed"):
-                rec["pushed"] = str(i["pushed"])[:10]
             if i.get("total") is not None:
                 rec["score"] = round(float(i["total"]), 1)
             _rel = (i.get("score") or {}).get("rel")
@@ -1394,8 +1189,7 @@ def main():
         # 自然收敛：既不用人工做一次性迁移，也不会一次烧掉全部额度。
         rescore_max = int(cases_cfg.get("rescore_max", 30))
         todo = [c for c in by_url.values()
-                if not _is_seed(c)
-                and not isinstance(c.get("score"), (int, float))][:rescore_max]
+                if not isinstance(c.get("score"), (int, float))][:rescore_max]
         n_scored = 0
         if todo and tcfg.get("enabled", True):
             pseudo = []
@@ -1423,7 +1217,7 @@ def main():
             log(f"   补分成功 {n_scored}/{len(pseudo)}（随后按同一门槛判去留）")
         # 存量清理：库里**已存在**但不达标的条目必须显式剔掉 —— 它们在 lib_cache 里，
         # 只做「不新增」不删就会永久留存（实测首轮 38 条全进，含 20 条低分）。
-        cut = {i["url"] for i in merged_all
+        cut = {i["url"] for i in merged
                if i.get("url") and i["lane"] == "apps" and not _lib_ok(i)}
         before = len(by_url)
         by_url = {u: c for u, c in by_url.items()
@@ -1431,27 +1225,13 @@ def main():
         n_purge = before - len(by_url)
         if n_purge:
             log(f"🧹 案例库剔除 {n_purge} 条不达标条目（门槛 total≥{min_total} 且 rel≥{min_rel}）")
-        # 种子存量收敛：awesome-llm-apps 本质是「教程合集」，单个案例多无人维护
-        # （抽样 12 条有 8 条 >60 天没提交、最老 590 天）。take 降到 20 只管住新增，
-        # 存量仍需给上限，否则 118 条模板长期占着库的八成、把「持续维护的精华项目」稀释掉。
-        seed_max = int(cases_cfg.get("seed_max", 60))
-        _seeds = [u for u, c in by_url.items() if _is_seed(c)]
-        n_seed_cut = 0
-        if len(_seeds) > seed_max:
-            _keep_seeds = set(sorted(_seeds, key=lambda u: (by_url[u].get("lastSeen") or ""),
-                                     reverse=True)[:seed_max])
-            n_seed_cut = len(_seeds) - len(_keep_seeds)
-            for u in _seeds:
-                if u not in _keep_seeds:
-                    del by_url[u]
-            log(f"🌱 种子收敛：{len(_seeds)} → {seed_max} 条（保留最近仍在源清单里的）")
-        # 浏览顺序：**有分数的（活跃项目）在前、按分降序**，模板清单沉底。
-        # 按 lastSeen 排是不行的 —— 种子每天都命中缓存、lastSeen 永远是最新，会一直霸着首屏，
-        # 而案例库的用途是「看别人做出了什么」，不是「翻模板目录」。
         def _show_key(c):
+            # 有分的（过了质量门槛的）在前、按分降序，无分的排最后。
+            # 按 lastSeen 排是不行的 —— 无分老条目的 lastSeen 往往也很新，会一直霸着首屏，
+            # 而案例库的用途是「看别人做出了什么」，不是「翻旧账」。
             s = c.get("score")
-            has = 1 if isinstance(s, (int, float)) else 0
-            return (has, float(s) if isinstance(s, (int, float)) else 0.0,
+            return (1 if isinstance(s, (int, float)) else 0,
+                    float(s) if isinstance(s, (int, float)) else 0.0,
                     c.get("lastSeen") or "")
         lib = sorted(by_url.values(), key=_show_key, reverse=True)
         # 整库归一化：换过分类口径后，URL 已失效的老条目不会再被上面的循环碰到，
@@ -1463,27 +1243,22 @@ def main():
         maxn = int(cases_cfg.get("max", 600))
         trimmed = 0
         if len(lib) > maxn:
-            # 淘汰按质量：种子永久保护；其余按分数降序，同分老的先走。
-            # 展示顺序仍按 lastSeen（新的在前）—— 淘汰策略不该改变浏览顺序。
+            # 淘汰按质量：分数降序，同分老的先走。展示顺序由 _show_key 决定，
+            # 淘汰策略不该改变浏览顺序。
             def _rank(c):
-                if _is_seed(c):
-                    return 99.0
                 s = c.get("score")
                 return float(s) if isinstance(s, (int, float)) else 5.5
             keep = sorted(lib, key=lambda c: (_rank(c), c.get("lastSeen") or ""),
                           reverse=True)[:maxn]
             trimmed = len(lib) - len(keep)
-            lib = sorted(keep, key=lambda c: (c.get("lastSeen") or "", c.get("title") or ""),
-                         reverse=True)
+            lib = sorted(keep, key=_show_key, reverse=True)
         os.makedirs(os.path.dirname(lib_path), exist_ok=True)
         with open(lib_path, "w", encoding="utf-8") as f:
             json.dump({"updated": doc["generated_at"], "count": len(lib),
                        "types": sorted({c["type"] for c in lib if c.get("type")}),
                        "cases": lib}, f, ensure_ascii=False, indent=1)
-        n_seed = sum(1 for c in lib if _is_seed(c))
-        log(f"📚 案例库：共 {len(lib)} 条（种子 {n_seed} · 新增 {added} · 当日过滤 {n_cut}"
+        log(f"📚 案例库：共 {len(lib)} 条（新增 {added} · 当日过滤 {n_cut}"
             + (f" · 补分 {n_scored}" if n_scored else "")
-            + (f" · 种子收敛 {n_seed_cut}" if n_seed_cut else "")
             + (f" · 裁剪 {trimmed}" if trimmed else "") + "）→ data/cases.json")
 
     log("-" * 100)
