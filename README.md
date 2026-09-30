@@ -35,7 +35,7 @@ docs/data/cases.json          应用案例库（跨日累积，按质量保留�
 docs/data/reports/{ts}.json   运行报告（每源通路/条数/降级原因，可回溯）
 docs/CNAME                    自定义域（ai-radar.hellohopo.dpdns.org）
 .github/workflows/probe-sources.yml   源探测（手动 + 每月自动）
-.github/workflows/fetch.yml           抓取发布（每日 07:30 北京；GitHub cron 常延迟，故提前一档）
+.github/workflows/fetch.yml           抓取发布（每日 08:10 北京，由 Cloudflare Worker 触发）
 ```
 
 ## 三层处理链路
@@ -159,11 +159,13 @@ HTTPS_PROXY=http://127.0.0.1:7890 python scripts/fetch_ai.py --outdir docs
 
 探测结果会写进 Actions 的 **Step Summary**（表格形式），并打印完整日志，**不落任何文件**。
 
-**定时**：GitHub Actions `schedule`（`30 23 * * *` UTC = 北京 **07:30**）。为什么是 07:30 而不是
-08:10 —— GitHub 的 schedule 要排共享队列、实测经常延迟十几到几十分钟，往前留一档才能保证
-08:00 前拿到产物。本 workflow 也开着 `workflow_dispatch`，可接外部触发（如 Cloudflare 定时），
-但**一旦启用必须同时删掉 `schedule`**：两边各跑一次而 `concurrency` 只排队不合并，
-会导致 LLM 免费额度翻倍消耗、产物提交两次。
+**定时**：北京 **08:10**，由 **Cloudflare Worker 心跳**触发（`qdii-dispatch`，与 `news-feed`
+同一套）。原先用 GitHub 自带 `schedule`，实测延迟极大 —— 2026-09-30 应 07:30、实际 **10:18**
+（晚 2 小时 48 分），已弃用；同账号由 CF 触发的 `news-feed` 则是秒级准点。
+
+workflow 里仍留着一行 `schedule` 作**过渡期备份**。⚠️ CF 侧验证通过后**必须删掉它**：两边各跑
+一次而 `concurrency` 只排队不合并，会导致 LLM 免费额度翻倍消耗、产物提交两次。**顺序不可颠倒**
+—— 先验证 CF 通了再删，反了会空窗。
 
 ## 路线
 
