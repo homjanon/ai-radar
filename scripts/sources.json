@@ -34,8 +34,7 @@
     "min_total": 5.0,
     "min_rel": 5,
     "rescore_max": 30,
-    "seed_max": 60,
-    "note": "「应用案例库」：把 apps 车道的条目按 url 去重累积成可检索的库。与每日简报的分工——简报是「今天有什么新东西」（会滚走，要宽不漏），案例库是「攒下来的作品集」（可反复翻，要严不滥）。★ 入库门槛 min_total/min_rel（现为 5.0 / 5）：apps 条目须过分数门槛，library_only 种子无条件入库。min_rel 由 3 收到 5 —— 实测 rel=4 的多是「OS 评测 / .NET WASM 运行时 / 3D 打印机器人」这类与 AI 关联很弱的东西，对「学别人的 AI 应用」没有价值；收紧后日入库约 17→14 条。实测不过滤时 38 条里 20 条 total<5，把「耳机剁手清单 / 手机评测」这类与 AI 无关的推荐流内容也收了进来（少数派是「效率工具+数码生活」版块，非 AI 源）。max 上限按**分数**淘汰、种子永久保护，不按 lastSeen —— 后者是「新的留老的扔」，与作品集用途相反。★ rescore_max：换口径前入库的老记录没有 score，无法判质量；每次运行自动补一小批分（上限此值）后立即按门槛判，自然收敛，不需要人工做一次性迁移。 ★ 种子收敛 seed_max：awesome-llm-apps 本质是「教程合集」，单个案例多无人维护（抽样 12 条有 8 条 >60 天没提交、最老 590 天）；take 降到 20 只管住新增，存量仍需给上限，否则 118 条模板长期占着库里八成、把「持续维护的精华项目」稀释掉。"
+    "note": "「应用案例库」：把 apps 车道的条目按 url 去重累积成可检索的库。与每日简报的分工——简报是「今天有什么新东西」（会滚走，要宽不漏），案例库是「攒下来的作品集」（可反复翻，要严不滥）。★ 入库门槛 min_total/min_rel（现为 5.0 / 5）：apps 条目须过分数门槛。min_rel 由 3 收到 5 —— 实测 rel=4 的多是「OS 评测 / .NET WASM 运行时 / 3D 打印机器人」这类与 AI 关联很弱的东西，对「学别人的 AI 应用」没有价值。实测不过滤时 38 条里 20 条 total<5，把「耳机剁手清单 / 手机评测」这类与 AI 无关的推荐流内容也收了进来（少数派是「效率工具+数码生活」版块，非 AI 源）。max 上限按**分数**淘汰、不按 lastSeen —— 后者是「新的留老的扔」，与作品集用途相反。★ rescore_max：换口径前入库的老记录没有 score，无法判质量；每次运行自动补一小批分（上限此值）后立即按门槛判，自然收敛，不需要人工做一次性迁移。"
   },
   "lanes": [
     { "id": "model", "name": "模型发布", "weight": 9 },
@@ -345,37 +344,6 @@
       "urls": ["https://huggingface.co/api/spaces?sort=trendingScore&direction=-1&limit=25"],
       "take": 6, "translate": true, "desc_min": 0,
       "note": "Actions 实测 25 条 ✅。Hugging Face Spaces = AI 应用的托管现场。趋势榜反映「社区这阵子在玩什么」，比下载榜更早。解析后按 lastModified 取最新"
-    },
-    {
-      "id": "awesome-llm-apps", "lane": "apps", "block": "案例库种子", "enabled": true,
-      "mode": "direct", "kind": "text", "parser": "awesome-list", "library_only": true,
-      "urls": ["https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/main/README.md"],
-      "take": 20, "translate": true, "desc_min": 0,
-      "note": "140k★ 的 awesome-llm-apps：100+ 个**可运行**的 AI 应用模板（离线用真实 README 解析出 119 条 / 16 类），按「Agent Skills / Starter Agents / RAG / MCP / Generative UI…」分节。library_only=true —— 只入库不进每日简报（无日期、非新闻）。节名直接当 type（比让 LLM 猜更准）；解析时按分类轮转取样，避免 RAG（21 条）这类大节挤掉其它形态。⚠️ 首轮 probe 报「全部失败」是**探测脚本自身的问题**（它没接专用解析器，拿 XML 解析器去解 markdown）—— 已修：probe 现在直接复用 fetch_ai 的解析器。同主机的 llm-leaderboard 实测可通，故 raw.githubusercontent.com 通路是好的。首次运行一次性译完，之后命中缓存不再消耗额度"
-    },
-    {
-      "id": "gh-ai-agents", "lane": "apps", "block": "GitHub · Agent 应用", "enabled": true,
-      "mode": "direct", "kind": "json", "parser": "gh-search", "library_only": true,
-      "lib_gate": true, "apptype": "Agent 工作流",
-      "urls": ["https://api.github.com/search/repositories?q=topic%3Aai-agents+stars%3A200..20000&sort=updated&order=desc&per_page=30"],
-      "take": 12, "translate": true, "desc_min": 0,
-      "note": "GitHub 搜索：`topic:ai-agents stars:200..20000` + `sort=updated`。**核心价值是活跃度维护自动化**——返回的天然是「最近有推送的高星项目」，项目一停更就自动从结果里消失，不必逐条体检。实测 2026-09-30 命中 1638 个，前列 XiaomiMiMo/MiMo-Code(13.6k)、loopx、bernstein、Sidekick。星数区间刻意避开 <200 的玩具与 >20000 的巨型框架。★ lib_gate=true：它与人工精选的种子不同，**必须过分数门槛才入库** —— 星数下限挡不住「高星但与我们无关」（实测结果里有 WhatsApp HTTP API、身份认证服务、加密新闻聚合器）。dt=None：日期语义不适用（「当前活跃」不是某时刻的事件），故不参与时间窗、也不会被标 stale"
-    },
-    {
-      "id": "gh-mcp", "lane": "apps", "block": "GitHub · MCP 生态", "enabled": true,
-      "mode": "direct", "kind": "json", "parser": "gh-search", "library_only": true,
-      "lib_gate": true, "apptype": "Agent 技能",
-      "urls": ["https://api.github.com/search/repositories?q=topic%3Amcp+stars%3A200..30000&sort=updated&order=desc&per_page=30"],
-      "take": 12, "translate": true, "desc_min": 0,
-      "note": "GitHub 搜索：`topic:mcp stars:200..30000` + sort=updated。MCP 是 Agent 接外部能力的标准接口，这一层最活跃、也最容易直接拿来用（实测前列 awslabs/mcp(9.7k)、casdoor、goclaw(3.6k)）"
-    },
-    {
-      "id": "gh-llm-apps", "lane": "apps", "block": "GitHub · LLM 应用", "enabled": true,
-      "mode": "direct", "kind": "json", "parser": "gh-search", "library_only": true,
-      "lib_gate": true, "apptype": "效率工具",
-      "urls": ["https://api.github.com/search/repositories?q=topic%3Allm+stars%3A300..20000&sort=updated&order=desc&per_page=30"],
-      "take": 12, "translate": true, "desc_min": 0,
-      "note": "GitHub 搜索：`topic:llm stars:300..20000` + sort=updated。覆盖最广的一条，补 Agent / MCP 之外的通用 LLM 应用（实测前列 cindy、openagents、magpie、openui）"
     }
   ]
 }
