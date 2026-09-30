@@ -7,13 +7,12 @@
 却让 Actions 上的正式抓取直接崩掉。凡是 main() 里新增的分支，都应该在这里被跑到。
 
 覆盖点：
-  · 五种专用 parser（leaderboard / openrouter / hf-models / hf-spaces / awesome-list）
+  · 四种专用 parser（leaderboard / openrouter / hf-models / hf-spaces）
   · 双通路与 desc 门槛、时间窗保底、跨源去重、跨日折叠
-  · library_only 源只进案例库、不进简报
   · LLM 增强两条路径：① 无 Key 全降级 ② 正常返回（含 want_type 分组）
-  · 案例库入库门槛（低质 apps 条目只进简报、不进库；library_only 种子无条件入库）
-  · 案例库累积与缓存复用（第二次运行应命中缓存、不重复入库）
-  · 产物字段无内部标记外泄（_lib / _want_type / _skip_llm）
+  · 案例库入库门槛（低质 apps 条目只进简报、不进库）
+  · 案例库按 url 累积（第二次运行只更新 lastSeen、不重复入库）
+  · 产物字段无内部标记外泄（_want_type / _translate_title）
 
 用法：python scripts/smoke_test.py
 """
@@ -104,18 +103,10 @@ FIX = {
          "createdAt": "2026-09-01T00:00:00.000Z",
          "lastModified": (NOW - datetime.timedelta(hours=5)).strftime("%Y-%m-%dT%H:%M:%S.000Z")},
     ]).encode(),
-    # —— text / awesome-list（library_only）——
-    "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/main/README.md":
-        ("# Awesome\n## 🙏 Thanks\n### 🌱 Starter AI Agents\n\n"
-         "*   [🎙️ AI Blog to Podcast Agent](starter_ai_agents/blog/) - Turn a blog into a podcast\n"
-         "*   [🩻 AI Medical Imaging Agent](starter_ai_agents/med/) - X-ray analysis with Gemini\n\n"
-         "### ♾️ MCP AI Agents\n\n"
-         "*   [MCP Filesystem Agent](mcp_ai_agents/fs/) - Let an agent read files safely\n"
-         "*   [MCP Slack Agent](mcp_ai_agents/slack/) - Post to Slack from an agent\n").encode(),
 }
 
 TEST_IDS = ["openai-news", "v2ex-create", "hn-show", "openrouter-stealth",
-            "llm-leaderboard", "hf-new-models", "hf-spaces-trend", "awesome-llm-apps"]
+            "llm-leaderboard", "hf-new-models", "hf-spaces-trend"]
 
 
 def make_config(path):
@@ -131,7 +122,7 @@ def make_config(path):
 
 def stub_http():
     """替换网络层：命中 FIX 返回对应 body，未命中抛错（暴露漏配的用例）。"""
-    def _get(url, timeout=25, retry=1, extra_headers=None):
+    def _get(url, timeout=25, retry=1):
         for k, v in FIX.items():
             if url.startswith(k) or k in url:
                 return v
@@ -200,17 +191,11 @@ def main():
         # 兜底分类要可解释：至少出现两种形态，而不是全被丢进同一个桶
         n_kind = len({i["apptype"] for i in apps_it})
         check(n_kind >= 2, f"兜底分类有区分度（{n_kind} 种形态）", problems)
-        seed = [c for c in cl if c.get("block") == "案例库种子"]
-        check(len(seed) >= 4, f"library_only 源进了案例库（{len(seed)} 条）", problems)
-        check(all(c.get("src") in ("seed", "apps") for c in cl),
-              "案例库记录都带 src（淘汰时据此保护种子）", problems)
-        check(all(c.get("src") == "seed" for c in cl if c.get("block") == "案例库种子"),
-              "种子条目 src=seed", problems)
-        check(all("score" in c for c in cl if c.get("src") == "apps"),
-              "apps 案例记录带 score（淘汰按分数排，不按 lastSeen）", problems)
-        check(all("awesome-llm-apps" not in (i.get("url") or "") for i in items),
-              "library_only 条目未混入简报", problems)
-        internal = {"_lib", "_want_type", "_skip_llm", "_translate_title", "dt"}
+        check(all(c.get("src") == "apps" for c in cl),
+              "案例库记录都带 src=apps", problems)
+        check(all("score" in c for c in cl),
+              "案例记录带 score（淘汰按分数排，不按 lastSeen）", problems)
+        internal = {"_want_type", "_translate_title", "dt"}
         leaked = sorted({k for i in items for k in i if k in internal})
         check(not leaked, f"产物无内部标记外泄（发现 {leaked}）", problems)
         # hf-models 的两道降噪
@@ -264,7 +249,7 @@ def main():
             c3 = json.load(io.open(cp3, encoding="utf-8"))["cases"]
             check(not any("耳机" in (r.get("title") or "") for r in c3),
                   "无分老记录补分后被门槛剔除（不再永久留存）", problems)
-            check(any(isinstance(r.get("score"), (int, float)) for r in c3 if not r.get("src") == "seed"),
+            check(any(isinstance(r.get("score"), (int, float)) for r in c3),
                   "补分结果写回了 score 字段", problems)
         finally:
             shutil.rmtree(tmp3, ignore_errors=True)
@@ -302,8 +287,6 @@ def main():
                   f"库里 apps 条目分数均达门槛（{len(apps_c)} 条）", problems)
             check(all(c.get("rel", 99) >= 3 for c in apps_c),
                   "库里 apps 条目 rel 均达门槛", problems)
-            check(any(c.get("src") == "seed" for c in cl2),
-                  "种子与 apps 条目在库里共存", problems)
         finally:
             shutil.rmtree(tmp2, ignore_errors=True)
 
@@ -323,7 +306,7 @@ def main():
         import probe_sources as P
         check(P.F is F or P.F.PARSERS is F.PARSERS,
               "probe_sources 复用 fetch_ai 的 PARSERS", problems)
-        check(len(F.PARSERS) == 6, f"解析器注册表 6 项（{sorted(F.PARSERS)}）", problems)
+        check(len(F.PARSERS) == 4, f"解析器注册表 4 项（{sorted(F.PARSERS)}）", problems)
 
         # ---------- 用例 4b：模型配额熔断与 429 诊断 ----------
         # 实测教训：gemini-3-flash 额度耗尽后若不熔断，每批都会再去撞一次 429
@@ -349,62 +332,6 @@ def main():
             [{"title": "t", "desc": "d", "_translate_title": False}], _fake, mode="summarize")
         check((not _ok) and _tried == 0,
               f"已熔断的模型不再发起请求（tried={_tried}，应为 0）", problems)
-        # ---------- 用例 4c：GitHub 搜索源（gh-search）----------
-        # 本轮新增 gh-search 解析器与 API token 注入。两者都是新的外部依赖，必须守住 ——
-        # 尤其「token 不发给非 GitHub 域名」：漏了就等于把凭据交给任意第三方源。
-        print("\n[4c/4] GitHub 搜索源：解析器与 token 注入")
-        _raw = json.dumps({"total_count": 3, "items": [
-            {"full_name": "acme/live", "stargazers_count": 1300,
-             "pushed_at": "2026-09-30T02:00:00Z", "language": "Python", "forks_count": 42,
-             "topics": ["ai-agents", "llm"], "description": "An agent platform",
-             "html_url": "https://github.com/acme/live"},
-            {"full_name": "acme/big", "stargazers_count": 9000,
-             "pushed_at": "2026-09-29T02:00:00Z", "language": "TypeScript",
-             "description": "Big thing", "html_url": "https://github.com/acme/big"},
-            {"full_name": "acme/dead", "stargazers_count": 5000,
-             "pushed_at": "2026-09-01T00:00:00Z", "archived": True,
-             "description": "Archived", "html_url": "https://github.com/acme/dead"},
-        ]}).encode()
-        _gi = F.parse_gh_search(_raw, {"take": 12, "apptype": "Agent 工作流"})
-        check(len(_gi) == 2, f"归档仓库被跳过（3 条里取到 {len(_gi)} 条）", problems)
-        check([x["title"] for x in _gi] == ["acme/big", "acme/live"],
-              "按星数降序（同一天推送里星高的更值得看）", problems)
-        check(_gi[0]["stars"] == 9000 and _gi[0]["pushed"] == "2026-09-29"
-              and _gi[0]["dt"] is None,
-              "stars/pushed 落到条目、dt 保持 None（不参与时间窗、不会被标 stale）", problems)
-        check(F._is_seed({"src": "seed"}) and not F._is_seed({"src": "apps"}),
-              "种子/项目来源可区分（决定是否豁免质量门槛）", problems)
-
-        # token 注入：只有 api.github.com 才带 Authorization
-        _seen = {}
-        _old_http = F.http_get
-
-        def _rec(url, timeout=25, retry=1, extra_headers=None):
-            _seen["url"], _seen["hdr"] = url, extra_headers
-            return b'{"items": []}'
-
-        _old_tok = os.environ.get("GITHUB_TOKEN")
-        F.http_get = _rec
-        os.environ["GITHUB_TOKEN"] = "smoke-token"
-        try:
-            F.try_once("https://api.github.com/search/repositories?q=x", "json",
-                       {"parser": "gh-search"})
-            check((_seen.get("hdr") or {}).get("Authorization") == "Bearer smoke-token",
-                  "GitHub API 请求带上 Bearer（匿名 60 次/小时且按 IP 计，runner 共享 IP 会 403）",
-                  problems)
-            try:
-                F.try_once("https://example.com/rss.xml", "rss", {})
-            except Exception:
-                pass                      # 内容解析失败无所谓，只看 header
-            check(not _seen.get("hdr"),
-                  "非 GitHub 域名**不带** token（凭据绝不发给第三方源）", problems)
-        finally:
-            F.http_get = _old_http
-            if _old_tok is None:
-                os.environ.pop("GITHUB_TOKEN", None)
-            else:
-                os.environ["GITHUB_TOKEN"] = _old_tok
-
         F._DEAD_MODELS.discard("smoke-dead")
         os.environ.pop("SMOKE_KEY", None)
     finally:
