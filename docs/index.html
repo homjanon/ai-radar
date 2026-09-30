@@ -265,6 +265,22 @@ function ageLabel(h){
   return Math.floor(h / 24) + ' 天前';
 }
 function host(u){ try { return new URL(u).hostname.replace(/^www\./,''); } catch(e){ return ''; } }
+function starTxt(n){                      // 18700 -> 18.7k
+  n = Number(n) || 0;
+  if (n >= 1000) return (n/1000).toFixed(1).replace(/\.0$/,'') + 'k';
+  return String(n);
+}
+function agoDays(d){                      // '2026-09-25' -> '5 天前'
+  if (!d) return '';
+  var t = Date.parse(d + 'T00:00:00+08:00');
+  if (isNaN(t)) return d;
+  var n = Math.floor((Date.now() - t) / 86400000);
+  if (n <= 0) return '今天';
+  if (n === 1) return '昨天';
+  if (n < 30) return n + ' 天前';
+  if (n < 365) return Math.floor(n/30) + ' 个月前';
+  return Math.floor(n/365) + ' 年前';
+}
 
 /* ── 状态条 ───────────────────────────────────────── */
 function renderStat(d, casesN){
@@ -327,8 +343,11 @@ var DATA = null, laneFilter = 'all';
 function renderBrief(){
   var d = DATA, items = d.items || [], lanes = d.lanes || [];
   var pick = items.filter(function(i){ return laneFilter === 'all' || i.lane === laneFilter; });
-  var top = pick.filter(function(i){ return i.level === 'top'; });
-  var watch = pick.filter(function(i){ return i.level === 'watch'; });
+  // 「昨日已收录」的条目不进上面三个区，只在下方单独成区。
+  // 原实现只有 normal 排除了重复、top/watch 漏了 —— 于是昨天的内容会同时出现在
+  // 「重磅」和「昨日已收录」两处，看起来像没更新。
+  var top = pick.filter(function(i){ return i.level === 'top' && !i.isRepeat; });
+  var watch = pick.filter(function(i){ return i.level === 'watch' && !i.isRepeat; });
   var normal = pick.filter(function(i){ return i.level === 'normal' && !i.isRepeat; });
   var rep = pick.filter(function(i){ return i.isRepeat; });
 
@@ -433,12 +452,14 @@ function renderCases(){
               (c.topic && c.topic !== c.type
                 ? '<span style="color:var(--fg3)">' + esc(c.topic) + '</span>' : '') +
               '<span>' + esc(c.block || host(c.url)) + '</span>' +
-              '<span style="margin-left:auto;opacity:.7">' + esc(c.lastSeen || '') + '</span>' +
+              (c.stars ? '<span>★ ' + starTxt(c.stars) + '</span>' : '') +
+              '<span style="margin-left:auto;opacity:.7">' +
+                esc(c.pushed ? ('更新 ' + agoDays(c.pushed)) : (c.lastSeen || '')) + '</span>' +
             '</div></article>';
         }).join('') + '</div>'
       : '<div class="empty"><span class="b">∅</span>' +
         (CASES.err ? '读取案例库失败：' + esc(CASES.err) + '<br>首次运行后生成' : '没有匹配的案例') + '</div>') +
-    '<div class="ft"><span>案例库 · 每次运行自动累积（按链接去重）</span>' +
+    '<div class="ft"><span>案例库 · 累积「持续维护的活跃项目」与「可运行模板」（按链接去重 · 过质量门槛）</span>' +
       '<span>共 ' + all.length + ' 条 · 更新于 ' + esc(CASES.updated || '—') + '</span></div>';
 
   box.querySelectorAll('.chip').forEach(function(b){
