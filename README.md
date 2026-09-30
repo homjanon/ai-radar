@@ -143,12 +143,10 @@ HTTPS_PROXY=http://127.0.0.1:7890 python scripts/fetch_ai.py --outdir docs
 探测结果会写进 Actions 的 **Step Summary**（表格形式），并打印完整日志，**不落任何文件**。
 
 **定时**：北京 **08:10**，由 **Cloudflare Worker 心跳**触发（`qdii-dispatch`，与 `news-feed`
-同一套）。原先用 GitHub 自带 `schedule`，实测延迟极大（应 07:30、实际 10:18，晚 2 小时 48 分），
-已弃用；同账号由 CF 触发的 `news-feed` 则是秒级准点。
+同一套）。本仓 workflow **只保留 `workflow_dispatch`，不使用 GitHub 自带 `schedule`**
+（为什么 + 不能改回去，见「踩坑记录 · 定时与触发」）。
 
-workflow 里仍留着一行 `schedule` 作**过渡期备份**。⚠️ CF 侧验证通过后**必须删掉它**：两边各跑
-一次而 `concurrency` 只排队不合并，会导致 LLM 免费额度翻倍消耗、产物提交两次。**顺序不可颠倒**
-—— 先验证 CF 通了再删，反了会空窗。
+漏跑补跑：`/trigger?repo=ai-radar&key=<DISPATCH_KEY>`，或 Actions → fetch-ai → Run workflow。
 
 ## 踩坑记录
 
@@ -193,3 +191,14 @@ workflow 里仍留着一行 `schedule` 作**过渡期备份**。⚠️ CF 侧验
   同理入库门槛在 LLM 不可用时只按兜底总分把关，否则 LLM 一挂案例库就静默停止增长。
 - **分类口径变更要整库归一化** —— URL 已失效的老条目永不进入写库循环，只靠「命中即更新」
   会留下永久孤儿筛选项（`COARSE_BY_FINE` 就是为此保留的历史分类折算表）。
+
+**定时与触发**
+
+- **不要给本仓加回 GitHub `schedule`** —— 定时统一由 Cloudflare `qdii-dispatch` 的心跳打
+  `workflow_dispatch`（按需立即执行、不排队）。GitHub 自带 `schedule` 走共享队列，实测延迟极大
+  （应 07:30、实际 10:18，晚 2 小时 48 分）。**两边并存会真跑两轮**：`concurrency` 只排队不合并
+  （`group: fetch-ai` / `cancel-in-progress: false`），结果是 LLM 免费额度翻倍消耗、产物重复提交。
+- **验证 CF → 本仓的通路，别拿 `fetch.yml` 试** —— 它会真跑一轮，消耗 LLM 额度并提交产物。
+  改用只读的 `probe-sources.yml`（不写文件、不提交、不用 LLM）：在调度器临时挂一个槽位指向它，
+  到点看 `gh run list` 是否出现 `workflow_dispatch` 运行，一次即可验证「PAT 已授权本仓 +
+  workflow 文件名正确 + 通路通」，随后撤掉该槽位。
