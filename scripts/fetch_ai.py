@@ -1230,6 +1230,16 @@ def main():
     if len(merged) != len(merged_all):
         log(f"📚 简报 {len(merged)} 条 ｜ 案例库条目 {len(merged_all) - len(merged)} 条另行入库")
 
+    # ⑦c 案例库条目也要算总分 —— 它们不参与简报分级，但 `_lib_ok` 的门槛判定要读 total。
+    #     ⚠️ assign_levels 只跑在 merged（简报）上，lib 条目的 total 从来没人算；而缺
+    #     失时 `(it.get("total") or 0) < min_total` 恒为真，于是带 lib_gate 的源
+    #     **整源被静默拦掉**（实测：3 个搜索源各取 12 条、一条都没入库，日志只说
+    #     「当日过滤 48」，从数字上完全看不出来）。加门槛时最容易漏的就是这一步 ——
+    #     新判据依赖的字段必须先确认它真的被赋值过。
+    for _i in merged_all:
+        if _i.get("total") is None:
+            _i["total"] = _total_of(_i, tcfg)
+
     # ⑧ 分级与排序
     for i in merged:
         if not i.get("summary"):
@@ -1317,6 +1327,12 @@ def main():
         # 候选与过滤用**同一个判定**（_lib_ok 内部已含「种子豁免 / 搜索源须过门槛」）。
         fresh = [i for i in merged_all if i["lane"] == "apps" and _lib_ok(i)]
         n_cut = sum(1 for i in merged_all if i["lane"] == "apps" and not _lib_ok(i))
+        if n_cut:
+            # 把被拦条目的分数打出来 —— 否则「拦掉了但不知道为什么」只能靠猜（踩过）
+            _samples = [(str(i.get("title"))[:20], i.get("total"),
+                         (i.get("score") or {}).get("rel"))
+                        for i in merged_all if i["lane"] == "apps" and not _lib_ok(i)][:3]
+            log(f"   拦掉的样例（标题/total/rel）：{_samples}")
         added = 0
         for i in fresh:
             u = i.get("url") or ""
