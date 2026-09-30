@@ -1106,7 +1106,10 @@ def main():
         reports.append({"id": src["id"], "ok": True, "via": via, "n": len(kept),
                         "raw": len(items), "diag": diag})
 
-    if not all_items:
+    # ⚠️ 判据要含 lib_items：若启用的源**全是 library_only**（如本地用 --id 只跑搜索源
+    #    调试），all_items 必然为空 —— 但那是正常结果（案例库照样该更新），
+    #    只判 all_items 会误报"全源失败"并 exit，把调试挡住。
+    if not all_items and not lib_items:
         log("⛔ 全部源失败：不写任何文件（保留上一份产物，latest.json 不被覆盖）")
         sys.exit(1)
 
