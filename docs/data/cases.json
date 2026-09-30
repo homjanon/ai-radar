@@ -1,6 +1,6 @@
 {
- "updated": "2026-09-30 17:31",
- "count": 126,
+ "updated": "2026-09-30 17:43",
+ "count": 122,
  "types": [
   "Agent 工作流",
   "Agent 技能",
@@ -22,13 +22,13 @@
    "url": "https://sspai.com/post/115197",
    "title": "派早报：OpenAI 发布 Dot 智能体、Apple 移动睡眠呼吸暂停迹象提示软件国内获批等",
    "titleEn": "",
-   "summary": "OpenAI在DevDay 2026发布Dot智能体，由GPT-6驱动，支持自主编码与多任务处理，接入4000+应用。其具备跨端同步、安全防护及人工确认机制，面向Pro与Business Premium用户逐步开放。",
+   "summary": "OpenAI DevDay 2026 发布 Dot 智能体，由 GPT-6 Astra 驱动，运行于独立云端电脑，支持跨平台交互及 4000 多款应用插件。具备恶意指令防护与操作审核机制，逐步向 Pro 与 Business 用户开放，强调企业级治理与访问控制集成。",
    "type": "Agent 工作流",
    "topic": "模型发布",
    "block": "少数派",
    "src": "apps",
    "lastSeen": "2026-09-30",
-   "score": 9.4,
+   "score": 9.7,
    "rel": 10,
    "firstSeen": "2026-09-30"
   },
@@ -54,20 +54,6 @@
    "type": "数据分析",
    "topic": "模型与推理",
    "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-09-30",
-   "score": 8.4,
-   "rel": 9,
-   "firstSeen": "2026-09-30"
-  },
-  {
-   "url": "https://github.com/mastaan66/foreman",
-   "title": "Foreman：开源 Agent 编排系统",
-   "titleEn": "Show HN: Built agent orchestration system, Director->{workers }",
-   "summary": "开发者发布开源项目 Foreman，实现 Director 到 Workers 的 Agent 编排架构。支持 npm 安装，具备 CI 集成，旨在简化多智能体协作流程与管理。",
-   "type": "CLI 工具",
-   "topic": "Agent 框架",
-   "block": "Show HN",
    "src": "apps",
    "lastSeen": "2026-09-30",
    "score": 8.4,
@@ -103,20 +89,6 @@
    "firstSeen": "2026-09-30"
   },
   {
-   "url": "https://www.v2ex.com/t/1245859#reply0",
-   "title": "Archify 3.0 发布： 7.4 万 Star，一句话把项目变成交互图，实测 Token 减少 50% 以上",
-   "titleEn": "",
-   "summary": "开源工具 Archify 3.0 发布，获7.4万Star。其能将项目代码转化为交互图，实测 Token 消耗与耗时较前版降低50%以上，支持架构图、流程图等生成，适用于AI Agent场景。",
-   "type": "效率工具",
-   "topic": "开源工具",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-09-30",
-   "score": 8.2,
-   "rel": 8,
-   "firstSeen": "2026-09-30"
-  },
-  {
    "url": "https://apps.infinihash.com/",
    "title": "InfiniHash：由 AI Agent 端到端构建的合规工具商店",
    "titleEn": "Show HN: InfiniHash App Store – compliance tools built end-to-end by AI agents",
@@ -145,26 +117,26 @@
    "firstSeen": "2026-09-30"
   },
   {
-   "url": "https://www.reddit.com/r/SideProject/comments/1wtxzrw/bruto_a_task_board_that_lives_in_your_repo_for/",
-   "title": "Bruto：存储在代码仓库中的 AI 任务看板",
-   "titleEn": "Bruto: a task board that lives in your repo, for you and your AI",
-   "summary": "Bruto 将任务笔记存储在 .bruto/workspace.json 中，支持一键复制上下文给 AI 代理（如 Claude Code）。旨在解决 AI 聊天记忆遗忘问题，实现结构化上下文传递。",
-   "type": "CLI 工具",
-   "topic": "Agent 工作流",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-09-30",
-   "score": 8.0,
-   "rel": 8,
-   "firstSeen": "2026-09-30"
-  },
-  {
    "url": "https://www.v2ex.com/t/1245729#reply0",
    "title": "分享下最近 skillsgist 的更新 - 一款轻量的私有 Agent Skills 仓库",
    "titleEn": "",
    "summary": "开源项目 skillsgist 是一个基于 Cloudflare 的私有 Agent Skills 仓库，部署仅需 Worker、D1 和 R2。支持 npx 安装，实现 skills.sh 发现协议，适用于团队内部共享非公开技能，默认配置即可在免费版运行。",
    "type": "Agent 工作流",
    "topic": "Agent 生态",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-09-30",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-09-30"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1245874#reply0",
+   "title": "Agent 的社交通讯平台",
+   "titleEn": "",
+   "summary": "开源项目 Pingo 构建面向 AI Agent 的社交协作平台，支持身份创建、好友添加、私聊群聊及任务讨论。Agent 可自主判断消息相关性并选择回应，用户可设置不同角色观察其互动。代码已在 GitHub 开放，欢迎社区参与开发。",
+   "type": "Web 应用",
+   "topic": "Agent 框架",
    "block": "V2EX 分享创造",
    "src": "apps",
    "lastSeen": "2026-09-30",
@@ -242,6 +214,34 @@
    "rel": 8
   },
   {
+   "url": "https://www.v2ex.com/t/1245859#reply0",
+   "title": "Archify 3.0 发布： 7.4 万 Star，一句话把项目变成交互图，实测 Token 减少 50% 以上",
+   "titleEn": "",
+   "summary": "Archify 3.0 发布，GitHub Star 达 7.4 万。该工具通过自然语言生成架构图、流程图等交互图，用于代码展示与文档编写。实测显示新版 Token 消耗减少 50% 以上，速度提升 50% 以上，适用于 AI Agent 辅助开发场景。",
+   "type": "内容生成",
+   "topic": "开源生态",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-09-30",
+   "score": 7.5,
+   "rel": 7,
+   "firstSeen": "2026-09-30"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1wtxzrw/bruto_a_task_board_that_lives_in_your_repo_for/",
+   "title": "Bruto：嵌入代码仓库的任务看板，为 AI 协作设计",
+   "titleEn": "Bruto: a task board that lives in your repo, for you and your AI",
+   "summary": "Bruto 是一个任务看板，笔记存储在项目的 .bruto/workspace.json 文件中。用户可添加文件、链接或截图作为任务上下文，一键复制为 Markdown 供 AI 使用。支持 Claude Code 和 Cursor 等编码 Agent 直接处理任务。",
+   "type": "效率工具",
+   "topic": "Agent 工具",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-09-30",
+   "score": 7.5,
+   "rel": 8,
+   "firstSeen": "2026-09-30"
+  },
+  {
    "url": "https://github.com/idk-arsh/data-agent-rules",
    "title": "数据代理规则库：防止 AI Agent 破坏数据仓库",
    "titleEn": "Show HN: Rules that stop AI agents from wrecking your warehouse, with an eval",
@@ -268,20 +268,6 @@
    "score": 7.5,
    "rel": 8,
    "firstSeen": "2026-09-29"
-  },
-  {
-   "url": "https://github.com/zie1ony/jev-talks",
-   "title": "Jev：基于 TypeSafe API 的对话实验项目",
-   "titleEn": "Show HN: I made Jev to talk",
-   "summary": "开发者分享名为 Jev 的实验项目，利用 TypeSafe API 实现逐词生成回复的对话功能。开源代码包含环境配置说明，展示了另一种 LLM 交互机制。",
-   "type": "其他",
-   "topic": "模型与推理",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-09-30",
-   "score": 7.4,
-   "rel": 8,
-   "firstSeen": "2026-09-30"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1wt7cm4/im_building_a_civilengineering_cad_app_with_an_ai/",
@@ -318,20 +304,6 @@
    "summary": "开发者发布 Alter Zero，一款内存优化型终端 Agent。它支持代码读写、构建、调试及网络安全研究，旨在通过轻量级架构提升自动化效率。",
    "type": "CLI 工具",
    "topic": "Agent 框架",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-09-30",
-   "score": 7.3,
-   "rel": 8,
-   "firstSeen": "2026-09-30"
-  },
-  {
-   "url": "https://github.com/ychampion/melete",
-   "title": "Melete：OpenAI Dots 的开源替代品",
-   "titleEn": "Show HN: Melete – an open-source alternative to OpenAI's Dots",
-   "summary": "Melete 是一个开源项目，旨在作为 OpenAI Dots 的替代方案。虽然具体功能细节较少，但标志着社区在开发独立于官方生态的 AI 工具或界面层的尝试。",
-   "type": "Web 应用",
-   "topic": "开源权重",
    "block": "Show HN",
    "src": "apps",
    "lastSeen": "2026-09-30",
@@ -395,20 +367,6 @@
    "firstSeen": "2026-09-30"
   },
   {
-   "url": "https://layout.link/",
-   "title": "Layout：用 AI 实现跨平台外卖点单",
-   "titleEn": "Show HN: Layout – Order food anywhere with AI",
-   "summary": "Layout 允许用户通过短信、iOS App 或 MCP 客户端如 ChatGPT 点餐。AI 自动构建购物车并下单，支持美国大多数餐厅，开发者可集成其基础设施。",
-   "type": "移动 App",
-   "topic": "Agent 应用",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-09-30",
-   "score": 6.9,
-   "rel": 7,
-   "firstSeen": "2026-09-30"
-  },
-  {
    "url": "https://www.reddit.com/r/SideProject/comments/1wtqx2o/i_made_a_visual_tour_of_my_codingagent_workspace/",
    "title": "Mefi Studio：可视化编码 Agent 工作区",
    "titleEn": "I made a visual tour of my coding-agent workspace. What would make the work easier to follow?",
@@ -423,31 +381,17 @@
    "firstSeen": "2026-09-30"
   },
   {
-   "url": "https://www.v2ex.com/t/1245809#reply0",
-   "title": "在使用 Skill 进行项目开发后，做一个 pdf 文档转在线测试的网页工具，希望大家多指点",
-   "titleEn": "",
-   "summary": "开发者在PDF转在线测试网页工具中引入成体系的Skill进行开发，重点强化测试驱动与代码审查。相比传统手敲流程，Skill使项目推进更井然有序且高效，验证了AI Agent在工作流中的质量控制价值。",
-   "type": "Web 应用",
-   "topic": "工程实践",
-   "block": "V2EX 分享创造",
+   "url": "https://github.com/mastaan66/foreman",
+   "title": "Foreman：构建 Director-Workers 模式的 Agent 编排系统",
+   "titleEn": "Show HN: Built agent orchestration system, Director->{workers }",
+   "summary": "开发者推出名为 Foreman 的开源 Agent 编排系统，采用 Director 指挥 Workers 的架构。该系统提供 npm 包，包含 CI 徽章，旨在简化多 Agent 协作流程，为构建复杂的智能体工作流提供基础设施支持。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "Show HN",
    "src": "apps",
    "lastSeen": "2026-09-30",
    "score": 6.8,
    "rel": 8,
-   "firstSeen": "2026-09-30"
-  },
-  {
-   "url": "https://sspai.com/post/114945",
-   "title": "别再把攻略全甩给 AI：国庆七天河南自驾，我是这样用 Agent 的",
-   "titleEn": "",
-   "summary": "作者分享利用Agent规划国庆河南自驾游的经验，通过Zcode等工具生成路书并规整文字。重点强调Agent用于解决信息杂乱、行程细节呈现不足等问题，而非单纯甩给AI，体现人机协作的规划方法论。",
-   "type": "Agent 工作流",
-   "topic": "Agent 应用",
-   "block": "少数派",
-   "src": "apps",
-   "lastSeen": "2026-09-30",
-   "score": 6.7,
-   "rel": 7,
    "firstSeen": "2026-09-30"
   },
   {
@@ -463,6 +407,20 @@
    "score": 6.7,
    "rel": 7,
    "firstSeen": "2026-09-29"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1245809#reply0",
+   "title": "在使用 Skill 进行项目开发后，做一个 pdf 文档转在线测试的网页工具，希望大家多指点",
+   "titleEn": "",
+   "summary": "开发者引入 Skill 体系改善软件开发质量，重点加强测试驱动与代码审查环节。基于此方法论构建了 PDF 文档转在线测试的网页工具，声称项目推进速度显著提升。文章对比了传统手动流程与新体系的差异，强调规范化开发对质量与效率的帮助。",
+   "type": "Web 应用",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-09-30",
+   "score": 6.6,
+   "rel": 7,
+   "firstSeen": "2026-09-30"
   },
   {
    "url": "https://www.v2ex.com/t/1245669#reply0",
@@ -612,14 +570,14 @@
    "url": "https://www.v2ex.com/t/1245817#reply0",
    "title": "做了个 Migos AI 双人说唱视频生成器，上传两张照片就能进橙色录音棚",
    "titleEn": "",
-   "summary": "Migos AI Video工具允许用户上传两张照片生成双人说唱视频，通过固定位置机制减少角色混淆。支持4-15秒时长、多种画幅与分辨率，能参考原视频动作与音轨，提供任务查询与失败不扣费机制。",
-   "type": "内容生成",
-   "topic": "AI 视频",
+   "summary": "Migos AI 专用于生成双人录音棚说唱视频，用户上传两张照片即可明确指定左右人物角色，避免串脸。支持 4-15 秒时长及多种画幅分辨率，参考原视频动作音轨，具备任务超时恢复及失败不扣积分功能，简化了特定场景的视频生成流程。",
+   "type": "Web 应用",
+   "topic": "内容生成",
    "block": "V2EX 分享创造",
    "src": "apps",
    "lastSeen": "2026-09-30",
-   "score": 6.5,
-   "rel": 6,
+   "score": 6.6,
+   "rel": 5,
    "firstSeen": "2026-09-30"
   },
   {
@@ -637,6 +595,20 @@
    "rel": 7
   },
   {
+   "url": "https://www.v2ex.com/t/1245830#reply0",
+   "title": "按住右键弹出圆环菜单，给每个 App 配一套鼠标快捷键",
+   "titleEn": "",
+   "summary": "开发者利用 AI 快速构建鼠标圆环菜单工具，实现全局及单 App 专属快捷操作。支持录制式快捷键录入，提供点击弹出和按住释放两种模式，解决了现有方案兼容性问题。该工具通过 AI 辅助开发在十分钟内完成核心功能验证。",
+   "type": "桌面工具",
+   "topic": "效率工具",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-09-30",
+   "score": 6.3,
+   "rel": 5,
+   "firstSeen": "2026-09-30"
+  },
+  {
    "url": "https://www.v2ex.com/t/1245602#reply6",
    "title": "做了一个每天查看新游戏的网站，包含一些小工具",
    "titleEn": "",
@@ -649,6 +621,20 @@
    "score": 6.3,
    "rel": 6,
    "firstSeen": "2026-09-29"
+  },
+  {
+   "url": "https://layout.link/",
+   "title": "Layout：通过 AI 在任意餐厅下单",
+   "titleEn": "Show HN: Layout – Order food anywhere with AI",
+   "summary": "Layout 允许用户通过短信、iOS 应用或 MCP 客户端（如 ChatGPT）用自然语言指令在几乎任何美国餐厅下单。AI 自动构建购物车、发送账单并安全下单，开发者可集成其基础设施。",
+   "type": "移动 App",
+   "topic": "Agent 应用",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-09-30",
+   "score": 6.2,
+   "rel": 6,
+   "firstSeen": "2026-09-30"
   },
   {
    "url": "https://ledge.sh",
@@ -691,20 +677,6 @@
    "score": 6.2,
    "rel": 6,
    "firstSeen": "2026-09-29"
-  },
-  {
-   "url": "https://haircolorchangeai.com/",
-   "title": "HairColorChangeAI：浏览器端 AI 发色试换",
-   "titleEn": "Show HN: HairColorChangeAI – AI hair color try-on in the browser",
-   "summary": "该工具允许用户在浏览器上传照片，实时预览 59 种预设发色及自定义 HEX 颜色，提供前后对比功能，帮助用户在染发前确定合适色号，支持免费试用。",
-   "type": "Web 应用",
-   "topic": "内容生成",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-09-30",
-   "score": 6.0,
-   "rel": 6,
-   "firstSeen": "2026-09-30"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1wtszoc/built_a_sitetool_that_turns_your_own_ideas_into/",
@@ -763,17 +735,17 @@
    "firstSeen": "2026-09-30"
   },
   {
-   "url": "https://www.v2ex.com/t/1245830#reply0",
-   "title": "按住右键弹出圆环菜单，给每个 App 配一套鼠标快捷键",
+   "url": "https://www.v2ex.com/t/1245849#reply0",
+   "title": "独立游戏精灵图制作工具",
    "titleEn": "",
-   "summary": "开发者利用AI在10分钟内实现了鼠标右键圆环菜单原型，后续完善为支持全局及单应用配置的快捷键工具。工具支持按键录制与两种触发模式，解决了现有方案兼容性问题，提升操作效率。",
-   "type": "效率工具",
-   "topic": "效率工具",
+   "summary": "独立游戏开发者因 GPT-Image-2.5 绘制精灵图动作逻辑不准确，自研 SpriteFrame 工具解决 2D 游戏角色动画制作难题。该工具简化帧动画流程，提升开发效率，并计划商业化以辅助独游制作人应对 Steam 高成本与严格审查。",
+   "type": "Web 应用",
+   "topic": "内容生成",
    "block": "V2EX 分享创造",
    "src": "apps",
    "lastSeen": "2026-09-30",
    "score": 6.0,
-   "rel": 6,
+   "rel": 5,
    "firstSeen": "2026-09-30"
   },
   {
@@ -818,6 +790,34 @@
    "firstSeen": "2026-09-29"
   },
   {
+   "url": "https://sspai.com/post/114945",
+   "title": "别再把攻略全甩给 AI：国庆七天河南自驾，我是这样用 Agent 的",
+   "titleEn": "",
+   "summary": "文章分享利用 Agent 规划国庆河南七日自驾行程的经验。作者未将全部攻略交给 AI，而是使用 Zcode 生成路书并整理文字。针对信息杂乱、Notion 细节呈现不足等痛点，通过人机协作方式解决酒店预订、门票预约等出行难题。",
+   "type": "效率工具",
+   "topic": "Agent 应用",
+   "block": "少数派",
+   "src": "apps",
+   "lastSeen": "2026-09-30",
+   "score": 5.9,
+   "rel": 6,
+   "firstSeen": "2026-09-30"
+  },
+  {
+   "url": "https://github.com/zie1ony/jev-talks",
+   "title": "Jev-Talks：验证 LLM 逐字生成对话能力的实验项目",
+   "titleEn": "Show HN: I made Jev to talk",
+   "summary": "开发者基于 Jev 模型构建了谈话技能实验，演示 LLM 逐词组合回答的过程。用户需复制环境文件并填入 TypeSafe API Key 即可运行，旨在探索大模型在自然语言生成和实时交互方面的表现与局限。",
+   "type": "CLI 工具",
+   "topic": "模型实验",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-09-30",
+   "score": 5.8,
+   "rel": 7,
+   "firstSeen": "2026-09-30"
+  },
+  {
    "url": "https://www.v2ex.com/t/1245611#reply3",
    "title": "手势结印释放忍术小游戏",
    "titleEn": "",
@@ -846,20 +846,6 @@
    "firstSeen": "2026-09-30"
   },
   {
-   "url": "https://www.v2ex.com/t/1245853#reply0",
-   "title": "做了一个在线 AI 换发色工具，想听听大家对效果和体验的建议",
-   "titleEn": "",
-   "summary": "开发者上线在线AI换发色与试发型工具，用户可上传自拍预览不同发色效果，旨在降低染发试错成本。工具提供金发、灰发、挑染等多种滤镜入口，支持多入口访问，寻求用户反馈。",
-   "type": "内容生成",
-   "topic": "AI 应用",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-09-30",
-   "score": 5.7,
-   "rel": 6,
-   "firstSeen": "2026-09-30"
-  },
-  {
    "url": "https://github.com/richardgill/overmux",
    "title": "Overmux：基于 tmux 构建的定制化 Agent 开发环境",
    "titleEn": "Show HN: Overmux - Build custom agent dev environments with tmux and web UIs",
@@ -885,20 +871,6 @@
    "score": 5.7,
    "rel": 6,
    "firstSeen": "2026-09-29"
-  },
-  {
-   "url": "https://huggingface.co/spaces/Qwen/Qwen-Image-2.1",
-   "title": "Spaces 应用：Qwen/Qwen-Image-2.1",
-   "titleEn": "",
-   "summary": "Hugging Face Spaces上的Qwen-Image-2.1官方应用，使用Gradio技术栈。获306个赞，创建时间为2026年9月20日，提供图像生成模型的在线交互界面，便于用户直接体验通义千问图像能力。",
-   "type": "内容生成",
-   "topic": "模型发布",
-   "block": "HF Spaces",
-   "lastSeen": "2026-09-30",
-   "firstSeen": "2026-09-29",
-   "src": "apps",
-   "score": 5.5,
-   "rel": 7
   },
   {
    "url": "https://www.v2ex.com/t/1245672#reply0",
@@ -953,20 +925,6 @@
    "firstSeen": "2026-09-29",
    "score": 5.5,
    "rel": 5
-  },
-  {
-   "url": "https://www.reddit.com/r/SideProject/comments/1wtzsxz/my_truck_prototype_grows_from_one_turret_to_three/",
-   "title": "利用 Codex 辅助生成游戏载具原型",
-   "titleEn": "My truck prototype grows from one turret to three",
-   "summary": "设计师展示使用 Codex 辅助构建游戏卡车原型的流程，通过自动化编辑演示，实现武器从单座到三座炮塔的视觉升级，验证了 AI 在资产生成中的连贯性。",
-   "type": "其他",
-   "topic": "内容生成",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-09-30",
-   "score": 5.4,
-   "rel": 6,
-   "firstSeen": "2026-09-30"
   },
   {
    "url": "https://pyunto.com/",
@@ -1025,17 +983,17 @@
    "firstSeen": "2026-09-30"
   },
   {
-   "url": "https://huggingface.co/spaces/Viggle/Qwen-Image-2.1-viggle-turbo",
-   "title": "Spaces 应用：Viggle/Qwen-Image-2.1-viggle-turbo",
-   "titleEn": "",
-   "summary": "Hugging Face Spaces上的Viggle定制应用，基于Qwen-Image-2.1 Turbo版本。使用Gradio界面，获127个赞，创建时间为2026年9月22日，提供加速版图像生成模型的在线推理服务。",
-   "type": "内容生成",
-   "topic": "模型发布",
-   "block": "HF Spaces",
+   "url": "https://haircolorchangeai.com/",
+   "title": "HairColorChangeAI：浏览器端 AI 发色试戴工具",
+   "titleEn": "Show HN: HairColorChangeAI – AI hair color try-on in the browser",
+   "summary": "HairColorChangeAI 是一款浏览器应用，允许用户上传一张照片试戴 59 种发色及自定义 HEX 颜色。它提供前后对比功能，帮助用户在染发前比较不同色调效果，新用户注册即可免费获得试用额度。",
+   "type": "Web 应用",
+   "topic": "AI 图像生成",
+   "block": "Show HN",
    "src": "apps",
    "lastSeen": "2026-09-30",
-   "score": 5.1,
-   "rel": 6,
+   "score": 5.2,
+   "rel": 5,
    "firstSeen": "2026-09-30"
   },
   {
@@ -1050,20 +1008,6 @@
    "lastSeen": "2026-09-30",
    "score": 5.0,
    "rel": 7,
-   "firstSeen": "2026-09-30"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1245849#reply0",
-   "title": "独立游戏精灵图制作工具",
-   "titleEn": "",
-   "summary": "针对独立游戏开发中GPT-Image生成精灵图动作逻辑不准的问题，开发者利用AI构建了spriteframe.com工具，用于高效制作2D角色帧动画。该工具旨在帮助开发者解决美术资源生产痛点。",
-   "type": "内容生成",
-   "topic": "AI 应用",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-09-30",
-   "score": 5.0,
-   "rel": 5,
    "firstSeen": "2026-09-30"
   },
   {
