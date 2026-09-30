@@ -48,10 +48,6 @@ jobs:
           # P2 LLM 增强用。未配置时自动跳过该模型并降级为原文，不影响抓取主流程。
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}
-          # GitHub 搜索源（gh-search）用：匿名 60 次/小时且**按 IP** 计，runner 共享
-          # IP 极易被打满返 403；认证后 30 次/分钟。该 token 由 Actions 自动提供，
-          # 只读公开仓库，无需自定义 Secret。
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python scripts/fetch_ai.py --outdir docs
 
       - name: 清理超过 30 天的归档
