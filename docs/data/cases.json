@@ -1,6 +1,6 @@
 {
- "updated": "2026-09-30 18:39",
- "count": 69,
+ "updated": "2026-10-01 08:10",
+ "count": 79,
  "types": [
   "Agent 工作流",
   "CLI 工具",
@@ -19,12 +19,12 @@
    "url": "https://sspai.com/post/115197",
    "title": "派早报：OpenAI 发布 Dot 智能体、Apple 移动睡眠呼吸暂停迹象提示软件国内获批等",
    "titleEn": "",
-   "summary": "OpenAI DevDay发布Dot自主智能体，由GPT-6驱动，具备独立云端电脑及浏览器，支持跨平台交互与4000+应用接入。默认开启安全审核，敏感操作需人工确认。面向Pro及企业用户逐步开放，整合Agent 365治理。",
+   "summary": "OpenAI DevDay 2026 发布 Dot 智能体，由 GPT-6 Astra 驱动，运行于独立云端电脑，支持跨平台交互及 4000+ 应用接入，具备恶意指令防护。Apple 睡眠监测软件获国内批准。资讯汇总涵盖多项 AI 行业动态及监管进展。",
    "type": "Agent 工作流",
    "topic": "模型发布",
    "block": "少数派",
    "src": "apps",
-   "lastSeen": "2026-09-30",
+   "lastSeen": "2026-10-01",
    "score": 9.4,
    "rel": 10,
    "firstSeen": "2026-09-30"
@@ -156,6 +156,20 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://www.v2ex.com/t/1245942#reply0",
+   "title": "我为了做高效的牛马，做了一个 Codex 远程 App，支持手机网页，支持 ACP 比如 Copilot 和 Agents API",
+   "titleEn": "",
+   "summary": "开发者基于 Azure VM 部署 Codex，通过 WebSocket 代理实现移动端访问，支持 ACP 协议。该方案允许用户自费使用云端算力，规避 ChatGPT/Copilot 订阅费用，实现更开放的 Agent 工作环境。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-01",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-10-01"
+  },
+  {
    "url": "https://www.v2ex.com/t/1245729#reply0",
    "title": "分享下最近 skillsgist 的更新 - 一款轻量的私有 Agent Skills 仓库",
    "titleEn": "",
@@ -237,6 +251,34 @@
    "firstSeen": "2026-09-29",
    "score": 7.7,
    "rel": 8
+  },
+  {
+   "url": "https://www.v2ex.com/t/1245909#reply1",
+   "title": "用 Claude 做了个开源五子棋，接入 Rapfi 当最终 BOSS，欢迎来挑战",
+   "titleEn": "",
+   "summary": "基于 Claude Code 开发的开源浏览器五子棋，接入 Gomocup 冠军引擎 Rapfi 作为终极对手。引擎编译为 WebAssembly 仅 1.3MB，可在一秒内搜索 70 万局面并推演 20 余步。使用 PixiJS 开发，支持 Web Worker 异步计算及跨设备存档。",
+   "type": "Web 应用",
+   "topic": "开源生态",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-01",
+   "score": 7.5,
+   "rel": 7,
+   "firstSeen": "2026-10-01"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1245935#reply0",
+   "title": "AI Agent 的能力上限由模型决定，行为的可靠性与一致性由规则体系决定。",
+   "titleEn": "",
+   "summary": "作者提出 Agent 开发中模型决定能力上限，规则体系决定可靠性。推荐通过编写 Agent 规则文档，将“必须/禁止”约束转化为程序节点，解决复杂任务中模型自由发挥导致的不一致问题，强调规则对长任务的重要性。",
+   "type": "其他",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-01",
+   "score": 7.5,
+   "rel": 8,
+   "firstSeen": "2026-10-01"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1wtxzrw/bruto_a_task_board_that_lives_in_your_repo_for/",
@@ -365,6 +407,20 @@
    "firstSeen": "2026-09-29"
   },
   {
+   "url": "https://www.reddit.com/r/SideProject/comments/1wuig0r/i_built_a_tool_that_finds_tests_which_can_never/",
+   "title": "Captain Obvious：查找无效测试的 AI 工具",
+   "titleEn": "I built a tool that finds tests which can never fail",
+   "summary": "Captain Obvious 是一款 MIT 许可的开源工具，用于检测 TypeScript 和 Python 测试中的恒真断言和无效检查。扫描器具有确定性且不调用模型，包含可复用的 Agent 技能。",
+   "type": "CLI 工具",
+   "topic": "工程实践",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-01",
+   "score": 7.2,
+   "rel": 7,
+   "firstSeen": "2026-10-01"
+  },
+  {
    "url": "https://www.reddit.com/r/SideProject/comments/1wt641g/looking_for_1020_genai_developers_to_test_a/",
    "title": "AnshinGPT：面向 LLM 应用的运行时安全 API 招募测试",
    "titleEn": "Looking for 10–20 GenAI developers to test a runtime security API",
@@ -434,6 +490,48 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://huggingface.co/spaces/Qwen/Qwen-Image-2.1",
+   "title": "Spaces 应用：Qwen/Qwen-Image-2.1",
+   "titleEn": "",
+   "summary": "通义千问团队在 Hugging Face Spaces 发布的 Qwen-Image-2.1 官方演示应用。基于 Gradio 构建，获得 319 点赞。该应用展示了 Qwen 最新图像生成模型的能力，支持在线体验，是开源生态中重要的模型分发渠道。",
+   "type": "模型与推理",
+   "topic": "开源权重",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-01",
+   "score": 6.8,
+   "rel": 8,
+   "firstSeen": "2026-09-30"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1245914#reply1",
+   "title": "[FormulaAI] 更新：新增 VBA 代码生成 + 免登录使用",
+   "titleEn": "",
+   "summary": "FormulaAI 更新新增 VBA 代码生成功能，利用 DeepSeek 结合表格列名信息生成可运行代码，解决 Excel 宏编写门槛。同时支持免登录使用，匿名用户享有临时额度。该工具将 AI 代码生成应用于办公自动化场景，提升数据处理效率。",
+   "type": "数据分析",
+   "topic": "效率工具",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-01",
+   "score": 6.8,
+   "rel": 6,
+   "firstSeen": "2026-10-01"
+  },
+  {
+   "url": "https://sspai.com/post/114945",
+   "title": "别再把攻略全甩给 AI：国庆七天河南自驾，我是这样用 Agent 的",
+   "titleEn": "",
+   "summary": "作者分享利用 Agent 工具（如 Zcode）规划国庆河南自驾行程，生成路书并校对文字。针对传统攻略信息杂乱、Notion 细节呈现不足的痛点，展示如何通过 Agent 整合信息，解决酒店预订及门票预约等复杂出行决策问题。",
+   "type": "Agent 工作流",
+   "topic": "Agent 应用",
+   "block": "少数派",
+   "src": "apps",
+   "lastSeen": "2026-10-01",
+   "score": 6.7,
+   "rel": 7,
+   "firstSeen": "2026-09-30"
+  },
+  {
    "url": "https://github.com/zie1ony/jev-talks",
    "title": "Jev 模型通过多轮问答生成文本",
    "titleEn": "Show HN: I made Jev to talk",
@@ -460,6 +558,20 @@
    "score": 6.7,
    "rel": 7,
    "firstSeen": "2026-09-29"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1245905#reply0",
+   "title": "做了一个浏览器本地 GIF 压缩工具 CompressGIF，支持目标体积和 API / MCP",
+   "titleEn": "",
+   "summary": "CompressGIF 利用 Gifsicle WebAssembly 在浏览器本地压缩 GIF，保护隐私。提供质量、体积及目标大小三种模式，支持颜色数调整。此外提供 REST API 和 MCP 服务，便于接入自动化流程，适用于 README 及演示素材优化。",
+   "type": "Web 应用",
+   "topic": "效率工具",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-01",
+   "score": 6.6,
+   "rel": 6,
+   "firstSeen": "2026-10-01"
   },
   {
    "url": "https://www.v2ex.com/t/1245809#reply0",
@@ -546,6 +658,20 @@
    "firstSeen": "2026-09-29"
   },
   {
+   "url": "https://huggingface.co/spaces/Viggle/Qwen-Image-2.1-viggle-turbo",
+   "title": "Spaces 应用：Viggle/Qwen-Image-2.1-viggle-turbo",
+   "titleEn": "",
+   "summary": "Viggle 团队发布的 Qwen-Image-2.1 加速版本应用，基于 Gradio 构建。该版本针对推理速度进行了优化（Turbo），获得 136 点赞。展示了通过模型量化或架构调整提升生成效率的工程实践，适用于实时或快速生成场景。",
+   "type": "模型与推理",
+   "topic": "模型优化",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-01",
+   "score": 6.2,
+   "rel": 7,
+   "firstSeen": "2026-09-30"
+  },
+  {
    "url": "https://ledge.sh",
    "title": "Ledge.sh：可执行 Shell 命令的 Markdown 笔记本",
    "titleEn": "Show HN: Ledge.sh – Runnable Markdown Notes",
@@ -602,6 +728,20 @@
    "firstSeen": "2026-09-29"
   },
   {
+   "url": "https://github.com/Desbordante/desbordante-core/releases/tag/v2.5.0",
+   "title": "Desbordante 2.5.0 发布：可解释的数据分析工具",
+   "titleEn": "Show HN: Desbordante 2.5.0 Released",
+   "summary": "开源高性能数据剖析工具 Desbordante 推出 2.5.0 版本。该工具采用符号化、可解释的方法寻找复杂数据模式，区别于黑盒机器学习方法，生成明确规则。",
+   "type": "数据分析",
+   "topic": "开源工具",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-01",
+   "score": 6.0,
+   "rel": 5,
+   "firstSeen": "2026-10-01"
+  },
+  {
    "url": "https://www.reddit.com/r/SideProject/comments/1wtszoc/built_a_sitetool_that_turns_your_own_ideas_into/",
    "title": "基于长期记忆生成连续故事与 TTRPG 日志的工具",
    "titleEn": "Built a site/tool that turns your own ideas into an ongoing story that remembers everything — bedtime tales, character fiction, or real TTRPG session ",
@@ -644,20 +784,6 @@
    "firstSeen": "2026-09-30"
   },
   {
-   "url": "https://sspai.com/post/114945",
-   "title": "别再把攻略全甩给 AI：国庆七天河南自驾，我是这样用 Agent 的",
-   "titleEn": "",
-   "summary": "分享使用Agent规划国庆河南自驾攻略的实践。针对信息杂乱痛点，利用Zcode等工具生成路书并规整文字。强调并非完全依赖AI生成，而是将其作为辅助进行信息核对与行程细化，提升效率。",
-   "type": "Agent 工作流",
-   "topic": "Agent 框架",
-   "block": "少数派",
-   "src": "apps",
-   "lastSeen": "2026-09-30",
-   "score": 6.0,
-   "rel": 6,
-   "firstSeen": "2026-09-30"
-  },
-  {
    "url": "https://kanunilabs.com/playground/datagrid/virtual-scrolling",
    "title": "基于 Web Worker 的高性能 React 数据网格",
    "titleEn": "Show HN: A React data grid that sorts and filters in a Web Worker",
@@ -669,20 +795,6 @@
    "lastSeen": "2026-09-30",
    "score": 6.0,
    "rel": 5,
-   "firstSeen": "2026-09-30"
-  },
-  {
-   "url": "https://huggingface.co/spaces/Qwen/Qwen-Image-2.1",
-   "title": "Spaces 应用：Qwen/Qwen-Image-2.1",
-   "titleEn": "",
-   "summary": "Hugging Face官方Spaces应用，部署Qwen-Image-2.1图像生成模型。技术栈为Gradio，创建时间2026年9月20日，点赞308。提供在线体验Qwen最新图像生成能力界面，支持交互式出图。",
-   "type": "内容生成",
-   "topic": "模型发布",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-09-30",
-   "score": 6.0,
-   "rel": 8,
    "firstSeen": "2026-09-30"
   },
   {
@@ -725,6 +837,20 @@
    "score": 6.0,
    "rel": 6,
    "firstSeen": "2026-09-29"
+  },
+  {
+   "url": "https://www.tomasmed.dev/wall",
+   "title": "AI Agent 数字涂鸦墙交互实验",
+   "titleEn": "Show HN: Made a digital wall for AI Agents to \"tag\"",
+   "summary": "开发者创建了一个数字墙面，允许 AI Agent 进行‘涂鸦’交互。这是一个探索 AI 行为边界的艺术实验项目，展示了 Agent 在非游戏场景下的创造性输出。",
+   "type": "Web 应用",
+   "topic": "Agent 应用",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-01",
+   "score": 5.9,
+   "rel": 6,
+   "firstSeen": "2026-10-01"
   },
   {
    "url": "https://haircolorchangeai.com/",
@@ -808,6 +934,20 @@
    "score": 5.7,
    "rel": 6,
    "firstSeen": "2026-09-29"
+  },
+  {
+   "url": "https://huggingface.co/spaces/kulkas2pintu/QWEN_EDIT_IMAGE",
+   "title": "Spaces 应用：kulkas2pintu/QWEN_EDIT_IMAGE",
+   "titleEn": "",
+   "summary": "社区贡献的 Qwen 图像编辑应用，在 Hugging Face Spaces 上线。基于 Gradio 技术栈，获得 618 点赞。该应用聚焦于图像编辑功能，展示了 Qwen 模型在图像修改场景下的应用能力，受到较多社区用户关注。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-01",
+   "score": 5.6,
+   "rel": 7,
+   "firstSeen": "2026-10-01"
   },
   {
    "url": "https://www.v2ex.com/t/1245672#reply0",
@@ -906,6 +1046,20 @@
    "firstSeen": "2026-09-29"
   },
   {
+   "url": "https://huggingface.co/spaces/Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
+   "title": "Spaces 应用：Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces 平台上的应用，基于 MiniMax-H3-Turbo 模型微调的 LoRA 权重，去除内容限制。使用 Gradio 构建，获得 922 点赞。该资源展示了开源社区对特定模型进行 LoRA 微调以适应不同使用场景的技术实践。",
+   "type": "模型与推理",
+   "topic": "开源权重",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-01",
+   "score": 5.3,
+   "rel": 7,
+   "firstSeen": "2026-09-30"
+  },
+  {
    "url": "https://www.v2ex.com/t/1245703#reply0",
    "title": "出海管理平台(极简)， 1 核 1G 服务器就能跑",
    "titleEn": "",
@@ -920,32 +1074,32 @@
    "firstSeen": "2026-09-30"
   },
   {
-   "url": "https://huggingface.co/spaces/arudradey/qwen-image-2.1-uncensored-gguf",
-   "title": "Spaces 应用：arudradey/qwen-image-2.1-uncensored-gguf",
-   "titleEn": "",
-   "summary": "Hugging Face Spaces应用，部署Qwen-Image-2.1的未审查GGUF量化版本。技术栈Gradio，创建时间2026年9月22日，点赞139。旨在提供开源生态中无内容限制限制的图像生成模型体验。",
-   "type": "内容生成",
-   "topic": "开源权重",
-   "block": "HF Spaces",
+   "url": "https://yntk.cloud/2026-openai-devday/",
+   "title": "OpenAI DevDay 2026 讽刺性解读工具",
+   "titleEn": "Show HN: I wanted a better way to read about OpenAI DevDay 2026",
+   "summary": "开发者将 OpenAI DevDay 2026 的回顾转化为赛博朋克风格游戏和音频日志，作为纯讽刺作品展示。该项目并非实质技术进展，而是对行业事件的创意再创作。",
+   "type": "其他",
+   "topic": "行业活动",
+   "block": "Show HN",
    "src": "apps",
-   "lastSeen": "2026-09-30",
-   "score": 5.3,
-   "rel": 7,
-   "firstSeen": "2026-09-30"
+   "lastSeen": "2026-10-01",
+   "score": 5.2,
+   "rel": 5,
+   "firstSeen": "2026-10-01"
   },
   {
-   "url": "https://huggingface.co/spaces/Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
-   "title": "Spaces 应用：Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
+   "url": "https://www.v2ex.com/t/1245938#reply0",
+   "title": "一个 AI 工具站 vocalove.io",
    "titleEn": "",
-   "summary": "Hugging Face Spaces应用，基于MiniMax-H3-Turbo模型加载LoRA微调权重。技术栈为Gradio，创建时间为2026年8月，点赞数890。主要提供未审查版本的模型推理演示界面。",
-   "type": "模型与推理",
-   "topic": "模型发布",
-   "block": "HF Spaces",
+   "summary": "vocalove.io 集成主流 AI 模型，提供视频转视频、文生图/图生图、多音色 TTS 及语音克隆功能。平台设有一定免费额度，允许用户低成本体验多种 AI 内容生成能力，无需复杂配置。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "V2EX 分享创造",
    "src": "apps",
-   "lastSeen": "2026-09-30",
-   "score": 5.2,
-   "rel": 7,
-   "firstSeen": "2026-09-30"
+   "lastSeen": "2026-10-01",
+   "score": 5.0,
+   "rel": 5,
+   "firstSeen": "2026-10-01"
   },
   {
    "url": "https://huggingface.co/spaces/convaiinnovations/laya-demo",
@@ -954,20 +1108,6 @@
    "summary": "ConvAI Innovations 发布的 Laya 模型演示应用，基于 Gradio 技术栈。该应用主要用于展示多模态或特定任务模型的能力，获得 246 点赞，属于 AI 模型在线体验与社区共享的典型案例。",
    "type": "Web 应用",
    "topic": "模型与推理",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-09-30",
-   "score": 5.0,
-   "rel": 7,
-   "firstSeen": "2026-09-30"
-  },
-  {
-   "url": "https://huggingface.co/spaces/Viggle/Qwen-Image-2.1-viggle-turbo",
-   "title": "Spaces 应用：Viggle/Qwen-Image-2.1-viggle-turbo",
-   "titleEn": "",
-   "summary": "Hugging Face Spaces应用，展示Viggle与Qwen-Image-2.1结合的版本，名为Viggle-Turbo。技术栈Gradio，创建时间2026年9月22日，点赞127。可能涉及图像生成加速或特定风格优化。",
-   "type": "内容生成",
-   "topic": "模型发布",
    "block": "HF Spaces",
    "src": "apps",
    "lastSeen": "2026-09-30",
