@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-01 08:10",
- "count": 79,
+ "updated": "2026-10-02 08:10",
+ "count": 91,
  "types": [
   "Agent 工作流",
   "CLI 工具",
@@ -42,6 +42,20 @@
    "score": 8.7,
    "rel": 9,
    "firstSeen": "2026-09-30"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1246075#reply0",
+   "title": "Herduck 迭代：在 Herdr 上面补「这项活做到哪了」（自动归类 / 闲着就睡 / herduck 命令）— 求 Herdr 用户拍砖",
+   "titleEn": "",
+   "summary": "开发者发布 Herduck 工具，定位为 Herdr 的互补层，用于记录 Agent 任务的目标、进度及阻塞点。核心功能包括自动归类工作项、闲置时休眠以及通过 herduck 命令管理状态。该工具旨在解决长时运行 Agent 的状态追踪难题，支持项目与会话层级管理。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-02",
+   "score": 8.4,
+   "rel": 9,
+   "firstSeen": "2026-10-02"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1wtrl7v/every_halloween_our_game_studio_tries_to_do/",
@@ -114,6 +128,20 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://www.v2ex.com/t/1246040#reply0",
+   "title": "做了个用 Claude Opus 5.5 生成动画视频的网站",
+   "titleEn": "",
+   "summary": "开发者构建网站 opusvideogen.com，整合 Claude Opus 5.5 模型实现从文本到动画视频的全流程生成。支持输入内容生成 15-60 秒 MP4 视频，适用于产品介绍及动态图表场景，支持横竖屏格式。采用积分收费模式，无需用户本地部署环境或配置 API Key。",
+   "type": "Web 应用",
+   "topic": "产品发布",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-02",
+   "score": 8.0,
+   "rel": 8,
+   "firstSeen": "2026-10-02"
+  },
+  {
    "url": "https://www.v2ex.com/t/1245662#reply0",
    "title": "分享一个开源的本机 AI 网关：中转、国产模型、Claude Code、Codex 放在一起管，每个请求花了多少钱都看得到",
    "titleEn": "",
@@ -154,6 +182,48 @@
    "score": 8.0,
    "rel": 8,
    "firstSeen": "2026-09-30"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1246056#reply0",
+   "title": "本地图片 agent 工具 Layerive 更新：加了批量改图、图片融合、抠图和局部删除等功能",
+   "titleEn": "",
+   "summary": "开源桌面工具 Layerive 更新，新增批量生图（支持 2-50 张）、图片融合（换装/动作迁移）、局部删除元素及背景去除功能。该工具完全本地运行，无需注册账号，数据保存在用户设备，保护隐私。项目采用开源模式，集成本地 AI 模型 API，适用于图像编辑工作流。",
+   "type": "桌面工具",
+   "topic": "开源工具",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-02",
+   "score": 7.8,
+   "rel": 7,
+   "firstSeen": "2026-10-02"
+  },
+  {
+   "url": "https://grist.lol/",
+   "title": "Grist：基于Opencode v2的开源编码框架",
+   "titleEn": "Show HN: Grist, open source coding harness",
+   "summary": "开发者构建Grist，利用Jevo模型路由任务至DeepSeek或Opus 5.5，分四层处理以降低成本，并结合Sol-Pi方法论优化效率。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-02",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-10-02"
+  },
+  {
+   "url": "https://proteus-evolve.github.io/dsh-self-improvement.html",
+   "title": "Proteus：DeepSeek Harness自我演化音频处理能力",
+   "titleEn": "Show HN: Proteus – Can DeepSeek Harness evolve itself to handle audio?",
+   "summary": "Proteus框架展示DeepSeek Harness 30个回合自我演化过程，自主开发音频输入及转录功能，并发现完美外部分数并非充分证据。",
+   "type": "模型与推理",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-02",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-10-02"
   },
   {
    "url": "https://www.v2ex.com/t/1245942#reply0",
@@ -251,6 +321,20 @@
    "firstSeen": "2026-09-29",
    "score": 7.7,
    "rel": 8
+  },
+  {
+   "url": "https://github.com/proteus-evolve/Proteus",
+   "title": "Proteus：自我演化Agent Harness框架",
+   "titleEn": "Show HN: Proteus – A framework for harnesses that evolve their own source",
+   "summary": "开源Proteus框架支持任意Agent Harness的自我演化，通过插入、演化、测量流程，实现源代码的自动优化与性能提升。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-02",
+   "score": 7.6,
+   "rel": 9,
+   "firstSeen": "2026-10-02"
   },
   {
    "url": "https://www.v2ex.com/t/1245909#reply1",
@@ -462,6 +546,20 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://huggingface.co/spaces/Qwen/Qwen-Image-2.1",
+   "title": "Spaces 应用：Qwen/Qwen-Image-2.1",
+   "titleEn": "",
+   "summary": "阿里官方在 Hugging Face Spaces 平台发布的 Qwen-Image-2.1 图像生成模型应用。基于 Gradio 技术栈实现，创建于 2026 年 9 月 20 日，目前累计获得 335 个点赞。该应用允许用户直接在线体验最新的通义万相图像生成能力。",
+   "type": "模型与推理",
+   "topic": "模型发布",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-02",
+   "score": 7.0,
+   "rel": 9,
+   "firstSeen": "2026-09-30"
+  },
+  {
    "url": "https://www.reddit.com/r/SideProject/comments/1wtqx2o/i_made_a_visual_tour_of_my_codingagent_workspace/",
    "title": "Mefi Studio：可视化编码 Agent 工作区",
    "titleEn": "I made a visual tour of my coding-agent workspace. What would make the work easier to follow?",
@@ -490,20 +588,6 @@
    "firstSeen": "2026-09-30"
   },
   {
-   "url": "https://huggingface.co/spaces/Qwen/Qwen-Image-2.1",
-   "title": "Spaces 应用：Qwen/Qwen-Image-2.1",
-   "titleEn": "",
-   "summary": "通义千问团队在 Hugging Face Spaces 发布的 Qwen-Image-2.1 官方演示应用。基于 Gradio 构建，获得 319 点赞。该应用展示了 Qwen 最新图像生成模型的能力，支持在线体验，是开源生态中重要的模型分发渠道。",
-   "type": "模型与推理",
-   "topic": "开源权重",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-01",
-   "score": 6.8,
-   "rel": 8,
-   "firstSeen": "2026-09-30"
-  },
-  {
    "url": "https://www.v2ex.com/t/1245914#reply1",
    "title": "[FormulaAI] 更新：新增 VBA 代码生成 + 免登录使用",
    "titleEn": "",
@@ -518,18 +602,18 @@
    "firstSeen": "2026-10-01"
   },
   {
-   "url": "https://sspai.com/post/114945",
-   "title": "别再把攻略全甩给 AI：国庆七天河南自驾，我是这样用 Agent 的",
-   "titleEn": "",
-   "summary": "作者分享利用 Agent 工具（如 Zcode）规划国庆河南自驾行程，生成路书并校对文字。针对传统攻略信息杂乱、Notion 细节呈现不足的痛点，展示如何通过 Agent 整合信息，解决酒店预订及门票预约等复杂出行决策问题。",
-   "type": "Agent 工作流",
-   "topic": "Agent 应用",
-   "block": "少数派",
+   "url": "https://github.com/sampsn/pair.nvim",
+   "title": "Pair.nvim：兼顾代码控制与Agent辅助的插件",
+   "titleEn": "Show HN: Pair.nvim – Agent assistance while staying in the codebase",
+   "summary": "Pair.nvim插件解决Agent编码中代码库知识退化问题，保留对话与研究辅助的同时，增强用户对生成代码的控制力与介入深度。",
+   "type": "CLI 工具",
+   "topic": "Agent 框架",
+   "block": "Show HN",
    "src": "apps",
-   "lastSeen": "2026-10-01",
+   "lastSeen": "2026-10-02",
    "score": 6.7,
    "rel": 7,
-   "firstSeen": "2026-09-30"
+   "firstSeen": "2026-10-02"
   },
   {
    "url": "https://github.com/zie1ony/jev-talks",
@@ -616,6 +700,48 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://sspai.com/post/114945",
+   "title": "别再把攻略全甩给 AI：国庆七天河南自驾，我是这样用 Agent 的",
+   "titleEn": "",
+   "summary": "作者分享使用 AI Agent（如 Zcode）辅助制定国庆河南七日自驾攻略的实践。通过 AI 处理复杂信息流，解决酒店、门票及营业时间等核对难题，并优化 Notion 行程记录。展示了 Agent 在行程规划、信息整合及文案校对中的具体应用场景与效果。",
+   "type": "Agent 工作流",
+   "topic": "应用案例",
+   "block": "少数派",
+   "src": "apps",
+   "lastSeen": "2026-10-02",
+   "score": 6.5,
+   "rel": 6,
+   "firstSeen": "2026-09-30"
+  },
+  {
+   "url": "https://huggingface.co/spaces/Viggle/Qwen-Image-2.1-viggle-turbo",
+   "title": "Spaces 应用：Viggle/Qwen-Image-2.1-viggle-turbo",
+   "titleEn": "",
+   "summary": "Viggle 团队在 Hugging Face Spaces 平台发布的 Qwen-Image-2.1 优化版本应用，名为 viggle-turbo。采用 Gradio 技术栈，创建于 2026 年 9 月 22 日，点赞数 147。该应用可能针对视频或动态图像生成进行了性能加速优化。",
+   "type": "模型与推理",
+   "topic": "模型部署",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-02",
+   "score": 6.5,
+   "rel": 8,
+   "firstSeen": "2026-09-30"
+  },
+  {
+   "url": "https://huggingface.co/spaces/arudradey/qwen-image-2.1-uncensored-gguf",
+   "title": "Spaces 应用：arudradey/qwen-image-2.1-uncensored-gguf",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces 平台部署的 Qwen-Image-2.1 未审查版本 GGUF 格式模型应用。该应用采用 Gradio 技术栈，创建于 2026 年 9 月 22 日，获得 190 个点赞。专注于提供易于部署的量化模型图像生成能力。",
+   "type": "模型与推理",
+   "topic": "模型部署",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-02",
+   "score": 6.5,
+   "rel": 8,
+   "firstSeen": "2026-10-02"
+  },
+  {
    "url": "https://www.v2ex.com/t/1245591#reply11",
    "title": "我用 AI 解决了 Java 开发里几个困扰多年的问题",
    "titleEn": "",
@@ -658,18 +784,18 @@
    "firstSeen": "2026-09-29"
   },
   {
-   "url": "https://huggingface.co/spaces/Viggle/Qwen-Image-2.1-viggle-turbo",
-   "title": "Spaces 应用：Viggle/Qwen-Image-2.1-viggle-turbo",
+   "url": "https://www.v2ex.com/t/1246071#reply2",
+   "title": "最近真的被 Opus 5.5 惊艳到了，特别是做视频，异常勇猛。",
    "titleEn": "",
-   "summary": "Viggle 团队发布的 Qwen-Image-2.1 加速版本应用，基于 Gradio 构建。该版本针对推理速度进行了优化（Turbo），获得 136 点赞。展示了通过模型量化或架构调整提升生成效率的工程实践，适用于实时或快速生成场景。",
-   "type": "模型与推理",
-   "topic": "模型优化",
-   "block": "HF Spaces",
+   "summary": "用户分享对 Anthropic Claude Opus 5.5 模型的主观评价，特别强调该模型在视频生成任务中表现“异常勇猛”，令人惊艳。正文缺乏具体的技术参数、测试数据或可复现的结论，仅为一篇简短的体验反馈帖，无详细的技术栈或实现细节描述。",
+   "type": "内容生成",
+   "topic": "模型体验",
+   "block": "V2EX 分享创造",
    "src": "apps",
-   "lastSeen": "2026-10-01",
+   "lastSeen": "2026-10-02",
    "score": 6.2,
-   "rel": 7,
-   "firstSeen": "2026-09-30"
+   "rel": 8,
+   "firstSeen": "2026-10-02"
   },
   {
    "url": "https://ledge.sh",
@@ -726,6 +852,20 @@
    "score": 6.2,
    "rel": 6,
    "firstSeen": "2026-09-29"
+  },
+  {
+   "url": "https://huggingface.co/spaces/Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
+   "title": "Spaces 应用：Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces 平台上线的 MiniMax-H3-Turbo-Lora-UNCENSORED 模型应用。该应用基于 Gradio 技术栈构建，创建于 2026 年 8 月 14 日，目前已获得 972 个点赞。主要提供未经审查的模型推理服务，属于开源模型部署与体验案例。",
+   "type": "模型与推理",
+   "topic": "模型部署",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-02",
+   "score": 6.0,
+   "rel": 8,
+   "firstSeen": "2026-09-30"
   },
   {
    "url": "https://github.com/Desbordante/desbordante-core/releases/tag/v2.5.0",
@@ -895,6 +1035,20 @@
    "firstSeen": "2026-09-29"
   },
   {
+   "url": "https://www.reddit.com/r/SideProject/comments/1wve5jc/got_tired_of_copypasting_into_chatgpt_so_i_made/",
+   "title": "内联AI文本处理Chrome扩展",
+   "titleEn": "got tired of copy/pasting into chatgpt, so i made this inline AI tool",
+   "summary": "Chrome扩展在文本字段内提供AI写作功能，支持快速改写、摘要及翻译，避免手动复制粘贴，防止误用高成本模型浪费额度。",
+   "type": "浏览器插件",
+   "topic": "效率工具",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-02",
+   "score": 5.7,
+   "rel": 6,
+   "firstSeen": "2026-10-02"
+  },
+  {
    "url": "https://www.reddit.com/r/SideProject/comments/1wtzsxz/my_truck_prototype_grows_from_one_turret_to_three/",
    "title": "使用 Codex 辅助设计卡车游戏原型",
    "titleEn": "My truck prototype grows from one turret to three",
@@ -936,18 +1090,18 @@
    "firstSeen": "2026-09-29"
   },
   {
-   "url": "https://huggingface.co/spaces/kulkas2pintu/QWEN_EDIT_IMAGE",
-   "title": "Spaces 应用：kulkas2pintu/QWEN_EDIT_IMAGE",
-   "titleEn": "",
-   "summary": "社区贡献的 Qwen 图像编辑应用，在 Hugging Face Spaces 上线。基于 Gradio 技术栈，获得 618 点赞。该应用聚焦于图像编辑功能，展示了 Qwen 模型在图像修改场景下的应用能力，受到较多社区用户关注。",
-   "type": "Web 应用",
-   "topic": "内容生成",
-   "block": "HF Spaces",
+   "url": "https://www.reddit.com/r/SideProject/comments/1wvfewh/githubnative_localization_pr_automation/",
+   "title": "GitHub原生本地化PR自动化工作流",
+   "titleEn": "GitHub-native localization PR automation",
+   "summary": "开发工具Forthwith新增GitHub Actions集成，通过forthwith check和translate命令在PR流程中自动更新翻译，并支持项目级服务账号认证。",
+   "type": "效率工具",
+   "topic": "工程实践",
+   "block": "r/SideProject",
    "src": "apps",
-   "lastSeen": "2026-10-01",
-   "score": 5.6,
-   "rel": 7,
-   "firstSeen": "2026-10-01"
+   "lastSeen": "2026-10-02",
+   "score": 5.5,
+   "rel": 5,
+   "firstSeen": "2026-10-02"
   },
   {
    "url": "https://www.v2ex.com/t/1245672#reply0",
@@ -1046,18 +1200,18 @@
    "firstSeen": "2026-09-29"
   },
   {
-   "url": "https://huggingface.co/spaces/Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
-   "title": "Spaces 应用：Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
+   "url": "https://huggingface.co/spaces/kulkas2pintu/QWEN_EDIT_IMAGE",
+   "title": "Spaces 应用：kulkas2pintu/QWEN_EDIT_IMAGE",
    "titleEn": "",
-   "summary": "Hugging Face Spaces 平台上的应用，基于 MiniMax-H3-Turbo 模型微调的 LoRA 权重，去除内容限制。使用 Gradio 构建，获得 922 点赞。该资源展示了开源社区对特定模型进行 LoRA 微调以适应不同使用场景的技术实践。",
+   "summary": "Hugging Face Spaces 平台上线的 QWEN_EDIT_IMAGE 图像编辑应用。该应用基于 Gradio 技术栈开发，创建于 2026 年 7 月 29 日，目前累计获得 627 个点赞。主要功能是展示或利用 Qwen 模型进行图像编辑能力的在线体验。",
    "type": "模型与推理",
-   "topic": "开源权重",
+   "topic": "模型部署",
    "block": "HF Spaces",
    "src": "apps",
-   "lastSeen": "2026-10-01",
+   "lastSeen": "2026-10-02",
    "score": 5.3,
    "rel": 7,
-   "firstSeen": "2026-09-30"
+   "firstSeen": "2026-10-01"
   },
   {
    "url": "https://www.v2ex.com/t/1245703#reply0",
@@ -1086,6 +1240,20 @@
    "score": 5.2,
    "rel": 5,
    "firstSeen": "2026-10-01"
+  },
+  {
+   "url": "https://huggingface.co/spaces/multimodalart/jev-decision-index",
+   "title": "Spaces 应用：multimodalart/jev-decision-index",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces 平台上线的 jev-decision-index 静态应用。该技术栈为 Static，创建于 2026 年 9 月 17 日，当前点赞数为 365。应用名称暗示可能涉及多模态艺术或决策索引功能，属于轻量级前端展示或数据处理项目。",
+   "type": "数据分析",
+   "topic": "数据分析",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-02",
+   "score": 5.1,
+   "rel": 6,
+   "firstSeen": "2026-10-02"
   },
   {
    "url": "https://www.v2ex.com/t/1245938#reply0",
