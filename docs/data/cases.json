@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-02 08:10",
- "count": 91,
+ "updated": "2026-10-03 08:10",
+ "count": 101,
  "types": [
   "Agent 工作流",
   "CLI 工具",
@@ -42,6 +42,20 @@
    "score": 8.7,
    "rel": 9,
    "firstSeen": "2026-09-30"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1246199#reply0",
+   "title": "用 kite 让 Claude Code 自己开会话派活给别的 Claude Code，记录一下今天实际跑的情况",
+   "titleEn": "",
+   "summary": "作者通过 kite MCP 让主 Claude Code 会话调度多个子会话执行任务。子会话完成模型迁移、工具修复及自身 bug 修复，全程涉及代码编写、CI 测试、版本发布及线上验收，展示了多 Agent 协同开发的实际工作流与验证环节。",
+   "type": "Agent 工作流",
+   "topic": "Agent 工作流",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-03",
+   "score": 8.4,
+   "rel": 9,
+   "firstSeen": "2026-10-03"
   },
   {
    "url": "https://www.v2ex.com/t/1246075#reply0",
@@ -126,6 +140,20 @@
    "score": 8.1,
    "rel": 9,
    "firstSeen": "2026-09-30"
+  },
+  {
+   "url": "https://television.run/",
+   "title": "Television 开源 Agent GUI 框架",
+   "titleEn": "Show HN: Television – an open source GUI for your agent harness",
+   "summary": "Team Telepath 开源 Television 项目，一个专为 Agent 运行时设计的图形界面。它提供可视化工作空间以管理 Agent 生成的工件与交互历史，支持数百名 Alpha 用户实测，旨在简化复杂 Agent 任务的管理与调试流程。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-03",
+   "score": 8.0,
+   "rel": 8,
+   "firstSeen": "2026-10-03"
   },
   {
    "url": "https://www.v2ex.com/t/1246040#reply0",
@@ -449,6 +477,34 @@
    "firstSeen": "2026-09-29"
   },
   {
+   "url": "https://www.v2ex.com/t/1246147#reply0",
+   "title": "让 AI 全流程开发的加密货币网格交易系统，已在 Backpack 实盘运行 3 天",
+   "titleEn": "",
+   "summary": "基于 AI 开发的加密货币网格交易自治层已在 Backpack 实盘运行，解决原生机器人缺乏风控的问题。系统每 15 分钟巡检，根据震荡适配度评分选币，并执行止盈 +10%、止损 -6% 等自动轮换策略，实现了组合级风险管理。",
+   "type": "Agent 工作流",
+   "topic": "Agent 工作流",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-03",
+   "score": 7.3,
+   "rel": 7,
+   "firstSeen": "2026-10-03"
+  },
+  {
+   "url": "https://github.com/danthegoodman1/s3-accelerator",
+   "title": "S3-Accelerator 高性能缓存中间件",
+   "titleEn": "Show HN: S3-Accelerator",
+   "summary": "发布 S3-Accelerator，一种 S3 兼容的 NVMe 缓存系统，命中延迟低于 1 毫秒。其采用 Rendezvous 哈希算法优化集群扩缩容时的节点重映射问题，并引入热对象复制机制以提升数据读取效率与稳定性。",
+   "type": "其他",
+   "topic": "基础设施",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-03",
+   "score": 7.3,
+   "rel": 6,
+   "firstSeen": "2026-10-03"
+  },
+  {
    "url": "https://github.com/linuztx/alter-zero",
    "title": "Alter Zero：面向终端的高效编码与安全 Agent",
    "titleEn": "Show HN: Alter Zero – RAM-efficient agent for coding, security and automation",
@@ -489,6 +545,20 @@
    "score": 7.3,
    "rel": 7,
    "firstSeen": "2026-09-29"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1ww8tkn/i_built_an_mcp_to_make_meta_pixel_capi_one_less/",
+   "title": "Tyton MCP 营销追踪工具",
+   "titleEn": "I built an MCP to make Meta Pixel + CAPI one less headache after launch",
+   "summary": "Tyton 是一个 MCP 服务器，连接 AI Agent 以自动化配置 Meta Pixel 和 CAPI。该工具旨在解决追踪设置复杂及重复计数问题，帮助开发者在广告投放后快速修复追踪故障并简化营销数据链路。",
+   "type": "效率工具",
+   "topic": "营销自动化",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-03",
+   "score": 7.2,
+   "rel": 7,
+   "firstSeen": "2026-10-03"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1wuig0r/i_built_a_tool_that_finds_tests_which_can_never/",
@@ -543,20 +613,6 @@
    "lastSeen": "2026-09-30",
    "score": 7.1,
    "rel": 8,
-   "firstSeen": "2026-09-30"
-  },
-  {
-   "url": "https://huggingface.co/spaces/Qwen/Qwen-Image-2.1",
-   "title": "Spaces 应用：Qwen/Qwen-Image-2.1",
-   "titleEn": "",
-   "summary": "阿里官方在 Hugging Face Spaces 平台发布的 Qwen-Image-2.1 图像生成模型应用。基于 Gradio 技术栈实现，创建于 2026 年 9 月 20 日，目前累计获得 335 个点赞。该应用允许用户直接在线体验最新的通义万相图像生成能力。",
-   "type": "模型与推理",
-   "topic": "模型发布",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-02",
-   "score": 7.0,
-   "rel": 9,
    "firstSeen": "2026-09-30"
   },
   {
@@ -714,34 +770,6 @@
    "firstSeen": "2026-09-30"
   },
   {
-   "url": "https://huggingface.co/spaces/Viggle/Qwen-Image-2.1-viggle-turbo",
-   "title": "Spaces 应用：Viggle/Qwen-Image-2.1-viggle-turbo",
-   "titleEn": "",
-   "summary": "Viggle 团队在 Hugging Face Spaces 平台发布的 Qwen-Image-2.1 优化版本应用，名为 viggle-turbo。采用 Gradio 技术栈，创建于 2026 年 9 月 22 日，点赞数 147。该应用可能针对视频或动态图像生成进行了性能加速优化。",
-   "type": "模型与推理",
-   "topic": "模型部署",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-02",
-   "score": 6.5,
-   "rel": 8,
-   "firstSeen": "2026-09-30"
-  },
-  {
-   "url": "https://huggingface.co/spaces/arudradey/qwen-image-2.1-uncensored-gguf",
-   "title": "Spaces 应用：arudradey/qwen-image-2.1-uncensored-gguf",
-   "titleEn": "",
-   "summary": "Hugging Face Spaces 平台部署的 Qwen-Image-2.1 未审查版本 GGUF 格式模型应用。该应用采用 Gradio 技术栈，创建于 2026 年 9 月 22 日，获得 190 个点赞。专注于提供易于部署的量化模型图像生成能力。",
-   "type": "模型与推理",
-   "topic": "模型部署",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-02",
-   "score": 6.5,
-   "rel": 8,
-   "firstSeen": "2026-10-02"
-  },
-  {
    "url": "https://www.v2ex.com/t/1245591#reply11",
    "title": "我用 AI 解决了 Java 开发里几个困扰多年的问题",
    "titleEn": "",
@@ -782,6 +810,20 @@
    "score": 6.3,
    "rel": 6,
    "firstSeen": "2026-09-29"
+  },
+  {
+   "url": "https://www.interviewbasecamp.com/",
+   "title": "Interview Basecamp 面试准备",
+   "titleEn": "Show HN: Interview Basecamp – prep from a role or a job description",
+   "summary": "Interview Basecamp 推出双模式面试准备工具：基于角色的通用能力演练与基于职位描述的针对性练习。系统结合能力模型与 LLM 生成定制化课程，帮助用户高效应对技术面试，提升求职成功率。",
+   "type": "Web 应用",
+   "topic": "求职工具",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-03",
+   "score": 6.2,
+   "rel": 6,
+   "firstSeen": "2026-10-03"
   },
   {
    "url": "https://www.v2ex.com/t/1246071#reply2",
@@ -854,18 +896,32 @@
    "firstSeen": "2026-09-29"
   },
   {
-   "url": "https://huggingface.co/spaces/Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
-   "title": "Spaces 应用：Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
+   "url": "https://www.v2ex.com/t/1246182#reply0",
+   "title": "做了个小工具，上传两张照片，让你和朋友出演 APT. 风格短视频",
    "titleEn": "",
-   "summary": "Hugging Face Spaces 平台上线的 MiniMax-H3-Turbo-Lora-UNCENSORED 模型应用。该应用基于 Gradio 技术栈构建，创建于 2026 年 8 月 14 日，目前已获得 972 个点赞。主要提供未经审查的模型推理服务，属于开源模型部署与体验案例。",
-   "type": "模型与推理",
-   "topic": "模型部署",
-   "block": "HF Spaces",
+   "summary": "基于 MiniMax H3 模型，Promptsref 网站推出 APT. 风格双人 AI 视频生成工具。用户上传两张照片即可生成粉色背景下的双人表演视频，默认时长 15 秒。该工具内置参考视频与提示词，降低了 AI 视频生成的使用门槛。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "V2EX 分享创造",
    "src": "apps",
-   "lastSeen": "2026-10-02",
+   "lastSeen": "2026-10-03",
    "score": 6.0,
-   "rel": 8,
-   "firstSeen": "2026-09-30"
+   "rel": 6,
+   "firstSeen": "2026-10-03"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1246137#reply0",
+   "title": "做了个用一张图片探索不同相机视角的工具，想听听大家的反馈",
+   "titleEn": "",
+   "summary": "3D Camera Control 工具允许通过单张参考图探索商品、角色或人像的多视角画面，并支持图片转视频功能。提供商品多视角、角色转面、姿势调整等在线工具，旨在辅助 3D 建模与内容创作，解决单一视角参考不足的问题。",
+   "type": "Web 应用",
+   "topic": "图像生成",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-03",
+   "score": 6.0,
+   "rel": 6,
+   "firstSeen": "2026-10-03"
   },
   {
    "url": "https://github.com/Desbordante/desbordante-core/releases/tag/v2.5.0",
@@ -1007,6 +1063,34 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://teacherplanner.ai",
+   "title": "Teacher Planner 教师教案工具",
+   "titleEn": "Show HN: Teacher Planner – A digital planbook with AI tools for teachers",
+   "summary": "Teacher Planner 集成 AI 工具，辅助教师整理教案、单元计划及课程标准。支持中英双语，提供日程视图与打印布局配置，允许访客无需注册试用，旨在通过数字化手段简化教学材料准备流程。",
+   "type": "Web 应用",
+   "topic": "教育工具",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-03",
+   "score": 5.8,
+   "rel": 5,
+   "firstSeen": "2026-10-03"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1ww8ky3/control_my_robots/",
+   "title": "Astra 机器人互动实验",
+   "titleEn": "Control my robots",
+   "summary": "Blupe 开放机械臂在线访问权限，让用户通过 playground.blupe.io 测试新模型 Astra 的操作能力。活动提供 100 美元奖金挑战“堆叠三块积木并放置鸭子”，旨在探索用户驱动的机器人交互边界。",
+   "type": "其他",
+   "topic": "具身智能",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-03",
+   "score": 5.8,
+   "rel": 5,
+   "firstSeen": "2026-10-03"
+  },
+  {
    "url": "https://www.reddit.com/r/SideProject/comments/1wu1f1s/would_a_very_simple_opensource_phonetowebsite/",
    "title": "开源手机到网站文件上传工具构想",
    "titleEn": "Would a very simple open-source phone-to-website uploader be useful?",
@@ -1033,6 +1117,20 @@
    "score": 5.8,
    "rel": 5,
    "firstSeen": "2026-09-29"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1246159#reply0",
+   "title": "把朋友和猫放到同一个舞台会怎样？我做了个双人 AI 视频小工具",
+   "titleEn": "",
+   "summary": "Riffuvo 工具支持上传两张照片生成双人舞台短视频，旨在探索 AI 角色替换与场景合成的趣味性。新账号赠送 20 积分，支持人物、宠物及原创角色，强调非复杂剪辑器定位，目前处于功能打磨阶段，关注人物一致性与动作生成效果。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-03",
+   "score": 5.7,
+   "rel": 6,
+   "firstSeen": "2026-10-03"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1wve5jc/got_tired_of_copypasting_into_chatgpt_so_i_made/",
@@ -1088,6 +1186,34 @@
    "score": 5.7,
    "rel": 6,
    "firstSeen": "2026-09-29"
+  },
+  {
+   "url": "https://huggingface.co/spaces/Qwen/Qwen-Image-2.1",
+   "title": "Spaces 应用：Qwen/Qwen-Image-2.1",
+   "titleEn": "",
+   "summary": "Hugging Face 官方 Spaces 部署的 Qwen-Image-2.1 图像生成应用，基于 Gradio 构建。该应用自 2026 年 9 月创建以来获得 348 个点赞，标志着通义千问最新图像模型在开源社区的标准化部署与推广。",
+   "type": "Web 应用",
+   "topic": "模型发布",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-03",
+   "score": 5.5,
+   "rel": 8,
+   "firstSeen": "2026-09-30"
+  },
+  {
+   "url": "https://huggingface.co/spaces/Viggle/Qwen-Image-2.1-viggle-turbo",
+   "title": "Spaces 应用：Viggle/Qwen-Image-2.1-viggle-turbo",
+   "titleEn": "",
+   "summary": "Viggle 团队在 Hugging Face Spaces 部署的 Qwen-Image-2.1 加速版本应用，使用 Gradio 界面。该应用聚焦于图像生成的速度优化，自 2026 年 9 月创建获得 159 个点赞，展示了针对 Turbo 模式的特定微调或部署。",
+   "type": "Web 应用",
+   "topic": "模型优化",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-03",
+   "score": 5.5,
+   "rel": 8,
+   "firstSeen": "2026-09-30"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1wvfewh/githubnative_localization_pr_automation/",
@@ -1242,18 +1368,32 @@
    "firstSeen": "2026-10-01"
   },
   {
-   "url": "https://huggingface.co/spaces/multimodalart/jev-decision-index",
-   "title": "Spaces 应用：multimodalart/jev-decision-index",
+   "url": "https://huggingface.co/spaces/arudradey/qwen-image-2.1-uncensored-gguf",
+   "title": "Spaces 应用：arudradey/qwen-image-2.1-uncensored-gguf",
    "titleEn": "",
-   "summary": "Hugging Face Spaces 平台上线的 jev-decision-index 静态应用。该技术栈为 Static，创建于 2026 年 9 月 17 日，当前点赞数为 365。应用名称暗示可能涉及多模态艺术或决策索引功能，属于轻量级前端展示或数据处理项目。",
-   "type": "数据分析",
-   "topic": "数据分析",
+   "summary": "Hugging Face Spaces 部署的 Qwen-Image-2.1 无审查 GGUF 量化模型应用，使用 Gradio 技术栈。该应用于 2026 年 9 月创建，获得 232 个点赞，反映了社区对 Qwen 图像生成模型非对齐版本的需求与本地化部署趋势。",
+   "type": "Web 应用",
+   "topic": "开源模型",
    "block": "HF Spaces",
    "src": "apps",
-   "lastSeen": "2026-10-02",
-   "score": 5.1,
-   "rel": 6,
+   "lastSeen": "2026-10-03",
+   "score": 5.0,
+   "rel": 7,
    "firstSeen": "2026-10-02"
+  },
+  {
+   "url": "https://huggingface.co/spaces/Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
+   "title": "Spaces 应用：Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces 部署的 MiniMax-H3 模型应用，基于 Gradio 构建界面。该应用为 MiniMax-H3-Turbo-Lora 的无审查版本，自 2026 年 8 月创建以来获得 1019 个点赞，展示了开源模型在社区中的部署热度。",
+   "type": "Web 应用",
+   "topic": "开源生态",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-03",
+   "score": 5.0,
+   "rel": 7,
+   "firstSeen": "2026-09-30"
   },
   {
    "url": "https://www.v2ex.com/t/1245938#reply0",
