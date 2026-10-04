@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-03 08:10",
- "count": 101,
+ "updated": "2026-10-04 08:10",
+ "count": 115,
  "types": [
   "Agent 工作流",
   "CLI 工具",
@@ -212,6 +212,20 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://github.com/vayungodara/cliproxy-rs",
+   "title": "Cliproxy-rs 统一 LLM 代理网关",
+   "titleEn": "Show HN: Cliproxy-rs, a Rust port of the CLIProxyAPI LLM subscription proxy",
+   "summary": "Cliproxy-rs 是 CLIProxyAPI 的 Rust 重写版，提供本地统一端点代理。支持 Claude、Codex、Gemini、xAI、Kimi、Devin 及 OpenRouter 等多家模型 API 的转发与订阅管理，简化多模型调用流程。",
+   "type": "CLI 工具",
+   "topic": "模型与推理",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-04",
+   "score": 7.8,
+   "rel": 8,
+   "firstSeen": "2026-10-04"
+  },
+  {
    "url": "https://www.v2ex.com/t/1246056#reply0",
    "title": "本地图片 agent 工具 Layerive 更新：加了批量改图、图片融合、抠图和局部删除等功能",
    "titleEn": "",
@@ -363,6 +377,34 @@
    "score": 7.6,
    "rel": 9,
    "firstSeen": "2026-10-02"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1246327#reply0",
+   "title": "给 Touch Bar 做了个新用途：直接看 Codex / Claude Code 是在工作，还是已经做完",
+   "titleEn": "",
+   "summary": "开发者为 Mac Touch Bar 新增 AI 编程状态显示功能。当 Codex 或 Claude Code 运行时，图标变为像素小屏播放字符雨，完成后显示 OK。支持多工具状态监控，通过复制提示词让智能体自检并接入 hook，无需频繁切换窗口。",
+   "type": "桌面工具",
+   "topic": "Agent 工作流",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-04",
+   "score": 7.5,
+   "rel": 8,
+   "firstSeen": "2026-10-04"
+  },
+  {
+   "url": "https://agentiloop.ai/",
+   "title": "macOS 本地多任务智能体 AgentiLoop",
+   "titleEn": "Show HN: AgentiLoop Agent Mac GUI Agent Loop for macOS 14.6 or Later",
+   "summary": "AgentiLoop 是一款 macOS 图形界面智能体，支持 14.6 以上系统。新增 Auto-Pilot 模式，接收目标后自动拆解为多周期任务循环执行，直至达成目标，无需时间框架限制，实现任务自动化。",
+   "type": "桌面工具",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-04",
+   "score": 7.5,
+   "rel": 8,
+   "firstSeen": "2026-10-04"
   },
   {
    "url": "https://www.v2ex.com/t/1245909#reply1",
@@ -616,6 +658,20 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://huggingface.co/spaces/Qwen/Qwen-Image-2.1",
+   "title": "Spaces 应用：Qwen/Qwen-Image-2.1",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces 官方上线 Qwen-Image-2.1 模型应用。采用 Gradio 技术栈，获得 360 点赞。该应用提供 Qwen 系列最新图像生成模型的在线推理服务，便于开发者与用户直接体验模型在图像生成任务上的性能，属于官方开源模型演示。",
+   "type": "Web 应用",
+   "topic": "模型发布",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-04",
+   "score": 7.0,
+   "rel": 9,
+   "firstSeen": "2026-09-30"
+  },
+  {
    "url": "https://www.reddit.com/r/SideProject/comments/1wtqx2o/i_made_a_visual_tour_of_my_codingagent_workspace/",
    "title": "Mefi Studio：可视化编码 Agent 工作区",
    "titleEn": "I made a visual tour of my coding-agent workspace. What would make the work easier to follow?",
@@ -644,6 +700,20 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://www.v2ex.com/t/1246299#reply0",
+   "title": "[我的搜索-桌面版] 一款呼出搜索工具，支持网站/文本类/插件",
+   "titleEn": "",
+   "summary": "my-search-desktop 是基于 Rust 开发的桌面搜索工具，支持订阅 GitHub 源数据并递归解析。内置 Pi Agent 插件，支持多模型、流式对话及工具调用，兼具文件搜索与录屏功能。通过插件市场可安装扩展，为开发者提供聚合搜索与 AI 辅助效率方案。",
+   "type": "桌面工具",
+   "topic": "效率工具",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-04",
+   "score": 6.8,
+   "rel": 7,
+   "firstSeen": "2026-10-04"
+  },
+  {
    "url": "https://www.v2ex.com/t/1245914#reply1",
    "title": "[FormulaAI] 更新：新增 VBA 代码生成 + 免登录使用",
    "titleEn": "",
@@ -656,6 +726,20 @@
    "score": 6.8,
    "rel": 6,
    "firstSeen": "2026-10-01"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1246312#reply9",
+   "title": "[开源] 我把《杀戮尖塔 2》移植到了网页端",
+   "titleEn": "",
+   "summary": "开发者利用 AI 将《杀戮尖塔 2》移植至网页端。鉴于原游戏资源超 1G，AI 辅助优化了资源加载以兼顾质量与速度。开源项目解决了网页端适配难点，提供在线游玩地址及演示视频，体现了 AI 在大型项目逆向移植中的工程实践价值。",
+   "type": "其他",
+   "topic": "开源生态",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-04",
+   "score": 6.7,
+   "rel": 7,
+   "firstSeen": "2026-10-04"
   },
   {
    "url": "https://github.com/sampsn/pair.nvim",
@@ -698,6 +782,34 @@
    "score": 6.7,
    "rel": 7,
    "firstSeen": "2026-09-29"
+  },
+  {
+   "url": "https://huggingface.co/spaces/arudradey/qwen-image-2.1-uncensored-gguf",
+   "title": "Spaces 应用：arudradey/qwen-image-2.1-uncensored-gguf",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces 上线 arudradey 的 qwen-image-2.1-uncensored-gguf 应用。基于 Qwen 图像生成模型的去限制化 GGUF 量化版本，采用 Gradio 界面，获 257 点赞。该应用允许用户在浏览器中运行去限制化图像生成，探索模型潜空间能力。",
+   "type": "Web 应用",
+   "topic": "模型与推理",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-04",
+   "score": 6.6,
+   "rel": 8,
+   "firstSeen": "2026-10-02"
+  },
+  {
+   "url": "https://huggingface.co/spaces/arudradey/qwen-image-2.1-uncensored-aio-loras",
+   "title": "Spaces 应用：arudradey/qwen-image-2.1-uncensored-aio-loras",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces 上线 arudradey 的 qwen-image-2.1-uncensored-aio-loras 应用。集成多个去限制化 LoRA 模型，采用 Gradio 界面，获 120 点赞。该工具允许用户结合特定 LoRA 风格对 Qwen 图像模型进行定向生成，满足社区定制化图像创作需求。",
+   "type": "Web 应用",
+   "topic": "模型与推理",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-04",
+   "score": 6.6,
+   "rel": 8,
+   "firstSeen": "2026-10-04"
   },
   {
    "url": "https://www.v2ex.com/t/1245905#reply0",
@@ -756,6 +868,20 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://digitup.dev",
+   "title": "AI 构建网站的安全泄漏检测工具",
+   "titleEn": "Show HN: I built a vibe coded website checker for leaked secrets",
+   "summary": "开发者发布 digitup 工具，针对 AI 生成网站提供纯文本安全审计。它能自动识别客户数据泄露、私钥暴露等隐患，并生成修复建议与持续监控报告，无需阅读代码即可确保站点安全。",
+   "type": "Web 应用",
+   "topic": "工程实践",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-04",
+   "score": 6.5,
+   "rel": 6,
+   "firstSeen": "2026-10-04"
+  },
+  {
    "url": "https://sspai.com/post/114945",
    "title": "别再把攻略全甩给 AI：国庆七天河南自驾，我是这样用 Agent 的",
    "titleEn": "",
@@ -782,6 +908,20 @@
    "src": "apps",
    "score": 6.4,
    "rel": 7
+  },
+  {
+   "url": "https://huggingface.co/spaces/Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
+   "title": "Spaces 应用：Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces 上线 Pepe104 开发的 MiniMax-H3-Turbo-Lora-UNCENSORED 应用。该应用采用 Gradio 技术栈，基于 LLM 模型微调版本运行，获得 1052 点赞。主要提供去限制化的文本生成服务，反映了开源社区对模型安全越狱与自由生成的关注。",
+   "type": "Web 应用",
+   "topic": "模型与推理",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-04",
+   "score": 6.3,
+   "rel": 8,
+   "firstSeen": "2026-09-30"
   },
   {
    "url": "https://huggingface.co/spaces/nvidia/nemotron-diarization",
@@ -1063,6 +1203,34 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://www.v2ex.com/t/1246321#reply1",
+   "title": "写了 8 年代码，终于明白“说唱是男人最好的医美”",
+   "titleEn": "",
+   "summary": "开发者构建 rapvideo.com 站点，用户上传 1-2 张照片并输入主题，AI 生成化身 Rapper 的说唱视频。核心包含图片角色绑定与动作音唇同步。用户反馈有趣，常用于娱乐整活，如让同事照片唱“今晚不加班”，主打娱乐化视频生成体验。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-04",
+   "score": 5.8,
+   "rel": 5,
+   "firstSeen": "2026-10-04"
+  },
+  {
+   "url": "https://huggingface.co/spaces/kulkas2pintu/wan777",
+   "title": "Spaces 应用：kulkas2pintu/wan777",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces 部署 kulkas2pintu 的 wan777 应用。该应用基于 Gradio 技术栈，获得 271 点赞。名称暗示可能与 Wan 系列视频生成模型相关，提供在线视频生成或编辑能力，是开源社区探索视频生成大模型在浏览器端应用的一个实践案例。",
+   "type": "Web 应用",
+   "topic": "模型与推理",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-04",
+   "score": 5.8,
+   "rel": 8,
+   "firstSeen": "2026-10-04"
+  },
+  {
    "url": "https://teacherplanner.ai",
    "title": "Teacher Planner 教师教案工具",
    "titleEn": "Show HN: Teacher Planner – A digital planbook with AI tools for teachers",
@@ -1117,6 +1285,34 @@
    "score": 5.8,
    "rel": 5,
    "firstSeen": "2026-09-29"
+  },
+  {
+   "url": "https://mlnews.online/",
+   "title": "ML News 机器学习垂直资讯聚合",
+   "titleEn": "Show HN: ML News – ML-Focused Hacker News Projection with RSS",
+   "summary": "ML News 是一个专注于机器学习的 Hacker News 投影站，提供 RSS 订阅。它实时过滤并聚合 HN 上关于大语言模型、算法研究及工程实践的最新讨论，便于研究者快速追踪技术动态。",
+   "type": "Web 应用",
+   "topic": "资讯聚合",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-04",
+   "score": 5.7,
+   "rel": 6,
+   "firstSeen": "2026-10-04"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1246295#reply1",
+   "title": "[魔力工作台] 一个开源版 workbuddy 替代品",
+   "titleEn": "",
+   "summary": "AI 公司产品经理开发开源版 workbuddy 替代品。文中指出 AI 行业痛点：大量客户购买 Token 用于蒸馏，缺乏实际价值创造，面临泡沫风险。工具旨在服务企业内部场景，作者提及员工使用大模型成本数据，强调开源工具在降本增效中的应用潜力。",
+   "type": "Web 应用",
+   "topic": "开源生态",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-04",
+   "score": 5.7,
+   "rel": 6,
+   "firstSeen": "2026-10-04"
   },
   {
    "url": "https://www.v2ex.com/t/1246159#reply0",
@@ -1188,18 +1384,18 @@
    "firstSeen": "2026-09-29"
   },
   {
-   "url": "https://huggingface.co/spaces/Qwen/Qwen-Image-2.1",
-   "title": "Spaces 应用：Qwen/Qwen-Image-2.1",
+   "url": "https://www.v2ex.com/t/1246325#reply0",
+   "title": "看到 Chuttamalle 的 AI 深伪事件后，我做了一个强调安全与尊重的 AI 视频工具",
    "titleEn": "",
-   "summary": "Hugging Face 官方 Spaces 部署的 Qwen-Image-2.1 图像生成应用，基于 Gradio 构建。该应用自 2026 年 9 月创建以来获得 348 个点赞，标志着通义千问最新图像模型在开源社区的标准化部署与推广。",
+   "summary": "受印度电影歌曲深伪新闻启发，开发者上线 Chuttamalle AI 工具。该工具专注歌曲《Chuttamalle》的二创，提供片段选择及换脸、换人物功能，旨在引导用户进行有授权的合规创作，避免色情深伪，同时验证产品市场需求。",
    "type": "Web 应用",
-   "topic": "模型发布",
-   "block": "HF Spaces",
+   "topic": "内容生成",
+   "block": "V2EX 分享创造",
    "src": "apps",
-   "lastSeen": "2026-10-03",
+   "lastSeen": "2026-10-04",
    "score": 5.5,
-   "rel": 8,
-   "firstSeen": "2026-09-30"
+   "rel": 5,
+   "firstSeen": "2026-10-04"
   },
   {
    "url": "https://huggingface.co/spaces/Viggle/Qwen-Image-2.1-viggle-turbo",
@@ -1326,6 +1522,20 @@
    "firstSeen": "2026-09-29"
   },
   {
+   "url": "https://huggingface.co/spaces/multimodalart/jev-decision-index",
+   "title": "Spaces 应用：multimodalart/jev-decision-index",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces 部署 multimodalart/jev-decision-index 应用。该应用采用静态技术栈，获得 412 点赞。推测为多模态艺术决策或索引工具，旨在可视化或辅助多模态模型评估，属于开源社区中利用静态前端展示 AI 模型能力的轻量级应用。",
+   "type": "Web 应用",
+   "topic": "模型与推理",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-04",
+   "score": 5.3,
+   "rel": 7,
+   "firstSeen": "2026-10-04"
+  },
+  {
    "url": "https://huggingface.co/spaces/kulkas2pintu/QWEN_EDIT_IMAGE",
    "title": "Spaces 应用：kulkas2pintu/QWEN_EDIT_IMAGE",
    "titleEn": "",
@@ -1368,32 +1578,18 @@
    "firstSeen": "2026-10-01"
   },
   {
-   "url": "https://huggingface.co/spaces/arudradey/qwen-image-2.1-uncensored-gguf",
-   "title": "Spaces 应用：arudradey/qwen-image-2.1-uncensored-gguf",
+   "url": "https://www.v2ex.com/t/1246323#reply0",
+   "title": "做了一个 rap 视频生成器，可以上传照片生成 rap 视频。",
    "titleEn": "",
-   "summary": "Hugging Face Spaces 部署的 Qwen-Image-2.1 无审查 GGUF 量化模型应用，使用 Gradio 技术栈。该应用于 2026 年 9 月创建，获得 232 个点赞，反映了社区对 Qwen 图像生成模型非对齐版本的需求与本地化部署趋势。",
+   "summary": "开发者发布 rap 视频生成器，允许用户上传照片生成说唱视频。该工具实现了图片角色绑定及 Rap 动作与音唇同步生成。尽管正文包含 V2EX 广告链接，核心功能是为用户提供快速生成个性化说唱视频的服务，属于 AI 视频生成应用。",
    "type": "Web 应用",
-   "topic": "开源模型",
-   "block": "HF Spaces",
+   "topic": "内容生成",
+   "block": "V2EX 分享创造",
    "src": "apps",
-   "lastSeen": "2026-10-03",
+   "lastSeen": "2026-10-04",
    "score": 5.0,
-   "rel": 7,
-   "firstSeen": "2026-10-02"
-  },
-  {
-   "url": "https://huggingface.co/spaces/Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
-   "title": "Spaces 应用：Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
-   "titleEn": "",
-   "summary": "Hugging Face Spaces 部署的 MiniMax-H3 模型应用，基于 Gradio 构建界面。该应用为 MiniMax-H3-Turbo-Lora 的无审查版本，自 2026 年 8 月创建以来获得 1019 个点赞，展示了开源模型在社区中的部署热度。",
-   "type": "Web 应用",
-   "topic": "开源生态",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-03",
-   "score": 5.0,
-   "rel": 7,
-   "firstSeen": "2026-09-30"
+   "rel": 5,
+   "firstSeen": "2026-10-04"
   },
   {
    "url": "https://www.v2ex.com/t/1245938#reply0",
