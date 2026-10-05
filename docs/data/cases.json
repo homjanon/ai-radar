@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-04 08:10",
- "count": 115,
+ "updated": "2026-10-05 08:10",
+ "count": 122,
  "types": [
   "Agent 工作流",
   "CLI 工具",
@@ -44,6 +44,20 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://www.v2ex.com/t/1246437#reply1",
+   "title": "[开源] Precedent Loop：让 Agnet 换个会话也记得项目里踩过的坑",
+   "titleEn": "",
+   "summary": "Precedent Loop 解决 Agent 跨会话失忆痛点，通过经验入库存取机制避免 CLAUDE.md 冗余，支持按需检索历史决策。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-05",
+   "score": 8.4,
+   "rel": 9,
+   "firstSeen": "2026-10-05"
+  },
+  {
    "url": "https://www.v2ex.com/t/1246199#reply0",
    "title": "用 kite 让 Claude Code 自己开会话派活给别的 Claude Code，记录一下今天实际跑的情况",
    "titleEn": "",
@@ -84,6 +98,20 @@
    "score": 8.4,
    "rel": 9,
    "firstSeen": "2026-09-30"
+  },
+  {
+   "url": "https://www.sortbot.io",
+   "title": "Sortbot.io：支持 MCP 接口的实物库存管理代理",
+   "titleEn": "Show HN: Sortbot.io – Your physical inventory, with an API and MCP access",
+   "summary": "Sortbot.io 是一个 AI 代理，通过拍照和少量上下文将实物转化为结构化库存数据。提供 API 和 MCP（Model Context Protocol）访问接口，允许 LLM 直接读取和管理用户的物理物品清单。",
+   "type": "Agent 工作流",
+   "topic": "Agent 应用",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-05",
+   "score": 8.2,
+   "rel": 9,
+   "firstSeen": "2026-10-05"
   },
   {
    "url": "https://github.com/lateos-ai/reflex",
@@ -212,6 +240,20 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://shlexball.com/",
+   "title": "Shlexball：使用本地 1.5B 模型在 Mac 上检索文件",
+   "titleEn": "Show HN: Shlexball, describe a file and a local 1.5B model finds it on your Mac",
+   "summary": "Shlexball 是一个本地运行的工具，利用 1.5B 参数的小模型生成 bash 命令来查找 Mac 上的文件。相比调用云端大模型，它完全离线保护隐私，且对 Apple Silicon 优化良好，占用资源极少。",
+   "type": "桌面工具",
+   "topic": "端侧模型",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-05",
+   "score": 7.8,
+   "rel": 8,
+   "firstSeen": "2026-10-05"
+  },
+  {
    "url": "https://github.com/vayungodara/cliproxy-rs",
    "title": "Cliproxy-rs 统一 LLM 代理网关",
    "titleEn": "Show HN: Cliproxy-rs, a Rust port of the CLIProxyAPI LLM subscription proxy",
@@ -238,6 +280,20 @@
    "score": 7.8,
    "rel": 7,
    "firstSeen": "2026-10-02"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1246418#reply0",
+   "title": "开源 Bibo：成本极低，内置笔记、文件、任务和日历的 personal agent",
+   "titleEn": "",
+   "summary": "开源个人代理 Bibo 采用沙箱按需启动机制降低运行成本，集成笔记、文件、任务管理界面，支持自建部署与数据隔离。",
+   "type": "Web 应用",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-05",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-10-05"
   },
   {
    "url": "https://grist.lol/",
@@ -519,6 +575,20 @@
    "firstSeen": "2026-09-29"
   },
   {
+   "url": "https://www.v2ex.com/t/1246434#reply5",
+   "title": "测了 1000 个中文大站的 llms.txt，只有 30 个放了真正的文件",
+   "titleEn": "",
+   "summary": "实测 1000 个中文大站，仅 3% 有效部署 llms.txt，164 个返回网页壳，412 个 404，B 站、魔搭等 9 个站点满分达标。",
+   "type": "数据分析",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-05",
+   "score": 7.3,
+   "rel": 7,
+   "firstSeen": "2026-10-05"
+  },
+  {
    "url": "https://www.v2ex.com/t/1246147#reply0",
    "title": "让 AI 全流程开发的加密货币网格交易系统，已在 Backpack 实盘运行 3 天",
    "titleEn": "",
@@ -587,6 +657,20 @@
    "score": 7.3,
    "rel": 7,
    "firstSeen": "2026-09-29"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1246443#reply1",
+   "title": "做了个 Claude Code 多账号路由工具：撞上限自动切账号",
+   "titleEn": "",
+   "summary": "开发者发布工具解决 Claude Code 5小时限额问题，支持多账号订阅、API key 和中转站切换，实现自动化路由管理。",
+   "type": "CLI 工具",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-05",
+   "score": 7.2,
+   "rel": 8,
+   "firstSeen": "2026-10-05"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1ww8tkn/i_built_an_mcp_to_make_meta_pixel_capi_one_less/",
@@ -728,6 +812,34 @@
    "firstSeen": "2026-10-01"
   },
   {
+   "url": "https://www.v2ex.com/t/1246422#reply1",
+   "title": "[开源] 小伴：像给豆包打电话一样，打开浏览器就能和 AI 语音聊天",
+   "titleEn": "",
+   "summary": "开源项目小伴实现浏览器端 AI 语音通话，支持打断、语速调节及口语练习，MIT 协议允许本地部署或在线体验。",
+   "type": "Web 应用",
+   "topic": "模型发布",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-05",
+   "score": 6.7,
+   "rel": 7,
+   "firstSeen": "2026-10-05"
+  },
+  {
+   "url": "https://redactpdf.ai",
+   "title": "Redactpdf.ai：开源 AI 驱动的 PDF 敏感信息脱敏工具",
+   "titleEn": "Show HN: Redactpdf.ai: Open-source AI-based PDF redaction tool",
+   "summary": "Redactpdf.ai 是一个开源项目，允许用户上传 PDF 文件，AI 自动识别并建议遮蔽敏感信息（如护照、证件号）。用户确认后可下载脱敏文件，数据在处理一小时内删除，保障隐私。",
+   "type": "Web 应用",
+   "topic": "隐私安全",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-05",
+   "score": 6.7,
+   "rel": 7,
+   "firstSeen": "2026-10-05"
+  },
+  {
    "url": "https://www.v2ex.com/t/1246312#reply9",
    "title": "[开源] 我把《杀戮尖塔 2》移植到了网页端",
    "titleEn": "",
@@ -782,34 +894,6 @@
    "score": 6.7,
    "rel": 7,
    "firstSeen": "2026-09-29"
-  },
-  {
-   "url": "https://huggingface.co/spaces/arudradey/qwen-image-2.1-uncensored-gguf",
-   "title": "Spaces 应用：arudradey/qwen-image-2.1-uncensored-gguf",
-   "titleEn": "",
-   "summary": "Hugging Face Spaces 上线 arudradey 的 qwen-image-2.1-uncensored-gguf 应用。基于 Qwen 图像生成模型的去限制化 GGUF 量化版本，采用 Gradio 界面，获 257 点赞。该应用允许用户在浏览器中运行去限制化图像生成，探索模型潜空间能力。",
-   "type": "Web 应用",
-   "topic": "模型与推理",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-04",
-   "score": 6.6,
-   "rel": 8,
-   "firstSeen": "2026-10-02"
-  },
-  {
-   "url": "https://huggingface.co/spaces/arudradey/qwen-image-2.1-uncensored-aio-loras",
-   "title": "Spaces 应用：arudradey/qwen-image-2.1-uncensored-aio-loras",
-   "titleEn": "",
-   "summary": "Hugging Face Spaces 上线 arudradey 的 qwen-image-2.1-uncensored-aio-loras 应用。集成多个去限制化 LoRA 模型，采用 Gradio 界面，获 120 点赞。该工具允许用户结合特定 LoRA 风格对 Qwen 图像模型进行定向生成，满足社区定制化图像创作需求。",
-   "type": "Web 应用",
-   "topic": "模型与推理",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-04",
-   "score": 6.6,
-   "rel": 8,
-   "firstSeen": "2026-10-04"
   },
   {
    "url": "https://www.v2ex.com/t/1245905#reply0",
@@ -910,20 +994,6 @@
    "rel": 7
   },
   {
-   "url": "https://huggingface.co/spaces/Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
-   "title": "Spaces 应用：Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
-   "titleEn": "",
-   "summary": "Hugging Face Spaces 上线 Pepe104 开发的 MiniMax-H3-Turbo-Lora-UNCENSORED 应用。该应用采用 Gradio 技术栈，基于 LLM 模型微调版本运行，获得 1052 点赞。主要提供去限制化的文本生成服务，反映了开源社区对模型安全越狱与自由生成的关注。",
-   "type": "Web 应用",
-   "topic": "模型与推理",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-04",
-   "score": 6.3,
-   "rel": 8,
-   "firstSeen": "2026-09-30"
-  },
-  {
    "url": "https://huggingface.co/spaces/nvidia/nemotron-diarization",
    "title": "Spaces 应用：nvidia/nemotron-diarization",
    "titleEn": "",
@@ -950,6 +1020,20 @@
    "score": 6.3,
    "rel": 6,
    "firstSeen": "2026-09-29"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1246438#reply2",
+   "title": "[问书] 自主学习网站",
+   "titleEn": "",
+   "summary": "开源项目 ask-book 将电子书蒸馏为技能，支持对话式学习与模型配置，具备本地书架功能及技能导入导出能力。",
+   "type": "Agent 工作流",
+   "topic": "开源权重",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-05",
+   "score": 6.2,
+   "rel": 7,
+   "firstSeen": "2026-10-05"
   },
   {
    "url": "https://www.interviewbasecamp.com/",
@@ -1214,20 +1298,6 @@
    "lastSeen": "2026-10-04",
    "score": 5.8,
    "rel": 5,
-   "firstSeen": "2026-10-04"
-  },
-  {
-   "url": "https://huggingface.co/spaces/kulkas2pintu/wan777",
-   "title": "Spaces 应用：kulkas2pintu/wan777",
-   "titleEn": "",
-   "summary": "Hugging Face Spaces 部署 kulkas2pintu 的 wan777 应用。该应用基于 Gradio 技术栈，获得 271 点赞。名称暗示可能与 Wan 系列视频生成模型相关，提供在线视频生成或编辑能力，是开源社区探索视频生成大模型在浏览器端应用的一个实践案例。",
-   "type": "Web 应用",
-   "topic": "模型与推理",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-04",
-   "score": 5.8,
-   "rel": 8,
    "firstSeen": "2026-10-04"
   },
   {
@@ -1522,20 +1592,6 @@
    "firstSeen": "2026-09-29"
   },
   {
-   "url": "https://huggingface.co/spaces/multimodalart/jev-decision-index",
-   "title": "Spaces 应用：multimodalart/jev-decision-index",
-   "titleEn": "",
-   "summary": "Hugging Face Spaces 部署 multimodalart/jev-decision-index 应用。该应用采用静态技术栈，获得 412 点赞。推测为多模态艺术决策或索引工具，旨在可视化或辅助多模态模型评估，属于开源社区中利用静态前端展示 AI 模型能力的轻量级应用。",
-   "type": "Web 应用",
-   "topic": "模型与推理",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-04",
-   "score": 5.3,
-   "rel": 7,
-   "firstSeen": "2026-10-04"
-  },
-  {
    "url": "https://huggingface.co/spaces/kulkas2pintu/QWEN_EDIT_IMAGE",
    "title": "Spaces 应用：kulkas2pintu/QWEN_EDIT_IMAGE",
    "titleEn": "",
@@ -1564,6 +1620,20 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://gmaterni.github.io/wikijs/wikijs.html",
+   "title": "xxWikiJS：基于文档构建带引用验证的知识库",
+   "titleEn": "Show HN: xxWikiJS knowledge base from your docs, answers with verified citations",
+   "summary": "xxWikiJS 是一个知识库工具，能够从用户现有的文档中构建结构化的知识网络。其核心特性是回答问题时提供可验证的引用来源，减少幻觉，提高信息准确性。但当前访问页面返回 404 错误。",
+   "type": "Web 应用",
+   "topic": "RAG 应用",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-05",
+   "score": 5.2,
+   "rel": 6,
+   "firstSeen": "2026-10-05"
+  },
+  {
    "url": "https://yntk.cloud/2026-openai-devday/",
    "title": "OpenAI DevDay 2026 讽刺性解读工具",
    "titleEn": "Show HN: I wanted a better way to read about OpenAI DevDay 2026",
@@ -1576,6 +1646,34 @@
    "score": 5.2,
    "rel": 5,
    "firstSeen": "2026-10-01"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1246423#reply1",
+   "title": "给已有网站做了个 llms.txt 生成器，欢迎试用",
+   "titleEn": "",
+   "summary": "开发者推出 llms.txt 自动生成工具，助力网站快速适配 AI 抓取标准，降低技术门槛，欢迎用户试用并反馈。",
+   "type": "其他",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-05",
+   "score": 5.1,
+   "rel": 6,
+   "firstSeen": "2026-10-05"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1wxs1qa/made_a_kids_channel_about_emotions_with_a_child/",
+   "title": "利用 AI 制作儿童情绪教育 YouTube 频道",
+   "titleEn": "Made a kids channel about emotions with a child psychologist friend, using AI because we have no budget. Would love honest feedback on our intro",
+   "summary": "两位创作者与儿童心理学家合作，利用 AI 动画制作针对 3-5 岁儿童的短故事视频，帮助其管理愤怒、恐惧等情绪。因预算有限选择 AI 生成内容，现寻求社区对片头设计和内容的诚实反馈。",
+   "type": "内容生成",
+   "topic": "AIGC 应用",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-05",
+   "score": 5.0,
+   "rel": 5,
+   "firstSeen": "2026-10-05"
   },
   {
    "url": "https://www.v2ex.com/t/1246323#reply0",
