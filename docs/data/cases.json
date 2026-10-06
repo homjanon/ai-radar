@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-05 08:10",
- "count": 122,
+ "updated": "2026-10-06 08:10",
+ "count": 135,
  "types": [
   "Agent 工作流",
   "CLI 工具",
@@ -30,6 +30,20 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://news.ycombinator.com/item?id=49971503",
+   "title": "展示开源 AI 代码 Agent 沙箱平台 mainbrella",
+   "titleEn": "Show HN: The mainbrella effect – AI code / Agent machines",
+   "summary": "创始人受 Cloudflare 容器服务启发，构建开源 GPL 3.0 协议平台 mainbrella，作为 e2b.dev 或 daytona.io 的替代方案。旨在为 AI Agent 提供代码执行沙箱环境，基础构建计划每月 5 美元，无免费层级，支持本地部署。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-06",
+   "score": 8.7,
+   "rel": 9,
+   "firstSeen": "2026-10-06"
+  },
+  {
    "url": "https://www.v2ex.com/t/1245659#reply0",
    "title": "Kling 4.0 可能又是王炸",
    "titleEn": "",
@@ -42,6 +56,20 @@
    "score": 8.7,
    "rel": 9,
    "firstSeen": "2026-09-30"
+  },
+  {
+   "url": "https://ototo.dev/",
+   "title": "展示 Ototo 小模型代码探索卸载工具",
+   "titleEn": "Show HN: Ototo: Offload code exploration to a smaller model from Claude et al.",
+   "summary": "开发者构建 Ototo 工具，将代码探索等重 Token 任务卸载给本地或小规模模型执行，再将结果返回主 Agent。此举旨在节省主上下文成本，保持主要对话清晰度，实现多模型协同的差异化推理工作流。",
+   "type": "Agent 工作流",
+   "topic": "工程实践",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-06",
+   "score": 8.4,
+   "rel": 9,
+   "firstSeen": "2026-10-06"
   },
   {
    "url": "https://www.v2ex.com/t/1246437#reply1",
@@ -98,6 +126,20 @@
    "score": 8.4,
    "rel": 9,
    "firstSeen": "2026-09-30"
+  },
+  {
+   "url": "https://www.bountyindex.in/mcp",
+   "title": "展示支持 MCP 协议的漏洞赏金索引服务",
+   "titleEn": "Show HN: MCP v2 on bountyindex.in, 14 tool calls,happy bug hunting",
+   "summary": "BountyIndex 推出 MCP v2 接口，支持 Claude、Cursor 等客户端通过 Model Context Protocol 连接。该服务无需 API 密钥，提供 14 个工具、3 个提示词及 1 个资源，速率限制为每分钟 60 次，旨在让 AI Agent 参与漏洞赏金挖掘。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-06",
+   "score": 8.2,
+   "rel": 8,
+   "firstSeen": "2026-10-06"
   },
   {
    "url": "https://www.sortbot.io",
@@ -784,6 +826,34 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://denizlihub.com/",
+   "title": "展示 40 种纯客户端浏览器 Web 工具集",
+   "titleEn": "Show HN: DenizliHub – 40 client-side web tools running 100% in the browser",
+   "summary": "开发者发布 DenizliHub，一个包含 40 余种工具的纯客户端 Web 套件，覆盖 PDF 处理、图像编辑、AI OCR 及开发者工具。所有功能均在浏览器本地运行，零服务器数据留存，依托 Cloudflare Edge 实现毫秒级响应。",
+   "type": "Web 应用",
+   "topic": "效率工具",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-06",
+   "score": 6.8,
+   "rel": 6,
+   "firstSeen": "2026-10-06"
+  },
+  {
+   "url": "https://github.com/filippofinke/sideloop",
+   "title": "展示 Sideloop 侧载 iOS 应用自动重签工具",
+   "titleEn": "Show HN: Sideloop – Re-sign sideloaded iOS apps over Wi-Fi before they expire",
+   "summary": "Sideloop 是一款自托管 Web 服务，用于管理侧载 iOS 应用的签名生命周期。它支持在 7 天签名过期前，通过 Wi-Fi 自动重新安装 IPAs，解决免费 Apple ID 侧载应用频繁失效的问题，支持 Linux amd64/arm64 架构。",
+   "type": "Web 应用",
+   "topic": "工程实践",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-06",
+   "score": 6.8,
+   "rel": 6,
+   "firstSeen": "2026-10-06"
+  },
+  {
    "url": "https://www.v2ex.com/t/1246299#reply0",
    "title": "[我的搜索-桌面版] 一款呼出搜索工具，支持网站/文本类/插件",
    "titleEn": "",
@@ -952,6 +1022,20 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://www.reddit.com/r/SideProject/comments/1wyn4r6/slideshowphotos_makes_it_easy_to_display_photos/",
+   "title": "展示 Slideshow.photos 照片幻灯片展示工具",
+   "titleEn": "Slideshow.photos makes it easy to display photos on a screen",
+   "summary": "开发者结合 Claude 构建了 Slideshow.photos，一款简化活动照片展示的网页应用。它允许用户轻松创建幻灯片，并穿插组织或赞助商 Logo，旨在解决现有解决方案外观不佳且操作复杂的问题，提升活动视觉呈现体验。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-06",
+   "score": 6.5,
+   "rel": 6,
+   "firstSeen": "2026-10-06"
+  },
+  {
    "url": "https://digitup.dev",
    "title": "AI 构建网站的安全泄漏检测工具",
    "titleEn": "Show HN: I built a vibe coded website checker for leaked secrets",
@@ -1118,6 +1202,62 @@
    "score": 6.2,
    "rel": 6,
    "firstSeen": "2026-09-29"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1wylw07/i_built_a_free_duolingostyle_course_for_the/",
+   "title": "构建成人导向的多语言自由课程 AdultLingo",
+   "titleEn": "I built a free Duolingo-style course for the language textbooks skip: flirting, dating, slang and swearing (Spanish, Chinese, Japanese)",
+   "summary": "针对主流语言学习应用缺乏社交场景内容的痛点，开发者构建 AdultLingo 平台。提供西班牙语、中文、日语课程，涵盖搭讪、约会、俚语及脏话等实用场景，采用 Duolingo 风格交互，填补教材空白。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-06",
+   "score": 6.0,
+   "rel": 5,
+   "firstSeen": "2026-10-06"
+  },
+  {
+   "url": "https://soundscaper.org",
+   "title": "展示浏览器版音频编辑器 Soundscaper",
+   "titleEn": "Show HN: Soundscaper – Audacity 4-like audio editor in the browser",
+   "summary": "前 Audacity 4 设计师开发 Soundscaper，一款基于 Web 的音频编辑器。利用 WASM 技术实现类似 Audacity 4 的功能，探索浏览器媒体处理能力，强调在浏览器环境中通过大量测试驯服复杂代码，实现本地音频处理。",
+   "type": "Web 应用",
+   "topic": "效率工具",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-06",
+   "score": 6.0,
+   "rel": 5,
+   "firstSeen": "2026-10-06"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1246562#reply0",
+   "title": "免费使用浏览器内置大模型来给自己的网页提供优化建议",
+   "titleEn": "",
+   "summary": "一款 Chrome 浏览器插件利用内置 API（如 prompt_api）免费调用 nano_v3、gemma4 等大模型，为网页提供优化建议。用户安装插件后无需额外成本即可获取 AI 辅助分析，支持多种模型组件，降低开发者的 AI 接入门槛。",
+   "type": "浏览器插件",
+   "topic": "模型与推理",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-06",
+   "score": 6.0,
+   "rel": 6,
+   "firstSeen": "2026-10-06"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1wynafd/i_built_a_notes_app_that_forgets_everything/",
+   "title": "开发名为 Gulp 的自动遗忘笔记应用",
+   "titleEn": "I built a notes app that forgets everything",
+   "summary": "开发者因笔记应用堆积大量临时信息而停止使用，遂开发名为 Gulp 的菜单栏工具。该应用模仿金鱼记忆，接收用户输入的思想后仅保留数小时，随后自动删除，旨在解决数字信息焦虑。",
+   "type": "桌面工具",
+   "topic": "效率工具",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-06",
+   "score": 6.0,
+   "rel": 5,
+   "firstSeen": "2026-10-06"
   },
   {
    "url": "https://www.v2ex.com/t/1246182#reply0",
@@ -1620,6 +1760,34 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://www.v2ex.com/t/1246567#reply0",
+   "title": "做了一个 AI Zombie Video 小工具：如果变成丧尸，他还会记得你吗？",
+   "titleEn": "",
+   "summary": "开发者发布面向海外的 AI Zombie Video 网站，用户上传照片即可生成带剧情反转的丧尸短视频。该工具利用 Image to Video AI 技术，将恐怖场景与温情结局结合，无需编写 Prompt，适合作为娱乐社交内容快速生成。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-06",
+   "score": 5.2,
+   "rel": 5,
+   "firstSeen": "2026-10-06"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1246547#reply0",
+   "title": "把自己放进加油站跳舞视频里：我做了一个 AI Gas Station Dance 小工具",
+   "titleEn": "",
+   "summary": "AI Gas Station Dance 工具允许用户上传照片生成固定模板的跳舞短视频，提供 Solo 和 Trio 两种模式。基于 Image to Video AI 技术，无需 Prompt 即可生成可下载的 MP4 视频，主打娱乐向体验，将复杂生成流程简化为直观交互。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-06",
+   "score": 5.2,
+   "rel": 5,
+   "firstSeen": "2026-10-06"
+  },
+  {
    "url": "https://gmaterni.github.io/wikijs/wikijs.html",
    "title": "xxWikiJS：基于文档构建带引用验证的知识库",
    "titleEn": "Show HN: xxWikiJS knowledge base from your docs, answers with verified citations",
@@ -1646,6 +1814,20 @@
    "score": 5.2,
    "rel": 5,
    "firstSeen": "2026-10-01"
+  },
+  {
+   "url": "https://huggingface.co/spaces/Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
+   "title": "Spaces 应用：Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces 上发布的 Gradio 应用，展示 MiniMax H3 Turbo 模型的 LoRA 微调版本，主打无审查（UNCENSORED）特性。该应用提供在线交互界面，累计获得 1132 次点赞，反映了开源社区对去限制化模型衍生产品的关注。",
+   "type": "模型与推理",
+   "topic": "开源权重",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-06",
+   "score": 5.1,
+   "rel": 6,
+   "firstSeen": "2026-10-06"
   },
   {
    "url": "https://www.v2ex.com/t/1246423#reply1",
