@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-06 08:10",
- "count": 135,
+ "updated": "2026-10-07 08:11",
+ "count": 149,
  "types": [
   "Agent 工作流",
   "CLI 工具",
@@ -16,6 +16,20 @@
  ],
  "cases": [
   {
+   "url": "https://www.v2ex.com/t/1246631#reply7",
+   "title": "受 Jev 启发，花了三周、600 美元、20 多轮训了两个小模型专门做 Computer use",
+   "titleEn": "",
+   "summary": "开源 DeskMind，Mac 端 Computer Use Agent。微调 Qwen3.5 0.8B 和 4B 模型本地运行，采用选择题决策机制，无需云端，低成本实现精准操作，兼容 Jev 请求格式。",
+   "type": "Agent 工作流",
+   "topic": "模型发布",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-07",
+   "score": 9.4,
+   "rel": 10,
+   "firstSeen": "2026-10-07"
+  },
+  {
    "url": "https://sspai.com/post/115197",
    "title": "派早报：OpenAI 发布 Dot 智能体、Apple 移动睡眠呼吸暂停迹象提示软件国内获批等",
    "titleEn": "",
@@ -28,6 +42,34 @@
    "score": 9.4,
    "rel": 10,
    "firstSeen": "2026-09-30"
+  },
+  {
+   "url": "https://github.com/wanderingstan/vibeconf-app",
+   "title": "Vibeconferencing：让 Claude Code 或 Codex 加入 Google Meet",
+   "titleEn": "Show HN: Vibeconferencing, Bring Claude Code or Codex into Your Google Meet",
+   "summary": "Vibeconferencing 是一个本地 Electron 应用，允许 AI 编码智能体（如 Claude Code 或 Codex）作为参与者加入 Google Meet 会议。智能体通过 MCP 或 HTTP 驱动，具备收听、发言等工具。这解决了将转录文本粘贴给 AI 的繁琐问题，实现了 AI 直接参与会议协作。",
+   "type": "桌面工具",
+   "topic": "Agent 工具",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-07",
+   "score": 8.7,
+   "rel": 9,
+   "firstSeen": "2026-10-07"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1246694#reply0",
+   "title": "开源了 12 个电商短视频 Agent Skills：一张商品图 → 带配音字幕的 15 秒竖屏视频，本地 ffmpeg 出片",
+   "titleEn": "",
+   "summary": "开源 12 个电商视频 Agent Skills，MIT 协议。通过 storyboard.json 定义分镜，调用本地 ffmpeg 一键渲染生成带配音字幕的 15 秒竖屏视频，实现全自动化剪辑。",
+   "type": "Agent 工作流",
+   "topic": "开源生态",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-07",
+   "score": 8.7,
+   "rel": 9,
+   "firstSeen": "2026-10-07"
   },
   {
    "url": "https://news.ycombinator.com/item?id=49971503",
@@ -324,6 +366,20 @@
    "firstSeen": "2026-10-02"
   },
   {
+   "url": "https://agentability.org/",
+   "title": "AgentAbility：AI 智能体每日执行 10 项网络事务实验",
+   "titleEn": "Show HN: An AI agent runs ten web errands a day, every transcript published",
+   "summary": "AgentAbility 是一个开源实验，记录一个 AI 智能体每天执行 10 项网络事务的过程，并公开所有转录记录。该项目探索智能体在现实网络环境中的能力边界，发布内容包括案例展示、指南及方法论，旨在通过透明化智能体行为来评估其可靠性与自主性。",
+   "type": "Agent 工作流",
+   "topic": "Agent 实验",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-07",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-10-07"
+  },
+  {
    "url": "https://www.v2ex.com/t/1246418#reply0",
    "title": "开源 Bibo：成本极低，内置笔记、文件、任务和日历的 personal agent",
    "titleEn": "",
@@ -587,6 +643,34 @@
    "score": 7.5,
    "rel": 8,
    "firstSeen": "2026-09-29"
+  },
+  {
+   "url": "https://huggingface.co/hirundo-io/Qwen3.6-35B-A3B-Westernized",
+   "title": "Qwen 3.6 西方化版本：面向美国企业的模型优化",
+   "titleEn": "Show HN: We Westernized Qwen for US enterprise use",
+   "summary": "Hirundo IO 在 Hugging Face 上发布了 Qwen 3.6-35B-A3B-Westernized 模型。该模型针对美国企业使用场景进行了“西方化”调整，可能涉及价值观对齐、数据偏好或合规性优化。此举反映了开源模型社区在适应不同地区监管和文化需求方面的趋势。",
+   "type": "模型与推理",
+   "topic": "模型发布",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-07",
+   "score": 7.4,
+   "rel": 8,
+   "firstSeen": "2026-10-07"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1246709#reply0",
+   "title": "我做了一个 AI 工具，想替代用了十多年的 Excel",
+   "titleEn": "",
+   "summary": "独立开发者基于十多年 Google 表格记录习惯，开发 AI 工具替代 Excel，解决长期记录检索难、分析繁琐痛点，实现工作与生活记录的智能化管理与自动化分析。",
+   "type": "Web 应用",
+   "topic": "工具开发",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-07",
+   "score": 7.4,
+   "rel": 8,
+   "firstSeen": "2026-10-07"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1wt7cm4/im_building_a_civilengineering_cad_app_with_an_ai/",
@@ -966,6 +1050,34 @@
    "firstSeen": "2026-09-29"
   },
   {
+   "url": "https://www.reddit.com/r/SideProject/comments/1wzfwz1/i_built_free_audio_tools_that_run_entirely_in_the/",
+   "title": "AudioDrop：浏览器端本地运行的音频分轨与转换工具",
+   "titleEn": "I built free audio tools that run entirely in the browser (stem splitter, vocal remove and file converter)",
+   "summary": "AudioDrop 是一套完全在浏览器本地运行的免费音频工具，包括人声/鼓/贝斯分轨（基于 HTDemucs）、人声移除及格式转换。首次使用需下载约 166MB 模型，之后可离线使用。无需注册且无水印，解决了用户上传音频至云端 GPU 隐私及效率痛点。",
+   "type": "Web 应用",
+   "topic": "开源工具",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-07",
+   "score": 6.6,
+   "rel": 6,
+   "firstSeen": "2026-10-07"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1246676#reply0",
+   "title": "做了个小工具：两张照片生成 Hotel Lobby 风格的 AI 短视频",
+   "titleEn": "",
+   "summary": "开发 MyHotelLobbyAI，上传两张照片即可生成 8 秒 720p 竖屏 AI 短视频，自动匹配配乐。简化通用 AI 工具繁琐流程，按条收费 5.99 美元，照片 24 小时后自动删除。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-07",
+   "score": 6.6,
+   "rel": 6,
+   "firstSeen": "2026-10-07"
+  },
+  {
    "url": "https://www.v2ex.com/t/1245905#reply0",
    "title": "做了一个浏览器本地 GIF 压缩工具 CompressGIF，支持目标体积和 API / MCP",
    "titleEn": "",
@@ -1064,6 +1176,20 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://www.v2ex.com/t/1246628#reply2",
+   "title": "做了一个把照片转成短视频的网页工具，想听听大家的使用反馈",
+   "titleEn": "",
+   "summary": "上线 TurnImageIntoVideo，支持上传照片并描述动作生成短视频。中英双语界面，旨在收集用户对图片上传、生成流程及结果符合度的反馈，优化基于模型的视频生成体验。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-07",
+   "score": 6.4,
+   "rel": 7,
+   "firstSeen": "2026-10-07"
+  },
+  {
    "url": "https://www.v2ex.com/t/1245591#reply11",
    "title": "我用 AI 解决了 Java 开发里几个困扰多年的问题",
    "titleEn": "",
@@ -1104,6 +1230,20 @@
    "score": 6.3,
    "rel": 6,
    "firstSeen": "2026-09-29"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1wzhdl3/i_need_your_thoughts/",
+   "title": "Wingbird：集成 Tinder 等平台的 iMessage AI 约会助手",
+   "titleEn": "I need your thoughts!!",
+   "summary": "Wingbird 是一款运行在 iMessage 中的 AI 助手，可连接 Tinder、Hinge 等约会应用。它追踪聊天对象，在对话停滞时建议回复，并协助预订餐厅及安排日程。该工具试图通过自动化社交流程提升约会效率，引发关于 AI 介入人际关系的讨论。",
+   "type": "移动 App",
+   "topic": "AI 应用",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-07",
+   "score": 6.2,
+   "rel": 6,
+   "firstSeen": "2026-10-07"
   },
   {
    "url": "https://www.v2ex.com/t/1246438#reply2",
@@ -1594,6 +1734,48 @@
    "firstSeen": "2026-09-29"
   },
   {
+   "url": "https://huggingface.co/spaces/multimodalart/jev-decision-index",
+   "title": "Spaces 应用：multimodalart/jev-decision-index",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces 应用，静态页面展示 Jev 决策索引。社区点赞 472，创建于 2026 年 9 月 17 日，整理 Computer Use 领域相关决策数据，辅助开发者理解 Jev 系统架构。",
+   "type": "模型与推理",
+   "topic": "Agent 框架",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-07",
+   "score": 5.6,
+   "rel": 7,
+   "firstSeen": "2026-10-07"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1246688#reply0",
+   "title": "做了个 PDF 银行流水转 Excel 的网站",
+   "titleEn": "",
+   "summary": "上线 Bank Statement Wizard，自动将 PDF 银行对账单转换为 Excel。优化多栏排版识别，保留交易日期、金额等关键字段，解决手动录入繁琐问题，提升财务数据处理效率。",
+   "type": "Web 应用",
+   "topic": "效率工具",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-07",
+   "score": 5.5,
+   "rel": 5,
+   "firstSeen": "2026-10-07"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1wzhcj4/building_a_syllabus_to_calendar_converter_heres/",
+   "title": "课程大纲转日历转换器：解析复杂日期格式的构建挑战",
+   "titleEn": "Building a syllabus to calendar converter. Here's what has broken so far",
+   "summary": "开发者构建了一个将课程大纲 PDF 转换为日历文件的工具。在测试中发现教授书写日期格式极其多样，导致解析错误，如日期对应错误。核心经验是在早期阶段使用真实文档进行测试，而非仅依赖清洁测试文件，揭示了自然语言处理在结构化数据提取中的难点。",
+   "type": "效率工具",
+   "topic": "工程实践",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-07",
+   "score": 5.5,
+   "rel": 5,
+   "firstSeen": "2026-10-07"
+  },
+  {
    "url": "https://www.v2ex.com/t/1246325#reply0",
    "title": "看到 Chuttamalle 的 AI 深伪事件后，我做了一个强调安全与尊重的 AI 视频工具",
    "titleEn": "",
@@ -1732,6 +1914,34 @@
    "firstSeen": "2026-09-29"
   },
   {
+   "url": "https://huggingface.co/spaces/FineEnvs/multi-harness-rl",
+   "title": "Spaces 应用：FineEnvs/multi-harness-rl",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces 应用，采用 Docker 技术栈。展示多框架强化学习（RL）训练环境，社区点赞 171，创建于 2026 年 8 月 31 日，用于复现和测试多种 Harness 下的 RL 算法。",
+   "type": "模型与推理",
+   "topic": "论文方法",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-07",
+   "score": 5.3,
+   "rel": 7,
+   "firstSeen": "2026-10-07"
+  },
+  {
+   "url": "https://huggingface.co/spaces/arudradey/qwen-image-2.1-uncensored-gguf",
+   "title": "Spaces 应用：arudradey/qwen-image-2.1-uncensored-gguf",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces 应用，基于 Gradio。提供 Qwen 图像 2.1 无审查版 GGUF 模型在线推理服务，社区点赞 334，创建于 2026 年 9 月 22 日，支持量化模型快速体验。",
+   "type": "模型与推理",
+   "topic": "模型发布",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-07",
+   "score": 5.3,
+   "rel": 7,
+   "firstSeen": "2026-10-07"
+  },
+  {
    "url": "https://huggingface.co/spaces/kulkas2pintu/QWEN_EDIT_IMAGE",
    "title": "Spaces 应用：kulkas2pintu/QWEN_EDIT_IMAGE",
    "titleEn": "",
@@ -1814,20 +2024,6 @@
    "score": 5.2,
    "rel": 5,
    "firstSeen": "2026-10-01"
-  },
-  {
-   "url": "https://huggingface.co/spaces/Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
-   "title": "Spaces 应用：Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
-   "titleEn": "",
-   "summary": "Hugging Face Spaces 上发布的 Gradio 应用，展示 MiniMax H3 Turbo 模型的 LoRA 微调版本，主打无审查（UNCENSORED）特性。该应用提供在线交互界面，累计获得 1132 次点赞，反映了开源社区对去限制化模型衍生产品的关注。",
-   "type": "模型与推理",
-   "topic": "开源权重",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-06",
-   "score": 5.1,
-   "rel": 6,
-   "firstSeen": "2026-10-06"
   },
   {
    "url": "https://www.v2ex.com/t/1246423#reply1",

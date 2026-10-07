@@ -1,0 +1,295 @@
+{
+ "generated_at": "2026-10-07 08:11",
+ "counts": {
+  "total": 129,
+  "repeat": 50,
+  "byLevel": {
+   "top": 15,
+   "watch": 45,
+   "normal": 69
+  }
+ },
+ "sources": [
+  {
+   "id": "openai-news",
+   "ok": true,
+   "via": "rsshub.ktachibana.party",
+   "n": 6,
+   "raw": 10,
+   "diag": [
+    "openai.com:desc中位152<300跳过",
+    "rsshub.ktachibana.party:OK(10条/desc7242)"
+   ]
+  },
+  {
+   "id": "openai-research",
+   "ok": true,
+   "via": "rsshub.ktachibana.party",
+   "n": 3,
+   "raw": 10,
+   "diag": [
+    "rsshub.ktachibana.party:OK(10条/desc13619)"
+   ]
+  },
+  {
+   "id": "anthropic-news",
+   "ok": true,
+   "via": "rsshub.ktachibana.party",
+   "n": 3,
+   "raw": 10,
+   "diag": [
+    "rsshub.ktachibana.party:OK(10条/desc9201)"
+   ]
+  },
+  {
+   "id": "deepmind-blog",
+   "ok": true,
+   "via": "deepmind.google",
+   "n": 3,
+   "raw": 100,
+   "diag": [
+    "deepmind.google:OK(100条/desc106)"
+   ]
+  },
+  {
+   "id": "google-ai-blog",
+   "ok": true,
+   "via": "blog.google",
+   "n": 3,
+   "raw": 20,
+   "diag": [
+    "blog.google:OK(20条/desc115)"
+   ]
+  },
+  {
+   "id": "hf-blog",
+   "ok": true,
+   "via": "rsshub.ktachibana.party",
+   "n": 4,
+   "raw": 14,
+   "diag": [
+    "huggingface.co:desc中位0<500跳过",
+    "rsshub.ktachibana.party:OK(14条/desc10366)"
+   ]
+  },
+  {
+   "id": "hf-daily-papers",
+   "ok": true,
+   "via": "rsshub.ktachibana.party",
+   "n": 10,
+   "raw": 76,
+   "diag": [
+    "huggingface.co:ParseError2",
+    "rsshub.ktachibana.party:OK(76条/desc1514)"
+   ]
+  },
+  {
+   "id": "arxiv-cs-cl",
+   "ok": false,
+   "via": null,
+   "n": 0,
+   "diag": [
+    "export.arxiv.org:RuntimeError"
+   ]
+  },
+  {
+   "id": "llm-leaderboard",
+   "ok": true,
+   "via": "raw.githubusercontent.com",
+   "n": 10,
+   "raw": 10,
+   "diag": [
+    "raw.githubusercontent.com:OK(10条/desc21)"
+   ]
+  },
+  {
+   "id": "openrouter-stealth",
+   "ok": true,
+   "via": "openrouter.ai",
+   "n": 0,
+   "diag": [
+    "openrouter.ai:OK(0条/desc0)"
+   ]
+  },
+  {
+   "id": "hf-new-models",
+   "ok": true,
+   "via": "huggingface.co",
+   "n": 0,
+   "diag": [
+    "huggingface.co:OK(0条/desc0)"
+   ]
+  },
+  {
+   "id": "hn-frontpage",
+   "ok": true,
+   "via": "hnrss.org",
+   "n": 6,
+   "raw": 20,
+   "diag": [
+    "hnrss.org:OK(20条/desc162)"
+   ]
+  },
+  {
+   "id": "hn-llm",
+   "ok": true,
+   "via": "hnrss.org",
+   "n": 6,
+   "raw": 20,
+   "diag": [
+    "hnrss.org:OK(20条/desc156)"
+   ]
+  },
+  {
+   "id": "github-trending",
+   "ok": true,
+   "via": "mshibanami.github.io",
+   "n": 6,
+   "raw": 13,
+   "diag": [
+    "mshibanami.github.io:OK(13条/desc9683)"
+   ]
+  },
+  {
+   "id": "github-releases",
+   "ok": true,
+   "via": "github.com",
+   "n": 4,
+   "raw": 10,
+   "diag": [
+    "github.com:OK(10条/desc81)"
+   ]
+  },
+  {
+   "id": "simonwillison",
+   "ok": true,
+   "via": "simonwillison.net",
+   "n": 6,
+   "raw": 30,
+   "diag": [
+    "simonwillison.net:OK(30条/desc735)"
+   ]
+  },
+  {
+   "id": "tldr-ai",
+   "ok": true,
+   "via": "tldr.tech",
+   "n": 3,
+   "raw": 20,
+   "diag": [
+    "tldr.tech:OK(20条/desc0)"
+   ]
+  },
+  {
+   "id": "qbitai",
+   "ok": true,
+   "via": "rsshub.ktachibana.party",
+   "n": 3,
+   "raw": 10,
+   "diag": [
+    "rsshub.ktachibana.party:OK(10条/desc0)"
+   ]
+  },
+  {
+   "id": "leiphone-ai",
+   "ok": true,
+   "via": "rsshub.ktachibana.party",
+   "n": 3,
+   "raw": 10,
+   "diag": [
+    "rsshub.ktachibana.party:OK(10条/desc6349)"
+   ]
+  },
+  {
+   "id": "36kr-ai",
+   "ok": true,
+   "via": "rsshub.ktachibana.party",
+   "n": 6,
+   "raw": 30,
+   "diag": [
+    "rsshub.ktachibana.party:OK(30条/desc3635)"
+   ]
+  },
+  {
+   "id": "infoq",
+   "ok": true,
+   "via": "rsshub.ktachibana.party",
+   "n": 6,
+   "raw": 30,
+   "diag": [
+    "rsshub.ktachibana.party:OK(30条/desc2606)"
+   ]
+  },
+  {
+   "id": "solidot",
+   "ok": true,
+   "via": "rsshub.isrss.com",
+   "n": 5,
+   "raw": 20,
+   "diag": [
+    "rsshub.ktachibana.party:HTTPError429",
+    "rsshub.rssforever.com:HTTPError503",
+    "rss.injahow.cn:HTTPError404",
+    "rsshub.isrss.com:OK(20条/desc451)"
+   ]
+  },
+  {
+   "id": "hn-show",
+   "ok": true,
+   "via": "hnrss.org",
+   "n": 8,
+   "raw": 20,
+   "diag": [
+    "hnrss.org:OK(20条/desc159)"
+   ]
+  },
+  {
+   "id": "v2ex-create",
+   "ok": true,
+   "via": "www.v2ex.com",
+   "n": 10,
+   "raw": 50,
+   "diag": [
+    "www.v2ex.com:OK(50条/desc642)"
+   ]
+  },
+  {
+   "id": "reddit-sideproject",
+   "ok": true,
+   "via": "www.reddit.com",
+   "n": 8,
+   "raw": 25,
+   "diag": [
+    "www.reddit.com:OK(25条/desc847)"
+   ]
+  },
+  {
+   "id": "rh-sspai",
+   "ok": true,
+   "via": "rsshub.rssforever.com",
+   "n": 3,
+   "raw": 10,
+   "diag": [
+    "rsshub.ktachibana.party:HTTPError429",
+    "rsshub.rssforever.com:OK(10条/desc6855)"
+   ]
+  },
+  {
+   "id": "hf-spaces-trend",
+   "ok": true,
+   "via": "huggingface.co",
+   "n": 6,
+   "raw": 6,
+   "diag": [
+    "huggingface.co:OK(6条/desc32)"
+   ]
+  }
+ ],
+ "degraded": [
+  {
+   "id": "arxiv-cs-cl",
+   "lane": "paper",
+   "reason": "export.arxiv.org:RuntimeError"
+  }
+ ]
+}
