@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-08 13:30",
- "count": 168,
+ "updated": "2026-10-08 13:52",
+ "count": 169,
  "types": [
   "Agent 工作流",
   "CLI 工具",
@@ -128,13 +128,13 @@
    "firstSeen": "2026-10-08"
   },
   {
-   "url": "https://github.com/abird-ai/agentc",
-   "title": "agentc：基于 Rust 的 <1MB 极简嵌入式代理",
-   "titleEn": "Show HN: agentc: <1mb static/no-libc, minimal, embeddable agent with Rust/C API",
-   "summary": "开源 agentc 是一个小于 1MB、无 libc 依赖的静态链接代理。基于 pi agent 启发，提供 Rust/C API，支持嵌入式部署。去除了 Node 等重依赖，保留极简网络栈和 TUI，适合在小型硬件或二进制中直接嵌入。",
-   "type": "CLI 工具",
-   "topic": "开源权重",
-   "block": "Show HN",
+   "url": "https://www.v2ex.com/t/1246951#reply3",
+   "title": "国庆没怎么休息，折腾出了小红书 30 天 1206 万曝光，顺手开源了一套 AI 视频 Skills",
+   "titleEn": "",
+   "summary": "创作者开源 11 个 AI 视频制作 Skills，解决脚本与素材错位痛点。利用该工作流实现小红书 30 天 1206 万曝光及 275 万播放量，验证了 AI 在降低视频内容生产门槛、提升产出稳定性方面的实际效能。",
+   "type": "Agent 工作流",
+   "topic": "Agent 工作流",
+   "block": "V2EX 分享创造",
    "src": "apps",
    "lastSeen": "2026-10-08",
    "score": 8.4,
@@ -212,6 +212,20 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://sspai.com/post/115455",
+   "title": "派早报：微软发布 Windows 相关新品、Google AI 新闻两则等",
+   "titleEn": "",
+   "summary": "微软发布搭载 RTX Spark 超级芯片的 Surface Laptop Ultra，配备 6144 核 Blackwell GPU 与 128GB 统一内存，支持本地运行 1200 亿参数大模型。起售价 2599.99 美元，预计 10 月 16 日发货。",
+   "type": "模型与推理",
+   "topic": "硬件发布",
+   "block": "少数派",
+   "src": "apps",
+   "lastSeen": "2026-10-08",
+   "score": 8.2,
+   "rel": 8,
+   "firstSeen": "2026-10-08"
+  },
+  {
    "url": "https://www.bountyindex.in/mcp",
    "title": "展示支持 MCP 协议的漏洞赏金索引服务",
    "titleEn": "Show HN: MCP v2 on bountyindex.in, 14 tool calls,happy bug hunting",
@@ -282,6 +296,20 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://github.com/abird-ai/agentc",
+   "title": "agentc：基于 Rust/C API 的轻量级嵌入式 Agent",
+   "titleEn": "Show HN: agentc: <1mb static/no-libc, minimal, embeddable agent with Rust/C API",
+   "summary": "开源项目 agentc 提供一个小于 1MB、无 libc 依赖的极简 Agent，支持 Rust/C API 嵌入。受 pi agent 启发，去除了 Node 等沉重依赖，仅保留基础网络栈与 TUI，旨在实现最小硬件运行及在自有二进制中的无缝集成。",
+   "type": "CLI 工具",
+   "topic": "开源权重",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-08",
+   "score": 8.0,
+   "rel": 8,
+   "firstSeen": "2026-10-08"
+  },
+  {
    "url": "https://www.v2ex.com/t/1246870#reply0",
    "title": "Mistral Large 4：免费多模态 AI Playground 与 OpenAI 兼容 API",
    "titleEn": "",
@@ -303,6 +331,20 @@
    "type": "模型与推理",
    "topic": "模型训练",
    "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-08",
+   "score": 8.0,
+   "rel": 8,
+   "firstSeen": "2026-10-08"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1x0id2h/i_built_my_own_lovablestyle_ai_app_builder_with/",
+   "title": "基于 Next.js 与 AWS 构建 Lovable 风格 AI 应用生成器",
+   "titleEn": "I built my own Lovable-style AI app builder with Next.js, AWS, and Sandboxes",
+   "summary": "开发者利用 Next.js、AWS S3 及 Tensorlake 沙箱从零构建 AI 应用生成器。用户输入自然语言即可生成代码，系统在隔离环境运行、自动修复错误并提供实时预览，支持版本历史管理与一键发布功能。",
+   "type": "Web 应用",
+   "topic": "Agent 框架",
+   "block": "r/SideProject",
    "src": "apps",
    "lastSeen": "2026-10-08",
    "score": 8.0,
@@ -394,20 +436,6 @@
    "firstSeen": "2026-10-08"
   },
   {
-   "url": "https://rhyvenai.com",
-   "title": "Rhyven：专为代理服务的 Agent 应用市场",
-   "titleEn": "Show HN: Rhyven – A marketplace for agents",
-   "summary": "开发者构建 Rhyven 市场，针对现有 MCP 缺乏统一性及 UI 过于人类化的痛点。该市场提供专为 Agent 设计的应用，旨在改善终端人类用户体验。通过优化 Agent 间的交互逻辑，提升自动化流程效率。",
-   "type": "Agent 工作流",
-   "topic": "Agent 框架",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-08",
-   "score": 7.8,
-   "rel": 9,
-   "firstSeen": "2026-10-08"
-  },
-  {
    "url": "https://shlexball.com/",
    "title": "Shlexball：使用本地 1.5B 模型在 Mac 上检索文件",
    "titleEn": "Show HN: Shlexball, describe a file and a local 1.5B model finds it on your Mac",
@@ -468,34 +496,6 @@
    "title": "Show HN：SheetRelay 表格转 API 服务",
    "titleEn": "Show HN: SheetRelay – Google Sheets as a back end for web pages and AI agents",
    "summary": "SheetRelay 将 Google Sheets 转化为 API，供网页和 AI Agent 使用。无需预先建立表格，Agent 可根据需求自动创建并管理数据。允许用户设定访问规则，实现结构化数据交互。",
-   "type": "Agent 工作流",
-   "topic": "Agent 框架",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-08",
-   "score": 7.7,
-   "rel": 8,
-   "firstSeen": "2026-10-08"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1246951#reply3",
-   "title": "国庆没怎么休息，折腾出了小红书 30 天 1206 万曝光，顺手开源了一套 AI 视频 Skills",
-   "titleEn": "",
-   "summary": "作者通过 AI 工作流实现小红书 30 天 1206 万曝光，开源 11 个视频制作 Skills。涵盖脚本生成、分镜规划、配音同步及封面设计，解决 AI 视频生成中事实核查与素材一致性难题，降低内容创作门槛。",
-   "type": "Agent 工作流",
-   "topic": "Agent 工作流",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-08",
-   "score": 7.7,
-   "rel": 8,
-   "firstSeen": "2026-10-08"
-  },
-  {
-   "url": "https://futex.rodmena.co.uk/",
-   "title": "Futex：构建 AI 代理的人类信任控制平面",
-   "titleEn": "Show HN: A utility microservice for human trust",
-   "summary": "Futex 是一款多租户控制平面服务，允许 AI 代理请求持久化、策略驱动的人类决策。支持多审批人、带理由拒绝、委托及升级等功能，并通过 Webhooks 恢复工作流，实现“人在回路”的安全机制。",
    "type": "Agent 工作流",
    "topic": "Agent 框架",
    "block": "Show HN",
@@ -671,20 +671,6 @@
    "score": 7.6,
    "rel": 9,
    "firstSeen": "2026-10-02"
-  },
-  {
-   "url": "https://sspai.com/post/115455",
-   "title": "派早报：微软发布 Windows 相关新品、Google AI 新闻两则等",
-   "titleEn": "",
-   "summary": "微软联合英伟达发布 Surface Laptop Ultra，搭载 20 核 Grace CPU 与 6144 核 Blackwell GPU，支持本地运行 1200 亿参数模型。起售价 2599.99 美元，配备 mini-LED 屏幕，10 月 16 日发货。",
-   "type": "其他",
-   "topic": "硬件发布",
-   "block": "少数派",
-   "src": "apps",
-   "lastSeen": "2026-10-08",
-   "score": 7.5,
-   "rel": 7,
-   "firstSeen": "2026-10-08"
   },
   {
    "url": "https://www.v2ex.com/t/1246327#reply0",
@@ -1050,12 +1036,12 @@
    "firstSeen": "2026-09-30"
   },
   {
-   "url": "https://github.com/dkremsa/claude-pacer",
-   "title": "Pacer：监测 AI 编程订阅重置状态",
-   "titleEn": "Show HN: Pacer – will your AI coding subscription last until the reset?",
-   "summary": "一款 macOS 菜单栏工具，通过双环指示器实时监控 Claude Code、Cursor 等 AI 编程订阅的使用额度。工具支持多账号并行对比，直观展示订阅是否能持续至重置周期，并建议在额度不足时调整策略。",
-   "type": "桌面工具",
-   "topic": "工程实践",
+   "url": "https://futex.rodmena.co.uk/",
+   "title": "Futex：用于 AI Agent 人类信任控制的微服务",
+   "titleEn": "Show HN: A utility microservice for human trust",
+   "summary": "发布 Futex 多租户控制平面服务，支持 AI Agent 请求持久化的人机协同决策。功能包括多审批人机制、带理由拒绝、委托、升级及过期策略，允许通过 Webhooks 或轮询恢复流程，强化 Agent 行为安全性。",
+   "type": "其他",
+   "topic": "Agent 框架",
    "block": "Show HN",
    "src": "apps",
    "lastSeen": "2026-10-08",
@@ -1146,6 +1132,20 @@
    "score": 6.8,
    "rel": 6,
    "firstSeen": "2026-10-01"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1247023#reply0",
+   "title": "一个简单好用的命令行工具，支持各种 Agent 的 Skills, MCP, AGENTS.md 一键同步、统一管理",
+   "titleEn": "",
+   "summary": "开源 CLI 工具 agentsync 支持 20+ Agent 工具，通过软链接和全局 JSON 统一管理 Skills、MCP 及 AGENTS.md，实现配置一键同步，方便多工具开发者维护一致的智能体配置。",
+   "type": "CLI 工具",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-08",
+   "score": 6.7,
+   "rel": 8,
+   "firstSeen": "2026-10-08"
   },
   {
    "url": "https://www.v2ex.com/t/1246422#reply1",
@@ -1400,20 +1400,6 @@
    "rel": 7
   },
   {
-   "url": "https://www.reddit.com/r/SideProject/comments/1x0gw3n/i_built_a_directory_of_aimade_browser_games_heres/",
-   "title": "AI 浏览器游戏目录首日运营数据复盘",
-   "titleEn": "I built a directory of AI-made browser games. Here's what the first 3 days looked like",
-   "summary": "开发者建立包含 300+ AI 生成游戏的目录站点 Foundplay。前三天数据显示：流量主要源于 X 平台，移动端用户占比近 40%，已优先展示触控友好游戏。链接主页的帖子点击率显著高于链接单一游戏的帖子。",
-   "type": "Web 应用",
-   "topic": "数据分析",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-10-08",
-   "score": 6.3,
-   "rel": 5,
-   "firstSeen": "2026-10-08"
-  },
-  {
    "url": "https://huggingface.co/spaces/nvidia/nemotron-diarization",
    "title": "Spaces 应用：nvidia/nemotron-diarization",
    "titleEn": "",
@@ -1440,6 +1426,20 @@
    "score": 6.3,
    "rel": 6,
    "firstSeen": "2026-09-29"
+  },
+  {
+   "url": "https://rhyvenai.com",
+   "title": "Rhyven：专为 AI Agent 设计的 MCP 市场平台",
+   "titleEn": "Show HN: Rhyven – A marketplace for agents",
+   "summary": "创作者开发 Rhyven 市场，聚合大量 MCP 插件。旨在解决现有 MCP 缺乏统一性及面向人类 UI 设计过度冗余的问题，转而构建专为 AI Agent 服务的接口，以提升最终用户交互体验并优化 Agent 执行效率。",
+   "type": "Web 应用",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-08",
+   "score": 6.2,
+   "rel": 6,
+   "firstSeen": "2026-10-08"
   },
   {
    "url": "https://www.v2ex.com/t/1246997#reply1",
@@ -1568,6 +1568,20 @@
    "firstSeen": "2026-09-29"
   },
   {
+   "url": "https://github.com/dkremsa/claude-pacer",
+   "title": "Pacer：监控 AI 编程订阅额度的 macOS 菜单栏工具",
+   "titleEn": "Show HN: Pacer – will your AI coding subscription last until the reset?",
+   "summary": "开源工具 Pacer 集成于 macOS 菜单栏，通过双环图表直观展示 Claude Code、Codex 等 AI 编程工具的订阅使用进度。它帮助用户判断额度是否足以支撑至重置周期，并提供调整建议，支持多账户并行监控。",
+   "type": "桌面工具",
+   "topic": "效率工具",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-08",
+   "score": 6.0,
+   "rel": 5,
+   "firstSeen": "2026-10-08"
+  },
+  {
    "url": "https://www.v2ex.com/t/1246867#reply1",
    "title": "[自荐] 大家都在把 AI 塞进 Obsidian，我却反过来把 Obsidian 接进 AI 官网",
    "titleEn": "",
@@ -1575,20 +1589,6 @@
    "type": "效率工具",
    "topic": "效率工具",
    "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-08",
-   "score": 6.0,
-   "rel": 6,
-   "firstSeen": "2026-10-08"
-  },
-  {
-   "url": "https://stayleet.com/",
-   "title": "StayLeet：AI 时代保持技术判断力的练习平台",
-   "titleEn": "Show HN: StayLeet – keeping skills sharp in AI coding era",
-   "summary": "针对 AI 自动写代码导致工程师技能退化的问题，StayLeet 专注非代码技能训练。提供通用技术流利度（CS/系统）和代码审查双轨练习，通过刻意练习法，帮助开发者在 AI 时代维持对输出质量的评估能力。",
-   "type": "Web 应用",
-   "topic": "工程实践",
-   "block": "Show HN",
    "src": "apps",
    "lastSeen": "2026-10-08",
    "score": 6.0,
@@ -1819,13 +1819,13 @@
    "firstSeen": "2026-09-30"
   },
   {
-   "url": "https://www.v2ex.com/t/1247003#reply0",
-   "title": "把 steam 游戏直接导出来做一个 HOW TIME FLIES 的话题",
-   "titleEn": "",
-   "summary": "开发者基于 Steam 账号数据构建时间分布分析工具，可视化游戏时长排行。文章同步推广 Claude API 代理服务，提及企业客户超百家及日均百万级调用量，展示 AI 基础设施在个人开发中的落地场景。",
-   "type": "数据分析",
-   "topic": "数据可视",
-   "block": "V2EX 分享创造",
+   "url": "https://stayleet.com/",
+   "title": "StayLeet：AI 时代非编码技能保持训练平台",
+   "titleEn": "Show HN: StayLeet – keeping skills sharp in AI coding era",
+   "summary": "鉴于 AI 接管代码编写，项目 StayLeet 聚焦于保持人类工程师对 AI 输出的审查能力。平台提供刻意练习轨迹，侧重通用技术流畅度（CS/系统）等非代码生成技能，帮助用户在 AI 主导的开发环境中维持判断力。",
+   "type": "Web 应用",
+   "topic": "工程实践",
+   "block": "Show HN",
    "src": "apps",
    "lastSeen": "2026-10-08",
    "score": 5.8,
@@ -2014,17 +2014,17 @@
    "firstSeen": "2026-10-08"
   },
   {
-   "url": "https://www.v2ex.com/t/1247006#reply6",
-   "title": "因为不会做 App 图标，我做了个收了 1.8 万个真实图标的网站",
+   "url": "https://www.v2ex.com/t/1247005#reply0",
+   "title": "BioPlot.ai：一句话画出可编辑的 MAPK 通路图（draw.io + bio_*，不是死 PNG）",
    "titleEn": "",
-   "summary": "开发者构建网站收录 1.8 万条 App 图标，支持语义搜索与向量匹配。利用内存点积计算实现毫秒级响应，提供多平台尺寸导出及 Logo 动画等辅助工具，解决独立开发者设计痛点。",
+   "summary": "BioPlot.ai 利用 AI 生成带生物学语义的可编辑 draw.io 通路图，支持 RTK-RAS-MAPK 等科研插图定制。导出 SVG/PDF 归用户所有，区别于不可编辑的 AI 位图，目前处于邀请制早期测试阶段。",
    "type": "Web 应用",
-   "topic": "工具开发",
+   "topic": "内容生成",
    "block": "V2EX 分享创造",
    "src": "apps",
    "lastSeen": "2026-10-08",
    "score": 5.5,
-   "rel": 5,
+   "rel": 6,
    "firstSeen": "2026-10-08"
   },
   {
@@ -2194,6 +2194,20 @@
    "firstSeen": "2026-09-29"
   },
   {
+   "url": "https://huggingface.co/spaces/arudradey/qwen-image-2.1-uncensored-gguf",
+   "title": "Spaces 应用：arudradey/qwen-image-2.1-uncensored-gguf",
+   "titleEn": "",
+   "summary": "Qwen 图像模型 2.1 版本的 GGUF 量化权重上线 Hugging Face Spaces，支持无审查模式推理。应用基于 Gradio 界面部署，创建于 2026 年 9 月，累计获 363 次点赞，便于本地或云端低成本运行。",
+   "type": "模型与推理",
+   "topic": "开源权重",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-08",
+   "score": 5.3,
+   "rel": 7,
+   "firstSeen": "2026-10-07"
+  },
+  {
    "url": "https://huggingface.co/spaces/kulkas2pintu/QWEN_EDIT_IMAGE",
    "title": "Spaces 应用：kulkas2pintu/QWEN_EDIT_IMAGE",
    "titleEn": "",
@@ -2220,6 +2234,20 @@
    "score": 5.3,
    "rel": 5,
    "firstSeen": "2026-09-30"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1246971#reply2",
+   "title": "Turner - 免费、不限次数、无需登录、无水印的 AI 图像编辑器",
+   "titleEn": "",
+   "summary": "基于 Qwen 模型的图像编辑器 Turner 上线，主打免费、无水印且不限编辑次数。支持通过中英文提示词更换背景、调整色彩及视角，面向创作者和电商卖家，提供零门槛的网页端 AI 修图服务。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-08",
+   "score": 5.2,
+   "rel": 6,
+   "firstSeen": "2026-10-08"
   },
   {
    "url": "https://www.v2ex.com/t/1246567#reply0",
@@ -2290,20 +2318,6 @@
    "score": 5.1,
    "rel": 6,
    "firstSeen": "2026-10-05"
-  },
-  {
-   "url": "https://huggingface.co/spaces/arudradey/qwen-image-2.1-uncensored-gguf",
-   "title": "Spaces 应用：arudradey/qwen-image-2.1-uncensored-gguf",
-   "titleEn": "",
-   "summary": "基于 Gradio 的 Spaces 应用，部署 Qwen-Image-2.1 未过滤 GGUF 模型。该应用支持本地化或轻量化图像生成，于 2026 年 9 月创建，累计获得 362 个点赞，便于用户体验去敏化模型能力。",
-   "type": "模型与推理",
-   "topic": "图像模型",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-08",
-   "score": 5.0,
-   "rel": 7,
-   "firstSeen": "2026-10-07"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1wxs1qa/made_a_kids_channel_about_emotions_with_a_child/",
