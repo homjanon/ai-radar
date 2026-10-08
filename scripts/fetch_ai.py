@@ -803,7 +803,15 @@ def _sys_prompt(smin, smax, mode, want_type=False):
     base = (
         f"② summary：{smin}~{smax} 字的中文摘要，讲清核心事实（谁做了什么 + 关键数字或结论）；"
         "信息完整优先于字数，不逐字照抄、不以半句截断。"
-        "③ rel/info/fresh：三个 0-10 的**整数**评分。"
+        "③ reason：40~60 字的**中文推荐理由**，回答「这条为什么值得我看」——"
+        "**不是复述内容**（那是 summary 的职责），而是点出它的**独特性**："
+        "给出了什么别处没有的信息 / 改变了什么既有认知 / 对什么人有直接用处。"
+        "写法参照："
+        "「原文用三个月随机田野实验区分了 AI 辅助产出与独立能力变化，给出初级与资深律师分化的具体证据。」"
+        "「官方公告说明了全球开放后订阅者能获得的实际能力变化，便于对比现有套餐选择。」"
+        "两种情形可原样留空：材料不足以支撑判断，或通读后确实平庸。**宁可留空，也不要写"
+        "「值得关注」「内容有价值」「信息量丰富」这类空话** —— 空话比没有更差。"
+        "④ rel/info/fresh：三个 0-10 的**整数**评分。"
         "**必须严格区分档位，不要普遍给高分** —— 实测若评分集中在 8-9 分，筛选就失去意义。各档定义："
         "rel（与 AI 前沿的相关度）：直接涉及大模型 / Agent / Skill / 论文 / 开源生态的**实质进展** = 8-10；"
         "行业应用、商业案例、人物观点、活动与招聘 = 5-7；与 AI 关联很弱或纯营销 = 0-4。"
@@ -811,7 +819,7 @@ def _sys_prompt(smin, smax, mode, want_type=False):
         "纯观点、宣传、入门科普 = 0-4。"
         "fresh（时效性）：首次发布或刚发生的事件 = 8-10；一周内的持续讨论 = 5-7；"
         "回顾、长期有效内容 = 0-4。"
-        "④ topic：4-8 字的中文主题标签（如 模型发布 / 开源权重 / Agent 框架 / 融资并购 / 政策监管 / 论文方法 / 工程实践）。"
+        "⑤ topic：4-8 字的中文主题标签（如 模型发布 / 开源权重 / Agent 框架 / 融资并购 / 政策监管 / 论文方法 / 工程实践）。"
         + (extra if want_type else "")
         + "只输出 JSON 数组本身，不要任何解释、不要 markdown 代码块。")
     tn = ",\"type\":形态" if want_type else ""
@@ -819,13 +827,13 @@ def _sys_prompt(smin, smax, mode, want_type=False):
         return ("你是 AI 技术情报编辑。输入是 JSON 数组 [{\"i\":序号,\"title\":英文标题,\"desc\":正文片段}]。"
                 "**本批全部条目均为英文。**"
                 "输出 JSON 数组 [{\"i\":序号,\"title\":中文标题,\"summary\":中文摘要,"
-                "\"rel\":整数,\"info\":整数,\"fresh\":整数,\"topic\":中文标签" + tn + "}]，规则："
+                "\"reason\":中文推荐理由,\"rel\":整数,\"info\":整数,\"fresh\":整数,\"topic\":中文标签" + tn + "}]，规则："
                 "① title：**必须译成简洁中文**（专有名词保留通用写法，如 GPT-6、Claude、LangChain），"
                 "不得原样保留英文、不得留英文残句。" + base)
     return ("你是 AI 技术情报编辑。输入是 JSON 数组 [{\"i\":序号,\"title\":中文标题,\"desc\":正文片段}]。"
             "**本批全部条目均为中文。**"
             "输出 JSON 数组 [{\"i\":序号,\"title\":标题,\"summary\":中文摘要,"
-            "\"rel\":整数,\"info\":整数,\"fresh\":整数,\"topic\":中文标签" + tn + "}]，规则："
+            "\"reason\":中文推荐理由,\"rel\":整数,\"info\":整数,\"fresh\":整数,\"topic\":中文标签" + tn + "}]，规则："
             "① title：**必须一字不改原样返回输入标题**，不要改写、不要润色、不要增删字词。" + base)
 
 
@@ -910,7 +918,7 @@ def _call_llm_batch(batch, tcfg, mode, want_type=False):
             "messages": [
                 {"role": "system", "content": sys_prompt},
                 {"role": "user", "content": json.dumps(
-                    [{"i": n, "title": i["title"], "desc": i["desc"][:400]}
+                    [{"i": n, "title": i["title"], "desc": i["desc"][:1200]}
                      for n, i in enumerate(batch)], ensure_ascii=False)},
             ],
             "temperature": 0.2,
@@ -953,6 +961,12 @@ def _call_llm_batch(batch, tcfg, mode, want_type=False):
                         n_title += 1
                 if s:
                     it["summary"] = s
+                # reason「推荐理由」（40~60 字）：学 AIHOT 的 reason 字段。
+                # summary 回答"讲了什么"，reason 回答"为什么值得看" —— 两者不同。
+                # 空值**不写入**字段（前端据此判断有无），也**不重试**：留空是允许的表达。
+                rs = str(row.get("reason") or "").strip()
+                if rs:
+                    it["reason"] = rs[:150]
                 try:
                     it["score"] = {
                         "rel": max(0, min(10, int(row.get("rel", 0)))),
@@ -1114,13 +1128,25 @@ def _keep_case(c, min_total, min_rel):
     return not (isinstance(r, (int, float)) and r < min_rel)
 
 
-# 重磅关键词（硬规则提级）：只保留**高精度**的词 —— 「发布 / 推出 / 政策」这类太常见，
-# 会把"发布一个活动计划"也提成重磅，那类判断交给 LLM 分数。命中即判 top，
-# 保证「我关心的那类事」一定浮到首屏，不受模型某次给分偏低的影响。
+# 重磅关键词（加分规则，2026-10-08 改）：「我关心的那类事」优先浮上来，但**必须靠分数**
+# 而不是靠特权。
+#
+# ⚠️ 为什么改（实测根因，别再退回旧写法）：原实现是「命中即判 top，且不受名额 cap_top 约束」。
+#    实测 11 天里 **10 天出现档位倒挂** —— top 最低分 6.5/6.7，而 watch 最高分 8.4/8.7，
+#    根因就是这两条：
+#      · `p-e-w/heretic`（6.7 分）、`LLM-OpenAI-Decisions 0.1a0`（6.5 分）—— 普通 GitHub 仓库，
+#        仅因标题含「开源」就被直通进 top，把真正 8.4 分的条目挤到 watch；
+#      · `kw_floor` 形同虚设：恰好卡在 6.5 线上，既没过滤掉低质，又比注释主张的 5.0 更严。
+#    改成「加成 +1.0 参与正常排序」后，用 11 份历史快照回放：**倒挂 10 天 → 0 天**，
+#    且 top 数量恒为 15 条（不减少）—— 关键词的召回作用保住了，特权没有了。
 TOP_KW = ("开源", "融资", "收购", "并购", "ipo", "反垄断", "监管",
           "open-source", "open source", "open weights", "open-weight",
           "release", "benchmark", "state-of-the-art", "sota", "breakthrough",
           "acquisition", "acquires", "raises", "funding round", "general availability")
+
+# 关键词加成分值。为什么是 1.0：实测 0.5 时两条边缘条目仍能压过 watch 头部；
+# 1.0 既能把这 14 天里真正重要的关键词条目抬进 top，又不足以让 6.5 分的仓促项目越级。
+KW_BONUS = 1.0
 
 
 def _total_of(it, tcfg):
@@ -1163,10 +1189,10 @@ def assign_levels(items, tcfg):
     q = tcfg.get("quota", {}) or {}
     floor_top = float(th.get("top", 8.0))
     floor_watch = float(th.get("watch", 6.5))
-    # 硬规则提级的分数下限：关键词能保证"不遗漏"，但也会误伤
-    # （实测「AI Engineering from Scratch 开源教程」仅 4.7 分却因含"开源"进了重磅）。
-    # 用宽松下限 5.0 兜住 —— 只挡明显低质/不相关的，不影响关键词的召回作用。
-    kw_floor = float(th.get("kw_floor", 5.0))
+    # 关键词加成的**参与下限**：低于此分的关键词条目不享受加成（视为不相关）。
+    # 定 7.0 的实测依据：watch 门槛是 6.5，加成 1.0 后为 7.5 —— 即"关键词必须先进到
+    # 值得关注级，加成才有意义"。旧值 6.5 与 watch 线重合，等于没设。
+    kw_floor = float(th.get("kw_floor", 7.0))
     n = len(items)
     cap_top = min(int(q.get("top_max", 15)),
                   max(int(q.get("top_min", 4)), round(n * float(q.get("top_ratio", 0.12)))))
@@ -1175,19 +1201,16 @@ def assign_levels(items, tcfg):
     for i in items:
         i["total"] = _total_of(i, tcfg)
         i["_kw"] = _hits_kw(i)
+        # 关键词加成：**加在参与排序的分数上，不改原始 total 语义**。
+        # 这样分数仍单调（不会出现低分排在高分前面），倒挂从机制上消失。
+        if i["_kw"] and i["total"] >= kw_floor:
+            i["total"] = round(min(10.0, i["total"] + KW_BONUS), 1)
+            i["kwBoost"] = True
 
     ranked = sorted(items, key=lambda x: -x["total"])
     n_top = n_watch = 0
-    # ① 硬规则命中的先占 top（不受名额限制 —— 这类"我关心的事"必须浮上来），
-    #    但仍要过 kw_floor，防低质内容靠关键词上位
+    # 统一按「分数 + 名额」分配 —— 不再有绕过 cap_top 的直通分支（倒挂根因）
     for i in ranked:
-        if i["_kw"] and i["total"] >= kw_floor:
-            i["level"] = "top"
-            n_top += 1
-    # ② 其余按分数 + 名额分配
-    for i in ranked:
-        if i.get("level"):
-            continue
         if n_top < cap_top and i["total"] >= floor_top:
             i["level"] = "top"
             n_top += 1
@@ -1196,9 +1219,17 @@ def assign_levels(items, tcfg):
             n_watch += 1
         else:
             i["level"] = "normal"
+    # 倒挂自检：top 的最低分**不该低于** watch 的最高分。越界说明分级逻辑又被绕过了。
+    # 之所以要这条：倒挂持续了 10 天没人发现，因为没有一处会喊出来。
+    tops = [x["total"] for x in items if x.get("level") == "top"]
+    wats = [x["total"] for x in items if x.get("level") == "watch"]
+    inv = (min(tops) < max(wats)) if (tops and wats) else False
+    if inv:
+        log(f"  ⚠️ 档位倒挂：top 最低 {min(tops):.1f} < watch 最高 {max(wats):.1f}"
+            f"（top {len(tops)} 条 / watch {len(wats)} 条）—— 请检查分级逻辑")
     for i in items:
         i.pop("_kw", None)
-    return n_top, n_watch
+    return n_top, n_watch, inv
 
 
 # --------------------------------------------------------------------------- #
@@ -1396,7 +1427,12 @@ def main():
             i["summary"] = i["desc"][:200]        # LLM 失败时降级用正文开头，绝不空窗
         if not i.get("titleCn") and not i["_translate_title"]:
             i["titleCn"] = ""
-    assign_levels(merged, tcfg)
+    n_top_chk, n_watch_chk, inverted = assign_levels(merged, tcfg)
+    if inverted:
+        # 记进产物（degraded 数组，与"降级源"同结构），让倒挂**可见**而不是静默。
+        # 实测倒挂持续 10 天没被发现，就是因为没有任何一处会喊出来。
+        degraded.append({"id": "_levels", "lane": "-",
+                         "reason": "档位倒挂：top 最低分低于 watch 最高分（分级逻辑异常）"})
 
     # ⑧a 正文翻译（只跑 top，见方案 §5）：必须在 assign_levels 之后 —— 它按 level 选条
     tr_body = translate_bodies(merged, tcfg)

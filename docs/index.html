@@ -243,6 +243,14 @@ h1 .hl{color:var(--acc);text-shadow:var(--hl-shadow)}
 .it .t1 a:hover{color:var(--acc);text-decoration:underline;text-decoration-color:var(--acc-link)}
 .it .t1 .en{display:block;font-family:var(--mono);font-size:10.5px;color:var(--fg3);font-weight:400;margin-top:3px;line-height:1.5;word-break:break-word}
 .it .sm{margin:7px 0 0;color:var(--fg2);font-size:13.2px;line-height:1.72}
+/* 推荐理由（2026-10-08）：与摘要**视觉分层**，但要弱于摘要 —— 摘要是「讲了什么」（主体信息），
+   推荐理由是编辑视角的旁注，不能抢主线的视觉权重。用左侧细线 + 弱色实现，
+   不引入新颜色变量（复用 --line2 / --fg3 / --mono，三套主题下均已定义）。 */
+.it .rz{margin:6px 0 0;padding-left:8px;border-left:2px solid var(--line2);
+        color:var(--fg3);font-size:12.4px;line-height:1.7}
+.it .rzlbl{font-family:var(--mono);font-size:9.5px;color:var(--fg4);letter-spacing:.1em;
+           margin-right:6px;text-transform:uppercase}
+.it .rzlbl::after{content:"·";margin-left:6px;color:var(--line2)}
 .it .meta{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-top:9px;font-family:var(--mono);font-size:10.5px;color:var(--fg3)}
 .it .meta .tg{border:1px solid var(--line2);border-radius:3px;padding:1px 6px;display:inline-flex;align-items:center;gap:5px}
 .it .meta .lv{font-weight:700;letter-spacing:.06em}
@@ -480,6 +488,10 @@ function itemHTML(i, idx){
       (altEn ? '<span class="en">' + esc(altEn) + '</span>' : '') +
     '</span></div>' +
     (i.summary ? '<p class="sm">' + esc(i.summary) + '</p>' : '') +
+    // 推荐理由（2026-10-08 加，学 AIHOT 的 reason 字段）：summary 答「讲了什么」，
+    // reason 答「为什么值得看」。**模型可合法留空**，所以有才渲染、无则整块不出现
+    // ——不要输出空段落占位。位置在摘要之后、展开按钮之前：先知道讲了啥，再看值不值得点开。
+    (i.reason ? '<p class="rz"><span class="rzlbl">推荐理由</span>' + esc(i.reason) + '</p>' : '') +
     (canOpen ? '<button class="exp" aria-expanded="false" title="展开全文">展开全文' +
         (i.descZh ? ' · 已译' : '') + '</button>' : '') +
     '<div class="meta">' + meta.join('') + '</div>' +

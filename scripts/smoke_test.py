@@ -452,6 +452,84 @@ def main():
         _short = 'See the note (opens in a new window).'
         check('opens in' not in F._clean_web_junk(_short),
               "短文本的行内提示也照清（不受安全阀影响）", problems)
+
+        # ---------- 用例 4e：档位倒挂（R1/R2，2026-10-08）----------
+        # 实测根因：TOP_KW 命中即「直通 top 且不受 cap_top 约束」。11 天里 10 天倒挂 ——
+        # top 最低 6.5/6.7，watch 最高 8.4/8.7。普通 GitHub 仓库 p-e-w/heretic（6.7 分）
+        # 仅因标题含「开源」就挤进 top，把 8.4 分的条目压到 watch。
+        print("\n[4e/4] 档位倒挂（关键词加成 vs 名额约束）")
+        _t = json.load(io.open(os.path.join(HERE, "sources.json"), encoding="utf-8"))["translate"]
+        check(float(_t["level_thresholds"].get("kw_floor", 0)) == 7.0,
+              f"kw_floor 已对齐为 7.0（实际 {_t['level_thresholds'].get('kw_floor')}）", problems)
+        check(float(_t["level_thresholds"].get("kw_floor", 0)) > float(_t["level_thresholds"]["watch"]),
+              "kw_floor 高于 watch 门槛（否则加成形同虚设）", problems)
+        check(getattr(F, "KW_BONUS", None) == 1.0,
+              f"KW_BONUS 关键词加成 = 1.0（实际 {getattr(F, 'KW_BONUS', None)}）", problems)
+
+        def _mk(n, tot, title, lane="official", kw=False):
+            """造一条待分级条目。kw 决定标题里是否埋关键词（触发加成）。"""
+            t = title if kw else ("普通条目" + str(n))
+            return {"title": t, "titleCn": "", "lane": lane, "desc": "x" * 400,
+                    "summary": "s", "score": {"rel": int(tot), "info": int(tot), "fresh": int(tot)},
+                    "total": 0.0}
+
+        # ① 关键词不能再「直通」：一条 6.6 分的「开源」条目不该压过 8.4 分的正常条目
+        #    6.6 + 1.0 = 7.6 < 8.0 —— 加成后仍不够 top，这才是正确行为
+        _its = [_mk(1, 8.9, "高分开源发布", kw=True), _mk(2, 8.4, "正常的重磅条目"),
+                _mk(3, 6.6, "某仓库", lane="community", kw=True),
+                _mk(4, 8.1, "另一条重磅"), _mk(5, 8.0, "第三条重磅"), _mk(6, 8.0, "第四条重磅")]
+        _nt, _nw, _inv = F.assign_levels(_its, _t)
+        _low = [i for i in _its if i["title"] == "某仓库"][0]
+        check(not _inv, "关键词低分条目未造成倒挂", problems)
+        check(_low["level"] != "top",
+              f"6.6 分的「开源」条目不再直通 top（实际 {_low['level']}）", problems)
+
+        # ② 关键词的召回作用必须保住：8.5 分的「开源」条目加成后应稳进 top
+        _its2 = [_mk(n, t, "普通") for n, t in [(1, 8.9), (2, 8.8), (3, 8.7), (4, 8.6)]]
+        _its2.append({"title": "重磅开源模型发布", "titleCn": "", "lane": "official",
+                      "desc": "x" * 400, "summary": "s",
+                      "score": {"rel": 8, "info": 8, "fresh": 8}, "total": 0.0})
+        F.assign_levels(_its2, _t)
+        _kwit = _its2[-1]
+        check(_kwit.get("level") == "top", "8.0 分的「开源」条目加成后进 top（召回作用保住）", problems)
+        check(_kwit.get("kwBoost") is True, "加成命中被标记 kwBoost（可追溯）", problems)
+
+        # ③ 加成要封顶在 10.0（否则 9.8 分的条目会被加成到 10.8，破坏刻度）
+        _its3 = [{"title": "开源超高分", "titleCn": "", "lane": "official", "desc": "x" * 400,
+                  "summary": "s", "score": {"rel": 10, "info": 10, "fresh": 10}, "total": 0.0}]
+        F.assign_levels(_its3, _t)
+        check(_its3[0]["total"] <= 10.0, f"加成后总分不超 10.0（实际 {_its3[0]['total']}）", problems)
+
+        # ④ 分数单调：top 的最低分不得低于 watch 的最高分（倒挂的定义）
+        _its4 = [_mk(n, 8.0 + (n % 3) * 0.1, "条目" + str(n)) for n in range(1, 13)]
+        _its4 += [{"title": f"开源仓库{i}", "titleCn": "", "lane": "community", "desc": "x" * 400,
+                   "summary": "s", "score": {"rel": 6, "info": 6, "fresh": 6}, "total": 0.0}
+                  for i in range(6)]
+        _nt4, _nw4, _inv4 = F.assign_levels(_its4, _t)
+        check(not _inv4, "混合低分关键词条目后仍不倒挂", problems)
+
+        # ---------- 用例 4f：reason「推荐理由」（R3，2026-10-08）----------
+        # 学 AIHOT 的 reason 字段：summary 答「讲了什么」，reason 答「为什么值得看」。
+        # 关键在于「空值不写入」—— 模型可以合法地留空，前端据此判断有无，不该显示空段落。
+        print("\n[4f/4] reason「推荐理由」字段")
+        _sp_en = F._sys_prompt(40, 80, "translate")
+        _sp_cn = F._sys_prompt(40, 80, "summarize")
+        check("reason" in _sp_en, "translate 提示词含 reason 字段", problems)
+        check("reason" in _sp_cn, "summarize 提示词含 reason 字段", problems)
+        check("空" in _sp_en and "空" in _sp_cn,
+              "提示词写明可留空（宁可留空也不写空话）", problems)
+        check("值得关注" in _sp_en, "提示词给反例（禁止「值得关注」类空话）", problems)
+        check("reason" in _sp_en.split("③")[1].split("④")[0]
+              and "reason" in _sp_cn.split("③")[1].split("④")[0],
+              "reason 位于 ③ 与 ④ 之间（编号未被打乱）", problems)
+        # 分片编号必须仍是 ①②③④⑤ 且 ④ 仍指打分（改动不能串号）
+        check("④ rel/info/fresh" in _sp_en and "④ rel/info/fresh" in _sp_cn,
+              "打分档编号仍为 ④（未被 reason 顶掉）", problems)
+        check("⑤ topic" in _sp_en and "⑤ topic" in _sp_cn,
+              "topic 档编号顺延为 ⑤", problems)
+        # 输入正文长度：400 字不够写"为什么值得看"，已提到 1200
+        _src = io.open(os.path.join(HERE, "fetch_ai.py"), encoding="utf-8").read()
+        check('i["desc"][:1200]' in _src, "喂给模型的正文片段已提到 1200 字", problems)
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
 
