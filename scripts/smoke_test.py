@@ -308,6 +308,25 @@ def main():
                   "descZh 确为中文（防模型原样回吐英文）", problems)
             check(not any("descZh" in i for i in items if i["level"] != "top"),
                   "非重磅条目一律不写 descZh", problems)
+
+            # ── 正文翻译的**独立模型链**（2026-10-08）──
+            # 背景：正文翻译改用 body.models 专用链，不再复用摘要链首模型。
+            # 这里有两条相反的要求要同时锁住：配置了专用链就用它、没配就回退全局链。
+            _tc = json.load(io.open(os.path.join(HERE, "sources.json"), encoding="utf-8"))["translate"]
+            _bc = _tc.get("body", {}).get("models")
+            check(bool(_bc), "sources.json 配置了正文翻译专用链 body.models", problems)
+            if _bc:
+                _names = [x["name"] for x in _bc]
+                check(_names[0] == "gemini-3.5-flash-lite",
+                      f"专用链首选 gemini-3.5-flash-lite（实际 {_names[0]}）", problems)
+                check("agnes-3.0-flash" not in _names,
+                      "专用链不含摘要链首模型（否则等于没分离）", problems)
+                check(all(x.get("key_env") and x.get("base") and x.get("model") for x in _bc),
+                      "专用链每档字段齐全（key_env/base/model）", problems)
+            # 回退：未配置专用链时必须仍能用全局链，老配置不能因此失效
+            _tc2 = json.loads(json.dumps(_tc))
+            _tc2.get("body", {}).pop("models", None)
+            check(_tc2.get("models"), "回退路径：全局链仍在，去掉 body.models 不会失控", problems)
         finally:
             shutil.rmtree(tmp2, ignore_errors=True)
 
@@ -397,6 +416,42 @@ def main():
         # ③ 安全阀：确实砍太多时整体放弃（宁可留垃圾，不可砍正文）
         _tiny = ':last-child]:mb-0"> \n \n A'      # 砍掉后只剩 1 字符 → 应回退
         check(F._clean_web_junk(_tiny) == _tiny, "砍太狠时回退（安全阀生效）", problems)
+
+        # ---------- 用例 4d：行内 UI 注释残留 ----------
+        # 2026-10-08 补：实测 4 条 openai.com 的 desc 里嵌着
+        #   `Problems \u2060(opens in a new window)` —— U+2060 WORD JOINER 拼无障碍提示。
+        # 它既不只在开头、也不是重复片段、更无 CSS 特征，前三条规则全都抓不到。
+        # 危害不止难看：它会**被模型忠实翻译**成「（在新窗口中打开）」混进中文译文。
+        print("\n[4d/4] 行内 UI 注释残留")
+        W = '\u2060'                                # WORD JOINER（不可见）
+        # ① 清得掉：实测的三种真实形态
+        _s = F._clean_web_junk(f'The Millennium Prize Problems {W}(opens in a new window) represent the deepest questions.')
+        check('opens in' not in _s and W not in _s and 'represent the deepest questions' in _s,
+              "清掉英文态 (opens in a new window) + U+2060，正文保留", problems)
+        _s = F._clean_web_junk(f'The Institute for Advanced Study {W}(opens in a new tab) to develop practices.')
+        check('opens in' not in _s and 'to develop practices' in _s,
+              "清掉 new tab 变体", problems)
+        _s = F._clean_web_junk('千禧年七大数学难题\u2060（在新窗口中打开）代表了数学前沿。')
+        check('在新窗口' not in _s and '代表了数学前沿' in _s,
+              "清掉中文态（在新窗口中打开）", problems)
+        # ② 不动正文：这些词出现在正常语境里，绝不能被削
+        for _name, _txt in [
+            ("正文提到浏览窗口", "Open the report in a new window to compare results." + PAD),
+            ("正文提到 tab 键", "Press the tab key to move between fields." + PAD),
+            ("正文含 new tab 短语但非提示", "A new tab group feature shipped last week." + PAD),
+        ]:
+            check(F._clean_web_junk(_txt) == _txt.strip(), f"不误伤{_name}", problems)
+        # ③ 多处命中也该清干净（长文里同一提示可能重复出现）
+        _multi = (f'A {W}(opens in a new window) and B {W}(opens in a new window) and '
+                  f'C {W}(opens in a new window) end.' + PAD)
+        _m = F._clean_web_junk(_multi)
+        check('opens in' not in _m and W not in _m and _m.startswith('A and B and C end.'),
+              "同一行内多次出现也全部清掉", problems)
+        # ④ 行内清理**不参与安全阀**：短文本也不该被回退掉
+        #    （安全阀只统计结构清洗量，行内提示是固定短语，不该拖累它）
+        _short = 'See the note (opens in a new window).'
+        check('opens in' not in F._clean_web_junk(_short),
+              "短文本的行内提示也照清（不受安全阀影响）", problems)
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
 

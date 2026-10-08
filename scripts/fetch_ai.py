@@ -167,17 +167,40 @@ def _clean_web_junk(s):
       · `:last-child]:mb-0"> `        —— 被截断的 Tailwind 类名
       · `Loading…`                     —— SPA 占位符
       · 目录/导航块（短语重复）          —— "Share The problem The problem The result …"
+      · `\u2060(opens in a new window)` —— 行内嵌的无障碍链接提示（见下）
     后果不只是难看：这些垃圾会被送进 LLM 当正文，摘要和翻译都跟着走偏
     （实测 top 的 7 条译文里有 3 条开头带碎片）。
 
-    三条硬约束（避免误伤正文 —— 误删正文比漏清垃圾严重得多）：
-      ① 只动**开头**和**结尾**，正文中段一律不碰；
-      ② 只有**明确像代码/占位符/重复导航**的才删，不做通用清洗；
-      ③ 删除量超过原文 30% 就整体放弃 —— 宁可留垃圾，不可砍正文。
+    ★ 2026-10-08 补第 4 类：行内 UI 注释。
+      实测 4 条 openai.com 的 desc 里嵌着 `Problems \u2060(opens in a new window)`：
+      一个 U+2060 WORD JOINER（不可见）拼上无障碍提示文字。前三条规则抓不到它 ——
+      既不只出现在开头、也不是重复片段、更不含 CSS 特征。
+      更麻烦的是它会**被模型忠实翻译**成「（在新窗口中打开）」混进中文译文，
+      等于网页 UI 文案被翻译成了中文出现在正文里。
+      这类是纯粹的 UI 附属文字，**行内删除不影响任何语义**，所以就地摘掉。
+
+    四条硬约束（避免误伤正文 —— 误删正文比漏清垃圾严重得多）：
+      ① 只动**开头**/**结尾**/**明确的行内 UI 注释**，正文中段文字一律不碰；
+      ② 只有**明确像代码/占位符/重复导航/UI 注释**的才删，不做通用清洗；
+      ③ 删除量超过原文 30% 就整体放弃 —— 宁可留垃圾，不可砍正文；
+      ④ 规则 4 的删除量不计入安全阀统计（它删的是不可见字符与固定短语，
+         长度极小但可能出现在长文中段，按原比例会被误判）。
     """
     if not s:
         return s
     orig = s
+    # ── 0) 行内 UI 注释（先做，因为它会污染后续所有匹配）──
+    #    0a) U+2060(WORD JOINER) / U+FEFF(BOM) / U+200B(ZWSP)：纯不可见，无任何语义。
+    #        只删这三个 —— 不断然扩到全部 Cf 类，避免误伤（如 U+200D 在 emoji 里是有意义的）。
+    s = re.sub(r'[\u2060\ufeff\u200b]', '', s)
+    #    0b) 英文态无障碍提示：`(opens in a new window)` / `(opens in new tab)`
+    #        允许前面有空格，括号可有可无（实测两种都出现过）。
+    s = re.sub(r'\s*\(?\s*opens?\s+in\s+(?:a\s+)?new\s+(?:window|tab)\s*\)?',
+               '', s, flags=re.I)
+    #    0c) 中文态兜底：模型可能已把它翻成中文存进 descZh，或某些源本身给中文提示
+    s = re.sub(r'\s*[（(]\s*在新窗口(?:中)?打开\s*[）)]', '', s)
+    s = re.sub(r'\s*[（(]\s*在新标签页?中?打开\s*[）)]', '', s)
+    orig_core, s_core = orig, s      # 供安全阀只统计"结构清洗"的删除量
     # 循环收敛：清掉一层碎片后可能露出下一层（实测 "Loading… Share <目录>" 要清两轮），
     # 直到不再变化为止。上限 4 轮，防病态输入空转。
     for _ in range(4):
@@ -203,8 +226,20 @@ def _clean_web_junk(s):
     if tail and _is_nav_fragment(tail.group(0)):
         s = s[:tail.start()].rstrip()
     # ── 安全阀：砍太多就整体放弃（宁可留垃圾，不可砍正文）──
-    if orig and len(s) < len(orig) * 0.7:
-        return orig.strip()
+    #    只统计**结构清洗**（规则1~5）的删除量，不含规则 0 的行内 UI 注释：
+    #    后者是固定短语，在长文里可能命中多次，按原比例算会把好正文误判成"砍太狠"。
+    if s_core and len(s) < len(s_core) * 0.7:
+        # 结构清洗触发安全阀 → 退回"只做了行内注释处理"的版本
+        return _strip_inline_ui(orig_core)
+    return s.strip()
+
+
+def _strip_inline_ui(s):
+    """只做行内 UI 注释清理，不动结构 —— 安全阀回退路径。"""
+    s = re.sub(r'[\u2060\ufeff\u200b]', '', s or '')
+    s = re.sub(r'\s*\(?\s*opens?\s+in\s+(?:a\s+)?new\s+(?:window|tab)\s*\)?', '', s, flags=re.I)
+    s = re.sub(r'\s*[（(]\s*在新窗口(?:中)?打开\s*[）)]', '', s)
+    s = re.sub(r'\s*[（(]\s*在新标签页?中?打开\s*[）)]', '', s)
     return s.strip()
 
 
@@ -623,10 +658,22 @@ def _body_sys_prompt():
 
 
 def _call_body_batch(batch, tcfg):
-    """翻一批正文。返回 (模型名, 是否成功, 实际请求数)。"""
+    """翻一批正文。返回 (模型名, 是否成功, 实际请求数)。
+
+    ★ 2026-10-08：改用**独立模型链**（body.models），与摘要/打分链物理分离。
+      分工依据（学自 portfolio 的「导语由下一个模型生成」）：
+        · 摘要链首模型 agnes-3.0-flash 是推理模型，长输入易 90s 超时；
+          正文比摘要长一个量级（实测 5 条 × 1200 字），把它摘出去两头受益；
+        · 两条链走不同的 Key 配额池（agnes 不限量 / gemini 约 20 RPD），
+          一条限流不拖累另一条；
+        · 首选 gemini-3.5-flash-lite（最轻），gemini-3-flash、agnes-2.5-flash 顺延备用。
+      回退：body.models 未配置时仍用全局链，保证老配置不会因此失效。
+    """
+    bcfg = tcfg.get("body") or {}
+    chain = bcfg.get("models") or tcfg.get("models", [])
     sys_prompt = _body_sys_prompt()
     tried = 0
-    for m in tcfg.get("models", []):
+    for m in chain:
         if m["name"] in _DEAD_MODELS:
             continue
         key = os.environ.get(m.get("key_env", ""))

@@ -22,6 +22,12 @@
       "body_min_chars": 300,
       "body_max_chars": 1200,
       "max_items": 20,
+      "models": [
+        { "name": "gemini-3.5-flash-lite", "base": "https://generativelanguage.googleapis.com/v1beta/openai", "model": "gemini-3.5-flash-lite", "key_env": "GEMINI_API_KEY" },
+        { "name": "gemini-3-flash", "base": "https://generativelanguage.googleapis.com/v1beta/openai", "model": "gemini-3-flash-preview", "key_env": "GEMINI_API_KEY" },
+        { "name": "agnes-2.5-flash", "base": "https://apihub.agnes-ai.com/v1", "model": "agnes-2.5-flash", "key_env": "AGNES_API_KEY" }
+      ],
+      "models_note": "正文翻译**独立链**（2026-10-08 加），与上面的摘要/打分链物理分离。三个理由：① 摘要链首模型 agnes-3.0-flash 是推理模型，长输入易 90s 超时，而正文比摘要长一个量级（5×1200 字），把它从正文链摘出去两头都受益；② 两条链走**不同的 Key 配额池**，一条限流不拖累另一条；③ 首模型让给 gemini-3.5-flash-lite（最轻，省额度），其余顺延备用。⚠️ gemini 免费额度约 20 RPD 且与 news-feed 共用同一个 GEMINI_API_KEY —— 本链每轮仅 2 批调用（7 条 top），占用可控；但若把翻译范围扩到 paper/community（约 8 批）会直接吃光额度，扩展前必须先核实当日剩余额度。",
       "note": "只对 level=top 的英文长文翻正文，产出 descZh（前端据此出现「中文/原文」切换）。batch_size 取 5：正文长，25 条/批会顶到 max_tokens 被截断。body_max_chars 是翻译时的临时截断（翻完还原），不影响产物里的完整 desc。失败即不写 descZh，前端自动回退显示原文 —— 翻译是增益不是依赖。整体开关，关掉它标题/摘要/打分/分级全部照常。"
     },
     "level_thresholds": { "top": 8.0, "watch": 6.5, "kw_floor": 6.5 },

@@ -235,7 +235,6 @@ h1 .hl{color:var(--acc);text-shadow:var(--hl-shadow)}
 .it.rep{border-style:dashed;background:var(--panel2);box-shadow:none}
 .it.rep .t1{font-weight:500;color:var(--fg2)}
 .it.rep .sm{color:var(--fg3)}
-.it.rep .sm2{color:var(--fg4)}
 .it.rep:hover{background:var(--panel)}
 .it .t1{font-size:15px;font-weight:600;color:var(--title);line-height:1.5;display:flex;gap:8px;align-items:flex-start}
 .it .t1 .mk{font-family:var(--mono);color:var(--fg4);flex:0 0 auto;font-size:12px;line-height:1.75}
@@ -244,7 +243,6 @@ h1 .hl{color:var(--acc);text-shadow:var(--hl-shadow)}
 .it .t1 a:hover{color:var(--acc);text-decoration:underline;text-decoration-color:var(--acc-link)}
 .it .t1 .en{display:block;font-family:var(--mono);font-size:10.5px;color:var(--fg3);font-weight:400;margin-top:3px;line-height:1.5;word-break:break-word}
 .it .sm{margin:7px 0 0;color:var(--fg2);font-size:13.2px;line-height:1.72}
-.it .sm2{margin:6px 0 0;color:var(--fg3);font-size:12.4px;line-height:1.68}
 .it .meta{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-top:9px;font-family:var(--mono);font-size:10.5px;color:var(--fg3)}
 .it .meta .tg{border:1px solid var(--line2);border-radius:3px;padding:1px 6px;display:inline-flex;align-items:center;gap:5px}
 .it .meta .lv{font-weight:700;letter-spacing:.06em}
@@ -303,6 +301,17 @@ details.more .list{padding:0 10px 12px}
 .empty{padding:44px 18px;text-align:center;font-family:var(--mono);color:var(--fg3);font-size:12.5px;line-height:2}
 .empty .b{color:var(--fg4);font-size:26px;display:block;margin-bottom:10px}
 
+/* AIHOT 外链条：低调、不抢主内容 */
+.ext{margin-top:22px;display:flex;align-items:center;gap:0;flex-wrap:wrap;
+     font-family:var(--mono);font-size:10.5px}
+.ext .extlbl{color:var(--fg4);letter-spacing:.14em;margin-right:10px;
+     border:1px solid var(--line2);border-radius:3px;padding:2px 7px;background:var(--panel2)}
+.ext a{color:var(--fg3);text-decoration:none;padding:3px 10px;
+     border:1px solid var(--line);border-right-width:0;background:var(--panel)}
+.ext a:first-of-type{border-radius:3px 0 0 3px}
+.ext a:last-of-type{border-right-width:1px;border-radius:0 3px 3px 0}
+.ext a:hover{color:var(--acc);border-color:var(--acc-line);background:var(--tint-a)}
+
 .ft{margin-top:34px;padding-top:14px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10.5px;color:var(--fg3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
     padding-bottom:env(safe-area-inset-bottom)}
 .hide{display:none!important}
@@ -350,6 +359,16 @@ details.more .list{padding:0 10px 12px}
 
   <div id="view-brief"></div>
   <div id="view-cases" class="hide"></div>
+
+  <!-- AIHOT 外链（2026-10-08 加）：这三个板块我们不重复造轮子，直接跳转复用。
+       注意：AIHOT 的 /leaderboard 等页面被 Cloudflare 拦非浏览器请求（curl 得 403），
+       但**浏览器点击跳转不受影响** —— 所以只做链接、不做数据接入。 -->
+  <div class="ext">
+    <span class="extlbl">AIHOT ↗</span>
+    <a href="https://aihot.news/leaderboard" target="_blank" rel="noopener noreferrer">模型榜</a>
+    <a href="https://aihot.news/hot" target="_blank" rel="noopener noreferrer">热度榜</a>
+    <a href="https://aihot.news/all" target="_blank" rel="noopener noreferrer">全部动态</a>
+  </div>
 
   <div class="ft">
     <span>ai-radar · 源基线由 Actions 侧探测确认 · 选条走硬规则、表达由 LLM</span>
@@ -449,10 +468,9 @@ function itemHTML(i, idx){
   if (i.descFrom) meta.push('<span class="sta">正文已补抓</span>');
   if (i.descZh) meta.push('<span class="sta" style="color:var(--acc)">已译</span>');
 
-  var desc = (i.desc && i.desc !== i.summary) ? String(i.desc) : '';
-  // 列表里预览的是**中文**优先：有译文就预览译文，否则预览原文
-  var prevSrc = i.descZh || desc;
-  var prev = prevSrc ? prevSrc.slice(0, 220) : '';
+  // 列表区**不再预览正文**（2026-10-08 改）：原先「摘要 → 正文前220字 → 点开展开全文」
+  // 是三层重复，而中间那层被展开态完全包含，纯冗余。现在只留「摘要 + 展开按钮」：
+  // 看完摘要有兴趣再点开。正文与译文只在展开态出现。
   var canOpen = hasBody(i);
 
   return '<article class="it ' + esc(i.level || '') + (i.isRepeat ? ' rep' : '') +
@@ -462,9 +480,8 @@ function itemHTML(i, idx){
       (altEn ? '<span class="en">' + esc(altEn) + '</span>' : '') +
     '</span></div>' +
     (i.summary ? '<p class="sm">' + esc(i.summary) + '</p>' : '') +
-    (prev ? '<p class="sm2">' + esc(prev) + (prevSrc.length > 220 ? '…' : '') + '</p>' : '') +
-    (canOpen ? '<button class="exp" aria-expanded="false" title="展开全文">' +
-        (i.descZh ? '读全文 · 已译' : '读全文') + '</button>' : '') +
+    (canOpen ? '<button class="exp" aria-expanded="false" title="展开全文">展开全文' +
+        (i.descZh ? ' · 已译' : '') + '</button>' : '') +
     '<div class="meta">' + meta.join('') + '</div>' +
     (canOpen ? '<div class="detail hide" data-detail="' + idx + '"></div>' : '') +
   '</article>';
