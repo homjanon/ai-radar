@@ -21,6 +21,7 @@ import email.utils as eu
 import io
 import json
 import os
+import re
 import shutil
 import sys
 import tempfile
@@ -151,6 +152,13 @@ def run(tmp, llm_stub):
                     it["apptype"] = "Web 应用"
             return "stub-model", True, 1
         F._call_llm_batch = fake_batch
+
+        # 正文翻译（T1）：同样打桩，产出真含中文的 descZh
+        def fake_body_batch(batch, tcfg):
+            for it in batch:
+                it["descZh"] = "【译文】" + (it["desc"] or "")[:80] + "……这是正文的中文译文。"
+            return "stub-body", True, 1
+        F._call_body_batch = fake_body_batch
     else:
         for k in ("GEMINI_API_KEY", "AGNES_API_KEY"):
             os.environ.pop(k, None)
@@ -287,6 +295,19 @@ def main():
                   f"库里 apps 条目分数均达门槛（{len(apps_c)} 条）", problems)
             check(all(c.get("rel", 99) >= 3 for c in apps_c),
                   "库里 apps 条目 rel 均达门槛", problems)
+
+            # ── 正文翻译（T1）：只该落在 top 的英文长文上 ──
+            check("translator_body" in d, "产物带 translator_body 字段", problems)
+            zh_it = [i for i in items if i.get("descZh")]
+            check(bool(zh_it), f"有 top 条目产出中文正文（{len(zh_it)} 条）", problems)
+            check(all(i["level"] == "top" for i in zh_it),
+                  "descZh 只出现在重磅条目上（不误伤其他分级）", problems)
+            check(all(len(i["desc"]) >= 300 for i in zh_it),
+                  "只有长正文才被翻译（短正文不做无谓调用）", problems)
+            check(all(re.search(r"[\u4e00-\u9fff]", i["descZh"]) for i in zh_it),
+                  "descZh 确为中文（防模型原样回吐英文）", problems)
+            check(not any("descZh" in i for i in items if i["level"] != "top"),
+                  "非重磅条目一律不写 descZh", problems)
         finally:
             shutil.rmtree(tmp2, ignore_errors=True)
 

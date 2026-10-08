@@ -3,7 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="color-scheme" content="light">
+<meta name="color-scheme" content="light dark">
+<!-- theme-color：浅色给「米白底」，深色给「近黑底」——手机浏览器地址栏/状态栏跟着变，
+     否则深色模式下顶部会留一条刺眼的浅色带 -->
+<meta name="theme-color" content="#e7e0d3" media="(prefers-color-scheme:light)">
+<meta name="theme-color" content="#12151a" media="(prefers-color-scheme:dark)">
 <title>AI 前沿雷达 · ai-radar</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%230f766e'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='%23fbf8f2' font-family='monospace'>&gt;_</text></svg>">
 <style>
@@ -50,6 +54,75 @@
   --chip-bg:rgba(120,104,80,.05); --chip-bg-h:rgba(120,104,80,.11); --chip-line:#c2b69e;
   --mono:ui-monospace,"JetBrains Mono","Cascadia Mono","SF Mono",Menlo,Consolas,"Microsoft YaHei UI",monospace;
   --sans:"Microsoft YaHei UI","PingFang SC",-apple-system,"Segoe UI",sans-serif;
+  /* 别名：补齐 AIHOT 有的语义名。只加不改，避免大范围替换现有变量。 */
+  --line-strong:var(--line2); --line-soft:var(--line);
+  --ok:#0d6a63; --ok-line:var(--acc-line); --ok-tint:var(--tint-a);
+  /* 版式尺度：详情正文单独限宽，避免超宽行（一行超过 ~80 字符眼睛要来回找行首） */
+  --wrap-max:1180px; --read-max:76ch;
+}
+
+/* ══ 深色模式 ══════════════════════════════════════════════════════════
+   双层结构（照 AIHOT）：[data-theme] 显式指定 > prefers-color-scheme 自动跟随。
+   浅色是「米白纸感」，深色对应物是「近黑终端」——不带蓝味，否则和墨绿强调色打架。
+   本版只做自动跟随（手动切换钮属档位三，见方案 §2）。 */
+[data-theme="dark"]{
+  --bg:#12151a;          /* 桌面底：近黑，略带中性灰 */
+  --stage:#1a1f26;       /* 窗口正文 */
+  --stage-bot:#171c22;
+  --panel:#20262e;
+  --panel2:#252c35;
+  --card:#1d232a;
+  --card-bot:#1a2027;
+  --line:#2c323a; --line2:#3a424b; --line3:#4b545f;
+  --fg:#e6e3dc; --fg2:#b9b3a8; --fg3:#9a9488; --fg4:#7d776c;
+  --acc:#2dd4bf;         /* 深底上墨绿会糊，提亮到青绿 */
+  --acc2:#7aa2ff;        /* 靛蓝在深底同样要提亮 */
+  --amber:#f5b544; --red:#fb7185;
+  --l-model:#67e8f9; --l-official:#a5b4fc; --l-apps:#2ee6a8; --l-paper:#c4b5fd;
+  --l-community:#f9a8d4; --l-media:#fcd34d; --l-cn:#fda4af;
+  --on-acc:#0b0f14;      /* 强调底上的文字：深色下反相成近黑 */
+  --title:#f2efe8;
+  --grid:rgba(255,255,255,.022);
+  --scan:rgba(255,255,255,.028);
+  /* 深底上投影看不见，改用「描边 + 冷光」表达层次（--hl-shadow 从 none 变成微光） */
+  --term-shadow:0 0 0 1px rgba(120,160,180,.14),0 24px 52px -34px rgba(0,0,0,.85);
+  --card-shadow:0 1px 0 rgba(255,255,255,.03),0 8px 20px -18px rgba(0,0,0,.7);
+  --hl-shadow:0 0 14px rgba(45,212,191,.28);
+  --tint-a:rgba(45,212,191,.10);
+  --tint-b:rgba(45,212,191,.17);
+  --acc-line:rgba(45,212,191,.38);
+  --acc-link:rgba(45,212,191,.6);
+  --acc2-line:rgba(122,162,255,.36); --acc2-tint:rgba(122,162,255,.10);
+  --red-line:rgba(251,113,133,.38);  --red-tint:rgba(251,113,133,.09);
+  --amber-line:rgba(245,181,68,.36); --amber-tint:rgba(245,181,68,.10);
+  --chip-bg:rgba(255,255,255,.045); --chip-bg-h:rgba(255,255,255,.10); --chip-line:#454e59;
+  --line-strong:var(--line2); --line-soft:var(--line);
+  --ok:#2ee6a8; --ok-line:var(--acc-line); --ok-tint:var(--tint-a);
+}
+
+/* 跟随系统（未显式指定 data-theme 时才生效，这样将来加手动钮不会被媒体查询覆盖） */
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#12151a; --stage:#1a1f26; --stage-bot:#171c22;
+    --panel:#20262e; --panel2:#252c35; --card:#1d232a; --card-bot:#1a2027;
+    --line:#2c323a; --line2:#3a424b; --line3:#4b545f;
+    --fg:#e6e3dc; --fg2:#b9b3a8; --fg3:#9a9488; --fg4:#7d776c;
+    --acc:#2dd4bf; --acc2:#7aa2ff; --amber:#f5b544; --red:#fb7185;
+    --l-model:#67e8f9; --l-official:#a5b4fc; --l-apps:#2ee6a8; --l-paper:#c4b5fd;
+    --l-community:#f9a8d4; --l-media:#fcd34d; --l-cn:#fda4af;
+    --on-acc:#0b0f14; --title:#f2efe8;
+    --grid:rgba(255,255,255,.022); --scan:rgba(255,255,255,.028);
+    --term-shadow:0 0 0 1px rgba(120,160,180,.14),0 24px 52px -34px rgba(0,0,0,.85);
+    --card-shadow:0 1px 0 rgba(255,255,255,.03),0 8px 20px -18px rgba(0,0,0,.7);
+    --hl-shadow:0 0 14px rgba(45,212,191,.28);
+    --tint-a:rgba(45,212,191,.10); --tint-b:rgba(45,212,191,.17);
+    --acc-line:rgba(45,212,191,.38); --acc-link:rgba(45,212,191,.6);
+    --acc2-line:rgba(122,162,255,.36); --acc2-tint:rgba(122,162,255,.10);
+    --red-line:rgba(251,113,133,.38);  --red-tint:rgba(251,113,133,.09);
+    --amber-line:rgba(245,181,68,.36); --amber-tint:rgba(245,181,68,.10);
+    --chip-bg:rgba(255,255,255,.045); --chip-bg-h:rgba(255,255,255,.10); --chip-line:#454e59;
+    --ok:#2ee6a8; --ok-line:var(--acc-line); --ok-tint:var(--tint-a);
+  }
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;padding:0}
@@ -66,7 +139,19 @@ body::after{ /* 极轻扫描线，只做质感、不干扰阅读 */
   background:repeating-linear-gradient(0deg,var(--scan) 0 1px,transparent 1px 3px);
   opacity:.55;
 }
-.wrap{max-width:1180px;margin:0 auto;padding:0 18px 72px}
+/* 深色下扫描线相对更亮，压一档，否则像屏幕脏了 */
+@media (prefers-color-scheme:dark){ body::after{opacity:.38} }
+[data-theme="dark"] body::after{opacity:.38}
+[data-theme="light"] body::after{opacity:.55}
+
+/* ── A2 手机安全区 ──────────────────────────────────
+   viewport-fit=cover 已在 <meta> 里（第 5 行），但没配 env() —— 于是 iPhone 横屏/
+   刘海屏左侧会被切掉几个像素。max() 保证：安全区为 0 时退回原内边距，不影响桌面。 */
+.wrap{max-width:var(--wrap-max);margin:0 auto;
+      padding-top:0;
+      padding-left:max(18px, env(safe-area-inset-left));
+      padding-right:max(18px, env(safe-area-inset-right));
+      padding-bottom:calc(72px + env(safe-area-inset-bottom));}
 
 /* ── 终端窗框 ─────────────────────────────────────── */
 .term{
@@ -83,9 +168,9 @@ body::after{ /* 极轻扫描线，只做质感、不干扰阅读 */
 .online::before{content:"●";margin-right:5px;animation:blink 2.4s steps(1) infinite}
 /* 三态：ONLINE 今日已更新 / STALE 超 24h 未更新 / OFFLINE 数据读取失败。
    原实现是纯装饰（绿灯恒闪、与数据无关），抓取全失败也显示 ONLINE —— 假信号。 */
-.online.warn{color:var(--amber);border-color:#e2cfa8;background:#fdf8ee}
+.online.warn{color:var(--amber);border-color:var(--amber-line);background:var(--amber-tint)}
 .online.warn::before{animation:none}
-.online.off{color:var(--red);border-color:#e0b4b4;background:#fbf2f2}
+.online.off{color:var(--red);border-color:var(--red-line);background:var(--red-tint)}
 .online.off::before{animation:none}
 @keyframes blink{0%,62%{opacity:1}63%,100%{opacity:.22}}
 
@@ -171,6 +256,28 @@ h1 .hl{color:var(--acc);text-shadow:var(--hl-shadow)}
 .it .meta .at{color:var(--acc);border-color:var(--acc-line)}
 .it .meta .sta{color:var(--fg3)}
 
+/* ── 条目详情（内联展开，不跳页）────────────────────
+   原实现把 desc 截到 220 字就没了，全文其实已经在 latest.json 里（上限 2000 字），
+   白存着。这里补一个展开入口，读到全文的成本从「点外链、等加载、找正文」降到 0。 */
+.it{ cursor:pointer }
+.it .exp{font-family:var(--mono);font-size:10.5px;color:var(--acc);background:none;border:1px solid var(--acc-line);
+         border-radius:3px;padding:1px 7px;cursor:pointer;margin-top:9px;transition:.15s;letter-spacing:.04em}
+.it .exp:hover{background:var(--tint-a)}
+.it .exp::before{content:"▸ "}
+.it.open .exp::before{content:"▾ "}
+.detail{margin-top:11px;padding-top:11px;border-top:1px dashed var(--line2)}
+.detail .dbody{color:var(--fg2);font-size:13.2px;line-height:1.85;white-space:pre-wrap;word-break:break-word;
+               max-width:var(--read-max)}
+.detail .dbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;
+              font-family:var(--mono);font-size:10px;color:var(--fg4);letter-spacing:.08em}
+.detail .sw{font-family:var(--mono);font-size:10.5px;color:var(--fg2);background:var(--chip-bg);border:1px solid var(--chip-line);
+            border-radius:3px;padding:1px 8px;cursor:pointer;transition:.15s}
+.detail .sw.on{color:var(--on-acc);background:var(--acc);border-color:var(--acc);font-weight:600}
+.detail .sw:hover{border-color:var(--line3)}
+.detail .dnote{color:var(--fg4);font-size:10.5px;font-family:var(--mono);margin-top:10px}
+.detail .dlink{color:var(--acc);font-family:var(--mono);font-size:10.5px;text-decoration:none;border-bottom:1px dotted var(--acc-link)}
+.detail .dlink:hover{border-bottom-style:solid}
+
 details.more{border:1px solid var(--line);border-radius:6px;background:var(--panel);margin-top:4px}
 details.more>summary{cursor:pointer;list-style:none;padding:11px 14px;font-family:var(--mono);font-size:11.5px;color:var(--fg3);letter-spacing:.08em}
 details.more>summary::-webkit-details-marker{display:none}
@@ -183,7 +290,7 @@ details.more .list{padding:0 10px 12px}
 /* ── 案例库 ───────────────────────────────────────── */
 .cases{display:grid;grid-template-columns:repeat(auto-fill,minmax(278px,1fr));gap:11px;padding:18px 18px 0}
 .case{position:relative;border:1px solid var(--line);border-radius:6px;background:linear-gradient(180deg,var(--card),var(--card-bot));box-shadow:var(--card-shadow);padding:14px 15px;display:flex;flex-direction:column;gap:7px;transition:border-color .16s,box-shadow .16s,transform .16s}
-.case:hover{border-color:var(--acc-line);transform:translateY(-2px);box-shadow:0 14px 28px -20px rgba(60,48,30,.42)}
+.case:hover{border-color:var(--acc-line);transform:translateY(-2px);box-shadow:0 14px 28px -20px rgba(0,0,0,.34)}
 .case .ct{font-size:14px;font-weight:600;color:var(--title);line-height:1.5}
 .case .ct a{color:inherit;text-decoration:none}
 .case .ct a:hover{color:var(--acc)}
@@ -196,11 +303,14 @@ details.more .list{padding:0 10px 12px}
 .empty{padding:44px 18px;text-align:center;font-family:var(--mono);color:var(--fg3);font-size:12.5px;line-height:2}
 .empty .b{color:var(--fg4);font-size:26px;display:block;margin-bottom:10px}
 
-.ft{margin-top:34px;padding-top:14px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10.5px;color:var(--fg3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.ft{margin-top:34px;padding-top:14px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10.5px;color:var(--fg3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding-bottom:env(safe-area-inset-bottom)}
 .hide{display:none!important}
 
 @media(max-width:640px){
-  .wrap{padding:0 11px 56px}
+  .wrap{padding-left:max(11px, env(safe-area-inset-left));
+        padding-right:max(11px, env(safe-area-inset-right));
+        padding-bottom:calc(56px + env(safe-area-inset-bottom))}
   .head{padding:18px 16px 16px}
   h1{font-size:22px}
   .stat{grid-template-columns:repeat(2,1fr)}
@@ -214,6 +324,9 @@ details.more .list{padding:0 10px 12px}
   .tab{padding:11px 13px;font-size:12px}
   .it{padding:11px 12px 11px 13px}
   .it .t1{font-size:13.6px}
+  .detail .dbody{font-size:12.8px;line-height:1.8}
+  /* 手机端：点开的条目吸顶一小段，长正文滚动时始终看得到「收起」 */
+  .it.open .t1{position:sticky;top:0;background:var(--card);z-index:2}
 }
 </style>
 </head>
@@ -290,7 +403,30 @@ function renderStat(d, casesN){
 }
 
 /* ── 条目 ─────────────────────────────────────────── */
-function itemHTML(i){
+/* 是否有正文可读：desc 与 summary 不同、且够长（太短的当摘要重复，不值得展开） */
+function hasBody(i){ return !!(i.desc && i.desc !== i.summary && String(i.desc).length > 120); }
+
+/* 详情正文区：中文译文优先。有 descZh 才出现「中文 / 原文」切换钮（见 T1）。 */
+function bodyHTML(i, which){
+  var zh = i.descZh || '';
+  var en = String(i.desc || '');
+  var useZh = (which === 'zh') || (!which && zh);
+  var txt = useZh ? zh : en;
+  var sw = zh
+    ? '<button class="sw' + (useZh ? ' on' : '') + '" data-w="zh">中文</button>' +
+      '<button class="sw' + (useZh ? '' : ' on') + '" data-w="en">原文</button>'
+    : '';
+  return '<div class="dbar">' +
+      '<span>' + (useZh ? '正文 · 译文' : '正文 · 原文' + (i.descLang ? '（' + esc(i.descLang) + '）' : '')) + '</span>' +
+      sw +
+      '<span style="margin-left:auto">' + txt.length + ' 字</span>' +
+    '</div>' +
+    '<div class="dbody">' + esc(txt) + '</div>' +
+    '<div class="dnote">正文由抓取管道补抓后截取（上限 2000 字），非完整原文 · ' +
+      '<a class="dlink" href="' + attr(i.url || '#') + '" target="_blank" rel="noopener noreferrer">打开原链接 →</a></div>';
+}
+
+function itemHTML(i, idx){
   var col = LANE[i.lane] || 'var(--line2)';
   var title = i.titleCn || i.title || '';
   var altEn = (i.titleCn && i.title) ? i.title : '';
@@ -311,16 +447,26 @@ function itemHTML(i){
   if (i.isRepeat) meta.push('<span class="sta">昨日已收录</span>');
   if ((i.alsoIn || []).length) meta.push('<span class="sta">另 ' + i.alsoIn.length + ' 源</span>');
   if (i.descFrom) meta.push('<span class="sta">正文已补抓</span>');
+  if (i.descZh) meta.push('<span class="sta" style="color:var(--acc)">已译</span>');
 
   var desc = (i.desc && i.desc !== i.summary) ? String(i.desc) : '';
-  return '<article class="it ' + esc(i.level || '') + (i.isRepeat ? ' rep' : '') + '" style="--lane:' + col + '">' +
+  // 列表里预览的是**中文**优先：有译文就预览译文，否则预览原文
+  var prevSrc = i.descZh || desc;
+  var prev = prevSrc ? prevSrc.slice(0, 220) : '';
+  var canOpen = hasBody(i);
+
+  return '<article class="it ' + esc(i.level || '') + (i.isRepeat ? ' rep' : '') +
+      '" style="--lane:' + col + '" data-idx="' + idx + '">' +
     '<div class="t1"><span class="mk">' + mk + '</span><span style="min-width:0">' +
       '<a href="' + attr(href) + '" target="_blank" rel="noopener noreferrer">' + esc(title) + '</a>' +
       (altEn ? '<span class="en">' + esc(altEn) + '</span>' : '') +
     '</span></div>' +
     (i.summary ? '<p class="sm">' + esc(i.summary) + '</p>' : '') +
-    (desc ? '<p class="sm2">' + esc(desc.slice(0, 220)) + (desc.length > 220 ? '…' : '') + '</p>' : '') +
+    (prev ? '<p class="sm2">' + esc(prev) + (prevSrc.length > 220 ? '…' : '') + '</p>' : '') +
+    (canOpen ? '<button class="exp" aria-expanded="false" title="展开全文">' +
+        (i.descZh ? '读全文 · 已译' : '读全文') + '</button>' : '') +
     '<div class="meta">' + meta.join('') + '</div>' +
+    (canOpen ? '<div class="detail hide" data-detail="' + idx + '"></div>' : '') +
   '</article>';
 }
 
@@ -350,7 +496,8 @@ function renderBrief(){
 
   function sec(cls, name, arr, collapsible){
     if (!arr.length) return '';
-    var body = arr.map(itemHTML).join('');
+    // 用全局索引（DATA.items 里的下标），展开/收起时靠它回查原对象
+    var body = arr.map(function(i){ return itemHTML(i, items.indexOf(i)); }).join('');
     if (!collapsible){
       return '<section class="grp"><div class="h ' + cls + '"><span class="t">' + name +
         '</span><span class="line"></span><span class="cnt">' + arr.length + '</span></div>' +
@@ -378,9 +525,74 @@ function renderBrief(){
     (pick.length ? '' : '<div class="empty"><span class="b">∅</span>该筛选下没有条目</div>');
 
   $('#view-brief').querySelectorAll('.chip').forEach(function(b){
-    b.onclick = function(){ laneFilter = b.dataset.lane; renderBrief(); window.scrollTo({top:0, behavior:'smooth'}); };
+    b.onclick = function(){ laneFilter = b.dataset.lane; openIdx = null; renderBrief(); window.scrollTo({top:0, behavior:'smooth'}); };
+  });
+  bindDetail($('#view-brief'));
+}
+
+/* ── 详情展开 ─────────────────────────────────────────
+   同时只展开一个：长列表全展开会同时渲染十几段 2000 字正文，手机端会卡。
+   展开区内容按需生成，收起后清空 innerHTML —— DOM 里不留几千字的隐藏文本。 */
+var openIdx = null, detailLang = {};
+
+function toggleDetail(idx){
+  var d = DATA && (DATA.items || [])[idx];
+  if (!d) return;
+  if (openIdx === idx){ closeDetail(); return; }
+  closeDetail();
+  var art = document.querySelector('.it[data-idx="' + idx + '"]');
+  if (!art) return;
+  var box = art.querySelector('.detail');
+  if (!box) return;
+  box.innerHTML = bodyHTML(d, detailLang[idx] || '');
+  box.classList.remove('hide');
+  art.classList.add('open');
+  var b = art.querySelector('.exp'); if (b) b.setAttribute('aria-expanded', 'true');
+  openIdx = idx;
+}
+
+function closeDetail(){
+  if (openIdx == null) return;
+  var art = document.querySelector('.it[data-idx="' + openIdx + '"]');
+  if (art){
+    var box = art.querySelector('.detail');
+    if (box){ box.innerHTML = ''; box.classList.add('hide'); }
+    art.classList.remove('open');
+    var b = art.querySelector('.exp'); if (b) b.setAttribute('aria-expanded', 'false');
+  }
+  openIdx = null;
+}
+
+function bindDetail(scope){
+  (scope || document).querySelectorAll('.it').forEach(function(art){
+    var idx = parseInt(art.dataset.idx, 10);
+    if (isNaN(idx)) return;
+    var btn = art.querySelector('.exp');
+    if (btn){
+      btn.onclick = function(e){ e.stopPropagation(); toggleDetail(idx); };
+    }
+    art.onclick = function(e){
+      // 点链接/按钮时不触发展开；点正文区域也不收（否则读着读着就被收起）
+      if (e.target.closest('a,button,.detail')) return;
+      toggleDetail(idx);
+    };
+    // 「中文 / 原文」切换：只重画正文区，不重建整张卡片
+    if (art._sw) return;
+    art._sw = true;
+    art.addEventListener('click', function(e){
+      var s = e.target.closest('.sw'); if (!s) return;
+      e.stopPropagation();
+      detailLang[idx] = s.dataset.w;
+      var d = DATA && (DATA.items || [])[idx];
+      var box = art.querySelector('.detail');
+      if (d && box) box.innerHTML = bodyHTML(d, detailLang[idx]);
+    });
   });
 }
+
+document.addEventListener('keydown', function(e){
+  if (e.key === 'Escape') closeDetail();
+});
 
 /* ── 案例库 ───────────────────────────────────────── */
 var CASES = null, caseType = 'all', caseQ = '';

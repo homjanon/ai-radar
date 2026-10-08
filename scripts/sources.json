@@ -16,6 +16,14 @@
     "summary_min": 40,
     "summary_max": 80,
     "batch_size": 25,
+    "body": {
+      "enabled": true,
+      "batch_size": 5,
+      "body_min_chars": 300,
+      "body_max_chars": 1200,
+      "max_items": 20,
+      "note": "只对 level=top 的英文长文翻正文，产出 descZh（前端据此出现「中文/原文」切换）。batch_size 取 5：正文长，25 条/批会顶到 max_tokens 被截断。body_max_chars 是翻译时的临时截断（翻完还原），不影响产物里的完整 desc。失败即不写 descZh，前端自动回退显示原文 —— 翻译是增益不是依赖。整体开关，关掉它标题/摘要/打分/分级全部照常。"
+    },
     "level_thresholds": { "top": 8.0, "watch": 6.5, "kw_floor": 6.5 },
     "quota": { "top_ratio": 0.12, "top_min": 4, "top_max": 15, "watch_ratio": 0.35 },
     "note": "★ 链序（2026-09-29 调整）：agnes-3.0-flash 免费不限量故放首位；两个 gemini 居中（额度互相独立、互为备份）；agnes-2.5-flash 兜底。原 gemini-3-flash 排首位，但它的免费额度（约 20 RPD，且与 news-feed 共用同一个 GEMINI_API_KEY）在一天多跑几轮后必然耗尽 —— 实测同一天从「处理 216 条、仅 2 批失败」一路退化到「每批全 429」，而排首位的模型失效时会对每一批都重撞一次。改链序 + 配额熔断后，失效模型当轮最多只损失 1 次请求。★ P2 LLM 增强：中文摘要 + 英文标题中文化 + 三维打分(rel/info/fresh) + 主题标签。按语言拆批（英文 translate / 中文 summarize），两种指令绝不混批——news-feed 实测过混批会导致英文标题漏译。模型链逐档降级，全失败则保留原文（绝不空窗）。level_thresholds 为加权总分下限（rel.45/info.30/fresh.25），quota 为名额上限：分级同时受「分数下限 + 名额」约束，否则模型某天整体给分偏高时重磅会失控（实测首轮 top 达 50/90，占 56%）。命中 TOP_KW 硬规则关键词的直接判 top，不受名额限制。batch_size=25 兼顾成功率与调用次数（gemini 免费额度 20 RPD，要留给 news-feed）。",

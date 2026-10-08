@@ -475,6 +475,152 @@ def jina_fetch(url, cap=1500):
 #   按语言拆批（学自 news-feed 的教训）：同一 prompt 里混"译标题"与"标题原样"
 #   两条互斥指令，模型会整批统一处理，导致英文标题漏译。
 # --------------------------------------------------------------------------- #
+# ── 正文翻译（只跑 top）───────────────────────────────────────────────────
+# 背景：AIHOT 每条都有「AI 导读 + 正文 · AI 翻译」并可双语切换，我们只有 80 字摘要。
+# 全量翻译不划算（140 条 × 上千字），但**该看的其实只有重磅那十来条**。
+# 所以只对 level=top 的英文条目翻正文，产出 descZh；失败就留空、前端自动回退原文。
+_ZH_RE = re.compile(r"[\u4e00-\u9fff]")
+
+
+def _body_sys_prompt():
+    return ("你是 AI 技术情报译者。输入是 JSON 数组 [{\"i\":序号,\"text\":英文正文}]。"
+            "**逐段翻译成简体中文**，输出 JSON 数组 [{\"i\":序号,\"zh\":中文正文}]，规则："
+            "① 完整翻译，不摘要、不改写、不增删信息；原文有几段就译几段，段间用 \\n 分隔。"
+            "② 专有名词保留通用写法：GPT-6 / Claude / LangChain / Transformer / RAG 等**不要音译**；"
+            "公司名、产品名、人名保留英文原文。"
+            "③ 数字、百分比、版本号、日期、金额、URL **一字不改**照抄。"
+            "④ 代码片段、命令行、文件路径保持原样，不翻译。"
+            "⑤ 译文不写\"本文介绍了\"这类引子，直接就是正文。"
+            "只输出 JSON 数组本身，不要解释、不要 markdown 代码块。")
+
+
+def _call_body_batch(batch, tcfg):
+    """翻一批正文。返回 (模型名, 是否成功, 实际请求数)。"""
+    sys_prompt = _body_sys_prompt()
+    tried = 0
+    for m in tcfg.get("models", []):
+        if m["name"] in _DEAD_MODELS:
+            continue
+        key = os.environ.get(m.get("key_env", ""))
+        if not key:
+            continue
+        tried += 1
+        payload = {
+            "model": m["model"],
+            "messages": [
+                {"role": "system", "content": sys_prompt},
+                {"role": "user", "content": json.dumps(
+                    [{"i": n, "text": i["desc"]} for n, i in enumerate(batch)],
+                    ensure_ascii=False)},
+            ],
+            "temperature": 0.15,
+            # 5 条 × 1200 字原文 → 中文约等量字符，加上思考预算，给足
+            "max_tokens": 16000,
+        }
+        try:
+            req = urllib.request.Request(
+                m["base"].rstrip("/") + "/chat/completions",
+                data=json.dumps(payload).encode(),
+                headers={"Content-Type": "application/json",
+                         "Authorization": f"Bearer {key}"})
+            with urllib.request.urlopen(req, timeout=240) as r:
+                data = json.loads(r.read().decode())
+            msg = data["choices"][0]["message"]
+            text = (msg.get("content") or msg.get("reasoning_content") or "").strip()
+            text = re.sub(r"^```(json)?|```$", "", text.strip(), flags=re.M).strip()
+            arr = _loads_array(text)
+            if len(arr) < 1:
+                raise RuntimeError("返回条数为 0")
+            if len(arr) < len(batch):
+                log(f"  ℹ️ 正文翻译仅返回 {len(arr)}/{len(batch)} 条，其余保留原文")
+            n_ok = 0
+            for row in arr:
+                k = int(row.get("i", -1))
+                if not (0 <= k < len(batch)):
+                    continue
+                zh = str(row.get("zh") or "").strip()
+                # 必须真含中文：防模型原样回吐英文（那样前端「中文」钮点了没变化）
+                if zh and len(zh) >= 60 and _ZH_RE.search(zh):
+                    batch[k]["descZh"] = zh
+                    n_ok += 1
+            # 一条都没译出来 → 判失败，交给下一个模型；否则整批白跑不被察觉
+            if n_ok == 0:
+                raise RuntimeError("整批无有效中文译文")
+            log(f"  🀄 正文翻译完成（{m['name']}，{n_ok}/{len(batch)} 条）")
+            return m["name"], True, tried
+        except Exception as e:
+            detail = _err_detail(e)
+            if _is_quota_err(detail):
+                _DEAD_MODELS.add(m["name"])
+                log(f"  ⛔ {m['name']} 配额/限流 → 本轮跳过后续正文翻译：{detail[:110]}")
+            else:
+                log(f"  ⚠️ {m['name']} 正文翻译失败：{detail[:130]}")
+    return None, False, tried
+
+
+def translate_bodies(items, tcfg):
+    """只对 top 的英文长文做正文翻译，写回 descZh。
+
+    三条入选条件（缺一不可）：
+      · level == "top"             —— 用户明确要求「先只翻重磅」
+      · _translate_title            —— 英文源才需要翻译
+      · len(desc) >= body_min_chars —— 太短的正文和摘要重复，翻译没有增量价值
+
+    失败语义：写不出 descZh 就不写，前端 hasBody/bodyHTML 自动只显示原文 ——
+    与「绝不空窗」一致，翻译是**增益**不是依赖。
+    """
+    bcfg = tcfg.get("body") or {}
+    if not bcfg.get("enabled", False):
+        return "off"
+    # level 是在 assign_levels() 里算的，本函数必须排在其后调用
+    min_chars = int(bcfg.get("body_min_chars", 300))
+    cap = int(bcfg.get("body_max_chars", 1200))
+    size = int(bcfg.get("batch_size", 5))
+    max_items = int(bcfg.get("max_items", 20))
+
+    targets = [i for i in items
+               if i.get("level") == "top"
+               and i.get("_translate_title")
+               and len(i.get("desc") or "") >= min_chars]
+    if not targets:
+        log("🀄 正文翻译：本轮无符合条件的 top 英文长文")
+        return "none"
+    if len(targets) > max_items:                 # 兜底上限，防阈值异常时爆量
+        targets = targets[:max_items]
+        log(f"  ℹ️ 正文翻译目标超上限，截取前 {max_items} 条")
+
+    saved = [(i, i["desc"]) for i in targets]
+    for i in targets:
+        i["desc"] = i["desc"][:cap]              # 临时截断控 token，翻完还原
+
+    log(f"🀄 正文翻译：{len(targets)} 条 top 英文长文（批 {size}，单条上限 {cap} 字）")
+    done, failed = {}, []
+    try:
+        for k in range(0, len(targets), size):
+            part = targets[k:k + size]
+            name, ok, tried = _call_body_batch(part, tcfg)
+            if ok:
+                done[name] = done.get(name, 0) + len(part)
+            else:
+                failed.append(len(part))
+                if tried == 0:
+                    log(f"  ⏭️ 正文翻译批（{len(part)} 条）无可用模型：Key 均未配置")
+                    break                        # 后面批次同样没 Key，不必再试
+    finally:
+        for i, full in saved:                    # 无论成败都还原完整正文
+            i["desc"] = full
+
+    n_zh = sum(1 for i in targets if i.get("descZh"))
+    if not done:
+        log(f"  ⚠️ 正文翻译全部失败，{n_zh} 条有译文（前端将回退原文）")
+        return "none(原文)"
+    out = " + ".join(f"{n}({c}条)" for n, c in done.items())
+    if failed:
+        out += f" ⚠️降级{[len(f) for f in failed]}"
+    log(f"  ✅ 正文翻译结果：{n_zh}/{len(targets)} 条")
+    return out
+
+
 def _sys_prompt(smin, smax, mode, want_type=False):
     extra = ("⑤ type：该案例的**应用形态**，必须从以下固定词表里选一个（不要自创、不要组合）："
              "Web 应用 / 移动 App / 浏览器插件 / 桌面工具 / CLI 工具 / Agent 工作流 / "
@@ -1076,6 +1222,10 @@ def main():
         if not i.get("titleCn") and not i["_translate_title"]:
             i["titleCn"] = ""
     assign_levels(merged, tcfg)
+
+    # ⑧a 正文翻译（只跑 top，见方案 §5）：必须在 assign_levels 之后 —— 它按 level 选条
+    tr_body = translate_bodies(merged, tcfg)
+
     lvl_rank = {"top": 0, "watch": 1, "normal": 2}
     # 全局按「分级 → 总分 → 新鲜度」排。原来以车道为主键，结果是首屏「重磅」被
     # 单条车道的条目按车道聚成一堆（实测：前 7 条全是模型发布）。首屏最上面
@@ -1091,6 +1241,8 @@ def main():
         i["pubTs"] = i["dt"].astimezone(TZ_CN).isoformat() if i["dt"] else ""
         i["desc"] = i["desc"][:2000]
         i["summary"] = (i.get("summary") or "")[:300]
+        if i.get("descZh"):                     # 译文同样限长，产物别被撑爆
+            i["descZh"] = i["descZh"][:2400]
         i.pop("dt", None)
         for _k in ("_translate_title", "_want_type"):
             i.pop(_k, None)                 # 内部标记一律不外泄（漏一个就会写进产物）
@@ -1100,6 +1252,7 @@ def main():
         "generated_at": now.strftime("%Y-%m-%d %H:%M"),
         "date": now.strftime("%Y-%m-%d"),
         "translator": translator,
+        "translator_body": tr_body,
         "lanes": [{"id": l["id"], "name": l["name"],
                    "count": sum(1 for i in merged if i["lane"] == l["id"])} for l in cfg["lanes"]],
         "counts": {"total": len(merged), "repeat": n_rep, "byLevel": n_lvl},
