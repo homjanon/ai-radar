@@ -510,19 +510,30 @@ def main():
 
         # ---------- 用例 4f：reason「推荐理由」（R3，2026-10-08）----------
         # 学 AIHOT 的 reason 字段：summary 答「讲了什么」，reason 答「为什么值得看」。
-        # 关键在于「空值不写入」—— 模型可以合法地留空，前端据此判断有无，不该显示空段落。
+        # ⚠️ 本节断言在首轮上线失败后**已重写**：原 prompt 写「两种情形可原样留空…
+        #    宁可留空，也不要写空话」，结果 agnes-3.0-flash **整批留空**，线上 0/140 条。
+        #    教训：对 LLM 说「可以不做」= 它就不做。现在必须是「每条都要写」+极窄例外。
         print("\n[4f/4] reason「推荐理由」字段")
         _sp_en = F._sys_prompt(40, 80, "translate")
         _sp_cn = F._sys_prompt(40, 80, "summarize")
         check("reason" in _sp_en, "translate 提示词含 reason 字段", problems)
         check("reason" in _sp_cn, "summarize 提示词含 reason 字段", problems)
-        check("空" in _sp_en and "空" in _sp_cn,
-              "提示词写明可留空（宁可留空也不写空话）", problems)
-        check("值得关注" in _sp_en, "提示词给反例（禁止「值得关注」类空话）", problems)
+        # ★ 强指令：必须"每条都写"，不能给模型留退路（首轮失败的直接原因）
+        check("必须写" in _sp_en or "每条都必须写" in _sp_en,
+              "提示词要求**每条都必须写** reason（不留退路）", problems)
+        check("必须写" in _sp_cn or "每条都必须写" in _sp_cn,
+              "summarize 侧同样要求每条都写", problems)
+        # ★ 反例仍在：禁止空话
+        check("值得关注" in _sp_en, "提示词保留反例（禁止「值得关注」类空话）", problems)
+        # ★ 消极表述必须已被移除 —— 这正是首轮 0/140 的根因，不能再回来
+        check("宁可留空" not in _sp_en and "宁可留空" not in _sp_cn,
+              "已删除「宁可留空」这类消极表述（首轮失败的根因）", problems)
+        check("可原样留空" not in _sp_en and "可原样留空" not in _sp_cn,
+              "已删除「可原样留空」（同上）", problems)
+        # reason 位于 ③、打分档仍是 ④、topic 顺延 ⑤
         check("reason" in _sp_en.split("③")[1].split("④")[0]
               and "reason" in _sp_cn.split("③")[1].split("④")[0],
               "reason 位于 ③ 与 ④ 之间（编号未被打乱）", problems)
-        # 分片编号必须仍是 ①②③④⑤ 且 ④ 仍指打分（改动不能串号）
         check("④ rel/info/fresh" in _sp_en and "④ rel/info/fresh" in _sp_cn,
               "打分档编号仍为 ④（未被 reason 顶掉）", problems)
         check("⑤ topic" in _sp_en and "⑤ topic" in _sp_cn,
@@ -530,6 +541,9 @@ def main():
         # 输入正文长度：400 字不够写"为什么值得看"，已提到 1200
         _src = io.open(os.path.join(HERE, "fetch_ai.py"), encoding="utf-8").read()
         check('i["desc"][:1200]' in _src, "喂给模型的正文片段已提到 1200 字", problems)
+        # 产出率告警：低于 30% 必须在日志里喊出来（不然又是一次静默失败）
+        check("推荐理由" in _src and "低于 30%" in _src,
+              "有「推荐理由产出率过低」告警（不再静默失败）", problems)
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
 

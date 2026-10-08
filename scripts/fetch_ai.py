@@ -803,14 +803,16 @@ def _sys_prompt(smin, smax, mode, want_type=False):
     base = (
         f"② summary：{smin}~{smax} 字的中文摘要，讲清核心事实（谁做了什么 + 关键数字或结论）；"
         "信息完整优先于字数，不逐字照抄、不以半句截断。"
-        "③ reason：40~60 字的**中文推荐理由**，回答「这条为什么值得我看」——"
+        "③ reason：**每条都必须写** 40~60 字的中文推荐理由，回答「这条为什么值得我看」——"
         "**不是复述内容**（那是 summary 的职责），而是点出它的**独特性**："
         "给出了什么别处没有的信息 / 改变了什么既有认知 / 对什么人有直接用处。"
         "写法参照："
         "「原文用三个月随机田野实验区分了 AI 辅助产出与独立能力变化，给出初级与资深律师分化的具体证据。」"
         "「官方公告说明了全球开放后订阅者能获得的实际能力变化，便于对比现有套餐选择。」"
-        "两种情形可原样留空：材料不足以支撑判断，或通读后确实平庸。**宁可留空，也不要写"
-        "「值得关注」「内容有价值」「信息量丰富」这类空话** —— 空话比没有更差。"
+        "**唯一可以不写的情形**：材料残缺到无法判断这条在说什么（如正文与摘要都为空）。"
+        "除此之外一律要写 —— 即使内容平庸，也要如实点出它「平庸在哪」，"
+        "例如「仅是一份版本更新日志，未含实质功能变化」。"
+        "**禁止**写「值得关注」「内容有价值」「信息量丰富」这类不含信息的空话。"
         "④ rel/info/fresh：三个 0-10 的**整数**评分。"
         "**必须严格区分档位，不要普遍给高分** —— 实测若评分集中在 8-9 分，筛选就失去意义。各档定义："
         "rel（与 AI 前沿的相关度）：直接涉及大模型 / Agent / Skill / 论文 / 开源生态的**实质进展** = 8-10；"
@@ -944,6 +946,7 @@ def _call_llm_batch(batch, tcfg, mode, want_type=False):
             if len(arr) < len(batch):
                 log(f"  ℹ️ {m['name']} 仅返回 {len(arr)}/{len(batch)} 条，其余保留原文")
             n_title = 0
+            n_reason = 0
             for row in arr:
                 i = int(row.get("i", -1))
                 if not (0 <= i < len(batch)):
@@ -963,10 +966,14 @@ def _call_llm_batch(batch, tcfg, mode, want_type=False):
                     it["summary"] = s
                 # reason「推荐理由」（40~60 字）：学 AIHOT 的 reason 字段。
                 # summary 回答"讲了什么"，reason 回答"为什么值得看" —— 两者不同。
-                # 空值**不写入**字段（前端据此判断有无），也**不重试**：留空是允许的表达。
+                # ⚠️ 实测教训（2026-10-08，第一次上线就踩到）：prompt 里如果写"可以留空"，
+                #    agnes-3.0-flash 会**整批留空** —— 线上 first-run 产出 0/140 条 reason。
+                #    所以 ① prompt 已改为"每条都必须写"（把留空收窄成极窄例外）；
+                #         ② 这里加整批计数，低于 30% 就在日志里喊出来，不再静默。
                 rs = str(row.get("reason") or "").strip()
                 if rs:
                     it["reason"] = rs[:150]
+                    n_reason += 1
                 try:
                     it["score"] = {
                         "rel": max(0, min(10, int(row.get("rel", 0)))),
@@ -990,7 +997,14 @@ def _call_llm_batch(batch, tcfg, mode, want_type=False):
                 need = sum(1 for x in batch if x["_translate_title"])
                 if need and n_title < max(1, int(need * 0.3)):
                     raise RuntimeError(f"整批仅 {n_title}/{need} 条译出（低于 30%），判定失败")
-            log(f"  🌐 AI 增强完成（{m['name']}，{len(batch)} 条，译标题 {n_title} 条）")
+            log(f"  🌐 AI 增强完成（{m['name']}，{len(batch)} 条，译标题 {n_title} 条，"
+                f"推荐理由 {n_reason}/{len(batch)} 条）")
+            # reason 产出率过低就当**告警**（不判失败，不影响已得的 summary/打分）。
+            # 为什么要有这条：第一次上线时 prompt 写了"可以留空"，模型整批留空、
+            # 线上 0/140 条，而日志只显示「AI 增强完成」一片祥和 —— 静默失败最难发现。
+            if n_reason < max(1, int(len(batch) * 0.3)):
+                log(f"  ⚠️ {m['name']} 推荐理由仅 {n_reason}/{len(batch)} 条（低于 30%）"
+                    f"—— 检查 prompt 里 reason 是否被模型整体忽略")
             return m["name"], True, tried
         except Exception as e:
             detail = _err_detail(e)
