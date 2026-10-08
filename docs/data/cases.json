@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-07 08:11",
- "count": 149,
+ "updated": "2026-10-08 08:10",
+ "count": 157,
  "types": [
   "Agent 工作流",
   "CLI 工具",
@@ -98,6 +98,34 @@
    "score": 8.7,
    "rel": 9,
    "firstSeen": "2026-09-30"
+  },
+  {
+   "url": "https://github.com/lateos-ai/reflex",
+   "title": "Show HN：Reflex 冷启动 GGUF 推理引擎",
+   "titleEn": "Show HN: Reflex – a cold-start GGUF engine that runs Aleph Alpha's Kolibri-1",
+   "summary": "Reflex 是 Rust 和 CUDA 编写的 GGUF 原生推理引擎，专为冷启动优化。预编译 CUDA 内核避免 JIT，实现 p50 约 483ms 冷启动时间，支持运行 Aleph Alpha 的 Kolibri-1 模型。",
+   "type": "模型与推理",
+   "topic": "模型推理",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-08",
+   "score": 8.4,
+   "rel": 9,
+   "firstSeen": "2026-09-30"
+  },
+  {
+   "url": "https://chloejs.org/compare",
+   "title": "Show HN: Chloe is a TypeScript AI agent",
+   "titleEn": "",
+   "summary": "Meta 前场工程师开发 Chloe，一个 TypeScript AI Agent。解决企业对 AI 代码/工具控制的需求，优化 LLM 成本，将非 LLM 例程剥离，提供比 Meta/OpenAI/Anthropic 更灵活可控的 Agent 方案。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-08",
+   "score": 8.4,
+   "rel": 9,
+   "firstSeen": "2026-10-08"
   },
   {
    "url": "https://ototo.dev/",
@@ -198,20 +226,6 @@
    "firstSeen": "2026-10-05"
   },
   {
-   "url": "https://github.com/lateos-ai/reflex",
-   "title": "Reflex Engine：冷启动性能超越 Llama.cpp 与 vLLM",
-   "titleEn": "Show HN: Reflex Engine Beats Both Llama.cpp and vLLM on Cold-Start to TTFT",
-   "summary": "Reflex Engine 是一款 GGUF 原生 Rust/CUDA 推理引擎，通过预编译 CUDA 内核消除运行时 JIT 开销，专门优化 Serverless GPU 平台的冷启动首字延迟。",
-   "type": "模型与推理",
-   "topic": "模型与推理",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-09-30",
-   "score": 8.2,
-   "rel": 8,
-   "firstSeen": "2026-09-30"
-  },
-  {
    "url": "https://github.com/spenmcke/compress",
    "title": "Everest：节省 30% Codex 费用的令牌压缩 CLI",
    "titleEn": "Show HN: Free token compression CLI, saves codex bills by 30%",
@@ -252,6 +266,20 @@
    "score": 8.1,
    "rel": 9,
    "firstSeen": "2026-09-30"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1246870#reply0",
+   "title": "Mistral Large 4：免费多模态 AI Playground 与 OpenAI 兼容 API",
+   "titleEn": "",
+   "summary": "Mistral Large 4 提供多模态能力，支持 1M 上下文窗口，官网开放免费 Playground 试用。模型支持 OpenAI 兼容 API，适用于编码、文档问答等任务，采用 Freemium 模式，最低订阅价为 10 美元。",
+   "type": "模型与推理",
+   "topic": "模型发布",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-08",
+   "score": 8.0,
+   "rel": 8,
+   "firstSeen": "2026-10-08"
   },
   {
    "url": "https://television.run/",
@@ -364,6 +392,34 @@
    "score": 7.8,
    "rel": 7,
    "firstSeen": "2026-10-02"
+  },
+  {
+   "url": "https://railcode.dev/",
+   "title": "Show HN：Railcode 内部软件安全云",
+   "titleEn": "Show HN: Railcode – Secure cloud for internal software",
+   "summary": "Railcode 被形容为“内部 Vercel”，解决员工使用 Claude Code 或 Codex 构建工具后难以安全共享的问题。平台允许公司安全托管内部应用和 Agent，促进团队间协作与访问控制。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-08",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-10-08"
+  },
+  {
+   "url": "https://sheetrelay.com/",
+   "title": "Show HN：SheetRelay 表格转 API 服务",
+   "titleEn": "Show HN: SheetRelay – Google Sheets as a back end for web pages and AI agents",
+   "summary": "SheetRelay 将 Google Sheets 转化为 API，供网页和 AI Agent 使用。无需预先建立表格，Agent 可根据需求自动创建并管理数据。允许用户设定访问规则，实现结构化数据交互。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-08",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-10-08"
   },
   {
    "url": "https://agentability.org/",
@@ -868,6 +924,20 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://www.v2ex.com/t/1246848#reply1",
+   "title": "分享个给 AI 写页面用的 React 组件库",
+   "titleEn": "",
+   "summary": "开源 React Auto Components 组件库，专为 AI 生成前端页面设计。封装表单、表格及增删改查功能，提供 AI 可读文档及错误码，固定常用交互细节，减少 AI 生成重复 JSX 代码，降低 Token 消耗。",
+   "type": "Web 应用",
+   "topic": "开源生态",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-08",
+   "score": 7.0,
+   "rel": 7,
+   "firstSeen": "2026-10-08"
+  },
+  {
    "url": "https://huggingface.co/spaces/Qwen/Qwen-Image-2.1",
    "title": "Spaces 应用：Qwen/Qwen-Image-2.1",
    "titleEn": "",
@@ -1134,6 +1204,20 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://www.v2ex.com/t/1246852#reply0",
+   "title": "AI 僵尸拥抱视频工具 aizombie.app",
+   "titleEn": "Built an AI zombie hug tool — aizombie.app: 2 photos → ~20s vertical clip, guest checkout $9.90",
+   "summary": "aizombie.app 将病毒式“僵尸爱情故事”趋势转化为付费产品。用户上传两张照片，约 20 秒生成 15 镜头的 9:16 竖屏视频，含音效，适配 TikTok/Reels。采用一次性付费 9.90 美元模式。",
+   "type": "内容生成",
+   "topic": "内容生成",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-08",
+   "score": 6.5,
+   "rel": 6,
+   "firstSeen": "2026-10-08"
+  },
+  {
    "url": "https://www.reddit.com/r/SideProject/comments/1wyn4r6/slideshowphotos_makes_it_easy_to_display_photos/",
    "title": "展示 Slideshow.photos 照片幻灯片展示工具",
    "titleEn": "Slideshow.photos makes it easy to display photos on a screen",
@@ -1342,6 +1426,20 @@
    "score": 6.2,
    "rel": 6,
    "firstSeen": "2026-09-29"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1246867#reply1",
+   "title": "[自荐] 大家都在把 AI 塞进 Obsidian，我却反过来把 Obsidian 接进 AI 官网",
+   "titleEn": "",
+   "summary": "作者开发工具实现将 Obsidian 笔记接入 ChatGPT 等官方 AI 网页版，避免在本地插件中维护 API Key 和 Token 额度。该方案保留官方 UI 习惯和对话历史，解决用户担心本地资源浪费及多模态支持的问题。",
+   "type": "效率工具",
+   "topic": "效率工具",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-08",
+   "score": 6.0,
+   "rel": 6,
+   "firstSeen": "2026-10-08"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1wylw07/i_built_a_free_duolingostyle_course_for_the/",
@@ -1734,18 +1832,32 @@
    "firstSeen": "2026-09-29"
   },
   {
-   "url": "https://huggingface.co/spaces/multimodalart/jev-decision-index",
-   "title": "Spaces 应用：multimodalart/jev-decision-index",
-   "titleEn": "",
-   "summary": "Hugging Face Spaces 应用，静态页面展示 Jev 决策索引。社区点赞 472，创建于 2026 年 9 月 17 日，整理 Computer Use 领域相关决策数据，辅助开发者理解 Jev 系统架构。",
-   "type": "模型与推理",
+   "url": "https://github.com/Obedience-Corp/festival",
+   "title": "Show HN：Festival 氛围工程框架",
+   "titleEn": "Show HN: Festival: A Vibe Engineering Framework",
+   "summary": "Obedience-Corp 发布 Festival 框架，定位为“氛围工程”（Vibe Engineering）。该开源项目旨在优化开发体验，具体技术细节在提供的片段中未完全展开，主要展示 Banner 及 GitHub 仓库信息。",
+   "type": "Agent 工作流",
    "topic": "Agent 框架",
-   "block": "HF Spaces",
+   "block": "Show HN",
    "src": "apps",
-   "lastSeen": "2026-10-07",
+   "lastSeen": "2026-10-08",
    "score": 5.6,
-   "rel": 7,
-   "firstSeen": "2026-10-07"
+   "rel": 6,
+   "firstSeen": "2026-10-08"
+  },
+  {
+   "url": "https://stayleet.com/",
+   "title": "Show HN：StayLeet – 维持 AI 编码时代技能",
+   "titleEn": "Show HN: StayLeet – keeping skills sharp in AI coding era",
+   "summary": "开发者发布 StayLeet 项目，针对 AI 接管代码编写现状，提供刻意练习工具。重点培养非编码技能如通用技术流利度和 CS 系统思维，以辅助评估 AI 输出，避免沦为被动使用者。",
+   "type": "Web 应用",
+   "topic": "工程实践",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-08",
+   "score": 5.5,
+   "rel": 5,
+   "firstSeen": "2026-10-08"
   },
   {
    "url": "https://www.v2ex.com/t/1246688#reply0",
@@ -1914,34 +2026,6 @@
    "firstSeen": "2026-09-29"
   },
   {
-   "url": "https://huggingface.co/spaces/FineEnvs/multi-harness-rl",
-   "title": "Spaces 应用：FineEnvs/multi-harness-rl",
-   "titleEn": "",
-   "summary": "Hugging Face Spaces 应用，采用 Docker 技术栈。展示多框架强化学习（RL）训练环境，社区点赞 171，创建于 2026 年 8 月 31 日，用于复现和测试多种 Harness 下的 RL 算法。",
-   "type": "模型与推理",
-   "topic": "论文方法",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-07",
-   "score": 5.3,
-   "rel": 7,
-   "firstSeen": "2026-10-07"
-  },
-  {
-   "url": "https://huggingface.co/spaces/arudradey/qwen-image-2.1-uncensored-gguf",
-   "title": "Spaces 应用：arudradey/qwen-image-2.1-uncensored-gguf",
-   "titleEn": "",
-   "summary": "Hugging Face Spaces 应用，基于 Gradio。提供 Qwen 图像 2.1 无审查版 GGUF 模型在线推理服务，社区点赞 334，创建于 2026 年 9 月 22 日，支持量化模型快速体验。",
-   "type": "模型与推理",
-   "topic": "模型发布",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-07",
-   "score": 5.3,
-   "rel": 7,
-   "firstSeen": "2026-10-07"
-  },
-  {
    "url": "https://huggingface.co/spaces/kulkas2pintu/QWEN_EDIT_IMAGE",
    "title": "Spaces 应用：kulkas2pintu/QWEN_EDIT_IMAGE",
    "titleEn": "",
@@ -1968,6 +2052,34 @@
    "score": 5.3,
    "rel": 5,
    "firstSeen": "2026-09-30"
+  },
+  {
+   "url": "https://huggingface.co/spaces/arudradey/qwen-image-2.1-uncensored-gguf",
+   "title": "Spaces 应用：arudradey/qwen-image-2.1-uncensored-gguf",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces 上线 Qwen Image 2.1 GGUF 格式推理应用，使用 Gradio 界面。该应用针对 Qwen 图像模型进行本地化部署演示，支持无审查生成，自创建以来获得 357 个点赞。",
+   "type": "模型与推理",
+   "topic": "开源模型",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-08",
+   "score": 5.2,
+   "rel": 6,
+   "firstSeen": "2026-10-07"
+  },
+  {
+   "url": "https://huggingface.co/spaces/Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
+   "title": "Spaces 应用：Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces 上线基于 MiniMax 模型的 LoRA 微调版本应用，使用 Gradio 框架开发。该应用主打无审查能力，自创建以来获得 1220 个点赞，属于社区驱动的模型推理与交互演示项目。",
+   "type": "模型与推理",
+   "topic": "开源模型",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-08",
+   "score": 5.2,
+   "rel": 6,
+   "firstSeen": "2026-10-08"
   },
   {
    "url": "https://www.v2ex.com/t/1246567#reply0",
