@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-08 14:45",
- "count": 174,
+ "updated": "2026-10-08 17:14",
+ "count": 187,
  "types": [
   "Agent 工作流",
   "CLI 工具",
@@ -44,17 +44,45 @@
    "firstSeen": "2026-09-30"
   },
   {
-   "url": "https://sspai.com/post/115455",
-   "title": "派早报：微软发布 Windows 相关新品、Google AI 新闻两则等",
+   "url": "https://www.v2ex.com/t/1247068#reply1",
+   "title": "把 Jev 接进 AI 日程助手做了 48 组对照，结果反而变差了",
    "titleEn": "",
-   "summary": "微软联合英伟达发布 Surface Laptop Ultra，搭载 RTX Spark 芯片、20 核 Grace CPU 及 128GB 内存，支持本地运行超 1200 亿参数模型。起售价 2599 美元，10 月 16 日发货。早报另含 Google AI 最新动态。",
-   "type": "模型与推理",
-   "topic": "模型发布",
+   "summary": "实验将 Jev 决策模型接入 AI 日程助手，48 组对照显示添加 Jev 层后准确率从 46/48 降至 38/48，延迟增加约 0.9s。结论指出改善 LLM 上下文比堆叠决策模型更有效，Jev 需收窄判断范围。",
+   "type": "Agent 工作流",
+   "topic": "Agent 架构",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-08",
+   "score": 8.8,
+   "rel": 9,
+   "firstSeen": "2026-10-08"
+  },
+  {
+   "url": "https://sspai.com/post/113843",
+   "title": "从开源清理工具到付费 Mac 应用，用户教会了我如何做产品：Mole",
+   "titleEn": "",
+   "summary": "Mole 从开源 CLI 工具进化为付费 Mac 应用，GitHub 获 60K Star。针对 AI 生成的高频编译产物、旧版本工具及模型文件三类垃圾，设计分档清理策略，CLI 免费而桌面端付费。",
+   "type": "桌面工具",
+   "topic": "独立开发",
    "block": "少数派",
    "src": "apps",
    "lastSeen": "2026-10-08",
    "score": 8.8,
    "rel": 8,
+   "firstSeen": "2026-10-08"
+  },
+  {
+   "url": "https://sspai.com/post/115455",
+   "title": "派早报：微软发布 Windows 相关新品、Google AI 新闻两则等",
+   "titleEn": "",
+   "summary": "微软发布搭载 RTX Spark 超级芯片的 Surface Laptop Ultra，支持本地运行 1.2 万亿参数模型；推出 Hybrid Intelligence Copilot 及执行容器。Google 发布 Nano Banana 2.1 图像模型，价格减半并支持多角色一致性。",
+   "type": "模型与推理",
+   "topic": "行业新闻",
+   "block": "少数派",
+   "src": "apps",
+   "lastSeen": "2026-10-08",
+   "score": 8.7,
+   "rel": 9,
    "firstSeen": "2026-10-08"
   },
   {
@@ -135,6 +163,34 @@
    "type": "Agent 工作流",
    "topic": "Agent 框架",
    "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-08",
+   "score": 8.4,
+   "rel": 9,
+   "firstSeen": "2026-10-08"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1247030#reply1",
+   "title": "群里接了几个 Agent 之后，我们是怎么决定「它该不该说话」的",
+   "titleEn": "",
+   "summary": "团队在 Slack/GitHub 接入 Coding Agent 后，引入 Jev 替代 LLM 进行“是否回复”判断。通过定义概率型判定标准及阈值路由，解决了 LLM 延迟高及输出不稳定的问题，实现精准的分流与模型选择。",
+   "type": "Agent 工作流",
+   "topic": "Agent 工作流",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-08",
+   "score": 8.4,
+   "rel": 9,
+   "firstSeen": "2026-10-08"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1247023#reply0",
+   "title": "一个简单好用的命令行工具，支持各种 Agent 的 Skills, MCP, AGENTS.md 一键同步、统一管理",
+   "titleEn": "",
+   "summary": "开源 CLI 工具 agentsync 支持 20+ Agent 工具（如 Claude Code、Cursor 等）的 Skills、MCP 及 AGENTS.md 配置统一管理。通过软链接与全局 JSON 实现配置同步，简化多工具切换时的维护成本。",
+   "type": "CLI 工具",
+   "topic": "开发工具",
+   "block": "V2EX 分享创造",
    "src": "apps",
    "lastSeen": "2026-10-08",
    "score": 8.4,
@@ -226,6 +282,20 @@
    "firstSeen": "2026-10-08"
   },
   {
+   "url": "https://diffity.com/",
+   "title": "Diffity：支持AI代码评审的Mac差异查看应用",
+   "titleEn": "Show HN: Diffity – Mac App for Reviewing Diffs",
+   "summary": "一款Mac应用，展示Git差异并允许用户对行内评论，随后将评论发送给Claude Code或Codex进行自动修复。支持@claude或@codex直接问答。",
+   "type": "桌面工具",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-08",
+   "score": 8.2,
+   "rel": 9,
+   "firstSeen": "2026-10-08"
+  },
+  {
    "url": "https://www.bountyindex.in/mcp",
    "title": "展示支持 MCP 协议的漏洞赏金索引服务",
    "titleEn": "Show HN: MCP v2 on bountyindex.in, 14 tool calls,happy bug hunting",
@@ -280,6 +350,20 @@
    "score": 8.2,
    "rel": 9,
    "firstSeen": "2026-09-30"
+  },
+  {
+   "url": "https://whofundsoss.com",
+   "title": "WhoFundsOSS：企业开源资助金额公开排名榜",
+   "titleEn": "Show HN: WhoFundsOSS, a public ranking of companies that fund open source",
+   "summary": "该工具每月抓取四大公开来源，仅统计企业实际公布捐赠金额，对前200家公司进行排名。本期快照显示Posit以76.24万美元位居榜首，Sentry以75万美元紧随其后。",
+   "type": "数据分析",
+   "topic": "开源生态",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-08",
+   "score": 8.1,
+   "rel": 6,
+   "firstSeen": "2026-10-08"
   },
   {
    "url": "https://apps.infinihash.com/",
@@ -436,13 +520,13 @@
    "firstSeen": "2026-10-08"
   },
   {
-   "url": "https://futex.rodmena.co.uk/",
-   "title": "Futex：面向人类信任效用的微服务控制平面",
-   "titleEn": "Show HN: A utility microservice for human trust",
-   "summary": "Futex 是一个多租户控制平面，允许 AI Agent 发起持久化且策略驱动的人类决策请求。支持多审批人、拒绝原因记录、委托和升级机制，通过 Webhook 恢复流程，实现 MCP 原生的人机协作闭环。",
-   "type": "Agent 工作流",
-   "topic": "Agent 基础设施",
-   "block": "Show HN",
+   "url": "https://sspai.com/post/115462",
+   "title": "App Store 生态规模五年翻倍，助力中国开发者走向全球",
+   "titleEn": "",
+   "summary": "Apple 与学者联合发布 2025 年中国 App Store 生态报告，估算促成经济活动 4.036 万亿元，较 2020 年增长 107%。其中实体商品与服务占 91%，数字内容仅占 4%，中国开发者本土收入占比达 98%。",
+   "type": "其他",
+   "topic": "行业报告",
+   "block": "少数派",
    "src": "apps",
    "lastSeen": "2026-10-08",
    "score": 7.8,
@@ -520,13 +604,13 @@
    "firstSeen": "2026-10-08"
   },
   {
-   "url": "https://www.v2ex.com/t/1247030#reply1",
-   "title": "群里接了几个 Agent 之后，我们是怎么决定「它该不该说话」的",
-   "titleEn": "",
-   "summary": "团队为减少 Agent 在 Slack/GitHub 误打扰，放弃大模型全量调用判断。引入 TypeSafe Jev 进行无生成式判断，基于概率返回结果，显著降低延迟并解决模型输出不稳定解析难题，实现 Agent 交互的精准控制。",
-   "type": "Agent 工作流",
-   "topic": "Agent 框架",
-   "block": "V2EX 分享创造",
+   "url": "https://github.com/dib-artificial/Pluto",
+   "title": "Pluto：面向通用智能的微型MUCU硬件控制模型",
+   "titleEn": "Show HN: Pluto AI model, run tiny MUCUs hardware control of natural language",
+   "summary": "开源项目Pluto展示了一种运行在微型MUCU硬件上的自然语言模型，旨在通过极小化资源消耗探索通用智能路径，提供低成本AI部署方案。",
+   "type": "模型与推理",
+   "topic": "模型与推理",
+   "block": "Show HN",
    "src": "apps",
    "lastSeen": "2026-10-08",
    "score": 7.7,
@@ -813,6 +897,20 @@
    "firstSeen": "2026-09-29"
   },
   {
+   "url": "https://github.com/franzenzenhofer/whitedeck",
+   "title": "Whitedeck：生成Keynote风格幻灯片的Claude Skill",
+   "titleEn": "Show HN: Whitedeck – Black on White Keynote Like Slides Claude Skill",
+   "summary": "一个跨平台开源工具，作为Claude的Skill使用，能够生成白底黑字、类似Keynote风格的演示幻灯片，支持macOS、Linux和Windows环境。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-08",
+   "score": 7.4,
+   "rel": 8,
+   "firstSeen": "2026-10-08"
+  },
+  {
    "url": "https://huggingface.co/hirundo-io/Qwen3.6-35B-A3B-Westernized",
    "title": "Qwen 3.6 西方化版本：面向美国企业的模型优化",
    "titleEn": "Show HN: We Westernized Qwen for US enterprise use",
@@ -1078,6 +1176,20 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://github.com/dkremsa/claude-pacer",
+   "title": "Pacer：AI编程订阅周期管理助手",
+   "titleEn": "Show HN: Pacer – will your AI coding subscription last until the reset?",
+   "summary": "GitHub开源工具Pacer旨在帮助用户管理Claude等AI编程助手的订阅周期，预测在重置时间点前的使用量，避免超额或浪费。",
+   "type": "CLI 工具",
+   "topic": "效率工具",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-08",
+   "score": 6.9,
+   "rel": 7,
+   "firstSeen": "2026-10-08"
+  },
+  {
    "url": "https://www.reddit.com/r/SideProject/comments/1wtqx2o/i_made_a_visual_tour_of_my_codingagent_workspace/",
    "title": "Mefi Studio：可视化编码 Agent 工作区",
    "titleEn": "I made a visual tour of my coding-agent workspace. What would make the work easier to follow?",
@@ -1104,20 +1216,6 @@
    "score": 6.9,
    "rel": 7,
    "firstSeen": "2026-09-30"
-  },
-  {
-   "url": "https://github.com/dkremsa/claude-pacer",
-   "title": "Pacer：你的 AI 编码订阅能撑到重置吗？",
-   "titleEn": "Show HN: Pacer – will your AI coding subscription last until the reset?",
-   "summary": "macOS 菜单栏工具 Pacer 监控 Claude Code、Codex、Cursor 等 AI 编码订阅额度。通过双环可视化显示余额状态，预测订阅是否持续至重置期，并给出调整建议，帮助用户管理多账号资源。",
-   "type": "桌面工具",
-   "topic": "效率工具",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-08",
-   "score": 6.8,
-   "rel": 6,
-   "firstSeen": "2026-10-08"
   },
   {
    "url": "https://www.v2ex.com/t/1247005#reply0",
@@ -1190,20 +1288,6 @@
    "firstSeen": "2026-10-01"
   },
   {
-   "url": "https://www.v2ex.com/t/1247023#reply0",
-   "title": "一个简单好用的命令行工具，支持各种 Agent 的 Skills, MCP, AGENTS.md 一键同步、统一管理",
-   "titleEn": "",
-   "summary": "开源 CLI 工具 agentsync 支持 ClaudeCode、Codex 等 20 多种 Agent。通过软链接和全局 JSON 统一管理 Skills、MCP 及 AGENTS.md 配置，实现跨工具一键同步与后台自动更新，提升 Agent 开发效率。",
-   "type": "CLI 工具",
-   "topic": "开源生态",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-08",
-   "score": 6.7,
-   "rel": 7,
-   "firstSeen": "2026-10-08"
-  },
-  {
    "url": "https://stayleet.com/",
    "title": "StayLeet：在 AI 编码时代保持技能敏锐",
    "titleEn": "Show HN: StayLeet – keeping skills sharp in AI coding era",
@@ -1215,6 +1299,20 @@
    "lastSeen": "2026-10-08",
    "score": 6.7,
    "rel": 7,
+   "firstSeen": "2026-10-08"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1x0lo5j/i_built_36_browseronly_devstudent_tools_and_a/",
+   "title": "浏览器端隐私优先开发者工具集及构建时隐私测试",
+   "titleEn": "I built 36 browser-only dev/student tools, and a test fails the build if any page can send data",
+   "summary": "作者开发了36个纯浏览器运行的工具（如JWT解码、JSON格式化），不传输数据。测试套件在构建时扫描页面，若发现任何数据发送API即失败构建，确保隐私承诺。",
+   "type": "Web 应用",
+   "topic": "工程实践",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-08",
+   "score": 6.7,
+   "rel": 5,
    "firstSeen": "2026-10-08"
   },
   {
@@ -1300,6 +1398,34 @@
    "score": 6.7,
    "rel": 7,
    "firstSeen": "2026-09-29"
+  },
+  {
+   "url": "https://huggingface.co/spaces/arudradey/qwen-image-2.1-uncensored-gguf",
+   "title": "Spaces 应用：arudradey/qwen-image-2.1-uncensored-gguf",
+   "titleEn": "",
+   "summary": "部署 Qwen-Image 2.1 去审查版本的 Gradio 应用，模型格式为 GGUF。该应用允许用户在云端体验通义千问图像模型的无限制生成能力，点赞数 364。",
+   "type": "模型与推理",
+   "topic": "开源模型",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-08",
+   "score": 6.6,
+   "rel": 8,
+   "firstSeen": "2026-10-07"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1247006#reply33",
+   "title": "因为不会做 App 图标，我做了个收了 1.8 万个真实图标的网站",
+   "titleEn": "",
+   "summary": "独立开发网站 AppLore，聚合 1.8 万真实 App 图标，支持按颜色、风格筛选及 AI 语义搜索（如“记账 App 用的可爱小猪”）。采用内存向量计算加速搜索，提供图标生成与尺寸导出功能。",
+   "type": "Web 应用",
+   "topic": "设计工具",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-08",
+   "score": 6.6,
+   "rel": 6,
+   "firstSeen": "2026-10-08"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1wzfwz1/i_built_free_audio_tools_that_run_entirely_in_the/",
@@ -1624,6 +1750,20 @@
    "firstSeen": "2026-09-29"
   },
   {
+   "url": "https://www.v2ex.com/t/1247066#reply0",
+   "title": "用 Agent 写了一个博客网站（基础功能比较完善博客/域名/项目/相册/友链）",
+   "titleEn": "",
+   "summary": "分享使用 Agent 辅助开发博客网站的实践，实现了博客内容、域名管理、项目展示、相册及友链等基础功能。通过 V2EX 社区发布，展示了 AI 编程工具在个人静态站点构建中的落地效果。",
+   "type": "Web 应用",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-08",
+   "score": 6.1,
+   "rel": 7,
+   "firstSeen": "2026-10-08"
+  },
+  {
    "url": "https://www.v2ex.com/t/1246867#reply1",
    "title": "[自荐] 大家都在把 AI 塞进 Obsidian，我却反过来把 Obsidian 接进 AI 官网",
    "titleEn": "",
@@ -1649,6 +1789,34 @@
    "lastSeen": "2026-10-08",
    "score": 6.0,
    "rel": 6,
+   "firstSeen": "2026-10-08"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1247111#reply0",
+   "title": "做了个 Chrome 插件 FrameScraper，支持 iframe、分页和部分 Canvas 表格的数据提取",
+   "titleEn": "",
+   "summary": "作者发布 Chrome 插件 FrameScraper (v0.1.9)，用于提取网页中 HTML、iframe 及 Canvas 表格数据。支持分页、虚拟列表，已适配飞书等场景，可导出多种格式且全程本地处理，数据不上云。",
+   "type": "浏览器插件",
+   "topic": "效率工具",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-08",
+   "score": 6.0,
+   "rel": 5,
+   "firstSeen": "2026-10-08"
+  },
+  {
+   "url": "https://huggingface.co/spaces/Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
+   "title": "Spaces 应用：Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces 上的 Gradio 应用，运行 MiniMax-H3-Turbo 去审查 Lora 模型。该模型旨在生成无限制内容，当前点赞数 1232，属于社区调优的开源模型变种部署。",
+   "type": "模型与推理",
+   "topic": "开源模型",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-08",
+   "score": 6.0,
+   "rel": 8,
    "firstSeen": "2026-10-08"
   },
   {
@@ -1945,6 +2113,20 @@
    "firstSeen": "2026-09-29"
   },
   {
+   "url": "https://www.v2ex.com/t/1247082#reply0",
+   "title": "[开源需求收集] 一个轻量级的专供于小团队的订阅 / API 共享的 API 网关",
+   "titleEn": "",
+   "summary": "作者在 V2EX 发布开源项目，旨在为小团队提供轻量级 API 网关，支持订阅与 API 共享功能。国庆期间修复了部分 Bug，目前寻求社区建议以明确后续开发方向及具体需求。",
+   "type": "CLI 工具",
+   "topic": "开源生态",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-08",
+   "score": 5.7,
+   "rel": 6,
+   "firstSeen": "2026-10-08"
+  },
+  {
    "url": "https://mlnews.online/",
    "title": "ML News 机器学习垂直资讯聚合",
    "titleEn": "Show HN: ML News – ML-Focused Hacker News Projection with RSS",
@@ -2054,20 +2236,6 @@
    "score": 5.5,
    "rel": 5,
    "firstSeen": "2026-10-08"
-  },
-  {
-   "url": "https://huggingface.co/spaces/arudradey/qwen-image-2.1-uncensored-gguf",
-   "title": "Spaces 应用：arudradey/qwen-image-2.1-uncensored-gguf",
-   "titleEn": "",
-   "summary": "Hugging Face Spaces 部署 Qwen-Image-2.1 无审查版 GGUF 模型，使用 Gradio 交互界面，创建于 2026 年 9 月，获 364 点赞。旨在提供本地或云端图像生成能力，属于开源模型权重的社区应用实践。",
-   "type": "模型与推理",
-   "topic": "开源权重",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-08",
-   "score": 5.5,
-   "rel": 7,
-   "firstSeen": "2026-10-07"
   },
   {
    "url": "https://www.v2ex.com/t/1246688#reply0",
@@ -2236,6 +2404,20 @@
    "firstSeen": "2026-09-29"
   },
   {
+   "url": "https://huggingface.co/spaces/multimodalart/jev-decision-index",
+   "title": "Spaces 应用：multimodalart/jev-decision-index",
+   "titleEn": "",
+   "summary": "静态页面的 Hugging Face Spaces 应用，名为 jev-decision-index。结合前文语境，推测与 Jev 决策模型相关，用于展示其决策索引或相关统计信息，点赞数 523。",
+   "type": "Web 应用",
+   "topic": "Agent 工具",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-08",
+   "score": 5.3,
+   "rel": 7,
+   "firstSeen": "2026-10-08"
+  },
+  {
    "url": "https://huggingface.co/spaces/kulkas2pintu/QWEN_EDIT_IMAGE",
    "title": "Spaces 应用：kulkas2pintu/QWEN_EDIT_IMAGE",
    "titleEn": "",
@@ -2284,6 +2466,34 @@
    "summary": "基于 Qwen 模型的 AI 图像编辑器 Turner 上线，主打免费、无水印、无需注册。支持中文提示词进行背景更换、色彩及视角调整，不限编辑次数。面向创作者及营销人员，解决现有 AI 修图工具付费限制及水印问题。",
    "type": "Web 应用",
    "topic": "工具发布",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-08",
+   "score": 5.2,
+   "rel": 5,
+   "firstSeen": "2026-10-08"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1247079#reply0",
+   "title": "AI 时代，创造力爆发的你可以用这个工具来邀请别人体验你的应用了",
+   "titleEn": "",
+   "summary": "免费邀请码分发工具，支持直接领取、邮箱接收及后台修改订阅三种形式。开发者可在后台实时查看领取状态，解决 AI 时代应用快速验证阶段频繁手动分发 Key 及统计混乱的问题。",
+   "type": "效率工具",
+   "topic": "效率工具",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-08",
+   "score": 5.2,
+   "rel": 5,
+   "firstSeen": "2026-10-08"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1247103#reply3",
+   "title": "我花了半年做了一个鸿蒙社交 APP，已累计 2.5W 用户了，欢迎大家来提提意见",
+   "titleEn": "",
+   "summary": "Android 开发者借助 AI 辅助开发鸿蒙 LBS 社交 App MeetU，累计用户 2.5 万，日活约 200。目前面临冷启动困境，新用户难以匹配导致流失，作者寻求产品建议及反馈。",
+   "type": "移动 App",
+   "topic": "移动开发",
    "block": "V2EX 分享创造",
    "src": "apps",
    "lastSeen": "2026-10-08",
@@ -2348,20 +2558,6 @@
    "firstSeen": "2026-10-01"
   },
   {
-   "url": "https://huggingface.co/spaces/multimodalart/jev-decision-index",
-   "title": "Spaces 应用：multimodalart/jev-decision-index",
-   "titleEn": "",
-   "summary": "Hugging Face Spaces 应用 multimodalart/jev-decision-index，基于静态技术栈，创建于 2026 年 9 月，获 517 点赞。该应用可能关联前文提及的 Jev 决策逻辑或相关多模态艺术生成，具体功能未在片段中详述。",
-   "type": "Agent 工作流",
-   "topic": "Agent 框架",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-08",
-   "score": 5.1,
-   "rel": 6,
-   "firstSeen": "2026-10-08"
-  },
-  {
    "url": "https://www.v2ex.com/t/1246423#reply1",
    "title": "给已有网站做了个 llms.txt 生成器，欢迎试用",
    "titleEn": "",
@@ -2374,20 +2570,6 @@
    "score": 5.1,
    "rel": 6,
    "firstSeen": "2026-10-05"
-  },
-  {
-   "url": "https://huggingface.co/spaces/kulkas2pintu/wan777",
-   "title": "Spaces 应用：kulkas2pintu/wan777",
-   "titleEn": "",
-   "summary": "Hugging Face Spaces 上的 wan777 模型应用，采用 Gradio 技术栈，创建于 2026 年 7 月，获 374 点赞。推测为 Wan 系列生成模型（如视频或图像）的社区部署版本，提供在线交互推理接口。",
-   "type": "模型与推理",
-   "topic": "模型与推理",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-08",
-   "score": 5.0,
-   "rel": 7,
-   "firstSeen": "2026-10-08"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1wxs1qa/made_a_kids_channel_about_emotions_with_a_child/",
