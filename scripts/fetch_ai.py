@@ -28,6 +28,7 @@ import statistics
 import sys
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 
@@ -39,7 +40,11 @@ UTC = datetime.timezone.utc
 # 一条），若统一用短窗会被整体过滤干净 —— 必须按车道区分。中文媒体实测日更节奏
 # 差异大（36氪 30 条 / 雷锋网 1 条），36h 会把慢的那几家压缩到只能靠保底，故放宽到 72h。
 LANE_MAX_AGE = {"model": 504, "official": 168, "paper": 72, "community": 48,
-                "media": 96, "cn": 72}
+                "media": 96, "cn": 72,
+                # hot = AIHOT 精选。它的 API 侧已经用 window=24h 筛过一遍
+                # （实测 21 条的 publishedAt 距今 1.4–23.1h），这里给 72h 只是
+                # **兜底**，不是二次过滤 —— 设成 24h 会把边界上的条目误杀成 stale。
+                "hot": 72}
 DEFAULT_MAX_AGE = 48
 
 ATOM = "{http://www.w3.org/2005/Atom}"
@@ -1177,8 +1182,11 @@ def _total_of(it, tcfg):
         if it.get("lane") == "model":
             total += 0.5
         return round(min(10.0, total), 1)
+    # 兜底分（LLM 全挂时）。hot=6.4 是**故意压在 watch 门槛 6.5 之下**的：
+    # AIHOT 的精选虽然是别人判过的，但兜底路径意味着我们自己的打分不可用，
+    # 此时把外部来源的条目送进「重磅」区等于用别人的判断冒充我们的判断。
     base = {"model": 9.0, "official": 7.6, "apps": 6.6, "paper": 6.2, "cn": 6.2,
-            "community": 5.4, "media": 5.4}.get(it.get("lane"), 5.4)
+            "community": 5.4, "media": 5.4, "hot": 6.4}.get(it.get("lane"), 5.4)
     age = it.get("ageH", -1)
     bonus = 1.2 if 0 <= age <= 12 else (0.6 if 0 <= age <= 36 else 0.0)
     if it.get("alsoIn"):
@@ -1244,6 +1252,345 @@ def assign_levels(items, tcfg):
     for i in items:
         i.pop("_kw", None)
     return n_top, n_watch, inv
+
+
+# --------------------------------------------------------------------------- #
+# AIHOT 精选接入（影子模式）
+#   为什么只接「精选」而不接全量（2026-10-08 实测）：
+#     mode=all 24h 有 366 条（x.com 占 68%），mode=selected 24h 只有 17–21 条。
+#     接全量等于把"哪些值得看"这件事重做一遍，而 AIHOT 的编辑判断已经做完了 ——
+#     项目所有者的指示是「站在巨人肩膀上，不要重复做工」。
+#   边界（重要）：**表达层用它的，排序层用我们的。**
+#     标题/摘要/推荐理由直接取它的中文成果；但 rel/info/fresh 打分仍走我们自己的
+#     LLM。因为加权总分是整页唯一的排序主键，两套分数不可通约（它 71 分 ≠ 我们 7.1
+#     分），混用会让「分数下限 + 名额」的分级失控。
+#   合规：其条款允许个人非商业使用，但要求保留 attribution 与回链。
+#     影子阶段数据不落线上产物、不构成再分发；正式并 UI 需要单独一次确认。
+# --------------------------------------------------------------------------- #
+_AIHOT_UA = "ai-radar/1.0 (+https://github.com/homjanon/ai-radar)"
+
+
+def _aihot_get(url, etag="", timeout=30):
+    """带 If-None-Match 的 GET。返回 (status, body_bytes, etag)。
+
+    为什么不走 http_get()：它只返回 body，拿不到响应头，而 ETag 就在校验头里。
+    304 时按 HTTP 语义没有响应体，urllib 会直接返回 304 而不抛异常。
+    """
+    req = urllib.request.Request(url, headers={"User-Agent": _AIHOT_UA,
+                                               "Accept": "application/json",
+                                               "If-None-Match": etag})
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            return r.status, r.read(), (r.headers.get("ETag") or "")
+    except urllib.error.HTTPError as e:
+        if e.code == 304:
+            return 304, b"", etag
+        raise
+
+
+def _aihot_block(name):
+    """source.name → 卡片上那个短的 block 标签。
+
+    实测形态有「X：Arena (@arena)」「The Decoder：AI News（RSS）」「公众号：数字生命卡兹克」。
+    尾部的（RSS）/（网页）是他们标注抓取通路用的，对读者是噪音，去掉；其余原样保留 ——
+    前缀（X / 公众号）本身就是有价值的信息，它告诉读者这条来自大V还是来自号。
+    """
+    s = re.sub(r"（(?:RSS|网页|Atom|feed)[^）]*）", "", name or "", flags=re.I)
+    s = re.sub(r"\s+", " ", s).strip()
+    return s[:34]
+
+
+def _wordset(s):
+    """词集：英文按空格分词，中文按 2-gram。用于跨语言无关的同源判定。"""
+    s = re.sub(r"[^\w一-鿿\s]", " ", (s or "").lower())
+    out = set()
+    for t in s.split():
+        if re.fullmatch(r"[\u4e00-\u9fff]+", t):
+            out |= {t[k:k + 2] for k in range(max(1, len(t) - 1))}
+        else:
+            out.add(t)
+    return out
+
+
+def _host(u):
+    try:
+        h = urllib.parse.urlparse(u or "").netloc.lower()
+    except Exception:
+        return ""
+    return h[4:] if h.startswith("www.") else h
+
+
+def fetch_aihot(acfg, outdir):
+    """拉 AIHOT 精选。返回 (raw_items, diag, err)。
+
+    ETag 能跨运行留住，是因为 fetch.yml 是 `git add docs` —— docs/data/ 下的
+    小 json 会随产物一起提交，下次 checkout 就带回来了。
+    """
+    api = acfg.get("api", "https://aihot.news/api/v1/items")
+    params = dict(acfg.get("params", {}))
+    max_pages = int(acfg.get("max_pages", 3))
+    etag_file = os.path.join(outdir, acfg.get("etag_file", "data/aihot_etag.json"))
+    etag = ""
+    try:
+        if os.path.exists(etag_file):
+            etag = json.load(open(etag_file, encoding="utf-8")).get("etag", "")
+    except Exception:
+        pass
+
+    qs = urllib.parse.urlencode(params)
+    raw, diag, pages = [], [], 0
+    cur = None
+    while pages < max_pages:
+        url = f"{api}?{qs}" + (f"&cursor={urllib.parse.quote(cur, safe='')}" if cur else "")
+        # ⚠️ 整个网络调用必须包在 try 里。冒烟测试抓到过这个 bug：
+        #    原来只判 `if aerr` 返回值，而 _aihot_get 抛的是 URLError / 超时 /
+        #    ConnectionReset —— 异常直接穿到 main() 外面，**整轮抓取崩掉、当天没产物**。
+        #    "外部接口挂了不影响主流程"是注释里的承诺，不写 try 就是空话。
+        try:
+            st, body, new_etag = _aihot_get(url, etag if pages == 0 else "")
+        except Exception as e:
+            detail = getattr(e, "reason", None) or getattr(e, "strerror", None) or str(e)
+            return None, diag + [f"{type(e).__name__}:{str(detail)[:60]}"], \
+                f"网络异常 {type(e).__name__}"
+        diag.append(f"HTTP{st}")
+        if st == 304:
+            log("  ♻️ AIHOT 返回 304（ETag 命中，0 流量）—— 与上次抓取内容相同")
+            try:
+                cached = json.load(open(etag_file, encoding="utf-8")).get("last_items") or []
+            except Exception:
+                cached = []
+            if cached:
+                diag.append(f"304→用缓存{len(cached)}条")
+                return cached, diag, None
+            # 缓存里没有条目（老版本只存了 etag）：清掉 etag 强制重拉一次，
+            # 否则会静默地"今天没有 AIHOT 数据"而日志上完全看不出来
+            log("  ⚠️ 304 但本地无缓存条目，清掉 ETag 重拉")
+            try:
+                os.remove(etag_file)
+            except OSError:
+                pass
+            try:
+                st, body, new_etag = _aihot_get(url, "")
+            except Exception as e:
+                return None, diag + [f"重拉{type(e).__name__}"], "重拉失败"
+            diag.append("重拉HTTP%d" % st)
+        if st != 200:
+            return None, diag, f"HTTP {st}"
+        try:
+            j = json.loads(body.decode("utf-8"))
+        except Exception as e:
+            return None, diag, f"JSON 解析失败 {type(e).__name__}"
+        its = j.get("items") or []
+        raw += its
+        pages += 1
+        cur = (j.get("page") or {}).get("nextCursor")
+        if not cur:
+            break
+    try:
+        os.makedirs(os.path.dirname(etag_file), exist_ok=True)
+        # last_items 只存回读 304 时需要的最小字段集，别把整包塞进去撑大仓库
+        slim = [{"id": i.get("id"), "title": i.get("title"),
+                 "originalTitle": i.get("originalTitle"), "summary": i.get("summary"),
+                 "source": {"name": (i.get("source") or {}).get("name")},
+                 "links": i.get("links"), "publishedAt": i.get("publishedAt"),
+                 "discoveredAt": i.get("discoveredAt"), "category": i.get("category"),
+                 "score": i.get("score"), "selected": i.get("selected"),
+                 "reason": i.get("reason"), "attribution": i.get("attribution")}
+                for i in raw]
+        json.dump({"etag": new_etag, "saved_at": datetime.datetime.now(TZ_CN).isoformat(),
+                   "n": len(slim), "last_items": slim},
+                  open(etag_file, "w", encoding="utf-8"), ensure_ascii=False)
+    except Exception as e:
+        diag.append(f"etag落盘失败:{type(e).__name__}")
+    return raw, diag, None
+
+
+def parse_aihot(raw, acfg, now):
+    """AIHOT item → 与现有条目同构的 dict。
+
+    ⚠️ 比对键的教训（2026-10-09 影子首跑实测）：第一版把 `title` 存成它的
+    `originalTitle`（英文），理由是"两边都是英文，跨日折叠天然判得出"。
+    结果漏掉了 AIHOT 精选集内部的重复 —— Arena 那笔 2 亿美元融资三条推文，
+    originalTitle 分别是 "We're incredibly proud to continue working with
+    @thehousefund!" / "Grateful to have @lightspeedvp with us as we build
+    what's next!" / "We're so proud to have worked alongside @felicis…"，
+    互相 Jaccard 只有 0.00–0.22；而它的**中文标题**之间是 0.58–0.68。
+    原因：X 条目的 originalTitle 是**推文正文**不是标题，真正的"这条讲了什么"
+    只存在于 AIHOT 编辑写的中文标题里。
+    所以现在的取向是：
+      · title    = 它的中文标题（读者看到的、也是同语言比对用的键）
+      · titleEn  = originalTitle（英文，留着跟**我们自己的英文标题**比）
+      · 比对一律「英文对英文、中文对中文」，跨语言不比 —— 见 _fold_keys / aihot_dedup
+    """
+    out = []
+    for e in raw or []:
+        if not isinstance(e, dict) or not e.get("selected"):
+            continue                      # 精选接口理论上全 true，但按契约要容错
+        zh = (e.get("title") or "").strip()
+        en = (e.get("originalTitle") or "").strip()
+        if not zh:
+            continue
+        links = e.get("links") or {}
+        orig = (links.get("original") or "").strip()
+        if not orig:
+            continue                      # 没有原文链接就不收 —— 无法溯源的内容不要
+        dt = parse_dt(e.get("publishedAt") or e.get("discoveredAt"))
+        summ = re.sub(r"\s+", " ", (e.get("summary") or "").strip())
+        blk = _aihot_block((e.get("source") or {}).get("name"))
+        item = {
+            "title": zh[:150],
+            "titleCn": "",                # 空着：前端 titleCn||title 会直接用中文标题，
+                                          # 且不会渲染出「英文原标题」那行（X 的推文碎片
+                                          # 当副标题只会误导）
+            "titleEn": en[:150],
+            "desc": summ[:1200],
+            "url": orig,
+            "dt": dt,
+            "ageH": -1 if dt is None else int((now - dt).total_seconds() // 3600),
+            "lane": acfg.get("lane", "hot"),
+            "block": blk,
+            "source": blk,
+            "aihotUrl": links.get("aihot") or "",
+            "aihotScore": e.get("score"),
+            "aihotCategory": e.get("category") or "",
+            "attribution": e.get("attribution") or {"name": "AIHOT",
+                                                    "url": "https://aihot.news/"},
+            # 内部暂存：LLM 会覆盖 summary/reason，⑦ 之后按这两个值还原成"它的成果"
+            "_aihotSummary": summ,
+            "_aihotReason": (e.get("reason") or "").strip(),
+            "_aihot": True,
+            "alsoIn": [],
+        }
+        out.append(item)
+    return out
+
+
+def _fold_keys(i):
+    """一条条目用来判重的所有标题形态。同语言才互相可比，所以中英文都收进来，
+    由比对方各自按语言取用。"""
+    ks = set()
+    for k in ("title", "titleCn", "titleEn"):
+        v = norm_title(i.get(k))
+        if v:
+            ks.add(v)
+    return ks
+
+
+def _zh_w(s):
+    """含 CJK 才给词集，否则返回空集 —— 强制「中文只跟中文比」。"""
+    return _wordset(s) if re.search(r"[\u4e00-\u9fff]", s or "") else set()
+
+
+def _en_w(s):
+    """拉丁词集：含 CJK 的串不当英文比（词集切法不同，比出来是噪音）。"""
+    if not s or re.search(r"[\u4e00-\u9fff]", s):
+        return set()
+    return _wordset(s)
+
+
+def aihot_dedup(items, merged, acfg):
+    """三层去重。返回 (kept, dropped_dict)。
+
+    实测才定的层次（第四轮交接里写的「标题 Jaccard>0.8」那层是空转的 ——
+    它的中文标题和我们的英文标题词集根本不重叠）：
+      ① URL 归一化                 实测命中 4/500
+      ② 标题词集 Jaccard≥0.55      **只在同语言之间比**（中文对中文、英文对英文）
+      ③ 同域名 + 6h 内 + 标题弱重叠  兜住「同一篇文章、标题写法略有出入」
+
+    ⚠️ ② 的「同语言」这条是硬要求，不是优化。实测两边都见过误判：
+      · 拿 AIHOT 中文标题 对 我们的英文标题 → Jaccard 恒≈0，一层形同虚设；
+      · 拿 X 条目的英文 originalTitle 互相比 → 那是推文正文，同一事件的三条
+        推文 Jaccard 只有 0.00–0.22，重复全漏。
+      同语言比对才有效：那三条中文标题互相 0.58–0.68，一发就中。
+
+    ⚠️ ③ 的设计改过一次。最初写成「同域名 + 发布时间差 < 6h 就判重复」，
+    那是**错的**：高产源（openai.com、github.com）在 6 小时内发两条完全不同的内容
+    很常见，按这个判据会把真新闻当重复丢掉；而不同媒体报道同一事件时域名本来就不同，
+    这条又帮不上忙 —— 它既误杀又漏杀。现在加上「标题弱相似」这个前置条件，
+    只在同域名（同一篇文章的先验本来就高）且标题确实有相似度时才生效。
+
+    ★ 比对池**边判边吸收**已留下的条目，等于顺带做了「精选集内部去重」。
+      2026-10-09 影子首跑撞上：AIHOT 自己的精选集里 Arena 那笔融资重复了三条。
+      进来的列表先按它的 score 降序排，保证同组里分数最高的那条留下。
+    """
+    dmin = float(acfg.get("jaccard_min", 0.55))
+    dweak = float(acfg.get("same_host_jaccard", 0.25))
+    tmax = float(acfg.get("same_host_hours", 6))
+    pool = []          # (url, zh词集, en词集, dt, host)
+    for m in merged:
+        u = (m.get("url") or "").split("?")[0].rstrip("/")
+        pool.append((u, _zh_w(m.get("title")) | _zh_w(m.get("titleCn")),
+                     _en_w(m.get("title")) | _en_w(m.get("titleEn")),
+                     m.get("dt"), _host(m.get("url") or "")))
+
+    def _jac(a, b):
+        return len(a & b) / max(1, len(a | b))
+
+    def _sim(x, y):
+        """同语言取高分者。跨语言一律 0，不参与判断。"""
+        return max(_jac(x[1], y[1]) if x[1] and y[1] else 0.0,
+                   _jac(x[2], y[2]) if x[2] and y[2] else 0.0)
+
+    drop = {"url": 0, "title": 0, "host_time": 0}
+    kept = []
+    for i in sorted(items, key=lambda x: -(x.get("aihotScore") or 0)):
+        u = (i["url"] or "").split("?")[0].rstrip("/")
+        if u and any(p[0] and p[0] == u for p in pool):
+            drop["url"] += 1
+            continue
+        me = (u, _zh_w(i["title"]) | _zh_w(i.get("titleCn")),
+              _en_w(i.get("titleEn")) or _en_w(i["title"]), i.get("dt"), _host(i["url"]))
+        if max((_sim(me, p) for p in pool), default=0) >= dmin:
+            drop["title"] += 1
+            continue
+        if me[3]:
+            same = any(p[4] and p[4] == me[4] and p[3]
+                       and abs((me[3] - p[3]).total_seconds()) < tmax * 3600
+                       and _sim(me, p) >= dweak for p in pool)
+            if same:
+                drop["host_time"] += 1
+                continue
+        kept.append(i)
+        pool.append(me)
+    return kept, drop
+
+
+def restore_aihot_expr(items):
+    """把表达层还原成 AIHOT 的成果（LLM 只留下 score / topic）。
+
+    这是「不重复做工」的落点：它已经写好的中文标题、118 字摘要、编辑推荐理由，
+    我们没必要让模型再产一遍。
+    """
+    for i in items:
+        if not i.get("_aihot"):
+            continue
+        if i.get("_aihotSummary"):
+            i["summary"] = i["_aihotSummary"][:300]
+        if i.get("_aihotReason"):
+            i["reason"] = i["_aihotReason"][:300]
+        # 正文与摘要相同时前端 hasBody() 会判 False → 不显示「展开全文」。
+        # X/公众号这类条目 API 本来就不给全文，这是**如实降级**，不是漏功能。
+        i["desc"] = i.get("_aihotSummary") or i.get("desc") or ""
+    return items
+
+
+def write_aihot_shadow(outdir, day_stat):
+    """影子产物：按日期累积成 days 数组，保留最近 14 天，跑 3 天就有决策数据。"""
+    p = os.path.join(outdir, "data", "aihot_shadow.json")
+    doc = {"updated": "", "days": []}
+    if os.path.exists(p):
+        try:
+            doc = json.load(open(p, encoding="utf-8"))
+        except Exception:
+            doc = {"updated": "", "days": []}
+    if not isinstance(doc.get("days"), list):
+        doc["days"] = []
+    doc["days"] = [d for d in doc["days"] if d.get("date") != day_stat["date"]] + [day_stat]
+    doc["days"] = doc["days"][-14:]
+    doc["updated"] = day_stat.get("generated_at", "")
+    os.makedirs(os.path.dirname(p), exist_ok=True)
+    json.dump(doc, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    return p
 
 
 # --------------------------------------------------------------------------- #
@@ -1369,6 +1716,52 @@ def main():
     if len(merged) < len(all_items):
         log(f"🔁 跨源去重折叠 {len(all_items) - len(merged)} 条")
 
+    # ④c AIHOT 精选接入。放在跨源去重**之后**，因为第三层去重要拿 merged 的
+    #    域名+时间做比对；放在 LLM 增强之前，这样正式并入时不用改后面的流程。
+    acfg = cfg.get("aihot", {}) or {}
+    aihot_items, aihot_stat = [], None
+    if acfg.get("enabled", False):
+        log("[hot      ] aihot-selected        AIHOT 精选")
+        raw, adiag, aerr = fetch_aihot(acfg, a.outdir)
+        if aerr or raw is None:
+            # 外部接口挂了绝不影响主流程：记一条降级，继续往下走（绝不空窗）
+            degraded.append({"id": "_aihot", "lane": "hot",
+                             "reason": ("AIHOT 接口不可用：" + (aerr or "; ".join(adiag)))[:170]})
+            log(f"  ⛔ AIHOT 抓取失败，主流程照常：{(aerr or '; '.join(adiag))[:120]}")
+            reports.append({"id": "_aihot", "ok": False, "via": "aihot.news",
+                            "n": 0, "diag": adiag})
+        else:
+            parsed = parse_aihot(raw, acfg, now)
+            # 时间窗：AIHOT 条目是在源循环**之后**直接进 merged 的，绕过了 ② 那段
+            # 每源窗口过滤。既然 LANE_MAX_AGE 给 hot 配了 72h，就得在这里真的执行它，
+            # 否则那条配置是谎话。超窗的不丢弃、只标 stale（与主流程的保底语义一致）。
+            win = int(acfg.get("max_age_h") or LANE_MAX_AGE.get(acfg.get("lane", "hot"), 72))
+            n_stale = 0
+            for i in parsed:
+                if i["ageH"] > win:
+                    i["stale"] = True
+                    n_stale += 1
+            for i in parsed:
+                i["_translate_title"] = False     # 它的标题已是中文，别再进翻译链
+                i["_want_type"] = False
+            kept, dropped = aihot_dedup(parsed, merged, acfg)
+            shadow = bool(acfg.get("shadow_only", True))
+            log(f"  ✅ 拉到 {len(raw)} → 可用 {len(parsed)}（超 {win}h 窗标 stale {n_stale}）→ "
+                f"去重剔 {sum(dropped.values())}（URL {dropped['url']} / 标题 {dropped['title']} / "
+                f"同域同时段 {dropped['host_time']}）→ 净增 {len(kept)}"
+                + ("（影子模式，未并入产物）" if shadow else "（已并入）"))
+            reports.append({"id": "_aihot", "ok": True, "via": "aihot.news",
+                            "n": len(kept), "raw": len(raw), "diag": adiag})
+            if shadow:
+                aihot_items = kept
+                aihot_stat = {"date": now.strftime("%Y-%m-%d"),
+                              "generated_at": now.strftime("%Y-%m-%d %H:%M"),
+                              "shadow_only": True, "fetched": len(raw),
+                              "usable": len(parsed), "dropped": dropped,
+                              "net": len(kept), "wouldBe": {}, "bumped": 0, "items": []}
+            else:
+                merged.extend(kept)
+
     # ④b 读案例库既有记录：入库时按 url 比对，用于跨日累积（命中即更新 lastSeen）。
     cases_cfg = cfg.get("cases", {}) or {}
     lib_path = os.path.join(a.outdir, cases_cfg.get("file", "data/cases.json"))
@@ -1394,11 +1787,16 @@ def main():
         prev_name = os.path.basename(prev_path)
         try:
             with open(prev_path, encoding="utf-8") as f:
-                prev_titles = {norm_title(x["title"]) for x in json.load(f).get("items", [])}
+                # 收齐每条目的**所有标题形态**（title / titleCn / titleEn）。
+                # 原来只收 norm_title(title)，于是 AIHOT 条目（title 是中文、
+                # titleEn 才是英文）永远撞不上昨天那条英文标题 —— 同一条新闻
+                # 会连着两天各出现一次。
+                for x in json.load(f).get("items", []):
+                    prev_titles |= _fold_keys(x)
         except Exception as e:
             log(f"  ⚠️ 读上一份归档失败（{prev_name}）：{e}")
     for i in merged:
-        i["isRepeat"] = norm_title(i["title"]) in prev_titles
+        i["isRepeat"] = bool(_fold_keys(i) & prev_titles) if prev_titles else False
     n_rep = sum(1 for i in merged if i["isRepeat"])
     if prev_name:
         log(f"♻️ 跨日比对 {prev_name}：重复 {n_rep} 条（保留但降权展示）")
@@ -1406,8 +1804,12 @@ def main():
         log("♻️ 无历史归档可比（首次运行），跳过跨日折叠")
 
     # ⑥ 正文补抓（仅对 desc 过短且非重复的条目，限量）
+    #    ⚠️ 排除 _aihot 条目：它的 desc 就是 118 字的摘要，按长度判会被选中去补抓，
+    #    而 links.original 大量是 x.com / 公众号 —— 那些页面要 JS 渲染或有登录墙，
+    #    Jina 抓不动，白烧配额还刷一堆失败日志。API 本来就不给全文，这是已知边界。
     if not a.no_jina:
-        need = [i for i in merged if len(i["desc"]) < 300 and not i["isRepeat"] and i["url"]][: a.jina_max]
+        need = [i for i in merged if len(i["desc"]) < 300 and not i["isRepeat"]
+                and i["url"] and not i.get("_aihot")][: a.jina_max]
         if need:
             log(f"📥 Jina 补正文：{len(need)} 条（desc<300）")
         ok_j = 0
@@ -1426,6 +1828,13 @@ def main():
     # ⑦ LLM 增强（P2）：中文摘要 / 英文标题中文化 / 三维打分 / 主题标签 / 应用形态
     tcfg = cfg.get("translate", {})
     translator, failed_batches = llm_enhance(merged, tcfg)
+
+    # ⑦a′ AIHOT 条目的表达层还原。**必须无条件做一次，不能只在影子分支里做** ——
+    #     正式并入（shadow_only=false）时它们是直接混在 merged 里过 ⑦ 的，
+    #     LLM 会把它们已有的中文标题/摘要/推荐理由一并覆盖掉，
+    #     那等于把「表达层用它的、排序层用我们的」这条边界悄悄抹成了"两层都用我们的"，
+    #     而这条边界正是这次接入的全部理由。
+    restore_aihot_expr(merged)
 
     # ⑦a 应用形态兜底：LLM 没给就按关键词判，保证「按形态筛选」永远可用。
     for i in merged:
@@ -1448,6 +1857,57 @@ def main():
         degraded.append({"id": "_levels", "lane": "-",
                          "reason": "档位倒挂：top 最低分低于 watch 最高分（分级逻辑异常）"})
 
+    # ⑧b AIHOT 影子评估：必须在 assign_levels **之后**，否则拿不到"它会落在哪个档"。
+    #     影子模式的价值不在于"能不能拉到数据"，而在于回答那个真正要拍板的问题：
+    #     并进来之后，它会不会把我们自己判出来的重磅挤掉？
+    #     做法是把 aihot 条目和当日 merged 放进同一个池子重跑一遍分级（用副本，
+    #     绝不污染真实产物），看两边的档位各变成什么。
+    if aihot_items and aihot_stat is not None:
+        _, _af = llm_enhance(aihot_items, tcfg)
+        restore_aihot_expr(aihot_items)          # 表达层还原成它的成果，只留我们的分数
+        # ⚠️ 必须把"这一轮 LLM 到底有没有跑成"记进影子文件。
+        #    本地没配 Secret 时打分全走兜底分（车道基线+新鲜度），算出来的
+        #    「重磅 0 / 关注 7」是**兜底分的分布**，不是我们真实判分的结果，
+        #    拿它做并入决策会得出错误结论。有这个字段，读的人一眼就知道能不能信。
+        aihot_stat["llm"] = bool(aihot_items and
+                                 any(i.get("score") for i in aihot_items))
+        aihot_stat["llmFailedBatches"] = len(_af or [])
+        probe = [dict(x) for x in merged] + [dict(x) for x in aihot_items]
+        for x in probe:
+            x.pop("level", None)
+        assign_levels(probe, tcfg)               # 只改副本的 level/total，真实 merged 不动
+        ours, mine = probe[:len(merged)], probe[len(merged):]
+        dist = {}
+        for m, p in zip(aihot_items, mine):
+            dist[p["level"]] = dist.get(p["level"], 0) + 1
+            aihot_stat["items"].append({
+                "title": (m.get("titleCn") or m.get("title") or "")[:80],
+                "block": m.get("block", ""), "url": m.get("url", ""),
+                "aihotUrl": m.get("aihotUrl", ""),
+                "aihotScore": m.get("aihotScore"), "category": m.get("aihotCategory"),
+                "ageH": m.get("ageH"), "ourTotal": p.get("total"),
+                "ourLevel": p.get("level"), "ourScore": p.get("score"),
+                "kwBoost": bool(p.get("kwBoost")),
+                "reason": (m.get("reason") or "")[:180]})
+        moved = sum(1 for o, orig in zip(ours, merged) if o["level"] != orig.get("level"))
+        lost_top = [(orig.get("titleCn") or orig.get("title") or "")[:40]
+                    for o, orig in zip(ours, merged)
+                    if orig.get("level") == "top" and o["level"] != "top"]
+        aihot_stat["wouldBe"] = dist
+        aihot_stat["bumped"] = moved
+        aihot_stat["lostTop"] = lost_top
+        log(f"🛰 AIHOT 影子：净增 {len(aihot_items)} 条 → 若并入落在 "
+            f"重磅 {dist.get('top', 0)} / 关注 {dist.get('watch', 0)} / 常规 {dist.get('normal', 0)}"
+            f"；现有条目档位被改动 {moved} 条"
+            + (f"，其中跌出重磅：{'、'.join(lost_top[:4])}" if lost_top else ""))
+        if not aihot_stat["llm"]:
+            log("   ⚠️ 本轮 LLM 打分不可用，上面是**兜底分**的分布，不能作为并入依据"
+                "（兜底分只按车道基线+新鲜度算，hot 车道压到 6.4 就是为了让它进不了重磅）")
+        if _af:
+            log(f"   ⚠️ AIHOT 批次有降级：{_af}")
+        sp = write_aihot_shadow(a.outdir, aihot_stat)
+        log(f"   → 影子数据已写入 {os.path.relpath(sp, a.outdir)}（保留最近 14 天）")
+
     # ⑧a 正文翻译（只跑 top，见方案 §5）：必须在 assign_levels 之后 —— 它按 level 选条
     tr_body = translate_bodies(merged, tcfg)
 
@@ -1469,7 +1929,8 @@ def main():
         if i.get("descZh"):                     # 译文同样限长，产物别被撑爆
             i["descZh"] = i["descZh"][:2400]
         i.pop("dt", None)
-        for _k in ("_translate_title", "_want_type"):
+        for _k in ("_translate_title", "_want_type", "_aihot",
+                   "_aihotSummary", "_aihotReason"):
             i.pop(_k, None)                 # 内部标记一律不外泄（漏一个就会写进产物）
 
     doc = {

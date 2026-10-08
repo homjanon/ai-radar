@@ -12,7 +12,9 @@
   · LLM 增强两条路径：① 无 Key 全降级 ② 正常返回（含 want_type 分组）
   · 案例库入库门槛（低质 apps 条目只进简报、不进库）
   · 案例库按 url 累积（第二次运行只更新 lastSeen、不重复入库）
-  · 产物字段无内部标记外泄（_want_type / _translate_title）
+  · 产物字段无内部标记外泄（_want_type / _translate_title / _aihot*）
+  · AIHOT 精选：解析、**同语言**三层去重、精选集内部去重、影子不污染产物、
+    接口失败/304 两条降级路径
 
 用法：python scripts/smoke_test.py
 """
@@ -109,6 +111,64 @@ FIX = {
 TEST_IDS = ["openai-news", "v2ex-create", "hn-show", "openrouter-stealth",
             "llm-leaderboard", "hf-new-models", "hf-spaces-trend"]
 
+# --------------------------------------------------------------------------- #
+# AIHOT 精选：离线桩
+#   ⚠️ 必须打桩。fetch_aihot 走的是 _aihot_get（自己开 urllib，因为要读 ETag 响应头），
+#   不经过 http_get —— 只 stub http_get 的话，冒烟测试会**偷偷联网**打 AIHOT，
+#   既违背"离线守门"的定位，也会在对方接口抖动时假失败。
+# --------------------------------------------------------------------------- #
+AIHOT_STUB = {"mode": "ok", "etag": 'W/"smoke-aihot-1"'}
+
+
+def _ah(i, zh, en, url, score, mins=40):
+    p = (NOW - datetime.timedelta(minutes=mins)).strftime("%Y-%m-%dT%H:%M:%S.000Z")
+    return {"id": "smoke-%d" % i, "title": zh, "originalTitle": en,
+            "summary": zh + "：这是 AIHOT 写的中文摘要，长度用来验证表达层还原。" * 2,
+            "source": {"name": "X：测试号 (@tester)"},
+            "links": {"aihot": "https://aihot.news/items/smoke-%d" % i, "original": url},
+            "publishedAt": p, "discoveredAt": p, "category": "ai-products",
+            "score": score, "selected": True,
+            "reason": zh + "：推荐理由由 AIHOT 编辑给出，应当原样保留、不被我们重写。",
+            "attribution": {"name": "AIHOT", "url": "https://aihot.news/items/smoke-%d" % i}}
+
+
+def aihot_payload():
+    """三条：一条与我们英文标题撞车、两条是它自己内部的重复（中文像、英文不像）。
+
+    后两条复刻 2026-10-09 影子首跑撞上的真实情况 —— Arena 一笔融资在 AIHOT
+    精选里以三种措辞出现，而它们的英文 originalTitle 是三条完全不同的推文正文，
+    只按英文比一条都去不掉。这是「同语言才可比」这条规则的回归用例。
+    """
+    its = [
+        _ah(1, "OpenAI 发布 GPT-6 Sol 支持百万上下文",
+            "OpenAI releases GPT-6 Sol with 1M context",
+            "https://x.com/tester/status/9001", 80),
+        _ah(2, "Arena 完成 2 亿美元 B 轮融资估值 31 亿美元",
+            "We're incredibly proud to continue working with @thehousefund!",
+            "https://x.com/arena/status/9002", 67),
+        _ah(3, "Arena 完成 2 亿美元 B 轮融资估值达 31 亿美元",
+            "Grateful to have @lightspeedvp with us as we build what's next!",
+            "https://x.com/arena/status/9003", 65, mins=90),
+        _ah(4, "一条与现有内容完全无关的独立消息",
+            "An unrelated standalone note about local inference caching",
+            "https://x.com/tester/status/9004", 72, mins=120),
+    ]
+    return json.dumps({"schemaVersion": 1,
+                       "query": {"mode": "selected", "window": "24h", "by": "published"},
+                       "page": {"count": len(its), "hasMore": False, "nextCursor": None},
+                       "items": its}).encode()
+
+
+def stub_aihot():
+    def _get(url, etag="", timeout=30):
+        if AIHOT_STUB["mode"] == "fail":
+            raise RuntimeError("smoke: AIHOT 接口不可用")
+        if AIHOT_STUB["mode"] == "304" and etag == AIHOT_STUB["etag"]:
+            return 304, b"", etag
+        return 200, aihot_payload(), AIHOT_STUB["etag"]
+    F._aihot_get = _get
+
+
 
 def make_config(path):
     cfg = json.load(io.open(os.path.join(HERE, "sources.json"), encoding="utf-8"))
@@ -117,6 +177,9 @@ def make_config(path):
         s["enabled"] = True
         s["mode"] = "direct"                      # 冒烟测试不走 rsshub 池
     cfg["sources"] = keep
+    # 影子开关由用例控制（默认跟 sources.json 一致 = 开），用来分别验两条路径
+    if isinstance(cfg.get("aihot"), dict):
+        cfg["aihot"]["shadow_only"] = AIHOT_STUB.get("shadow", True)
     io.open(path, "w", encoding="utf-8").write(json.dumps(cfg, ensure_ascii=False))
     return cfg
 
@@ -130,6 +193,7 @@ def stub_http():
         raise RuntimeError(f"smoke: 未预置数据的 URL {url}")
     F.http_get = _get
     F.jina_fetch = lambda url, cap=1500: ""       # 关闭正文补抓
+    stub_aihot()                                   # AIHOT 走独立网络层，单独打桩
 
 
 def run(tmp, llm_stub):
@@ -544,6 +608,122 @@ def main():
         # 产出率告警：低于 30% 必须在日志里喊出来（不然又是一次静默失败）
         check("推荐理由" in _src and "低于 30%" in _src,
               "有「推荐理由产出率过低」告警（不再静默失败）", problems)
+        # ---------- 用例 5：AIHOT 精选接入 ----------
+        print("\n[5/5] AIHOT 精选（影子模式）")
+        acfg = {"lane": "hot", "jaccard_min": 0.55,
+                "same_host_hours": 6, "same_host_jaccard": 0.25}
+        raw = json.loads(aihot_payload().decode())["items"]
+        parsed = F.parse_aihot(raw, acfg, NOW)
+        check(len(parsed) == 4, f"parse_aihot 收到 4 条（实得 {len(parsed)}）", problems)
+        check(all(i["lane"] == "hot" for i in parsed), "车道标成 hot", problems)
+        check(all(i.get("attribution", {}).get("name") == "AIHOT" for i in parsed),
+              "每条都带 attribution（合规硬要求）", problems)
+        check(all(i.get("aihotUrl") for i in parsed), "每条都带回 AIHOT 的原文链接", problems)
+        # title 存中文（读者看到的）、titleEn 存英文（比对用的第二个键）
+        check(parsed[0]["title"].startswith("OpenAI 发布") and
+              parsed[0]["titleEn"].startswith("OpenAI releases"),
+              "title=中文标题、titleEn=英文原文（两个键都留着才敢同语言比对）", problems)
+
+        pool = [{"title": "OpenAI releases GPT-6 Sol with 1M context",
+                 "titleCn": "", "url": "https://openai.com/news/a", "dt": NOW},
+                {"title": "An unrelated standalone note about local inference caching",
+                 "titleCn": "", "url": "https://x.com/other/status/1", "dt": NOW}]
+        kept, drop = F.aihot_dedup(parsed, pool, acfg)
+        check(len(kept) == 1, f"4 条去重后只剩 1 条（实得 {len(kept)}）", problems)
+        check(drop["title"] == 3,
+              f"三层里标题层剔掉 3（英文撞 2 + 中文撞 1，实得 {drop['title']}）", problems)
+        check(kept and kept[0]["aihotScore"] == 67,
+              "内部重复留下的是**分数更高**的那条（按 aihotScore 降序判）", problems)
+
+        # ★ 「同语言才可比」的回归：两条 Arena 的中文标题几乎一样、英文完全不同
+        pair = [p for p in parsed if "Arena" in p["title"]]
+        _j = lambda a, b: len(a & b) / max(1, len(a | b))
+        zh_j = _j(F._zh_w(pair[0]["title"]), F._zh_w(pair[1]["title"]))
+        en_j = _j(F._en_w(pair[0]["titleEn"]), F._en_w(pair[1]["titleEn"]))
+        check(zh_j >= 0.55 and en_j < 0.55,
+              f"复刻真实陷阱：中文 Jaccard {zh_j:.2f} 判得出、英文 {en_j:.2f} 判不出 "
+              f"→ 只按英文比会漏（跨语言比对是无效层）", problems)
+
+        # 影子模式：不污染 latest.json，只写诊断文件
+        d5 = run(tmp, llm_stub=True)
+        check(all(i["lane"] != "hot" for i in d5["items"]),
+              "shadow_only=true → hot 车道条目**不在** latest.json 里", problems)
+        sp = os.path.join(tmp, "data", "aihot_shadow.json")
+        check(os.path.exists(sp), "影子诊断文件已生成", problems)
+        if os.path.exists(sp):
+            sd = json.load(io.open(sp, encoding="utf-8"))["days"][-1]
+            # 不断言具体条数：fixture 里 openai-news 因 desc 中位数 171 < desc_min 300
+            # 本来就会降级、不进 merged，于是"英文撞车"那条在集成路径里无从命中。
+            # 这里只要求账目自洽 + **精选集内部去重确实发生**（那才是本轮的真实 bug）。
+            check(sd["net"] == sd["fetched"] - sum(sd["dropped"].values()),
+                  f"影子账目自洽 fetched {sd['fetched']} - dropped "
+                  f"{sum(sd['dropped'].values())} = net {sd['net']}", problems)
+            arena = [x for x in sd["items"] if "Arena" in x["title"]]
+            check(len(arena) == 1,
+                  f"精选集内部重复被压成 1 条（实得 {len(arena)}）", problems)
+            check(sd["llm"] is True, "影子记录标了 llm=True（本地有桩模型，分数可信）", problems)
+            check(all(not k.startswith("_") for it in sd["items"] for k in it),
+                  "影子文件里没有内部标记外泄", problems)
+        check(all(not k.startswith("_aihot") for i in d5["items"] for k in i),
+              "产物里不含 _aihot* 内部字段", problems)
+
+        # AIHOT 挂掉 → 记降级，但主流程照常出产物（绝不空窗）
+        AIHOT_STUB["mode"] = "fail"
+        try:
+            d6 = run(tmp, llm_stub=True)
+            check(any(x.get("id") == "_aihot" for x in d6.get("degraded", [])),
+                  "AIHOT 失败 → degraded 里有 _aihot 一条（问题可见，不静默）", problems)
+            check(len(d6["items"]) > 0,
+                  f"AIHOT 失败仍产出 {len(d6['items'])} 条（不空窗）", problems)
+        except Exception as e:
+            check(False, f"AIHOT 失败不应中断主流程，却抛了 {type(e).__name__}: {e}", problems)
+        finally:
+            AIHOT_STUB["mode"] = "ok"
+
+        # 304 → 用上次缓存，不重复烧流量
+        AIHOT_STUB["mode"] = "304"
+        d7 = run(tmp, llm_stub=True)
+        check(len(d7["items"]) > 0, "304 路径主流程照常", problems)
+        sp7 = os.path.join(tmp, "data", "aihot_shadow.json")
+        if os.path.exists(sp7):
+            sd7 = json.load(io.open(sp7, encoding="utf-8"))["days"][-1]
+            check(sd7["fetched"] == 4,
+                  f"304 时用缓存条目继续判定（fetched={sd7['fetched']}）", problems)
+        AIHOT_STUB["mode"] = "ok"
+
+        # ★ 正式并入路径（shadow_only=false）：验那条边界有没有真的守住。
+        #   fake_batch 会把 summary 写成「摘要：xxx」，所以只要 AIHOT 条目的
+        #   summary 还带着它自己的原文，就证明 restore 在 merged 分支里也生效了。
+        #   这一步原来漏了：restore 只写在影子分支里，一旦关掉开关，
+        #   「表达层用它的」这条边界会**静默失效**，而日志上完全看不出来。
+        AIHOT_STUB["shadow"] = False
+        try:
+            d8 = run(tmp, llm_stub=True)
+            hot = [i for i in d8["items"] if i["lane"] == "hot"]
+            check(len(hot) >= 1, f"关掉影子后 hot 条目进了产物（{len(hot)} 条）", problems)
+            if hot:
+                check(all("摘要：" not in (i.get("summary") or "") for i in hot),
+                      "表达层没被 LLM 覆盖（summary 仍是 AIHOT 原文）", problems)
+                check(all((i.get("reason") or "").strip() for i in hot),
+                      "推荐理由沿用它的编辑成果", problems)
+                check(all(i.get("score") for i in hot),
+                      "打分仍来自我们自己的 LLM（排序层没让给别人）", problems)
+                check(all(i.get("attribution", {}).get("name") == "AIHOT" and
+                          i.get("aihotUrl") for i in hot),
+                      "每条都带 attribution + 回链（合规要求）", problems)
+                check(all(not k.startswith("_") for i in hot for k in i),
+                      "并入路径也不外泄内部标记", problems)
+                check(all(i.get("titleEn") for i in hot) or
+                      all(i.get("title") for i in hot),
+                      "英文原题留在 titleEn 里，供次日跨日折叠比对", problems)
+                rep = os.path.join(tmp, "data", "aihot_shadow.json")
+                check(not os.path.exists(rep) or
+                      all(dd.get("shadow_only") for dd in
+                          json.load(io.open(rep, encoding="utf-8"))["days"]),
+                      "关掉影子后不再写影子文件（或历史条目仍是影子记录）", problems)
+        finally:
+            AIHOT_STUB["shadow"] = True
+
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
 

@@ -51,6 +51,21 @@
     "rescore_max": 30,
     "note": "「应用案例库」：把 apps 车道的条目按 url 去重累积成可检索的库。与每日简报的分工——简报是「今天有什么新东西」（会滚走，要宽不漏），案例库是「攒下来的作品集」（可反复翻，要严不滥）。★ 入库门槛 min_total/min_rel（现为 5.0 / 5）：apps 条目须过分数门槛。min_rel 由 3 收到 5 —— 实测 rel=4 的多是「OS 评测 / .NET WASM 运行时 / 3D 打印机器人」这类与 AI 关联很弱的东西，对「学别人的 AI 应用」没有价值。实测不过滤时 38 条里 20 条 total<5，把「耳机剁手清单 / 手机评测」这类与 AI 无关的推荐流内容也收了进来（少数派是「效率工具+数码生活」版块，非 AI 源）。max 上限按**分数**淘汰、不按 lastSeen —— 后者是「新的留老的扔」，与作品集用途相反。★ rescore_max：换口径前入库的老记录没有 score，无法判质量；每次运行自动补一小批分（上限此值）后立即按门槛判，自然收敛，不需要人工做一次性迁移。"
   },
+  "aihot": {
+    "enabled": true,
+    "shadow_only": true,
+    "api": "https://aihot.news/api/v1/items",
+    "params": { "mode": "selected", "window": "24h", "by": "published", "limit": 100 },
+    "max_pages": 3,
+    "lane": "hot",
+    "jaccard_min": 0.55,
+    "same_host_hours": 6,
+    "same_host_jaccard": 0.25,
+    "etag_file": "data/aihot_etag.json",
+    "attribution_required": true,
+    "note": "★ 2026-10-08 接入 AIHOT 公开 JSON API（无 Key、匿名、openapi-v1.json 有正式契约）。只接**精选**不接全量：实测 mode=all 24h 有 366 条（x.com 占 68%），而 mode=selected 24h 只有 17–21 条，全量等于把「哪些值得看」重做一遍，而 AIHOT 的编辑判断已经做完了。X 我们自己抓不到（RSSHub 的 X 路由实测全 503），这是接它的唯一硬理由。\n⚠️ 边界：表达层（中文标题/摘要/推荐理由）用它的成果，排序层（rel/info/fresh 打分）仍走我们自己的 LLM。两套分数不可通约（它 71 ≠ 我们 7.1），混用会让「分数下限+名额」的分级失控。\n★ shadow_only=true：只写 docs/data/aihot_shadow.json 做诊断，不并进 latest.json、不上线。跑满 3 天看「若并入会落在哪个档、会不会挤掉我们自己的重磅」再决定开关。实测影子评估会把 merged+aihot 放同一池子重跑 assign_levels（用副本，不污染真实产物）。\n⚠️ 合规：其条款允许个人非商业使用，但把「公开镜像、批量公开再分发」划为需书面授权。并 UI 之前必须保留 attribution 与 links.aihot 回链、限量、并在页脚写明出处。正式并 UI（shadow_only=false）是**合规动作不是技术动作**，要单独确认。\nETag 实测有效（304 / 0 字节 / 0.33s）；文件写在 docs/data/ 下，因为 fetch.yml 是 `git add docs`，能跨 Actions 运行留存。",
+    "note_2": "params.by 用 published 而非默认的 timeline：timeline 会把「首次发现时间」当排序键，回填的历史条目会带着新的时间戳混进 24h 窗口。jaccard_min 0.55 是实测调出来的 —— 0.8 那一层跨语言完全空转，0.55 能抓到「Claude Haiku 5.5」这类同事件不同表述。"
+  },
   "lanes": [
     { "id": "model", "name": "模型发布", "weight": 9 },
     { "id": "official", "name": "官方一手", "weight": 10 },
@@ -58,7 +73,11 @@
     { "id": "paper", "name": "论文与基准", "weight": 8 },
     { "id": "community", "name": "社区与开源", "weight": 6 },
     { "id": "media", "name": "媒体与分析", "weight": 5 },
-    { "id": "cn", "name": "中文动态", "weight": 7 }
+    { "id": "cn", "name": "中文动态", "weight": 7 },
+    {
+      "id": "hot", "name": "AIHOT 精选", "weight": 6,
+      "note": "★ 2026-10-08 新增，借 AIHOT 的编辑精选补我们的 X/公众号盲区。排在本数组**最后**是有意的：lane 声明顺序就是跨源去重时的优先级（见 fetch_ai.py ④），同一事件如果 AIHOT 和我们自己的源都抓到了，**留我们的**，不要让外部聚合源盖掉一手源。车道名直接写「AIHOT 精选」，chip 上就带了出处，不用另加署名位。"
+    }
   ],
   "sources": [
     {
