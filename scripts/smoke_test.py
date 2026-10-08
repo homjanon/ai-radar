@@ -355,6 +355,48 @@ def main():
               f"已熔断的模型不再发起请求（tried={_tried}，应为 0）", problems)
         F._DEAD_MODELS.discard("smoke-dead")
         os.environ.pop("SMOKE_KEY", None)
+
+        # ---------- 用例 4c：正文网页残留清洗 ----------
+        # 实测教训：Jina 抓回的正文里夹着页面 UI 碎片（CSS 残片 / Loading 占位 /
+        # 「Share + 小标题回环」目录块），它们不含 HTML 标签故 strip_tags 拦不住，
+        # 会一路流进 desc 并被送进 LLM 当正文 —— 实测 top 的 7 条译文里 3 条开头带碎片。
+        # 这些断言锁住「清得掉垃圾、又不动正文」这一对相反要求。
+        print("\n[4c/4] 正文网页残留清洗")
+        # 注意：填充段必须是**互不相同**的句子。若反复拼同一句，会自己制造出
+        # 重复 n-gram，让 _cut_nav_head 误判成目录块（写这条用例时就踩了一次）。
+        PAD = (" The quarterly results showed steady progress across all three regions."
+               " Engineers shipped the migration ahead of schedule in early March."
+               " Customers reported fewer incidents after the rollout completed."
+               " The support team documented every change in the internal handbook."
+               " Regional managers reviewed the numbers during the weekly call."
+               " A follow-up audit is scheduled for the end of the second quarter.")
+        # ① 清得掉：三类碎片各一条
+        check(F._clean_web_junk(':last-child]:mb-0"> \n \n Today we ship.' + PAD)
+              .startswith("Today we ship."),
+              "清掉开头的 Tailwind/CSS 残片", problems)
+        check(F._clean_web_junk('Loading… ' + '正文内容。' * 60).startswith("正文内容。"),
+              "清掉开头的 Loading 占位", problems)
+        nav = ("Share The problem The problem The result How we found the proof "
+               "Concurrent work Progress and responsibility The problem The result "
+               "How we found the proof Concurrent work We are sharing a solution." + PAD)
+        # 用例串必须与线上同量级（线上 desc 250~310 词）。若只给 30 来词，
+        # 会撞上 _cut_nav_head 的「切完剩不下东西」保护而正确地拒绝切割 ——
+        # 那是保护生效，不是缺陷（写这条用例时踩过两次）。
+        _c = F._clean_web_junk(nav)
+        check(_c.startswith("We are sharing a solution."),
+              "清掉「Share + 小标题回环」目录块（切到正文首句）", problems)
+        check(F._clean_web_junk('Share We are releasing new results.' + PAD)
+              .startswith("We are releasing"), "摘掉孤立的 Share 按钮残留", problems)
+        # ② 不动正文：正文里出现同样的词，绝不能被削
+        for _name, _txt in [
+            ("正文中段的 Share", "The team will Share findings next week." + PAD),
+            ("正文中段的 Loading", "The page shows a Loading state." + PAD),
+            ("普通正文", "Today we release two open models." + PAD),
+        ]:
+            check(F._clean_web_junk(_txt) == _txt.strip(), f"不误伤{_name}", problems)
+        # ③ 安全阀：确实砍太多时整体放弃（宁可留垃圾，不可砍正文）
+        _tiny = ':last-child]:mb-0"> \n \n A'      # 砍掉后只剩 1 字符 → 应回退
+        check(F._clean_web_junk(_tiny) == _tiny, "砍太狠时回退（安全阀生效）", problems)
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
 

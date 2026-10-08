@@ -80,6 +80,134 @@ def http_get(url, timeout=25, retry=1):
     raise last
 
 
+def _is_nav_fragment(seg):
+    """判断一段文字是不是「目录/导航块」。
+
+    判据（实测数据总结）：导航块的特征是**词组高度重复**。
+    真实案例（Navier–Stokes 那篇的开头）：
+      "Share The problem The problem The result How we found the proof Concurrent work
+       Progress and responsibility The problem The result How we found the proof …"
+    实测 n-gram 统计："The problem" 出现 3 次，4-gram "The problem The result" 出现 2 次
+    —— 正常正文绝不会这样回环重复。
+
+    为什么不能靠关键词判：正文里恰好出现一个 "Share" 或 "Loading" 完全正常
+    （实测就有 "The page shows a Loading state"），按词删会误伤正文。
+    所以只看**重复结构**，一个关键词都不匹配。
+    """
+    if not seg or len(seg) > 600:
+        return False
+    words = seg.split()
+    if len(words) < 12:
+        return False
+    # 找 3~5 词的重复词组（导航的典型形态是「小标题循环」）
+    for n in (3, 4, 5):
+        seen = {}
+        for i in range(len(words) - n + 1):
+            g = tuple(words[i:i + n])
+            seen[g] = seen.get(g, 0) + 1
+        if any(v >= 2 for v in seen.values()):
+            return True
+    return False
+
+
+def _cut_nav_head(s):
+    """从 s 开头切掉「Share + 小标题回环」式的目录块，返回正文。
+
+    实测形态（OpenAI/Anthropic 的发布页被抓下来时最常见）：
+      "Share The problem The problem The result How we found the proof Concurrent work
+       Progress and responsibility The problem The result How we found the proof
+       Progress and responsibility We're sharing a solution to the Navier–Stokes ..."
+                                                            ↑ 正文从这里开始
+
+    特征很规整：`Share` 之后是**同一串小标题重复两遍**（第一遍短、第二遍全），
+    重复一结束、出现新句子就是正文。
+
+    关键实现约束（前两版都栽在这里）：
+      ① **只在开头 80 词内找重复** —— 全篇扫描会把正文里的正常重复也算进来。
+         实测反例：GPT-6 那篇正文里有 "7-Speed Bicycle" 重复 3 次，全篇扫描会把
+         切点算到第 192 词（正文深处），一刀砍掉半篇正文。
+      ② 取**第一次**重复结束的位置，不是最后一次。
+      ③ `Share` 后直接就是正文时（实测第 4 条），一个重复词组都没有 ——
+         此时必须原样返回，不能乱切。
+    """
+    words = s.split()
+    if len(words) < 20:
+        return s
+    WIN = min(len(words), 80)                 # 只看开头窗口
+    best = 0
+    for n in (3, 4, 5):
+        seen = {}
+        for i in range(WIN - n + 1):
+            g = tuple(words[i:i + n])
+            if g in seen and seen[g] >= 1:
+                best = max(best, i + n)       # 第一次重复的结束位置
+            seen[g] = seen.get(g, 0) + 1
+    if best < 8:                              # 没找到像样的回环 → 没有目录块
+        return s
+    if best >= len(words) - 8:                # 切完剩不下东西 → 不动
+        return s
+    # 最后一道保护：确认砍掉的确实是「目录小标题」。目录块的形态是**短片段堆叠**
+    # —— 几乎没有标点、由若干 2~6 词的小标题连排而成。若切点前那段出现完整句子
+    # （逗号/句号成句），说明命中的是正文内部的正常重复，此时不动更安全。
+    head_txt = " ".join(words[:best])
+    # 目录块没有句末标点；正文段落必然有
+    if re.search(r'[.。!！?？]', head_txt):
+        return s
+    # 目录块平均片段极短：按每 4 词一段粗估，真正的正文段落不会这么碎
+    if len(head_txt) / max(1, best) > 12:     # 平均词长 > 12 字符 = 像正文句子
+        return s
+    return " ".join(words[best:]).lstrip()
+
+
+def _clean_web_junk(s):
+    """清掉正文里的「网页残留」。
+
+    实测来源：Jina Reader 抓回的 markdown 在正文前后夹着页面 UI 碎片，
+    它们不含 HTML 标签、strip_tags() 拦不住，会一路流进 desc：
+      · `:last-child]:mb-0"> `        —— 被截断的 Tailwind 类名
+      · `Loading…`                     —— SPA 占位符
+      · 目录/导航块（短语重复）          —— "Share The problem The problem The result …"
+    后果不只是难看：这些垃圾会被送进 LLM 当正文，摘要和翻译都跟着走偏
+    （实测 top 的 7 条译文里有 3 条开头带碎片）。
+
+    三条硬约束（避免误伤正文 —— 误删正文比漏清垃圾严重得多）：
+      ① 只动**开头**和**结尾**，正文中段一律不碰；
+      ② 只有**明确像代码/占位符/重复导航**的才删，不做通用清洗；
+      ③ 删除量超过原文 30% 就整体放弃 —— 宁可留垃圾，不可砍正文。
+    """
+    if not s:
+        return s
+    orig = s
+    # 循环收敛：清掉一层碎片后可能露出下一层（实测 "Loading… Share <目录>" 要清两轮），
+    # 直到不再变化为止。上限 4 轮，防病态输入空转。
+    for _ in range(4):
+        before = s
+        # ── 1) 开头的 Tailwind/CSS 残片（`:last-child]:mb-0"> ` 这类）──
+        s = re.sub(r'^[\s:;,.\[\]\w-]{0,60}(?:last-child|first-child|mb-\d|mt-\d|px-\d|py-\d|flex|grid|text-)[\s\S]{0,50}?">\s*', '', s)
+        # ── 2) 开头的 Loading 占位（可能连来两次）──
+        s = re.sub(r'^(?:Loading…?|Loading\.\.\.|加载中…?)\s*', '', s)
+        # ── 3) 开头的目录块：Share/Contents 起头 → 按「小标题回环」定位正文起点 ──
+        if re.match(r'^(?:Share|Contents|Table of contents|On this page)\b', s):
+            s = _cut_nav_head(s)
+        # ── 3b) 孤立社交按钮残留：`Share` 后面紧跟完整句子时，_cut_nav_head 会
+        #        正确地选择不动（见其保护逻辑），但那个 "Share" 本身是按钮文字，
+        #        不是正文 —— 单独摘掉它。只在后面确实接正文时才动，避免误删。 ──
+        s = re.sub(r'^Share\s+(?=[A-Z\u4e00-\u9fff])', '', s)
+        # ── 4) 首尾的孤立标点/管道符 ──
+        s = re.sub(r'^[\s|·—–>]+', '', s)
+        s = re.sub(r'[\s|·—–]+$', '', s)
+        if s == before:
+            break
+    # ── 5) 结尾的导航尾巴 ──
+    tail = re.search(r'\n\s*(?:Share|Related|Read more|Explore more|Next article)\b[\s\S]{0,200}$', s)
+    if tail and _is_nav_fragment(tail.group(0)):
+        s = s[:tail.start()].rstrip()
+    # ── 安全阀：砍太多就整体放弃（宁可留垃圾，不可砍正文）──
+    if orig and len(s) < len(orig) * 0.7:
+        return orig.strip()
+    return s.strip()
+
+
 def strip_tags(s):
     s = re.sub(r"<script.*?</script>", " ", s or "", flags=re.S | re.I)
     s = re.sub(r"<style.*?</style>", " ", s, flags=re.S | re.I)
@@ -89,7 +217,7 @@ def strip_tags(s):
     s = html.unescape(s)
     s = re.sub(r"[ \t\u00a0]+", " ", s)
     s = re.sub(r"\n{3,}", "\n\n", s)
-    return s.strip()
+    return _clean_web_junk(s.strip())
 
 
 def norm_title(t):
