@@ -19,46 +19,65 @@
    ② 深色 + 等宽 + 霓虹强调；信息密度优先，动效克制
    ════════════════════════════════════════════════════════════════════ */
 :root{
-  /* ── 方案 4 · 米白终端 Paper ─────────────────────────────────────
-     浅色底的「极客感」不靠霓虹，靠三样：等宽字体、纸感底色分层、细网格与 1px 描边。
-     强调色用墨绿 —— 终端绿在浅底上的对应物（浅底放亮绿会糊成一片）。 */
-  --bg:#e7e0d3;          /* 桌面（页面底） */
-  --stage:#fcfaf5;       /* 窗口正文 */
-  --stage-bot:#f4efe4;
-  --panel:#f2eee4;       /* 窗口内条栏（顶栏/状态条/Tab/筛选） */
-  --panel2:#ece6d9;
-  --card:#f8f5ee;        /* 条目卡 / 案例卡 */
-  --card-bot:#f1ece1;
-  --line:#dcd3c1; --line2:#c9bfa9; --line3:#b3a68c;
+  /* ── 极简风第二轮（2026-10-08）──────────────────────────────────────
+     浅色底从「米白终端」收成「一张纸」：页面底近白、卡片纯白、只留 1px 描边。
+     原来的四层米色（bg/stage/panel/card）是"分层感"的来源，但代价是每一层都在
+     跟文字抢对比度，而且必须靠 linear-gradient 才看得出层 —— 渐变一上去就不是极简了。
+     现在层级只由**边框 + 留白 + 字号**表达（对照实测 AIHOT：--bg #faf9f6 / --surface #fff，
+     阴影只有 0 1px 2px 6% 黑）。强调色仍是墨绿，那是项目身份，不跟着改。 */
+  /* ── 极简第三轮（2026-10-08）：全站一张白纸 ─────────────────────────
+     浅色底从 bg/stage/panel/card 四层米色彻底收成**同一个白**。
+     直接动因是管道图上的一个接缝：canvas 面板用 --stage、左缘淡出刷的是 --bg，
+     两个值不等 → 图上出现「左边白、中间一道米白、右边又白」的三段色。
+     根治办法不是把淡出改成 --stage，而是**让这两个变量相等**：
+     既然已经决定走极简、层次全靠 1px 描边表达，那四层底色本来就是冗余的。
+     深色同理，bg/stage 合一，只留 card 比页面底亮一档（深底上没描边对比可用）。 */
+  --bg:#ffffff;          /* 页面底 */
+  --stage:#ffffff;       /* 头部面板 / 管道面板 —— 与 bg 同值，接缝消失 */
+  --stage-bot:#ffffff;
+  --panel:#ffffff;       /* 条栏（顶栏/Tab/筛选）—— 靠描边分界 */
+  --panel2:#faf8f4;      /* 只留给 hover 与「昨日已收录」的弱化底 */
+  --card:#ffffff;        /* 条目卡 / 案例卡 */
+  --card-bot:#ffffff;
+  --line:#e8e3d9; --line2:#dcd5c8; --line3:#c6bdac;
   --fg:#2b2721; --fg2:#5b5346; --fg3:#6a6050; --fg4:#8a8071;
   --acc:#0d6a63;         /* 主强调：墨绿（比 #0f766e 再深一档，保证小字号标签也过 4.5:1） */
   --acc2:#1d4ed8;        /* 次强调：靛蓝 */
   --amber:#b45309; --red:#b91c1c;
   --l-model:#0369a1; --l-official:#6d28d9; --l-apps:#0d6a63; --l-paper:#b45309;
   --l-community:#be185d; --l-media:#a16207; --l-cn:#b91c1c;
-  /* 以下为深/浅两版差异最大的一组：深色靠「发光」,浅色必须换成「着色」 */
+  /* 以下为深/浅两版差异最大的一组：深色靠「着色」,浅色用更浅的着色 */
   --on-acc:#fbf8f2;      /* 强调底上的文字色（浅色主题用近白；深色主题换成深底） */
   --title:#26221c;
-  --grid:rgba(80,64,42,.055);
-  --scan:rgba(120,104,80,.05);
-  --term-shadow:0 0 0 1px rgba(120,104,80,.16),0 20px 46px -32px rgba(60,48,30,.34);
-  --card-shadow:0 1px 2px rgba(90,76,54,.07),0 6px 16px -14px rgba(60,48,30,.22);
+  --grid:transparent;    /* ← 方格底纹关掉（值保留，深色主题另有定义） */
+  --scan:transparent;
+  --term-shadow:none;    /* 终端窗框的大投影 + 1px 描边阴影，全撤 */
+  --card-shadow:none;    /* 卡片阴影也撤，只留 1px 边框 */
   --hl-shadow:none;
-  --tint-a:rgba(15,118,110,.08);
-  --tint-b:rgba(15,118,110,.14);
-  --acc-line:rgba(15,118,110,.34);
+  --tint-a:rgba(15,118,110,.07);
+  --tint-b:rgba(15,118,110,.13);
+  --acc-line:rgba(15,118,110,.3);
   --acc-link:rgba(15,118,110,.55);
   --acc2-line:rgba(29,78,216,.3);  --acc2-tint:rgba(29,78,216,.07);
-  --red-line:rgba(185,28,28,.34);  --red-tint:rgba(185,28,28,.07);
+  --red-line:rgba(185,28,28,.34);  --red-tint:rgba(185,28,28,.06);
   --amber-line:rgba(180,83,9,.32); --amber-tint:rgba(180,83,9,.07);
-  --chip-bg:rgba(120,104,80,.05); --chip-bg-h:rgba(120,104,80,.11); --chip-line:#c2b69e;
+  --chip-bg:rgba(120,104,80,.04); --chip-bg-h:rgba(120,104,80,.09); --chip-line:#dcd5c8;
   --mono:ui-monospace,"JetBrains Mono","Cascadia Mono","SF Mono",Menlo,Consolas,"Microsoft YaHei UI",monospace;
-  --sans:"Microsoft YaHei UI","PingFang SC",-apple-system,"Segoe UI",sans-serif;
+  /* 2026-10-08 改：system-ui 提到首位。原来 "Microsoft YaHei UI" 打头，在 macOS/iOS/Android
+     上全部落空、只能靠后面的 -apple-system 兜，等于把 Windows 的观感当成了通用基准。
+     system-ui 在四个平台上都直接命中各自的原生 UI 字体（Win11=Segoe UI Variable /
+     macOS=iOS=SF Pro / Android=Roboto 或厂商中文栈），中文由系统 CJK 回退接管。
+     这也是 AIHOT 的做法（实测其 computed font-family 首值即 system-ui）。 */
+  --sans:system-ui,-apple-system,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei UI",sans-serif;
   /* 别名：补齐 AIHOT 有的语义名。只加不改，避免大范围替换现有变量。 */
   --line-strong:var(--line2); --line-soft:var(--line);
   --ok:#0d6a63; --ok-line:var(--acc-line); --ok-tint:var(--tint-a);
-  /* 版式尺度：详情正文单独限宽，避免超宽行（一行超过 ~80 字符眼睛要来回找行首） */
-  --wrap-max:1180px; --read-max:76ch;
+  /* 版式尺度：详情正文单独限宽，避免超宽行（一行超过 ~80 字符眼睛要来回找行首）
+     --wrap-max 780 → 1680（2026-10-08 第三轮）：原来把整页锁在 780px 是为了治
+     "一行 150+ 字"，但代价是电脑端明显比 aihot 窄一截（实测它的 --page-max-wide
+     = max(1200px, 270dvh-236px)，在 1080p 上算出来是 2680px，等于不限宽）。
+     正解不是二选一：**容器放开，行长靠分栏守住**。见下面 .list 的 grid。 */
+  --wrap-max:1680px; --read-max:76ch;
 }
 
 /* ══ 深色模式 ══════════════════════════════════════════════════════════
@@ -66,13 +85,13 @@
    浅色是「米白纸感」，深色对应物是「近黑终端」——不带蓝味，否则和墨绿强调色打架。
    本版只做自动跟随（手动切换钮属档位三，见方案 §2）。 */
 [data-theme="dark"]{
-  --bg:#12151a;          /* 桌面底：近黑，略带中性灰 */
-  --stage:#1a1f26;       /* 窗口正文 */
-  --stage-bot:#171c22;
-  --panel:#20262e;
-  --panel2:#252c35;
-  --card:#1d232a;
-  --card-bot:#1a2027;
+  --bg:#12151a;          /* 页面底：近黑，略带中性灰 */
+  --stage:#12151a;       /* 头部/管道面板 —— 与 bg 同值，和浅色主题一样不产生接缝 */
+  --stage-bot:#12151a;
+  --panel:#12151a;
+  --panel2:#20262e;
+  --card:#191e25;        /* 深底上描边对比不够，卡片靠**亮度**分层，只亮这一档 */
+  --card-bot:#191e25;
   --line:#2c323a; --line2:#3a424b; --line3:#4b545f;
   --fg:#e6e3dc; --fg2:#b9b3a8; --fg3:#9a9488; --fg4:#7d776c;
   --acc:#2dd4bf;         /* 深底上墨绿会糊，提亮到青绿 */
@@ -82,12 +101,11 @@
   --l-community:#f9a8d4; --l-media:#fcd34d; --l-cn:#fda4af;
   --on-acc:#0b0f14;      /* 强调底上的文字：深色下反相成近黑 */
   --title:#f2efe8;
-  --grid:rgba(255,255,255,.022);
-  --scan:rgba(255,255,255,.028);
-  /* 深底上投影看不见，改用「描边 + 冷光」表达层次（--hl-shadow 从 none 变成微光） */
-  --term-shadow:0 0 0 1px rgba(120,160,180,.14),0 24px 52px -34px rgba(0,0,0,.85);
-  --card-shadow:0 1px 0 rgba(255,255,255,.03),0 8px 20px -18px rgba(0,0,0,.7);
-  --hl-shadow:0 0 14px rgba(45,212,191,.28);
+  --grid:transparent; --scan:transparent;
+  /* 极简第二轮（2026-10-08）：深底上原本用「冷光」补投影看不见的坑
+     （--hl-shadow 是 h1 的青绿光晕、--term-shadow 带 1px 描边阴影）。全部撤掉，
+     层次只留 1px 边框 + 亮度差。发光效果在小字号上会让字缘发虚，是"看着糊"的另一半。 */
+  --term-shadow:none; --card-shadow:none; --hl-shadow:none;
   --tint-a:rgba(45,212,191,.10);
   --tint-b:rgba(45,212,191,.17);
   --acc-line:rgba(45,212,191,.38);
@@ -103,18 +121,16 @@
 /* 跟随系统（未显式指定 data-theme 时才生效，这样将来加手动钮不会被媒体查询覆盖） */
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --bg:#12151a; --stage:#1a1f26; --stage-bot:#171c22;
-    --panel:#20262e; --panel2:#252c35; --card:#1d232a; --card-bot:#1a2027;
+    --bg:#12151a; --stage:#12151a; --stage-bot:#12151a;
+    --panel:#12151a; --panel2:#20262e; --card:#191e25; --card-bot:#191e25;
     --line:#2c323a; --line2:#3a424b; --line3:#4b545f;
     --fg:#e6e3dc; --fg2:#b9b3a8; --fg3:#9a9488; --fg4:#7d776c;
     --acc:#2dd4bf; --acc2:#7aa2ff; --amber:#f5b544; --red:#fb7185;
     --l-model:#67e8f9; --l-official:#a5b4fc; --l-apps:#2ee6a8; --l-paper:#c4b5fd;
     --l-community:#f9a8d4; --l-media:#fcd34d; --l-cn:#fda4af;
     --on-acc:#0b0f14; --title:#f2efe8;
-    --grid:rgba(255,255,255,.022); --scan:rgba(255,255,255,.028);
-    --term-shadow:0 0 0 1px rgba(120,160,180,.14),0 24px 52px -34px rgba(0,0,0,.85);
-    --card-shadow:0 1px 0 rgba(255,255,255,.03),0 8px 20px -18px rgba(0,0,0,.7);
-    --hl-shadow:0 0 14px rgba(45,212,191,.28);
+    --grid:transparent; --scan:transparent;
+    --term-shadow:none; --card-shadow:none; --hl-shadow:none;
     --tint-a:rgba(45,212,191,.10); --tint-b:rgba(45,212,191,.17);
     --acc-line:rgba(45,212,191,.38); --acc-link:rgba(45,212,191,.6);
     --acc2-line:rgba(122,162,255,.36); --acc2-tint:rgba(122,162,255,.10);
@@ -125,24 +141,22 @@
   }
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+/* 表单控件默认**不继承** font-family，会落到浏览器自带的 Arial —— 方案乙把 chip /
+   tab / exp / search 从 --mono 换成 --sans 后这个坑才暴露出来：它们渲染成 Arial，
+   中文走 Arial 的回退链，和正文的 system-ui 不是同一套字面（实测 computed 值可见）。
+   统一继承，字号仍由各规则自己定。 */
+button,input,select,textarea,summary{font-family:inherit}
 html,body{margin:0;padding:0}
 body{
   background:var(--bg);color:var(--fg);font-family:var(--sans);
   font-size:14.5px;line-height:1.7;min-height:100vh;
-  background-image:
-    linear-gradient(var(--grid) 1px,transparent 1px),
-    linear-gradient(90deg,var(--grid) 1px,transparent 1px);
-  background-size:44px 44px;
+  /* 44px 方格底纹已撤（2026-10-08 极简第二轮）。它原本是"终端/蓝图"质感的一部分，
+     但和卡片边框叠在一起会产生摩尔纹，而且在手机密度下就是一片灰麻子。
+     现在整页只有一种底：纯色。 */
 }
-body::after{ /* 极轻扫描线，只做质感、不干扰阅读 */
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:99;
-  background:repeating-linear-gradient(0deg,var(--scan) 0 1px,transparent 1px 3px);
-  opacity:.55;
-}
-/* 深色下扫描线相对更亮，压一档，否则像屏幕脏了 */
-@media (prefers-color-scheme:dark){ body::after{opacity:.38} }
-[data-theme="dark"] body::after{opacity:.38}
-[data-theme="light"] body::after{opacity:.55}
+body::after{display:none} /* 扫描线整条撤掉（2026-10-08）：它是 z-index:99 的 fixed 覆盖层，
+   画在**文字之上**。透明度虽低（约 2.7%），但每 3px 一条横线正好落在小字号的笔画上，
+   是"看着糊/小"的贡献项之一。网格底纹留在 body 背景里（画在文字之下），质感不丢。 */
 
 /* ── A2 手机安全区 ──────────────────────────────────
    viewport-fit=cover 已在 <meta> 里（第 5 行），但没配 env() —— 于是 iPhone 横屏/
@@ -153,174 +167,263 @@ body::after{ /* 极轻扫描线，只做质感、不干扰阅读 */
       padding-right:max(18px, env(safe-area-inset-right));
       padding-bottom:calc(72px + env(safe-area-inset-bottom));}
 
-/* ── 终端窗框 ─────────────────────────────────────── */
+/* ── 顶栏 ───────────────────────────────────────────
+   原来的「终端窗框」= 三色圆点 + 上圆角 + 大投影 + 渐变底，四件装饰叠在一起。
+   极简第二轮只留**一条 1px 边框**把它和页面底分开（对照实测 AIHOT：
+   --shadow-card 只有 0 1px 2px 6% 黑，全站没有一个渐变）。 */
 .term{
-  margin-top:20px;border:1px solid var(--line2);border-radius:10px;
-  background:linear-gradient(180deg,var(--stage),var(--stage-bot) 62%);
-  box-shadow:var(--term-shadow);
+  margin-top:20px;border:1px solid var(--line2);border-radius:8px;
+  background:var(--stage);
   overflow:hidden;
 }
-.tbar{display:flex;align-items:center;gap:10px;padding:9px 13px;border-bottom:1px solid var(--line);background:var(--panel)}
-.dots{display:flex;gap:6px;flex:0 0 auto}
-.dots i{width:10px;height:10px;border-radius:50%;display:block;opacity:.85}
-.dots i:nth-child(1){background:#ff5f56}.dots i:nth-child(2){background:#f5b544}.dots i:nth-child(3){background:#2ee6a8}
-.online{font-family:var(--mono);font-size:10.5px;color:var(--acc);letter-spacing:.14em;border:1px solid var(--acc-line);border-radius:3px;padding:2px 7px;background:var(--tint-a);flex:0 0 auto;margin-left:auto}
-.online::before{content:"●";margin-right:5px;animation:blink 2.4s steps(1) infinite}
+/* .tbar / .dots 已撤（2026-10-08）：仿 macOS 窗口红绿灯是纯装饰，和"这是什么内容"无关。
+   ONLINE 状态徽标是功能件（三态：已更新/超 24h/读取失败），移进 .head 与 h1 同行。 */
+.online{font-family:var(--mono);font-size:11.5px;color:var(--acc);letter-spacing:.06em;border:1px solid var(--acc-line);border-radius:4px;padding:3px 9px;background:var(--tint-a);flex:0 0 auto}
+.online::before{content:"●";margin-right:5px}
 /* 三态：ONLINE 今日已更新 / STALE 超 24h 未更新 / OFFLINE 数据读取失败。
    原实现是纯装饰（绿灯恒闪、与数据无关），抓取全失败也显示 ONLINE —— 假信号。 */
 .online.warn{color:var(--amber);border-color:var(--amber-line);background:var(--amber-tint)}
-.online.warn::before{animation:none}
 .online.off{color:var(--red);border-color:var(--red-line);background:var(--red-tint)}
-.online.off::before{animation:none}
-@keyframes blink{0%,62%{opacity:1}63%,100%{opacity:.22}}
 
 /* ── 头部 ─────────────────────────────────────────── */
-.head{padding:24px 26px 20px;border-bottom:1px solid var(--line)}
-.eyebrow{font-family:var(--mono);font-size:10.5px;color:var(--fg3);letter-spacing:.3em;text-transform:uppercase;margin-bottom:9px}
-h1{margin:0 0 8px;font-size:30px;font-weight:700;letter-spacing:-.01em;line-height:1.15;font-family:var(--mono)}
+.head{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;
+      padding:20px 22px 16px;border-bottom:1px solid var(--line)}
+/* .eyebrow 已删（2026-10-08）：「LLM · Agent · Skill — 前沿情报管道」是给作者自己看的
+   定位说明，不是读者要的信息，且与 h1 重复表达同一件事。 */
+h1{margin:0;font-size:30px;font-weight:700;letter-spacing:-.01em;line-height:1.15;font-family:var(--mono)}
 h1 .br{color:var(--fg4)}
-h1 .hl{color:var(--acc);text-shadow:var(--hl-shadow)}
+h1 .hl{color:var(--acc)}
 
-/* ── 状态条（像系统监控面板）───────────────────────── */
-.stat{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:1px;background:var(--line);border-top:1px solid var(--line)}
-.stat > div{background:var(--panel);padding:8px 12px}
-.stat .k{font-family:var(--mono);font-size:9.5px;color:var(--fg3);letter-spacing:.15em;text-transform:uppercase;margin-bottom:2px;white-space:nowrap}
-.stat .v{font-family:var(--mono);font-size:14.5px;color:var(--fg);font-variant-numeric:tabular-nums;overflow-wrap:anywhere;line-height:1.35}
-.stat .v.sm{font-size:11.5px;line-height:1.45}
-.stat .v.nowrap{white-space:nowrap;font-size:13px}
-.stat .v.g{color:var(--acc)}.stat .v.a{color:var(--amber)}.stat .v.r{color:var(--red)}
+/* ── 元信息行（替代原 8 格状态条）───────────────────────────────────
+   原来是一个 8 格带边框网格：更新时间 / 本期条目 / 重磅·关注 / 车道 /
+   昨日重复 / 案例库 / 增强模型 / 降级源 —— 占两到三行，而且有三处是重复的：
+     · 「车道 7」：下面车道 chip 一行数得出来
+     · 「案例库 187」：案例库 tab 的徽标上已经写着同一个数
+     · 「本期条目 142」：简报 tab 的徽标也是同一个数
+   现在收成两行纯文字。另外修一个**对不上账**的问题：原来「重磅 / 关注」直接读
+   counts.byLevel（15 / 50），但首屏「▲ 重磅」区渲染的是**排除 isRepeat 之后**的
+   10 条 —— 同一页上两个数字不一致，看起来像 bug。现在按同一口径现算。
+   降级源不再单占一格，改成 r1 末尾一个红色「⚠ N 源降级」；并且和「档位倒挂」
+   分开数 —— degraded[] 里 id==='_levels' 那条是我们自己的分级逻辑报警，
+   不是上游源故障，混在一起会把代码缺陷伪装成外部故障。 */
+.sub{padding:11px 22px 12px;border-bottom:1px solid var(--line);
+     display:flex;flex-direction:column;gap:4px}
+.sub .r1{display:flex;flex-wrap:wrap;align-items:baseline;gap:3px 12px;
+         font-size:12.5px;color:var(--fg3)}
+.sub .r1 b{color:var(--fg);font-weight:600;font-family:var(--mono);font-variant-numeric:tabular-nums}
+.sub .r1 .sep{color:var(--line3)}
+.sub .r1 .warn{color:var(--red)}
+.sub .r2{display:flex;flex-wrap:wrap;align-items:baseline;gap:3px 10px;
+         font-family:var(--mono);font-size:11.5px;color:var(--fg4)}
+.sub .r2 em{font-style:normal;color:var(--acc)}
+.sub .r2 .bad{color:var(--red)}
 
 /* ── Tab ──────────────────────────────────────────── */
 .tabs{display:flex;gap:0;border-bottom:1px solid var(--line);background:var(--panel);overflow-x:auto;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
-.tab{font-family:var(--mono);font-size:12.5px;color:var(--fg3);cursor:pointer;padding:12px 18px;border:0;background:none;white-space:nowrap;border-right:1px solid var(--line);border-bottom:2px solid transparent;transition:color .16s,background .16s;letter-spacing:.02em}
+.tab{font-size:13.5px;color:var(--fg3);cursor:pointer;padding:12px 18px;border:0;background:none;white-space:nowrap;border-right:1px solid var(--line);border-bottom:2px solid transparent;transition:color .16s,background .16s}
 .tab:hover{color:var(--fg);background:var(--panel2)}
-.tab.on{color:var(--acc);border-bottom-color:var(--acc);background:var(--stage);text-shadow:var(--hl-shadow)}
-.tab .n{font-size:10.5px;color:var(--fg3);margin-left:6px;border:1px solid var(--line2);border-radius:3px;padding:0 4px}
+.tab.on{color:var(--acc);border-bottom-color:var(--acc);background:var(--stage)}
+.tab .n{font-family:var(--mono);font-size:11.5px;color:var(--fg3);margin-left:6px;border:1px solid var(--line2);border-radius:3px;padding:0 4px}
 .tab.on .n{color:var(--acc);border-color:var(--acc-line)}
 
 /* ── 工具行 / 筛选 ─────────────────────────────────── */
 .bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--panel)}
-.bar .lbl{font-family:var(--mono);font-size:10px;color:var(--fg3);letter-spacing:.18em;text-transform:uppercase;flex:0 0 auto}
-.chip{font-family:var(--mono);font-size:11.5px;cursor:pointer;user-select:none;color:var(--fg2);background:var(--chip-bg);border:1px solid var(--chip-line);border-radius:3px;padding:3px 10px;transition:.15s;white-space:nowrap}
+.bar .lbl{font-size:11.5px;color:var(--fg3);letter-spacing:.04em;flex:0 0 auto}
+.chip{font-size:13px;cursor:pointer;user-select:none;color:var(--fg2);background:var(--chip-bg);border:1px solid var(--chip-line);border-radius:4px;padding:4px 11px;transition:.15s;white-space:nowrap}
 .chip:hover{color:var(--fg);border-color:var(--line3);background:var(--chip-bg-h)}
 .chip.on{color:var(--on-acc);background:var(--acc);border-color:var(--acc);font-weight:600}
-.chip .c{opacity:.62;margin-left:5px;font-size:10.5px}
+.chip .c{font-family:var(--mono);opacity:.62;margin-left:5px;font-size:12px}
 .dot{width:7px;height:7px;border-radius:2px;display:inline-block;margin-right:6px;vertical-align:0}
-.search{font-family:var(--mono);font-size:12.5px;color:var(--fg);background:var(--bg);border:1px solid var(--line2);border-radius:3px;padding:5px 10px;outline:none;flex:1 1 190px;min-width:120px}
+.search{font-size:13.5px;color:var(--fg);background:var(--bg);border:1px solid var(--line2);border-radius:4px;padding:6px 11px;outline:none;flex:1 1 190px;min-width:120px}
 .search:focus{border-color:var(--acc);box-shadow:0 0 0 2px var(--tint-b)}
 .search::placeholder{color:var(--fg4)}
 
+/* ── 今日管道（canvas 动画带）──────────────────────────────────────
+   这是全站唯一的动态元素，画的是当天 latest.json 的真实数据。
+   第三轮改回**和上下板块同宽**（原来通栏出血，结果它比头图和列表都宽，
+   三条边线对不齐，用户一眼就看出来了）。宽度一致性优先于"更震撼"。 */
+.pipe{margin-top:16px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+      background:var(--stage)}
+.pipe-h{display:flex;align-items:baseline;gap:4px 12px;flex-wrap:wrap;
+        padding:11px 2px 10px;font-size:12px;color:var(--fg3)}
+.pipe-h .t{font-weight:700;color:var(--fg2);font-size:13.5px}
+.pipe-h .n{font-family:var(--mono);color:var(--fg4)}
+.pipe-cv{position:relative;height:230px}
+.pipe-cv canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+@media(min-width:641px){.pipe-cv{height:300px}}
+@media(min-width:1100px){.pipe-cv{height:340px}}
+/* 悬停说明：这根线是谁、过没过闸。图看不懂就等于白画。 */
+.pipe-tip{position:absolute;left:0;top:0;z-index:5;max-width:min(300px,72%);pointer-events:none;
+  background:var(--card);border:1px solid var(--line2);border-radius:6px;padding:6px 10px;
+  font-size:12px;line-height:1.45;color:var(--fg3)}
+.pipe-tip b{display:block;color:var(--fg);font-weight:600;font-size:12.5px;margin-bottom:2px}
+.pipe-tip[hidden]{display:none}
+
 /* ── 分组 ──────────────────────────────────────────── */
 .grp{padding:24px 18px 0}
-.grp .h{display:flex;align-items:center;gap:10px;margin-bottom:13px;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.grp .h{display:flex;align-items:center;gap:10px;margin-bottom:13px;font-size:13.5px;letter-spacing:.02em}
 .grp .h .t{font-weight:700}
-.grp .h .line{flex:1;height:1px;background:linear-gradient(90deg,var(--line2),transparent)}
-.grp .h .cnt{color:var(--fg3);font-size:11px;letter-spacing:0}
-.h-top .t{color:var(--red);text-shadow:var(--hl-shadow)}
+.grp .h .line{flex:1;height:1px;background:var(--line2)}
+.grp .h .cnt{font-family:var(--mono);color:var(--fg3);font-size:12.5px}
+.h-top .t{color:var(--red)}
 .h-watch .t{color:var(--amber)}
 .h-normal .t{color:var(--fg3)}
 .h-lib .t{color:var(--acc2)}
 
-/* ── 条目 ──────────────────────────────────────────── */
+/* ── 条目卡（极简第二轮 2026-10-08）────────────────────────────────────
+   撤掉四件装饰：① 180deg 渐变底 ② 卡片投影 ③ 左侧 2px 车道竖条
+   ④ hover 时 translateX(2px) 的横移动作。
+   车道归属原来靠那条竖条表达，但**同一条车道的卡片挨在一起、颜色完全一样，
+   它其实没传递任何增量信息**（分区标题和 meta 里的「车道 · 源」已经说了），
+   而 top 档那条红色竖条还会和「重磅」的语义打架——红色在这里既表示"重要"
+   又表示"这是某个车道"，一个符号扛两个含义。
+   现在档位只由**数字颜色 + 字重**表达：重磅 650 字重 + 红色得分，
+   关注 600 + 琥珀得分，常规 500 + 灰得分。是数据在分层，不是装饰在分层。 */
 .list{display:flex;flex-direction:column;gap:8px}
-.it{position:relative;border:1px solid var(--line);border-radius:6px;background:linear-gradient(180deg,var(--card),var(--card-bot));box-shadow:var(--card-shadow);padding:13px 15px 13px 16px;transition:border-color .16s,transform .16s}
-.it:hover{border-color:var(--line3);transform:translateX(2px)}
-.it::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--lane,var(--line2))}
-.it.top{border-color:var(--red-line);background:linear-gradient(180deg,var(--red-tint),transparent 72%)}
-.it.top::before{background:var(--red)}
-.it.watch::before{background:var(--amber)}
+/* 宽屏分栏（2026-10-08 第三轮）：容器从 780 放开到 1680 之后，单栏会让中文
+   一行 100+ 字（14.5px 字宽下 1644px ≈ 113 字），比改之前还糟。
+   所以**行长由分栏守，不由容器宽度守** —— 这也是 aihot 能"全屏"却不难读的原因，
+   它宽的是页面，不是正文行。auto-fill + minmax(480px,1fr) 的实际分栏数：
+     内容宽 1644 → 3 栏 ×545px ≈ 36 字/行
+     内容宽 1364 → 2 栏 ×678px ≈ 45 字/行
+     内容宽  968 → 2 栏 ×480px
+     内容宽 <960 → 1 栏（手机、窄窗口）
+   align-items:start 不能省：grid 默认 stretch，同一行里没展开正文的卡会被旁边
+   正在读正文的那张**拉到一样高**，下面留一大片空白。 */
+@media(min-width:1000px){
+  .list{display:grid;grid-template-columns:repeat(auto-fill,minmax(480px,1fr));
+        gap:10px;align-items:start;grid-auto-flow:row dense}
+}
+/* 641–999px 这一档（平板、分屏、窄窗口）分不出两栏，单栏会拉到 813px ≈ 54 个汉字，
+   比分栏之前还难读。实测各档：1600→3栏×498(32字) / 1200→2栏×552(36字) /
+   900→1栏×813(54字) ⚠️ / 700→1栏×613(40字)。
+   这里**收的是整页 .wrap，不是只收 .grp** —— 只收列表会让卡片比头图和管道窄一截，
+   右边出现一条错位空白，正是这一轮要消灭的那种不一致。收整页则三段一起窄，
+   看起来就是一个正常的窄屏版式。 */
+@media(min-width:641px) and (max-width:999px){
+  .wrap{max-width:700px}
+}
+.it{position:relative;border:1px solid var(--line);border-radius:8px;background:var(--card);padding:13px 15px;transition:border-color .16s}
+.it:hover{border-color:var(--line2)}
 /* 「昨日已收录」的弱化：**不能靠 opacity** —— 深色主题下 52% 透明还能看清，
    浅色主题下会把深字压到 2.4:1（实测像素），直接读不了。改成换字色 + 虚线边。 */
-.it.rep{border-style:dashed;background:var(--panel2);box-shadow:none}
+.it.rep{border-style:dashed;background:var(--panel2)}
 .it.rep .t1{font-weight:500;color:var(--fg2)}
 .it.rep .sm{color:var(--fg3)}
-.it.rep:hover{background:var(--panel)}
-.it .t1{font-size:15px;font-weight:600;color:var(--title);line-height:1.5;display:flex;gap:8px;align-items:flex-start}
-.it .t1 .mk{font-family:var(--mono);color:var(--fg4);flex:0 0 auto;font-size:12px;line-height:1.75}
-.it.top .t1 .mk{color:var(--red)}
+.it.rep:hover{background:var(--card)}
+/* ── 条目排版（2026-10-08 方案乙）──────────────────────────────────────
+   层级只靠**字号 + 颜色深浅**表达，不再靠装饰：
+     标题 16.5 > 摘要 14.5 > 推荐理由 13.5 > 元信息 12
+   对照实测的 AIHOT：17 > 14.5 > — > 12.5。此前我们是 13.6 / 13.2 / 12.4 / 10.5，
+   且元信息用等宽字体 —— 同 px 下等宽的视觉字号比比例字体小一档，等于双重偏小。
+   现在只有**数字与时间**保留 --mono（对齐、不跳动），文字一律 --sans。 */
+.it .t1{font-size:16.5px;font-weight:600;color:var(--title);line-height:1.5;display:flex;gap:8px;align-items:flex-start}
+.it.top .t1{font-weight:650}
 .it .t1 a{color:inherit;text-decoration:none}
 .it .t1 a:hover{color:var(--acc);text-decoration:underline;text-decoration-color:var(--acc-link)}
-.it .t1 .en{display:block;font-family:var(--mono);font-size:10.5px;color:var(--fg3);font-weight:400;margin-top:3px;line-height:1.5;word-break:break-word}
-.it .sm{margin:7px 0 0;color:var(--fg2);font-size:13.2px;line-height:1.72}
+.it .t1 .en{display:block;font-size:12px;color:var(--fg3);font-weight:400;margin-top:4px;line-height:1.5;word-break:break-word}
+.it .sm{margin:7px 0 0;color:var(--fg2);font-size:14.5px;line-height:1.7}
 /* 推荐理由（2026-10-08）：与摘要**视觉分层**，但要弱于摘要 —— 摘要是「讲了什么」（主体信息），
-   推荐理由是编辑视角的旁注，不能抢主线的视觉权重。用左侧细线 + 弱色实现，
-   不引入新颜色变量（复用 --line2 / --fg3 / --mono，三套主题下均已定义）。 */
-.it .rz{margin:6px 0 0;padding-left:8px;border-left:2px solid var(--line2);
-        color:var(--fg3);font-size:12.4px;line-height:1.7}
-.it .rzlbl{font-family:var(--mono);font-size:9.5px;color:var(--fg4);letter-spacing:.1em;
-           margin-right:6px;text-transform:uppercase}
+   推荐理由是编辑视角的旁注，不能抢主线的视觉权重。用左侧细线 + 弱色实现。 */
+.it .rz{margin:7px 0 0;padding-left:9px;border-left:2px solid var(--line2);
+        color:var(--fg3);font-size:13.5px;line-height:1.7}
+.it .rzlbl{font-size:11px;color:var(--fg4);letter-spacing:.04em;
+           margin-right:6px}
 .it .rzlbl::after{content:"·";margin-left:6px;color:var(--line2)}
-.it .meta{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-top:9px;font-family:var(--mono);font-size:10.5px;color:var(--fg3)}
-.it .meta .tg{border:1px solid var(--line2);border-radius:3px;padding:1px 6px;display:inline-flex;align-items:center;gap:5px}
-.it .meta .lv{font-weight:700;letter-spacing:.06em}
-.it .meta .lv.top{color:var(--red);border-color:var(--red-line)}
-.it .meta .lv.watch{color:var(--amber);border-color:var(--amber-line)}
-.it .meta .sc{color:var(--fg3)}
+.it .meta{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-top:10px;font-size:12px;color:var(--fg3)}
+.it .meta .tg{border:1px solid var(--line2);border-radius:4px;padding:1px 7px;display:inline-flex;align-items:center;gap:5px}
+.it .meta .sc{font-family:var(--mono);color:var(--fg3)}
 .it .meta .sc b{color:var(--fg2);font-weight:600}
-.it .meta .tp{color:var(--acc2);border-color:var(--acc2-line)}
+/* 档位的唯一视觉承载（替代已撤的红色竖条与 top 渐变底）：得分数字按档染色 */
+.it.top .meta .sc b{color:var(--red)}
+.it.watch .meta .sc b{color:var(--amber)}
 .it .meta .at{color:var(--acc);border-color:var(--acc-line)}
-.it .meta .sta{color:var(--fg3)}
+.it .meta .sta{font-family:var(--mono);color:var(--fg3)}
 
 /* ── 条目详情（内联展开，不跳页）────────────────────
    原实现把 desc 截到 220 字就没了，全文其实已经在 latest.json 里（上限 2000 字），
    白存着。这里补一个展开入口，读到全文的成本从「点外链、等加载、找正文」降到 0。 */
 .it{ cursor:pointer }
-.it .exp{font-family:var(--mono);font-size:10.5px;color:var(--acc);background:none;border:1px solid var(--acc-line);
-         border-radius:3px;padding:1px 7px;cursor:pointer;margin-top:9px;transition:.15s;letter-spacing:.04em}
+.it .exp{font-size:12.5px;color:var(--acc);background:none;border:1px solid var(--acc-line);
+         border-radius:4px;padding:3px 9px;cursor:pointer;margin-top:10px;transition:.15s}
 .it .exp:hover{background:var(--tint-a)}
 .it .exp::before{content:"▸ "}
 .it.open .exp::before{content:"▾ "}
+/* ⚠️ 展开的那张卡**独占整行**（grid-column:1/-1）。
+   起因：正文原来塞在卡片里，而 CSS Grid 的行高等于该行最高的元素 ——
+   点开一篇 1500px 的长正文，同一行另外两张卡下面各出现一大片空白。
+   这是 grid 的固有行为，`align-items:start` 只阻止卡片被拉伸，
+   **管不了行轨本身变高**，所以那条属性没能修掉这个问题。
+   独占整行之后，长卡片自己占一行，行里没有别的元素，缝就无从产生。
+
+   还差一步：被点开的卡如果原来在第 2、3 格，它跳到下一行后，
+   它上面那一行右侧会空出两格（实测 33% 占位，等于把缝从"下方"搬到了"右方"）。
+   配 `grid-auto-flow: row dense` 让后面的条目回填那个缺口 ——
+   实测回填后该行占位 100%。无展开项时 dense 与默认排布结果完全一致，不影响正常顺序。 */
+.it.open{grid-column:1/-1}
+/* 整行宽度下给卡片自身的短文本一个收口：摘要虽然只有 40–80 字，
+   但拉到 1500px 会变成一行到底、看不到行首。正文另有 --read-max 限宽。 */
+.it.open .t1,.it.open .sm,.it.open .rz,.it.open .meta{max-width:900px}
+/* 展开时标题吸顶：卡片变成一整屏高之后，没有这个锚点就不知道自己在读哪条。
+   原来只在手机端有，现在整行展开在桌面端同样需要，所以提到通用层。 */
+.it.open .t1{position:sticky;top:0;z-index:2;background:var(--card);
+             margin:-13px -15px 0;padding:13px 15px 9px;border-bottom:1px solid var(--line)}
 .detail{margin-top:11px;padding-top:11px;border-top:1px dashed var(--line2)}
-.detail .dbody{color:var(--fg2);font-size:13.2px;line-height:1.85;white-space:pre-wrap;word-break:break-word;
+.detail .dbody{color:var(--fg2);font-size:14.5px;line-height:1.8;white-space:pre-wrap;word-break:break-word;
                max-width:var(--read-max)}
 .detail .dbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;
-              font-family:var(--mono);font-size:10px;color:var(--fg4);letter-spacing:.08em}
-.detail .sw{font-family:var(--mono);font-size:10.5px;color:var(--fg2);background:var(--chip-bg);border:1px solid var(--chip-line);
-            border-radius:3px;padding:1px 8px;cursor:pointer;transition:.15s}
+              font-size:11.5px;color:var(--fg4);letter-spacing:.02em}
+.detail .sw{font-size:12px;color:var(--fg2);background:var(--chip-bg);border:1px solid var(--chip-line);
+            border-radius:4px;padding:2px 9px;cursor:pointer;transition:.15s}
 .detail .sw.on{color:var(--on-acc);background:var(--acc);border-color:var(--acc);font-weight:600}
 .detail .sw:hover{border-color:var(--line3)}
-.detail .dnote{color:var(--fg4);font-size:10.5px;font-family:var(--mono);margin-top:10px}
-.detail .dlink{color:var(--acc);font-family:var(--mono);font-size:10.5px;text-decoration:none;border-bottom:1px dotted var(--acc-link)}
+.detail .dnote{color:var(--fg4);font-size:12px;margin-top:10px}
+.detail .dlink{color:var(--acc);font-size:12px;text-decoration:none;border-bottom:1px dotted var(--acc-link)}
 .detail .dlink:hover{border-bottom-style:solid}
+/* 打分明细从卡片 meta 挪进展开态（2026-10-08）：rel/info/fresh 三维分只在
+   「这条为什么得这个分」时才用得上，日常阅读是噪音。放这里，要查就在详情里查。 */
+.detail .dsc{font-family:var(--mono);color:var(--fg4);font-size:11.5px;margin-top:9px}
+.detail .dsc b{color:var(--fg2);font-weight:600}
 
 details.more{border:1px solid var(--line);border-radius:6px;background:var(--panel);margin-top:4px}
-details.more>summary{cursor:pointer;list-style:none;padding:11px 14px;font-family:var(--mono);font-size:11.5px;color:var(--fg3);letter-spacing:.08em}
+details.more>summary{cursor:pointer;list-style:none;padding:12px 14px;font-size:13px;color:var(--fg3)}
 details.more>summary::-webkit-details-marker{display:none}
 details.more>summary:hover{color:var(--fg)}
 details.more>summary::before{content:"▸ ";color:var(--acc)}
 details.more[open]>summary::before{content:"▾ "}
-details.more>summary::after{content:"  [ 展开 / 收起 ]";font-size:9.5px;color:var(--fg4);letter-spacing:.1em}
+details.more>summary::after{content:" 展开 / 收起";font-size:11px;color:var(--fg4)}
 details.more .list{padding:0 10px 12px}
 
 /* ── 案例库 ───────────────────────────────────────── */
 .cases{display:grid;grid-template-columns:repeat(auto-fill,minmax(278px,1fr));gap:11px;padding:18px 18px 0}
-.case{position:relative;border:1px solid var(--line);border-radius:6px;background:linear-gradient(180deg,var(--card),var(--card-bot));box-shadow:var(--card-shadow);padding:14px 15px;display:flex;flex-direction:column;gap:7px;transition:border-color .16s,box-shadow .16s,transform .16s}
-.case:hover{border-color:var(--acc-line);transform:translateY(-2px);box-shadow:0 14px 28px -20px rgba(0,0,0,.34)}
-.case .ct{font-size:14px;font-weight:600;color:var(--title);line-height:1.5}
+.case{position:relative;border:1px solid var(--line);border-radius:8px;background:var(--card);padding:14px 15px;display:flex;flex-direction:column;gap:7px;transition:border-color .16s}
+.case:hover{border-color:var(--line2)}
+.case .ct{font-size:15.5px;font-weight:600;color:var(--title);line-height:1.5}
 .case .ct a{color:inherit;text-decoration:none}
 .case .ct a:hover{color:var(--acc)}
-.case .cen{font-family:var(--mono);font-size:10px;color:var(--fg3);line-height:1.45;word-break:break-word}
-.case .cs{color:var(--fg2);font-size:12.6px;line-height:1.7;flex:1}
-.case .cf{display:flex;gap:7px;align-items:center;flex-wrap:wrap;font-family:var(--mono);font-size:10px;color:var(--fg3);border-top:1px dashed var(--line2);padding-top:8px}
-.case .cf .ty{color:var(--acc);border:1px solid var(--acc-line);border-radius:3px;padding:0 5px}
+.case .cen{font-size:11.5px;color:var(--fg3);line-height:1.45;word-break:break-word}
+.case .cs{color:var(--fg2);font-size:14px;line-height:1.7;flex:1}
+.case .cf{display:flex;gap:7px;align-items:center;flex-wrap:wrap;font-size:11.5px;color:var(--fg3);border-top:1px dashed var(--line2);padding-top:8px}
+.case .cf .ty{color:var(--acc);border:1px solid var(--acc-line);border-radius:4px;padding:1px 6px}
 .case .cf .ty.none{color:var(--fg3);border-color:var(--line2)}
+.case .cf .sc{font-family:var(--mono)}
 
-.empty{padding:44px 18px;text-align:center;font-family:var(--mono);color:var(--fg3);font-size:12.5px;line-height:2}
+.empty{padding:44px 18px;text-align:center;color:var(--fg3);font-size:13.5px;line-height:2}
 .empty .b{color:var(--fg4);font-size:26px;display:block;margin-bottom:10px}
 
 /* AIHOT 外链条：低调、不抢主内容 */
 .ext{margin-top:22px;display:flex;align-items:center;gap:0;flex-wrap:wrap;
-     font-family:var(--mono);font-size:10.5px}
-.ext .extlbl{color:var(--fg4);letter-spacing:.14em;margin-right:10px;
-     border:1px solid var(--line2);border-radius:3px;padding:2px 7px;background:var(--panel2)}
-.ext a{color:var(--fg3);text-decoration:none;padding:3px 10px;
+     font-size:12px}
+.ext .extlbl{color:var(--fg4);letter-spacing:.04em;margin-right:10px;
+     border:1px solid var(--line2);border-radius:4px;padding:3px 8px;background:var(--panel2)}
+.ext a{color:var(--fg3);text-decoration:none;padding:4px 11px;
      border:1px solid var(--line);border-right-width:0;background:var(--panel)}
-.ext a:first-of-type{border-radius:3px 0 0 3px}
-.ext a:last-of-type{border-right-width:1px;border-radius:0 3px 3px 0}
+.ext a:first-of-type{border-radius:4px 0 0 4px}
+.ext a:last-of-type{border-right-width:1px;border-radius:0 4px 4px 0}
 .ext a:hover{color:var(--acc);border-color:var(--acc-line);background:var(--tint-a)}
 
-.ft{margin-top:34px;padding-top:14px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10.5px;color:var(--fg3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+.ft{margin-top:34px;padding-top:14px;border-top:1px solid var(--line);font-size:11.5px;color:var(--fg4);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
     padding-bottom:env(safe-area-inset-bottom)}
 .hide{display:none!important}
 
@@ -328,22 +431,23 @@ details.more .list{padding:0 10px 12px}
   .wrap{padding-left:max(11px, env(safe-area-inset-left));
         padding-right:max(11px, env(safe-area-inset-right));
         padding-bottom:calc(56px + env(safe-area-inset-bottom))}
-  .head{padding:18px 16px 16px}
+  .head{padding:16px 16px 14px}
   h1{font-size:22px}
-  .stat{grid-template-columns:repeat(2,1fr)}
-  /* 手机端：标签左、数值右同行；单元格只占一行，整块高度约为原来的 1/3 */
-  .stat > div{display:flex;align-items:baseline;justify-content:space-between;gap:8px;padding:7px 10px}
-  .stat .k{margin-bottom:0;flex:0 0 auto}
-  .stat .v{text-align:right;min-width:0}
+  .sub{padding:10px 14px 11px}
   .cases{grid-template-columns:1fr;padding:14px 12px 0}
   .grp{padding:16px 12px 0}
   .bar{padding:10px 12px}
-  .tab{padding:11px 13px;font-size:12px}
-  .it{padding:11px 12px 11px 13px}
-  .it .t1{font-size:13.6px}
-  .detail .dbody{font-size:12.8px;line-height:1.8}
-  /* 手机端：点开的条目吸顶一小段，长正文滚动时始终看得到「收起」 */
-  .it.open .t1{position:sticky;top:0;background:var(--card);z-index:2}
+  .tab{padding:11px 13px}
+  .it{padding:12px 13px 12px 14px}
+  /* ⚠️ 这里原先有两条**缩字号**规则：`.it .t1{font-size:13.6px}`、
+     `.detail .dbody{font-size:12.8px}` —— 已删（2026-10-08 方案乙）。
+     根因：窄屏的正确解法是减两侧留白、减每行字数，不是缩字号。
+     把标题从桌面 15px 缩到手机 13.6px，正好在"最主要的阅读场景"上砍了 9%，
+     是"手机上明显比 AIHOT 小"的第一根因。对照实测：AIHOT 标题两端都是 17px。
+     现在两端同为 16.5px，只靠 padding 收窄来适配。 */
+  /* 原来这条 `.it.open .t1{position:sticky;top:0}` 只在手机端有；
+     第三轮把展开态改成独占整行后，桌面端展开的卡片同样会高达一屏，
+     所以吸顶标题已经提到通用层去了（见 .it.open .t1），这里不再重复。 */
 }
 </style>
 </head>
@@ -351,26 +455,48 @@ details.more .list{padding:0 10px 12px}
 <div class="wrap">
 
   <div class="term">
-    <div class="tbar">
-      <div class="dots"><i></i><i></i><i></i></div>
+    <div class="head">
+      <h1><span class="br">[</span> <span class="hl">AI 前沿雷达</span> <span class="br">]</span></h1>
       <div class="online" id="live">…</div>
     </div>
 
-    <div class="head">
-      <div class="eyebrow">LLM · Agent · Skill — 前沿情报管道</div>
-      <h1><span class="br">[</span> <span class="hl">AI 前沿雷达</span> <span class="br">]</span></h1>
-    </div>
-
-    <div class="stat" id="stat"></div>
+    <div class="sub" id="sub"></div>
     <div class="tabs" id="tabs"></div>
   </div>
+
+  <!-- 今日管道：全站唯一的动态元素，画的全是当天 latest.json 的真实数据。
+       放在 .wrap 内，宽度和头图、列表天然对齐（第三轮不再通栏出血）。 -->
+  <section class="pipe" id="pipe">
+    <div class="pipe-h">
+      <span class="t">今日管道</span>
+      <span class="n" id="pipe-formula">—</span>
+      <span class="n" id="pipe-note"></span>
+    </div>
+    <div class="pipe-cv">
+      <canvas id="pipe-c"></canvas>
+      <div class="pipe-tip" id="pipe-tip" hidden></div>
+    </div>
+  </section>
+
+</div>
+
+<div class="wrap" style="padding-top:0">
 
   <div id="view-brief"></div>
   <div id="view-cases" class="hide"></div>
 
-  <!-- AIHOT 外链（2026-10-08 加）：这三个板块我们不重复造轮子，直接跳转复用。
-       注意：AIHOT 的 /leaderboard 等页面被 Cloudflare 拦非浏览器请求（curl 得 403），
-       但**浏览器点击跳转不受影响** —— 所以只做链接、不做数据接入。 -->
+  <!-- AIHOT 外链：这三个板块我们不重复造轮子，直接跳转复用。
+       ⚠️ 2026-10-08 复核：此前这里写的理由「/leaderboard 等页面被 Cloudflare 拦非浏览器
+       请求，curl 得 403」**已经不成立** —— 实测 /leaderboard /hot /all /topics /daily
+       现在对裸 curl 全部返回 200，而且 AIHOT 有一套正式公开 JSON API
+       （https://aihot.news/openapi-v1.json，29 端点、匿名无 Key）。
+       所以"只做链接"现在的真实理由是**选择不做**，不是"做不了"：
+         · 模型榜：数据只在 SSR 的 HTML 表格里，官方只给了 ld+json 的「名次+模型名+URL」，
+           分数和价格没有 JSON 契约，解析别人的 DOM = 对方改版即断，
+           与本项目「每一层都要能降级」冲突。而且我们 model 车道已有
+           llm-leaderboard（AmigaMeow/llm-leaderboard-data，MIT：LMArena Elo + 上架时间），
+           两张榜并排要先想清楚怎么不互相稀释。→ **首期只做跳转**。
+         · 精选板块：走它的 JSON API，见 sources.json 的 aihot 节点。 -->
   <div class="ext">
     <span class="extlbl">AIHOT ↗</span>
     <a href="https://aihot.news/leaderboard" target="_blank" rel="noopener noreferrer">模型榜</a>
@@ -379,7 +505,7 @@ details.more .list{padding:0 10px 12px}
   </div>
 
   <div class="ft">
-    <span>ai-radar · 源基线由 Actions 侧探测确认 · 选条走硬规则、表达由 LLM</span>
+    <span>选条走硬规则 · 表达由 LLM · 源基线由 Actions 探测确认</span>
     <span id="ft-gen">—</span>
   </div>
 </div>
@@ -398,7 +524,9 @@ var LANE = {
   model:'#22d3ee', official:'#5b9dff', apps:'#2ee6a8', paper:'#a78bfa',
   community:'#f472b6', media:'#f5b544', cn:'#fb7185'
 };
-var LV = { top:'重磅', watch:'关注', normal:'常规' };
+/* var LV 已删（2026-10-08 方案乙）：档位由**分区标题**单处表达，
+   卡片上不再挂「重磅/关注/常规」标签 —— 同一事实此前在分区标题、标题前的 ▲、
+   meta 标签三处各说了一遍。 */
 /* 车道 id → 中文名，加载 latest.json 时按 d.lanes 填充（否则条目上显示的是 apps/model 这种英文 id）*/
 var LANE_NAME = {};
 
@@ -409,24 +537,57 @@ function ageLabel(h){
   return Math.floor(h / 24) + ' 天前';
 }
 function host(u){ try { return new URL(u).hostname.replace(/^www\./,''); } catch(e){ return ''; } }
-/* ── 状态条 ───────────────────────────────────────── */
-function renderStat(d, casesN){
-  var L = (d.counts && d.counts.byLevel) || {};
-  var deg = (d.degraded || []).length;
-  var modelTxt = String(d.translator || '—');
-  var rows = [
-    ['更新时间', esc(d.generated_at || '—'), 'nowrap'],
-    ['本期条目', esc((d.counts && d.counts.total) || 0), 'g'],
-    ['重磅 / 关注', (L.top || 0) + ' / ' + (L.watch || 0), 'a'],
-    ['车道', (d.lanes || []).length, ''],
-    ['昨日重复', esc((d.counts && d.counts.repeat) || 0), ''],
-    ['案例库', casesN == null ? '…' : casesN, ''],
-    ['增强模型', esc(modelTxt), modelTxt.length > 20 ? 'sm' : ''],
-    ['降级源', deg, deg ? 'r' : 'g']
-  ];
-  $('#stat').innerHTML = rows.map(function(r){
-    return '<div><div class="k">' + r[0] + '</div><div class="v ' + r[2] + '">' + r[1] + '</div></div>';
-  }).join('');
+/* ── 元信息：两行纯文字（替代原 8 格状态条）────────────────────────
+   chainHTML：把 fetch_ai 的链路字符串拆成人能读的形式。实测格式（fetch_ai.py
+   :1058 摘要链 / :793 正文链）：
+     "agnes-3.0-flash(142条)"
+     "agnes-3.0-flash(120条) + gemini-3.5-flash-lite(22条)"  ← 首档失效降级到下一档
+     "none(原文)" / "off"
+     末尾可能带 " ⚠️降级[translate:25、summarize+type:12]"     ← 整批没模型可用
+   ⚠️ 原来这里只渲染 d.translator 一个值，把**正文翻译那条独立链**（translator_body）
+   整个漏掉了。那条链是 2026-10-08 才加的，和摘要链物理分离、走不同的 Key 配额池
+   （正文链首模型是 gemini-3.5-flash-lite，摘要链首模型是 agnes-3.0-flash），
+   所以**正常状态下本来就是两个模型**，界面上只显示一个属于长期误报。 */
+function chainHTML(s){
+  if (!s) return '<span class="bad">未运行</span>';
+  if (s === 'off') return '未启用';
+  var warn = '', w = /⚠️?降级\[([^\]]*)\]/.exec(s);
+  if (w){ warn = ' <span class="bad">⚠ 降级 ' + esc(w[1]) + '</span>'; s = s.replace(w[0], ''); }
+  if (s.indexOf('none') === 0) return '<span class="bad">' + esc(s) + '</span>' + warn;
+  var out = s.split('+').map(function(x){ return x.trim(); }).filter(Boolean).map(function(p){
+    var m = /^([^(]+?)\s*\((\d+)\s*条\)$/.exec(p);
+    return m ? '<em>' + esc(m[1]) + '</em>×' + m[2] : esc(p);
+  }).join(' + ');
+  return out + warn;
+}
+
+function renderMeta(d){
+  var el = $('#sub'); if (!el) return;
+  var its = d.items || [];
+  /* 重磅/关注必须和 renderBrief **同一口径**（都排除 isRepeat）。
+     原来这里直接读 counts.byLevel，于是状态条写「重磅 15」、首屏「▲ 重磅」区
+     只有 10 条 —— 同一页两个数对不上账，看着就像分级出了 bug。 */
+  var fresh = its.filter(function(i){ return !i.isRepeat; });
+  var nTop = fresh.filter(function(i){ return i.level === 'top'; }).length;
+  var nWatch = fresh.filter(function(i){ return i.level === 'watch'; }).length;
+  var nRep = its.length - fresh.length;
+  var SEP = '<span class="sep">·</span>';
+  var r1 = ['<span><b>' + esc(d.generated_at || '—') + '</b></span>', SEP,
+            '<span>共 <b>' + its.length + '</b> 条</span>', SEP,
+            '<span>重磅 <b>' + nTop + '</b> / 关注 <b>' + nWatch + '</b></span>'];
+  if (nRep) r1.push(SEP, '<span>昨日已收录 <b>' + nRep + '</b></span>');
+  /* 异常信号：degraded[] 里混着两类东西，必须分开数 ——
+     id 是源 id 的是「这个源本轮全部通路失败」；id === '_levels' 的是
+     R4 加的档位倒挂自检（分级逻辑异常），那是**我们自己的 bug**，不是源挂了。
+     原来两者共用一格「降级源 N」，把代码缺陷伪装成上游故障。 */
+  var deg = (d.degraded || []).filter(function(x){ return x.id !== '_levels'; });
+  var lvl = (d.degraded || []).filter(function(x){ return x.id === '_levels'; });
+  if (deg.length) r1.push(SEP, '<span class="warn" title="' +
+      attr(deg.map(function(x){ return x.id; }).join('、')) + '">⚠ ' + deg.length + ' 源降级</span>');
+  if (lvl.length) r1.push(SEP, '<span class="warn">⚠ 档位倒挂</span>');
+  el.innerHTML = '<div class="r1">' + r1.join('') + '</div>' +
+    '<div class="r2"><span>AI 摘要打分 ' + chainHTML(d.translator) + '</span>' +
+    '<span>正文翻译 ' + chainHTML(d.translator_body) + '</span></div>';
 }
 
 /* ── 条目 ─────────────────────────────────────────── */
@@ -443,13 +604,30 @@ function bodyHTML(i, which){
     ? '<button class="sw' + (useZh ? ' on' : '') + '" data-w="zh">中文</button>' +
       '<button class="sw' + (useZh ? '' : ' on') + '" data-w="en">原文</button>'
     : '';
+  /* 打分明细（2026-10-08 从卡片 meta 挪来）：rel/info/fresh 三维 + 关键词加成 +
+     兜底分标记。这些是"为什么得这个分"的证据，属于详情，不属于首屏。
+     fallbackScore 也在这里 —— LLM 挂了要用「车道基线+新鲜度」兜底打分，
+     这个事实必须可见（否则降级产物看起来和正常产物一模一样），但不该占卡片一行。 */
+  var dsc = '';
+  if (i.score) {
+    dsc = '<div class="dsc">得分明细 <b>' + esc(i.total) + '</b> = 相关 ' + esc(i.score.rel) +
+          ' · 信息 ' + esc(i.score.info) + ' · 时效 ' + esc(i.score.fresh) +
+          (i.kwBoost ? ' ｜ <b>[关键词加成]</b>' : '') +
+          (i.fallbackScore ? ' ｜ <b>兜底分（本轮 LLM 不可用）</b>' : '') +
+          '</div>';
+  } else if (i.total != null) {
+    dsc = '<div class="dsc">得分 <b>' + esc(i.total) + '</b>' +
+          (i.fallbackScore ? ' ｜ <b>兜底分（本轮 LLM 不可用）</b>' : '') + '</div>';
+  }
   return '<div class="dbar">' +
       '<span>' + (useZh ? '正文 · 译文' : '正文 · 原文' + (i.descLang ? '（' + esc(i.descLang) + '）' : '')) + '</span>' +
       sw +
       '<span style="margin-left:auto">' + txt.length + ' 字</span>' +
     '</div>' +
     '<div class="dbody">' + esc(txt) + '</div>' +
-    '<div class="dnote">正文由抓取管道补抓后截取（上限 2000 字），非完整原文 · ' +
+    dsc +
+    '<div class="dnote">正文由抓取管道补抓后截取（上限 2000 字）' +
+      (i.descFrom === 'jina' ? '，来源 Jina Reader' : '') + '，非完整原文 · ' +
       '<a class="dlink" href="' + attr(i.url || '#') + '" target="_blank" rel="noopener noreferrer">打开原链接 →</a></div>';
 }
 
@@ -458,23 +636,27 @@ function itemHTML(i, idx){
   var title = i.titleCn || i.title || '';
   var altEn = (i.titleCn && i.title) ? i.title : '';
   var href = i.url || '#';
-  var sc = i.score ? (i.score.rel + '/' + i.score.info + '/' + i.score.fresh) : '';
-  var mk = i.level === 'top' ? '▲' : (i.level === 'watch' ? '▸' : '·');
+  /* ── meta 行瘦身（2026-10-08 方案乙）────────────────────────────────
+     改前一张卡片最多挂 10 个 chip，其中同一事实被重复表达 2~3 次。
+     现在只留 4 类：**出处 · 得分 · 时间 · 增量信号**。删掉的以及理由：
+       · 标题前的 ▲/▸/·      —— 与所在分区标题、卡片左侧色条、.it.top 底色三重重复
+       · 「重磅/关注/常规」标签 —— 同上，分区标题已经说了
+       · 得分后的 9/8/9 三维   —— 挪进展开态（见 bodyHTML 的 .dsc）
+       · 「正文已补抓」        —— 管线内部状态，读者不关心
+       · 「已译」              —— 与按钮文字「展开全文 · 已译」重复
+       · 「昨日已收录」        —— 这类条目已被单独分到一个区，区内再标是自我重复
+       · 「较早」(stale)       —— pubTime 本身就写着日期
+       · topic 标签            —— 交接文档 §5-8 自陈 topic 有 78 种碎片、口径未收敛，
+                                  渲染出来就是一排互不相同的噪音。等 prompt 收敛再开。
+       · 车道色点 .dot         —— 左边框已按车道着色，顶部 chip 筛选也带色点 */
   var meta = [];
-  meta.push('<span class="tg"><span class="dot" style="background:' + col + '"></span>' +
-            esc(LANE_NAME[i.lane] || i.lane) + ' · ' + esc(i.block || i.source || '') + '</span>');
-  if (LV[i.level]) meta.push('<span class="tg lv ' + esc(i.level) + '">' + LV[i.level] + '</span>');
-  if (i.total != null) meta.push('<span class="sc">得分 <b>' + esc(i.total) + '</b>' +
-            (sc ? ' <span style="opacity:.6">' + esc(sc) + '</span>' : '') + '</span>');
+  meta.push('<span class="tg">' + esc(LANE_NAME[i.lane] || i.lane) +
+            ' · ' + esc(i.block || i.source || '') + '</span>');
+  if (i.total != null) meta.push('<span class="sc">得分 <b>' + esc(i.total) + '</b></span>');
   if (i.apptype) meta.push('<span class="tg at">' + esc(i.apptype) + '</span>');
-  if (i.topic) meta.push('<span class="tg tp">' + esc(i.topic) + '</span>');
   var t = i.pubTime || (i.ageH >= 0 ? ageLabel(i.ageH) : '');
   if (t) meta.push('<span class="sta">' + esc(t) + '</span>');
-  if (i.stale) meta.push('<span class="sta">较早</span>');
-  if (i.isRepeat) meta.push('<span class="sta">昨日已收录</span>');
   if ((i.alsoIn || []).length) meta.push('<span class="sta">另 ' + i.alsoIn.length + ' 源</span>');
-  if (i.descFrom) meta.push('<span class="sta">正文已补抓</span>');
-  if (i.descZh) meta.push('<span class="sta" style="color:var(--acc)">已译</span>');
 
   // 列表区**不再预览正文**（2026-10-08 改）：原先「摘要 → 正文前220字 → 点开展开全文」
   // 是三层重复，而中间那层被展开态完全包含，纯冗余。现在只留「摘要 + 展开按钮」：
@@ -483,7 +665,7 @@ function itemHTML(i, idx){
 
   return '<article class="it ' + esc(i.level || '') + (i.isRepeat ? ' rep' : '') +
       '" style="--lane:' + col + '" data-idx="' + idx + '">' +
-    '<div class="t1"><span class="mk">' + mk + '</span><span style="min-width:0">' +
+    '<div class="t1"><span style="min-width:0">' +
       '<a href="' + attr(href) + '" target="_blank" rel="noopener noreferrer">' + esc(title) + '</a>' +
       (altEn ? '<span class="en">' + esc(altEn) + '</span>' : '') +
     '</span></div>' +
@@ -548,8 +730,8 @@ function renderBrief(){
     (deg.length ? '<section class="grp"><div class="h h-normal"><span class="t">⚠ 本次降级源</span>' +
       '<span class="line"></span><span class="cnt">' + deg.length + '</span></div><div class="list">' +
       deg.map(function(x){
-        return '<div class="it" style="--lane:var(--amber)"><div class="t1"><span class="mk">!</span>' +
-          '<span>' + esc(x.id) + '<span class="en">' + esc(String(x.reason || '').slice(0, 170)) + '</span></span></div></div>';
+        return '<div class="it" style="--lane:var(--amber)"><div class="t1"><span>' +
+          esc(x.id) + '<span class="en">' + esc(String(x.reason || '').slice(0, 170)) + '</span></span></div></div>';
       }).join('') + '</div></section>' : '') +
     (pick.length ? '' : '<div class="empty"><span class="b">∅</span>该筛选下没有条目</div>');
 
@@ -564,6 +746,11 @@ function renderBrief(){
    展开区内容按需生成，收起后清空 innerHTML —— DOM 里不留几千字的隐藏文本。 */
 var openIdx = null, detailLang = {};
 
+/* 展开态的容器：正文在卡片**内部**，靠 `.it.open{grid-column:1/-1}` 让整张卡独占一行。
+   （试过把正文挪成 .list 的兄弟节点，那样展开卡自己还是会把上一行留出两格空位，
+     反而要多一个吸顶标题栏才看得懂，不如现在这版简单。） */
+function detailBox(art){ return art && art.querySelector('.detail'); }
+
 function toggleDetail(idx){
   var d = DATA && (DATA.items || [])[idx];
   if (!d) return;
@@ -571,7 +758,7 @@ function toggleDetail(idx){
   closeDetail();
   var art = document.querySelector('.it[data-idx="' + idx + '"]');
   if (!art) return;
-  var box = art.querySelector('.detail');
+  var box = detailBox(art);
   if (!box) return;
   box.innerHTML = bodyHTML(d, detailLang[idx] || '');
   box.classList.remove('hide');
@@ -584,7 +771,7 @@ function closeDetail(){
   if (openIdx == null) return;
   var art = document.querySelector('.it[data-idx="' + openIdx + '"]');
   if (art){
-    var box = art.querySelector('.detail');
+    var box = detailBox(art);
     if (box){ box.innerHTML = ''; box.classList.add('hide'); }
     art.classList.remove('open');
     var b = art.querySelector('.exp'); if (b) b.setAttribute('aria-expanded', 'false');
@@ -605,17 +792,19 @@ function bindDetail(scope){
       if (e.target.closest('a,button,.detail')) return;
       toggleDetail(idx);
     };
-    // 「中文 / 原文」切换：只重画正文区，不重建整张卡片
-    if (art._sw) return;
-    art._sw = true;
-    art.addEventListener('click', function(e){
-      var s = e.target.closest('.sw'); if (!s) return;
-      e.stopPropagation();
-      detailLang[idx] = s.dataset.w;
-      var d = DATA && (DATA.items || [])[idx];
-      var box = art.querySelector('.detail');
-      if (d && box) box.innerHTML = bodyHTML(d, detailLang[idx]);
-    });
+    /* 「中文 / 原文」切换：监听挂在展开态自己身上，只重画正文区、不重建整张卡片。
+       用事件委托而不是给按钮单独绑：每次切换都会重写 innerHTML，按钮节点整个被换掉。 */
+    var box = detailBox(art);
+    if (box && !box._bd){
+      box._bd = true;
+      box.addEventListener('click', function(e){
+        var s = e.target.closest('.sw'); if (!s) return;
+        e.stopPropagation();
+        detailLang[idx] = s.dataset.w;
+        var d = DATA && (DATA.items || [])[idx];
+        if (d) box.innerHTML = bodyHTML(d, detailLang[idx]);
+      });
+    }
   });
 }
 
@@ -711,6 +900,10 @@ function showTab(name){
   var isBrief = name !== 'cases';
   $('#view-brief').classList.toggle('hide', !isBrief);
   $('#view-cases').classList.toggle('hide', isBrief);
+  /* 管道图讲的是「今天这批条目怎么被筛出来的」，属于简报的语境；
+     案例库是跨月累积的作品集，跟当天的选条过程无关，所以切过去就整块藏掉。
+     隐藏后 IntersectionObserver 会报 not-intersecting，rAF 自动停，不留后台动画。 */
+  var pp = document.getElementById('pipe'); if (pp) pp.classList.toggle('hide', !isBrief);
   document.querySelectorAll('#tabs .tab').forEach(function(t){
     t.classList.toggle('on', (t.dataset.tab === 'cases') === !isBrief);
   });
@@ -742,6 +935,492 @@ function renderLive(d){
   }
 }
 
+/* ── 今日管道（canvas 动画）─────────────────────────────────────────
+   画的是**当天 latest.json 的真实数据**，不是随机装饰：
+     每条细线 = 一个条目   →   归拢成一束 = 一条车道   →   竖线 = 硬规则选条那道闸
+     →   右侧那张纸 = 本期重磅
+   过闸的线条数**等于该车道今天真的供出了几条重磅**（今天 10 条重磅 ≈ 10 根绿线），
+   其余的在闸口用渐变淡出。所以"稀疏的绿"本身就是信息：入选率一眼看得见。
+
+   配色纪律（这是和 aihot 对齐后修掉的不一致）：
+     · 闸口**左侧一律灰色** —— 静止的线和流动的光点都是墨色。左边还没经过判断，
+       任何强调色都是撒谎。原来我让绿色光点从 x=0 一路跑到纸上，等于在说
+       "这些条目在筛选前就已经入选了"。
+     · 只有**过了闸且 pass=true** 的线才转成强调色（墨绿），alpha 拉满。
+     · 过了闸但没入选的，光点强度按 (x-gate)/(end-gate) 线性衰减到 0，视觉上"沉下去"。
+
+   工程选择（逐条对照实测 aihot.news/about 的实现，它同样是手写 canvas 2D、无库）：
+     · **静态层离屏预渲染**，每帧只做一次 drawImage + 画光点。原来每帧重画 40+ 条
+       polyline，白烧 CPU，而且每帧 stroke 的抗锯齿结果不完全一致，静止的线条会"呼吸"。
+     · 光点是**从透明到实的渐变尾迹**（createLinearGradient），不是一个硬边短线。
+     · **到达高亮**：光点落到纸上时，纸会闪一下（shadowBlur + 强调色描边衰减 620ms）。
+       这是整幅图的"心跳"，没有它图就是死的。
+     · **左缘淡出**：最左边用页面底色刷一条渐变，线条是从背景里"长出来"的，
+       不是在 x=0 被硬切断。
+     · 种子随机 —— 同一份数据布局完全确定，刷新不抖，截图可复现。
+     · 颜色从 CSS 变量现取 —— 浅色/深色/[data-theme] 三套主题自动跟随，不写死。
+     · prefers-reduced-motion 画静态一帧；IntersectionObserver 离屏即停；
+       document.hidden 也停（后台标签页里 rAF 本来就不跑，但切回来要能续上）。
+     · devicePixelRatio 封顶 2。
+   注意：这是**全站唯一**的动态元素。极简第二轮把红绿灯闪烁、卡片位移、文字光晕
+   全撤了，只留这一个，因为它承载信息；而且它现在能被鼠标指着读（见 hover）。 */
+var PIPE = { raf: 0, io: null, ro: null, mo: null, off: null, cv: null, host: null,
+             pk: [], acc: 0, arrive: -1e9, last: 0, hover: null, sc: null, pal: null,
+             dpr: 1, reduce: false, reveal: 1, t0: 0, seen: false, scene: null };
+/* 采样步长（CSS px）。必须是**模块级常量**：pipeStroke 只拿到单条线对象，
+   原先把 step 挂在 scene 上、却在按 strand 调用时读 s.step → undefined，
+   于是 Math.floor(x/undefined)=NaN、循环一次都不执行，整张图的线条全部静默不画
+   （实测像素覆盖率只剩闸口竖线那张纸）。这类失败不报错、不抛异常，
+   只能靠"数一数画布上有多少非空像素"发现。 */
+var PIPE_STEP = 6;
+var PIPE_ARRIVE_MS = 620;
+
+/* var() 的值可能是 #hex、rgba()、甚至另一个 var()，只有让浏览器解析一遍
+   才能拿到统一的 rgb 三元组。挂个隐藏 span 走 getComputedStyle 最省事。 */
+function cssRGB(name, fb){
+  try{
+    var d = document.createElement('span');
+    d.style.cssText = 'display:none;color:var(' + name + ')';
+    document.body.appendChild(d);
+    var c = getComputedStyle(d).color;
+    d.remove();
+    var m = /rgba?\(\s*([\d.]+)[,\s]+([\d.]+)[,\s]+([\d.]+)/.exec(c);
+    if (m) return [+m[1], +m[2], +m[3]];
+  }catch(e){}
+  return fb;
+}
+function rgba(c, a){ return 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + a + ')'; }
+function pipePal(){
+  var p = { ink: cssRGB('--fg', [43,39,33]), acc: cssRGB('--acc', [13,106,99]),
+            line: cssRGB('--line2', [220,213,200]), surface: cssRGB('--card', [255,255,255]),
+            bg: cssRGB('--bg', [247,244,238]) };
+  p.dark = p.bg[0]*.3 + p.bg[1]*.59 + p.bg[2]*.11 < 110;
+  return p;
+}
+
+/* mulberry32：20 行内的确定性 PRNG，种子由数据指纹算出 */
+function prng(seed){
+  return function(){
+    seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+    var t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  };
+}
+function hashStr(s){ var h = 2166136261; for (var k = 0; k < s.length; k++){ h ^= s.charCodeAt(k); h = Math.imul(h, 16777619); } return h | 0; }
+function ease(t){ return t < .5 ? 2*t*t : 1 - Math.pow(-2*t + 2, 2)/2; }
+function clamp(v, a, b){ return v < a ? a : (v > b ? b : v); }
+
+/* ── 几何：四段地标，全程连续 ──────────────────────────────────────
+   原来"在页面中间就被截断筛选出来"的观感，根因不是闸门位置，是**闸门处不连续**：
+   闸左只把线往束心拉了 25%（y0 + (cy-y0)*.25），闸右却直接取值 cy（未中选）
+   或从 cy 开始往纸上拐（中选）—— 于是在 x=gate 那一列，每根线都瞬移了
+   (cy-y0)*.75 个像素，离束心越远的线跳得越狠。几百个硬折角排成一条竖线，
+   眼睛读到的就是"线在中间被剪断了"。**闸门挪到 0.625 只是让它不那么显眼，
+   连续化才是修掉它。**
+
+   四段地标（对照实测 aihot 的 ee()：它同样是 l / u / d / f 四个 x landmark）：
+     0 →x1   摆动区：线在原地抖，开始往本车道束心靠（靠 25%）
+    x1 →x2   归拢区：摆幅线性衰减到 0，位置拉到束心 + 束内落点 off
+    x2 →gate 稳定区：平走。到这里每根线已经稳稳躺在自己的束里
+   gate →xo   选条区：只有中选线出发往**一条公共输出轨**拐；未中选的继续平走，
+               并在 gate + 4.5%W 处就停住淡出 —— 所以闸右几乎全是绿的，
+               不是一排灰线拖到屏幕边上（这是"看着像截断"的第二个来源）
+     xo →纸   轨道段：中选线以 railY + off*0.5 平走到纸。off 只保留一半，
+               于是汇进轨道时还留一点束的厚度，不会全挤成一个点（AIHOT 同理）
+   每段在接缝处的取值都等于上一段末值，所以整条线没有折角。
+
+   ⚠️ 地标比例第三轮重排过（2026-10-08）：原来是 x2=38% / gate=62.5%，
+   「一束平走」占了 **24.5%** 的宽度，比归拢段还长 —— 读出来的重点是
+   "线已经排好了"，而不是"很多数据被汇总成一束"。现在把归拢段推到 56%、
+   平走段压到 7%，让**汇总这件事本身占住版面**，闸门仍然在右侧 63% 处。
+     归拢 0→56%（主叙事）· 平走 56→63%（短）· 选条 63→86% · 轨道 86→91% */
+function pipeScene(W, H, lanes, rnd){
+  var STEP = PIPE_STEP, nL = lanes.length || 1;
+  var x1 = W * .12, x2 = W * .56, gateX = Math.round(W * .63), xo = Math.round(W * .86);
+  var railY = H * .44;
+  var paperW = clamp(W * .034, 30, 54);
+  var paper = { x: Math.max(xo + 12, W - paperW - clamp(W * .028, 18, 46)),
+                y: railY - paperW * .66, w: paperW, h: paperW * 1.32 };
+  var total = lanes.reduce(function(s, l){ return s + l.count; }, 0) || 1;
+  /* 线数要**同时受宽和高约束**。原来只按宽度算（W/6 → 537px 上 90 根），画布却只有
+     150px 高，90 根摊到 136px = 每 1.5px 一根，实测非空像素覆盖率 43.4%，
+     线条糊成一块灰板。现在按 min(宽/13, 高/4.2) 取，保证纵向间距 ≥ 约 4px。 */
+  var N = clamp(Math.round(Math.min(W / 13, H / 4.2)), 20, 96);
+  // 每条车道的线数 ∝ 当日真实条数（保底 2 根，否则小车道看不见）
+  var alloc = lanes.map(function(l){ return Math.max(2, Math.round(N * l.count / total)); });
+  for (var sum = alloc.reduce(function(a,b){ return a+b; }, 0) - N, q = 0; sum !== 0; q = (q+1) % nL){
+    if (sum > 0 && alloc[q] > 2){ alloc[q]--; sum--; } else if (sum < 0){ alloc[q]++; sum++; }
+  }
+  var pad = H * .07, slot = H * .74 / nL, bundles = [], strands = [], idx = 0;
+  for (var li = 0; li < nL; li++){
+    var cy = H * .13 + (li + .5) * slot, n = alloc[li];
+    /* 过闸的线条数 = 该车道今天真的供出几条重磅。**不是**"整条车道过 / 整条车道不过"——
+       今天 7 条车道里 6 条都供过重磅，按车道判就是 6/7 全绿，闸口等于没在筛，
+       图上看不出任何"选条"这件事。按条数判才是 10/≈45 的真实入选率。 */
+    var passN = Math.min(n, lanes[li].top || 0), chosen = {};
+    for (var p = 0; p < passN; p++) chosen[clamp(Math.round((p + .5) / passN * n - .5), 0, n - 1)] = 1;
+    bundles.push({ y: cy, half: slot * .34, lane: li, kept: passN > 0, n: n, passN: passN,
+                   name: lanes[li].name });
+    for (var k = 0; k < n; k++, idx++){
+      // 起点在纵向上**全局均匀铺开**（不按车道分块），到闸口才归拢到本车道的束心。
+      // 这样左边看着是"一整排条目"，中间才显出车道分组 —— 和真实流程一致。
+      var y0 = pad + (idx + .5) / N * (H - 2 * pad) + (rnd() - .5) * (H - 2 * pad) / N * .8;
+      var bs = lanes[li].blocks, src = (bs && bs.length) ? bs[idx % bs.length] : lanes[li].name;
+      strands.push({ y0: y0, cy: cy, off: 0, amp: 2 + rnd() * 5,
+                     per: Math.PI * 2 / (70 + rnd() * 140), ph: rnd() * Math.PI * 2,
+                     lane: li, bundle: li, kept: !!chosen[k], src: src, title: '',
+                     ys: null, end: W });
+    }
+  }
+  // 落纸点：所有入选线在纸的纵向范围内均匀排开（跨车道统一分配，才像"汇成一份"）
+  var passList = strands.filter(function(s){ return s.kept; });
+  var tops = [];
+  lanes.forEach(function(l){ (l.topTitles || []).forEach(function(t){ tops.push(t); }); });
+  passList.forEach(function(s, j){
+    s.off = (j + .5) / passList.length * paper.h * .74 - paper.h * .37;
+    s.end = paper.x;
+    s.title = tops.length ? tops[j % tops.length] : '';
+  });
+  strands.forEach(function(s){
+    var T = Math.ceil(W / STEP) + 1, ys = new Float32Array(T);
+    var target = s.cy + s.off;                 // 束内落点：x2 之后线就躺在这里
+    var railTo = railY + s.off * .5;           // 轨道落点：off 只留一半，保留束的厚度
+    for (var e = 0; e < T; e++){
+      var x = e * STEP, y;
+      if (x <= x2){
+        var pull = x <= x1 ? .25 * ease(x / x1)
+                           : .25 + .75 * ease((x - x1) / Math.max(1, x2 - x1));
+        var wob  = x <= x1 ? s.amp : s.amp * Math.max(0, 1 - (x - x1) / Math.max(1, x2 - x1));
+        y = s.y0 + (target - s.y0) * pull + wob * Math.sin(s.per * x + s.ph);
+      } else if (!s.kept || x <= gateX){
+        y = target;                             // 稳定区平走；未中选的一路到这里为止
+      } else if (x <= xo){
+        y = target + (railTo - target) * ease((x - gateX) / Math.max(1, xo - gateX));
+      } else {
+        y = railTo;
+      }
+      ys[e] = y;
+    }
+    s.ys = ys;
+    if (!s.kept) s.end = gateX + W * .045;      // 未中选：过闸一点点就停，靠渐变淡出
+  });
+  return { w: W, h: H, x1: x1, x2: x2, gateX: gateX, xo: xo, railY: railY,
+           paper: paper, strands: strands, bundles: bundles,
+           passIdx: strands.map(function(s, i){ return s.kept ? i : -1; })
+                           .filter(function(i){ return i >= 0; }) };
+}
+
+function pipeStroke(ctx, s, x0, x1){
+  var i = Math.max(0, Math.floor(x0 / PIPE_STEP)), a = Math.min(s.ys.length - 1, Math.ceil(x1 / PIPE_STEP));
+  if (a <= i) return;
+  ctx.beginPath();
+  ctx.moveTo(Math.max(0, x0), s.ys[i]);
+  for (var e = i + 1; e <= a; e++) ctx.lineTo(e * PIPE_STEP, s.ys[e]);
+  ctx.stroke();
+}
+
+/* 那张"纸"。glow ∈ [0,1)：刚有光点落上来时亮一下，620ms 内衰减回 0。 */
+function pipePaper(ctx, sc, pal, glow){
+  var p = sc.paper;
+  ctx.save();
+  if (glow > 0){ ctx.shadowColor = rgba(pal.acc, .55 * glow); ctx.shadowBlur = 18 * glow; }
+  ctx.beginPath();
+  if (ctx.roundRect) ctx.roundRect(p.x, p.y, p.w, p.h, 5); else ctx.rect(p.x, p.y, p.w, p.h);
+  ctx.fillStyle = rgba(pal.surface, 1); ctx.fill();
+  ctx.shadowBlur = 0;
+  ctx.lineWidth = 1;
+  ctx.strokeStyle = glow > 0 ? rgba(pal.acc, .35 + .65 * glow) : rgba(pal.line, 1);
+  ctx.stroke();
+  ctx.restore();
+  var bx = p.x + p.w * .17, bw = p.w * .66;
+  ctx.fillStyle = rgba(pal.acc, 1);
+  ctx.fillRect(bx, p.y + p.h * .14, bw * .42, Math.max(2, p.w * .06));
+  ctx.fillStyle = rgba(pal.ink, glow > 0 ? .5 + .5 * glow : (pal.dark ? .62 : .82));
+  ctx.fillRect(bx, p.y + p.h * .3, bw * .9, Math.max(2, p.w * .075));
+  ctx.fillStyle = rgba(pal.ink, pal.dark ? .3 : .24);
+  for (var r = 0; r < 4; r++){
+    var ry = p.y + p.h * (.47 + r * .12);
+    ctx.fillRect(bx, ry, bw * .45, 1);
+    ctx.fillRect(bx + bw * .55, ry, bw * .45, 1);
+  }
+}
+
+/* 静态层：线 + 闸 + 纸。只画一次到离屏画布，每帧 drawImage 复用。 */
+function pipeStatic(ctx, sc, pal){
+  var W = sc.w, H = sc.h, g = sc.gateX;
+  ctx.clearRect(0, 0, W, H);
+  ctx.lineWidth = 1; ctx.lineJoin = 'round'; ctx.lineCap = 'butt';
+  for (var i = 0; i < sc.strands.length; i++){
+    var s = sc.strands[i];
+    // 闸左：一律墨色。**这里出现任何强调色都是错的** —— 左边还没经过判断。
+    ctx.strokeStyle = rgba(pal.ink, pal.dark ? .2 : .13);
+    pipeStroke(ctx, s, 0, Math.min(s.end, g));
+    if (s.end <= g) continue;
+    if (s.kept){
+      ctx.strokeStyle = rgba(pal.acc, pal.dark ? .6 : .45);
+    } else {
+      var gr = ctx.createLinearGradient(g, 0, s.end, 0);
+      gr.addColorStop(0, rgba(pal.ink, pal.dark ? .2 : .13));
+      gr.addColorStop(1, rgba(pal.ink, 0));
+      ctx.strokeStyle = gr;
+    }
+    pipeStroke(ctx, s, g, s.end);
+  }
+  // 轨道汇入段：xo → 纸。中选线在 gate→xo 之间已经各自拐到 railY±off/2 上了，
+  // 这里再补一条居中主干把它们收进纸里（对照实测 AIHOT 的
+  // moveTo(xo,out) → lineTo(paper.x,out)，1.6px、强调色 .95）。
+  ctx.beginPath();
+  ctx.moveTo(sc.xo, sc.railY); ctx.lineTo(sc.paper.x, sc.railY);
+  ctx.lineWidth = 1.6; ctx.strokeStyle = rgba(pal.acc, .95); ctx.stroke();
+  ctx.lineWidth = 1;
+  // 闸：竖线 + 每个中选束的上下刻度
+  ctx.strokeStyle = rgba(pal.line, 1);
+  var cur = H * .05;
+  ctx.beginPath();
+  for (var b = 0; b < sc.bundles.length; b++){
+    var ln = sc.bundles[b]; if (!ln.kept) continue;
+    ctx.moveTo(g, cur); ctx.lineTo(g, ln.y - ln.half - 6); cur = ln.y + ln.half + 6;
+  }
+  ctx.moveTo(g, cur); ctx.lineTo(g, H * .95); ctx.stroke();
+  ctx.beginPath();
+  for (var b2 = 0; b2 < sc.bundles.length; b2++){
+    var l2 = sc.bundles[b2]; if (!l2.kept) continue;
+    ctx.moveTo(g - 4, l2.y - l2.half - 6); ctx.lineTo(g + 4, l2.y - l2.half - 6);
+    ctx.moveTo(g - 4, l2.y + l2.half + 6); ctx.lineTo(g + 4, l2.y + l2.half + 6);
+  }
+  ctx.stroke();
+  pipePaper(ctx, sc, pal, 0);
+  // 左缘淡出：线条从背景里"长出来"，不是在 x=0 被硬切断
+  var fe = Math.min(64, W * .06);
+  var lg = ctx.createLinearGradient(0, 0, fe, 0);
+  lg.addColorStop(0, rgba(pal.bg, 1)); lg.addColorStop(1, rgba(pal.bg, 0));
+  ctx.fillStyle = lg; ctx.fillRect(0, 0, fe, H);
+}
+
+/* 每帧合成：blit 静态层 → 悬停高亮 → 光点尾迹 → 到达高亮 → 进场擦开 */
+function pipeFrame(ts){
+  var P = PIPE;
+  if (!P.sc || !P.cv) return;
+  var ctx = P.ctx, sc = P.sc, pal = P.pal, W = sc.w, H = sc.h;
+  var dt = P.last ? Math.min(.05, (ts - P.last) / 1000) : 0;
+  P.last = ts;
+  if (!P.t0) P.t0 = ts;
+  P.reveal = Math.min(1, (ts - P.t0) / 900);
+
+  if (!P.reduce){
+    // 生成光点：约 4.5 个/秒（宽屏 7 个/秒），同屏上限 80。
+    // 11% 的概率强制抽一条**入选线**，否则绿色尾迹会太稀、看不出"有东西在进纸"。
+    P.acc += dt * (W >= 900 ? 7 : 4.5);
+    while (P.acc >= 1 && P.pk.length < 80){
+      P.acc--;
+      var si = (Math.random() < .11 && sc.passIdx.length)
+        ? sc.passIdx[Math.floor(Math.random() * sc.passIdx.length)]
+        : Math.floor(Math.random() * sc.strands.length);
+      P.pk.push({ s: si, x: -Math.random() * 30, v: W * (.12 + Math.random() * .06) });
+    }
+  }
+
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.clearRect(0, 0, P.cv.width, P.cv.height);
+  ctx.setTransform(P.dpr, 0, 0, P.dpr, 0, 0);
+  ctx.drawImage(P.off, 0, 0, W, H);
+
+  // 悬停：把指到的那根线（或那一整束）重描一遍加深的
+  if (P.hover){
+    ctx.lineJoin = 'round';
+    var list = P.hover.bundle === null ? [sc.strands[P.hover.s]]
+             : sc.strands.filter(function(s){ return s.bundle === P.hover.bundle; });
+    ctx.lineWidth = list.length > 1 ? 1 : 1.5;
+    for (var h = 0; h < list.length; h++){
+      var t2 = list[h];
+      ctx.strokeStyle = rgba(pal.ink, list.length > 1 ? .45 : .9);
+      pipeStroke(ctx, t2, 0, Math.min(t2.end, sc.gateX));
+      ctx.strokeStyle = t2.kept ? rgba(pal.acc, .95) : rgba(pal.ink, list.length > 1 ? .3 : .6);
+      if (t2.end > sc.gateX) pipeStroke(ctx, t2, sc.gateX, t2.end);
+    }
+  }
+
+  // 光点：从透明到实的渐变尾迹。颜色纪律 —— 闸左灰、闸右入选才绿、未入选渐隐到 0
+  if (!P.reduce){
+    var trail = clamp(W * .04, 24, 56);
+    ctx.lineWidth = 1.8; ctx.lineCap = 'round';
+    for (var j = P.pk.length - 1; j >= 0; j--){
+      var pk = P.pk[j], s = sc.strands[pk.s], n = Math.min(pk.x, s.end);
+      pk.x += pk.v * dt;
+      if (pk.x >= s.end){ if (s.kept) P.arrive = ts; P.pk.splice(j, 1); continue; }
+      if (n <= 0) continue;
+      var a0 = Math.max(0, n - trail), col = pal.ink, al = pal.dark ? .85 : .7;
+      if (n >= sc.gateX){
+        if (s.kept){ col = pal.acc; al = 1; }
+        else al *= Math.max(0, 1 - (n - sc.gateX) / Math.max(1, s.end - sc.gateX));
+      }
+      if (al <= .01) continue;
+      var gg = ctx.createLinearGradient(a0, 0, n, 0);
+      gg.addColorStop(0, rgba(col, 0)); gg.addColorStop(1, rgba(col, al));
+      ctx.strokeStyle = gg;
+      pipeStroke(ctx, s, a0, n);
+    }
+    ctx.lineWidth = 1; ctx.lineCap = 'butt';
+  }
+
+  // 到达高亮：纸闪一下
+  var ga = (ts - P.arrive) / PIPE_ARRIVE_MS;
+  if (ga >= 0 && ga < 1) pipePaper(ctx, sc, pal, 1 - ga);
+
+  // 进场擦开：右边盖住未揭开的部分，边缘 90px 软过渡
+  if (P.reveal < 1){
+    var edge = W * P.reveal, soft = Math.min(90, W * .12);
+    ctx.fillStyle = rgba(pal.bg, 1);
+    ctx.fillRect(Math.min(W, edge + soft), 0, W - edge - soft, H);
+    var g2 = ctx.createLinearGradient(edge, 0, edge + soft, 0);
+    g2.addColorStop(0, rgba(pal.bg, 0)); g2.addColorStop(1, rgba(pal.bg, 1));
+    ctx.fillStyle = g2;
+    ctx.fillRect(edge, 0, soft, H);
+  }
+
+  if (P.seen && !P.reduce) P.raf = requestAnimationFrame(pipeFrame);
+}
+
+function renderPipe(){
+  var cv = document.getElementById('pipe-c');
+  var host = cv && cv.parentNode;
+  var P = PIPE;
+  if (!cv || !host || !DATA){ if (P.io) P.io.disconnect(); return; }
+  var items = DATA.items || [];
+  var fresh = items.filter(function(i){ return !i.isRepeat; });
+  var byLane = {};
+  fresh.forEach(function(i){
+    var b = byLane[i.lane] || (byLane[i.lane] = { count: 0, top: 0, blocks: {}, tops: [] });
+    b.count++;
+    if (i.level === 'top'){ b.top++; if (b.tops.length < 24) b.tops.push((i.titleCn || i.title || '').slice(0, 46)); }
+    if (i.block) b.blocks[i.block] = 1;
+  });
+  var lanes = (DATA.lanes || []).map(function(l){
+    var b = byLane[l.id] || { count: 0, top: 0, blocks: {}, tops: [] };
+    return { id: l.id, name: l.name, count: b.count || l.count || 0, top: b.top,
+             blocks: Object.keys(b.blocks), topTitles: b.tops };
+  }).filter(function(l){ return l.count > 0; });
+  var nTop = lanes.reduce(function(s, l){ return s + l.top; }, 0);
+  var pf = document.getElementById('pipe-formula'), pn = document.getElementById('pipe-note');
+  if (pf) pf.textContent = items.length + ' 条 · ' + lanes.length + ' 车道 → 硬规则选条 → ' + nTop + ' 条重磅';
+  if (pn) pn.textContent = '过闸 ' + nTop + ' / ' + items.length + ' = ' +
+                           (nTop * 100 / Math.max(1, items.length)).toFixed(0) + '%';
+
+  var tip = document.getElementById('pipe-tip');
+  P.cv = cv; P.host = host; P.ctx = cv.getContext('2d');
+  P.dpr = Math.min(2, window.devicePixelRatio || 1);
+  P.reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  P.pal = pipePal();
+  if (!P.off) P.off = document.createElement('canvas');
+
+  function build(){
+    var W = host.clientWidth, H = host.clientHeight;
+    if (W < 10 || H < 10) return false;
+    cv.width = P.off.width = Math.round(W * P.dpr);
+    cv.height = P.off.height = Math.round(H * P.dpr);
+    var seed = hashStr((DATA.date || '') + '|' + items.length + '|' +
+                       lanes.map(function(l){ return l.id + l.count + ':' + l.top; }).join(','));
+    P.sc = pipeScene(W, H, lanes, prng(seed));
+    var octx = P.off.getContext('2d');
+    octx.setTransform(P.dpr, 0, 0, P.dpr, 0, 0);
+    pipeStatic(octx, P.sc, P.pal);
+    P.t0 = 0;            // 进场擦开只在**场景重建后**播一次。
+                        // 原来放在 start() 里复位，于是每次滚出视口再滚回来（IntersectionObserver
+                        // 停/启 rAF）都会重放一遍 900ms 的擦入，读着读着图突然自己刷一次，
+                        // 像页面在抽风。resize 和换数据仍然会重播，那是应该的。
+    return true;
+  }
+  function start(){
+    if (P.raf) cancelAnimationFrame(P.raf);
+    P.last = 0; P.acc = 0; P.pk = []; P.arrive = -1e9;
+    P.seen = true;
+    if (P.reduce){
+      P.ctx.setTransform(P.dpr, 0, 0, P.dpr, 0, 0);
+      P.ctx.clearRect(0, 0, P.sc.w, P.sc.h);
+      P.ctx.drawImage(P.off, 0, 0, P.sc.w, P.sc.h);
+      return;
+    }
+    P.raf = requestAnimationFrame(pipeFrame);
+  }
+  function stop(){ P.seen = false; if (P.raf) cancelAnimationFrame(P.raf); P.raf = 0; }
+  function once(){ if (P.reduce && P.sc) pipeFrame(performance.now()); }
+
+  if (!build()) return;
+  start();
+
+  // 悬停：把"这根线是什么"直接讲出来 —— 图就从装饰变成了说明
+  if (!cv._pv){
+    cv._pv = true;
+    cv.addEventListener('pointermove', function(ev){
+      if (!P.sc) return;
+      var r = cv.getBoundingClientRect(), x = ev.clientX - r.left, y = ev.clientY - r.top;
+      var p = P.sc.paper;
+      if (x >= p.x - 8 && x <= p.x + p.w + 8 && y >= p.y - 8 && y <= p.y + p.h + 8){
+        P.hover = { s: null, bundle: null };
+        if (tip){ tip.hidden = false; tip.innerHTML = '<b>今日重磅</b><span>过完筛的条目汇在这里</span>'; }
+        once(); return;
+      }
+      var best = -1, bd = 8;
+      for (var i = 0; i < P.sc.strands.length; i++){
+        var s = P.sc.strands[i];
+        if (x > s.end + 2) continue;
+        var d = Math.abs(s.ys[Math.min(Math.round(x / PIPE_STEP), s.ys.length - 1)] - y);
+        if (d < bd){ bd = d; best = i; }
+      }
+      if (best < 0){ P.hover = null; if (tip) tip.hidden = true; once(); return; }
+      var t3 = P.sc.strands[best];
+      /* 三段区间的语义不同，悬停高亮的对象也不同：
+           x < x2      单条条目还没归拢 → 只高亮这一根
+           x2..gate    已经躺进车道的束里 → 高亮**整束**（这时区分单根没意义）
+           >= gate     已判完 → 高亮整束，并说明进没进重磅 */
+      var zone = x < P.sc.x2 ? 0 : (x < P.sc.gateX ? 1 : 2);
+      P.hover = zone === 0 ? { s: best, bundle: null } : { s: null, bundle: t3.bundle };
+      if (tip){
+        var bn = P.sc.bundles[t3.bundle];
+        var head, sub;
+        if (zone === 0){ head = t3.src; sub = bn.name + ' · 抓到的一条'; }
+        else if (zone === 1){ head = bn.name; sub = '这一束里有 ' + bn.n + ' 条，其中 ' +
+                             (bn.passN || 0) + ' 条进了重磅'; }
+        else if (t3.kept){ head = '进了重磅'; sub = t3.title || bn.name; }
+        else { head = '没进重磅'; sub = bn.name + ' · 分数不够，或与别源重复'; }
+        tip.hidden = false;
+        tip.innerHTML = '<b>' + esc(head) + '</b><span>' + esc(sub) + '</span>';
+        var tw = tip.offsetWidth, th = tip.offsetHeight;
+        tip.style.transform = 'translate(' + clamp(x + 14, 8, P.sc.w - tw - 8) + 'px,' +
+                              clamp(y + 16, 8, P.sc.h - th - 8) + 'px)';
+      }
+      once();
+    });
+    cv.addEventListener('pointerleave', function(){ P.hover = null; if (tip) tip.hidden = true; once(); });
+  }
+
+  if (P.io) P.io.disconnect();
+  P.io = new IntersectionObserver(function(es){
+    var v = es.some(function(e){ return e.isIntersecting; }) && !document.hidden;
+    if (v && !P.seen) start(); else if (!v && P.seen) stop();
+  }, { rootMargin: '120px' });
+  P.io.observe(host);
+  document.addEventListener('visibilitychange', function(){
+    var v = !document.hidden;
+    if (v && !P.seen) start(); else if (!v && P.seen) stop();
+  });
+
+  if (P.ro) P.ro.disconnect();
+  var rt = 0;
+  P.ro = new ResizeObserver(function(){ clearTimeout(rt); rt = setTimeout(function(){ if (build()) start(); }, 180); });
+  P.ro.observe(host);
+
+  if (P.mo) P.mo.disconnect();
+  P.mo = new MutationObserver(function(){
+    P.pal = pipePal();
+    var o = P.off.getContext('2d');
+    o.setTransform(P.dpr, 0, 0, P.dpr, 0, 0);
+    pipeStatic(o, P.sc, P.pal);
+    once();
+  });
+  P.mo.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme', 'class'] });
+}
 /* ── 启动 ─────────────────────────────────────────── */
 function loadCases(){
   if (CASES !== null) return Promise.resolve();
@@ -753,7 +1432,8 @@ function loadCases(){
     })
     .catch(function(e){ CASES = { cases: [], types: [], count: 0, updated: '', err: e.message }; })
     .then(function(){
-      renderStat(DATA, (CASES.cases || []).length);
+      /* 原来这里还会 renderStat(DATA, 案例库条数) 回填一格「案例库」——
+         已删：案例库 tab 的徽标 #cn 上本来就写着同一个数，不必在状态条里重复一遍。 */
       renderCases();
     });
 }
@@ -766,7 +1446,7 @@ function main(){
       LANE_NAME = {};
       (j.lanes || []).forEach(function(l){ LANE_NAME[l.id] = l.name; });
       renderLive(j);
-      renderStat(DATA, null);
+      renderMeta(DATA);
       $('#tabs').innerHTML =
         '<button class="tab on" data-tab="brief">简报<span class="n">' +
           ((DATA.counts && DATA.counts.total) || 0) + '</span></button>' +
@@ -779,6 +1459,7 @@ function main(){
       });
       $('#ft-gen').textContent = '更新时间 ' + (DATA.generated_at || '—');
       renderBrief();
+      renderPipe();
       if (location.hash === '#cases'){ showTab('cases'); loadCases(); }
       else loadCases();
     })
