@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-08 17:31",
- "count": 187,
+ "updated": "2026-10-09 08:10",
+ "count": 191,
  "types": [
   "Agent 工作流",
   "CLI 工具",
@@ -42,6 +42,20 @@
    "score": 9.4,
    "rel": 10,
    "firstSeen": "2026-09-30"
+  },
+  {
+   "url": "https://sspai.com/post/115455",
+   "title": "派早报：微软发布 Windows 相关新品、Google AI 新闻两则等",
+   "titleEn": "",
+   "summary": "微软发布搭载 RTX Spark 芯片的 Surface Laptop Ultra，支持本地运行 1200 亿参数模型；推出 Copilot 混合智能及 MXC 隔离技术。Google 发布 Nano Banana 2.1 图像模型，价格减半并支持多图一致性。",
+   "type": "模型与推理",
+   "topic": "硬件发布",
+   "block": "少数派",
+   "src": "apps",
+   "lastSeen": "2026-10-09",
+   "score": 8.9,
+   "rel": 9,
+   "firstSeen": "2026-10-08"
   },
   {
    "url": "https://github.com/wanderingstan/vibeconf-app",
@@ -224,20 +238,6 @@
    "score": 8.4,
    "rel": 9,
    "firstSeen": "2026-09-30"
-  },
-  {
-   "url": "https://sspai.com/post/115455",
-   "title": "派早报：微软发布 Windows 相关新品、Google AI 新闻两则等",
-   "titleEn": "",
-   "summary": "聚合微软 Surface Laptop Ultra（搭载 RTX Spark，本地运行 1200 亿参数模型）及 Copilot 混合智能更新；以及 Google 发布 Nano Banana 2.1 图像模型（支持 14 图参考、4K 输出、价格减半）及 Gemini 模型权限调整。",
-   "type": "其他",
-   "topic": "资讯聚合",
-   "block": "少数派",
-   "src": "apps",
-   "lastSeen": "2026-10-08",
-   "score": 8.2,
-   "rel": 8,
-   "firstSeen": "2026-10-08"
   },
   {
    "url": "https://github.com/abird-ai/agentc",
@@ -1120,6 +1120,34 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://wuwei.us/pages/page-json",
+   "title": "Page.json：跨平台 UI 表示开放标准",
+   "titleEn": "Show HN: Page.json – An open standard for representing UI",
+   "summary": "Page.json 将 UI 描述为 JSON 树，标准化跨应用界面数据，支持人类与 AI 编辑，可渲染为网页、移动端或富文本，解耦界面与模型供应商。",
+   "type": "其他",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-09",
+   "score": 6.9,
+   "rel": 7,
+   "firstSeen": "2026-10-09"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1x15v4u/i_created_an_opensource_version_of_dots/",
+   "title": "invisible_dots：开源可自托管 Dots 替代方案",
+   "titleEn": "I created an open-source version of Dots",
+   "summary": "针对 Grok 与 Dots 浏览器易被反爬检测且无法自托管的问题，开发者开源 invisible_dots，支持自托管并集成规避反爬检测的浏览器。",
+   "type": "Agent 工作流",
+   "topic": "开源权重",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-09",
+   "score": 6.9,
+   "rel": 7,
+   "firstSeen": "2026-10-09"
+  },
+  {
    "url": "https://github.com/dkremsa/claude-pacer",
    "title": "Pacer：监测 AI 编码订阅剩余时长的工具",
    "titleEn": "Show HN: Pacer – will your AI coding subscription last until the reset?",
@@ -1358,20 +1386,6 @@
    "firstSeen": "2026-09-29"
   },
   {
-   "url": "https://sspai.com/post/115462",
-   "title": "App Store 生态规模五年翻倍，助力中国开发者走向全球",
-   "titleEn": "",
-   "summary": "Apple 发布 2025 中国 App Store 生态报告，估算促成经济活动 4.036 万亿元，较 2020 年增长 107%。其中实体商品/服务占比 91%，数字内容仅占 4%。指出中国开发者收入增长主要依赖海外市场，且 95% 的销售额不在 Apple 佣金范围内。",
-   "type": "数据分析",
-   "topic": "行业数据",
-   "block": "少数派",
-   "src": "apps",
-   "lastSeen": "2026-10-08",
-   "score": 6.6,
-   "rel": 5,
-   "firstSeen": "2026-10-08"
-  },
-  {
    "url": "https://www.v2ex.com/t/1247006#reply33",
    "title": "因为不会做 App 图标，我做了个收了 1.8 万个真实图标的网站",
    "titleEn": "",
@@ -1557,26 +1571,12 @@
    "url": "https://sspai.com/post/113843",
    "title": "从开源清理工具到付费 Mac 应用，用户教会了我如何做产品：Mole",
    "titleEn": "",
-   "summary": "开源 CLI 清理工具 Mole 积累 60K Star 后推出付费 Mac 桌面版。用户反馈驱动下识别出 AI 时代新增的三类垃圾（编译产物、工具旧版本、模型文件），其中编译产物单次清理达 86G，实现从开源免费到付费增值的产品路径转型。",
+   "summary": "作者复盘 Mac 清理工具 Mole 从开源 CLI 到付费 App 的演进。指出 AI 时代新增了编译产物、工具旧版本及模型文件三类垃圾，并分享了对“可再生”与“非可再生”数据的清理分级策略。",
    "type": "桌面工具",
-   "topic": "独立开发",
+   "topic": "开发思考",
    "block": "少数派",
    "src": "apps",
-   "lastSeen": "2026-10-08",
-   "score": 6.3,
-   "rel": 6,
-   "firstSeen": "2026-10-08"
-  },
-  {
-   "url": "https://sspai.com/post/115282",
-   "title": "iPhone Duo：当创新乏善可陈时，还有一个开合动画可以让大家反复演示",
-   "titleEn": "",
-   "summary": "深度评测 iPhone Duo 折叠屏设计，指出其通过垂直控制区重构交互逻辑，虽释放空间但破坏了用户长期形成的肌肉记忆与视觉平衡。作者认为该设计牺牲了操作直觉，并详细分析了布局对强迫症用户的负面影响及 Liquid Glass 适配问题。",
-   "type": "Web 应用",
-   "topic": "产品评测",
-   "block": "少数派",
-   "src": "apps",
-   "lastSeen": "2026-10-08",
+   "lastSeen": "2026-10-09",
    "score": 6.3,
    "rel": 5,
    "firstSeen": "2026-10-08"
@@ -1734,6 +1734,48 @@
    "score": 6.2,
    "rel": 6,
    "firstSeen": "2026-09-29"
+  },
+  {
+   "url": "https://github.com/podraven/titan-engine",
+   "title": "Titan：Rust/WASM 高性能 Web 表格引擎",
+   "titleEn": "Show HN: I built a fast spreadsheet engine for the web in Rust/WASM",
+   "summary": "Titan 是 Rust 编译至 WASM 的表格引擎，优化大型表格重算性能，减少 JS 对象分配与序列化开销，NPM 发布并附基准测试。",
+   "type": "Web 应用",
+   "topic": "模型与推理",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-09",
+   "score": 6.1,
+   "rel": 5,
+   "firstSeen": "2026-10-09"
+  },
+  {
+   "url": "https://diffguardian.ai",
+   "title": "DiffGuardian：语音与视觉代码库及 PR 讲解工具",
+   "titleEn": "Show HN: DiffGuardian – A voice and visual walkthrough of any PR or codebase",
+   "summary": "跨平台工具 DiffGuardian 支持对 PR 或整个代码库进行语音讲解，边听边高亮滚动代码。支持 OpenAI/ElevenLabs 语音或系统原生语音，可即时交互并实时追踪代码变化。",
+   "type": "桌面工具",
+   "topic": "工程实践",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-09",
+   "score": 6.0,
+   "rel": 6,
+   "firstSeen": "2026-10-09"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1x1668t/im_17_and_built_a_math_tutor_that_refuses_to_give/",
+   "title": "theoremEd：拒绝直接给答案的 AI 数学导师",
+   "titleEn": "I’m 17 and built a math tutor that refuses to give you the answer",
+   "summary": "theoremEd 通过拍照识别作业定位错误，仅通过提问引导用户自行解答，拒绝直接给答案，免费版每周限 30 题，适合手机使用。",
+   "type": "移动 App",
+   "topic": "内容生成",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-09",
+   "score": 6.0,
+   "rel": 6,
+   "firstSeen": "2026-10-09"
   },
   {
    "url": "https://www.v2ex.com/t/1246867#reply1",
@@ -2001,6 +2043,48 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://guesswick.com/",
+   "title": "Wick：基于语义嵌入的猜词游戏",
+   "titleEn": "Show HN: Wick, a daily word game where you guess by meaning, not spelling",
+   "summary": "Wick 通过语义嵌入与问答猜测单词，iOS 使用 Apple 端侧模型与多语种 Core ML 模型，Web 端调用 Gemini 嵌入 API，已开源。",
+   "type": "移动 App",
+   "topic": "模型与推理",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-09",
+   "score": 5.8,
+   "rel": 5,
+   "firstSeen": "2026-10-09"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1247213#reply1",
+   "title": "vibe 一个终端管理器, 开 mcp 给 agent 使用",
+   "titleEn": "",
+   "summary": "作者利用 Opus 5.5 模型进行 Vibe Coding，快速开发了一款支持 MCP 协议的终端管理器开源项目。基础功能在 40% 的 5 小时额度内完成，后续主要用于界面优化和品牌素材生成。",
+   "type": "CLI 工具",
+   "topic": "开发实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-09",
+   "score": 5.8,
+   "rel": 6,
+   "firstSeen": "2026-10-09"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1247210#reply0",
+   "title": "一键生成艺术展览级别的 3D 手册,支持导入 pdf 与网页二次开发",
+   "titleEn": "",
+   "summary": "开源项目 OpenZine 可将 PDF 或图片转为具备物理翻页效果的 3D 电子书，支持光影、纸张弯曲及多页模式。处理 60 页 NASA 手册仅需 19 秒，且兼容扫描版 PDF，支持网页二次开发。",
+   "type": "Web 应用",
+   "topic": "开源项目",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-09",
+   "score": 5.8,
+   "rel": 5,
+   "firstSeen": "2026-10-09"
+  },
+  {
    "url": "https://www.v2ex.com/t/1246321#reply1",
    "title": "写了 8 年代码，终于明白“说唱是男人最好的医美”",
    "titleEn": "",
@@ -2180,6 +2264,20 @@
    "score": 5.7,
    "rel": 6,
    "firstSeen": "2026-09-29"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1247212#reply0",
+   "title": "DrawFig：一句话画出论文方法流程图，方框和箭头还能拖",
+   "titleEn": "",
+   "summary": "DrawFig 是基于 draw.io 的科研绘图工具，支持通过自然语言生成可编辑的方法流程图。生成的图形由矩形和绑定箭头组成，支持修改标签和导出 TikZ 代码，解决了文生图 PNG 无法二次编辑的痛点。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-09",
+   "score": 5.5,
+   "rel": 5,
+   "firstSeen": "2026-10-09"
   },
   {
    "url": "https://www.v2ex.com/t/1246992#reply5",
@@ -2362,20 +2460,6 @@
    "firstSeen": "2026-09-29"
   },
   {
-   "url": "https://huggingface.co/spaces/FineEnvs/multi-harness-rl",
-   "title": "Spaces 应用：FineEnvs/multi-harness-rl",
-   "titleEn": "",
-   "summary": "Hugging Face Spaces 上的 Docker 应用，专注于多智能体（Multi-harness）强化学习实验。基于 2026 年 8 月创建，提供容器化环境以便复现和研究多模型协作场景下的强化学习训练与评估流程。",
-   "type": "Agent 工作流",
-   "topic": "RL 环境",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-08",
-   "score": 5.3,
-   "rel": 7,
-   "firstSeen": "2026-10-08"
-  },
-  {
    "url": "https://huggingface.co/spaces/kulkas2pintu/QWEN_EDIT_IMAGE",
    "title": "Spaces 应用：kulkas2pintu/QWEN_EDIT_IMAGE",
    "titleEn": "",
@@ -2402,20 +2486,6 @@
    "score": 5.3,
    "rel": 5,
    "firstSeen": "2026-09-30"
-  },
-  {
-   "url": "https://huggingface.co/spaces/arudradey/qwen-image-2.1-uncensored-gguf",
-   "title": "Spaces 应用：arudradey/qwen-image-2.1-uncensored-gguf",
-   "titleEn": "",
-   "summary": "部署了 Qwen-Image-2.1 未审查版本的 GGUF 格式模型，使用 Gradio 界面支持端侧或本地运行。该应用旨在提供轻量化的去限制图像生成能力，允许用户在本地硬件上快速验证 Qwen 图像模型的去审查效果。",
-   "type": "模型与推理",
-   "topic": "端侧模型",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-08",
-   "score": 5.2,
-   "rel": 6,
-   "firstSeen": "2026-10-07"
   },
   {
    "url": "https://www.v2ex.com/t/1246971#reply2",
@@ -2556,20 +2626,6 @@
    "score": 5.1,
    "rel": 6,
    "firstSeen": "2026-10-05"
-  },
-  {
-   "url": "https://huggingface.co/spaces/multimodalart/jev-decision-index",
-   "title": "Spaces 应用：multimodalart/jev-decision-index",
-   "titleEn": "",
-   "summary": "基于静态页面的 Hugging Face Spaces 应用，展示 Jev 决策模型（Decision Model）的索引与测试。通过 Web 界面直观呈现该决策引擎在特定场景下的分类概率与结果，便于用户快速评估其决策准确性。",
-   "type": "Web 应用",
-   "topic": "决策模型",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-08",
-   "score": 5.0,
-   "rel": 7,
-   "firstSeen": "2026-10-08"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1wxs1qa/made_a_kids_channel_about_emotions_with_a_child/",
