@@ -196,7 +196,7 @@ def stub_http():
     stub_aihot()                                   # AIHOT 走独立网络层，单独打桩
 
 
-def run(tmp, llm_stub):
+def run(tmp, llm_stub, cn_tag="【中】"):
     cfg_path = os.path.join(tmp, "sources.json")
     make_config(cfg_path)
     stub_http()
@@ -204,7 +204,7 @@ def run(tmp, llm_stub):
         def fake_batch(batch, tcfg, mode, want_type=False):
             for i, it in enumerate(batch):
                 if it["_translate_title"]:
-                    it["titleCn"] = "【中】" + it["title"][:20]
+                    it["titleCn"] = cn_tag + it["title"][:20]
                 it["summary"] = "摘要：" + it["title"][:30]
                 # 与 AI 无关的条目给 rel=0（复刻线上实测的低质 apps 条目）
                 junk = "耳机" in it["title"]
@@ -742,6 +742,35 @@ def main():
                       "关掉影子后不再写影子文件（或历史条目仍是影子记录）", problems)
         finally:
             AIHOT_STUB["shadow"] = True
+
+        # ---------- 用例 6：跨天钉住中文标题 ----------
+        # 实测线上 135 对同 id、desc 相同的跨天样本，只有 34% 两天译名一致 ——
+        # 同一条新闻每天换个名字，读者会以为是两条。这占了表观"打分抖动"的 66%，
+        # 而且双次评分修不了它（那是模型噪声，这是输入本身在漂）。
+        print("\n[6/6] 跨天钉住中文标题")
+        tmpP = tempfile.mkdtemp(prefix="airadar-smokeP-")
+        try:
+            run(tmpP, llm_stub=True)                       # 第一轮：译名前缀【中】
+            first = json.load(io.open(os.path.join(tmpP, "latest.json"),
+                                      encoding="utf-8"))["items"]
+            pinned = {i["id"]: i["titleCn"] for i in first if i.get("titleCn")}
+            check(len(pinned) > 0, f"第一轮产出 {len(pinned)} 条中文标题", problems)
+            run(tmpP, llm_stub=True, cn_tag="【另一译法】")  # 第二轮：模型换了译法
+            second = json.load(io.open(os.path.join(tmpP, "latest.json"),
+                                       encoding="utf-8"))["items"]
+            drifted = [i for i in second
+                       if i.get("titleCn") and pinned.get(i["id"])
+                       and i["titleCn"] != pinned[i["id"]]]
+            check(not drifted,
+                  "★ 第二轮模型给了新译法，也被拉回第一轮的旧译名（漂移 %d 条）" % len(drifted),
+                  problems)
+            kept_old = sum(1 for i in second if (i.get("titleCn") or "").startswith("【中】"))
+            check(kept_old > 0, f"保留的确实是第一轮的译名（{kept_old} 条）", problems)
+            newones = [i for i in second if i.get("titleCn") and i["id"] not in pinned]
+            check(all(i["titleCn"].startswith("【另一译法】") for i in newones) if newones else True,
+                  "库里没有的新条目正常用新译法（钉旧不碍新）", problems)
+        finally:
+            shutil.rmtree(tmpP, ignore_errors=True)
 
     finally:
         shutil.rmtree(tmp, ignore_errors=True)

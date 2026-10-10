@@ -339,6 +339,9 @@ h1 .hl{color:var(--acc)}
 .it.top .meta .sc b{color:var(--red)}
 .it.watch .meta .sc b{color:var(--amber)}
 .it .meta .at{color:var(--acc);border-color:var(--acc-line)}
+/* AIHOT 来源徽标：是个链接，得能看出可点，又不能抢标题的视觉权重 */
+.it .meta a.ah{color:var(--acc);border-color:var(--acc-line);text-decoration:none;font-weight:600}
+.it .meta a.ah:hover{background:var(--tint-a);border-color:var(--acc)}
 .it .meta .sta{font-family:var(--mono);color:var(--fg3)}
 
 /* ── 条目详情（内联展开，不跳页）────────────────────
@@ -522,7 +525,8 @@ var attr = function(s){ return esc(s).replace(/`/g,'&#96;'); };
 
 var LANE = {
   model:'#22d3ee', official:'#5b9dff', apps:'#2ee6a8', paper:'#a78bfa',
-  community:'#f472b6', media:'#f5b544', cn:'#fb7185'
+  community:'#f472b6', media:'#f5b544', cn:'#fb7185',
+  hot:'#a3e635'          /* AIHOT 精选：青柠色，与已有 7 条车道都不撞 */
 };
 /* var LV 已删（2026-10-08 方案乙）：档位由**分区标题**单处表达，
    卡片上不再挂「重磅/关注/常规」标签 —— 同一事实此前在分区标题、标题前的 ▲、
@@ -652,6 +656,14 @@ function itemHTML(i, idx){
   var meta = [];
   meta.push('<span class="tg">' + esc(LANE_NAME[i.lane] || i.lane) +
             ' · ' + esc(i.block || i.source || '') + '</span>');
+  /* ★ AIHOT 来源标识。借它的编辑精选，就必须按它的条款署名并给回链
+     （其使用规则原文：个人非商业免费，但须保留 attribution{name,url} 与原文链接）。
+     卡片标题链走 links.original（真正的原文出处），这个徽标链走 attribution.url
+     （AIHOT 自己的阅读页）—— 两条路径都在，读者想核哪条核哪条。
+     放在 meta 最前面，一眼可辨"这条不是我们抓的"。 */
+  if (i.attribution && i.attribution.url) meta.push('<a class="tg ah" href="' +
+      attr(i.attribution.url) + '" target="_blank" rel="noopener noreferrer">' +
+      esc(i.attribution.name || 'AIHOT') + ' ↗</a>');
   if (i.total != null) meta.push('<span class="sc">得分 <b>' + esc(i.total) + '</b></span>');
   // 「非作品」是入库判据用的标签，不是应用形态，别渲染到简报卡片上
   // （少数派「派早报」这类每日资讯合集会拿到这个值）。

@@ -53,7 +53,7 @@
   },
   "aihot": {
     "enabled": true,
-    "shadow_only": true,
+    "shadow_only": false,
     "api": "https://aihot.news/api/v1/items",
     "params": { "mode": "selected", "window": "24h", "by": "published", "limit": 100 },
     "max_pages": 3,

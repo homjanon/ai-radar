@@ -1889,6 +1889,39 @@ def main():
     log(f"🏷️ 应用形态：{n_typed} 条已标注"
         f"（{sum(1 for i in merged if i.get('lane') == 'apps')} 条 apps 条目）")
 
+    # ⑦b 跨天钉住中文标题。
+    #   实测依据（2026-10-10，135 对同 id、desc 完全相同的跨天样本）：
+    #   只有 34% 的条目两天译名一致 —— 也就是说同一条新闻昨天叫
+    #   「面向边缘的多模态开源 d1 决策模型发布」、今天叫「发布多模态边缘决策模型
+    #   d1-3B 与 d1-omni-600M」，读者会以为是两条不同的新闻。
+    #   这占了跨天表观"打分抖动"的 66%，而且**双次独立评分修不了它**（双评治的是
+    #   模型噪声，这个是输入本身在漂），所以单独治。
+    #   做法：从 daily 归档建 id→titleCn 映射，LLM 译完后若已有旧译名就还原成旧的。
+    #   不新增状态文件 —— 归档本来就按 keep_days=30 天滚动清理，钉住的译名
+    #   自然 30 天后过期，不会出现"一个早期错译永久锁死"的情况。
+    #   ⚠️ 已知代价：仍然付了翻译的 token（译文生成出来但被丢弃）。
+    #      要省掉得把已钉住的条目从 translate 批里摘出来，那会改动 llm_enhance 的
+    #      分组逻辑，风险大于收益，暂不做。
+    cn_pin = {}
+    for _f in sorted(glob.glob(os.path.join(a.outdir, "daily", "*.json"))):
+        try:
+            with open(_f, encoding="utf-8") as _fh:
+                for _x in json.load(_fh).get("items", []):
+                    if _x.get("id") and _x.get("titleCn"):
+                        cn_pin[_x["id"]] = _x["titleCn"]   # sorted 升序 → 新的覆盖旧的
+        except Exception:
+            pass
+    n_pin = 0
+    if cn_pin and tcfg.get("enabled", True):
+        for i in merged:
+            old = cn_pin.get(item_id(i["title"]))
+            if old and i.get("titleCn") and i["titleCn"] != old:
+                i["titleCn"] = old
+                n_pin += 1
+    if cn_pin:
+        log(f"📌 跨天钉标题：库里 {len(cn_pin)} 个译名，本轮把 {n_pin} 条拉回旧译法"
+            f"（消除同一事件每天换名字的错觉）")
+
     # ⑧ 分级与排序
     for i in merged:
         if not i.get("summary"):
