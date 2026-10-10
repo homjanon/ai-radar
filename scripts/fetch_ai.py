@@ -802,7 +802,11 @@ def translate_bodies(items, tcfg):
 
 
 def _sys_prompt(smin, smax, mode, want_type=False):
-    extra = ("⑤ type：该案例的**应用形态**，必须从以下固定词表里选一个（不要自创、不要组合）："
+    extra = ("⑤ type：**先判断这是不是「某人做出来的一个具体东西」**"
+             "（有可访问的产物：网站 / 仓库 / 应用 / 模型 / 插件 / 服务）。"
+             "若不是 —— 每日资讯合集、新闻盘点、教程、观点评论、招聘、纯讨论帖 —— "
+             "就填 `非作品`，**不要勉强归进下面的形态**。"
+             "只有确认是作品时，才从以下固定词表选一个（不要自创、不要组合）："
              "Web 应用 / 移动 App / 浏览器插件 / 桌面工具 / CLI 工具 / Agent 工作流 / "
              "模型与推理 / 数据分析 / 内容生成 / 效率工具 / 其他。")
     base = (
@@ -1119,8 +1123,42 @@ APP_TYPE_RULES = (
 )
 
 
+# ── 「不是作品」判定 ────────────────────────────────────────────────────
+# 案例库的入库门槛原来是 `total ≥ 5.0 且 rel ≥ 5`，两个量都在衡量
+# 「**跟 AI 相不相关、信息量大不大**」，没有一个在衡量「**这是不是某人做出来的东西**」。
+# 于是少数派的「派早报」拿了全库最高分（9.4 / rel=10 —— 它当然极度 AI 相关），
+# 直接排在案例库首屏第 2 和第 4 位。用户 2026-10-10 指出："案例库里的内容不对，
+# 有很多不是案例，例如派早报是新闻集合"。实测他是对的，且位置比"很多"更要命：
+# 前 4 条里 2 条是新闻合集，因为案例库按分数降序展示。
+#
+# 判据用**结构**不用泛关键词（沿用 _clean_web_junk 那条纪律：正文里出现一个
+# "Share" 完全正常，按词删必误伤）。三个条件同时成立才算资讯合集：
+#   ① 含栏目名（早报/晚报/日报/周报/…）
+#   ② 标题里有冒号 —— 「栏目名：今日若干条」是这类固定出版形态的骨架
+#   ③ 不含造物动词 —— 排掉"我做了个日报生成器：xxx"这种真案例
+# 在 204 条存量上实测：命中 3 条（全是派早报），含「报」但未被误伤的 0 条。
+_NONWORK_COL = r"(早报|晚报|日报|周报|月报|晨报|午报|新闻汇|快讯)"
+_NONWORK_MADE = r"(做了|开发了|构建|实现|搭建|写了|开源|造了|整了|弄了|上线了)"
+
+
+def is_nonwork(title):
+    """这是「每日资讯合集」而不是「一个作品」吗？见上方注释的三个条件。"""
+    t = title or ""
+    if not re.search(_NONWORK_COL, t):
+        return False
+    if "：" not in t and ":" not in t:
+        return False
+    return not re.search(_NONWORK_MADE, t)
+
+
 def guess_apptype(it):
-    """按关键词猜应用形态（LLM 缺失时的兜底）。标题 + 摘要 + 来源 + 链接一起判。"""
+    """按关键词猜应用形态（LLM 缺失时的兜底）。标题 + 摘要 + 来源 + 链接一起判。
+
+    ⚠️ 先判「非作品」再进词表。原来一进来就假定它是案例，
+    派早报于是被 "agent"/"模型" 这类词命中，标成「Agent 工作流」「模型与推理」。
+    """
+    if is_nonwork(it.get("title")) or is_nonwork(it.get("titleCn")):
+        return "非作品"
     hay = " ".join([
         it.get("title") or "", it.get("titleCn") or "", it.get("summary") or "",
         (it.get("desc") or "")[:400], it.get("block") or "", it.get("url") or "",
@@ -1137,7 +1175,14 @@ def _keep_case(c, min_total, min_rel):
     为什么必须有这一步：入库门槛只挡「新增」是不够的 —— 库里已有的低质条目躺在
     缓存里，不显式剔除就会永久留着（实测首轮不过滤，38 条全进、含 20 条 total<5）。
     老记录若没写 score，无法判断 ⇒ 保留（宁可不误杀）。
+
+    ⚠️ 「非作品」这一条**必须放在 score 判断之前、且不依赖 score**。
+    因为存量清理还有一条 rescore_max 机制，只给**没有 score** 的老记录补分补分类；
+    派早报那三条分数好好的（9.4/8.9/7.7），永远进不了重评队列 ——
+    光改入库条件的话，它们会**永久留在库里**，正是 README 记过的那个坑。
     """
+    if c.get("type") == "非作品" or is_nonwork(c.get("title")):
+        return False
     s = c.get("score")
     if not isinstance(s, (int, float)):
         return True
@@ -1977,7 +2022,16 @@ def main():
         min_rel = float(cases_cfg.get("min_rel", 3))
 
         def _lib_ok(it):
-            """够格入库吗？分数门槛 + 相关度门槛。"""
+            """够格入库吗？先看**是不是作品**，再看分数门槛与相关度门槛。
+
+            ⚠️ 「非作品」这一条放在最前面、且不依赖 LLM —— 它是结构判据，
+            LLM 挂掉的时候照样生效。原来两道门槛（total / rel）衡量的都是
+            「跟 AI 相不相关、信息量大不大」，没有一道在问「这是不是某人做出来的东西」，
+            所以新闻合集能以全库最高分入库。
+            """
+            if it.get("apptype") == "非作品" or is_nonwork(it.get("title")) \
+                    or is_nonwork(it.get("titleCn")):
+                return False
             if (it.get("total") or 0) < min_total:
                 return False
             sc = it.get("score")

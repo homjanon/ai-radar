@@ -653,7 +653,9 @@ function itemHTML(i, idx){
   meta.push('<span class="tg">' + esc(LANE_NAME[i.lane] || i.lane) +
             ' · ' + esc(i.block || i.source || '') + '</span>');
   if (i.total != null) meta.push('<span class="sc">得分 <b>' + esc(i.total) + '</b></span>');
-  if (i.apptype) meta.push('<span class="tg at">' + esc(i.apptype) + '</span>');
+  // 「非作品」是入库判据用的标签，不是应用形态，别渲染到简报卡片上
+  // （少数派「派早报」这类每日资讯合集会拿到这个值）。
+  if (i.apptype && i.apptype !== '非作品') meta.push('<span class="tg at">' + esc(i.apptype) + '</span>');
   var t = i.pubTime || (i.ageH >= 0 ? ageLabel(i.ageH) : '');
   if (t) meta.push('<span class="sta">' + esc(t) + '</span>');
   if ((i.alsoIn || []).length) meta.push('<span class="sta">另 ' + i.alsoIn.length + ' 源</span>');

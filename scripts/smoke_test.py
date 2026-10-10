@@ -316,6 +316,17 @@ def main():
                 "topic": "", "block": "少数派",
                 "firstSeen": "2026-01-01", "lastSeen": "2026-01-01",
             })
+            # 再注入一条**分数极高**的每日资讯合集 —— 复刻 2026-10-10 线上真实缺陷：
+            # 少数派「派早报」以 9.4 / rel=10 排在全库第 2 位。它分数没问题、
+            # 相关度也满分，两道旧门槛都拦不住，只有「是不是作品」这一判据能拦。
+            # 且它**有 score**，走不到 rescore_max 重评队列 —— 光改入库条件它会长留。
+            j3["cases"].append({
+                "url": "https://sspai.com/post/115197",
+                "title": "派早报：OpenAI 发布 Dot 智能体、Apple 新软件获批等",
+                "titleEn": "", "summary": "今日 AI 新闻若干条。", "type": "Agent 工作流",
+                "topic": "", "block": "少数派", "score": 9.4, "rel": 10,
+                "firstSeen": "2026-01-01", "lastSeen": "2026-01-01",
+            })
             io.open(cp3, "w", encoding="utf-8").write(json.dumps(j3, ensure_ascii=False))
             run(tmp3, llm_stub=True)                       # 第二次跑到 LLM → 触发补分
             c3 = json.load(io.open(cp3, encoding="utf-8"))["cases"]
@@ -323,6 +334,14 @@ def main():
                   "无分老记录补分后被门槛剔除（不再永久留存）", problems)
             check(any(isinstance(r.get("score"), (int, float)) for r in c3),
                   "补分结果写回了 score 字段", problems)
+            check(not any("派早报" in (r.get("title") or "") for r in c3),
+                  "★ 高分(9.4/rel=10)的每日资讯合集也被剔除 —— 旧的两道门槛拦不住它", problems)
+            check(F.is_nonwork("派早报：OpenAI 发布 Dot 智能体、Apple 新软件获批等")
+                  and not F.is_nonwork("做了个日报生成器：把每日新闻自动汇总成周报")
+                  and not F.is_nonwork("我开源了一个 Agent 早报抓取工具"),
+                  "「非作品」判据用结构不用泛关键词：含栏目名+冒号才算，带造物动词的放行", problems)
+            check(F.guess_apptype({"title": "派早报：某模型发布等", "summary": "x"}) == "非作品",
+                  "LLM 缺失时的兜底分类也不会再把它标成应用形态", problems)
         finally:
             shutil.rmtree(tmp3, ignore_errors=True)
 
