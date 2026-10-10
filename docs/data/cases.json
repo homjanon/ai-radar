@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-09 08:10",
- "count": 191,
+ "updated": "2026-10-10 08:10",
+ "count": 204,
  "types": [
   "Agent 工作流",
   "CLI 工具",
@@ -42,6 +42,20 @@
    "score": 9.4,
    "rel": 10,
    "firstSeen": "2026-09-30"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1247495#reply0",
+   "title": "[开源自部署] 芯语伴 SprechMate，和 AI 练口语纠音（23 种语言），填 API 接近免费用",
+   "titleEn": "",
+   "summary": "开源 PWA 工具，利用 Gemini 与 Azure 免费 API 实现 23 种语言口语对练与音素级纠音，支持本地缓存、多设备同步及纯前端部署，无需后端服务器。",
+   "type": "Web 应用",
+   "topic": "开源工具",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-10",
+   "score": 9.0,
+   "rel": 8,
+   "firstSeen": "2026-10-10"
   },
   {
    "url": "https://sspai.com/post/115455",
@@ -112,6 +126,20 @@
    "score": 8.7,
    "rel": 9,
    "firstSeen": "2026-09-30"
+  },
+  {
+   "url": "https://sspai.com/post/113843",
+   "title": "从开源清理工具到付费 Mac 应用，用户教会了我如何做产品：Mole",
+   "titleEn": "",
+   "summary": "Mole 从开源 CLI 演变为付费 Mac 应用，分析 AI 时代产生的编译产物、工具旧版本及模型文件三类垃圾，提供分档清理策略及商业化历程。",
+   "type": "桌面工具",
+   "topic": "工程实践",
+   "block": "少数派",
+   "src": "apps",
+   "lastSeen": "2026-10-10",
+   "score": 8.5,
+   "rel": 7,
+   "firstSeen": "2026-10-08"
   },
   {
    "url": "https://www.v2ex.com/t/1247068#reply1",
@@ -520,6 +548,20 @@
    "firstSeen": "2026-10-02"
   },
   {
+   "url": "https://sspai.com/post/115532",
+   "title": "派早报：英伟达 RTX Spark 新品一览、Anthropic 发布 Claude Haiku 5.5 模型等",
+   "titleEn": "",
+   "summary": "新闻日报汇总，包括华硕/微星/联想发布基于 RTX Spark 的 AI PC，以及 Anthropic 发布 Claude Haiku 5.5 模型的简讯。",
+   "type": "其他",
+   "topic": "模型发布",
+   "block": "少数派",
+   "src": "apps",
+   "lastSeen": "2026-10-10",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-10-10"
+  },
+  {
    "url": "https://railcode.dev/",
    "title": "Show HN：Railcode 内部软件安全云",
    "titleEn": "Show HN: Railcode – Secure cloud for internal software",
@@ -727,6 +769,20 @@
    "score": 7.6,
    "rel": 9,
    "firstSeen": "2026-10-02"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1x1zrng/we_did_it/",
+   "title": "AI Agent 效率突破：Foreman V2 大幅降低成本",
+   "titleEn": "WE DID IT!",
+   "summary": "团队宣布 Foreman V2 在 124 次基准测试中显著降低 AI Agent 运行成本：估算成本减少 54.3%，输入 Token 减少 76.6%，历史上下文减少 96.7%。通过移除不必要的编排实现此效率飞跃。",
+   "type": "Agent 工作流",
+   "topic": "Agent 优化",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-10",
+   "score": 7.5,
+   "rel": 8,
+   "firstSeen": "2026-10-10"
   },
   {
    "url": "https://www.v2ex.com/t/1246327#reply0",
@@ -1120,6 +1176,20 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://www.v2ex.com/t/1247482#reply0",
+   "title": "参考 OpenAI 工程博客的配图，做了个画技术图的 Agent Skill",
+   "titleEn": "",
+   "summary": "开发者从 OpenAI 工程博客提取配图风格，封装为 Agent Skill，支持生成白底细线技术架构图，提供 GitHub 源码及在线动画演示环境。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-10",
+   "score": 6.9,
+   "rel": 7,
+   "firstSeen": "2026-10-10"
+  },
+  {
    "url": "https://wuwei.us/pages/page-json",
    "title": "Page.json：跨平台 UI 表示开放标准",
    "titleEn": "Show HN: Page.json – An open standard for representing UI",
@@ -1188,6 +1258,20 @@
    "score": 6.9,
    "rel": 7,
    "firstSeen": "2026-09-30"
+  },
+  {
+   "url": "https://github.com/brianlzhou/arc-browser-use",
+   "title": "让 Codex 浏览器控制适配 Arc 的补丁",
+   "titleEn": "Show HN: A patch to make Codex's browser control work in Arc",
+   "summary": "项目解决了 OpenAI Codex 在 Arc 浏览器中因 Tab 分组 API 差异导致的连接停滞问题。通过下载并修补 ChatGPT 扩展的两个小代码段，使 Codex 能正常控制 Arc 浏览器标签页。",
+   "type": "浏览器插件",
+   "topic": "AI 编程",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-10",
+   "score": 6.8,
+   "rel": 7,
+   "firstSeen": "2026-10-10"
   },
   {
    "url": "https://www.v2ex.com/t/1247005#reply0",
@@ -1568,20 +1652,6 @@
    "rel": 7
   },
   {
-   "url": "https://sspai.com/post/113843",
-   "title": "从开源清理工具到付费 Mac 应用，用户教会了我如何做产品：Mole",
-   "titleEn": "",
-   "summary": "作者复盘 Mac 清理工具 Mole 从开源 CLI 到付费 App 的演进。指出 AI 时代新增了编译产物、工具旧版本及模型文件三类垃圾，并分享了对“可再生”与“非可再生”数据的清理分级策略。",
-   "type": "桌面工具",
-   "topic": "开发思考",
-   "block": "少数派",
-   "src": "apps",
-   "lastSeen": "2026-10-09",
-   "score": 6.3,
-   "rel": 5,
-   "firstSeen": "2026-10-08"
-  },
-  {
    "url": "https://huggingface.co/spaces/nvidia/nemotron-diarization",
    "title": "Spaces 应用：nvidia/nemotron-diarization",
    "titleEn": "",
@@ -1608,6 +1678,20 @@
    "score": 6.3,
    "rel": 6,
    "firstSeen": "2026-09-29"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1247463#reply2",
+   "title": "做了个深度集成 Herdr 的 iOS SSH / Mosh 终端 Tenimon，邀请 V 友 TestFlight 体验",
+   "titleEn": "",
+   "summary": "iOS 终端应用 Tenimon，支持 SSH/Mosh 及深度集成 Herdr 代理任务管理，具备图片/语音输入、分屏及端口转发功能，计划免费基础版加一次性买断。",
+   "type": "移动 App",
+   "topic": "移动 App",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-10",
+   "score": 6.2,
+   "rel": 6,
+   "firstSeen": "2026-10-10"
   },
   {
    "url": "https://www.v2ex.com/t/1246997#reply1",
@@ -1736,6 +1820,34 @@
    "firstSeen": "2026-09-29"
   },
   {
+   "url": "https://www.reddit.com/r/SideProject/comments/1x1y4os/i_built_a_nextjs_supabase_starter_for_developers/",
+   "title": "Next.js + Supabase 多租户 SaaS 启动框架",
+   "titleEn": "I built a Next.js + Supabase starter for developers building multi-tenant SaaS",
+   "summary": "B2B SaaS OS 提供了基于 Next.js 16 和 Supabase 的多租户基础架构，包含认证、RBAC、Stripe 计费及 API 密钥管理。附带对抗性加固测试，捕获了 3 个实际 Bug，售价 149 美元。",
+   "type": "Web 应用",
+   "topic": "工程实践",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-10",
+   "score": 6.1,
+   "rel": 6,
+   "firstSeen": "2026-10-10"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1247458#reply1",
+   "title": "做了个 PDF 分享工具：除了生成链接，我更想知道对方到底有没有认真看",
+   "titleEn": "",
+   "summary": "PDF 转分享链接 SaaS 工具，提供阅读深度、活跃时间、页面流失率等细粒度分析数据，支持自定义页面元素，旨在解决文件发出后的反馈断层。",
+   "type": "Web 应用",
+   "topic": "效率工具",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-10",
+   "score": 6.1,
+   "rel": 5,
+   "firstSeen": "2026-10-10"
+  },
+  {
    "url": "https://github.com/podraven/titan-engine",
    "title": "Titan：Rust/WASM 高性能 Web 表格引擎",
    "titleEn": "Show HN: I built a fast spreadsheet engine for the web in Rust/WASM",
@@ -1748,6 +1860,20 @@
    "score": 6.1,
    "rel": 5,
    "firstSeen": "2026-10-09"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1247484#reply0",
+   "title": "QuotaPal: 面向 Android 的 Codex 额度监控 App",
+   "titleEn": "",
+   "summary": "开源 Android 应用，支持监控 Codex 账号 API 额度，具备桌面小组件功能，参考 Nowdex 设计，目前为 MVP 版本，仅支持单账号。",
+   "type": "移动 App",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-10",
+   "score": 6.0,
+   "rel": 6,
+   "firstSeen": "2026-10-10"
   },
   {
    "url": "https://diffguardian.ai",
@@ -2488,6 +2614,48 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://huggingface.co/spaces/Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
+   "title": "Spaces 应用：Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces 应用，基于 MiniMax-H3-Turbo 模型加载 Lora 权重，采用 Gradio 技术栈，用于生成无审查内容。",
+   "type": "Web 应用",
+   "topic": "开源权重",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-10",
+   "score": 5.2,
+   "rel": 6,
+   "firstSeen": "2026-10-10"
+  },
+  {
+   "url": "https://huggingface.co/spaces/FineEnvs/multi-harness-rl",
+   "title": "Spaces 应用：FineEnvs/multi-harness-rl",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces 应用，使用 Docker 技术栈运行多 harness 强化学习实验，旨在验证不同环境下的模型表现。",
+   "type": "Web 应用",
+   "topic": "模型与推理",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-10",
+   "score": 5.2,
+   "rel": 6,
+   "firstSeen": "2026-10-10"
+  },
+  {
+   "url": "https://huggingface.co/spaces/arudradey/qwen-image-2.1-uncensored-gguf",
+   "title": "Spaces 应用：arudradey/qwen-image-2.1-uncensored-gguf",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces 应用，基于 Qwen-Image 2.1 模型的 GGUF 量化版本，采用 Gradio 界面，主打无审查图像生成。",
+   "type": "Web 应用",
+   "topic": "开源权重",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-10",
+   "score": 5.2,
+   "rel": 6,
+   "firstSeen": "2026-10-10"
+  },
+  {
    "url": "https://www.v2ex.com/t/1246971#reply2",
    "title": "Turner - 免费、不限次数、无需登录、无水印的 AI 图像编辑器",
    "titleEn": "",
@@ -2626,6 +2794,20 @@
    "score": 5.1,
    "rel": 6,
    "firstSeen": "2026-10-05"
+  },
+  {
+   "url": "https://findwinningfunnels.com/",
+   "title": "使用 AI 查看竞争对手获取客户的工具",
+   "titleEn": "Show HN: See How Your Competitors Get Customers with AI",
+   "summary": "FindWinningFunnels 是一个利用 AI 分析竞争对手营销漏斗的工具。截图展示了其如何抓取并展示竞品（如交易教育项目）的广告落地页和转化路径，用于逆向分析其获客策略。",
+   "type": "Web 应用",
+   "topic": "营销分析",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-10",
+   "score": 5.0,
+   "rel": 5,
+   "firstSeen": "2026-10-10"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1wxs1qa/made_a_kids_channel_about_emotions_with_a_child/",
