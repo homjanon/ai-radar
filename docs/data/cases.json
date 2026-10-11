@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-10 08:10",
- "count": 204,
+ "updated": "2026-10-11 08:10",
+ "count": 211,
  "types": [
   "Agent 工作流",
   "CLI 工具",
@@ -16,6 +16,20 @@
  ],
  "cases": [
   {
+   "url": "https://www.v2ex.com/t/1247744#reply0",
+   "title": "把 Tripo Studio 连接到 Codex 的插件",
+   "titleEn": "",
+   "summary": "开源插件 Tripo Studio for Codex 通过复用网页端会员会话，将 3D 生成工作流接入 Codex。支持 68 个 MCP 工具及内嵌可视化工作台，实现高精度建模、智能网格控制及自动绑骨动作生成，免去额外 API 费用。",
+   "type": "浏览器插件",
+   "topic": "Agent 工具",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-11",
+   "score": 9.7,
+   "rel": 9,
+   "firstSeen": "2026-10-11"
+  },
+  {
    "url": "https://www.v2ex.com/t/1246631#reply7",
    "title": "受 Jev 启发，花了三周、600 美元、20 多轮训了两个小模型专门做 Computer use",
    "titleEn": "",
@@ -30,18 +44,18 @@
    "firstSeen": "2026-10-07"
   },
   {
-   "url": "https://sspai.com/post/115197",
-   "title": "派早报：OpenAI 发布 Dot 智能体、Apple 移动睡眠呼吸暂停迹象提示软件国内获批等",
+   "url": "https://www.v2ex.com/t/1247724#reply0",
+   "title": "[开源]做了个给 AI Agent 玩的三国 SLG，主打让你自己的 AI 替你玩。",
    "titleEn": "",
-   "summary": "OpenAI DevDay 2026 发布 Dot 智能体，由 GPT-6 Astra 驱动，运行于独立云端电脑，支持跨平台交互及 4000+ 应用接入，具备恶意指令防护。Apple 睡眠监测软件获国内批准。资讯汇总涵盖多项 AI 行业动态及监管进展。",
-   "type": "Agent 工作流",
-   "topic": "模型发布",
-   "block": "少数派",
+   "summary": "开源三国 SLG 游戏支持 AI Agent 通过 WebSocket 或 MCP 协议接入，服务端不跑 AI，允许用户使用 Claude、GPT 等模型对战。提供统一协议校验及按模型分组的排行榜功能。",
+   "type": "Web 应用",
+   "topic": "Agent 评测",
+   "block": "V2EX 分享创造",
    "src": "apps",
-   "lastSeen": "2026-10-01",
-   "score": 9.4,
-   "rel": 10,
-   "firstSeen": "2026-09-30"
+   "lastSeen": "2026-10-11",
+   "score": 9.2,
+   "rel": 9,
+   "firstSeen": "2026-10-11"
   },
   {
    "url": "https://www.v2ex.com/t/1247495#reply0",
@@ -56,20 +70,6 @@
    "score": 9.0,
    "rel": 8,
    "firstSeen": "2026-10-10"
-  },
-  {
-   "url": "https://sspai.com/post/115455",
-   "title": "派早报：微软发布 Windows 相关新品、Google AI 新闻两则等",
-   "titleEn": "",
-   "summary": "微软发布搭载 RTX Spark 芯片的 Surface Laptop Ultra，支持本地运行 1200 亿参数模型；推出 Copilot 混合智能及 MXC 隔离技术。Google 发布 Nano Banana 2.1 图像模型，价格减半并支持多图一致性。",
-   "type": "模型与推理",
-   "topic": "硬件发布",
-   "block": "少数派",
-   "src": "apps",
-   "lastSeen": "2026-10-09",
-   "score": 8.9,
-   "rel": 9,
-   "firstSeen": "2026-10-08"
   },
   {
    "url": "https://github.com/wanderingstan/vibeconf-app",
@@ -548,20 +548,6 @@
    "firstSeen": "2026-10-02"
   },
   {
-   "url": "https://sspai.com/post/115532",
-   "title": "派早报：英伟达 RTX Spark 新品一览、Anthropic 发布 Claude Haiku 5.5 模型等",
-   "titleEn": "",
-   "summary": "新闻日报汇总，包括华硕/微星/联想发布基于 RTX Spark 的 AI PC，以及 Anthropic 发布 Claude Haiku 5.5 模型的简讯。",
-   "type": "其他",
-   "topic": "模型发布",
-   "block": "少数派",
-   "src": "apps",
-   "lastSeen": "2026-10-10",
-   "score": 7.7,
-   "rel": 8,
-   "firstSeen": "2026-10-10"
-  },
-  {
    "url": "https://railcode.dev/",
    "title": "Show HN：Railcode 内部软件安全云",
    "titleEn": "Show HN: Railcode – Secure cloud for internal software",
@@ -1037,6 +1023,34 @@
    "firstSeen": "2026-09-29"
   },
   {
+   "url": "https://huggingface.co/spaces/arudradey/qwen-image-2.1-uncensored-gguf",
+   "title": "Spaces 应用：arudradey/qwen-image-2.1-uncensored-gguf",
+   "titleEn": "",
+   "summary": "发布 Qwen Image 2.1 模型的未删减版 GGUF 量化版本，基于 Gradio 部署。该应用支持本地高效推理，创建时间为 2026 年 9 月，已获 411 次点赞。",
+   "type": "模型与推理",
+   "topic": "模型量化",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-11",
+   "score": 7.2,
+   "rel": 8,
+   "firstSeen": "2026-10-10"
+  },
+  {
+   "url": "https://github.com/rahimnathwani/mailbox-viewer",
+   "title": "Mailbox Viewer：基于静态文件与本地解析的 FOIA 邮件发布方案",
+   "titleEn": "Show HN: Mailbox Viewer – publish FOIA email dumps as a static Gmail-like site",
+   "summary": "工具将 PST 或 mbox 邮件解析为 Parquet 并生成嵌入，部署于 R2 静态托管。浏览器通过 DuckDB-WASM 利用 HTTP 范围请求解析数据，免后端即可支持大规模邮件检索与重建。",
+   "type": "Web 应用",
+   "topic": "工程实践",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-11",
+   "score": 7.2,
+   "rel": 6,
+   "firstSeen": "2026-10-11"
+  },
+  {
    "url": "https://rhyvenai.com",
    "title": "Rhyven：面向 Agent 的市场平台",
    "titleEn": "Show HN: Rhyven – A marketplace for agents",
@@ -1174,6 +1188,20 @@
    "score": 7.0,
    "rel": 9,
    "firstSeen": "2026-09-30"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1247738#reply0",
+   "title": "做了个让照片动起来的小工具，支持老照片、宠物和插画，欢迎 V 友试试",
+   "titleEn": "",
+   "summary": "发布 AI Photo Animator 网站，整合 Seedance、可灵等多款视频模型，支持通过提示词或模板将静态照片转化为短视频。提供积分制计费，涵盖老照片复活、宠物动态及风景流动等场景。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-11",
+   "score": 6.9,
+   "rel": 7,
+   "firstSeen": "2026-10-11"
   },
   {
    "url": "https://www.v2ex.com/t/1247482#reply0",
@@ -1342,6 +1370,20 @@
    "score": 6.8,
    "rel": 6,
    "firstSeen": "2026-10-01"
+  },
+  {
+   "url": "https://github.com/academa-labs/manimgx",
+   "title": "ManimGX：基于 Rust/wgpu 的高性能 3D 数学视频引擎",
+   "titleEn": "Show HN: ManimGX – Manim's API on a Rust/wgpu engine, for 3D videos in Python",
+   "summary": "开源库兼容 Manim CE API，采用 Rust 与 wgpu 底层渲染，体积仅 65-110MB。支持跨平台及浏览器端 Pyodide 运行，渲染速度较原生引擎快近百倍，内置公式支持。",
+   "type": "模型与推理",
+   "topic": "开源项目",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-11",
+   "score": 6.7,
+   "rel": 5,
+   "firstSeen": "2026-10-11"
   },
   {
    "url": "https://whofundsoss.com",
@@ -1624,6 +1666,20 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://huggingface.co/spaces/arudradey/qwen-image-2.1-uncensored-aio-loras",
+   "title": "Spaces 应用：arudradey/qwen-image-2.1-uncensored-aio-loras",
+   "titleEn": "",
+   "summary": "发布 Qwen Image 2.1 未删减版模型及 AIO LoRA 合集，基于 Gradio 部署。该应用整合了多种微调风格，创建时间为 2026 年 9 月，已获 268 次点赞。",
+   "type": "模型与推理",
+   "topic": "模型微调",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-11",
+   "score": 6.4,
+   "rel": 7,
+   "firstSeen": "2026-10-11"
+  },
+  {
    "url": "https://www.v2ex.com/t/1246628#reply2",
    "title": "做了一个把照片转成短视频的网页工具，想听听大家的使用反馈",
    "titleEn": "",
@@ -1652,6 +1708,20 @@
    "rel": 7
   },
   {
+   "url": "https://huggingface.co/spaces/FineEnvs/multi-harness-rl",
+   "title": "Spaces 应用：FineEnvs/multi-harness-rl",
+   "titleEn": "",
+   "summary": "发布 multi-harness-rl 应用，采用 Docker 技术栈部署，涉及强化学习与环境交互。该应用自 2026 年 8 月创建以来获得 224 次点赞，具体实现细节未详述。",
+   "type": "Agent 工作流",
+   "topic": "强化学习",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-11",
+   "score": 6.3,
+   "rel": 8,
+   "firstSeen": "2026-10-10"
+  },
+  {
    "url": "https://huggingface.co/spaces/nvidia/nemotron-diarization",
    "title": "Spaces 应用：nvidia/nemotron-diarization",
    "titleEn": "",
@@ -1678,6 +1748,34 @@
    "score": 6.3,
    "rel": 6,
    "firstSeen": "2026-09-29"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1x2sff6/i_made_dory_to_stop_reexplaining_my_projects/",
+   "title": "Dory：跨模型 AI 对话上下文持久化与同步笔记工具",
+   "titleEn": "I made Dory to stop re-explaining my projects every time I start a new chat",
+   "summary": "为浏览器与代码项目设计双端工具，通过单文件或仓库 wiki 记录项目决策与上下文。提供 Claude Code 插件与 Codex 指令，解决切换模型时重复解释项目背景的痛点，MIT 开源。",
+   "type": "其他",
+   "topic": "Agent 框架",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-11",
+   "score": 6.2,
+   "rel": 7,
+   "firstSeen": "2026-10-11"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1247746#reply1",
+   "title": "做了个 Mistral AI 工作空间，聊天、对话管理和成本估算都放到了一起",
+   "titleEn": "",
+   "summary": "作者发布独立项目 mistrallarge4.io，集成 Mistral 模型对话、提示词配置、历史管理、成本估算及 API 接入指南。支持流式输出、Markdown、JSON 格式及云同步功能，提供中英文界面与移动端适配。",
+   "type": "Web 应用",
+   "topic": "工具发布",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-11",
+   "score": 6.2,
+   "rel": 6,
+   "firstSeen": "2026-10-11"
   },
   {
    "url": "https://www.v2ex.com/t/1247463#reply2",
@@ -2392,6 +2490,20 @@
    "firstSeen": "2026-09-29"
   },
   {
+   "url": "https://huggingface.co/spaces/Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
+   "title": "Spaces 应用：Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
+   "titleEn": "",
+   "summary": "发布 MiniMax-H3-Turbo 模型的未删减版 LoRA 微调模型，基于 Gradio 技术栈部署，旨在解除内容限制。该应用已获 1372 次点赞，创建时间为 2026 年 8 月。",
+   "type": "模型与推理",
+   "topic": "开源模型",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-11",
+   "score": 5.6,
+   "rel": 7,
+   "firstSeen": "2026-10-10"
+  },
+  {
    "url": "https://www.v2ex.com/t/1247212#reply0",
    "title": "DrawFig：一句话画出论文方法流程图，方框和箭头还能拖",
    "titleEn": "",
@@ -2614,46 +2726,18 @@
    "firstSeen": "2026-09-30"
   },
   {
-   "url": "https://huggingface.co/spaces/Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
-   "title": "Spaces 应用：Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
-   "titleEn": "",
-   "summary": "Hugging Face Spaces 应用，基于 MiniMax-H3-Turbo 模型加载 Lora 权重，采用 Gradio 技术栈，用于生成无审查内容。",
-   "type": "Web 应用",
-   "topic": "开源权重",
-   "block": "HF Spaces",
+   "url": "https://www.reddit.com/r/SideProject/comments/1x2pgkk/i_got_tired_of_remembering_filenames_so_i_built_a/",
+   "title": "Trawl：基于本地视觉与文本分析的 Mac 多模态文件检索工具",
+   "titleEn": "I got tired of remembering filenames, so I built a Mac app that searches what you actually remember",
+   "summary": "Mac 应用本地分析图像、截图及音频，支持自然语言描述搜索多模态内容（如搜索“棕榈树泳池”）。免去手动打标签，通过非结构化数据解析实现跨格式检索，处于早期测试。",
+   "type": "桌面工具",
+   "topic": "效率工具",
+   "block": "r/SideProject",
    "src": "apps",
-   "lastSeen": "2026-10-10",
+   "lastSeen": "2026-10-11",
    "score": 5.2,
-   "rel": 6,
-   "firstSeen": "2026-10-10"
-  },
-  {
-   "url": "https://huggingface.co/spaces/FineEnvs/multi-harness-rl",
-   "title": "Spaces 应用：FineEnvs/multi-harness-rl",
-   "titleEn": "",
-   "summary": "Hugging Face Spaces 应用，使用 Docker 技术栈运行多 harness 强化学习实验，旨在验证不同环境下的模型表现。",
-   "type": "Web 应用",
-   "topic": "模型与推理",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-10",
-   "score": 5.2,
-   "rel": 6,
-   "firstSeen": "2026-10-10"
-  },
-  {
-   "url": "https://huggingface.co/spaces/arudradey/qwen-image-2.1-uncensored-gguf",
-   "title": "Spaces 应用：arudradey/qwen-image-2.1-uncensored-gguf",
-   "titleEn": "",
-   "summary": "Hugging Face Spaces 应用，基于 Qwen-Image 2.1 模型的 GGUF 量化版本，采用 Gradio 界面，主打无审查图像生成。",
-   "type": "Web 应用",
-   "topic": "开源权重",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-10",
-   "score": 5.2,
-   "rel": 6,
-   "firstSeen": "2026-10-10"
+   "rel": 5,
+   "firstSeen": "2026-10-11"
   },
   {
    "url": "https://www.v2ex.com/t/1246971#reply2",
@@ -2780,6 +2864,20 @@
    "score": 5.2,
    "rel": 5,
    "firstSeen": "2026-10-01"
+  },
+  {
+   "url": "https://huggingface.co/spaces/multimodalart/jev-decision-index",
+   "title": "Spaces 应用：multimodalart/jev-decision-index",
+   "titleEn": "",
+   "summary": "发布名为 jev-decision-index 的多模态艺术应用，基于静态技术栈部署。该应用自 2026 年 9 月创建以来获得 575 次点赞，具体功能未详细展开。",
+   "type": "Web 应用",
+   "topic": "多模态应用",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-11",
+   "score": 5.1,
+   "rel": 6,
+   "firstSeen": "2026-10-11"
   },
   {
    "url": "https://www.v2ex.com/t/1246423#reply1",
