@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-11 08:10",
- "count": 211,
+ "updated": "2026-10-12 08:11",
+ "count": 220,
  "types": [
   "Agent 工作流",
   "CLI 工具",
@@ -72,6 +72,20 @@
    "firstSeen": "2026-10-10"
   },
   {
+   "url": "https://www.v2ex.com/t/1247918#reply0",
+   "title": "[开源自荐] 小喷 1.1.0： Mac 菜单栏语音伙伴，支持 ChatGPT 订阅和本机 Ollama",
+   "titleEn": "",
+   "summary": "MacOS 菜单栏语音助手“小喷”1.1.0 发布，支持唤醒词、本机 Ollama 及 ChatGPT 订阅，新增回声消除与打断功能，可选本地 Qwen3-TTS 推理，代码 MIT 开源。",
+   "type": "移动 App",
+   "topic": "开源工具",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-12",
+   "score": 8.7,
+   "rel": 8,
+   "firstSeen": "2026-10-12"
+  },
+  {
    "url": "https://github.com/wanderingstan/vibeconf-app",
    "title": "Vibeconferencing：让 Claude Code 或 Codex 加入 Google Meet",
    "titleEn": "Show HN: Vibeconferencing, Bring Claude Code or Codex into Your Google Meet",
@@ -128,6 +142,20 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://www.v2ex.com/t/1247889#reply0",
+   "title": "一张照片生成 Bulin 47 爆款 freestyle 视频：一个跑在 Cloudflare Workers 上的小项目复盘",
+   "titleEn": "",
+   "summary": "基于 Pixverse 模型的视频生成项目，部署于 Cloudflare Workers。利用 R2 存储解决磁盘限制，单条成本$0.4，毛利 90%，采用 Stripe 付费模式，详细复盘工程踩坑。",
+   "type": "Web 应用",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-12",
+   "score": 8.6,
+   "rel": 8,
+   "firstSeen": "2026-10-12"
+  },
+  {
    "url": "https://sspai.com/post/113843",
    "title": "从开源清理工具到付费 Mac 应用，用户教会了我如何做产品：Mole",
    "titleEn": "",
@@ -154,6 +182,20 @@
    "score": 8.5,
    "rel": 9,
    "firstSeen": "2026-10-08"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1247906#reply1",
+   "title": "[开源]刷了三天 AI 短剧，我一怒之下做了个全网最癫的不烧心 skill",
+   "titleEn": "",
+   "summary": "MIT 开源 Claude Skill“bushaoxin”，基于 AI 短剧“规矩体”风格，支持文案生成、评价与回怼。通过指令“太烧了”可自动降低文风强度，一句话安装即用。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-12",
+   "score": 8.4,
+   "rel": 8,
+   "firstSeen": "2026-10-12"
   },
   {
    "url": "https://github.com/lateos-ai/reflex",
@@ -350,6 +392,20 @@
    "score": 8.1,
    "rel": 9,
    "firstSeen": "2026-09-30"
+  },
+  {
+   "url": "https://www.seodata.dev/",
+   "title": "Seodata.dev：面向AI Agent的免费搜索数据API",
+   "titleEn": "Show HN: Seodata.dev (1.1) Free search data for AI agents",
+   "summary": "Seodata.dev 为 AI 代理提供关键词搜索量、CPC 及竞争数据，支持 50+ 国家，每日 20 次免费查询无需密钥，并发布 llms.txt 文档供 Claude、ChatGPT 等直接读取以获取真实搜索需求。",
+   "type": "Web 应用",
+   "topic": "Agent 工具",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-12",
+   "score": 8.0,
+   "rel": 8,
+   "firstSeen": "2026-10-12"
   },
   {
    "url": "https://www.v2ex.com/t/1246951#reply3",
@@ -883,6 +939,20 @@
    "firstSeen": "2026-09-29"
   },
   {
+   "url": "https://www.v2ex.com/t/1247891#reply0",
+   "title": "iterm-agents：在 iTerm2 侧栏查看多个编程 agent 的状态",
+   "titleEn": "",
+   "summary": "iTerm2 插件 iterm-agents 在 Toolbelt 侧栏展示 Claude Code、Codex 等 5 种 Agent 状态，支持 Git 仓库分组、搜索及跳转。项目处于早期阶段，代码开源。",
+   "type": "浏览器插件",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-12",
+   "score": 7.4,
+   "rel": 8,
+   "firstSeen": "2026-10-12"
+  },
+  {
    "url": "https://huggingface.co/hirundo-io/Qwen3.6-35B-A3B-Westernized",
    "title": "Qwen 3.6 西方化版本：面向美国企业的模型优化",
    "titleEn": "Show HN: We Westernized Qwen for US enterprise use",
@@ -1023,18 +1093,18 @@
    "firstSeen": "2026-09-29"
   },
   {
-   "url": "https://huggingface.co/spaces/arudradey/qwen-image-2.1-uncensored-gguf",
-   "title": "Spaces 应用：arudradey/qwen-image-2.1-uncensored-gguf",
-   "titleEn": "",
-   "summary": "发布 Qwen Image 2.1 模型的未删减版 GGUF 量化版本，基于 Gradio 部署。该应用支持本地高效推理，创建时间为 2026 年 9 月，已获 411 次点赞。",
-   "type": "模型与推理",
-   "topic": "模型量化",
-   "block": "HF Spaces",
+   "url": "https://www.shpyrd.io",
+   "title": "Shpyrd：面向AI时代的智能云平台",
+   "titleEn": "Show HN: Shpyrd – A new type of cloud for AI era",
+   "summary": "Shpyrd 旨在解决 AI 生成应用的上架难题，提供一键添加登录、内置 Postgres/Valkey 数据库及备份服务，支持从 Git 或本地文件夹部署，并具备自动休眠功能以降低闲置成本。",
+   "type": "其他",
+   "topic": "云服务",
+   "block": "Show HN",
    "src": "apps",
-   "lastSeen": "2026-10-11",
+   "lastSeen": "2026-10-12",
    "score": 7.2,
-   "rel": 8,
-   "firstSeen": "2026-10-10"
+   "rel": 7,
+   "firstSeen": "2026-10-12"
   },
   {
    "url": "https://github.com/rahimnathwani/mailbox-viewer",
@@ -1370,6 +1440,20 @@
    "score": 6.8,
    "rel": 6,
    "firstSeen": "2026-10-01"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1247928#reply2",
+   "title": "[开源] CPA-Bar : 多 CPA / CPAMP 原生桌面管理客户端，常驻菜单栏，支持 MacOS/Windows/ Linux ，完全开源",
+   "titleEn": "",
+   "summary": "开源桌面应用 CPA-Bar 支持 macOS/Win/Linux，常驻菜单栏管理多 CPA 实例，具备账号密钥、额度统计及隐私功能，密钥存系统钥匙串无遥测，提供应用内签名更新。",
+   "type": "桌面工具",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-12",
+   "score": 6.7,
+   "rel": 7,
+   "firstSeen": "2026-10-12"
   },
   {
    "url": "https://github.com/academa-labs/manimgx",
@@ -1708,20 +1792,6 @@
    "rel": 7
   },
   {
-   "url": "https://huggingface.co/spaces/FineEnvs/multi-harness-rl",
-   "title": "Spaces 应用：FineEnvs/multi-harness-rl",
-   "titleEn": "",
-   "summary": "发布 multi-harness-rl 应用，采用 Docker 技术栈部署，涉及强化学习与环境交互。该应用自 2026 年 8 月创建以来获得 224 次点赞，具体实现细节未详述。",
-   "type": "Agent 工作流",
-   "topic": "强化学习",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-11",
-   "score": 6.3,
-   "rel": 8,
-   "firstSeen": "2026-10-10"
-  },
-  {
    "url": "https://huggingface.co/spaces/nvidia/nemotron-diarization",
    "title": "Spaces 应用：nvidia/nemotron-diarization",
    "titleEn": "",
@@ -1958,6 +2028,20 @@
    "score": 6.1,
    "rel": 5,
    "firstSeen": "2026-10-09"
+  },
+  {
+   "url": "https://secubuzz.com/",
+   "title": "SecuBuzz：60字安全简报与CISA零日漏洞雷达",
+   "titleEn": "Show HN: SecuBuzz – Factual 60-word cybersecurity briefs and CISA zero-day radar",
+   "summary": "SecuBuzz将每日网络安全报道浓缩为带源链接的60字简报，并通过Android应用推送CISA新增已知被利用漏洞（KEV）及修复截止日期，近期聚焦FortiBleed漏洞活跃状态与补丁周二预测。",
+   "type": "移动 App",
+   "topic": "安全工具",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-12",
+   "score": 6.0,
+   "rel": 5,
+   "firstSeen": "2026-10-12"
   },
   {
    "url": "https://www.v2ex.com/t/1247484#reply0",
@@ -2267,6 +2351,20 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://www.v2ex.com/t/1247925#reply0",
+   "title": "做了一个不需要服务器就能托管 git 仓库的私人服务",
+   "titleEn": "",
+   "summary": "开源项目 gits 基于 Cloudflare Serverless 实现无服务器 Git 托管，支持 GitHub 自动同步。作者剔除多余功能，仅保留仓库托管与备份能力，无 Issues/PR 支持。",
+   "type": "Web 应用",
+   "topic": "开源工具",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-12",
+   "score": 5.8,
+   "rel": 5,
+   "firstSeen": "2026-10-12"
+  },
+  {
    "url": "https://guesswick.com/",
    "title": "Wick：基于语义嵌入的猜词游戏",
    "titleEn": "Show HN: Wick, a daily word game where you guess by meaning, not spelling",
@@ -2488,20 +2586,6 @@
    "score": 5.7,
    "rel": 6,
    "firstSeen": "2026-09-29"
-  },
-  {
-   "url": "https://huggingface.co/spaces/Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
-   "title": "Spaces 应用：Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
-   "titleEn": "",
-   "summary": "发布 MiniMax-H3-Turbo 模型的未删减版 LoRA 微调模型，基于 Gradio 技术栈部署，旨在解除内容限制。该应用已获 1372 次点赞，创建时间为 2026 年 8 月。",
-   "type": "模型与推理",
-   "topic": "开源模型",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-11",
-   "score": 5.6,
-   "rel": 7,
-   "firstSeen": "2026-10-10"
   },
   {
    "url": "https://www.v2ex.com/t/1247212#reply0",
@@ -2726,6 +2810,34 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://www.v2ex.com/t/1247909#reply1",
+   "title": "[送码] 在线 PPT 生成和演示工具，支持现有 pptx 文件。可以 ppt 直播和协作",
+   "titleEn": "",
+   "summary": "Slimppt 在线演示平台支持 pptx 解析渲染及大部分动画保留，隐私优先设计。目前 Beta 版免费，部分功能需注册，提供直播与协作功能，附带多条邀请码。",
+   "type": "Web 应用",
+   "topic": "效率工具",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-12",
+   "score": 5.2,
+   "rel": 5,
+   "firstSeen": "2026-10-12"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1247899#reply0",
+   "title": "听了各位大佬的建议，给「中国昼夜地图」加上了 3D 功能，更加直观",
+   "titleEn": "",
+   "summary": "开源项目“中国昼夜地图”更新 3D 视图功能，新增全球各国昼夜分布展示。作者利用 Codex 辅助在周末完成开发，提供 Web 访问地址及 GitHub 源码。",
+   "type": "Web 应用",
+   "topic": "开源项目",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-12",
+   "score": 5.2,
+   "rel": 5,
+   "firstSeen": "2026-10-12"
+  },
+  {
    "url": "https://www.reddit.com/r/SideProject/comments/1x2pgkk/i_got_tired_of_remembering_filenames_so_i_built_a/",
    "title": "Trawl：基于本地视觉与文本分析的 Mac 多模态文件检索工具",
    "titleEn": "I got tired of remembering filenames, so I built a Mac app that searches what you actually remember",
@@ -2866,20 +2978,6 @@
    "firstSeen": "2026-10-01"
   },
   {
-   "url": "https://huggingface.co/spaces/multimodalart/jev-decision-index",
-   "title": "Spaces 应用：multimodalart/jev-decision-index",
-   "titleEn": "",
-   "summary": "发布名为 jev-decision-index 的多模态艺术应用，基于静态技术栈部署。该应用自 2026 年 9 月创建以来获得 575 次点赞，具体功能未详细展开。",
-   "type": "Web 应用",
-   "topic": "多模态应用",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-11",
-   "score": 5.1,
-   "rel": 6,
-   "firstSeen": "2026-10-11"
-  },
-  {
    "url": "https://www.v2ex.com/t/1246423#reply1",
    "title": "给已有网站做了个 llms.txt 生成器，欢迎试用",
    "titleEn": "",
@@ -2892,6 +2990,34 @@
    "score": 5.1,
    "rel": 6,
    "firstSeen": "2026-10-05"
+  },
+  {
+   "url": "https://huggingface.co/spaces/arudradey/qwen-image-2.1-uncensored-gguf",
+   "title": "Spaces 应用：arudradey/qwen-image-2.1-uncensored-gguf",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces 应用基于 Gradio，展示 Qwen-Image-2.1 的无审查（uncensored）GGUF 版本。创建于 2026 年 9 月，获得 411 个点赞。",
+   "type": "Web 应用",
+   "topic": "模型发布",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-12",
+   "score": 5.0,
+   "rel": 7,
+   "firstSeen": "2026-10-10"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1247916#reply0",
+   "title": "做了个 Nano Banana 图片生成站：从一句脑洞，到产品图、海报和社媒配图",
+   "titleEn": "",
+   "summary": "Nano Banana 图片生成网站支持多比例与 1K/2K/4K 分辨率，提供示例提示词一键导入。采用积分制，不同分辨率生成消耗不同积分，支持批量生成对比结果。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-12",
+   "score": 5.0,
+   "rel": 5,
+   "firstSeen": "2026-10-12"
   },
   {
    "url": "https://findwinningfunnels.com/",
