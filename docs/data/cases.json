@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-12 08:11",
- "count": 220,
+ "updated": "2026-10-13 08:10",
+ "count": 234,
  "types": [
   "Agent 工作流",
   "CLI 工具",
@@ -15,6 +15,20 @@
   "移动 App"
  ],
  "cases": [
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1x4dci1/i_built_tincan_let_your_coding_agent_talk_to_your/",
+   "title": "tincan：支持多 Coding Agent 点对点协作的开源工具",
+   "titleEn": "I built tincan: let your coding agent talk to your teammate's coding agent, peer to peer (free, open source)",
+   "summary": "tincan 允许团队中不同的 Coding Agent（如 Claude Code、Codex）通过加密中继点对点通信。一个 Agent 可询问另一个 Agent 代码变更的影响，空闲 Agent 可被唤醒，支持 macOS/Linux，基于 MIT 协议开源。",
+   "type": "CLI 工具",
+   "topic": "Agent 工作流",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-13",
+   "score": 9.7,
+   "rel": 9,
+   "firstSeen": "2026-10-13"
+  },
   {
    "url": "https://www.v2ex.com/t/1247744#reply0",
    "title": "把 Tripo Studio 连接到 Codex 的插件",
@@ -70,6 +84,20 @@
    "score": 9.0,
    "rel": 8,
    "firstSeen": "2026-10-10"
+  },
+  {
+   "url": "https://github.com/andrewfader/blokkily",
+   "title": "Blokkily：支持 MCP 的图案优先实验性数字音频工作站",
+   "titleEn": "Show HN: An experimental pattern-first DAW that supports MCP",
+   "summary": "Blokkily 是一款实验性 DAW，采用单一事件模型同步驱动追踪、钢琴卷和步进网格编辑器。强制支持 CLAP 插件格式，底层模型涵盖音符、和弦、微时值等，并集成 LLM 作曲助手。",
+   "type": "桌面工具",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-13",
+   "score": 8.7,
+   "rel": 9,
+   "firstSeen": "2026-10-13"
   },
   {
    "url": "https://www.v2ex.com/t/1247918#reply0",
@@ -310,6 +338,34 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://www.reddit.com/r/SideProject/comments/1x4g9c2/i_rebuilt_a_mac_app_i_released_11_years_ago_this/",
+   "title": "重建并开源 11 年前 Mac 应用 Kitty Launcher",
+   "titleEn": "I rebuilt a Mac app I released 11 years ago. This time, I’m giving it away.",
+   "summary": "作者重建了 2015 年发布的 Kitty Launcher，增加开发服务器监控、时间追踪及 AI Agent 集成等功能。由于 Intel 兼容性问题重做，现决定免费开源，包含大量新特性及网站更新。",
+   "type": "桌面工具",
+   "topic": "开源生态",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-13",
+   "score": 8.2,
+   "rel": 7,
+   "firstSeen": "2026-10-13"
+  },
+  {
+   "url": "https://github.com/obsessiondb/chkit",
+   "title": "ChKit：ClickHouse 的 TypeScript 模式管理与迁移工具",
+   "titleEn": "Show HN: Chkit – Schema, migrations and backfills for ClickHouse (like Drizzle)",
+   "summary": "ChKit 是 ObsessionDB 开源的 ClickHouse 管理工具，类似 Drizzle。支持在 TypeScript 中定义模式，生成 DDL 迁移，检测 CI 漂移，并处理向后兼容的回填序列。基于 PB 级 ClickHouse 生产经验开发。",
+   "type": "CLI 工具",
+   "topic": "工程实践",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-13",
+   "score": 8.2,
+   "rel": 8,
+   "firstSeen": "2026-10-13"
+  },
+  {
    "url": "https://github.com/abird-ai/agentc",
    "title": "agentc：小于 1MB 的静态无 libc 可嵌入 Rust Agent",
    "titleEn": "Show HN: agentc: <1mb static/no-libc, minimal, embeddable agent with Rust/C API",
@@ -392,6 +448,20 @@
    "score": 8.1,
    "rel": 9,
    "firstSeen": "2026-09-30"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1x4epqb/made_a_little_project_that_lets_you_watch_how_a/",
+   "title": "Attention Galaxy：浏览器内运行的微型 LLM 注意力可视化",
+   "titleEn": "Made a little project that lets you watch how a tiny LLM thinks, runs fully in your browser",
+   "summary": "开发者构建了 Attention Galaxy，在浏览器中运行 SmolLM2-135M 模型。可视化展示逐词生成过程中的候选项及注意力权重，点击单词可查看模型主要关注的先前 token，用于直观理解注意力机制。",
+   "type": "Web 应用",
+   "topic": "模型与推理",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-13",
+   "score": 8.0,
+   "rel": 8,
+   "firstSeen": "2026-10-13"
   },
   {
    "url": "https://www.seodata.dev/",
@@ -811,6 +881,20 @@
    "score": 7.6,
    "rel": 9,
    "firstSeen": "2026-10-02"
+  },
+  {
+   "url": "https://github.com/triggeredcode/lucid",
+   "title": "Lucid：将口述思考转化为系统架构图的工具",
+   "titleEn": "Show HN: Turn spoken thoughts into system design diagrams",
+   "summary": "Lucid 是一款无障碍工具，允许用户通过语音口述将粗糙想法转化为结构化笔记、图表和表格。使用本地 AI 模型（LM Studio）辅助生成，特别适用于因手伤无法打字的用户进行系统设计沟通。",
+   "type": "桌面工具",
+   "topic": "内容生成",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-13",
+   "score": 7.5,
+   "rel": 7,
+   "firstSeen": "2026-10-13"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1x1zrng/we_did_it/",
@@ -1260,6 +1344,20 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://www.v2ex.com/t/1248246#reply0",
+   "title": "用 Claude Opus 5.5 做了个动效视频工具，哪里不满意只改哪里，不用整条重新生成",
+   "titleEn": "",
+   "summary": "基于 Claude Opus 5.5 构建视频生成工具 Tellcut，支持通过局部编辑指令修改特定片段，保留其余部分不变，适用于产品宣传及演示视频制作。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-13",
+   "score": 6.9,
+   "rel": 7,
+   "firstSeen": "2026-10-13"
+  },
+  {
    "url": "https://www.v2ex.com/t/1247738#reply0",
    "title": "做了个让照片动起来的小工具，支持老照片、宠物和插画，欢迎 V 友试试",
    "titleEn": "",
@@ -1440,6 +1538,20 @@
    "score": 6.8,
    "rel": 6,
    "firstSeen": "2026-10-01"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1248221#reply0",
+   "title": "做了一个通用版的无限画布 | OpenWorkgraph",
+   "titleEn": "",
+   "summary": "开发者发布 OpenWorkgraph 无限画布，支持图、文、视频展示，并增加通用执行节点和可视化交互节点，目前主要配合 Codex 等 Agent 使用。",
+   "type": "Web 应用",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-13",
+   "score": 6.7,
+   "rel": 7,
+   "firstSeen": "2026-10-13"
   },
   {
    "url": "https://www.v2ex.com/t/1247928#reply2",
@@ -1694,6 +1806,34 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://www.v2ex.com/t/1248222#reply0",
+   "title": "[开源]FreeControl 2 - 新的 scrcpy GUI",
+   "titleEn": "",
+   "summary": "开发者发布 Rust 版 FreeControl 2，为 scrcpy 提供图形界面，支持多设备管理及参数预设，全代码由 AI 辅助生成，软件体积约 6MB。",
+   "type": "CLI 工具",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-13",
+   "score": 6.5,
+   "rel": 6,
+   "firstSeen": "2026-10-13"
+  },
+  {
+   "url": "https://huggingface.co/spaces/FineEnvs/multi-harness-rl",
+   "title": "Spaces 应用：FineEnvs/multi-harness-rl",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces 应用，采用 Docker 技术栈，支持多执行环境强化学习，创建于 2026 年 8 月。",
+   "type": "模型与推理",
+   "topic": "模型发布",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-13",
+   "score": 6.5,
+   "rel": 8,
+   "firstSeen": "2026-10-13"
+  },
+  {
    "url": "https://www.v2ex.com/t/1246852#reply0",
    "title": "AI 僵尸拥抱视频工具 aizombie.app",
    "titleEn": "Built an AI zombie hug tool — aizombie.app: 2 photos → ~20s vertical clip, guest checkout $9.90",
@@ -1790,6 +1930,20 @@
    "src": "apps",
    "score": 6.4,
    "rel": 7
+  },
+  {
+   "url": "https://www.v2ex.com/t/1248247#reply3",
+   "title": "做了一个原生的 macOS Vaultwarden 客户端：基于 MyGo ，主窗口零 WebView，支持 Touch ID 与系统级 AutoFill",
+   "titleEn": "",
+   "summary": "开发者开源 MyGo Vaultwarden，基于 Go 和 MyGo 框架构建 macOS 原生密码管理工具，内存占用低，支持 Touch ID 认证及系统级自动填充。",
+   "type": "桌面工具",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-13",
+   "score": 6.3,
+   "rel": 5,
+   "firstSeen": "2026-10-13"
   },
   {
    "url": "https://huggingface.co/spaces/nvidia/nemotron-diarization",
@@ -2323,6 +2477,20 @@
    "firstSeen": "2026-09-29"
   },
   {
+   "url": "https://www.v2ex.com/t/1248255#reply0",
+   "title": "AI 白板课堂， ai 讲课玩法，求体验",
+   "titleEn": "",
+   "summary": "开发者发布“AI 白板课堂”网站，通过模拟老师在白板上逐步书写解题过程，解决纯文字答案不生动、学生难以理解的问题，旨在增强学习印象。",
+   "type": "Web 应用",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-13",
+   "score": 5.9,
+   "rel": 6,
+   "firstSeen": "2026-10-13"
+  },
+  {
    "url": "https://www.tomasmed.dev/wall",
    "title": "AI Agent 数字涂鸦墙交互实验",
    "titleEn": "Show HN: Made a digital wall for AI Agents to \"tag\"",
@@ -2780,6 +2948,34 @@
    "score": 5.4,
    "rel": 6,
    "firstSeen": "2026-09-29"
+  },
+  {
+   "url": "https://huggingface.co/spaces/Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
+   "title": "Spaces 应用：Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces 应用，采用 Gradio 技术栈，部署 MiniMax 模型微调版本，创建于 2026 年 8 月。",
+   "type": "模型与推理",
+   "topic": "模型发布",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-13",
+   "score": 5.3,
+   "rel": 6,
+   "firstSeen": "2026-10-13"
+  },
+  {
+   "url": "https://huggingface.co/spaces/kulkas2pintu/wan777",
+   "title": "Spaces 应用：kulkas2pintu/wan777",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces 应用，采用 Gradio 技术栈，提供模型推理服务，创建于 2026 年 7 月。",
+   "type": "模型与推理",
+   "topic": "模型发布",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-13",
+   "score": 5.3,
+   "rel": 6,
+   "firstSeen": "2026-10-13"
   },
   {
    "url": "https://huggingface.co/spaces/kulkas2pintu/QWEN_EDIT_IMAGE",
