@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-13 08:10",
- "count": 234,
+ "updated": "2026-10-14 08:11",
+ "count": 248,
  "types": [
   "Agent 工作流",
   "CLI 工具",
@@ -56,6 +56,20 @@
    "score": 9.4,
    "rel": 10,
    "firstSeen": "2026-10-07"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1248533#reply0",
+   "title": "[开源] PicMake：纯前端的 GPT Image 2.5 生图工作台， Key 和图片只存在你的浏览器里",
+   "titleEn": "",
+   "summary": "开源纯前端生图工作台 PicMake，支持 GPT Image 2.5，数据仅存于浏览器，保障隐私。具备流式预览、多比例生成、本地历史记录及 MCP 支持功能。",
+   "type": "Web 应用",
+   "topic": "开源工具",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-14",
+   "score": 9.2,
+   "rel": 8,
+   "firstSeen": "2026-10-14"
   },
   {
    "url": "https://www.v2ex.com/t/1247724#reply0",
@@ -448,6 +462,34 @@
    "score": 8.1,
    "rel": 9,
    "firstSeen": "2026-09-30"
+  },
+  {
+   "url": "https://github.com/enkiruntime/enki_llm",
+   "title": "Enki LLM：纯Rust推理引擎",
+   "titleEn": "Show HN: Enki LLM A pure rust (even kernels) with live GPU/CPU brain migration",
+   "summary": "纯Rust编写的Transformer推理引擎，无CUDA依赖，在Tesla T4上以40tok/s运行Llama-3.2 1B，支持生成过程中GPU与CPU间实时迁移。",
+   "type": "模型与推理",
+   "topic": "模型与推理",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-14",
+   "score": 8.0,
+   "rel": 8,
+   "firstSeen": "2026-10-14"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1248559#reply0",
+   "title": "Carry-On: 换 AI 订阅，不丢记忆。",
+   "titleEn": "",
+   "summary": "开源项目 Carry-On 解决 AI 记忆不互通问题，支持聚合 ChatGPT、Claude 和 Gemini 的聊天记录。通过 MCP 服务器提供搜索功能，可部署在 HAOS 或 Docker 环境中，一键安装使用。",
+   "type": "Agent 工作流",
+   "topic": "Agent 工具",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-14",
+   "score": 8.0,
+   "rel": 8,
+   "firstSeen": "2026-10-14"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1x4epqb/made_a_little_project_that_lets_you_watch_how_a/",
@@ -883,6 +925,20 @@
    "firstSeen": "2026-10-02"
   },
   {
+   "url": "https://pulseos.finance",
+   "title": "Pulse Local：本地运行的Mac预算应用",
+   "titleEn": "Show HN: Pulse Local, a Mac budgeting app whose AI models run on your machine",
+   "summary": "面向Apple Silicon的Mac预算应用，内置微调的Qwen3 0.6B模型处理本地账务，由4B模型校验，完全离线运行无数据上传。",
+   "type": "移动 App",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-14",
+   "score": 7.5,
+   "rel": 7,
+   "firstSeen": "2026-10-14"
+  },
+  {
    "url": "https://github.com/triggeredcode/lucid",
    "title": "Lucid：将口述思考转化为系统架构图的工具",
    "titleEn": "Show HN: Turn spoken thoughts into system design diagrams",
@@ -1177,6 +1233,20 @@
    "firstSeen": "2026-09-29"
   },
   {
+   "url": "https://www.reddit.com/r/SideProject/comments/1x5c0u7/i_built_a_free_daily_ai_news_digest_web_ios/",
+   "title": "AI News Daily：自动化新闻聚合系统",
+   "titleEn": "I built a free daily AI news digest (web, iOS, Android, Slack bot) and a Claude Code routine runs the newsroom",
+   "summary": "通过Claude Code自动抓取、筛选并生成每日6至10条AI新闻简报，支持多平台分发及Slack集成，代码逻辑与风格指南均纳入版本控制。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-14",
+   "score": 7.2,
+   "rel": 7,
+   "firstSeen": "2026-10-14"
+  },
+  {
    "url": "https://www.shpyrd.io",
    "title": "Shpyrd：面向AI时代的智能云平台",
    "titleEn": "Show HN: Shpyrd – A new type of cloud for AI era",
@@ -1344,6 +1414,20 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://sugabots.ai/",
+   "title": "Sugabots：人与AI Agent协作群聊",
+   "titleEn": "Show HN: Sugabots – Group chats where your team and AI agents work together",
+   "summary": "开源协作工具，允许团队成员与多个AI Agent在同一聊天频道内协同工作，支持自由选择模型与工具，MIT协议且支持自托管。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-14",
+   "score": 6.9,
+   "rel": 7,
+   "firstSeen": "2026-10-14"
+  },
+  {
    "url": "https://www.v2ex.com/t/1248246#reply0",
    "title": "用 Claude Opus 5.5 做了个动效视频工具，哪里不满意只改哪里，不用整条重新生成",
    "titleEn": "",
@@ -1454,6 +1538,34 @@
    "score": 6.9,
    "rel": 7,
    "firstSeen": "2026-09-30"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1x5ah0a/i_built_a_full_novelwriting_and_booktypesetting/",
+   "title": "Pepino：全流程小说创作与排版工具",
+   "titleEn": "I built a full novel-writing and book-typesetting app that anyone can try without creating an account",
+   "summary": "基于浏览器的写作工作台，集成章节管理、故事圣经、视觉大纲及书籍排版引擎，无需注册即可使用，AI专注于检查长篇作品连续性。",
+   "type": "Web 应用",
+   "topic": "效率工具",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-14",
+   "score": 6.8,
+   "rel": 6,
+   "firstSeen": "2026-10-14"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1248556#reply1",
+   "title": "好久不见 我做了一个支持全平台的《石器时代》 remake 因为怀念那样的时光和氛围感",
+   "titleEn": "",
+   "summary": "基于 Godot 和 AI 辅助开发的《石器时代》复刻项目，支持全平台原生运行及 VR 头显。具备私服功能如自动练级、刷怪传送，跨平台数据同步，代码开源。",
+   "type": "移动 App",
+   "topic": "独立开发",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-14",
+   "score": 6.8,
+   "rel": 6,
+   "firstSeen": "2026-10-14"
   },
   {
    "url": "https://github.com/brianlzhou/arc-browser-use",
@@ -1806,6 +1918,20 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://www.reddit.com/r/SideProject/comments/1x58yth/i_made_a_menu_bar_app_that_frees_the_ram_your_ai/",
+   "title": "baa：Mac菜单栏内存清理工具",
+   "titleEn": "i made a menu bar app that frees the RAM your AI agents forgot about 🐏",
+   "summary": "开源Mac菜单栏应用，专门识别并释放AI Agent遗留的后台进程（如Gradle、无头浏览器）占用的RAM，支持磁盘清理且数据本地化。",
+   "type": "桌面工具",
+   "topic": "工程实践",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-14",
+   "score": 6.5,
+   "rel": 6,
+   "firstSeen": "2026-10-14"
+  },
+  {
    "url": "https://www.v2ex.com/t/1248222#reply0",
    "title": "[开源]FreeControl 2 - 新的 scrcpy GUI",
    "titleEn": "",
@@ -1890,20 +2016,6 @@
    "firstSeen": "2026-09-30"
   },
   {
-   "url": "https://huggingface.co/spaces/arudradey/qwen-image-2.1-uncensored-aio-loras",
-   "title": "Spaces 应用：arudradey/qwen-image-2.1-uncensored-aio-loras",
-   "titleEn": "",
-   "summary": "发布 Qwen Image 2.1 未删减版模型及 AIO LoRA 合集，基于 Gradio 部署。该应用整合了多种微调风格，创建时间为 2026 年 9 月，已获 268 次点赞。",
-   "type": "模型与推理",
-   "topic": "模型微调",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-11",
-   "score": 6.4,
-   "rel": 7,
-   "firstSeen": "2026-10-11"
-  },
-  {
    "url": "https://www.v2ex.com/t/1246628#reply2",
    "title": "做了一个把照片转成短视频的网页工具，想听听大家的使用反馈",
    "titleEn": "",
@@ -1972,6 +2084,34 @@
    "score": 6.3,
    "rel": 6,
    "firstSeen": "2026-09-29"
+  },
+  {
+   "url": "https://wonderhop.io/en/",
+   "title": "Wonderhop：每日多语言猜测游戏",
+   "titleEn": "Show HN: Wonderhop – A daily game: guess what most people say, or what none do",
+   "summary": "无需注册的多语言问答游戏，利用AI裁判在1秒内核实开放文本答案的有效性，并根据玩家输入动态更新答案概率及内容列表。",
+   "type": "Web 应用",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-14",
+   "score": 6.2,
+   "rel": 6,
+   "firstSeen": "2026-10-14"
+  },
+  {
+   "url": "https://railspike.dev/",
+   "title": "Railspike：Rails编码Agent提示系统",
+   "titleEn": "Show HN: Railspike, a coding agent prompting system I've been using for 2 years",
+   "summary": "一套针对Rails生态系统构建的编码Agent提示系统，开发者已持续使用两年，旨在提升LLM在复杂代码库中的理解与生成质量。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-14",
+   "score": 6.2,
+   "rel": 7,
+   "firstSeen": "2026-10-14"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1x2sff6/i_made_dory_to_stop_reexplaining_my_projects/",
@@ -2182,6 +2322,20 @@
    "score": 6.1,
    "rel": 5,
    "firstSeen": "2026-10-09"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1x5b2xe/lingoflix_hover_a_netflix_subtitle_and_see_what/",
+   "title": "LingoFlix：Netlix字幕场景解释插件",
+   "titleEn": "LingoFlix - hover a Netflix subtitle and see what the line means in that scene",
+   "summary": "Chrome插件，悬停Netflix字幕即可获知该场景下台词的深层含义、俚语及语气，支持30种语言解释及Anki导出，需自带API密钥。",
+   "type": "浏览器插件",
+   "topic": "效率工具",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-14",
+   "score": 6.0,
+   "rel": 6,
+   "firstSeen": "2026-10-14"
   },
   {
    "url": "https://secubuzz.com/",
@@ -2519,6 +2673,34 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://www.reddit.com/r/SideProject/comments/1x596x3/i_kept_filling_out_the_same_job_application_forms/",
+   "title": "自动填充求职申请表工具",
+   "titleEn": "I kept filling out the same job application forms, so we built a tool that fills them in",
+   "summary": "一款监控LinkedIn及招聘网站并自动填表提交的工具，利用AI简化重复性的求职申请流程，帮助开发者节省时间与精力。",
+   "type": "效率工具",
+   "topic": "效率工具",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-14",
+   "score": 5.8,
+   "rel": 5,
+   "firstSeen": "2026-10-14"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1248537#reply0",
+   "title": "做了个英文恐怖故事站 LiveLore： AI 辅助写作，读者投票决定剧情走向",
+   "titleEn": "",
+   "summary": "LiveLore 是 AI 辅助的恐怖故事站，读者通过投票决定剧情分支。故事标明 AI 参与程度，提供免费订阅与阅读，当前面临投票参与度低的问题，寻求用户反馈。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-14",
+   "score": 5.8,
+   "rel": 5,
+   "firstSeen": "2026-10-14"
+  },
+  {
    "url": "https://www.v2ex.com/t/1247925#reply0",
    "title": "做了一个不需要服务器就能托管 git 仓库的私人服务",
    "titleEn": "",
@@ -2756,6 +2938,20 @@
    "firstSeen": "2026-09-29"
   },
   {
+   "url": "https://sspai.com/post/115934",
+   "title": "派评 | 近期值得关注的 App",
+   "titleEn": "",
+   "summary": "推荐 macOS 监控工具 Vitals，支持 AI 通过 MCP 协议直接读取系统指标；推荐 Android 状态栏工具 Tapbar，增强手机状态栏交互与显示功能。",
+   "type": "效率工具",
+   "topic": "工具推荐",
+   "block": "少数派",
+   "src": "apps",
+   "lastSeen": "2026-10-14",
+   "score": 5.5,
+   "rel": 5,
+   "firstSeen": "2026-10-14"
+  },
+  {
    "url": "https://www.v2ex.com/t/1247212#reply0",
    "title": "DrawFig：一句话画出论文方法流程图，方框和箭头还能拖",
    "titleEn": "",
@@ -2908,6 +3104,20 @@
    "rel": 5
   },
   {
+   "url": "https://www.v2ex.com/t/1248542#reply1",
+   "title": "重构了一下 APP 的 Landing Page，大家快来帮忙评价一下我的审美",
+   "titleEn": "",
+   "summary": "使用 Astra6.1 和 Claude 5.5 Opus 模型重构壁纸应用 Landing Page，结合 kill-ai-slop 等 Skills 优化页面设计，寻求社区审美反馈。",
+   "type": "Web 应用",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-14",
+   "score": 5.4,
+   "rel": 6,
+   "firstSeen": "2026-10-14"
+  },
+  {
    "url": "https://pyunto.com/",
    "title": "Pyunto：AI 智能体加密日记应用",
    "titleEn": "Show HN: Pyunto – invite an AI agent and a robot into an encrypted diary",
@@ -2948,34 +3158,6 @@
    "score": 5.4,
    "rel": 6,
    "firstSeen": "2026-09-29"
-  },
-  {
-   "url": "https://huggingface.co/spaces/Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
-   "title": "Spaces 应用：Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
-   "titleEn": "",
-   "summary": "Hugging Face Spaces 应用，采用 Gradio 技术栈，部署 MiniMax 模型微调版本，创建于 2026 年 8 月。",
-   "type": "模型与推理",
-   "topic": "模型发布",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-13",
-   "score": 5.3,
-   "rel": 6,
-   "firstSeen": "2026-10-13"
-  },
-  {
-   "url": "https://huggingface.co/spaces/kulkas2pintu/wan777",
-   "title": "Spaces 应用：kulkas2pintu/wan777",
-   "titleEn": "",
-   "summary": "Hugging Face Spaces 应用，采用 Gradio 技术栈，提供模型推理服务，创建于 2026 年 7 月。",
-   "type": "模型与推理",
-   "topic": "模型发布",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-13",
-   "score": 5.3,
-   "rel": 6,
-   "firstSeen": "2026-10-13"
   },
   {
    "url": "https://huggingface.co/spaces/kulkas2pintu/QWEN_EDIT_IMAGE",
@@ -3186,6 +3368,20 @@
    "score": 5.1,
    "rel": 6,
    "firstSeen": "2026-10-05"
+  },
+  {
+   "url": "https://huggingface.co/spaces/arudradey/qwen-image-2.1-uncensored-aio-loras",
+   "title": "Spaces 应用：arudradey/qwen-image-2.1-uncensored-aio-loras",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces 上的 Gradio 应用，提供 Qwen 图像 2.1 无审查 AIO LoRA 模型在线体验，支持多种角色或风格融合，获得 284 点赞。",
+   "type": "其他",
+   "topic": "模型部署",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-14",
+   "score": 5.0,
+   "rel": 7,
+   "firstSeen": "2026-10-11"
   },
   {
    "url": "https://huggingface.co/spaces/arudradey/qwen-image-2.1-uncensored-gguf",
