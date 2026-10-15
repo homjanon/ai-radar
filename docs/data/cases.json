@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-14 08:11",
- "count": 248,
+ "updated": "2026-10-15 08:11",
+ "count": 267,
  "types": [
   "Agent 工作流",
   "CLI 工具",
@@ -98,6 +98,20 @@
    "score": 9.0,
    "rel": 8,
    "firstSeen": "2026-10-10"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1248837#reply0",
+   "title": "基于 pi 以及地图做了一个实体店选址地图",
+   "titleEn": "",
+   "summary": "基于高德API与Agent开发的实体店选址工具wash.ailibrary.space，集成WorldPop人口热力图与20-54岁性别比例分析。内置业态选址Skill与商业分析Agent，结合GPT-6.1-sol与Image2.5实现AI Native选址。",
+   "type": "Web 应用",
+   "topic": "Agent 应用",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-15",
+   "score": 8.7,
+   "rel": 9,
+   "firstSeen": "2026-10-15"
   },
   {
    "url": "https://github.com/andrewfader/blokkily",
@@ -716,6 +730,48 @@
    "firstSeen": "2026-10-02"
   },
   {
+   "url": "https://github.com/aisixteen/fantastic",
+   "title": "Fantastic Canvas：基于 Erlang 元运行时的 AI Agent 多态软件框架",
+   "titleEn": "Show HN: Fantastic Canvas",
+   "summary": "开发者发布 Fantastic Canvas，一种基于 Erlang 式元运行时的 AI 框架。它将人类、Agent 和工具置于同等地位，提供 CLI 编码和空间画布模式。支持视觉化构建系统，如生成 UI 和控制 Manim/Blender 动画。",
+   "type": "Agent 工作流",
+   "topic": "Agent 架构",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-15",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-10-15"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1x6581t/from_a_sketch_to_a_mobile_app_then_dark_mode_in/",
+   "title": "RNBlocks：从草图到移动应用的 AI Agent 开发工作室",
+   "titleEn": "From a sketch to a mobile app, then dark mode in the same conversation",
+   "summary": "RNBlocks 是一个针对 iOS/Android 的 AI 开发工作室。用户可上传草图，Agent 生成应用预览，并支持在同一对话中调整交互逻辑（如点击行为）和切换深色模式，最终导出代码。",
+   "type": "Web 应用",
+   "topic": "AI 开发工具",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-15",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-10-15"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1248856#reply0",
+   "title": "做了个让照片替你吵架的小网站 Bad Times AI，猫狗也能上场",
+   "titleEn": "",
+   "summary": "Bad Times AI提供照片转视频的“吵架式表演”生成服务，支持人物、宠物及宝宝三种模板。用户只需上传照片即可生成10秒或完整版视频，无需提示词，支持下载无水印竖屏MP4，具备两种复刻方式。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-15",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-10-15"
+  },
+  {
    "url": "https://railcode.dev/",
    "title": "Show HN：Railcode 内部软件安全云",
    "titleEn": "Show HN: Railcode – Secure cloud for internal software",
@@ -1149,6 +1205,34 @@
    "firstSeen": "2026-09-29"
   },
   {
+   "url": "https://www.v2ex.com/t/1248849#reply0",
+   "title": "给爱车安排一次「毒液出场」：做了个 Venom Car AI，让黑色黏液把车组装出来",
+   "titleEn": "",
+   "summary": "Venom Car AI生成“共生体汽车变形”视频，用户上传车照与车标，AI生成15秒黑色黏液组装车辆的特效视频。支持参考视频引导动作，无需提示词或抠图，可下载无水印MP4，保留音效。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-15",
+   "score": 7.3,
+   "rel": 8,
+   "firstSeen": "2026-10-15"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1248845#reply0",
+   "title": "做了个 Smalltown Boy AI 小玩具：让相册里的两个人，穿越到 80 年代一起跳舞",
+   "titleEn": "",
+   "summary": "Smalltown Boy AI支持上传两张照片生成80年代双人舞蹈视频，流程为Photo to Video。用户仅需选择左右角色与分辨率，无需提示词或剪辑，基于固定模板生成约14秒视频，支持在线预览与下载。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-15",
+   "score": 7.3,
+   "rel": 8,
+   "firstSeen": "2026-10-15"
+  },
+  {
    "url": "https://www.v2ex.com/t/1246434#reply5",
    "title": "测了 1000 个中文大站的 llms.txt，只有 30 个放了真正的文件",
    "titleEn": "",
@@ -1231,6 +1315,20 @@
    "score": 7.3,
    "rel": 7,
    "firstSeen": "2026-09-29"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1248875#reply0",
+   "title": "做了一个图片擦除物体和去背景的免费在线工具和 API",
+   "titleEn": "",
+   "summary": "开发者将公司商业App的内部去背景API封装为免费在线工具remox.ai，因remove.bg即将停止服务而开发。项目初期赠送500次去背景额度，利用共享机器池分摊成本以提供性价比与稳定性。",
+   "type": "Web 应用",
+   "topic": "开源工具",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-15",
+   "score": 7.2,
+   "rel": 7,
+   "firstSeen": "2026-10-15"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1x5c0u7/i_built_a_free_daily_ai_news_digest_web_ios/",
@@ -1342,6 +1440,48 @@
    "firstSeen": "2026-09-29",
    "score": 7.2,
    "rel": 7
+  },
+  {
+   "url": "https://huggingface.co/spaces/Viggle/Qwen-Image-2.1-viggle-turbo",
+   "title": "Spaces 应用：Viggle/Qwen-Image-2.1-viggle-turbo",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces上的Gradio应用，部署Viggle与Qwen-Image-2.1结合的Turbo版本。创建时间为2026年9月，点赞数310，技术栈为Gradio。",
+   "type": "模型与推理",
+   "topic": "模型发布",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-15",
+   "score": 7.1,
+   "rel": 8,
+   "firstSeen": "2026-09-30"
+  },
+  {
+   "url": "https://github.com/sonukapoor/warpdom",
+   "title": "Warpdom：比 jsdom 更快且结果一致的 DOM 测试环境",
+   "titleEn": "Show HN: Warpdom – drop-in jsdom replacement for Vitest and Jest",
+   "summary": "Warpdom 是 jsdom 的替代品，专为 Vitest 和 Jest 设计。在 23 个开源套件（约 43,600 个测试）中，其测试结果与 jsdom 一致，且速度中位数快 1.27 倍（最高 1.89 倍），基于 WHATWG 规范编写。",
+   "type": "模型与推理",
+   "topic": "测试框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-15",
+   "score": 7.1,
+   "rel": 6,
+   "firstSeen": "2026-10-15"
+  },
+  {
+   "url": "https://huggingface.co/spaces/hugging-apps/bfs-best-face-swap",
+   "title": "Spaces 应用：hugging-apps/bfs-best-face-swap",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces上的Gradio应用，实现BFS最佳换脸功能。创建时间为2026年9月，点赞数248，技术栈为Gradio。",
+   "type": "内容生成",
+   "topic": "内容生成",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-15",
+   "score": 7.1,
+   "rel": 8,
+   "firstSeen": "2026-10-15"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1x0m2di/browsesprint_researching_why_codex_browser_tasks/",
@@ -1652,6 +1792,20 @@
    "firstSeen": "2026-10-01"
   },
   {
+   "url": "https://www.lection.app",
+   "title": "Lection：通过自然语言描述从网页提取数据表格",
+   "titleEn": "Show HN: Lection – describe the data you want, get a table from any web page",
+   "summary": "Lection 是浏览器扩展，允许用户用自然语言描述所需数据，自动从任意网页提取并生成表格。支持 Y Combinator 等网站，提供 Chrome 扩展及在线服务，旨在简化网页数据抓取流程。",
+   "type": "浏览器插件",
+   "topic": "数据提取工具",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-15",
+   "score": 6.7,
+   "rel": 7,
+   "firstSeen": "2026-10-15"
+  },
+  {
    "url": "https://www.v2ex.com/t/1248221#reply0",
    "title": "做了一个通用版的无限画布 | OpenWorkgraph",
    "titleEn": "",
@@ -1918,6 +2072,20 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://huggingface.co/spaces/Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
+   "title": "Spaces 应用：Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces上的Gradio应用，部署了MiniMax-H3-Turbo-Lora-UNCENSORED模型。创建时间为2026年8月，点赞数1556，技术栈为Gradio。",
+   "type": "模型与推理",
+   "topic": "开源模型",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-15",
+   "score": 6.5,
+   "rel": 8,
+   "firstSeen": "2026-10-15"
+  },
+  {
    "url": "https://www.reddit.com/r/SideProject/comments/1x58yth/i_made_a_menu_bar_app_that_frees_the_ram_your_ai/",
    "title": "baa：Mac菜单栏内存清理工具",
    "titleEn": "i made a menu bar app that frees the RAM your AI agents forgot about 🐏",
@@ -2042,6 +2210,34 @@
    "src": "apps",
    "score": 6.4,
    "rel": 7
+  },
+  {
+   "url": "https://www.v2ex.com/t/1248872#reply0",
+   "title": "做了一个 A 股信息整理工具，把指标、涨停复盘和新闻分别导出成卡片",
+   "titleEn": "",
+   "summary": "开发者分享「大AK线智能助理」的原生下载功能，将市场指标、涨停梯队、财经晚报整理成三种卡片导出。文章详述了导出时间、界面状态、链接元数据及缓存版本等四个易踩坑的工程边界细节。",
+   "type": "Web 应用",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-15",
+   "score": 6.3,
+   "rel": 5,
+   "firstSeen": "2026-10-15"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1x66ujb/my_turntable_cant_sit_next_to_my_laptop_so_i_put/",
+   "title": "将黑胶唱机嵌入 Mac 壁纸的动态音乐可视化应用",
+   "titleEn": "My turntable can't sit next to my laptop, so I put it inside it",
+   "summary": "开发者将 1979 年 Technics 唱机 3D 重建为 Mac 动态壁纸。播放音乐时唱臂随曲目移动，专辑封面显示在支架上，房间光影随时间和天气变化。使用 Blender 渲染，Swift 开发，CPU 占用率仅 3%。",
+   "type": "桌面工具",
+   "topic": "创意开发",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-15",
+   "score": 6.3,
+   "rel": 5,
+   "firstSeen": "2026-10-15"
   },
   {
    "url": "https://www.v2ex.com/t/1248247#reply3",
@@ -2322,6 +2518,20 @@
    "score": 6.1,
    "rel": 5,
    "firstSeen": "2026-10-09"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1248838#reply0",
+   "title": "[分享创造] 用 SwiftUI 写了一年的个人资产记账 App -Flow 上架了！",
+   "titleEn": "",
+   "summary": "个人记账App Flow历时一年用SwiftUI重写并上架，仅保留记账、订阅、预算、投资四大刚需功能。采用本地存储+iCloud同步，无广告，支持iOS/iPadOS/watchOS，目前已在海外区发布。",
+   "type": "移动 App",
+   "topic": "移动应用",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-15",
+   "score": 6.0,
+   "rel": 5,
+   "firstSeen": "2026-10-15"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1x5b2xe/lingoflix_hover_a_netflix_subtitle_and_see_what/",
@@ -2673,6 +2883,48 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://uji.sh/ito/",
+   "title": "Ito：使用 Lua 构建终端用户界面的轻量级框架",
+   "titleEn": "Show HN: Ito – build terminal UI in Lua",
+   "summary": "Ito 是一个 Lua 库，允许开发者在终端中构建交互式 UI。它提供状态管理、组件布局（如 VStack、List）及事件处理功能，支持焦点管理和样式定制，旨在简化 TUI 开发流程。",
+   "type": "CLI 工具",
+   "topic": "开发者工具",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-15",
+   "score": 5.8,
+   "rel": 5,
+   "firstSeen": "2026-10-15"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1248854#reply0",
+   "title": "做了一个 burning bridges drake ai 的换脸网站",
+   "titleEn": "",
+   "summary": "开发者通宵上线了Burning Bridges Drake AI换脸网站，发现ChatGPT爬虫迅速抓取了该站点。作者未说明具体实现细节，主要记录了网站被AI搜索引擎快速收录的现象。",
+   "type": "Web 应用",
+   "topic": "平台生态",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-15",
+   "score": 5.8,
+   "rel": 6,
+   "firstSeen": "2026-10-15"
+  },
+  {
+   "url": "https://huggingface.co/spaces/tardellirs/model-pulse",
+   "title": "Spaces 应用：tardellirs/model-pulse",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces上的静态应用，名为model-pulse。创建时间为2026年10月，点赞数212，技术栈为Static，未提供具体功能描述。",
+   "type": "其他",
+   "topic": "工程实践",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-15",
+   "score": 5.8,
+   "rel": 6,
+   "firstSeen": "2026-10-15"
+  },
+  {
    "url": "https://www.reddit.com/r/SideProject/comments/1x596x3/i_kept_filling_out_the_same_job_application_forms/",
    "title": "自动填充求职申请表工具",
    "titleEn": "I kept filling out the same job application forms, so we built a tool that fills them in",
@@ -2938,6 +3190,20 @@
    "firstSeen": "2026-09-29"
   },
   {
+   "url": "https://huggingface.co/spaces/kulkas2pintu/wan777",
+   "title": "Spaces 应用：kulkas2pintu/wan777",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces上的Gradio应用，名为wan777。创建时间为2026年7月，点赞数530，技术栈为Gradio，未提供具体功能描述。",
+   "type": "内容生成",
+   "topic": "内容生成",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-15",
+   "score": 5.5,
+   "rel": 7,
+   "firstSeen": "2026-10-15"
+  },
+  {
    "url": "https://sspai.com/post/115934",
    "title": "派评 | 近期值得关注的 App",
    "titleEn": "",
@@ -3020,20 +3286,6 @@
    "score": 5.5,
    "rel": 5,
    "firstSeen": "2026-10-04"
-  },
-  {
-   "url": "https://huggingface.co/spaces/Viggle/Qwen-Image-2.1-viggle-turbo",
-   "title": "Spaces 应用：Viggle/Qwen-Image-2.1-viggle-turbo",
-   "titleEn": "",
-   "summary": "Viggle 团队在 Hugging Face Spaces 部署的 Qwen-Image-2.1 加速版本应用，使用 Gradio 界面。该应用聚焦于图像生成的速度优化，自 2026 年 9 月创建获得 159 个点赞，展示了针对 Turbo 模式的特定微调或部署。",
-   "type": "Web 应用",
-   "topic": "模型优化",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-03",
-   "score": 5.5,
-   "rel": 8,
-   "firstSeen": "2026-09-30"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1wvfewh/githubnative_localization_pr_automation/",
@@ -3354,6 +3606,20 @@
    "score": 5.2,
    "rel": 5,
    "firstSeen": "2026-10-01"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1248844#reply0",
+   "title": "vibe 了一个 Mac 面板",
+   "titleEn": "",
+   "summary": "开发者针对MacMini托管服务需求，开发了一个名为macpanel的面板工具，用于查看和修改托管服务。原文未提供具体功能细节、技术栈或代码库链接，仅提及代码在macpanel。",
+   "type": "其他",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-15",
+   "score": 5.1,
+   "rel": 5,
+   "firstSeen": "2026-10-15"
   },
   {
    "url": "https://www.v2ex.com/t/1246423#reply1",
