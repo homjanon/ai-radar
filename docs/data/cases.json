@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-15 08:11",
- "count": 267,
+ "updated": "2026-10-16 08:11",
+ "count": 272,
  "types": [
   "Agent 工作流",
   "CLI 工具",
@@ -56,6 +56,20 @@
    "score": 9.4,
    "rel": 10,
    "firstSeen": "2026-10-07"
+  },
+  {
+   "url": "https://github.com/vercel-labs/eve-agent-python-template",
+   "title": "Eve Python Agent模板：Vercel开源项目",
+   "titleEn": "Show HN: Eve Python Agent Template",
+   "summary": "Vercel Labs发布MIT许可证的开源项目，基于Eve、Next.js和Python FastAPI构建Web聊天代理。该代理可管理共享任务列表并运行Python工具，例如用户可指示“添加更新域名任务”，代理将通过后端创建任务。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-16",
+   "score": 9.2,
+   "rel": 9,
+   "firstSeen": "2026-10-16"
   },
   {
    "url": "https://www.v2ex.com/t/1248533#reply0",
@@ -364,6 +378,20 @@
    "score": 8.4,
    "rel": 9,
    "firstSeen": "2026-09-30"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1249185#reply0",
+   "title": "第一个独立上线的 Web 站：用 3 天做了个 Rumpelstiltskin 踮脚舞 AI 视频生成器，记录一下踩过的坑",
+   "titleEn": "",
+   "summary": "开发者记录用 3 天上线 AI 视频生成站的经历，采用 Nano Banana 转绘与 Seedance 重演流程，详解了图片尺寸预处理、任务超时处理及支付集成等工程踩坑点。",
+   "type": "Web 应用",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-16",
+   "score": 8.2,
+   "rel": 8,
+   "firstSeen": "2026-10-16"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1x4g9c2/i_rebuilt_a_mac_app_i_released_11_years_ago_this/",
@@ -1135,6 +1163,20 @@
    "firstSeen": "2026-09-29"
   },
   {
+   "url": "https://www.reddit.com/r/SideProject/comments/1x70rmy/i_vibecoded_a_gtastyle_openworld_game_that_runs/",
+   "title": "浏览器端GTA风格开放世界游戏：基于Claude Code构建",
+   "titleEn": "I vibe-coded a GTA-style open-world game that runs in the browser (alpha, feedback welcome)",
+   "summary": "18岁开发者Louis利用Opus 5.5配合Claude Code，在学校之余构建了可在浏览器中运行的GTA风格沙盒游戏Alpha版本。游戏包含老城区地图、驾驶和城市漫游功能，无需下载即可体验。",
+   "type": "Web 应用",
+   "topic": "工程实践",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-16",
+   "score": 7.4,
+   "rel": 8,
+   "firstSeen": "2026-10-16"
+  },
+  {
    "url": "https://www.v2ex.com/t/1247891#reply0",
    "title": "iterm-agents：在 iTerm2 侧栏查看多个编程 agent 的状态",
    "titleEn": "",
@@ -1442,18 +1484,18 @@
    "rel": 7
   },
   {
-   "url": "https://huggingface.co/spaces/Viggle/Qwen-Image-2.1-viggle-turbo",
-   "title": "Spaces 应用：Viggle/Qwen-Image-2.1-viggle-turbo",
-   "titleEn": "",
-   "summary": "Hugging Face Spaces上的Gradio应用，部署Viggle与Qwen-Image-2.1结合的Turbo版本。创建时间为2026年9月，点赞数310，技术栈为Gradio。",
-   "type": "模型与推理",
-   "topic": "模型发布",
-   "block": "HF Spaces",
+   "url": "https://guessthellm.com/",
+   "title": "猜LLM：通过回答辨别模型的游戏",
+   "titleEn": "Show HN: Guess the LLM – read an answer and guess which model wrote it",
+   "summary": "作者制作了一款游戏，让来自不同前沿实验室的模型回答相同问题，玩家通过阅读答案猜测是哪个模型生成的。作者自测得分仅为5/10，并邀请他人参与挑战以测试人类区分AI模型输出的能力。",
+   "type": "Web 应用",
+   "topic": "模型评测",
+   "block": "Show HN",
    "src": "apps",
-   "lastSeen": "2026-10-15",
+   "lastSeen": "2026-10-16",
    "score": 7.1,
    "rel": 8,
-   "firstSeen": "2026-09-30"
+   "firstSeen": "2026-10-16"
   },
   {
    "url": "https://github.com/sonukapoor/warpdom",
@@ -1467,20 +1509,6 @@
    "lastSeen": "2026-10-15",
    "score": 7.1,
    "rel": 6,
-   "firstSeen": "2026-10-15"
-  },
-  {
-   "url": "https://huggingface.co/spaces/hugging-apps/bfs-best-face-swap",
-   "title": "Spaces 应用：hugging-apps/bfs-best-face-swap",
-   "titleEn": "",
-   "summary": "Hugging Face Spaces上的Gradio应用，实现BFS最佳换脸功能。创建时间为2026年9月，点赞数248，技术栈为Gradio。",
-   "type": "内容生成",
-   "topic": "内容生成",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-15",
-   "score": 7.1,
-   "rel": 8,
    "firstSeen": "2026-10-15"
   },
   {
@@ -1552,6 +1580,20 @@
    "score": 7.0,
    "rel": 9,
    "firstSeen": "2026-09-30"
+  },
+  {
+   "url": "https://huggingface.co/spaces/Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
+   "title": "Spaces 应用：Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces 上线基于 Gradio 的 MiniMax-H3-Turbo LoRA 无审查模型应用，由 Pepe104 开发，提供在线推理接口。",
+   "type": "模型与推理",
+   "topic": "模型与推理",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-16",
+   "score": 6.9,
+   "rel": 9,
+   "firstSeen": "2026-10-15"
   },
   {
    "url": "https://sugabots.ai/",
@@ -1790,6 +1832,20 @@
    "score": 6.8,
    "rel": 6,
    "firstSeen": "2026-10-01"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1249184#reply4",
+   "title": "花了不到 200 元用 vibe coding 做的 ffee 在线工具小站，大家看看还可以吧",
+   "titleEn": "",
+   "summary": "非专业开发者使用 DeepSeek 桌面 Agent 以极低成本快速构建多语言在线工具站，分享了 AI 自动翻译导致代码变量名被误译及模型版本成本控制经验。",
+   "type": "Web 应用",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-16",
+   "score": 6.7,
+   "rel": 7,
+   "firstSeen": "2026-10-16"
   },
   {
    "url": "https://www.lection.app",
@@ -2072,18 +2128,18 @@
    "firstSeen": "2026-09-30"
   },
   {
-   "url": "https://huggingface.co/spaces/Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
-   "title": "Spaces 应用：Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
+   "url": "https://huggingface.co/spaces/Viggle/Qwen-Image-2.1-viggle-turbo",
+   "title": "Spaces 应用：Viggle/Qwen-Image-2.1-viggle-turbo",
    "titleEn": "",
-   "summary": "Hugging Face Spaces上的Gradio应用，部署了MiniMax-H3-Turbo-Lora-UNCENSORED模型。创建时间为2026年8月，点赞数1556，技术栈为Gradio。",
+   "summary": "Viggle 团队发布 Qwen-Image-2.1 Viggle Turbo 应用，结合通义千问图像模型与 Viggle 动作驱动技术，提供在线角色动画生成。",
    "type": "模型与推理",
-   "topic": "开源模型",
+   "topic": "模型与推理",
    "block": "HF Spaces",
    "src": "apps",
-   "lastSeen": "2026-10-15",
+   "lastSeen": "2026-10-16",
    "score": 6.5,
    "rel": 8,
-   "firstSeen": "2026-10-15"
+   "firstSeen": "2026-09-30"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1x58yth/i_made_a_menu_bar_app_that_frees_the_ram_your_ai/",
@@ -3190,15 +3246,15 @@
    "firstSeen": "2026-09-29"
   },
   {
-   "url": "https://huggingface.co/spaces/kulkas2pintu/wan777",
-   "title": "Spaces 应用：kulkas2pintu/wan777",
+   "url": "https://huggingface.co/spaces/hugging-apps/bfs-best-face-swap",
+   "title": "Spaces 应用：hugging-apps/bfs-best-face-swap",
    "titleEn": "",
-   "summary": "Hugging Face Spaces上的Gradio应用，名为wan777。创建时间为2026年7月，点赞数530，技术栈为Gradio，未提供具体功能描述。",
-   "type": "内容生成",
-   "topic": "内容生成",
+   "summary": "Hugging Apps 团队推出 Best Face Swap 应用，基于 Gradio 提供高质量面部交换在线服务，支持实时预览与对比。",
+   "type": "模型与推理",
+   "topic": "模型与推理",
    "block": "HF Spaces",
    "src": "apps",
-   "lastSeen": "2026-10-15",
+   "lastSeen": "2026-10-16",
    "score": 5.5,
    "rel": 7,
    "firstSeen": "2026-10-15"
@@ -3634,6 +3690,20 @@
    "score": 5.1,
    "rel": 6,
    "firstSeen": "2026-10-05"
+  },
+  {
+   "url": "https://huggingface.co/spaces/kulkas2pintu/wan777",
+   "title": "Spaces 应用：kulkas2pintu/wan777",
+   "titleEn": "",
+   "summary": "kulkas2pintu 发布 Gradio 应用 Wan777，提供基于 Wan 系列模型的在线服务界面，具体功能细节未在摘要中详述。",
+   "type": "模型与推理",
+   "topic": "模型与推理",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-16",
+   "score": 5.0,
+   "rel": 7,
+   "firstSeen": "2026-10-15"
   },
   {
    "url": "https://huggingface.co/spaces/arudradey/qwen-image-2.1-uncensored-aio-loras",
