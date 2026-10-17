@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-16 08:11",
- "count": 272,
+ "updated": "2026-10-17 08:10",
+ "count": 282,
  "types": [
   "Agent 工作流",
   "CLI 工具",
@@ -15,6 +15,20 @@
   "移动 App"
  ],
  "cases": [
+  {
+   "url": "https://rabin-a.github.io/mcp-router/#benchmark",
+   "title": "Show HN：我在 Claude Code 中基准测试了 6 个 MCP 代理并构建了自己的",
+   "titleEn": "Show HN: I benchmarked 6 MCP proxies in Claude Code, then built my own",
+   "summary": "开发者对比了 6 个 MCP 代理在 Claude Code 中的表现，发现多数声称的 Token 节省在实际任务中无效，4 个甚至消耗更多。自研路由器减少了 13-44% Token 消耗。",
+   "type": "CLI 工具",
+   "topic": "模型与推理",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-17",
+   "score": 10.0,
+   "rel": 9,
+   "firstSeen": "2026-10-17"
+  },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1x4dci1/i_built_tincan_let_your_coding_agent_talk_to_your/",
    "title": "tincan：支持多 Coding Agent 点对点协作的开源工具",
@@ -252,6 +266,20 @@
    "score": 8.5,
    "rel": 9,
    "firstSeen": "2026-10-08"
+  },
+  {
+   "url": "https://github.com/FramY2/ctxwise",
+   "title": "Show HN：CtxWise – 专为 Claude 和 Codex 打造的 MCP 模式修剪器",
+   "titleEn": "Show HN: CtxWise – MCP schema tree-shaker and firewall for Claude and Codex",
+   "summary": "开源工具 CtxWise 作为 MCP schema tree-shaker 和防火墙，用于 Claude 与 Codex。它通过修剪冗余 schema 和优化上下文，旨在降低 Token 消耗并提高 Agent 执行效率。",
+   "type": "CLI 工具",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-17",
+   "score": 8.4,
+   "rel": 9,
+   "firstSeen": "2026-10-17"
   },
   {
    "url": "https://www.v2ex.com/t/1247906#reply1",
@@ -756,6 +784,20 @@
    "score": 7.8,
    "rel": 7,
    "firstSeen": "2026-10-02"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1249433#reply0",
+   "title": "做了个有点偏门的小网站，用两张照片生成丧尸情侣重逢视频",
+   "titleEn": "",
+   "summary": "网站 Zombie Couple Video 接收两张照片，利用 MiniMax H3 和 Seedance 2.0 生成 10-15 秒丧尸情侣重逢短片。技术栈含 TanStack Start，按积分付费，无订阅。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-17",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-10-17"
   },
   {
    "url": "https://github.com/aisixteen/fantastic",
@@ -1582,20 +1624,6 @@
    "firstSeen": "2026-09-30"
   },
   {
-   "url": "https://huggingface.co/spaces/Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
-   "title": "Spaces 应用：Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
-   "titleEn": "",
-   "summary": "Hugging Face Spaces 上线基于 Gradio 的 MiniMax-H3-Turbo LoRA 无审查模型应用，由 Pepe104 开发，提供在线推理接口。",
-   "type": "模型与推理",
-   "topic": "模型与推理",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-16",
-   "score": 6.9,
-   "rel": 9,
-   "firstSeen": "2026-10-15"
-  },
-  {
    "url": "https://sugabots.ai/",
    "title": "Sugabots：人与AI Agent协作群聊",
    "titleEn": "Show HN: Sugabots – Group chats where your team and AI agents work together",
@@ -1722,6 +1750,20 @@
    "firstSeen": "2026-09-30"
   },
   {
+   "url": "https://www.v2ex.com/t/1249501#reply0",
+   "title": "做了个 macOS 原生 Emby 观影助手： TMDB 搜索找片、片单浏览、入库核对与外部播放",
+   "titleEn": "",
+   "summary": "开发者制作 macOS 原生工具 Emby Companion，集成 TMDB 搜索与豆瓣/IMDb 榜单。核心功能为自动核对 Emby 媒体库入库状态，识别缺片缺集，并支持 Infuse 等播放器调用及进度同步。",
+   "type": "桌面工具",
+   "topic": "桌面工具",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-17",
+   "score": 6.8,
+   "rel": 6,
+   "firstSeen": "2026-10-17"
+  },
+  {
    "url": "https://www.reddit.com/r/SideProject/comments/1x5ah0a/i_built_a_full_novelwriting_and_booktypesetting/",
    "title": "Pepino：全流程小说创作与排版工具",
    "titleEn": "I built a full novel-writing and book-typesetting app that anyone can try without creating an account",
@@ -1832,6 +1874,20 @@
    "score": 6.8,
    "rel": 6,
    "firstSeen": "2026-10-01"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1249490#reply1",
+   "title": "分享一个 Python 音频转文字命令行工具，支持 Whisper 本地转录",
+   "titleEn": "",
+   "summary": "发布 Python 工具 cykk-audio-transcriber，支持本地 Whisper 模型或 OpenAI API 转录音频。可导出 SRT/TXT 等格式，可选 DeepL 翻译，需 Python 3.11+ 及 FFmpeg。",
+   "type": "CLI 工具",
+   "topic": "CLI 工具",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-17",
+   "score": 6.7,
+   "rel": 7,
+   "firstSeen": "2026-10-17"
   },
   {
    "url": "https://www.v2ex.com/t/1249184#reply4",
@@ -2126,6 +2182,20 @@
    "score": 6.6,
    "rel": 5,
    "firstSeen": "2026-09-30"
+  },
+  {
+   "url": "https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored",
+   "title": "Spaces 应用：vclnhihihi/qwen-image-21-uncensored",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces 应用，提供 Qwen-Image 2.1 未审查版本，基于 Gradio，创建时间为 2026-09-29，获赞 135。",
+   "type": "Web 应用",
+   "topic": "模型与推理",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-17",
+   "score": 6.5,
+   "rel": 8,
+   "firstSeen": "2026-10-17"
   },
   {
    "url": "https://huggingface.co/spaces/Viggle/Qwen-Image-2.1-viggle-turbo",
@@ -2897,6 +2967,20 @@
    "firstSeen": "2026-09-29"
   },
   {
+   "url": "https://www.v2ex.com/t/1249446#reply0",
+   "title": "用 Codex 几天 Vibe 了个单机游戏下载站，无需登录",
+   "titleEn": "",
+   "summary": "利用 Codex 辅助开发单机游戏下载站 wuhu.games，技术栈采用 Vite、React、TypeScript 及 Tailwind CSS v4，无需用户登录即可访问，开发周期短。",
+   "type": "Web 应用",
+   "topic": "Web 应用",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-17",
+   "score": 5.9,
+   "rel": 6,
+   "firstSeen": "2026-10-17"
+  },
+  {
    "url": "https://www.v2ex.com/t/1248255#reply0",
    "title": "AI 白板课堂， ai 讲课玩法，求体验",
    "titleEn": "",
@@ -2937,6 +3021,48 @@
    "score": 5.9,
    "rel": 6,
    "firstSeen": "2026-09-30"
+  },
+  {
+   "url": "https://huggingface.co/spaces/hugging-apps/bfs-best-face-swap",
+   "title": "Spaces 应用：hugging-apps/bfs-best-face-swap",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces 应用，提供 BFS Best Face Swap 功能，基于 Gradio，创建时间为 2026-09-27，获赞 294。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-17",
+   "score": 5.8,
+   "rel": 7,
+   "firstSeen": "2026-10-15"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1249486#reply0",
+   "title": "做了个会喷气起飞的 Roadster 网页小游戏，欢迎试玩",
+   "titleEn": "",
+   "summary": "基于 Three.js 开发的横版网页游戏 Roadster，部署于 Cloudflare。玩法为控制车辆在地面与空中切换以躲避车流，单程飞行限时 6 秒，支持移动端操作。",
+   "type": "Web 应用",
+   "topic": "Web 应用",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-17",
+   "score": 5.8,
+   "rel": 5,
+   "firstSeen": "2026-10-17"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1x7v8ne/i_made_an_ai_tool_for_oneshotting_roblox_games/",
+   "title": "我制作了一款 AI 工具，可一次性生成 Roblox 游戏地图与脚本",
+   "titleEn": "I made an AI tool for one-shotting Roblox games, map and scripts together",
+   "summary": "工具 Sodapop 允许用户描述游戏概念，同步生成 Roblox 地图与 gameplay 脚本。支持通过 Studio 插件导入，保持代码可编辑性。提供10积分试用，社区项目可免费下载。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-17",
+   "score": 5.8,
+   "rel": 5,
+   "firstSeen": "2026-10-17"
   },
   {
    "url": "https://uji.sh/ito/",
@@ -3246,18 +3372,32 @@
    "firstSeen": "2026-09-29"
   },
   {
-   "url": "https://huggingface.co/spaces/hugging-apps/bfs-best-face-swap",
-   "title": "Spaces 应用：hugging-apps/bfs-best-face-swap",
+   "url": "https://huggingface.co/spaces/Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
+   "title": "Spaces 应用：Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
    "titleEn": "",
-   "summary": "Hugging Apps 团队推出 Best Face Swap 应用，基于 Gradio 提供高质量面部交换在线服务，支持实时预览与对比。",
-   "type": "模型与推理",
+   "summary": "Hugging Face Spaces 应用，基于 Gradio 技术栈，提供 MiniMax-H3-Turbo 的未审查 LoRA 模型服务，创建时间为 2026-08-14，获赞 1648。",
+   "type": "其他",
    "topic": "模型与推理",
    "block": "HF Spaces",
    "src": "apps",
-   "lastSeen": "2026-10-16",
+   "lastSeen": "2026-10-17",
    "score": 5.5,
    "rel": 7,
    "firstSeen": "2026-10-15"
+  },
+  {
+   "url": "https://ivokeys.com/listen/cannonball-adderley-barefoot-sunday-blues/",
+   "title": "Show HN：我构建了一位拥有独特演奏风格的虚拟钢琴家",
+   "titleEn": "Show HN: I built a virtual pianist with his own performance style",
+   "summary": "开发者展示基于 AI 的虚拟钢琴家 IvoKeys，能演奏《吉赛尔》等曲目。作品包含 AI 辅助原创的 Neuralia Anthem，并展示了 MIDI 时长、作曲家及编曲者等详细元数据。",
+   "type": "Agent 工作流",
+   "topic": "内容生成",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-17",
+   "score": 5.5,
+   "rel": 5,
+   "firstSeen": "2026-10-17"
   },
   {
    "url": "https://sspai.com/post/115934",
@@ -3664,6 +3804,20 @@
    "firstSeen": "2026-10-01"
   },
   {
+   "url": "https://huggingface.co/spaces/multimodalart/jev-decision-index",
+   "title": "Spaces 应用：multimodalart/jev-decision-index",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces 应用，基于静态技术栈，运行 multimodalart 的 Jev 决策索引，创建时间为 2026-09-17，获赞 703。",
+   "type": "其他",
+   "topic": "模型与推理",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-17",
+   "score": 5.1,
+   "rel": 6,
+   "firstSeen": "2026-10-17"
+  },
+  {
    "url": "https://www.v2ex.com/t/1248844#reply0",
    "title": "vibe 了一个 Mac 面板",
    "titleEn": "",
@@ -3690,20 +3844,6 @@
    "score": 5.1,
    "rel": 6,
    "firstSeen": "2026-10-05"
-  },
-  {
-   "url": "https://huggingface.co/spaces/kulkas2pintu/wan777",
-   "title": "Spaces 应用：kulkas2pintu/wan777",
-   "titleEn": "",
-   "summary": "kulkas2pintu 发布 Gradio 应用 Wan777，提供基于 Wan 系列模型的在线服务界面，具体功能细节未在摘要中详述。",
-   "type": "模型与推理",
-   "topic": "模型与推理",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-16",
-   "score": 5.0,
-   "rel": 7,
-   "firstSeen": "2026-10-15"
   },
   {
    "url": "https://huggingface.co/spaces/arudradey/qwen-image-2.1-uncensored-aio-loras",
