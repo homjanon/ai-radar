@@ -45,15 +45,14 @@
   "cases": {
     "enabled": true,
     "file": "data/cases.json",
-    "max": 600,
-    "min_total": 5.0,
+    "max": 300,
+    "min_total": 6.0,
     "min_rel": 5,
     "rescore_max": 30,
-    "note": "「应用案例库」：把 apps 车道的条目按 url 去重累积成可检索的库。与每日简报的分工——简报是「今天有什么新东西」（会滚走，要宽不漏），案例库是「攒下来的作品集」（可反复翻，要严不滥）。★ 入库门槛 min_total/min_rel（现为 5.0 / 5）：apps 条目须过分数门槛。min_rel 由 3 收到 5 —— 实测 rel=4 的多是「OS 评测 / .NET WASM 运行时 / 3D 打印机器人」这类与 AI 关联很弱的东西，对「学别人的 AI 应用」没有价值。实测不过滤时 38 条里 20 条 total<5，把「耳机剁手清单 / 手机评测」这类与 AI 无关的推荐流内容也收了进来（少数派是「效率工具+数码生活」版块，非 AI 源）。max 上限按**分数**淘汰、不按 lastSeen —— 后者是「新的留老的扔」，与作品集用途相反。★ rescore_max：换口径前入库的老记录没有 score，无法判质量；每次运行自动补一小批分（上限此值）后立即按门槛判，自然收敛，不需要人工做一次性迁移。"
+    "note": "「应用案例库」：把 apps 车道的条目按 url 去重累积成可检索的库。与每日简报的分工——简报是「今天有什么新东西」（会滚走，要宽不漏），案例库是「攒下来的作品集」（可反复翻，要严不滥）。★ 入库门槛 min_total/min_rel：min_rel 由 3 收到 5 —— 实测 rel=4 的多是「OS 评测 / .NET WASM 运行时 / 3D 打印机器人」这类与 AI 关联很弱的东西。★ 2026-10-17 min_total 由 5.0 收到 6.0、max 由 600 收到 300：线上 282 条里 **71 条（25%）落在 5.0–5.9**，干跑逐条核对后确认这 71 条**没有一条 rel≥8**（全是 rel=5–7 的低相关尾巴：Roblox 脚本、3D 壁纸插件、恐怖小说站、打印头小游戏…），故误杀风险为零；收到 6.0 后库为 211 条。max=300 的另一动因是体积：282 条 = 180KB，按 600 条推算是 383KB，加上 latest.json 428KB 首页要下 ~810KB，手机首屏会明显变慢；300 条封顶 ≈190KB。增速实测：firstSeen 按日统计近 10 天新增 137 条、日均 13.7，原 600 上限约 23 天后（11 月初）就会第一次触发——那次会一次性砍掉 100+ 条，且这个行为此前从未在线上出现过。max 按**分数**淘汰、不按 lastSeen —— 后者是「新的留老的扔」，与作品集用途相反。展示顺序另由 fetch_ai.py 的 CASE_HALF_LIFE 衰减负责（分数管「留得下什么」，衰减管「看得见什么」）。★ rescore_max：换口径前入库的老记录没有 score，无法判质量；每次运行自动补一小批分（上限此值）后立即按门槛判，自然收敛，不需要人工做一次性迁移。"
   },
   "aihot": {
     "enabled": true,
-    "shadow_only": false,
     "api": "https://aihot.news/api/v1/items",
     "params": { "mode": "selected", "window": "24h", "by": "published", "limit": 100 },
     "max_pages": 3,
@@ -63,7 +62,7 @@
     "same_host_jaccard": 0.25,
     "etag_file": "data/aihot_etag.json",
     "attribution_required": true,
-    "note": "★ 2026-10-08 接入 AIHOT 公开 JSON API（无 Key、匿名、openapi-v1.json 有正式契约）。只接**精选**不接全量：实测 mode=all 24h 有 366 条（x.com 占 68%），而 mode=selected 24h 只有 17–21 条，全量等于把「哪些值得看」重做一遍，而 AIHOT 的编辑判断已经做完了。X 我们自己抓不到（RSSHub 的 X 路由实测全 503），这是接它的唯一硬理由。\n⚠️ 边界：表达层（中文标题/摘要/推荐理由）用它的成果，排序层（rel/info/fresh 打分）仍走我们自己的 LLM。两套分数不可通约（它 71 ≠ 我们 7.1），混用会让「分数下限+名额」的分级失控。\n★ shadow_only=true：只写 docs/data/aihot_shadow.json 做诊断，不并进 latest.json、不上线。跑满 3 天看「若并入会落在哪个档、会不会挤掉我们自己的重磅」再决定开关。实测影子评估会把 merged+aihot 放同一池子重跑 assign_levels（用副本，不污染真实产物）。\n⚠️ 合规：其条款允许个人非商业使用，但把「公开镜像、批量公开再分发」划为需书面授权。并 UI 之前必须保留 attribution 与 links.aihot 回链、限量、并在页脚写明出处。正式并 UI（shadow_only=false）是**合规动作不是技术动作**，要单独确认。\nETag 实测有效（304 / 0 字节 / 0.33s）；文件写在 docs/data/ 下，因为 fetch.yml 是 `git add docs`，能跨 Actions 运行留存。",
+    "note": "★ 2026-10-08 接入 AIHOT 公开 JSON API（无 Key、匿名、openapi-v1.json 有正式契约）。只接**精选**不接全量：实测 mode=all 24h 有 366 条（x.com 占 68%），而 mode=selected 24h 只有 17–21 条，全量等于把「哪些值得看」重做一遍，而 AIHOT 的编辑判断已经做完了。X 我们自己抓不到（RSSHub 的 X 路由实测全 503），这是接它的唯一硬理由。\n⚠️ 边界：表达层（中文标题/摘要/推荐理由）用它的成果，排序层（rel/info/fresh 打分）仍走我们自己的 LLM。两套分数不可通约（它 71 ≠ 我们 7.1），混用会让「分数下限+名额」的分级失控。实测印证：影子跑两天，它精选里的 Waymo(66)、Claude 回顾(66)、Codex(74) 被我们分别判成 4.8/6.0/5.8，约一半会被我们降档 —— 所以「表达层用它的、排序层用我们的」不是妥协，是两套标准本来就该分开。\n★ 2026-10-17 删除 shadow_only 与影子评估（⑧b、write_aihot_shadow、docs/data/aihot_shadow.json）：影子已于 10-11 完成使命并正式并入，诊断文件不再更新，而 keep-days 只清 daily/ 和 data/reports/，它会永久躺在仓库里。要重开影子看 git 历史 9ec5189 之前的实现。\n⚠️ 合规：其条款允许个人非商业使用，但把「公开镜像、批量公开再分发」划为需书面授权。必须保留 attribution 与 links.aihot 回链、限量、并在页脚写明出处（前端每条 hot 车道条目已有 AIHOT ↗ 徽标）。\nETag 实测有效（304 / 0 字节 / 0.33s）；etag 文件写在 docs/data/ 下，因为 fetch.yml 是 `git add docs`，能跨 Actions 运行留存。",
     "note_2": "params.by 用 published 而非默认的 timeline：timeline 会把「首次发现时间」当排序键，回填的历史条目会带着新的时间戳混进 24h 窗口。jaccard_min 0.55 是实测调出来的 —— 0.8 那一层跨语言完全空转，0.55 能抓到「Claude Haiku 5.5」这类同事件不同表述。"
   },
   "lanes": [

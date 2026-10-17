@@ -20,6 +20,7 @@
 """
 import datetime
 import email.utils as eu
+import glob
 import io
 import json
 import os
@@ -27,6 +28,7 @@ import re
 import shutil
 import sys
 import tempfile
+import time
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
@@ -177,9 +179,6 @@ def make_config(path):
         s["enabled"] = True
         s["mode"] = "direct"                      # 冒烟测试不走 rsshub 池
     cfg["sources"] = keep
-    # 影子开关由用例控制（默认跟 sources.json 一致 = 开），用来分别验两条路径
-    if isinstance(cfg.get("aihot"), dict):
-        cfg["aihot"]["shadow_only"] = AIHOT_STUB.get("shadow", True)
     io.open(path, "w", encoding="utf-8").write(json.dumps(cfg, ensure_ascii=False))
     return cfg
 
@@ -627,8 +626,79 @@ def main():
         # 产出率告警：低于 30% 必须在日志里喊出来（不然又是一次静默失败）
         check("推荐理由" in _src and "低于 30%" in _src,
               "有「推荐理由产出率过低」告警（不再静默失败）", problems)
+        # ---------- 用例 4g：归档清理 + 案例库展示衰减 ----------
+        # 这两个都是「线上静默出错、日志完全看不出来」的类型，必须有回归。
+        print("\n[4g/4] 归档清理按文件名日期（模拟 checkout 覆盖 mtime）")
+        tmpC = tempfile.mkdtemp(prefix="airadar-smokeC-")
+        try:
+            dd = os.path.join(tmpC, "daily"); rp = os.path.join(tmpC, "reports")
+            os.makedirs(dd); os.makedirs(rp)
+            today = NOW.date()
+            # 关键手法：**先按到期日建文件，再把 mtime 统一 touch 成现在** ——
+            # 这就是 actions/checkout 的真实效果，也是原 mtime 判据失效的原因。
+            plan = {"2026-01-01.json": "del",     # 远超 30 天
+                    (today - datetime.timedelta(days=45)).strftime("%Y-%m-%d") + ".json": "del",
+                    (today - datetime.timedelta(days=31)).strftime("%Y-%m-%d") + ".json": "del",
+                    (today - datetime.timedelta(days=30)).strftime("%Y-%m-%d") + ".json": "keep",
+                    (today - datetime.timedelta(days=19)).strftime("%Y-%m-%d") + ".json": "keep",
+                    today.strftime("%Y-%m-%d") + ".json": "keep"}
+            for nm in plan:
+                io.open(os.path.join(dd, nm), "w", encoding="utf-8").write("{}")
+            io.open(os.path.join(rp, "20260101T0810.json"), "w", encoding="utf-8").write("{}")
+            io.open(os.path.join(rp, "手工放的无日期文件.json"), "w", encoding="utf-8").write("{}")
+            stamp = time.time()
+            for f in glob.glob(os.path.join(tmpC, "*", "*.json")):
+                os.utime(f, (stamp, stamp))       # ← checkout 会把 mtime 全盖成现在
+            removed, undated = F.prune_archives((dd, rp), 30, today)
+            left = sorted(os.path.basename(x) for x in glob.glob(os.path.join(dd, "*.json")))
+            check(removed == 4,
+                  f"到期归档删掉 4 个（daily 3 + reports 1），实删 {removed}", problems)
+            check(all(n not in left for n, w in plan.items() if w == "del"),
+                  f"过期的确实不在了，剩下 {left}", problems)
+            check(sum(1 for n, w in plan.items() if w == "keep" and n in left) == 3,
+                  "未到期（含正好第 30 天）的 3 个都保留 —— 边界是 fd < cutoff，不是 <=", problems)
+            check(undated == 1,
+                  f"无日期文件名退回 mtime 并计数（实得 {undated}）", problems)
+            check(os.path.exists(os.path.join(rp, "手工放的无日期文件.json")),
+                  "mtime=今天的无日期文件不被误删（退回判据生效）", problems)
+            # 反向证明：老的 mtime 判据在同一批文件上**一个都不会删**
+            stale = [f for f in glob.glob(os.path.join(dd, "*.json"))
+                     if os.path.getmtime(f) < stamp - 30 * 86400]
+            check(len(stale) == 0,
+                  "对照：同一批文件按 mtime 判 0 个到期 → 证明原判据恒不触发（这就是那个静默 bug）",
+                  problems)
+        finally:
+            shutil.rmtree(tmpC, ignore_errors=True)
+
+        print("\n[4h/4] 案例库展示衰减（旧高分不再长驻）")
+        base = NOW.date()
+        def _c(score, days):
+            s = (base - datetime.timedelta(days=days)).strftime("%Y-%m-%d")
+            return {"score": score, "firstSeen": s, "lastSeen": s, "title": f"{score}/{days}d"}
+        old94, new82 = _c(9.4, 10), _c(8.2, 0)
+        check(F.CASE_HALF_LIFE == 21, "半衰期常量为 21 天", problems)
+        check(F.case_decay(new82, base) > F.case_decay(old94, base),
+              f"10 天前的 9.4（{F.case_decay(old94, base):.2f}）已沉到今天的 8.2"
+              f"（{F.case_decay(new82, base):.2f}）之下", problems)
+        check(abs(F.case_decay(_c(8.0, 21), base) - 4.0) < 1e-6,
+              "半衰期语义正确：21 天后分数权重正好减半（8.0 → 4.0）", problems)
+        check(F.case_decay({"title": "无分"}, base) is None,
+              "无 score 的记录返回 None → 排序键里落最后（不会冒充 0 分混进中间）", problems)
+        pool = [_c(9.7, 6), _c(9.2, 1), _c(8.4, 0), _c(10.0, 0), {"title": "无分", "lastSeen": ""}]
+        order = sorted(pool, key=lambda c: (1 if F.case_decay(c, base) is not None else 0,
+                                            F.case_decay(c, base) or 0.0,
+                                            c.get("lastSeen") or ""), reverse=True)
+        check(order[-1].get("score") is None, "无分记录排最后", problems)
+        check([c["score"] for c in order[:-1]] == [10.0, 9.2, 8.4, 9.7],
+              f"同日高分优先、跨日按衰减：{[c['score'] for c in order[:-1]]}", problems)
+        # 淘汰判据必须**不受**衰减影响（分数管「留得下什么」，衰减只管「看得见什么」）
+        _src2 = io.open(os.path.join(HERE, "fetch_ai.py"), encoding="utf-8").read()
+        check("def _rank(c):\n                s = c.get(\"score\")" in _src2
+              and "case_decay" in _src2,
+              "淘汰仍按原始 score（_rank 不含衰减），展示衰减只改顺序不改去留", problems)
+
         # ---------- 用例 5：AIHOT 精选接入 ----------
-        print("\n[5/5] AIHOT 精选（影子模式）")
+        print("\n[5/6] AIHOT 精选（正式并入）")
         acfg = {"lane": "hot", "jaccard_min": 0.55,
                 "same_host_hours": 6, "same_host_jaccard": 0.25}
         raw = json.loads(aihot_payload().decode())["items"]
@@ -663,28 +733,36 @@ def main():
               f"复刻真实陷阱：中文 Jaccard {zh_j:.2f} 判得出、英文 {en_j:.2f} 判不出 "
               f"→ 只按英文比会漏（跨语言比对是无效层）", problems)
 
-        # 影子模式：不污染 latest.json，只写诊断文件
+        # 正式并入主路径（影子模式已于 2026-10-17 删除，条目恒进产物）。
         d5 = run(tmp, llm_stub=True)
-        check(all(i["lane"] != "hot" for i in d5["items"]),
-              "shadow_only=true → hot 车道条目**不在** latest.json 里", problems)
-        sp = os.path.join(tmp, "data", "aihot_shadow.json")
-        check(os.path.exists(sp), "影子诊断文件已生成", problems)
-        if os.path.exists(sp):
-            sd = json.load(io.open(sp, encoding="utf-8"))["days"][-1]
-            # 不断言具体条数：fixture 里 openai-news 因 desc 中位数 171 < desc_min 300
-            # 本来就会降级、不进 merged，于是"英文撞车"那条在集成路径里无从命中。
-            # 这里只要求账目自洽 + **精选集内部去重确实发生**（那才是本轮的真实 bug）。
-            check(sd["net"] == sd["fetched"] - sum(sd["dropped"].values()),
-                  f"影子账目自洽 fetched {sd['fetched']} - dropped "
-                  f"{sum(sd['dropped'].values())} = net {sd['net']}", problems)
-            arena = [x for x in sd["items"] if "Arena" in x["title"]]
-            check(len(arena) == 1,
-                  f"精选集内部重复被压成 1 条（实得 {len(arena)}）", problems)
-            check(sd["llm"] is True, "影子记录标了 llm=True（本地有桩模型，分数可信）", problems)
-            check(all(not k.startswith("_") for it in sd["items"] for k in it),
-                  "影子文件里没有内部标记外泄", problems)
+        hot = [i for i in d5["items"] if i["lane"] == "hot"]
+        check(len(hot) >= 1, f"AIHOT 精选条目进了产物（{len(hot)} 条）", problems)
+        # ★ restore 必须在这条路径上生效。原来它只写在影子分支里，关掉开关后
+        #   「表达层用它的」会**静默失效**，日志完全看不出来 —— 这是本轮最贵的一条回归。
+        #   fake_batch 会把 summary 写成「摘要：xxx」，所以 summary 还带着原文即证明没被覆盖。
+        check(all("摘要：" not in (i.get("summary") or "") for i in hot),
+              "表达层没被 LLM 覆盖（summary 仍是 AIHOT 原文）", problems)
+        check(all((i.get("reason") or "").strip() for i in hot),
+              "推荐理由沿用它的编辑成果", problems)
+        check(all(i.get("score") for i in hot),
+              "打分仍来自我们自己的 LLM（排序层没让给别人）", problems)
+        check(all(i.get("attribution", {}).get("name") == "AIHOT" and i.get("aihotUrl")
+                  for i in hot),
+              "每条都带 attribution + 回链（合规要求）", problems)
+        check(all(i.get("titleEn") for i in hot),
+              "英文原题留在 titleEn 里，供次日跨日折叠比对", problems)
+        check(all(not k.startswith("_") for i in hot for k in i),
+              "hot 条目不外泄内部标记", problems)
         check(all(not k.startswith("_aihot") for i in d5["items"] for k in i),
               "产物里不含 _aihot* 内部字段", problems)
+        # 精选集内部去重：fixture 里两条同事件的 Arena 精选，只允许留下分数更高的一条。
+        # （不断言具体条数 —— openai-news 因 desc 中位数 171 < desc_min 300 会降级、
+        #   不进 merged，"英文撞车"那条在集成路径里无从命中。）
+        arena = [i for i in hot if "Arena" in ((i.get("titleCn") or "") + (i.get("title") or ""))]
+        check(len(arena) <= 1,
+              f"精选集内部重复在产物里只剩 {len(arena)} 条（≤1 才算压住）", problems)
+        check(not os.path.exists(os.path.join(tmp, "data", "aihot_shadow.json")),
+              "影子文件不再生成（⑧b 与 write_aihot_shadow 已删除）", problems)
 
         # AIHOT 挂掉 → 记降级，但主流程照常出产物（绝不空窗）
         AIHOT_STUB["mode"] = "fail"
@@ -703,45 +781,9 @@ def main():
         AIHOT_STUB["mode"] = "304"
         d7 = run(tmp, llm_stub=True)
         check(len(d7["items"]) > 0, "304 路径主流程照常", problems)
-        sp7 = os.path.join(tmp, "data", "aihot_shadow.json")
-        if os.path.exists(sp7):
-            sd7 = json.load(io.open(sp7, encoding="utf-8"))["days"][-1]
-            check(sd7["fetched"] == 4,
-                  f"304 时用缓存条目继续判定（fetched={sd7['fetched']}）", problems)
+        check(len([i for i in d7["items"] if i["lane"] == "hot"]) >= 1,
+              "304 时回读缓存继续（hot 条目仍在产物里）", problems)
         AIHOT_STUB["mode"] = "ok"
-
-        # ★ 正式并入路径（shadow_only=false）：验那条边界有没有真的守住。
-        #   fake_batch 会把 summary 写成「摘要：xxx」，所以只要 AIHOT 条目的
-        #   summary 还带着它自己的原文，就证明 restore 在 merged 分支里也生效了。
-        #   这一步原来漏了：restore 只写在影子分支里，一旦关掉开关，
-        #   「表达层用它的」这条边界会**静默失效**，而日志上完全看不出来。
-        AIHOT_STUB["shadow"] = False
-        try:
-            d8 = run(tmp, llm_stub=True)
-            hot = [i for i in d8["items"] if i["lane"] == "hot"]
-            check(len(hot) >= 1, f"关掉影子后 hot 条目进了产物（{len(hot)} 条）", problems)
-            if hot:
-                check(all("摘要：" not in (i.get("summary") or "") for i in hot),
-                      "表达层没被 LLM 覆盖（summary 仍是 AIHOT 原文）", problems)
-                check(all((i.get("reason") or "").strip() for i in hot),
-                      "推荐理由沿用它的编辑成果", problems)
-                check(all(i.get("score") for i in hot),
-                      "打分仍来自我们自己的 LLM（排序层没让给别人）", problems)
-                check(all(i.get("attribution", {}).get("name") == "AIHOT" and
-                          i.get("aihotUrl") for i in hot),
-                      "每条都带 attribution + 回链（合规要求）", problems)
-                check(all(not k.startswith("_") for i in hot for k in i),
-                      "并入路径也不外泄内部标记", problems)
-                check(all(i.get("titleEn") for i in hot) or
-                      all(i.get("title") for i in hot),
-                      "英文原题留在 titleEn 里，供次日跨日折叠比对", problems)
-                rep = os.path.join(tmp, "data", "aihot_shadow.json")
-                check(not os.path.exists(rep) or
-                      all(dd.get("shadow_only") for dd in
-                          json.load(io.open(rep, encoding="utf-8"))["days"]),
-                      "关掉影子后不再写影子文件（或历史条目仍是影子记录）", problems)
-        finally:
-            AIHOT_STUB["shadow"] = True
 
         # ---------- 用例 6：跨天钉住中文标题 ----------
         # 实测线上 135 对同 id、desc 相同的跨天样本，只有 34% 两天译名一致 ——

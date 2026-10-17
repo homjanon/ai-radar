@@ -1192,6 +1192,36 @@ def _keep_case(c, min_total, min_rel):
     return not (isinstance(r, (int, float)) and r < min_rel)
 
 
+# 案例库的展示衰减（2026-10-17）。原来排序键就是 (有没有分, 分数, lastSeen)，分数单调
+# ⇒ 高分条目一旦上榜就**永久长驻**：282 条线上真实数据回放，前 40 名平均年龄 9.0 天、
+# 其中 19 条早于 10-08，最老一条（8.7 分、17 天前）还占着第 9 位。而案例库的用途是
+# 「最近别人做出了什么」，不是「翻旧账」。
+#
+# 半衰期取 21 天的依据（同一份数据回放对比）：前 40 均龄 9.0 → 3.1 天、
+# 10-08 前的 19 条 → 1 条，且高分新条目仍优先（9.2 分第 1 天 > 9.7 分第 6 天）。
+# 更激进的 HN 引力式 score/(age+2)^1.3 会让今天 5.9 分压掉两天前的 9.7 分 ——
+# 等于取消评分，已排除；0.7×分+0.3×新鲜 的双键式改善太弱（均龄仅 9.0 → 6.9 天）。
+CASE_HALF_LIFE = 21
+
+
+def case_decay(c, today):
+    """展示用衰减分 = score × 0.5**(年龄/半衰期)；无 score 的记录返回 None（排最后）。
+
+    ⚠️ 年龄取 lastSeen，但**不要**据此设计「被再次报道就复活」的机制：实测 282 条里
+    272 条（96%）的 lastSeen == firstSeen，案例被跨日重新提及几乎不发生，
+    这个信号在本库里没有燃料。
+    """
+    s = c.get("score")
+    if not isinstance(s, (int, float)):
+        return None
+    seen = (c.get("lastSeen") or c.get("firstSeen") or "")[:10]
+    try:
+        age = (today - datetime.datetime.strptime(seen, "%Y-%m-%d").date()).days
+    except ValueError:
+        age = 0
+    return s * 0.5 ** (max(0, age) / CASE_HALF_LIFE)
+
+
 # 重磅关键词（加分规则，2026-10-08 改）：「我关心的那类事」优先浮上来，但**必须靠分数**
 # 而不是靠特权。
 #
@@ -1619,23 +1649,40 @@ def restore_aihot_expr(items):
     return items
 
 
-def write_aihot_shadow(outdir, day_stat):
-    """影子产物：按日期累积成 days 数组，保留最近 14 天，跑 3 天就有决策数据。"""
-    p = os.path.join(outdir, "data", "aihot_shadow.json")
-    doc = {"updated": "", "days": []}
-    if os.path.exists(p):
-        try:
-            doc = json.load(open(p, encoding="utf-8"))
-        except Exception:
-            doc = {"updated": "", "days": []}
-    if not isinstance(doc.get("days"), list):
-        doc["days"] = []
-    doc["days"] = [d for d in doc["days"] if d.get("date") != day_stat["date"]] + [day_stat]
-    doc["days"] = doc["days"][-14:]
-    doc["updated"] = day_stat.get("generated_at", "")
-    os.makedirs(os.path.dirname(p), exist_ok=True)
-    json.dump(doc, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-    return p
+# --------------------------------------------------------------------------- #
+# 归档清理
+# --------------------------------------------------------------------------- #
+def prune_archives(dirs, keep_days, today):
+    """删掉早于 today-keep_days 的归档。返回 (删除数, 文件名无日期而退回 mtime 的个数)。
+
+    ⚠️ 判据必须是**文件名里的日期**，不能用 mtime —— 实测（2026-10-17 全新克隆验证）：
+       actions/checkout 会把每个文件的 mtime 统一盖成「检出时刻」（git 不保存 mtime），
+       于是 `getmtime(f) < now-30d` 恒为假、workflow 里
+       `find docs/daily -name '*.json' -mtime +30 -delete` 也恒不触发，
+       **两条清理路径一次都没删过任何东西**，归档其实在无限膨胀。
+       项目才跑 19 天（最早产物 09-28），30 天窗口还没到期，所以这个缺陷在线上完全隐形。
+       （另外：之前拿「线上 daily/2026-09-20.json 返回 404」当作清理生效的证据是**误判**——
+        那个文件从来就不存在。别再用 404 证明删除逻辑。）
+       文件名解析不出来时才退回 mtime，保证手工放进目录的文件也兜得住。
+    """
+    cutoff = today - datetime.timedelta(days=keep_days)
+    removed = undated = 0
+    for d in dirs:
+        for f in glob.glob(os.path.join(d, "*.json")):
+            m = re.match(r"^(20\d{2})-?(\d{2})-?(\d{2})", os.path.basename(f))
+            fd = None
+            if m:
+                try:
+                    fd = datetime.date(*(int(g) for g in m.groups()))
+                except ValueError:
+                    fd = None
+            if fd is None:                       # 文件名没日期 → 退回 mtime
+                fd = datetime.datetime.fromtimestamp(os.path.getmtime(f), TZ_CN).date()
+                undated += 1
+            if fd < cutoff:
+                os.remove(f)
+                removed += 1
+    return removed, undated
 
 
 # --------------------------------------------------------------------------- #
@@ -1764,7 +1811,6 @@ def main():
     # ④c AIHOT 精选接入。放在跨源去重**之后**，因为第三层去重要拿 merged 的
     #    域名+时间做比对；放在 LLM 增强之前，这样正式并入时不用改后面的流程。
     acfg = cfg.get("aihot", {}) or {}
-    aihot_items, aihot_stat = [], None
     if acfg.get("enabled", False):
         log("[hot      ] aihot-selected        AIHOT 精选")
         raw, adiag, aerr = fetch_aihot(acfg, a.outdir)
@@ -1790,22 +1836,12 @@ def main():
                 i["_translate_title"] = False     # 它的标题已是中文，别再进翻译链
                 i["_want_type"] = False
             kept, dropped = aihot_dedup(parsed, merged, acfg)
-            shadow = bool(acfg.get("shadow_only", True))
             log(f"  ✅ 拉到 {len(raw)} → 可用 {len(parsed)}（超 {win}h 窗标 stale {n_stale}）→ "
                 f"去重剔 {sum(dropped.values())}（URL {dropped['url']} / 标题 {dropped['title']} / "
-                f"同域同时段 {dropped['host_time']}）→ 净增 {len(kept)}"
-                + ("（影子模式，未并入产物）" if shadow else "（已并入）"))
+                f"同域同时段 {dropped['host_time']}）→ 净增 {len(kept)}（已并入）")
             reports.append({"id": "_aihot", "ok": True, "via": "aihot.news",
                             "n": len(kept), "raw": len(raw), "diag": adiag})
-            if shadow:
-                aihot_items = kept
-                aihot_stat = {"date": now.strftime("%Y-%m-%d"),
-                              "generated_at": now.strftime("%Y-%m-%d %H:%M"),
-                              "shadow_only": True, "fetched": len(raw),
-                              "usable": len(parsed), "dropped": dropped,
-                              "net": len(kept), "wouldBe": {}, "bumped": 0, "items": []}
-            else:
-                merged.extend(kept)
+            merged.extend(kept)
 
     # ④b 读案例库既有记录：入库时按 url 比对，用于跨日累积（命中即更新 lastSeen）。
     cases_cfg = cfg.get("cases", {}) or {}
@@ -1874,8 +1910,8 @@ def main():
     tcfg = cfg.get("translate", {})
     translator, failed_batches = llm_enhance(merged, tcfg)
 
-    # ⑦a′ AIHOT 条目的表达层还原。**必须无条件做一次，不能只在影子分支里做** ——
-    #     正式并入（shadow_only=false）时它们是直接混在 merged 里过 ⑦ 的，
+    # ⑦′ AIHOT 条目的表达层还原。**必须无条件做一次**（原来影子模式下才有这一步）——
+    #     正式并入的条目是直接混在 merged 里过 ⑦ 的，
     #     LLM 会把它们已有的中文标题/摘要/推荐理由一并覆盖掉，
     #     那等于把「表达层用它的、排序层用我们的」这条边界悄悄抹成了"两层都用我们的"，
     #     而这条边界正是这次接入的全部理由。
@@ -1934,57 +1970,6 @@ def main():
         # 实测倒挂持续 10 天没被发现，就是因为没有任何一处会喊出来。
         degraded.append({"id": "_levels", "lane": "-",
                          "reason": "档位倒挂：top 最低分低于 watch 最高分（分级逻辑异常）"})
-
-    # ⑧b AIHOT 影子评估：必须在 assign_levels **之后**，否则拿不到"它会落在哪个档"。
-    #     影子模式的价值不在于"能不能拉到数据"，而在于回答那个真正要拍板的问题：
-    #     并进来之后，它会不会把我们自己判出来的重磅挤掉？
-    #     做法是把 aihot 条目和当日 merged 放进同一个池子重跑一遍分级（用副本，
-    #     绝不污染真实产物），看两边的档位各变成什么。
-    if aihot_items and aihot_stat is not None:
-        _, _af = llm_enhance(aihot_items, tcfg)
-        restore_aihot_expr(aihot_items)          # 表达层还原成它的成果，只留我们的分数
-        # ⚠️ 必须把"这一轮 LLM 到底有没有跑成"记进影子文件。
-        #    本地没配 Secret 时打分全走兜底分（车道基线+新鲜度），算出来的
-        #    「重磅 0 / 关注 7」是**兜底分的分布**，不是我们真实判分的结果，
-        #    拿它做并入决策会得出错误结论。有这个字段，读的人一眼就知道能不能信。
-        aihot_stat["llm"] = bool(aihot_items and
-                                 any(i.get("score") for i in aihot_items))
-        aihot_stat["llmFailedBatches"] = len(_af or [])
-        probe = [dict(x) for x in merged] + [dict(x) for x in aihot_items]
-        for x in probe:
-            x.pop("level", None)
-        assign_levels(probe, tcfg)               # 只改副本的 level/total，真实 merged 不动
-        ours, mine = probe[:len(merged)], probe[len(merged):]
-        dist = {}
-        for m, p in zip(aihot_items, mine):
-            dist[p["level"]] = dist.get(p["level"], 0) + 1
-            aihot_stat["items"].append({
-                "title": (m.get("titleCn") or m.get("title") or "")[:80],
-                "block": m.get("block", ""), "url": m.get("url", ""),
-                "aihotUrl": m.get("aihotUrl", ""),
-                "aihotScore": m.get("aihotScore"), "category": m.get("aihotCategory"),
-                "ageH": m.get("ageH"), "ourTotal": p.get("total"),
-                "ourLevel": p.get("level"), "ourScore": p.get("score"),
-                "kwBoost": bool(p.get("kwBoost")),
-                "reason": (m.get("reason") or "")[:180]})
-        moved = sum(1 for o, orig in zip(ours, merged) if o["level"] != orig.get("level"))
-        lost_top = [(orig.get("titleCn") or orig.get("title") or "")[:40]
-                    for o, orig in zip(ours, merged)
-                    if orig.get("level") == "top" and o["level"] != "top"]
-        aihot_stat["wouldBe"] = dist
-        aihot_stat["bumped"] = moved
-        aihot_stat["lostTop"] = lost_top
-        log(f"🛰 AIHOT 影子：净增 {len(aihot_items)} 条 → 若并入落在 "
-            f"重磅 {dist.get('top', 0)} / 关注 {dist.get('watch', 0)} / 常规 {dist.get('normal', 0)}"
-            f"；现有条目档位被改动 {moved} 条"
-            + (f"，其中跌出重磅：{'、'.join(lost_top[:4])}" if lost_top else ""))
-        if not aihot_stat["llm"]:
-            log("   ⚠️ 本轮 LLM 打分不可用，上面是**兜底分**的分布，不能作为并入依据"
-                "（兜底分只按车道基线+新鲜度算，hot 车道压到 6.4 就是为了让它进不了重磅）")
-        if _af:
-            log(f"   ⚠️ AIHOT 批次有降级：{_af}")
-        sp = write_aihot_shadow(a.outdir, aihot_stat)
-        log(f"   → 影子数据已写入 {os.path.relpath(sp, a.outdir)}（保留最近 14 天）")
 
     # ⑧a 正文翻译（只跑 top，见方案 §5）：必须在 assign_levels 之后 —— 它按 level 选条
     tr_body = translate_bodies(merged, tcfg)
@@ -2151,13 +2136,17 @@ def main():
         n_purge = before - len(by_url)
         if n_purge:
             log(f"🧹 案例库剔除 {n_purge} 条不达标条目（门槛 total≥{min_total} 且 rel≥{min_rel}）")
+        today_d = now.date()
+
         def _show_key(c):
-            # 有分的（过了质量门槛的）在前、按分降序，无分的排最后。
-            # 按 lastSeen 排是不行的 —— 无分老条目的 lastSeen 往往也很新，会一直霸着首屏，
-            # 而案例库的用途是「看别人做出了什么」，不是「翻旧账」。
-            s = c.get("score")
-            return (1 if isinstance(s, (int, float)) else 0,
-                    float(s) if isinstance(s, (int, float)) else 0.0,
+            """展示顺序 = 衰减后的分（见 CASE_HALF_LIFE），无分的排最后、同分新的在前。
+
+            只管「看得见什么」，不管「留得下什么」—— 淘汰仍按纯分数（下方 _rank），
+            两者互补：衰减让旧高分自然沉底，分数淘汰让弱条目先出库。
+            """
+            d = case_decay(c, today_d)
+            return (1 if d is not None else 0,
+                    d if d is not None else 0.0,
                     c.get("lastSeen") or "")
         lib = sorted(by_url.values(), key=_show_key, reverse=True)
         # 整库归一化：换过分类口径后，URL 已失效的老条目不会再被上面的循环碰到，
@@ -2166,7 +2155,7 @@ def main():
         for _c in lib:
             _old = _c.get("type") or ""
             _c["type"] = COARSE_BY_FINE.get(_old, _old)
-        maxn = int(cases_cfg.get("max", 600))
+        maxn = int(cases_cfg.get("max", 300))
         trimmed = 0
         if len(lib) > maxn:
             # 淘汰按质量：分数降序，同分老的先走。展示顺序由 _show_key 决定，
@@ -2196,16 +2185,11 @@ def main():
     if degraded:
         log(f"⚠️ 降级源 {len(degraded)} 个：{', '.join(d['id'] for d in degraded)}")
 
-    # 归档清理
-    cutoff_ts = time.time() - a.keep_days * 86400
-    removed = 0
-    for d in (daily_dir, rep_dir):
-        for f in glob.glob(os.path.join(d, "*.json")):
-            if os.path.getmtime(f) < cutoff_ts:
-                os.remove(f)
-                removed += 1
-    if removed:
-        log(f"🧹 清理 {removed} 个超过 {a.keep_days} 天的归档")
+    # 归档清理（判据与理由见 prune_archives）
+    removed, undated = prune_archives((daily_dir, rep_dir), a.keep_days, now.date())
+    if removed or undated:
+        log(f"🧹 清理 {removed} 个早于 {(now - datetime.timedelta(days=a.keep_days)).date()} 的归档"
+            + (f"（{undated} 个文件名无日期、退回 mtime 判断）" if undated else ""))
 
 
 if __name__ == "__main__":

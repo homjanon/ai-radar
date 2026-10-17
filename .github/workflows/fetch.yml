@@ -49,10 +49,12 @@ jobs:
         run: python scripts/fetch_ai.py --outdir docs
 
       - name: 清理超过 30 天的归档
-        run: |
-          mkdir -p docs/daily docs/data/reports
-          find docs/daily -name '*.json' -mtime +30 -delete
-          find docs/data/reports -name '*.json' -mtime +30 -delete
+        # 这里原来写的是 `find docs/daily -name '*.json' -mtime +30 -delete`，
+        # **实测永不生效**：上一步 actions/checkout 把所有文件的 mtime 盖成检出时刻
+        # （git 不保存 mtime），-mtime +30 一条都匹配不到。清理判据已挪进
+        # fetch_ai.py，改为按**文件名里的日期**判断。
+        # 这一步现在只保留建目录，避免 fetch_ai.py 首次运行目录不存在。
+        run: mkdir -p docs/daily docs/data/reports
 
       - name: 提交发布
         run: |

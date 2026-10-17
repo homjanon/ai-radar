@@ -344,6 +344,40 @@ h1 .hl{color:var(--acc)}
 .it .meta a.ah:hover{background:var(--tint-a);border-color:var(--acc)}
 .it .meta .sta{font-family:var(--mono);color:var(--fg3)}
 
+/* ── 头条卡（2026-10-17 第六轮·甲方案）────────────────────────────────
+   重磅第一条升级为通栏。整页唯一的"视觉重心"只靠**字号阶梯 + 留白 + 一条车道短线**
+   建立，不加底色、不加渐变、不引外部图 —— 这三样是前几轮明确请出去的，不能请回来。
+   为什么用版式而不是真图头图（实测）：今天 15 条重磅里只有 5 条能拿到文章专属配图，
+   量子位和 arXiv 的 og:image 是**站点 logo**（放了比不放更难看），hot 车道那条是 X 的
+   头像；而外链图片我们没有 AIHOT 那种服务端签名代理可以兜底（实测改 sig→403、去 sig→400），
+   纯静态站没有降级手段。"更专业好看"的收益主要在版式，不在那张照片。
+   对照基线（普通卡）：标题 16.5 / 摘要 14.5 / 推荐理由 13.5 / 元信息 12。 */
+.it.lead{padding:22px 24px 20px}
+.it.lead .leadbar{display:block;width:34px;height:2px;border-radius:1px;
+                  background:var(--lane);margin-bottom:13px}
+.it.lead .t1{font-size:29px;line-height:1.28;font-weight:700;letter-spacing:-.012em}
+.it.lead .t1 .en{font-size:13.5px;font-weight:400;margin-top:7px}
+.it.lead .sm{font-size:16px;line-height:1.72;margin-top:11px;color:var(--fg)}
+.it.lead .rz{font-size:14.5px;margin-top:10px}
+.it.lead .meta{font-size:12.5px;margin-top:14px}
+.it.lead .exp{font-size:13px}
+/* 通栏只在 ≥1000px（.list 是 grid 时）有意义；窄屏本来就是单列满宽 */
+@media(min-width:1000px){ .it.lead{grid-column:1/-1} }
+/* 1680px 的整行宽度下给文字一个收口，与普通展开卡同一标准（见 .it.open） */
+.it.lead .t1,.it.lead .sm,.it.lead .rz,.it.lead .meta{max-width:900px}
+/* 头条卡被点开时，吸顶标题的负边距/内边距要跟着 padding 走，否则顶边漏缝 */
+.it.lead.open .t1{margin:-22px -24px 0;padding:22px 24px 12px;font-size:23px}
+@media(max-width:640px){
+  /* 手机端不缩到普通卡以下：22px 与普通卡 16.5px 仍有明显落差。
+     "窄屏缩字号"是上一轮已被实测否掉的做法，这里不再犯。 */
+  .it.lead{padding:17px 15px 15px}
+  .it.lead .leadbar{width:26px;margin-bottom:10px}
+  .it.lead .t1{font-size:22px;letter-spacing:-.008em}
+  .it.lead .sm{font-size:15px;margin-top:9px}
+  .it.lead .rz{font-size:13.5px;margin-top:9px}
+  .it.lead.open .t1{margin:-17px -15px 0;padding:17px 15px 10px;font-size:19px}
+}
+
 /* ── 条目详情（内联展开，不跳页）────────────────────
    原实现把 desc 截到 220 字就没了，全文其实已经在 latest.json 里（上限 2000 字），
    白存着。这里补一个展开入口，读到全文的成本从「点外链、等加载、找正文」降到 0。 */
@@ -635,7 +669,7 @@ function bodyHTML(i, which){
       '<a class="dlink" href="' + attr(i.url || '#') + '" target="_blank" rel="noopener noreferrer">打开原链接 →</a></div>';
 }
 
-function itemHTML(i, idx){
+function itemHTML(i, idx, lead){
   var col = LANE[i.lane] || 'var(--line2)';
   var title = i.titleCn || i.title || '';
   var altEn = (i.titleCn && i.title) ? i.title : '';
@@ -678,7 +712,11 @@ function itemHTML(i, idx){
   var canOpen = hasBody(i);
 
   return '<article class="it ' + esc(i.level || '') + (i.isRepeat ? ' rep' : '') +
+      (lead ? ' lead' : '') +
       '" style="--lane:' + col + '" data-idx="' + idx + '">' +
+    // 头条卡的车道色短线：整页唯一一处车道色装饰，靠"只有一条"建立层级。
+    // 不再加底色/渐变/大图 —— 那三样是前几轮明确删掉的（见"极简风第二轮"注释）。
+    (lead ? '<span class="leadbar" aria-hidden="true"></span>' : '') +
     '<div class="t1"><span style="min-width:0">' +
       '<a href="' + attr(href) + '" target="_blank" rel="noopener noreferrer">' + esc(title) + '</a>' +
       (altEn ? '<span class="en">' + esc(altEn) + '</span>' : '') +
@@ -719,10 +757,12 @@ function renderBrief(){
       esc(l.name) + '<span class="c">' + n + '</span></button>');
   });
 
-  function sec(cls, name, arr, collapsible){
+  function sec(cls, name, arr, collapsible, leadFirst){
     if (!arr.length) return '';
     // 用全局索引（DATA.items 里的下标），展开/收起时靠它回查原对象
-    var body = arr.map(function(i){ return itemHTML(i, items.indexOf(i)); }).join('');
+    var body = arr.map(function(i, k){
+      return itemHTML(i, items.indexOf(i), !!leadFirst && k === 0);
+    }).join('');
     if (!collapsible){
       return '<section class="grp"><div class="h ' + cls + '"><span class="t">' + name +
         '</span><span class="line"></span><span class="cnt">' + arr.length + '</span></div>' +
@@ -737,7 +777,7 @@ function renderBrief(){
     '<div class="term" style="margin-top:14px">' +
       '<div class="bar"><span class="lbl">车道筛选</span>' + chips.join('') + '</div>' +
     '</div>' +
-    sec('h-top', '▲ 重磅', top) +
+    sec('h-top', '▲ 重磅', top, false, true) +
     sec('h-watch', '▸ 值得关注', watch) +
     sec('h-normal', '· 其他条目', normal, true) +
     sec('h-normal', '· 昨日已收录', rep, true) +
