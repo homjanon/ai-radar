@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-18 08:10",
- "count": 219,
+ "updated": "2026-10-19 08:10",
+ "count": 231,
  "types": [
   "Agent 工作流",
   "CLI 工具",
@@ -16,6 +16,20 @@
  ],
  "cases": [
   {
+   "url": "https://www.v2ex.com/t/1249803#reply0",
+   "title": "[开源] SciForge：本地优先的深度学习科研 Agent Harness",
+   "titleEn": "",
+   "summary": "SciForge 是一个本地优先的科研 Agent 框架，集成 24 个 Skill、46 个 Tool 及 7 条 Pipeline，支持文献检索、SSH 实验及论文写作，默认兼容 DeepSeek 接口。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-19",
+   "score": 9.7,
+   "rel": 9,
+   "firstSeen": "2026-10-19"
+  },
+  {
    "url": "https://rabin-a.github.io/mcp-router/#benchmark",
    "title": "Show HN：我在 Claude Code 中基准测试了 6 个 MCP 代理并构建了自己的",
    "titleEn": "Show HN: I benchmarked 6 MCP proxies in Claude Code, then built my own",
@@ -28,6 +42,20 @@
    "score": 10.0,
    "rel": 9,
    "firstSeen": "2026-10-17"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1249844#reply0",
+   "title": "分享一个开源项目 Agent8：让只有 Java 8 的 AIX / HP-UX / Solaris 继续当新版 Jenkins 的 agent",
+   "titleEn": "",
+   "summary": "Agent8 通过将官方 agent.jar 降级为 Java 8 字节码并修复兼容性问题，使 AIX、HP-UX 等老旧 Unix 系统能作为 Jenkins 节点运行，支持完整构建指令。",
+   "type": "CLI 工具",
+   "topic": "开源工具",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-19",
+   "score": 8.8,
+   "rel": 7,
+   "firstSeen": "2026-10-19"
   },
   {
    "url": "https://github.com/vercel-labs/eve-agent-python-template",
@@ -100,6 +128,34 @@
    "firstSeen": "2026-10-14"
   },
   {
+   "url": "https://huggingface.co/spaces/black-forest-labs/flux-3-image-klein",
+   "title": "Spaces 应用：black-forest-labs/flux-3-image-klein",
+   "titleEn": "",
+   "summary": "Black Forest Labs 官方部署的 Flux 3 图像生成模型 Klein 版本在线推理工具，使用 Gradio 技术栈，支持文生图及图生图操作。",
+   "type": "Web 应用",
+   "topic": "模型发布",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-19",
+   "score": 7.8,
+   "rel": 9,
+   "firstSeen": "2026-10-18"
+  },
+  {
+   "url": "https://github.com/finereli/whatsapp-mcp",
+   "title": "基于 Cloudflare 的免费 WhatsApp MCP 服务",
+   "titleEn": "Show HN: WhatsApp MCP running free on Cloudflare",
+   "summary": "开发者构建了运行在 Cloudflare 上的免费 WhatsApp MCP 服务，支持个人账号接入，并关联 Google 账号以获取联系人名称，便于 AI 代理操作。",
+   "type": "Web 应用",
+   "topic": "MCP 生态",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-19",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-10-19"
+  },
+  {
    "url": "https://www.v2ex.com/t/1248837#reply0",
    "title": "基于 pi 以及地图做了一个实体店选址地图",
    "titleEn": "",
@@ -112,6 +168,20 @@
    "score": 8.7,
    "rel": 9,
    "firstSeen": "2026-10-15"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1249807#reply0",
+   "title": "我做了一个背单词的小工具，现在扩展成了记忆知识的框架",
+   "titleEn": "",
+   "summary": "作者开源了一个基于 Flask+SQLite 的记忆卡片工具，其核心机制是与 Anki 不同的列表级调度而非单卡独立调度，支持动态 UI 及 AI 生成新卡组，主打长期低压力学习。",
+   "type": "桌面工具",
+   "topic": "效率工具",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-19",
+   "score": 7.5,
+   "rel": 7,
+   "firstSeen": "2026-10-19"
   },
   {
    "url": "https://primerkit.ai/",
@@ -198,6 +268,20 @@
    "firstSeen": "2026-10-13"
   },
   {
+   "url": "https://www.reddit.com/r/SideProject/comments/1x9gygi/ai_tools_look_impressive_in_demos_how_do_you_know/",
+   "title": "CrashTest AI：通过结构化测试评估 AI 工具可靠性的平台",
+   "titleEn": "AI tools look impressive in demos. How do you know which ones to trust?",
+   "summary": "CrashTest AI 通过模拟真实工作条件对 AI 工具进行结构化测试，收集证据并分析结果，为用户提供基于实证而非演示的信任评估。",
+   "type": "Web 应用",
+   "topic": "AI 评估",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-19",
+   "score": 7.1,
+   "rel": 8,
+   "firstSeen": "2026-10-19"
+  },
+  {
    "url": "https://www.v2ex.com/t/1247724#reply0",
    "title": "[开源]做了个给 AI Agent 玩的三国 SLG，主打让你自己的 AI 替你玩。",
    "titleEn": "",
@@ -240,6 +324,20 @@
    "firstSeen": "2026-10-12"
   },
   {
+   "url": "https://generativespotting.com/",
+   "title": "Gspot：自动检测语言框架的代码检查工具",
+   "titleEn": "Show HN: Gspot, a tool to lint gstack code",
+   "summary": "Gspot 能自动识别仓库中的 JS、TS、Python、Swift 等语言及框架，自动配置 Linter 和 Agent 规则，并支持模板分享。",
+   "type": "CLI 工具",
+   "topic": "工程实践",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-19",
+   "score": 6.9,
+   "rel": 7,
+   "firstSeen": "2026-10-19"
+  },
+  {
    "url": "https://www.v2ex.com/t/1247889#reply0",
    "title": "一张照片生成 Bulin 47 爆款 freestyle 视频：一个跑在 Cloudflare Workers 上的小项目复盘",
    "titleEn": "",
@@ -252,6 +350,48 @@
    "score": 8.6,
    "rel": 8,
    "firstSeen": "2026-10-12"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1x9gfq2/lila_a_windows_voice_assistant_what_job_would/",
+   "title": "Lila：面向 Windows 的本地语音助手，正在征集实际使用场景",
+   "titleEn": "Lila - a Windows voice assistant. What job would make this useful to you?",
+   "summary": "Lila 是一个运行在 Windows 本地的语音助手，能操作用户的应用程序与文件。开发者正在征集用户实际办公痛点以优化功能。",
+   "type": "桌面工具",
+   "topic": "语音助手",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-19",
+   "score": 6.8,
+   "rel": 8,
+   "firstSeen": "2026-10-19"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1249847#reply2",
+   "title": "通过丢几个参考链接，让 grok bot 直接做了个 AI 导航站，大概十几轮对话，做完直接部署。",
+   "titleEn": "",
+   "summary": "作者利用 Grok 机器人通过十几轮对话快速生成并部署了 AI 导航站 meetnewai.com，重点记录了域名选择耗时占 99% 的过程，站点样式借鉴现有设计。",
+   "type": "Web 应用",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-19",
+   "score": 6.8,
+   "rel": 8,
+   "firstSeen": "2026-10-19"
+  },
+  {
+   "url": "https://github.com/hybroai/hybro",
+   "title": "Hybro：开源 AI 智能体互操作引擎",
+   "titleEn": "Show HN: Hybro – an open interoperability engine for AI agents",
+   "summary": "Hybro 是一个开源项目，旨在连接不同的 AI 智能体和框架，让它们能够协同工作，实现跨系统的互操作性。",
+   "type": "其他",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-19",
+   "score": 6.8,
+   "rel": 8,
+   "firstSeen": "2026-10-19"
   },
   {
    "url": "https://github.com/enkiruntime/enki_llm",
@@ -590,20 +730,6 @@
    "firstSeen": "2026-10-18"
   },
   {
-   "url": "https://huggingface.co/spaces/black-forest-labs/flux-3-image-klein",
-   "title": "Spaces 应用：black-forest-labs/flux-3-image-klein",
-   "titleEn": "",
-   "summary": "HuggingFace Space应用，由Black Forest Labs官方发布，基于Gradio技术栈，演示Flux.3系列的Klein图像生成模型。该应用于2026年10月中旬创建，点赞数为94。",
-   "type": "内容生成",
-   "topic": "模型发布",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-18",
-   "score": 6.5,
-   "rel": 8,
-   "firstSeen": "2026-10-18"
-  },
-  {
    "url": "https://www.v2ex.com/t/1249490#reply1",
    "title": "分享一个 Python 音频转文字命令行工具，支持 Whisper 本地转录",
    "titleEn": "",
@@ -630,6 +756,20 @@
    "score": 7.1,
    "rel": 6,
    "firstSeen": "2026-10-15"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1x9fdz1/i_upgraded_almighty_with_ai_and_launcher/",
+   "title": "Almighty：集成 AI 助手与启动器的 macOS 系统增强工具",
+   "titleEn": "I upgraded Almighty with AI and launcher",
+   "summary": "Almighty 新增 AI 助手 Zeus 和启动器功能，支持运行 107 种系统修改技巧，可对接 Apple Intelligence、Ollama 等本地或云端模型。",
+   "type": "桌面工具",
+   "topic": "桌面工具",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-19",
+   "score": 6.2,
+   "rel": 7,
+   "firstSeen": "2026-10-19"
   },
   {
    "url": "https://github.com/triggeredcode/lucid",
@@ -660,6 +800,20 @@
    "firstSeen": "2026-10-14"
   },
   {
+   "url": "https://www.reddit.com/r/SideProject/comments/1x9h1yz/my_side_project_outgrew_my_95_salary/",
+   "title": "OpenTweet：通过 AI Agent 集成实现 MRR 增长的推文排期工具",
+   "titleEn": "My side project outgrew my 9-5 salary",
+   "summary": "开发者分享 OpenTweet 从 3.5k 增长至 4k MRR 历程，通过添加热门 AI Agent 集成及优化 SEO/AEO 页面，抓住 AI 趋势实现增长。",
+   "type": "Web 应用",
+   "topic": "商业案例",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-19",
+   "score": 6.1,
+   "rel": 6,
+   "firstSeen": "2026-10-19"
+  },
+  {
    "url": "https://www.v2ex.com/t/1249184#reply4",
    "title": "花了不到 200 元用 vibe coding 做的 ffee 在线工具小站，大家看看还可以吧",
    "titleEn": "",
@@ -672,6 +826,20 @@
    "score": 6.7,
    "rel": 7,
    "firstSeen": "2026-10-16"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1249820#reply0",
+   "title": "原生 ios 和 macos 斗鱼直播 app",
+   "titleEn": "",
+   "summary": "作者基于 GitHub 项目重构了 Swift 原生的斗鱼直播应用，保留弹幕及 AI 时间轴功能，支持录像查看，代码开源但安装包由用户自行编译。",
+   "type": "移动 App",
+   "topic": "移动开发",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-19",
+   "score": 6.0,
+   "rel": 6,
+   "firstSeen": "2026-10-19"
   },
   {
    "url": "https://www.v2ex.com/t/1247068#reply1",
