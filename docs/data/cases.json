@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-19 08:10",
- "count": 231,
+ "updated": "2026-10-20 08:10",
+ "count": 241,
  "types": [
   "Agent 工作流",
   "CLI 工具",
@@ -44,6 +44,20 @@
    "firstSeen": "2026-10-17"
   },
   {
+   "url": "https://www.reddit.com/r/SideProject/comments/1xaa3io/i_built_vibio_desktop_basically_claude_code_and/",
+   "title": "Vibio Desktop：多 Agent 协同工作的 macOS 应用",
+   "titleEn": "I built Vibio Desktop, basically Claude Code and Codex agents working as a crew (Mac, free early access)",
+   "summary": "Vibio Desktop 是一款 macOS 应用，将 Claude Code 和 Codex 等 AI 编码代理组织为团队（Juno 规划、Rex 审查、Mo 测试），通过看板管理任务流程。支持本地运行，无遥测，目前免费早期访问。",
+   "type": "桌面工具",
+   "topic": "Agent 框架",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-20",
+   "score": 8.7,
+   "rel": 9,
+   "firstSeen": "2026-10-20"
+  },
+  {
    "url": "https://www.v2ex.com/t/1249844#reply0",
    "title": "分享一个开源项目 Agent8：让只有 Java 8 的 AIX / HP-UX / Solaris 继续当新版 Jenkins 的 agent",
    "titleEn": "",
@@ -56,6 +70,48 @@
    "score": 8.8,
    "rel": 7,
    "firstSeen": "2026-10-19"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1250143#reply0",
+   "title": "Jev 做 arXiv 大规模文献检索综述， 5 分钟筛 36,000 篇论文",
+   "titleEn": "",
+   "summary": "Parallax 系统利用 Jev Agent 重构 arXiv 检索管线。采用集合代数替代漏斗结构，支持并差集运算与引用扩增。5 分钟内筛选 3.6 万篇论文，解决通用 Agent 检索噪音大、无法穷举及精筛速度慢的问题。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-20",
+   "score": 8.5,
+   "rel": 9,
+   "firstSeen": "2026-10-20"
+  },
+  {
+   "url": "https://mediationbench.com/",
+   "title": "MediationBench：62 个模拟冲突测试 AI 调解员",
+   "titleEn": "Show HN: MediationBench – testing AI mediators in 62 simulated conflicts",
+   "summary": "Human Assisted Intelligence 发布 MediationBench 基准测试，使用 62 个模拟双主体冲突评估 AI 调解员表现。LLM 扮演冲突双方，被测系统负责调解，由 Sol 等模型评分。早期结果标记为临时，仅供对比。",
+   "type": "Agent 工作流",
+   "topic": "基准测试",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-20",
+   "score": 8.2,
+   "rel": 8,
+   "firstSeen": "2026-10-20"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1250158#reply0",
+   "title": "[开源] 做了个本地 AI 小说写作工具，把伏笔和正文连起来",
+   "titleEn": "",
+   "summary": "「玄印写作」0.1 版开源，本地运行支持 Windows/Mac。通过 AI 整理并关联伏笔与章节原句，支持世界线与叙事线解耦。需自备模型 API，支持导出多格式文档，目前无私有云同步，适合长篇结构化写作管理。",
+   "type": "桌面工具",
+   "topic": "效率工具",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-20",
+   "score": 8.1,
+   "rel": 6,
+   "firstSeen": "2026-10-20"
   },
   {
    "url": "https://github.com/vercel-labs/eve-agent-python-template",
@@ -84,6 +140,20 @@
    "score": 8.4,
    "rel": 8,
    "firstSeen": "2026-10-18"
+  },
+  {
+   "url": "https://github.com/ehnruiz/claude-skills",
+   "title": "Claude Code 技能与钩子：验证修复后测试失效",
+   "titleEn": "Show HN: Claude Code skills and hooks that prove a fix's test fails without it",
+   "summary": "GitHub 仓库发布了一套针对 Claude Code 的技能与钩子（Skills and Hooks），核心功能是自动化验证在移除修复补丁后，相关测试用例确实会失败，从而证明修复的有效性。",
+   "type": "CLI 工具",
+   "topic": "工程实践",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-20",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-10-20"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1x4dci1/i_built_tincan_let_your_coding_agent_talk_to_your/",
@@ -128,18 +198,18 @@
    "firstSeen": "2026-10-14"
   },
   {
-   "url": "https://huggingface.co/spaces/black-forest-labs/flux-3-image-klein",
-   "title": "Spaces 应用：black-forest-labs/flux-3-image-klein",
+   "url": "https://www.v2ex.com/t/1250103#reply1",
+   "title": "做了个群里请客抽麦当劳的小工具，开奖可以自己验算",
    "titleEn": "",
-   "summary": "Black Forest Labs 官方部署的 Flux 3 图像生成模型 Klein 版本在线推理工具，使用 Gradio 技术栈，支持文生图及图生图操作。",
+   "summary": "基于麦当劳 MCP 接口的「麦从天降」工具，实现群内请客抽奖与自动下单。采用 commit-reveal 机制确保开奖可验证，支持金额上限与防重复。发起人通过 Claude Code 触发，参与人免登录，外卖直达。",
    "type": "Web 应用",
-   "topic": "模型发布",
-   "block": "HF Spaces",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
    "src": "apps",
-   "lastSeen": "2026-10-19",
-   "score": 7.8,
-   "rel": 9,
-   "firstSeen": "2026-10-18"
+   "lastSeen": "2026-10-20",
+   "score": 7.5,
+   "rel": 7,
+   "firstSeen": "2026-10-20"
   },
   {
    "url": "https://github.com/finereli/whatsapp-mcp",
@@ -350,6 +420,20 @@
    "score": 8.6,
    "rel": 8,
    "firstSeen": "2026-10-12"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1250164#reply0",
+   "title": "[开源&极重] Kokoro 探针 1.0 版发布，你没用过的博客式探针",
+   "titleEn": "",
+   "summary": "Kokoro 发布 1.0 版本，采用 Hub+Agent 架构。支持面板下发测试展示三网线路，提供点赞留言及「我想买它」交互。内置 AI 辅助主题生成、远程增 SWAP、面板一键迁移功能，部署仅需执行安装脚本，无需编译环境。",
+   "type": "桌面工具",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-20",
+   "score": 6.6,
+   "rel": 5,
+   "firstSeen": "2026-10-20"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1x9gfq2/lila_a_windows_voice_assistant_what_job_would/",
@@ -576,6 +660,34 @@
    "firstSeen": "2026-10-13"
   },
   {
+   "url": "https://barn.ope.cool",
+   "title": "barn.app：macOS 上的 Agent 监控数字流甲板",
+   "titleEn": "Show HN: barn.app – a digital stream deck like agent monitoring tool for macOS",
+   "summary": "barn.app 是一款 macOS 实用工具，模拟 Elgato Stream Deck 的交互体验，用于被动监控 AI Agent 的运行状态。作者旨在提供更便携的 Agent 状态可视化方案，摆脱硬件束缚。",
+   "type": "桌面工具",
+   "topic": "Agent 工具",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-20",
+   "score": 6.3,
+   "rel": 7,
+   "firstSeen": "2026-10-20"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1250127#reply0",
+   "title": "OhMyGame 开源 10 天拿到 936 个 star 的一个小复盘",
+   "titleEn": "",
+   "summary": "团队复盘 AI 游戏工具 OhMyGame 开源初期表现：10 天获 936 Star、113 Fork。主要流量来自 X 平台（占比 54%），GitHub 站内引流有限。项目迭代快，合并 131 个 PR，重点回应简体界面等反馈。",
+   "type": "内容生成",
+   "topic": "开源生态",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-20",
+   "score": 6.3,
+   "rel": 5,
+   "firstSeen": "2026-10-20"
+  },
+  {
    "url": "https://guessthellm.com/",
    "title": "猜LLM：通过回答辨别模型的游戏",
    "titleEn": "Show HN: Guess the LLM – read an answer and guess which model wrote it",
@@ -716,6 +828,20 @@
    "firstSeen": "2026-10-15"
   },
   {
+   "url": "https://sspai.com/post/116705",
+   "title": "派评 | 近期值得关注的 App",
+   "titleEn": "",
+   "summary": "推荐 iOS 输入法「紫毫 Hare」，基于 Rime 引擎与雾凇词库。支持小鹤双拼专属布局、双拼纠错及端侧 6.8MB 长句模型。兼容 Mac 端词库，Pro 版支持 AI 润色与多语翻译，商业化买断制。",
+   "type": "移动 App",
+   "topic": "效率工具",
+   "block": "少数派",
+   "src": "apps",
+   "lastSeen": "2026-10-20",
+   "score": 6.1,
+   "rel": 5,
+   "firstSeen": "2026-10-20"
+  },
+  {
    "url": "https://hardwareos.ai",
    "title": "HardwareOS：将提示词转化为可接线的硬件项目",
    "titleEn": "Show HN: Turn a prompt into a hardware project you can wire up and flash",
@@ -756,6 +882,20 @@
    "score": 7.1,
    "rel": 6,
    "firstSeen": "2026-10-15"
+  },
+  {
+   "url": "https://www.typeui.sh/ui-foundations/configurator",
+   "title": "TypeUI：利用 AI 进行 UI 无障碍性上下文分析",
+   "titleEn": "Show HN: Accessibility Context for UI with AI",
+   "summary": "TypeUI 是一个 Web 工具，提供 AI 驱动的 UI 无障碍性审计与设计检查功能。它支持设计系统生成、UI 提示词优化及音频效果匹配，旨在帮助开发者构建更符合无障碍标准的 AI 生成界面。",
+   "type": "Web 应用",
+   "topic": "UI 生成",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-20",
+   "score": 6.0,
+   "rel": 6,
+   "firstSeen": "2026-10-20"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1x9fdz1/i_upgraded_almighty_with_ai_and_launcher/",
