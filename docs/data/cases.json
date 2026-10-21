@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-20 08:10",
- "count": 241,
+ "updated": "2026-10-21 08:10",
+ "count": 252,
  "types": [
   "Agent 工作流",
   "CLI 工具",
@@ -58,6 +58,20 @@
    "firstSeen": "2026-10-20"
   },
   {
+   "url": "https://www.v2ex.com/t/1250433#reply3",
+   "title": "EdgeEver：全端开源知识库，支持 Cloudflare / Docker 自托管，原生打通 MCP 与 ACP 联动",
+   "titleEn": "",
+   "summary": "开源知识库 EdgeEver 支持 macOS/Windows 等全端客户端，基于 Cloudflare 或 Docker 部署，集成 MCP/ACP 协议，获 2.3k Star。",
+   "type": "其他",
+   "topic": "开源项目",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-21",
+   "score": 8.4,
+   "rel": 8,
+   "firstSeen": "2026-10-21"
+  },
+  {
    "url": "https://www.v2ex.com/t/1249844#reply0",
    "title": "分享一个开源项目 Agent8：让只有 Java 8 的 AIX / HP-UX / Solaris 继续当新版 Jenkins 的 agent",
    "titleEn": "",
@@ -84,6 +98,34 @@
    "score": 8.5,
    "rel": 9,
    "firstSeen": "2026-10-20"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1xb6vce/open_source_penx_12_security_scanners_local_ai/",
+   "title": "PenX：集成12种扫描器与本地AI的Windows安全侦察工具",
+   "titleEn": "[Open Source] PenX – 12 Security Scanners, Local AI Analysis & Automated Pentest Reports in One WindIows CL",
+   "summary": "PenX是一个开源Windows安全工具，整合Nmap、Nuclei等12种扫描器，支持通过Ollama等接入本地AI进行CVE研究与报告生成，提供扫描历史对比与自动化HTML/PDF报告导出。",
+   "type": "CLI 工具",
+   "topic": "Agent应用",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-21",
+   "score": 8.2,
+   "rel": 7,
+   "firstSeen": "2026-10-21"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1250474#reply3",
+   "title": "[开源] 不想再为小达人点读笔装 30GB 虚拟机，借助 Codex 搓了个 Mac 客户端",
+   "titleEn": "",
+   "summary": "非程序员借助 Codex 开发开源 Mac 应用「点读伙伴」，支持小达人点读笔 DAB 包安装与管理，无需 Windows 虚拟机，适配 M 系列芯片。",
+   "type": "桌面工具",
+   "topic": "工具开发",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-21",
+   "score": 8.2,
+   "rel": 7,
+   "firstSeen": "2026-10-21"
   },
   {
    "url": "https://mediationbench.com/",
@@ -128,6 +170,20 @@
    "firstSeen": "2026-10-16"
   },
   {
+   "url": "https://github.com/XAGI-Lab/melra",
+   "title": "Melra：暂停模糊MCP写操作以防止盲目重试",
+   "titleEn": "Show HN: Melra – pause ambiguous MCP writes instead of blindly retrying",
+   "summary": "Melra是一个alpha阶段的本地运行时工具，旨在拦截MCP（模型上下文协议）中的模糊写操作，通过暂停和人工审批机制防止AI智能体在执行破坏性操作时盲目重试，支持命令白名单。",
+   "type": "CLI 工具",
+   "topic": "Agent框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-21",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-10-21"
+  },
+  {
    "url": "https://vstorm-co.github.io/vstormos-landing/",
    "title": "Vstorm AgenticOS：企业级开源 AI Agent 平台",
    "titleEn": "Show HN: Put AI to work across your company",
@@ -140,6 +196,20 @@
    "score": 8.4,
    "rel": 8,
    "firstSeen": "2026-10-18"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1250462#reply0",
+   "title": "[分享创造] 做了个图片转可编辑 PPTX 的服务，拿 62 张真实图做了回归",
+   "titleEn": "",
+   "summary": "基于 Agent 循环实现图片元素重建为原生 PPTX，支持文字、形状独立编辑。62 张测试图中 60 张成功，文字召回率≥0.95，单张耗时20-40分钟。",
+   "type": "Web 应用",
+   "topic": "效率工具",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-21",
+   "score": 7.5,
+   "rel": 7,
+   "firstSeen": "2026-10-21"
   },
   {
    "url": "https://github.com/ehnruiz/claude-skills",
@@ -168,6 +238,20 @@
    "score": 9.7,
    "rel": 9,
    "firstSeen": "2026-10-13"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1250448#reply0",
+   "title": "做了个不用写提示词、会学习喜好的本地 AI 生图应用",
+   "titleEn": "",
+   "summary": "开源本地生图工具 Pictide，基于 Danbooru 词库自动组合提示词，通过用户点赞/点踩反馈学习偏好，支持固定元素，数据本地存储。",
+   "type": "其他",
+   "topic": "模型与推理",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-21",
+   "score": 7.4,
+   "rel": 8,
+   "firstSeen": "2026-10-21"
   },
   {
    "url": "https://github.com/FramY2/ctxwise",
@@ -380,6 +464,20 @@
    "firstSeen": "2026-10-18"
   },
   {
+   "url": "https://www.v2ex.com/t/1250428#reply0",
+   "title": "[开源了一个小工具] AI 回答写好了，怎么发到聊天框？我做了一个开源工具 md2chat",
+   "titleEn": "",
+   "summary": "开源工具 md2chat 将 Markdown 中的表格、公式转为图片，文字保留可编辑，适配微信、钉钉等平台，支持快捷键及整段转图片分享。",
+   "type": "其他",
+   "topic": "效率工具",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-21",
+   "score": 6.5,
+   "rel": 6,
+   "firstSeen": "2026-10-21"
+  },
+  {
    "url": "https://www.v2ex.com/t/1247918#reply0",
    "title": "[开源自荐] 小喷 1.1.0： Mac 菜单栏语音伙伴，支持 ChatGPT 订阅和本机 Ollama",
    "titleEn": "",
@@ -562,6 +660,34 @@
    "firstSeen": "2026-10-15"
   },
   {
+   "url": "https://www.v2ex.com/t/1250465#reply1",
+   "title": "做了个双人 AI 跳舞小项目：本人四肢不协调，但照片可以先出道",
+   "titleEn": "",
+   "summary": "开发者发布 A20 AI 项目，支持输入两张照片生成双人舞蹈视频，提供全身或换脸模式，目前前端已上线，视频生成后端接入中。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-21",
+   "score": 6.3,
+   "rel": 7,
+   "firstSeen": "2026-10-21"
+  },
+  {
+   "url": "https://sspai.com/post/116430",
+   "title": "在 iPhone 上用 Rime：我为什么做了「紫毫」输入法",
+   "titleEn": "",
+   "summary": "基于 Rime 引擎的 iOS 输入法紫毫，内置雾凇拼音及本地纠错模型，支持自定义方案导入与 iCloud 同步，打字数据本地处理，无广告。",
+   "type": "移动 App",
+   "topic": "移动工具",
+   "block": "少数派",
+   "src": "apps",
+   "lastSeen": "2026-10-21",
+   "score": 6.3,
+   "rel": 5,
+   "firstSeen": "2026-10-21"
+  },
+  {
    "url": "https://www.reddit.com/r/SideProject/comments/1x4g9c2/i_rebuilt_a_mac_app_i_released_11_years_ago_this/",
    "title": "重建并开源 11 年前 Mac 应用 Kitty Launcher",
    "titleEn": "I rebuilt a Mac app I released 11 years ago. This time, I’m giving it away.",
@@ -644,6 +770,34 @@
    "score": 8.4,
    "rel": 8,
    "firstSeen": "2026-10-12"
+  },
+  {
+   "url": "https://paceorpause.com/",
+   "title": "节奏或暂停：探索公众对AI发展立场的地图",
+   "titleEn": "Show HN: Pace or Pause – Explore where people stand on AI development",
+   "summary": "该网站汇编了哲学家、AI研究者及政治人物对AI发展节奏的立场，将其分为“停止”与“暂停”两派，提供在线测试与详细档案，直观展示知名人士在AI治理议题上的具体观点分布。",
+   "type": "Web 应用",
+   "topic": "行业观点",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-21",
+   "score": 6.2,
+   "rel": 6,
+   "firstSeen": "2026-10-21"
+  },
+  {
+   "url": "https://huggingface.co/spaces/black-forest-labs/flux-3-image-klein",
+   "title": "Spaces 应用：black-forest-labs/flux-3-image-klein",
+   "titleEn": "",
+   "summary": "Black Forest Labs 官方发布的 Flux-3 图像模型（Klein 版本）在 Hugging Face 上的演示空间，点赞 134。",
+   "type": "其他",
+   "topic": "模型与推理",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-21",
+   "score": 6.2,
+   "rel": 8,
+   "firstSeen": "2026-10-21"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1x4epqb/made_a_little_project_that_lets_you_watch_how_a/",
