@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-21 08:10",
- "count": 252,
+ "updated": "2026-10-22 08:10",
+ "count": 260,
  "types": [
   "Agent 工作流",
   "CLI 工具",
@@ -15,6 +15,34 @@
   "移动 App"
  ],
  "cases": [
+  {
+   "url": "https://www.v2ex.com/t/1250769#reply1",
+   "title": "[开源] 从生图到骨骼动画全自动：用 Blender 合成数据微调 DINOv2，把视频动作还原到非人形 3D 模型上",
+   "titleEn": "",
+   "summary": "开源项目实现从 OpenAI 生图到 Tripo3D 建模、TokenRig 绑骨的全自动流程。通过 Blender 合成 3000 样本微调 DINOv2 提取关节，将 MiniMax 视频动作映射至 3D 模型。",
+   "type": "模型与推理",
+   "topic": "模型与推理",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-22",
+   "score": 9.4,
+   "rel": 9,
+   "firstSeen": "2026-10-22"
+  },
+  {
+   "url": "https://github.com/rladr-org/reviewer-agent",
+   "title": "ReviewerAgent 与 StopContinue：针对 Claude Code 与 Codex 的多智能体纠错系统",
+   "titleEn": "Show HN: ReviewerAgent and StopContinue, for CC and Codex with Pi",
+   "summary": "这套开源方案包含两个核心组件：ReviewerAgent 在代码提交前拦截并交由另一模型进行审查以拦截 Bug；StopContinue 则监控编码 Agent 的非正常停止或盲目提问并自动触发继续。该系统已在 Claude Code 和 Codex 开发流中经过数月日常验证。",
+   "type": "CLI 工具",
+   "topic": "Agent 工作流",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-22",
+   "score": 8.8,
+   "rel": 9,
+   "firstSeen": "2026-10-22"
+  },
   {
    "url": "https://www.v2ex.com/t/1249803#reply0",
    "title": "[开源] SciForge：本地优先的深度学习科研 Agent Harness",
@@ -42,6 +70,20 @@
    "score": 10.0,
    "rel": 9,
    "firstSeen": "2026-10-17"
+  },
+  {
+   "url": "https://embodsi.com/",
+   "title": "Embodsi - 浏览器中的大模型驱动多端3D社交世界",
+   "titleEn": "Show HN: Embodsi – Embodied Super Intelligence",
+   "summary": "Embodsi 是一个运行在浏览器中的生成式 AI 大型多人在线（MMO）体验。用户可通过文本、音频、Avatar 表情与大模型协作，在递归平铺的互联空间中实时构建 3D 场景、游戏及具备持久记忆的虚拟角色。",
+   "type": "Web 应用",
+   "topic": "Agent 工作流",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-22",
+   "score": 8.4,
+   "rel": 9,
+   "firstSeen": "2026-10-22"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1xaa3io/i_built_vibio_desktop_basically_claude_code_and/",
@@ -128,6 +170,20 @@
    "firstSeen": "2026-10-21"
   },
   {
+   "url": "https://www.reddit.com/r/SideProject/comments/1xc348y/were_building_ai_agents_that_run_a_solo_businesss/",
+   "title": "Braind - 面向微型企业的 AI 后台代理",
+   "titleEn": "We’re building AI agents that run a solo business’s back office, but nothing goes out without your OK. Looking for honest feedback on the idea + page",
+   "summary": "Braind 构建了一套专为一人公司和小企业设计的 AI 代理系统，用于处理发票、催收、记账和行政管理。核心采用“审批优先”设计，所有草拟的邮件和账单在发送前必须经由用户确认。",
+   "type": "Web 应用",
+   "topic": "Agent 工作流",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-22",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-10-22"
+  },
+  {
    "url": "https://mediationbench.com/",
    "title": "MediationBench：62 个模拟冲突测试 AI 调解员",
    "titleEn": "Show HN: MediationBench – testing AI mediators in 62 simulated conflicts",
@@ -168,6 +224,20 @@
    "score": 9.2,
    "rel": 9,
    "firstSeen": "2026-10-16"
+  },
+  {
+   "url": "https://sspai.com/post/116445",
+   "title": "App+1｜Vitals：什么在拖慢你的 Mac？它比「活动监视器」更直观易用",
+   "titleEn": "",
+   "summary": "macOS 系统监控应用 Vitals，将进程归类至 App 层级，直观展示 CPU、内存、GPU 占用。提供菜单栏监控及 MCP 服务，支持 AI 助手分析系统状态。",
+   "type": "桌面工具",
+   "topic": "Agent 框架",
+   "block": "少数派",
+   "src": "apps",
+   "lastSeen": "2026-10-22",
+   "score": 7.5,
+   "rel": 8,
+   "firstSeen": "2026-10-22"
   },
   {
    "url": "https://github.com/XAGI-Lab/melra",
@@ -394,6 +464,20 @@
    "firstSeen": "2026-10-16"
   },
   {
+   "url": "https://www.v2ex.com/t/1250762#reply1",
+   "title": "RUST+ GPUI 海量图片管理",
+   "titleEn": "",
+   "summary": "基于 Rust 和 GPUI 开发的本地图片管理工具，支持 50w 图片流畅浏览。集成本地大模型实现语义搜索、人脸识别及文字识别，支持 API 生图功能。",
+   "type": "桌面工具",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-22",
+   "score": 6.6,
+   "rel": 6,
+   "firstSeen": "2026-10-22"
+  },
+  {
    "url": "https://www.v2ex.com/t/1249433#reply0",
    "title": "做了个有点偏门的小网站，用两张照片生成丧尸情侣重逢视频",
    "titleEn": "",
@@ -406,6 +490,34 @@
    "score": 7.7,
    "rel": 8,
    "firstSeen": "2026-10-17"
+  },
+  {
+   "url": "https://huggingface.co/spaces/black-forest-labs/flux-3-image-klein",
+   "title": "Spaces 应用：black-forest-labs/flux-3-image-klein",
+   "titleEn": "",
+   "summary": "Black Forest Labs 在 Hugging Face 发布的 Flux.3 Image Klein 演示应用。基于 Gradio 技术栈，创建于一周前，点赞 166。",
+   "type": "模型与推理",
+   "topic": "模型发布",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-22",
+   "score": 6.5,
+   "rel": 8,
+   "firstSeen": "2026-10-21"
+  },
+  {
+   "url": "https://huggingface.co/spaces/OpenMOSS-Team/MOSS-Image",
+   "title": "Spaces 应用：OpenMOSS-Team/MOSS-Image",
+   "titleEn": "",
+   "summary": "OpenMOSS 团队在 Hugging Face 发布的图像模型演示应用。基于 Gradio 技术栈，创建于 10 月 14 日，点赞 124。",
+   "type": "模型与推理",
+   "topic": "模型发布",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-22",
+   "score": 6.5,
+   "rel": 8,
+   "firstSeen": "2026-10-22"
   },
   {
    "url": "https://github.com/andrewfader/blokkily",
@@ -772,6 +884,20 @@
    "firstSeen": "2026-10-12"
   },
   {
+   "url": "https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein",
+   "title": "Spaces 应用：AST-1320/Qwen-2511-Plus-Flux.2-klein",
+   "titleEn": "",
+   "summary": "集成 Qwen 2511 Plus 与 Flux.2 Klein 的 Hugging Face 演示应用。基于 Gradio 技术栈，创建于 9 月 19 日，点赞 194。",
+   "type": "模型与推理",
+   "topic": "模型与推理",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-22",
+   "score": 6.0,
+   "rel": 8,
+   "firstSeen": "2026-10-22"
+  },
+  {
    "url": "https://paceorpause.com/",
    "title": "节奏或暂停：探索公众对AI发展立场的地图",
    "titleEn": "Show HN: Pace or Pause – Explore where people stand on AI development",
@@ -783,20 +909,6 @@
    "lastSeen": "2026-10-21",
    "score": 6.2,
    "rel": 6,
-   "firstSeen": "2026-10-21"
-  },
-  {
-   "url": "https://huggingface.co/spaces/black-forest-labs/flux-3-image-klein",
-   "title": "Spaces 应用：black-forest-labs/flux-3-image-klein",
-   "titleEn": "",
-   "summary": "Black Forest Labs 官方发布的 Flux-3 图像模型（Klein 版本）在 Hugging Face 上的演示空间，点赞 134。",
-   "type": "其他",
-   "topic": "模型与推理",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-21",
-   "score": 6.2,
-   "rel": 8,
    "firstSeen": "2026-10-21"
   },
   {
