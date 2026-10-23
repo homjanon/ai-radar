@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-22 08:10",
+ "updated": "2026-10-23 08:10",
  "count": 260,
  "types": [
   "Agent 工作流",
@@ -15,6 +15,20 @@
   "移动 App"
  ],
  "cases": [
+  {
+   "url": "https://github.com/Coverage-Cat/consumer-agent-testing-tool",
+   "title": "CATT：测试 Agent 互操作性的开源工具",
+   "titleEn": "Show HN: CATT 0.2.1: Test agents/services against a Muse/Instinct-alike, in CI",
+   "summary": "CATT 是一个开源 CI 工具，用于测试服务与类 Muse/Instinct 的 Agent 的交互。通过模拟代理记录工具调用与状态变化，支持无 LLM 或带 LLM 的确定性回归测试，解决 Agent 状态难复现痛点。",
+   "type": "CLI 工具",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-23",
+   "score": 9.4,
+   "rel": 9,
+   "firstSeen": "2026-10-23"
+  },
   {
    "url": "https://www.v2ex.com/t/1250769#reply1",
    "title": "[开源] 从生图到骨骼动画全自动：用 Blender 合成数据微调 DINOv2，把视频动作还原到非人形 3D 模型上",
@@ -226,20 +240,6 @@
    "firstSeen": "2026-10-16"
   },
   {
-   "url": "https://sspai.com/post/116445",
-   "title": "App+1｜Vitals：什么在拖慢你的 Mac？它比「活动监视器」更直观易用",
-   "titleEn": "",
-   "summary": "macOS 系统监控应用 Vitals，将进程归类至 App 层级，直观展示 CPU、内存、GPU 占用。提供菜单栏监控及 MCP 服务，支持 AI 助手分析系统状态。",
-   "type": "桌面工具",
-   "topic": "Agent 框架",
-   "block": "少数派",
-   "src": "apps",
-   "lastSeen": "2026-10-22",
-   "score": 7.5,
-   "rel": 8,
-   "firstSeen": "2026-10-22"
-  },
-  {
    "url": "https://github.com/XAGI-Lab/melra",
    "title": "Melra：暂停模糊MCP写操作以防止盲目重试",
    "titleEn": "Show HN: Melra – pause ambiguous MCP writes instead of blindly retrying",
@@ -252,6 +252,20 @@
    "score": 7.7,
    "rel": 8,
    "firstSeen": "2026-10-21"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1251087#reply0",
+   "title": "Rim：一个非稳定类 git 版本管理工具",
+   "titleEn": "",
+   "summary": "项目 Rim 推出介于 Git 与 Agent 间的轻量版本管理中间层，基于“非稳定代码”理念，以节点和分叉为核心追溯版本，支持多 AI 并行方案对比与一键剪枝，旨在减少低价值 Commit，目前处于 Alpha 测试阶段。",
+   "type": "CLI 工具",
+   "topic": "工具开源",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-23",
+   "score": 7.2,
+   "rel": 8,
+   "firstSeen": "2026-10-23"
   },
   {
    "url": "https://vstorm-co.github.io/vstormos-landing/",
@@ -464,6 +478,20 @@
    "firstSeen": "2026-10-16"
   },
   {
+   "url": "https://www.v2ex.com/t/1251052#reply0",
+   "title": "做了近 10 年合租车主，我开源了自己的订阅账本 Calends",
+   "titleEn": "",
+   "summary": "开源工具 Calends 针对订阅合租场景提供账本管理，支持跨区涨价记录与代付追踪，集成 MCP 接口允许 AI 助手（如 Grok）自动解析邮箱邮件更新订阅，提供 AI 创建、查询与维护功能。",
+   "type": "其他",
+   "topic": "开源项目",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-23",
+   "score": 6.5,
+   "rel": 7,
+   "firstSeen": "2026-10-23"
+  },
+  {
    "url": "https://www.v2ex.com/t/1250762#reply1",
    "title": "RUST+ GPUI 海量图片管理",
    "titleEn": "",
@@ -492,34 +520,6 @@
    "firstSeen": "2026-10-17"
   },
   {
-   "url": "https://huggingface.co/spaces/black-forest-labs/flux-3-image-klein",
-   "title": "Spaces 应用：black-forest-labs/flux-3-image-klein",
-   "titleEn": "",
-   "summary": "Black Forest Labs 在 Hugging Face 发布的 Flux.3 Image Klein 演示应用。基于 Gradio 技术栈，创建于一周前，点赞 166。",
-   "type": "模型与推理",
-   "topic": "模型发布",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-22",
-   "score": 6.5,
-   "rel": 8,
-   "firstSeen": "2026-10-21"
-  },
-  {
-   "url": "https://huggingface.co/spaces/OpenMOSS-Team/MOSS-Image",
-   "title": "Spaces 应用：OpenMOSS-Team/MOSS-Image",
-   "titleEn": "",
-   "summary": "OpenMOSS 团队在 Hugging Face 发布的图像模型演示应用。基于 Gradio 技术栈，创建于 10 月 14 日，点赞 124。",
-   "type": "模型与推理",
-   "topic": "模型发布",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-22",
-   "score": 6.5,
-   "rel": 8,
-   "firstSeen": "2026-10-22"
-  },
-  {
    "url": "https://github.com/andrewfader/blokkily",
    "title": "Blokkily：支持 MCP 的图案优先实验性数字音频工作站",
    "titleEn": "Show HN: An experimental pattern-first DAW that supports MCP",
@@ -546,6 +546,20 @@
    "score": 7.1,
    "rel": 8,
    "firstSeen": "2026-10-19"
+  },
+  {
+   "url": "https://github.com/crasmarum/CNet",
+   "title": "CNet：纯 C++/CUDA 复值神经网络框架",
+   "titleEn": "Show HN: CNET – Complex-valued neural networks from scratch in C++/CUDA",
+   "summary": "CNet 是一个从零实现的复值神经网络库，使用 C++ 和 CUDA 编写。支持复数张量运算，无高级框架依赖，旨在底层实现复数域下的深度学习模型训练与推理。",
+   "type": "模型与推理",
+   "topic": "模型与推理",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-23",
+   "score": 6.2,
+   "rel": 7,
+   "firstSeen": "2026-10-23"
   },
   {
    "url": "https://www.v2ex.com/t/1247724#reply0",
@@ -882,20 +896,6 @@
    "score": 8.4,
    "rel": 8,
    "firstSeen": "2026-10-12"
-  },
-  {
-   "url": "https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein",
-   "title": "Spaces 应用：AST-1320/Qwen-2511-Plus-Flux.2-klein",
-   "titleEn": "",
-   "summary": "集成 Qwen 2511 Plus 与 Flux.2 Klein 的 Hugging Face 演示应用。基于 Gradio 技术栈，创建于 9 月 19 日，点赞 194。",
-   "type": "模型与推理",
-   "topic": "模型与推理",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-22",
-   "score": 6.0,
-   "rel": 8,
-   "firstSeen": "2026-10-22"
   },
   {
    "url": "https://paceorpause.com/",
