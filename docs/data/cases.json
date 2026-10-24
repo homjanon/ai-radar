@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-23 08:10",
- "count": 260,
+ "updated": "2026-10-24 08:10",
+ "count": 272,
  "types": [
   "Agent 工作流",
   "CLI 工具",
@@ -72,6 +72,20 @@
    "firstSeen": "2026-10-19"
   },
   {
+   "url": "https://github.com/Arthur031221/Token-Beggar",
+   "title": "Token Beggar：自动路由子任务至低成本模型的编排工具",
+   "titleEn": "Show HN: Token Beggar, route coding agent subtasks to cheaper models",
+   "summary": "开源工具Token Beggar分析编码Agent子任务，自动路由至能完成该任务的最低成本模型，在保持答案质量的同时显著降低API账单。",
+   "type": "CLI 工具",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-24",
+   "score": 8.0,
+   "rel": 8,
+   "firstSeen": "2026-10-24"
+  },
+  {
    "url": "https://rabin-a.github.io/mcp-router/#benchmark",
    "title": "Show HN：我在 Claude Code 中基准测试了 6 个 MCP 代理并构建了自己的",
    "titleEn": "Show HN: I benchmarked 6 MCP proxies in Claude Code, then built my own",
@@ -126,6 +140,34 @@
    "score": 8.4,
    "rel": 8,
    "firstSeen": "2026-10-21"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1251396#reply0",
+   "title": "自己用 AI 写代码写到肉疼，干脆做了一个多模型网关 + 网页聊天，聊聊踩过的坑",
+   "titleEn": "",
+   "summary": "自研多模型网关 Apixo，单 Key 调用 DeepSeek、Claude 等模型，兼容 OpenAI/Anthropic 格式，提供网页聊天，解决多平台 Key 管理痛点，支持低价计费。",
+   "type": "其他",
+   "topic": "模型与推理",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-24",
+   "score": 7.5,
+   "rel": 7,
+   "firstSeen": "2026-10-24"
+  },
+  {
+   "url": "https://www.forensicdbg.com/post/forensicdbg-s-ai-crash-debugging-gauntlet",
+   "title": "ForensicDbg：针对AI调试工作流的崩溃转储评估基准",
+   "titleEn": "Show HN: AI Crash Debugging Gauntlet",
+   "summary": "ForensicDbg团队构建了崩溃转储评估基准（Gauntlet），用于验证其改进后的核心在AI辅助调试场景下的有效性，提供原始测试数据供参考。",
+   "type": "其他",
+   "topic": "论文方法",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-24",
+   "score": 7.5,
+   "rel": 8,
+   "firstSeen": "2026-10-24"
   },
   {
    "url": "https://www.v2ex.com/t/1249844#reply0",
@@ -240,6 +282,20 @@
    "firstSeen": "2026-10-16"
   },
   {
+   "url": "https://github.com/Arthur031221/AiSniff",
+   "title": "AiSniff：基于规则识别AI写作模式的文本分析工具",
+   "titleEn": "Show HN: AiSniff, underline the phrases in a text that read like AI wrote them",
+   "summary": "工具AiSniff通过JSON规则库识别中英文AI写作模式，提供Web/CLI/Agent技能接口，不依赖大模型调用，能标记特征短语并建议改写。",
+   "type": "CLI 工具",
+   "topic": "内容生成",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-24",
+   "score": 7.0,
+   "rel": 7,
+   "firstSeen": "2026-10-24"
+  },
+  {
    "url": "https://github.com/XAGI-Lab/melra",
    "title": "Melra：暂停模糊MCP写操作以防止盲目重试",
    "titleEn": "Show HN: Melra – pause ambiguous MCP writes instead of blindly retrying",
@@ -280,6 +336,34 @@
    "score": 8.4,
    "rel": 8,
    "firstSeen": "2026-10-18"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1251380#reply1",
+   "title": "[分享创造] 我做了个图片转可编辑 PPT 的工具，聊聊三类图的实际结果",
+   "titleEn": "",
+   "summary": "开源工具 img2ppt 将图片转可编辑 PPT，实测文字流程图效果稳定但耗时 20-40 分钟，照片类仅支持区域替换，超大图处理不稳定，提供在线版供免费试用。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-24",
+   "score": 6.8,
+   "rel": 6,
+   "firstSeen": "2026-10-24"
+  },
+  {
+   "url": "https://huggingface.co/spaces/black-forest-labs/flux-3-image-klein",
+   "title": "Spaces 应用：black-forest-labs/flux-3-image-klein",
+   "titleEn": "",
+   "summary": "Black Forest Labs 官方发布的 Flux.3 图像生成模型演示，采用 Gradio 界面，2026 年 10 月创建，获赞 197，可在线体验新模型。",
+   "type": "Web 应用",
+   "topic": "模型发布",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-24",
+   "score": 6.8,
+   "rel": 8,
+   "firstSeen": "2026-10-24"
   },
   {
    "url": "https://www.v2ex.com/t/1250462#reply0",
@@ -336,6 +420,20 @@
    "score": 7.4,
    "rel": 8,
    "firstSeen": "2026-10-21"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1xdsnrq/narrative_deck_an_ai_agent_skill_that_builds/",
+   "title": "Narrative Deck：生成交互式滚动叙事演示的AI Agent技能",
+   "titleEn": "Narrative Deck - An AI agent skill that builds interactive scrollytelling presentations in plain web technologies",
+   "summary": "Narrative Deck是AI编码Agent技能，基于故事框架与编辑效果生成零依赖的HTML/CSS/JS滚动叙事页面，支持静态托管与响应式设计。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-24",
+   "score": 6.7,
+   "rel": 7,
+   "firstSeen": "2026-10-24"
   },
   {
    "url": "https://github.com/FramY2/ctxwise",
@@ -492,6 +590,34 @@
    "firstSeen": "2026-10-23"
   },
   {
+   "url": "https://www.v2ex.com/t/1251364#reply1",
+   "title": "最近 WorkBuddy 一直比较火，发现可以帮上自己的大忙",
+   "titleEn": "",
+   "summary": "利用 WorkBuddy 实现公众号全自动发文，因 IP 白名单限制开发 MCP 服务转发素材，成功盘活 20 多个闲置公众号账号，实现定时生成与一键发布。",
+   "type": "其他",
+   "topic": "Agent 工作流",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-24",
+   "score": 6.2,
+   "rel": 6,
+   "firstSeen": "2026-10-24"
+  },
+  {
+   "url": "https://gasfree.app/",
+   "title": "Gasfree.app：浏览器端合成器机架与节点编辑器",
+   "titleEn": "Show HN: Gasfree.app a Rack of Synthetizers in the Browser",
+   "summary": "开发者利用Web Audio API和Claude协助，在浏览器中复刻Moog等经典合成器，支持节点式自定义合成及MIDI，代码已开源至GitHub。",
+   "type": "Web 应用",
+   "topic": "Agent 工作流",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-24",
+   "score": 6.2,
+   "rel": 6,
+   "firstSeen": "2026-10-24"
+  },
+  {
    "url": "https://www.v2ex.com/t/1250762#reply1",
    "title": "RUST+ GPUI 海量图片管理",
    "titleEn": "",
@@ -546,6 +672,48 @@
    "score": 7.1,
    "rel": 8,
    "firstSeen": "2026-10-19"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1xdp7qb/i_built_crawlwise_to_understand_how_google_and_ai/",
+   "title": "Crawlwise：解析AI搜索引擎对网站抓取情况的SEO平台",
+   "titleEn": "I built Crawlwise to understand how Google and AI search engines see my website",
+   "summary": "Crawlwise检测网站对Google及ChatGPT/Perplexity等AI爬虫的可访问性，提供优先行动建议，帮助优化传统及AI搜索双重曝光度。",
+   "type": "Web 应用",
+   "topic": "工程实践",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-24",
+   "score": 6.0,
+   "rel": 6,
+   "firstSeen": "2026-10-24"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1251401#reply1",
+   "title": "超好玩，我把 GitHub 变成了可探索的星球游戏！我的星球超好看，那你的星球长啥样呢？",
+   "titleEn": "",
+   "summary": "基于 Three.js 和 GitHub 数据生成 3D 星球游戏，将项目、语言及私有库转化为岛屿、树木和海洋，用户可匿名或授权创建专属可视化星球并探索。",
+   "type": "Web 应用",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-24",
+   "score": 6.0,
+   "rel": 5,
+   "firstSeen": "2026-10-24"
+  },
+  {
+   "url": "https://huggingface.co/spaces/OpenMOSS-Team/MOSS-Image",
+   "title": "Spaces 应用：OpenMOSS-Team/MOSS-Image",
+   "titleEn": "",
+   "summary": "OpenMOSS 团队开发的图像生成模型 Demo，基于 Gradio 技术栈，2026 年 10 月创建，获赞 149，支持在线图像生成与编辑。",
+   "type": "Web 应用",
+   "topic": "开源权重",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-24",
+   "score": 6.0,
+   "rel": 7,
+   "firstSeen": "2026-10-24"
   },
   {
    "url": "https://github.com/crasmarum/CNet",
