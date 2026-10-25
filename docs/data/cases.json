@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-24 08:10",
- "count": 272,
+ "updated": "2026-10-25 08:10",
+ "count": 281,
  "types": [
   "Agent 工作流",
   "CLI 工具",
@@ -42,6 +42,34 @@
    "score": 9.4,
    "rel": 9,
    "firstSeen": "2026-10-22"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1251562#reply0",
+   "title": "deepseek-web-retrieval：可靠的 DeepSeek Search&Fetch API 的 Coding Agent 集成",
+   "titleEn": "",
+   "summary": "该项目为 Coding Agent 提供了 DeepSeek Search&Fetch API 的官方工程集成。它支持四个主流 AI 宿主，通过自研接入层处理域名过滤、正文钳制及瞬态失败重试，确保搜索数据能安全进入模型上下文。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-25",
+   "score": 8.4,
+   "rel": 9,
+   "firstSeen": "2026-10-25"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1251556#reply1",
+   "title": "两天上线第一个出海 AI 工具站（英文 AI 同人生成器），记录一下过程和踩的坑",
+   "titleEn": "",
+   "summary": "开发者在 48 小时内上线了一个面向海外市场的 AI 同人小说生成器。基于 Next.js 与 Claude Code 开发，采用 OpenAI 兼容网关，并详细记录了支付防刷、内容安全分级及 SEO 配置等踩坑经验。",
+   "type": "Web 应用",
+   "topic": "行业应用",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-25",
+   "score": 8.0,
+   "rel": 8,
+   "firstSeen": "2026-10-25"
   },
   {
    "url": "https://github.com/rladr-org/reviewer-agent",
@@ -112,6 +140,20 @@
    "score": 8.4,
    "rel": 9,
    "firstSeen": "2026-10-22"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1xemwml/im_building_my_own_coding_agent_by_combining_the/",
+   "title": "Kelpie Code：整合多工具优势的个人编码 Agent",
+   "titleEn": "I'm building my own coding agent by combining the best ideas I've found in other tools",
+   "summary": "开发者构建编码 Agent Kelpie Code，基于 Pi Agent 并深度集成 Jev 决策模型。利用 Jev 实现近即时上下文压缩和工具路由以降低 Token 消耗，支持语音模式，重点探索生成式 UI（Generative UI）以改变交互方式。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-25",
+   "score": 7.5,
+   "rel": 8,
+   "firstSeen": "2026-10-25"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1xaa3io/i_built_vibio_desktop_basically_claude_code_and/",
@@ -198,6 +240,34 @@
    "firstSeen": "2026-10-20"
   },
   {
+   "url": "https://github.com/vid-t/whatsapp-bridge",
+   "title": "WhatsApp Bridge：VPS 自托管的 WhatsApp 数据桥接",
+   "titleEn": "Show HN: WhatsApp Bridge for those with their own VPS",
+   "summary": "开源项目 WhatsApp Bridge 基于 whats-meow 构建，允许用户在 VPS 上保存并访问原始 WhatsApp 数据。支持通过 MCP 协议让 AI 助手（如 Claude）以只读方式查询聊天历史，数据存储加密且仅限用户选定的聊天。",
+   "type": "其他",
+   "topic": "工程实践",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-25",
+   "score": 7.2,
+   "rel": 7,
+   "firstSeen": "2026-10-25"
+  },
+  {
+   "url": "https://perchfocus.com/",
+   "title": "Perch：用于管理 Claude Code 会话的 Mac 应用",
+   "titleEn": "Show HN: Perch, a calm Mac app for juggling Claude Code sessions",
+   "summary": "Mac 应用 Perch 专为管理 Claude Code 设计，支持并行运行多个会话并将工作分为不同“上下文”。按“轮到谁”（用户、审阅者、AI）分组仪表盘，提供通知，非工程师可用聊天视图，数据本地存储无账号，旨在辅助 AI 开发心流。",
+   "type": "桌面工具",
+   "topic": "效率工具",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-25",
+   "score": 7.2,
+   "rel": 8,
+   "firstSeen": "2026-10-25"
+  },
+  {
    "url": "https://www.reddit.com/r/SideProject/comments/1xb6vce/open_source_penx_12_security_scanners_local_ai/",
    "title": "PenX：集成12种扫描器与本地AI的Windows安全侦察工具",
    "titleEn": "[Open Source] PenX – 12 Security Scanners, Local AI Analysis & Automated Pentest Reports in One WindIows CL",
@@ -254,6 +324,34 @@
    "firstSeen": "2026-10-20"
   },
   {
+   "url": "https://deepsearch.ing/",
+   "title": "DeepSearch：基于 DeepSeek API 的自托管搜索引擎",
+   "titleEn": "Show HN: DeepSearch – Search engine built on DeepSeek API",
+   "summary": "开源项目 DeepSearch 基于 DeepSeek 搜索 API 构建网页搜索引擎，支持时间、语言及精确匹配等高级操作符。用户仅需配置本地凭据即可使用，支持 Switch 到 Ask 模式获取生成式回答。项目已开源供自托管，开发者建议下一步构建本地记忆客户端。",
+   "type": "Web 应用",
+   "topic": "开源项目",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-25",
+   "score": 6.9,
+   "rel": 7,
+   "firstSeen": "2026-10-25"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1251588#reply0",
+   "title": "分享一个用 Rust 写的开源 2D CAD： CADCraft",
+   "titleEn": "",
+   "summary": "CADCraft 是一款基于 Rust 开发的开源 2D CAD 工具，支持多平台运行及 DWG/DXF 格式。其特色在于提供 MCP、JSON 控制和无头 CLI 接口，允许 AI Agent 直接创建图纸、检查实体并渲染截图。",
+   "type": "桌面工具",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-25",
+   "score": 6.9,
+   "rel": 8,
+   "firstSeen": "2026-10-25"
+  },
+  {
    "url": "https://www.v2ex.com/t/1250158#reply0",
    "title": "[开源] 做了个本地 AI 小说写作工具，把伏笔和正文连起来",
    "titleEn": "",
@@ -280,6 +378,20 @@
    "score": 9.2,
    "rel": 9,
    "firstSeen": "2026-10-16"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1251575#reply0",
+   "title": "用 380 行 Python 给公司做了个离线知识库（带出处、带权限）",
+   "titleEn": "",
+   "summary": "开发者用 380 行 Python 实现了一个零依赖的离线知识库，支持 Markdown 导入及权限控制。系统采用 BM25 加 TF-IDF 双路召回，回答默认抽取式，确保不编造内容并附带原文出处。",
+   "type": "数据分析",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-25",
+   "score": 6.8,
+   "rel": 7,
+   "firstSeen": "2026-10-25"
   },
   {
    "url": "https://github.com/Arthur031221/AiSniff",
@@ -324,6 +436,20 @@
    "firstSeen": "2026-10-23"
   },
   {
+   "url": "https://www.reddit.com/r/SideProject/comments/1xenall/i_built_three_free_browser_tools_for_checking/",
+   "title": "三款免费在线工具校验 AI 生成的建筑图纸与模型",
+   "titleEn": "I built three free browser tools for checking AI-generated drawings, models, and permit packages. No signup, files stay in your browser.",
+   "summary": "开发者发布三款浏览器端免费工具：BIM Validate 校验 IFC 模型，Permit Validate 对照 12 个佛州辖区检查许可包，Revision Compare 对比 PDF 差异。所有文件本地处理无需注册，旨在填补 AI 快速生成内容后的审查缺口。",
+   "type": "Web 应用",
+   "topic": "工程实践",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-25",
+   "score": 6.7,
+   "rel": 5,
+   "firstSeen": "2026-10-25"
+  },
+  {
    "url": "https://vstorm-co.github.io/vstormos-landing/",
    "title": "Vstorm AgenticOS：企业级开源 AI Agent 平台",
    "titleEn": "Show HN: Put AI to work across your company",
@@ -338,6 +464,20 @@
    "firstSeen": "2026-10-18"
   },
   {
+   "url": "https://kat-assessment.com/",
+   "title": "客户端自适应认知测试，通过微犹豫识别 AI 作弊",
+   "titleEn": "Show HN: A client-side adaptive cognitive test measuring micro-hesitations",
+   "summary": "行为科学家开发客户端认知自适应引擎（CAT），通过测量“切换成本”和“错误后减速”等生物特征识别认知状态。利用毫秒级响应时间动态调整题目，旨在比传统静态测试更难被 LLM 或机器人作弊，已构建 JS/SVG 原型。",
+   "type": "Web 应用",
+   "topic": "论文方法",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-25",
+   "score": 6.6,
+   "rel": 6,
+   "firstSeen": "2026-10-25"
+  },
+  {
    "url": "https://www.v2ex.com/t/1251380#reply1",
    "title": "[分享创造] 我做了个图片转可编辑 PPT 的工具，聊聊三类图的实际结果",
    "titleEn": "",
@@ -349,20 +489,6 @@
    "lastSeen": "2026-10-24",
    "score": 6.8,
    "rel": 6,
-   "firstSeen": "2026-10-24"
-  },
-  {
-   "url": "https://huggingface.co/spaces/black-forest-labs/flux-3-image-klein",
-   "title": "Spaces 应用：black-forest-labs/flux-3-image-klein",
-   "titleEn": "",
-   "summary": "Black Forest Labs 官方发布的 Flux.3 图像生成模型演示，采用 Gradio 界面，2026 年 10 月创建，获赞 197，可在线体验新模型。",
-   "type": "Web 应用",
-   "topic": "模型发布",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-24",
-   "score": 6.8,
-   "rel": 8,
    "firstSeen": "2026-10-24"
   },
   {
