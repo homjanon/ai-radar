@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-25 08:10",
- "count": 281,
+ "updated": "2026-10-26 08:10",
+ "count": 297,
  "types": [
   "Agent 工作流",
   "CLI 工具",
@@ -15,6 +15,20 @@
   "移动 App"
  ],
  "cases": [
+  {
+   "url": "https://www.v2ex.com/t/1251717#reply3",
+   "title": "ESP32 + 基于网页的 Harness，全自动操作 iPhone 点外卖",
+   "titleEn": "",
+   "summary": "开源项目 iphone-agent-harness 结合网页端 Agent 与 ESP32 蓝牙硬件，无需手机安装 App 即可驱动多模态模型自动操作 iOS 设备。",
+   "type": "CLI 工具",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-26",
+   "score": 8.8,
+   "rel": 9,
+   "firstSeen": "2026-10-26"
+  },
   {
    "url": "https://github.com/Coverage-Cat/consumer-agent-testing-tool",
    "title": "CATT：测试 Agent 互操作性的开源工具",
@@ -56,6 +70,34 @@
    "score": 8.4,
    "rel": 9,
    "firstSeen": "2026-10-25"
+  },
+  {
+   "url": "https://huggingface.co/spaces/nvidia/simready-central",
+   "title": "Spaces 应用：nvidia/simready-central",
+   "titleEn": "",
+   "summary": "英伟达在 Hugging Face Spaces 发布了基于 Docker 容器的 simready-central 仿真平台应用，获得 105 个点赞。",
+   "type": "Web 应用",
+   "topic": "模型与推理",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-26",
+   "score": 7.8,
+   "rel": 9,
+   "firstSeen": "2026-10-26"
+  },
+  {
+   "url": "https://huggingface.co/spaces/black-forest-labs/flux-3-image-klein",
+   "title": "Spaces 应用：black-forest-labs/flux-3-image-klein",
+   "titleEn": "",
+   "summary": "Black Forest Labs 在 Hugging Face Spaces 推出了 flux-3-image-klein 图像生成应用，基于 Gradio 框架构建并获得 219 个点赞。",
+   "type": "Web 应用",
+   "topic": "模型与推理",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-26",
+   "score": 7.8,
+   "rel": 9,
+   "firstSeen": "2026-10-26"
   },
   {
    "url": "https://www.v2ex.com/t/1251556#reply1",
@@ -128,6 +170,20 @@
    "firstSeen": "2026-10-17"
   },
   {
+   "url": "https://www.v2ex.com/t/1251722#reply0",
+   "title": "做了一个 AI 图片创作工作台，想听听大家的使用反馈",
+   "titleEn": "",
+   "summary": "开发者推出一款名为 seedream55ai 的 AI 图片创作网站，围绕商品图、海报及人像写真等场景整合提示词与生成入口，采用按账户积分计费模式。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-26",
+   "score": 7.4,
+   "rel": 8,
+   "firstSeen": "2026-10-26"
+  },
+  {
    "url": "https://embodsi.com/",
    "title": "Embodsi - 浏览器中的大模型驱动多端3D社交世界",
    "titleEn": "Show HN: Embodsi – Embodied Super Intelligence",
@@ -182,6 +238,76 @@
    "score": 8.4,
    "rel": 8,
    "firstSeen": "2026-10-21"
+  },
+  {
+   "url": "https://machinefabric.com/quickrust/",
+   "title": "QuickRust：取代 cargo 以加速 Rust 构建并集中管理缓存",
+   "titleEn": "Show HN: QuickRust replaces cargo, sets up sccache, centralizes build cache",
+   "summary": "QuickRust 是一个 cargo 替代工具，通过集中式缓存、并行前端和早期截断策略加速 Rust 构建。它自动管理磁盘空间，记录构建时间与空间消耗，且无需额外配置即可提升编译效率。",
+   "type": "CLI 工具",
+   "topic": "开发工具",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-26",
+   "score": 7.1,
+   "rel": 6,
+   "firstSeen": "2026-10-26"
+  },
+  {
+   "url": "https://huggingface.co/spaces/glitchlab/MiniMax-H3-Turbo-Lora-UNCENSORED-Workflow",
+   "title": "Spaces 应用：glitchlab/MiniMax-H3-Turbo-Lora-UNCENSORED-Workflow",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces 上线了基于 Gradio 构建的 MiniMax-H3-Turbo-Lora-UNCENSORED 工作流应用，获得了 365 个点赞。",
+   "type": "Web 应用",
+   "topic": "模型与推理",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-26",
+   "score": 7.1,
+   "rel": 8,
+   "firstSeen": "2026-10-26"
+  },
+  {
+   "url": "https://huggingface.co/spaces/kulkas2pintu/wan777",
+   "title": "Spaces 应用：kulkas2pintu/wan777",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces 上线了基于 Gradio 的 wan777 应用，在社区获得 954 个高点赞量。",
+   "type": "Web 应用",
+   "topic": "模型与推理",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-26",
+   "score": 7.1,
+   "rel": 8,
+   "firstSeen": "2026-10-26"
+  },
+  {
+   "url": "https://huggingface.co/spaces/fishpasters/uncensored-imageTOimage2Ref",
+   "title": "Spaces 应用：fishpasters/uncensored-imageTOimage2Ref",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces 推出了基于 Gradio 的 uncensored-imageTOimage2Ref 图像转换与参考应用，累计获得 226 个点赞。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-26",
+   "score": 7.1,
+   "rel": 8,
+   "firstSeen": "2026-10-26"
+  },
+  {
+   "url": "https://huggingface.co/spaces/hugging-apps/bfs-best-face-swap",
+   "title": "Spaces 应用：hugging-apps/bfs-best-face-swap",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces 收录了 bfs-best-face-swap 人脸替换应用，基于 Gradio 构建并收获了 514 个社区点赞。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-26",
+   "score": 7.1,
+   "rel": 8,
+   "firstSeen": "2026-10-26"
   },
   {
    "url": "https://www.v2ex.com/t/1251396#reply0",
@@ -294,6 +420,34 @@
    "score": 8.2,
    "rel": 7,
    "firstSeen": "2026-10-21"
+  },
+  {
+   "url": "https://huggingface.co/coolcoder613/omnivoice-latin-lora-1",
+   "title": "Show HN: 基于微调 OmniVoice 的古拉丁语 TTS",
+   "titleEn": "Show HN: Classical Latin TTS",
+   "summary": "开发者微调了 OmniVoice 模型以实现古拉丁语的恢复古典发音。该方案是目前最成功的拉丁语 TTS 尝试之一，已在 Hugging Face Spaces 上提供演示，展示了语音合成在低资源语言上的应用效果。",
+   "type": "模型与推理",
+   "topic": "语音模型",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-26",
+   "score": 6.9,
+   "rel": 7,
+   "firstSeen": "2026-10-26"
+  },
+  {
+   "url": "https://github.com/trevorah/simdown",
+   "title": "Simdown：利用 SIMD 指令加速 Markdown 解析至 1GB/s",
+   "titleEn": "Show HN: simdown – use SIMD to parse Markdown at ~1 GB/s",
+   "summary": "Simdown 是一个 Go 语言编写的 Markdown 解析器，利用 ARM64 (NEON) 的 SIMD 指令将解析速度提升至约 1GB/s。在回退路径下仍比 cmark 和 goldmark 快，其设计参考了 SIMD JSON 解析论文。",
+   "type": "CLI 工具",
+   "topic": "性能优化",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-26",
+   "score": 6.9,
+   "rel": 5,
+   "firstSeen": "2026-10-26"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1xc348y/were_building_ai_agents_that_run_a_solo_businesss/",
@@ -436,6 +590,20 @@
    "firstSeen": "2026-10-23"
   },
   {
+   "url": "https://www.v2ex.com/t/1251690#reply2",
+   "title": "vibe 做了个小网站，追踪 Github 热点仓库的",
+   "titleEn": "",
+   "summary": "开发者制作了开源项目追踪网站 OpenPulse，支持按语言与 Topic 筛选 GitHub 近期高 Star 增长仓库，并提供中小规模活跃项目的发掘页面。",
+   "type": "Web 应用",
+   "topic": "开源权重",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-26",
+   "score": 6.5,
+   "rel": 6,
+   "firstSeen": "2026-10-26"
+  },
+  {
    "url": "https://www.reddit.com/r/SideProject/comments/1xenall/i_built_three_free_browser_tools_for_checking/",
    "title": "三款免费在线工具校验 AI 生成的建筑图纸与模型",
    "titleEn": "I built three free browser tools for checking AI-generated drawings, models, and permit packages. No signup, files stay in your browser.",
@@ -576,6 +744,20 @@
    "firstSeen": "2026-10-17"
   },
   {
+   "url": "https://www.reddit.com/r/SideProject/comments/1xfgutx/home_inventory_app_that_names_what_you_shoot_down/",
+   "title": "家庭库存应用：自动识别品牌并追踪物品存放位置",
+   "titleEn": "Home inventory app that names what you shoot down to the brand, then tells you which box it's in",
+   "summary": "这款库存应用通过拍照自动识别物品品牌并生成描述，记录物品所在的盒子位置。支持通过自然语言搜索查找物品，提供免费广告版或通过输入 AI Key 解锁付费功能，简化家庭物品管理。",
+   "type": "移动 App",
+   "topic": "AI 应用",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-26",
+   "score": 6.2,
+   "rel": 6,
+   "firstSeen": "2026-10-26"
+  },
+  {
    "url": "https://www.v2ex.com/t/1248533#reply0",
    "title": "[开源] PicMake：纯前端的 GPT Image 2.5 生图工作台， Key 和图片只存在你的浏览器里",
    "titleEn": "",
@@ -630,6 +812,48 @@
    "score": 8.7,
    "rel": 9,
    "firstSeen": "2026-10-15"
+  },
+  {
+   "url": "https://github.com/elbee19/glitchrupt",
+   "title": "Glitchrupt：AI Agent 需要关注时使桌面产生故障效果",
+   "titleEn": "Show HN: Glitchrupt: Glitch your desktop when your AI agent needs your attention",
+   "summary": "开发者制作了一个桌面特效工具 Glitchrupt，当 AI Agent 请求用户注意时，屏幕会呈现类似《蜘蛛侠：平行宇宙》的故障艺术（Glitch）效果。这是一种新型的人机交互通知机制。",
+   "type": "桌面工具",
+   "topic": "Agent 交互",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-26",
+   "score": 6.0,
+   "rel": 7,
+   "firstSeen": "2026-10-26"
+  },
+  {
+   "url": "https://opensparta.com/en",
+   "title": "Show HN：在 Telegram 上自动寻找客户的 AI Agent",
+   "titleEn": "Show HN: I built an AI agent to find customers on Telegram while I sleep",
+   "summary": "OpenSparta 展示了一个 AI Agent 项目，旨在自动化地在 Telegram 平台上寻找潜在客户。该项目利用 AI 监控和交互能力，协助开发者或服务提供者在睡眠期间持续获客。",
+   "type": "Agent 工作流",
+   "topic": "Agent 营销",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-26",
+   "score": 6.0,
+   "rel": 7,
+   "firstSeen": "2026-10-26"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1251735#reply0",
+   "title": "分享个简单的小工具：把 Mac 通知转发到 iPhone 上",
+   "titleEn": "",
+   "summary": "开发者因 iPhone 上的 Telegram 收不到推送，制作了一款将 Mac 通知转发到 iPhone 的小工具，结合 Bark 实现按 App 和关键词的简单过滤。",
+   "type": "Web 应用",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-26",
+   "score": 6.0,
+   "rel": 5,
+   "firstSeen": "2026-10-26"
   },
   {
    "url": "https://www.v2ex.com/t/1249807#reply0",
