@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-26 08:10",
- "count": 297,
+ "updated": "2026-10-27 08:10",
+ "count": 300,
  "types": [
   "Agent 工作流",
   "CLI 工具",
@@ -16,6 +16,34 @@
  ],
  "cases": [
   {
+   "url": "https://www.v2ex.com/t/1252038#reply2",
+   "title": "开源了一个 MCP 治理网关： Jev 判 0.94、d3 判 0.70，两个判官说不同的话时怎么办",
+   "titleEn": "",
+   "summary": "Rust 编写的 MCP 执法网关，解决多模型决策分歧问题。通过 r2r_decide 门控对 Agent 工具调用进行 ALLOW/DENY 判断，全程审计至 EventStore。实测 Jev 与 d3 模型置信度差异，证明治理层可使模型分歧安全化，支持零 API Key 复现。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-27",
+   "score": 10.0,
+   "rel": 9,
+   "firstSeen": "2026-10-27"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1252080#reply0",
+   "title": "开源了 QuireKit：在浏览器里真正分页的文档编辑器框架（Canvas 排版 + ProseMirror 语义， DOCX 往返）",
+   "titleEn": "",
+   "summary": "QuireKit 是一款开源文档编辑器框架，采用 ProseMirror 语义与 Canvas/SVG 视图层分离架构。支持分页、表格跨页及 DOCX 往返，提供 125 个 npm 包，核心引擎 MIT 开源，Word 组件商业授权，现处 alpha 阶段。",
+   "type": "Web 应用",
+   "topic": "开源框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-27",
+   "score": 9.2,
+   "rel": 8,
+   "firstSeen": "2026-10-27"
+  },
+  {
    "url": "https://www.v2ex.com/t/1251717#reply3",
    "title": "ESP32 + 基于网页的 Harness，全自动操作 iPhone 点外卖",
    "titleEn": "",
@@ -30,6 +58,20 @@
    "firstSeen": "2026-10-26"
   },
   {
+   "url": "https://www.reddit.com/r/SideProject/comments/1xgcuwt/i_got_tired_of_broken_merges_when_running_claude/",
+   "title": "Fanout：并行代码合并工具",
+   "titleEn": "I got tired of broken merges when running Claude Code and Codex in parallel, so I built an open-source tool",
+   "summary": "开源工具 Fanout 旨在解决并行运行多个 AI 编码代理时的合并冲突，通过检测任务重叠并在合并前对分支进行集成测试，将故障反馈给代理修正。",
+   "type": "CLI 工具",
+   "topic": "Agent 框架",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-27",
+   "score": 8.5,
+   "rel": 7,
+   "firstSeen": "2026-10-27"
+  },
+  {
    "url": "https://github.com/Coverage-Cat/consumer-agent-testing-tool",
    "title": "CATT：测试 Agent 互操作性的开源工具",
    "titleEn": "Show HN: CATT 0.2.1: Test agents/services against a Muse/Instinct-alike, in CI",
@@ -42,6 +84,20 @@
    "score": 9.4,
    "rel": 9,
    "firstSeen": "2026-10-23"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1xgc6g6/a_shared_brain_for_your_team_and_your_coding/",
+   "title": "Cairn 团队知识微服务",
+   "titleEn": "A shared brain for your team and your coding agents: decisions and gotchas with sources, so nobody guesses",
+   "summary": "Cairn 是一个支持 MCP 协议的共享“大脑”，允许用户和编码代理检索团队决策及陷阱，并强制引用信息来源，确保知识不丢失。",
+   "type": "其他",
+   "topic": "Agent 框架",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-27",
+   "score": 8.0,
+   "rel": 8,
+   "firstSeen": "2026-10-27"
   },
   {
    "url": "https://www.v2ex.com/t/1250769#reply1",
@@ -70,20 +126,6 @@
    "score": 8.4,
    "rel": 9,
    "firstSeen": "2026-10-25"
-  },
-  {
-   "url": "https://huggingface.co/spaces/nvidia/simready-central",
-   "title": "Spaces 应用：nvidia/simready-central",
-   "titleEn": "",
-   "summary": "英伟达在 Hugging Face Spaces 发布了基于 Docker 容器的 simready-central 仿真平台应用，获得 105 个点赞。",
-   "type": "Web 应用",
-   "topic": "模型与推理",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-26",
-   "score": 7.8,
-   "rel": 9,
-   "firstSeen": "2026-10-26"
   },
   {
    "url": "https://huggingface.co/spaces/black-forest-labs/flux-3-image-klein",
@@ -212,6 +254,20 @@
    "firstSeen": "2026-10-25"
   },
   {
+   "url": "https://github.com/VenoM9078/gradientdeck-skill",
+   "title": "GradientDeck：设计技能插件",
+   "titleEn": "Show HN: GradientDeck – a design skill for coding agents",
+   "summary": "GradientDeck 是一个 MIT 协议的开源设计技能包，通过预定义的设计规范，解决 AI 生成网页千篇一律（如紫色渐变）的问题。",
+   "type": "其他",
+   "topic": "工程实践",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-27",
+   "score": 7.0,
+   "rel": 7,
+   "firstSeen": "2026-10-27"
+  },
+  {
    "url": "https://www.reddit.com/r/SideProject/comments/1xaa3io/i_built_vibio_desktop_basically_claude_code_and/",
    "title": "Vibio Desktop：多 Agent 协同工作的 macOS 应用",
    "titleEn": "I built Vibio Desktop, basically Claude Code and Codex agents working as a crew (Mac, free early access)",
@@ -224,6 +280,20 @@
    "score": 8.7,
    "rel": 9,
    "firstSeen": "2026-10-20"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1252045#reply1",
+   "title": "支持 vim 风格操作的 V2EX 阅读页",
+   "titleEn": "",
+   "summary": "基于 AI Vibe Coding 开发的 V2EX 论坛轻量阅读页，支持 Vim 键位浏览、AI 总结及屏蔽功能。全栈由 DeepSeek-v4.1-flash 在 5 小时内生成，后端使用 Go，前端迭代耗时较长，项目开源且附完整会话记录。",
+   "type": "Web 应用",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-27",
+   "score": 6.9,
+   "rel": 7,
+   "firstSeen": "2026-10-27"
   },
   {
    "url": "https://www.v2ex.com/t/1250433#reply3",
@@ -254,60 +324,18 @@
    "firstSeen": "2026-10-26"
   },
   {
-   "url": "https://huggingface.co/spaces/glitchlab/MiniMax-H3-Turbo-Lora-UNCENSORED-Workflow",
-   "title": "Spaces 应用：glitchlab/MiniMax-H3-Turbo-Lora-UNCENSORED-Workflow",
+   "url": "https://sspai.com/post/114741",
+   "title": "60 元打造你的 vibe coding 神器：小米蓝牙遥控器 2 pro",
    "titleEn": "",
-   "summary": "Hugging Face Spaces 上线了基于 Gradio 构建的 MiniMax-H3-Turbo-Lora-UNCENSORED 工作流应用，获得了 365 个点赞。",
-   "type": "Web 应用",
-   "topic": "模型与推理",
-   "block": "HF Spaces",
+   "summary": "利用小米电视蓝牙语音遥控器 2 Pro（约 60 元）作为 AI 编程手持控制器。实现 Push-to-Talk 语音输入 Prompt，通过方向键切换终端 Tab 及 Workspace，OK 键确认，返回键中断。支持 macOS 和 Windows，免键鼠操作。",
+   "type": "其他",
+   "topic": "工程实践",
+   "block": "少数派",
    "src": "apps",
-   "lastSeen": "2026-10-26",
-   "score": 7.1,
-   "rel": 8,
-   "firstSeen": "2026-10-26"
-  },
-  {
-   "url": "https://huggingface.co/spaces/kulkas2pintu/wan777",
-   "title": "Spaces 应用：kulkas2pintu/wan777",
-   "titleEn": "",
-   "summary": "Hugging Face Spaces 上线了基于 Gradio 的 wan777 应用，在社区获得 954 个高点赞量。",
-   "type": "Web 应用",
-   "topic": "模型与推理",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-26",
-   "score": 7.1,
-   "rel": 8,
-   "firstSeen": "2026-10-26"
-  },
-  {
-   "url": "https://huggingface.co/spaces/fishpasters/uncensored-imageTOimage2Ref",
-   "title": "Spaces 应用：fishpasters/uncensored-imageTOimage2Ref",
-   "titleEn": "",
-   "summary": "Hugging Face Spaces 推出了基于 Gradio 的 uncensored-imageTOimage2Ref 图像转换与参考应用，累计获得 226 个点赞。",
-   "type": "Web 应用",
-   "topic": "内容生成",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-26",
-   "score": 7.1,
-   "rel": 8,
-   "firstSeen": "2026-10-26"
-  },
-  {
-   "url": "https://huggingface.co/spaces/hugging-apps/bfs-best-face-swap",
-   "title": "Spaces 应用：hugging-apps/bfs-best-face-swap",
-   "titleEn": "",
-   "summary": "Hugging Face Spaces 收录了 bfs-best-face-swap 人脸替换应用，基于 Gradio 构建并收获了 514 个社区点赞。",
-   "type": "Web 应用",
-   "topic": "内容生成",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-26",
-   "score": 7.1,
-   "rel": 8,
-   "firstSeen": "2026-10-26"
+   "lastSeen": "2026-10-27",
+   "score": 6.8,
+   "rel": 6,
+   "firstSeen": "2026-10-27"
   },
   {
    "url": "https://www.v2ex.com/t/1251396#reply0",
@@ -422,6 +450,20 @@
    "firstSeen": "2026-10-21"
   },
   {
+   "url": "https://github.com/sam-mfb/kashkeshet",
+   "title": "Kashkeshet：极简 Agent 聊天服务",
+   "titleEn": "Show HN: Kashkeshet – non-opinionated agent-to-agent chat MCP server in Rust",
+   "summary": "基于 Rust 和 MCP 的开源服务器，为 AI 代理提供极简的聊天与身份原语，允许代理在本地网络中自由组建社会结构。",
+   "type": "其他",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-27",
+   "score": 6.7,
+   "rel": 7,
+   "firstSeen": "2026-10-27"
+  },
+  {
    "url": "https://huggingface.co/coolcoder613/omnivoice-latin-lora-1",
    "title": "Show HN: 基于微调 OmniVoice 的古拉丁语 TTS",
    "titleEn": "Show HN: Classical Latin TTS",
@@ -450,6 +492,20 @@
    "firstSeen": "2026-10-26"
   },
   {
+   "url": "https://www.reddit.com/r/SideProject/comments/1xgbqbp/i_built_an_offline_research_assistant_not_another/",
+   "title": "Cursiv：离线科研助手",
+   "titleEn": "I built an offline research assistant, not another AI chatbot.",
+   "summary": "开源工具 Cursiv 结合了本地大模型、检索及防篡改笔记本，构建 USB 可移植工作区，专为不依赖云端的科研人员设计。",
+   "type": "其他",
+   "topic": "开源工具",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-27",
+   "score": 6.6,
+   "rel": 6,
+   "firstSeen": "2026-10-27"
+  },
+  {
    "url": "https://www.reddit.com/r/SideProject/comments/1xc348y/were_building_ai_agents_that_run_a_solo_businesss/",
    "title": "Braind - 面向微型企业的 AI 后台代理",
    "titleEn": "We’re building AI agents that run a solo business’s back office, but nothing goes out without your OK. Looking for honest feedback on the idea + page",
@@ -476,6 +532,20 @@
    "score": 8.2,
    "rel": 8,
    "firstSeen": "2026-10-20"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1xgc3da/built_a_free_tool_that_tells_you_if_chatgpt/",
+   "title": "visible4ai：AI 引用检查工具",
+   "titleEn": "built a free tool that tells you if ChatGPT recommends your app/site",
+   "summary": "开发者构建了工具，通过调用 GPT 等主流模型 API 检测特定 URL 是否被 AI 索引或引用，并提供优化爬虫屏蔽及 llms.txt 的修复建议。",
+   "type": "效率工具",
+   "topic": "AI 营销应用",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-27",
+   "score": 6.5,
+   "rel": 6,
+   "firstSeen": "2026-10-27"
   },
   {
    "url": "https://deepsearch.ing/",
@@ -630,6 +700,34 @@
    "score": 8.4,
    "rel": 8,
    "firstSeen": "2026-10-18"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1252070#reply0",
+   "title": "最近做了个好玩的 AI Rap Video Generator - rapvideo.io 欢迎大家免费来玩",
+   "titleEn": "",
+   "summary": "rapvideo.io 是一个 AI 说唱视频生成器，用户上传 1-2 张照片并选择预设场景，即可生成带原生音频的 5-15 秒 MP4 视频。基于 Seedance 2.0 mini 模型，提供 12 种风格模板，支持 4K 分辨率，采用一次性 Credit 付费模式。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-27",
+   "score": 6.2,
+   "rel": 6,
+   "firstSeen": "2026-10-27"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1xgd6wy/after_a_few_months_of_nights_and_weekends_my_beat/",
+   "title": "移动端音乐创作应用 PadLoop",
+   "titleEn": "After a few months of nights and weekends, my beat maker app is on Android AND iPhone",
+   "summary": "独立开发者在数周内完成 PadLoop 开发并双端上线。该应用通过智能对齐机制，让新手能轻松制作 16 轨道音乐循环，单买价格为 9.99 欧元。",
+   "type": "移动 App",
+   "topic": "移动开发",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-27",
+   "score": 6.2,
+   "rel": 6,
+   "firstSeen": "2026-10-27"
   },
   {
    "url": "https://kat-assessment.com/",
@@ -4088,20 +4186,6 @@
    "firstSeen": "2026-09-30"
   },
   {
-   "url": "https://kanunilabs.com/playground/datagrid/virtual-scrolling",
-   "title": "基于 Web Worker 的高性能 React 数据网格",
-   "titleEn": "Show HN: A React data grid that sorts and filters in a Web Worker",
-   "summary": "KanuniLabs 推出基于 React 的高性能数据网格组件，利用 Web Worker 实现排序、过滤及分组等后台计算。该方案提升了前端数据处理的效率，支持虚拟化渲染，适用于处理大型数据集的应用场景。",
-   "type": "Web 应用",
-   "topic": "工程实践",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-09-30",
-   "score": 6.0,
-   "rel": 5,
-   "firstSeen": "2026-09-30"
-  },
-  {
    "url": "https://www.v2ex.com/t/1245582#reply0",
    "title": "最近看到 Hotel Lobby AI 挺火，顺手做了个教程 + Prompt 工具",
    "titleEn": "",
@@ -4126,47 +4210,6 @@
    "src": "apps",
    "lastSeen": "2026-09-29",
    "score": 6.2,
-   "rel": 6,
-   "firstSeen": "2026-09-29"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1245610#reply0",
-   "title": "不买 Figma 会员，也能给 vibe coding 作品配上设计流程：开源本地工具 local-figma",
-   "titleEn": "",
-   "summary": "开源工具 local-figma 允许用户将本地运行的网页界面还原为 Figma 可编辑设计稿，无需付费席位。该工具结合 CLI 与本地桥接服务，支持用户通过 Claude Code 等 Agent 进行布局调整和方案比较。",
-   "type": "桌面工具",
-   "topic": "开发工具",
-   "block": "V2EX 分享创造",
-   "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29",
-   "score": 6.0,
-   "rel": 6
-  },
-  {
-   "url": "https://www.reddit.com/r/SideProject/comments/1wt9giq/built_a_microsaas_to_stop_ai_from_breaking/",
-   "title": "Shopify 主题批量翻译保护工具微 SaaS 开发反馈",
-   "titleEn": "Built a micro-SaaS to stop AI from breaking Shopify themes during bulk translation. Would love your brutal feedback!",
-   "summary": "开发者构建微 SaaS 解决 AI 批量翻译破坏 Shopify Liquid 标签及 HTML 结构的问题，确保电商目录本地化质量，征求用户关于产品方向的严厉反馈。",
-   "type": "效率工具",
-   "topic": "电商工具",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-09-29",
-   "score": 6.0,
-   "rel": 5,
-   "firstSeen": "2026-09-29"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1245598#reply2",
-   "title": "PaperCard: 随手写的推特截图小插件，没想到被群友追着要，干脆上架了",
-   "titleEn": "",
-   "summary": "开发者利用 Codex 创建 Chrome 插件 PaperCard，将推文整理为清晰卡片并复制到剪贴板。因用户需求增加，注册 5 美元开发者账号将插件上架商店，解决了手动分享教程的麻烦，提升了推文分享的美观度与效率。",
-   "type": "浏览器插件",
-   "topic": "开发者工具",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-09-29",
-   "score": 6.0,
    "rel": 6,
    "firstSeen": "2026-09-29"
   }
