@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-27 08:10",
+ "updated": "2026-10-28 08:10",
  "count": 300,
  "types": [
   "Agent 工作流",
@@ -42,6 +42,20 @@
    "score": 9.2,
    "rel": 8,
    "firstSeen": "2026-10-27"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1252390#reply0",
+   "title": "Railse：一个人同时开几个 AI 编程 agent，审批推到手机上点一下",
+   "titleEn": "",
+   "summary": "Railse 是一款开源工具，将多个 AI 编程 Agent 的审批请求汇总至手机，支持风险分级与规则记忆，解决多 Agent 并行时的频繁打断问题。",
+   "type": "桌面工具",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-28",
+   "score": 8.4,
+   "rel": 9,
+   "firstSeen": "2026-10-28"
   },
   {
    "url": "https://www.v2ex.com/t/1251717#reply3",
@@ -184,6 +198,20 @@
    "firstSeen": "2026-10-19"
   },
   {
+   "url": "https://erdosproblems.ai/problems/420",
+   "title": "扩展 PrimeGapsLib 证明 Erdős 问题 #420 部分",
+   "titleEn": "Show HN: Extending Axiom's PrimeGapsLib to prove parts 2 and 3 of Erdős #420",
+   "summary": "开发者扩展了 Axiom 的 PrimeGapsLib 库，试图证明 Erdős 问题 #420 的第 2 和第 3 部分。该项目结合形式化验证与数论，利用现有的素数间隙库进行数学探索。",
+   "type": "CLI 工具",
+   "topic": "论文方法",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-28",
+   "score": 7.2,
+   "rel": 8,
+   "firstSeen": "2026-10-28"
+  },
+  {
    "url": "https://github.com/Arthur031221/Token-Beggar",
    "title": "Token Beggar：自动路由子任务至低成本模型的编排工具",
    "titleEn": "Show HN: Token Beggar, route coding agent subtasks to cheaper models",
@@ -322,6 +350,20 @@
    "score": 7.1,
    "rel": 6,
    "firstSeen": "2026-10-26"
+  },
+  {
+   "url": "https://strandedtoken.trade/",
+   "title": "Stranded：解决 ERC-20 代币因缺 Gas 卡死的问题",
+   "titleEn": "Show HN: Stranded, move ERC-20 tokens out of a wallet that has no ETH for gas",
+   "summary": "Stranded 工具允许用户将无 ETH 支付 Gas 的钱包中的 ERC-20 代币转出。其原理是通过交换少量代币为测试 ETH 来支付 Gas，由中继者发送交易。目前在 Arbitrum Sepolia 测试网运行，每 4 小时限制一次。",
+   "type": "Web 应用",
+   "topic": "区块链工具",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-28",
+   "score": 6.6,
+   "rel": 6,
+   "firstSeen": "2026-10-28"
   },
   {
    "url": "https://sspai.com/post/114741",
@@ -492,6 +534,34 @@
    "firstSeen": "2026-10-26"
   },
   {
+   "url": "https://www.reddit.com/r/SideProject/comments/1xh7q5e/i_built_a_tool_that_keeps_the_same_aigenerated/",
+   "title": "AI 模型实验室：保持角色面部一致性的生成工具",
+   "titleEn": "I built a tool that keeps the same AI-generated face across every photo and video (identity prompt + 1 reference photo). Looking for feedback",
+   "summary": "该工具通过身份提示词加参考照片生成六角度参考包，确保后续生成的图片或视频中角色面部保持一致。支持说话模式同步口型及 60 秒提示词构建器，技术栈包含 Next.js 和 Redis 队列。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-28",
+   "score": 6.4,
+   "rel": 7,
+   "firstSeen": "2026-10-28"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1252371#reply0",
+   "title": "做了一个把照片变成 Angry Dance 视频的小网站",
+   "titleEn": "",
+   "summary": "该网站利用 AI 将上传照片转化为 14 秒固定的厨房愤怒舞蹈视频，支持付费生成，无需提示词，展示了单图视频生成的具体应用场景。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-28",
+   "score": 6.4,
+   "rel": 7,
+   "firstSeen": "2026-10-28"
+  },
+  {
    "url": "https://www.reddit.com/r/SideProject/comments/1xgbqbp/i_built_an_offline_research_assistant_not_another/",
    "title": "Cursiv：离线科研助手",
    "titleEn": "I built an offline research assistant, not another AI chatbot.",
@@ -588,6 +658,20 @@
    "score": 8.1,
    "rel": 6,
    "firstSeen": "2026-10-20"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1252367#reply1",
+   "title": "用 Web Components 做了个全栈框架 Gemkit，首屏 JS 26KB， SSR 性能和 SvelteKit 差不多",
+   "titleEn": "",
+   "summary": "作者基于 Web Components 开发全栈框架 Gemkit，实现 SSR 与流式渲染，实测首屏 JS 仅 26KB，性能接近 SvelteKit，已开源。",
+   "type": "其他",
+   "topic": "开源生态",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-28",
+   "score": 6.2,
+   "rel": 5,
+   "firstSeen": "2026-10-28"
   },
   {
    "url": "https://github.com/vercel-labs/eve-agent-python-template",
@@ -700,6 +784,20 @@
    "score": 8.4,
    "rel": 8,
    "firstSeen": "2026-10-18"
+  },
+  {
+   "url": "https://huggingface.co/spaces/nvidia/simready-central",
+   "title": "Spaces 应用：nvidia/simready-central",
+   "titleEn": "",
+   "summary": "NVIDIA 在 Hugging Face 上发布的 Docker 应用，旨在整合仿真就绪工具，当前点赞数 202，用于机器人或自动驾驶数据仿真。",
+   "type": "其他",
+   "topic": "模型与推理",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-28",
+   "score": 6.0,
+   "rel": 7,
+   "firstSeen": "2026-10-28"
   },
   {
    "url": "https://www.v2ex.com/t/1252070#reply0",
@@ -3697,20 +3795,6 @@
    "firstSeen": "2026-10-06"
   },
   {
-   "url": "https://www.reddit.com/r/SideProject/comments/1wynafd/i_built_a_notes_app_that_forgets_everything/",
-   "title": "开发名为 Gulp 的自动遗忘笔记应用",
-   "titleEn": "I built a notes app that forgets everything",
-   "summary": "开发者因笔记应用堆积大量临时信息而停止使用，遂开发名为 Gulp 的菜单栏工具。该应用模仿金鱼记忆，接收用户输入的思想后仅保留数小时，随后自动删除，旨在解决数字信息焦虑。",
-   "type": "桌面工具",
-   "topic": "效率工具",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-10-06",
-   "score": 6.0,
-   "rel": 5,
-   "firstSeen": "2026-10-06"
-  },
-  {
    "url": "https://www.v2ex.com/t/1246438#reply2",
    "title": "[问书] 自主学习网站",
    "titleEn": "",
@@ -3962,34 +4046,6 @@
    "firstSeen": "2026-09-30"
   },
   {
-   "url": "https://www.v2ex.com/t/1246182#reply0",
-   "title": "做了个小工具，上传两张照片，让你和朋友出演 APT. 风格短视频",
-   "titleEn": "",
-   "summary": "基于 MiniMax H3 模型，Promptsref 网站推出 APT. 风格双人 AI 视频生成工具。用户上传两张照片即可生成粉色背景下的双人表演视频，默认时长 15 秒。该工具内置参考视频与提示词，降低了 AI 视频生成的使用门槛。",
-   "type": "Web 应用",
-   "topic": "内容生成",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-03",
-   "score": 6.0,
-   "rel": 6,
-   "firstSeen": "2026-10-03"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1246137#reply0",
-   "title": "做了个用一张图片探索不同相机视角的工具，想听听大家的反馈",
-   "titleEn": "",
-   "summary": "3D Camera Control 工具允许通过单张参考图探索商品、角色或人像的多视角画面，并支持图片转视频功能。提供商品多视角、角色转面、姿势调整等在线工具，旨在辅助 3D 建模与内容创作，解决单一视角参考不足的问题。",
-   "type": "Web 应用",
-   "topic": "图像生成",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-03",
-   "score": 6.0,
-   "rel": 6,
-   "firstSeen": "2026-10-03"
-  },
-  {
    "url": "https://www.v2ex.com/t/1246071#reply2",
    "title": "最近真的被 Opus 5.5 惊艳到了，特别是做视频，异常勇猛。",
    "titleEn": "",
@@ -4074,20 +4130,6 @@
    "firstSeen": "2026-09-30"
   },
   {
-   "url": "https://github.com/Desbordante/desbordante-core/releases/tag/v2.5.0",
-   "title": "Desbordante 2.5.0 发布：可解释的数据分析工具",
-   "titleEn": "Show HN: Desbordante 2.5.0 Released",
-   "summary": "开源高性能数据剖析工具 Desbordante 推出 2.5.0 版本。该工具采用符号化、可解释的方法寻找复杂数据模式，区别于黑盒机器学习方法，生成明确规则。",
-   "type": "数据分析",
-   "topic": "开源工具",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-01",
-   "score": 6.0,
-   "rel": 5,
-   "firstSeen": "2026-10-01"
-  },
-  {
    "url": "https://ledge.sh",
    "title": "Ledge.sh：可执行 Shell 命令的 Markdown 笔记本",
    "titleEn": "Show HN: Ledge.sh – Runnable Markdown Notes",
@@ -4142,48 +4184,6 @@
    "score": 6.3,
    "rel": 6,
    "firstSeen": "2026-09-29"
-  },
-  {
-   "url": "https://www.reddit.com/r/SideProject/comments/1wtszoc/built_a_sitetool_that_turns_your_own_ideas_into/",
-   "title": "基于长期记忆生成连续故事与 TTRPG 日志的工具",
-   "titleEn": "Built a site/tool that turns your own ideas into an ongoing story that remembers everything — bedtime tales, character fiction, or real TTRPG session ",
-   "summary": "独立开发者构建了一款将个人想法转化为连续故事的工具，支持睡前故事、角色创作及跑团日志记录。其核心优势在于能够记忆上下文，实现内容的持续演进。",
-   "type": "Web 应用",
-   "topic": "内容生成",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-09-30",
-   "score": 6.0,
-   "rel": 5,
-   "firstSeen": "2026-09-30"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1245660#reply1",
-   "title": "opus5.5 一句话就复刻了这两天很火的 destroy any website 的游戏",
-   "titleEn": "",
-   "summary": "用户分享使用 Opus 5.5 模型，仅通过一句话指令即复刻了热门游戏 destroy any website。帖子包含 GitHub 仓库链接，展示了大模型在代码生成和快速原型开发方面的能力，具体技术细节未展开。",
-   "type": "其他",
-   "topic": "模型能力",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-09-30",
-   "score": 6.0,
-   "rel": 7,
-   "firstSeen": "2026-09-30"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1245804#reply2",
-   "title": "做了一个阅读的 cli 版本",
-   "titleEn": "",
-   "summary": "本地 Epub/txt 阅读器 ReadCLI 新增在线书源导入与搜索功能。支持 VSCode 终端运行，具备书架、标签及老板键。目前存在大量书源管理效率低下的待优化痛点。",
-   "type": "CLI 工具",
-   "topic": "开源项目",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-09-30",
-   "score": 6.0,
-   "rel": 5,
-   "firstSeen": "2026-09-30"
   },
   {
    "url": "https://www.v2ex.com/t/1245582#reply0",
