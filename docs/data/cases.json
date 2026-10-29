@@ -1,10 +1,11 @@
 {
- "updated": "2026-10-28 08:10",
+ "updated": "2026-10-29 08:10",
  "count": 300,
  "types": [
   "Agent 工作流",
   "CLI 工具",
   "Web 应用",
+  "Web应用",
   "其他",
   "内容生成",
   "效率工具",
@@ -15,6 +16,34 @@
   "移动 App"
  ],
  "cases": [
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1xi30ov/zephium_a_fast_opensource_fullyfeatured_browser/",
+   "title": "Zephium：面向Agent协作的高性能Rust开源浏览器",
+   "titleEn": "Zephium: A fast, open-source, fully-featured browser and work environment (canvas), reimagined for you and your agents.",
+   "summary": "基于Rust开发（40MB大小）的Zephium浏览器，非Chromium内核，集成自定义Agentic浏览引擎与共享工作区，支持人机并行浏览、任务执行及本地模型推理。",
+   "type": "浏览器插件",
+   "topic": "Agent框架",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-29",
+   "score": 9.7,
+   "rel": 9,
+   "firstSeen": "2026-10-29"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1252682#reply0",
+   "title": "一个人做开源 AI 桌面办公助手： 7 天初版， 6 个月还在迭代",
+   "titleEn": "",
+   "summary": "Abu-Cowork是个人独立开发的开源桌面办公助手，支持本地文件操作与多Agent协作，可对接云端或Ollama模型。作者公开了完整的Harness体系（任务拆解、权限、测试复审），6个月迭代消耗约300亿Tokens，项目全开源。",
+   "type": "桌面工具",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-29",
+   "score": 9.4,
+   "rel": 9,
+   "firstSeen": "2026-10-29"
+  },
   {
    "url": "https://www.v2ex.com/t/1252038#reply2",
    "title": "开源了一个 MCP 治理网关： Jev 判 0.94、d3 判 0.70，两个判官说不同的话时怎么办",
@@ -28,6 +57,20 @@
    "score": 10.0,
    "rel": 9,
    "firstSeen": "2026-10-27"
+  },
+  {
+   "url": "https://github.com/TheWariend/CleanSlate",
+   "title": "CleanSlate：支持共享程序记忆的多平台AI工作区",
+   "titleEn": "Show HN: Open-source AI workspace with shared procedural memory",
+   "summary": "基于VS Code开发的开源AI工作区，核心特性是将共享程序记忆封装为可复用的技能（Skills）。支持MIT许可证，已发布桌面版及移动端应用。",
+   "type": "桌面工具",
+   "topic": "开源Agent",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-29",
+   "score": 9.2,
+   "rel": 9,
+   "firstSeen": "2026-10-29"
   },
   {
    "url": "https://www.v2ex.com/t/1252080#reply0",
@@ -56,6 +99,48 @@
    "score": 8.4,
    "rel": 9,
    "firstSeen": "2026-10-28"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1xi2cjx/launched_openllm_today_use_your_tokens_where_you/",
+   "title": "OpenLLM：多源Token聚合与自动故障转移网关",
+   "titleEn": "Launched OpenLLM today: use your tokens where you want",
+   "summary": "工具OpenLLM允许用户聚合订阅、API Key及本地模型，生成统一Key供Agent调用；当额度耗尽时自动切换至下一模型，支持跨应用记忆共享。",
+   "type": "其他",
+   "topic": "Agent框架",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-29",
+   "score": 8.0,
+   "rel": 8,
+   "firstSeen": "2026-10-29"
+  },
+  {
+   "url": "https://github.com/drawthingsai/local-code-community",
+   "title": "Local Code：基于DeepSeek的Apple Silicon本地AI代理",
+   "titleEn": "Show HN: Local Code – Run DeepSeek 4.1 Flash 1017 Locally on Your Mac",
+   "summary": "Swift编写的Local Code应用，在Apple Silicon设备上离线运行DeepSeek 4.1 Flash模型。内置Python/Node/Shell工具链，支持沙箱内文件分析及文档生成。",
+   "type": "桌面工具",
+   "topic": "端侧模型",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-29",
+   "score": 8.0,
+   "rel": 8,
+   "firstSeen": "2026-10-29"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1252706#reply0",
+   "title": "给 Codex 做了块画布，随手试了下，它一笔画完了一只猫",
+   "titleEn": "",
+   "summary": "Galta是一款网页侧边画布，通过MCP连接Codex等Agent。测试中让GPT-6-Astra在画布上绘猫，模型生成70722个点的连续一笔矢量画。该工具支持人与Agent在同一画布轮流动手，目前在Chrome/Dia中可用。",
+   "type": "Web 应用",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-29",
+   "score": 8.0,
+   "rel": 8,
+   "firstSeen": "2026-10-29"
   },
   {
    "url": "https://www.v2ex.com/t/1251717#reply3",
@@ -98,6 +183,34 @@
    "score": 9.4,
    "rel": 9,
    "firstSeen": "2026-10-23"
+  },
+  {
+   "url": "https://news.ycombinator.com/item?id=50281226",
+   "title": "Small Python：2.5万行C11代码实现的Python 3.15解释器",
+   "titleEn": "Show HN: Full Python 3.15 Implemented in 25k LoC C11",
+   "summary": "开发者利用Claude Code在三天内辅助，以C11语言编写Small Python，覆盖Python 3.15几乎全部语言特性及内置函数，无Rust依赖，体积小巧。",
+   "type": "模型与推理",
+   "topic": "AI编程",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-29",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-10-29"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1252684#reply0",
+   "title": "做了个多 harness 共用一套规则和记忆的工具 aivault",
+   "titleEn": "",
+   "summary": "aivault是一款开源CLI工具，支持将规则、Skill和记忆统一存储并同步至21个AI编程工具（如Claude Code、Codex）。支持MCP搜索与记忆同步，采用Markdown格式便于Obsidian管理，免费且支持多平台。",
+   "type": "CLI 工具",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-29",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-10-29"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1xgc6g6/a_shared_brain_for_your_team_and_your_coding/",
@@ -252,6 +365,48 @@
    "score": 7.4,
    "rel": 8,
    "firstSeen": "2026-10-26"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1252709#reply0",
+   "title": "一个 Alma 的 Android 客户端",
+   "titleEn": "",
+   "summary": "针对Alma官方未提供Android客户端的现状，开发者开源了基于GitHub的安卓版。该应用重实现桌面版relay接口，支持Remote Access以在外连接本地Alma实例，适配折叠屏并模拟Duo模糊特效，代码开源供社区使用。",
+   "type": "移动 App",
+   "topic": "开源工具",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-29",
+   "score": 6.7,
+   "rel": 7,
+   "firstSeen": "2026-10-29"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1252701#reply0",
+   "title": "做了个 MiniCPM OCR 在线工具：把图片和 PDF 转成可编辑的文字、表格和公式",
+   "titleEn": "",
+   "summary": "基于OpenBMB的MiniCPM-OCR-1.0构建的在线文档识别服务。支持上传图片/PDF，提取中英文、表格及LaTeX公式，提供原文对照编辑与Word/Markdown导出。该独立网站非ModelBest官方，强调校对体验。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-29",
+   "score": 6.7,
+   "rel": 7,
+   "firstSeen": "2026-10-29"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1252689#reply0",
+   "title": "做了个把照片变成说唱 MV 的小站，咪咪也能来段说唱 😂（送兑换码）",
+   "titleEn": "",
+   "summary": "独立开发者发布rap-video.ai，基于Veo 3.1与Cloudflare Workers技术栈，实现照片转说唱视频。支持酒店、Rap Battle、宠物等风格，提供5个免费兑换码。基础设施成本极低，面向社交娱乐场景。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-29",
+   "score": 6.7,
+   "rel": 7,
+   "firstSeen": "2026-10-29"
   },
   {
    "url": "https://embodsi.com/",
@@ -534,6 +689,34 @@
    "firstSeen": "2026-10-26"
   },
   {
+   "url": "https://www.v2ex.com/t/1252710#reply0",
+   "title": "做了个相亲题材的安卓小游戏，找人帮忙内测",
+   "titleEn": "",
+   "summary": "开发者基于被催婚痛点制作像素风《相亲模拟器》，通过左右滑卡机制体验7种体面结局。代码由Claude辅助生成，游戏无联网、无广告且不收集数据，目前处于Google Play封闭测试阶段，需12人测满14天。",
+   "type": "移动 App",
+   "topic": "独立游戏",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-29",
+   "score": 6.2,
+   "rel": 6,
+   "firstSeen": "2026-10-29"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1xi497o/built_a_daily_history_storytelling_platform_using/",
+   "title": "利用AI编码代理构建每日历史故事平台Neugil",
+   "titleEn": "Built a daily history storytelling platform using AI coding tools",
+   "summary": "开发者采用Spec驱动方法及自动化测试构建Neugil平台，利用AI代理完成从历史研究、写作、绘图到视频制作的全流程内容生产与自动发布。",
+   "type": "Web应用",
+   "topic": "工程实践",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-29",
+   "score": 6.2,
+   "rel": 6,
+   "firstSeen": "2026-10-29"
+  },
+  {
    "url": "https://www.reddit.com/r/SideProject/comments/1xh7q5e/i_built_a_tool_that_keeps_the_same_aigenerated/",
    "title": "AI 模型实验室：保持角色面部一致性的生成工具",
    "titleEn": "I built a tool that keeps the same AI-generated face across every photo and video (identity prompt + 1 reference photo). Looking for feedback",
@@ -784,20 +967,6 @@
    "score": 8.4,
    "rel": 8,
    "firstSeen": "2026-10-18"
-  },
-  {
-   "url": "https://huggingface.co/spaces/nvidia/simready-central",
-   "title": "Spaces 应用：nvidia/simready-central",
-   "titleEn": "",
-   "summary": "NVIDIA 在 Hugging Face 上发布的 Docker 应用，旨在整合仿真就绪工具，当前点赞数 202，用于机器人或自动驾驶数据仿真。",
-   "type": "其他",
-   "topic": "模型与推理",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-28",
-   "score": 6.0,
-   "rel": 7,
-   "firstSeen": "2026-10-28"
   },
   {
    "url": "https://www.v2ex.com/t/1252070#reply0",
@@ -2494,20 +2663,6 @@
    "firstSeen": "2026-10-05"
   },
   {
-   "url": "https://www.v2ex.com/t/1248838#reply0",
-   "title": "[分享创造] 用 SwiftUI 写了一年的个人资产记账 App -Flow 上架了！",
-   "titleEn": "",
-   "summary": "个人记账App Flow历时一年用SwiftUI重写并上架，仅保留记账、订阅、预算、投资四大刚需功能。采用本地存储+iCloud同步，无广告，支持iOS/iPadOS/watchOS，目前已在海外区发布。",
-   "type": "移动 App",
-   "topic": "移动应用",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-15",
-   "score": 6.0,
-   "rel": 5,
-   "firstSeen": "2026-10-15"
-  },
-  {
    "url": "https://wonderhop.io/en/",
    "title": "Wonderhop：每日多语言猜测游戏",
    "titleEn": "Show HN: Wonderhop – A daily game: guess what most people say, or what none do",
@@ -2604,20 +2759,6 @@
    "score": 6.9,
    "rel": 7,
    "firstSeen": "2026-10-10"
-  },
-  {
-   "url": "https://www.reddit.com/r/SideProject/comments/1x5b2xe/lingoflix_hover_a_netflix_subtitle_and_see_what/",
-   "title": "LingoFlix：Netlix字幕场景解释插件",
-   "titleEn": "LingoFlix - hover a Netflix subtitle and see what the line means in that scene",
-   "summary": "Chrome插件，悬停Netflix字幕即可获知该场景下台词的深层含义、俚语及语气，支持30种语言解释及Anki导出，需自带API密钥。",
-   "type": "浏览器插件",
-   "topic": "效率工具",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-10-14",
-   "score": 6.0,
-   "rel": 6,
-   "firstSeen": "2026-10-14"
   },
   {
    "url": "https://github.com/brianlzhou/arc-browser-use",
@@ -2800,20 +2941,6 @@
    "score": 8.4,
    "rel": 9,
    "firstSeen": "2026-10-02"
-  },
-  {
-   "url": "https://secubuzz.com/",
-   "title": "SecuBuzz：60字安全简报与CISA零日漏洞雷达",
-   "titleEn": "Show HN: SecuBuzz – Factual 60-word cybersecurity briefs and CISA zero-day radar",
-   "summary": "SecuBuzz将每日网络安全报道浓缩为带源链接的60字简报，并通过Android应用推送CISA新增已知被利用漏洞（KEV）及修复截止日期，近期聚焦FortiBleed漏洞活跃状态与补丁周二预测。",
-   "type": "移动 App",
-   "topic": "安全工具",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-12",
-   "score": 6.0,
-   "rel": 5,
-   "firstSeen": "2026-10-12"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1x2sff6/i_made_dory_to_stop_reexplaining_my_projects/",
@@ -3096,20 +3223,6 @@
    "firstSeen": "2026-09-30"
   },
   {
-   "url": "https://www.v2ex.com/t/1247484#reply0",
-   "title": "QuotaPal: 面向 Android 的 Codex 额度监控 App",
-   "titleEn": "",
-   "summary": "开源 Android 应用，支持监控 Codex 账号 API 额度，具备桌面小组件功能，参考 Nowdex 设计，目前为 MVP 版本，仅支持单账号。",
-   "type": "移动 App",
-   "topic": "工程实践",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-10",
-   "score": 6.0,
-   "rel": 6,
-   "firstSeen": "2026-10-10"
-  },
-  {
    "url": "https://www.v2ex.com/t/1246056#reply0",
    "title": "本地图片 agent 工具 Layerive 更新：加了批量改图、图片融合、抠图和局部删除等功能",
    "titleEn": "",
@@ -3276,34 +3389,6 @@
    "score": 8.1,
    "rel": 9,
    "firstSeen": "2026-09-30"
-  },
-  {
-   "url": "https://diffguardian.ai",
-   "title": "DiffGuardian：语音与视觉代码库及 PR 讲解工具",
-   "titleEn": "Show HN: DiffGuardian – A voice and visual walkthrough of any PR or codebase",
-   "summary": "跨平台工具 DiffGuardian 支持对 PR 或整个代码库进行语音讲解，边听边高亮滚动代码。支持 OpenAI/ElevenLabs 语音或系统原生语音，可即时交互并实时追踪代码变化。",
-   "type": "桌面工具",
-   "topic": "工程实践",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-09",
-   "score": 6.0,
-   "rel": 6,
-   "firstSeen": "2026-10-09"
-  },
-  {
-   "url": "https://www.reddit.com/r/SideProject/comments/1x1668t/im_17_and_built_a_math_tutor_that_refuses_to_give/",
-   "title": "theoremEd：拒绝直接给答案的 AI 数学导师",
-   "titleEn": "I’m 17 and built a math tutor that refuses to give you the answer",
-   "summary": "theoremEd 通过拍照识别作业定位错误，仅通过提问引导用户自行解答，拒绝直接给答案，免费版每周限 30 题，适合手机使用。",
-   "type": "移动 App",
-   "topic": "内容生成",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-10-09",
-   "score": 6.0,
-   "rel": 6,
-   "firstSeen": "2026-10-09"
   },
   {
    "url": "https://www.v2ex.com/t/1246997#reply1",
@@ -3486,48 +3571,6 @@
    "score": 6.7,
    "rel": 7,
    "firstSeen": "2026-10-05"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1246867#reply1",
-   "title": "[自荐] 大家都在把 AI 塞进 Obsidian，我却反过来把 Obsidian 接进 AI 官网",
-   "titleEn": "",
-   "summary": "作者开发工具实现将 Obsidian 笔记接入 ChatGPT 等官方 AI 网页版，避免在本地插件中维护 API Key 和 Token 额度。该方案保留官方 UI 习惯和对话历史，解决用户担心本地资源浪费及多模态支持的问题。",
-   "type": "效率工具",
-   "topic": "效率工具",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-08",
-   "score": 6.0,
-   "rel": 6,
-   "firstSeen": "2026-10-08"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1246992#reply9",
-   "title": "[送码] 自从有了 AI Coding 之后，分享一下 InfyniDock 新增的小窗功能",
-   "titleEn": "",
-   "summary": "Mac 效率工具 InfyniDock 新增小窗模式，支持全屏观影时悬浮查看 Codex 等 AI 编程任务的运行状态。该功能借鉴手机小窗交互逻辑，解决单屏 Mac 切换窗口频繁痛点。作者分享 B 站演示视频并发放激活码。",
-   "type": "桌面工具",
-   "topic": "效率工具",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-08",
-   "score": 6.0,
-   "rel": 6,
-   "firstSeen": "2026-10-08"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1247116#reply0",
-   "title": "淘了个 .si 域名，顺手搓了个最近挺火的 Hotel Lobby 风格 AI 视频站",
-   "titleEn": "",
-   "summary": "开发者自研酒店大堂风格 AI 视频生成站，支持深度定制场景与道具（如黄金/钻石麦克风），解决预设模板僵化问题。提供差异化视觉风格与低价订阅，目前全流程已跑通并开放用户反馈迭代。",
-   "type": "Web 应用",
-   "topic": "应用开发",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-08",
-   "score": 6.0,
-   "rel": 6,
-   "firstSeen": "2026-10-08"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1wzhdl3/i_need_your_thoughts/",
@@ -3751,48 +3794,6 @@
    "score": 6.5,
    "rel": 6,
    "firstSeen": "2026-10-04"
-  },
-  {
-   "url": "https://www.reddit.com/r/SideProject/comments/1wylw07/i_built_a_free_duolingostyle_course_for_the/",
-   "title": "构建成人导向的多语言自由课程 AdultLingo",
-   "titleEn": "I built a free Duolingo-style course for the language textbooks skip: flirting, dating, slang and swearing (Spanish, Chinese, Japanese)",
-   "summary": "针对主流语言学习应用缺乏社交场景内容的痛点，开发者构建 AdultLingo 平台。提供西班牙语、中文、日语课程，涵盖搭讪、约会、俚语及脏话等实用场景，采用 Duolingo 风格交互，填补教材空白。",
-   "type": "Web 应用",
-   "topic": "内容生成",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-10-06",
-   "score": 6.0,
-   "rel": 5,
-   "firstSeen": "2026-10-06"
-  },
-  {
-   "url": "https://soundscaper.org",
-   "title": "展示浏览器版音频编辑器 Soundscaper",
-   "titleEn": "Show HN: Soundscaper – Audacity 4-like audio editor in the browser",
-   "summary": "前 Audacity 4 设计师开发 Soundscaper，一款基于 Web 的音频编辑器。利用 WASM 技术实现类似 Audacity 4 的功能，探索浏览器媒体处理能力，强调在浏览器环境中通过大量测试驯服复杂代码，实现本地音频处理。",
-   "type": "Web 应用",
-   "topic": "效率工具",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-06",
-   "score": 6.0,
-   "rel": 5,
-   "firstSeen": "2026-10-06"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1246562#reply0",
-   "title": "免费使用浏览器内置大模型来给自己的网页提供优化建议",
-   "titleEn": "",
-   "summary": "一款 Chrome 浏览器插件利用内置 API（如 prompt_api）免费调用 nano_v3、gemma4 等大模型，为网页提供优化建议。用户安装插件后无需额外成本即可获取 AI 辅助分析，支持多种模型组件，降低开发者的 AI 接入门槛。",
-   "type": "浏览器插件",
-   "topic": "模型与推理",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-06",
-   "score": 6.0,
-   "rel": 6,
-   "firstSeen": "2026-10-06"
   },
   {
    "url": "https://www.v2ex.com/t/1246438#reply2",
