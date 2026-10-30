@@ -1,12 +1,12 @@
 {
- "generated_at": "2026-09-29 19:02",
+ "generated_at": "2026-10-30 08:10",
  "counts": {
-  "total": 135,
-  "repeat": 27,
+  "total": 143,
+  "repeat": 40,
   "byLevel": {
    "top": 15,
-   "watch": 47,
-   "normal": 73
+   "watch": 50,
+   "normal": 78
   }
  },
  "sources": [
@@ -17,8 +17,8 @@
    "n": 6,
    "raw": 10,
    "diag": [
-    "openai.com:desc中位152<300跳过",
-    "rsshub.ktachibana.party:OK(10条/desc9913)"
+    "openai.com:desc中位151<300跳过",
+    "rsshub.ktachibana.party:OK(10条/desc7039)"
    ]
   },
   {
@@ -28,17 +28,23 @@
    "n": 3,
    "raw": 10,
    "diag": [
-    "rsshub.ktachibana.party:OK(10条/desc15069)"
+    "rsshub.ktachibana.party:OK(10条/desc10127)"
    ]
   },
   {
    "id": "anthropic-news",
    "ok": true,
-   "via": "rsshub.ktachibana.party",
+   "via": "rsshub-balancer.virworks.moe",
    "n": 3,
    "raw": 10,
    "diag": [
-    "rsshub.ktachibana.party:OK(10条/desc9459)"
+    "rsshub.ktachibana.party:HTTPError503",
+    "rsshub.rssforever.com:HTTPError503",
+    "rss.injahow.cn:HTTPError404",
+    "rsshub.isrss.com:HTTPError503",
+    "rsshub.umzzz.com:HTTPError503",
+    "hub.slarker.me:HTTPError503",
+    "rsshub-balancer.virworks.moe:OK(10条/desc4090)"
    ]
   },
   {
@@ -58,18 +64,18 @@
    "n": 3,
    "raw": 20,
    "diag": [
-    "blog.google:OK(20条/desc115)"
+    "blog.google:OK(20条/desc116)"
    ]
   },
   {
    "id": "hf-blog",
    "ok": true,
    "via": "rsshub.ktachibana.party",
-   "n": 3,
+   "n": 7,
    "raw": 14,
    "diag": [
     "huggingface.co:desc中位0<500跳过",
-    "rsshub.ktachibana.party:OK(14条/desc11411)"
+    "rsshub.ktachibana.party:OK(14条/desc12689)"
    ]
   },
   {
@@ -77,10 +83,10 @@
    "ok": true,
    "via": "rsshub.ktachibana.party",
    "n": 10,
-   "raw": 82,
+   "raw": 14,
    "diag": [
     "huggingface.co:ParseError2",
-    "rsshub.ktachibana.party:OK(82条/desc1524)"
+    "rsshub.ktachibana.party:OK(14条/desc1386)"
    ]
   },
   {
@@ -96,26 +102,25 @@
    "id": "llm-leaderboard",
    "ok": true,
    "via": "raw.githubusercontent.com",
-   "n": 12,
-   "raw": 12,
+   "n": 6,
+   "raw": 6,
    "diag": [
-    "raw.githubusercontent.com:OK(12条/desc88)"
+    "raw.githubusercontent.com:OK(6条/desc44)"
    ]
   },
   {
    "id": "openrouter-stealth",
    "ok": true,
    "via": "openrouter.ai",
-   "n": 1,
-   "raw": 1,
+   "n": 0,
    "diag": [
-    "openrouter.ai:OK(1条/desc287)"
+    "openrouter.ai:OK(0条/desc0)"
    ]
   },
   {
    "id": "hf-new-models",
-   "ok": false,
-   "via": null,
+   "ok": true,
+   "via": "huggingface.co",
    "n": 0,
    "diag": [
     "huggingface.co:OK(0条/desc0)"
@@ -128,7 +133,7 @@
    "n": 6,
    "raw": 20,
    "diag": [
-    "hnrss.org:OK(20条/desc161)"
+    "hnrss.org:OK(20条/desc162)"
    ]
   },
   {
@@ -138,7 +143,7 @@
    "n": 6,
    "raw": 20,
    "diag": [
-    "hnrss.org:OK(20条/desc146)"
+    "hnrss.org:OK(20条/desc174)"
    ]
   },
   {
@@ -146,9 +151,9 @@
    "ok": true,
    "via": "mshibanami.github.io",
    "n": 6,
-   "raw": 13,
+   "raw": 10,
    "diag": [
-    "mshibanami.github.io:OK(13条/desc16472)"
+    "mshibanami.github.io:OK(10条/desc14050)"
    ]
   },
   {
@@ -158,7 +163,7 @@
    "n": 3,
    "raw": 10,
    "diag": [
-    "github.com:OK(10条/desc113)"
+    "github.com:OK(10条/desc169)"
    ]
   },
   {
@@ -168,7 +173,7 @@
    "n": 6,
    "raw": 30,
    "diag": [
-    "simonwillison.net:OK(30条/desc812)"
+    "simonwillison.net:OK(30条/desc800)"
    ]
   },
   {
@@ -188,17 +193,22 @@
    "n": 3,
    "raw": 10,
    "diag": [
-    "rsshub.ktachibana.party:OK(10条/desc0)"
+    "rsshub.ktachibana.party:OK(10条/desc4613)"
    ]
   },
   {
    "id": "leiphone-ai",
-   "ok": true,
-   "via": "rsshub.ktachibana.party",
-   "n": 3,
-   "raw": 10,
+   "ok": false,
+   "via": null,
+   "n": 0,
    "diag": [
-    "rsshub.ktachibana.party:OK(10条/desc4923)"
+    "rsshub.ktachibana.party:HTTPError503",
+    "rsshub.rssforever.com:HTTPError503",
+    "rss.injahow.cn:HTTPError503",
+    "rsshub.isrss.com:HTTPError503",
+    "rsshub.umzzz.com:HTTPError503",
+    "hub.slarker.me:HTTPError503",
+    "rsshub-balancer.virworks.moe:HTTPError502"
    ]
   },
   {
@@ -208,17 +218,18 @@
    "n": 6,
    "raw": 30,
    "diag": [
-    "rsshub.ktachibana.party:OK(30条/desc4157)"
+    "rsshub.ktachibana.party:OK(30条/desc4080)"
    ]
   },
   {
    "id": "infoq",
    "ok": true,
-   "via": "rsshub.ktachibana.party",
+   "via": "rsshub.rssforever.com",
    "n": 6,
    "raw": 30,
    "diag": [
-    "rsshub.ktachibana.party:OK(30条/desc2879)"
+    "rsshub.ktachibana.party:HTTPError429",
+    "rsshub.rssforever.com:OK(30条/desc3190)"
    ]
   },
   {
@@ -231,7 +242,7 @@
     "rsshub.ktachibana.party:HTTPError429",
     "rsshub.rssforever.com:HTTPError503",
     "rss.injahow.cn:HTTPError404",
-    "rsshub.isrss.com:OK(20条/desc468)"
+    "rsshub.isrss.com:OK(20条/desc515)"
    ]
   },
   {
@@ -241,7 +252,7 @@
    "n": 8,
    "raw": 20,
    "diag": [
-    "hnrss.org:OK(20条/desc151)"
+    "hnrss.org:OK(20条/desc140)"
    ]
   },
   {
@@ -251,7 +262,7 @@
    "n": 10,
    "raw": 50,
    "diag": [
-    "www.v2ex.com:OK(50条/desc626)"
+    "www.v2ex.com:OK(50条/desc443)"
    ]
   },
   {
@@ -261,7 +272,7 @@
    "n": 8,
    "raw": 25,
    "diag": [
-    "www.reddit.com:OK(25条/desc878)"
+    "www.reddit.com:OK(25条/desc1194)"
    ]
   },
   {
@@ -272,7 +283,7 @@
    "raw": 10,
    "diag": [
     "rsshub.ktachibana.party:HTTPError429",
-    "rsshub.rssforever.com:OK(10条/desc6494)"
+    "rsshub.rssforever.com:OK(10条/desc5554)"
    ]
   },
   {
@@ -286,13 +297,13 @@
    ]
   },
   {
-   "id": "awesome-llm-apps",
+   "id": "_aihot",
    "ok": true,
-   "via": "raw.githubusercontent.com",
-   "n": 117,
-   "raw": 119,
+   "via": "aihot.news",
+   "n": 15,
+   "raw": 17,
    "diag": [
-    "raw.githubusercontent.com:OK(119条/desc54)"
+    "HTTP200"
    ]
   }
  ],
@@ -303,9 +314,9 @@
    "reason": "export.arxiv.org:RuntimeError"
   },
   {
-   "id": "hf-new-models",
-   "lane": "model",
-   "reason": "huggingface.co:OK(0条/desc0)"
+   "id": "leiphone-ai",
+   "lane": "cn",
+   "reason": "rsshub.ktachibana.party:HTTPError503; rsshub.rssforever.com:HTTPError503; rss.injahow.cn:HTTPError503; rsshub.isrss.com:HTTPError503; rsshub.umzzz.com:HTTPError503; hub.slarker.me:HTTPError503; rsshub"
   }
  ]
 }

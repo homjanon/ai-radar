@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-29 08:10",
+ "updated": "2026-10-30 08:10",
  "count": 300,
  "types": [
   "Agent 工作流",
@@ -73,6 +73,20 @@
    "firstSeen": "2026-10-29"
   },
   {
+   "url": "https://www.reddit.com/r/SideProject/comments/1xixt2x/opensourcing_httpforgecore_mit_the_api_testing/",
+   "title": "HTTP Forge 核心引擎开源：API 测试与 MCP 支持",
+   "titleEn": "Open-sourcing @http-forge/core (MIT) — the API testing engine behind HTTP Forge",
+   "summary": "开源 MIT 协议的 API 测试引擎，支持 6 种框架源码发现、漂移检测，集成 MCP 服务器提供 60+ 工具供 AI 驱动，兼容 Postman 断言 API 并支持 CI/CD。",
+   "type": "其他",
+   "topic": "开源生态",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-30",
+   "score": 8.5,
+   "rel": 7,
+   "firstSeen": "2026-10-30"
+  },
+  {
    "url": "https://www.v2ex.com/t/1252080#reply0",
    "title": "开源了 QuireKit：在浏览器里真正分页的文档编辑器框架（Canvas 排版 + ProseMirror 语义， DOCX 往返）",
    "titleEn": "",
@@ -85,6 +99,20 @@
    "score": 9.2,
    "rel": 8,
    "firstSeen": "2026-10-27"
+  },
+  {
+   "url": "https://usenua.com/blog/artificer",
+   "title": "Artificer：Nua 发布 4B 参数机器人任务评估模型",
+   "titleEn": "Show HN: Artificer by Nua: Frontier robotics task evaluation in 4B parameters",
+   "summary": "Nua 推出 Artificer，基于 4B 参数模型通过视频和任务描述评估机器人任务进度与成功率，提供实时反馈以决定是否重试，性能达前沿水平但成本低。",
+   "type": "模型与推理",
+   "topic": "模型发布",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-30",
+   "score": 8.2,
+   "rel": 9,
+   "firstSeen": "2026-10-30"
   },
   {
    "url": "https://www.v2ex.com/t/1252390#reply0",
@@ -155,6 +183,20 @@
    "score": 8.8,
    "rel": 9,
    "firstSeen": "2026-10-26"
+  },
+  {
+   "url": "https://github.com/r28ai/charter",
+   "title": "Charter：基于 Pydantic 的 Agent API 调用字段级控制库",
+   "titleEn": "Show HN: Charter, field-level control over agents' calls into customer accounts",
+   "summary": "开源 Python 库让 Agent 操作客户账户 API 时，通过 Pydantic 模型逐字段校验，禁止模型篡改关键参数，支持任意 HTTP API 及代码审查审计。",
+   "type": "其他",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-30",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-10-30"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1xgcuwt/i_got_tired_of_broken_merges_when_running_claude/",
@@ -255,6 +297,34 @@
    "firstSeen": "2026-10-25"
   },
   {
+   "url": "https://www.v2ex.com/t/1253024#reply0",
+   "title": "用 Rust 做了个跨 Mac / Windows / Linux 的轻量、优雅的电脑屏幕使用时间记录工具",
+   "titleEn": "",
+   "summary": "开发者用 Rust 开源 Hindsight，跨平台后台记录应用活动，内存占用低于 40MB。支持本地/云端 AI 自动生成日报、对话查询时长，以及屏幕文字 OCR 搜索。提供插件市场，允许用户分享自制插件和主题。",
+   "type": "桌面工具",
+   "topic": "开源工具",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-30",
+   "score": 7.1,
+   "rel": 6,
+   "firstSeen": "2026-10-30"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1253018#reply1",
+   "title": "因为想统一看自己全部券商账户，我做了一个叫 Catfolio 持仓追踪 iOS App",
+   "titleEn": "",
+   "summary": "开发者推出 iOS 应用 Catfolio，聚合多券商账户数据，无需手动录入。支持计算 TWR/MWR 收益，提供 ETF 穿透查看单股敞口，并内置 AI 助手及 MCP 服务接口，可连接 Claude 等工具。",
+   "type": "移动 App",
+   "topic": "移动应用",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-30",
+   "score": 6.9,
+   "rel": 5,
+   "firstSeen": "2026-10-30"
+  },
+  {
    "url": "https://huggingface.co/spaces/black-forest-labs/flux-3-image-klein",
    "title": "Spaces 应用：black-forest-labs/flux-3-image-klein",
    "titleEn": "",
@@ -267,6 +337,34 @@
    "score": 7.8,
    "rel": 9,
    "firstSeen": "2026-10-26"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1252994#reply0",
+   "title": "万圣节快到了, 拿 Claude 做了个小鬼抓南瓜的在线游戏",
+   "titleEn": "",
+   "summary": "开发者利用 Claude 协助开发在线多人游戏《Trick or Treat Run》。采用 three.js 与 Blender 程序化生成资产，后端使用 Cloudflare Workers 和 Durable Objects 处理匹配与游戏逻辑。",
+   "type": "Web 应用",
+   "topic": "Agent 应用",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-30",
+   "score": 6.8,
+   "rel": 6,
+   "firstSeen": "2026-10-30"
+  },
+  {
+   "url": "https://huggingface.co/spaces/glitchlab/MiniMax-H3-Turbo-Lora-UNCENSORED-Workflow",
+   "title": "Spaces 应用：glitchlab/MiniMax-H3-Turbo-Lora-UNCENSORED-Workflow",
+   "titleEn": "",
+   "summary": "HuggingFace 平台上的 Gradio 工作流应用，集成 MiniMax-H3-Turbo 模型及 LoRA 适配器。支持无审查内容生成，点赞数 570，创建于 2026 年 9 月。",
+   "type": "模型与推理",
+   "topic": "模型应用",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-30",
+   "score": 6.8,
+   "rel": 8,
+   "firstSeen": "2026-10-30"
   },
   {
    "url": "https://www.v2ex.com/t/1251556#reply1",
@@ -325,6 +423,20 @@
    "firstSeen": "2026-10-28"
   },
   {
+   "url": "https://www.v2ex.com/t/1252996#reply1",
+   "title": "[开源] Monkey： macOS 拼音输入法，支持复用 ChatGPT 订阅的中译英",
+   "titleEn": "",
+   "summary": "开源 macOS 输入法 Monkey 基于 librime，创新支持复用 ChatGPT 订阅额度进行中译英。在输入框内直接预览英文，无需复制粘贴。凭据存储在 Keychain，隐私安全。",
+   "type": "桌面工具",
+   "topic": "效率工具",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-30",
+   "score": 6.6,
+   "rel": 5,
+   "firstSeen": "2026-10-30"
+  },
+  {
    "url": "https://github.com/Arthur031221/Token-Beggar",
    "title": "Token Beggar：自动路由子任务至低成本模型的编排工具",
    "titleEn": "Show HN: Token Beggar, route coding agent subtasks to cheaper models",
@@ -351,6 +463,20 @@
    "score": 10.0,
    "rel": 9,
    "firstSeen": "2026-10-17"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1253010#reply0",
+   "title": "做了个成人向私人影库，顺手开源了，欢迎试用",
+   "titleEn": "",
+   "summary": "开源私人影库 Alexandria，支持本地及 NAS 媒体管理，提供专题关系图和观影台功能。特色在于支持接入本地 Ollama 作为“智能馆长”，提供智能推荐与搜索，兼顾成人内容需求。",
+   "type": "Web 应用",
+   "topic": "开源项目",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-30",
+   "score": 6.5,
+   "rel": 6,
+   "firstSeen": "2026-10-30"
   },
   {
    "url": "https://www.v2ex.com/t/1251722#reply0",
@@ -449,6 +575,20 @@
    "score": 7.0,
    "rel": 7,
    "firstSeen": "2026-10-27"
+  },
+  {
+   "url": "https://huggingface.co/spaces/briaai/Fibo-2.0-editing",
+   "title": "Spaces 应用：briaai/Fibo-2.0-editing",
+   "titleEn": "",
+   "summary": "Bria AI 发布的 Fibo-2.0 图像编辑应用，部署于 HuggingFace。点赞 123，创建于 2026 年 10 月 19 日，支持图像编辑任务。",
+   "type": "其他",
+   "topic": "图像编辑",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-10-30",
+   "score": 6.3,
+   "rel": 7,
+   "firstSeen": "2026-10-30"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1xaa3io/i_built_vibio_desktop_basically_claude_code_and/",
@@ -1179,48 +1319,6 @@
    "firstSeen": "2026-10-15"
   },
   {
-   "url": "https://github.com/elbee19/glitchrupt",
-   "title": "Glitchrupt：AI Agent 需要关注时使桌面产生故障效果",
-   "titleEn": "Show HN: Glitchrupt: Glitch your desktop when your AI agent needs your attention",
-   "summary": "开发者制作了一个桌面特效工具 Glitchrupt，当 AI Agent 请求用户注意时，屏幕会呈现类似《蜘蛛侠：平行宇宙》的故障艺术（Glitch）效果。这是一种新型的人机交互通知机制。",
-   "type": "桌面工具",
-   "topic": "Agent 交互",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-26",
-   "score": 6.0,
-   "rel": 7,
-   "firstSeen": "2026-10-26"
-  },
-  {
-   "url": "https://opensparta.com/en",
-   "title": "Show HN：在 Telegram 上自动寻找客户的 AI Agent",
-   "titleEn": "Show HN: I built an AI agent to find customers on Telegram while I sleep",
-   "summary": "OpenSparta 展示了一个 AI Agent 项目，旨在自动化地在 Telegram 平台上寻找潜在客户。该项目利用 AI 监控和交互能力，协助开发者或服务提供者在睡眠期间持续获客。",
-   "type": "Agent 工作流",
-   "topic": "Agent 营销",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-26",
-   "score": 6.0,
-   "rel": 7,
-   "firstSeen": "2026-10-26"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1251735#reply0",
-   "title": "分享个简单的小工具：把 Mac 通知转发到 iPhone 上",
-   "titleEn": "",
-   "summary": "开发者因 iPhone 上的 Telegram 收不到推送，制作了一款将 Mac 通知转发到 iPhone 的小工具，结合 Bark 实现按 App 和关键词的简单过滤。",
-   "type": "Web 应用",
-   "topic": "工程实践",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-26",
-   "score": 6.0,
-   "rel": 5,
-   "firstSeen": "2026-10-26"
-  },
-  {
    "url": "https://www.v2ex.com/t/1249807#reply0",
    "title": "我做了一个背单词的小工具，现在扩展成了记忆知识的框架",
    "titleEn": "",
@@ -1387,48 +1485,6 @@
    "score": 7.1,
    "rel": 8,
    "firstSeen": "2026-10-19"
-  },
-  {
-   "url": "https://www.reddit.com/r/SideProject/comments/1xdp7qb/i_built_crawlwise_to_understand_how_google_and_ai/",
-   "title": "Crawlwise：解析AI搜索引擎对网站抓取情况的SEO平台",
-   "titleEn": "I built Crawlwise to understand how Google and AI search engines see my website",
-   "summary": "Crawlwise检测网站对Google及ChatGPT/Perplexity等AI爬虫的可访问性，提供优先行动建议，帮助优化传统及AI搜索双重曝光度。",
-   "type": "Web 应用",
-   "topic": "工程实践",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-10-24",
-   "score": 6.0,
-   "rel": 6,
-   "firstSeen": "2026-10-24"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1251401#reply1",
-   "title": "超好玩，我把 GitHub 变成了可探索的星球游戏！我的星球超好看，那你的星球长啥样呢？",
-   "titleEn": "",
-   "summary": "基于 Three.js 和 GitHub 数据生成 3D 星球游戏，将项目、语言及私有库转化为岛屿、树木和海洋，用户可匿名或授权创建专属可视化星球并探索。",
-   "type": "Web 应用",
-   "topic": "工程实践",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-24",
-   "score": 6.0,
-   "rel": 5,
-   "firstSeen": "2026-10-24"
-  },
-  {
-   "url": "https://huggingface.co/spaces/OpenMOSS-Team/MOSS-Image",
-   "title": "Spaces 应用：OpenMOSS-Team/MOSS-Image",
-   "titleEn": "",
-   "summary": "OpenMOSS 团队开发的图像生成模型 Demo，基于 Gradio 技术栈，2026 年 10 月创建，获赞 149，支持在线图像生成与编辑。",
-   "type": "Web 应用",
-   "topic": "开源权重",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-24",
-   "score": 6.0,
-   "rel": 7,
-   "firstSeen": "2026-10-24"
   },
   {
    "url": "https://github.com/crasmarum/CNet",
@@ -2033,20 +2089,6 @@
    "firstSeen": "2026-10-15"
   },
   {
-   "url": "https://www.typeui.sh/ui-foundations/configurator",
-   "title": "TypeUI：利用 AI 进行 UI 无障碍性上下文分析",
-   "titleEn": "Show HN: Accessibility Context for UI with AI",
-   "summary": "TypeUI 是一个 Web 工具，提供 AI 驱动的 UI 无障碍性审计与设计检查功能。它支持设计系统生成、UI 提示词优化及音频效果匹配，旨在帮助开发者构建更符合无障碍标准的 AI 生成界面。",
-   "type": "Web 应用",
-   "topic": "UI 生成",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-20",
-   "score": 6.0,
-   "rel": 6,
-   "firstSeen": "2026-10-20"
-  },
-  {
    "url": "https://www.reddit.com/r/SideProject/comments/1x9fdz1/i_upgraded_almighty_with_ai_and_launcher/",
    "title": "Almighty：集成 AI 助手与启动器的 macOS 系统增强工具",
    "titleEn": "I upgraded Almighty with AI and launcher",
@@ -2115,20 +2157,6 @@
    "score": 6.7,
    "rel": 7,
    "firstSeen": "2026-10-16"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1249820#reply0",
-   "title": "原生 ios 和 macos 斗鱼直播 app",
-   "titleEn": "",
-   "summary": "作者基于 GitHub 项目重构了 Swift 原生的斗鱼直播应用，保留弹幕及 AI 时间轴功能，支持录像查看，代码开源但安装包由用户自行编译。",
-   "type": "移动 App",
-   "topic": "移动开发",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-19",
-   "score": 6.0,
-   "rel": 6,
-   "firstSeen": "2026-10-19"
   },
   {
    "url": "https://www.v2ex.com/t/1247068#reply1",
@@ -3181,20 +3209,6 @@
    "firstSeen": "2026-10-10"
   },
   {
-   "url": "https://www.v2ex.com/t/1247458#reply1",
-   "title": "做了个 PDF 分享工具：除了生成链接，我更想知道对方到底有没有认真看",
-   "titleEn": "",
-   "summary": "PDF 转分享链接 SaaS 工具，提供阅读深度、活跃时间、页面流失率等细粒度分析数据，支持自定义页面元素，旨在解决文件发出后的反馈断层。",
-   "type": "Web 应用",
-   "topic": "效率工具",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-10",
-   "score": 6.1,
-   "rel": 5,
-   "firstSeen": "2026-10-10"
-  },
-  {
    "url": "https://www.v2ex.com/t/1246852#reply0",
    "title": "AI 僵尸拥抱视频工具 aizombie.app",
    "titleEn": "Built an AI zombie hug tool — aizombie.app: 2 photos → ~20s vertical clip, guest checkout $9.90",
@@ -3319,20 +3333,6 @@
    "score": 7.7,
    "rel": 8,
    "firstSeen": "2026-10-02"
-  },
-  {
-   "url": "https://github.com/podraven/titan-engine",
-   "title": "Titan：Rust/WASM 高性能 Web 表格引擎",
-   "titleEn": "Show HN: I built a fast spreadsheet engine for the web in Rust/WASM",
-   "summary": "Titan 是 Rust 编译至 WASM 的表格引擎，优化大型表格重算性能，减少 JS 对象分配与序列化开销，NPM 发布并附基准测试。",
-   "type": "Web 应用",
-   "topic": "模型与推理",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-09",
-   "score": 6.1,
-   "rel": 5,
-   "firstSeen": "2026-10-09"
   },
   {
    "url": "https://github.com/spenmcke/compress",
