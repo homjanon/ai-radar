@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-30 08:10",
+ "updated": "2026-10-31 08:10",
  "count": 300,
  "types": [
   "Agent 工作流",
@@ -16,6 +16,48 @@
   "移动 App"
  ],
  "cases": [
+  {
+   "url": "https://www.fastbrowse.ai/",
+   "title": "Show HN：Fastbrowse基于System 1模型的浏览器Agent",
+   "titleEn": "Show HN: Fastbrowse, Browser agent that picks clicks with a System One model",
+   "summary": "Nebula团队开源Fastbrowse，一款基于Jev等System 1小模型的浏览器Agent。通过列举元素而非截图，成本比Browser Use低11倍（$0.03 vs $0.318/次），成功率略高。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-31",
+   "score": 9.2,
+   "rel": 9,
+   "firstSeen": "2026-10-31"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1253296#reply0",
+   "title": "做了个 mydash： Claude Code / Codex 产出的方案、报告、PDF、网页原型，在手机上直接看（自托管，开源）",
+   "titleEn": "",
+   "summary": "开源服务 mydash 允许用户将 AI Agent 生成的文档、网页原型等产物转换为移动端友好的链接。支持批注反馈、审批流及多模态文件预览，数据自托管，保护隐私，通过 Tailscale 访问。",
+   "type": "Web 应用",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-31",
+   "score": 9.2,
+   "rel": 8,
+   "firstSeen": "2026-10-31"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1253294#reply0",
+   "title": "做了一个开源 Zotero 插件 Mktero：把论文 PDF 读成能跳回原文的 Markdown",
+   "titleEn": "",
+   "summary": "Zotero 插件 Mktero 将双栏 PDF 转换为连续 Markdown 阅读体验，保留公式与表格，并支持双向定位跳转。集成 MinerU 或 Mistral OCR，允许本地处理或云端转换，支持 AI 翻译与批注同步。",
+   "type": "浏览器插件",
+   "topic": "浏览器插件",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-31",
+   "score": 9.1,
+   "rel": 7,
+   "firstSeen": "2026-10-31"
+  },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1xi30ov/zephium_a_fast_opensource_fullyfeatured_browser/",
    "title": "Zephium：面向Agent协作的高性能Rust开源浏览器",
@@ -59,6 +101,20 @@
    "firstSeen": "2026-10-27"
   },
   {
+   "url": "https://www.v2ex.com/t/1253311#reply1",
+   "title": "做了个小工具 cc-pair：让 Claude Code 和 Codex 互相 review 代码",
+   "titleEn": "",
+   "summary": "开源工具 cc-pair 允许配置 Claude Code 和 Codex 进行双向代码审查。一个模型负责编写，另一个负责评审，通过共享文件传递消息，支持自动或手动模式，直至达成共识或轮次上限。",
+   "type": "CLI 工具",
+   "topic": "Agent 工作流",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-31",
+   "score": 8.7,
+   "rel": 9,
+   "firstSeen": "2026-10-31"
+  },
+  {
    "url": "https://github.com/TheWariend/CleanSlate",
    "title": "CleanSlate：支持共享程序记忆的多平台AI工作区",
    "titleEn": "Show HN: Open-source AI workspace with shared procedural memory",
@@ -71,6 +127,20 @@
    "score": 9.2,
    "rel": 9,
    "firstSeen": "2026-10-29"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1253312#reply3",
+   "title": "开源一个家庭试卷工作台",
+   "titleEn": "",
+   "summary": "开发者开源 Electron 应用 exam2pdf，支持从小红书采集试卷图片，整理为可打印 PDF。内置 AI 批阅功能，可对接 DeepSeek 等模型，并支持错题本生成与多孩子数据隔离。",
+   "type": "桌面工具",
+   "topic": "开源项目",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-31",
+   "score": 8.3,
+   "rel": 6,
+   "firstSeen": "2026-10-31"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1xixt2x/opensourcing_httpforgecore_mit_the_api_testing/",
@@ -101,6 +171,20 @@
    "firstSeen": "2026-10-27"
   },
   {
+   "url": "https://skillwire.net",
+   "title": "Show HN：SkillWire编程Agent技能可搜索目录",
+   "titleEn": "Show HN: SkillWire, a searchable catalog for coding-agent skills",
+   "summary": "SkillWire上线一个包含9833个条目的编程Agent技能目录，分类涵盖开发、测试、文档等。用户可按Harness、模型、证据筛选，查看安装量和评分，支持社区投票和研究精选。",
+   "type": "Web 应用",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-10-31",
+   "score": 8.0,
+   "rel": 8,
+   "firstSeen": "2026-10-31"
+  },
+  {
    "url": "https://usenua.com/blog/artificer",
    "title": "Artificer：Nua 发布 4B 参数机器人任务评估模型",
    "titleEn": "Show HN: Artificer by Nua: Frontier robotics task evaluation in 4B parameters",
@@ -113,6 +197,20 @@
    "score": 8.2,
    "rel": 9,
    "firstSeen": "2026-10-30"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1253333#reply0",
+   "title": "不想再为了改一句英文切去 ChatGPT 了，我做了个在任何输入框里一键搞定的 Mac 工具",
+   "titleEn": "",
+   "summary": "开发者发布开源 Mac 工具 Inklet，常驻菜单栏。支持全局快捷键触发，通过本地模型或云端 API 将中文输入实时转换为自然英文并回填至任意输入框，支持语音识别与自定义 Prompt。",
+   "type": "桌面工具",
+   "topic": "效率工具",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-31",
+   "score": 7.8,
+   "rel": 7,
+   "firstSeen": "2026-10-31"
   },
   {
    "url": "https://www.v2ex.com/t/1252390#reply0",
@@ -451,6 +549,20 @@
    "firstSeen": "2026-10-24"
   },
   {
+   "url": "https://www.v2ex.com/t/1253290#reply2",
+   "title": "Voilà pro 支持离线实时输入了",
+   "titleEn": "",
+   "summary": "Voilà Pro 更新支持离线实时输入与混合语言转录。采用本地模型避免数据上传，支持中英法混输，仅限 Apple Silicon 芯片且需 16GB 内存，提供实时语音转文字体验。",
+   "type": "移动 App",
+   "topic": "效率工具",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-31",
+   "score": 6.3,
+   "rel": 5,
+   "firstSeen": "2026-10-31"
+  },
+  {
    "url": "https://rabin-a.github.io/mcp-router/#benchmark",
    "title": "Show HN：我在 Claude Code 中基准测试了 6 个 MCP 代理并构建了自己的",
    "titleEn": "Show HN: I benchmarked 6 MCP proxies in Claude Code, then built my own",
@@ -549,6 +661,34 @@
    "firstSeen": "2026-10-22"
   },
   {
+   "url": "https://www.reddit.com/r/SideProject/comments/1xju2rh/my_side_project_just_got_its_own_vs_code_extension/",
+   "title": "副项目optimAIzr推出VS Code扩展追踪AI编码使用",
+   "titleEn": "My side project just got its own VS Code extension",
+   "summary": "开发者为开源工具optimAIzr发布v0.13.0及VS Code扩展，用于追踪Claude Code、Codex等AI编码工具的使用情况。提供上下文用量、缓存倒计时和节省成本分析，完全本地运行。",
+   "type": "桌面工具",
+   "topic": "效率工具",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-10-31",
+   "score": 6.2,
+   "rel": 6,
+   "firstSeen": "2026-10-31"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1253291#reply0",
+   "title": "把之前发过的第一版宝可梦精灵，继续做成了一个可以自由创造精灵的「涅瓦世界」",
+   "titleEn": "",
+   "summary": "「涅瓦世界」允许用户通过 Prompt 原创生成宝可梦式精灵，包括属性、技能与数值。用户可在虚拟世界中探索、对战其他玩家创造的精灵，强调数值随机性与互动性。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-10-31",
+   "score": 6.2,
+   "rel": 6,
+   "firstSeen": "2026-10-31"
+  },
+  {
    "url": "https://www.reddit.com/r/SideProject/comments/1xemwml/im_building_my_own_coding_agent_by_combining_the/",
    "title": "Kelpie Code：整合多工具优势的个人编码 Agent",
    "titleEn": "I'm building my own coding agent by combining the best ideas I've found in other tools",
@@ -575,20 +715,6 @@
    "score": 7.0,
    "rel": 7,
    "firstSeen": "2026-10-27"
-  },
-  {
-   "url": "https://huggingface.co/spaces/briaai/Fibo-2.0-editing",
-   "title": "Spaces 应用：briaai/Fibo-2.0-editing",
-   "titleEn": "",
-   "summary": "Bria AI 发布的 Fibo-2.0 图像编辑应用，部署于 HuggingFace。点赞 123，创建于 2026 年 10 月 19 日，支持图像编辑任务。",
-   "type": "其他",
-   "topic": "图像编辑",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-30",
-   "score": 6.3,
-   "rel": 7,
-   "firstSeen": "2026-10-30"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1xaa3io/i_built_vibio_desktop_basically_claude_code_and/",
@@ -2033,20 +2159,6 @@
    "firstSeen": "2026-10-15"
   },
   {
-   "url": "https://sspai.com/post/116705",
-   "title": "派评 | 近期值得关注的 App",
-   "titleEn": "",
-   "summary": "推荐 iOS 输入法「紫毫 Hare」，基于 Rime 引擎与雾凇词库。支持小鹤双拼专属布局、双拼纠错及端侧 6.8MB 长句模型。兼容 Mac 端词库，Pro 版支持 AI 润色与多语翻译，商业化买断制。",
-   "type": "移动 App",
-   "topic": "效率工具",
-   "block": "少数派",
-   "src": "apps",
-   "lastSeen": "2026-10-20",
-   "score": 6.1,
-   "rel": 5,
-   "firstSeen": "2026-10-20"
-  },
-  {
    "url": "https://hardwareos.ai",
    "title": "HardwareOS：将提示词转化为可接线的硬件项目",
    "titleEn": "Show HN: Turn a prompt into a hardware project you can wire up and flash",
@@ -2129,20 +2241,6 @@
    "score": 7.2,
    "rel": 7,
    "firstSeen": "2026-10-14"
-  },
-  {
-   "url": "https://www.reddit.com/r/SideProject/comments/1x9h1yz/my_side_project_outgrew_my_95_salary/",
-   "title": "OpenTweet：通过 AI Agent 集成实现 MRR 增长的推文排期工具",
-   "titleEn": "My side project outgrew my 9-5 salary",
-   "summary": "开发者分享 OpenTweet 从 3.5k 增长至 4k MRR 历程，通过添加热门 AI Agent 集成及优化 SEO/AEO 页面，抓住 AI 趋势实现增长。",
-   "type": "Web 应用",
-   "topic": "商业案例",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-10-19",
-   "score": 6.1,
-   "rel": 6,
-   "firstSeen": "2026-10-19"
   },
   {
    "url": "https://www.v2ex.com/t/1249184#reply4",
@@ -3195,20 +3293,6 @@
    "firstSeen": "2026-10-05"
   },
   {
-   "url": "https://www.reddit.com/r/SideProject/comments/1x1y4os/i_built_a_nextjs_supabase_starter_for_developers/",
-   "title": "Next.js + Supabase 多租户 SaaS 启动框架",
-   "titleEn": "I built a Next.js + Supabase starter for developers building multi-tenant SaaS",
-   "summary": "B2B SaaS OS 提供了基于 Next.js 16 和 Supabase 的多租户基础架构，包含认证、RBAC、Stripe 计费及 API 密钥管理。附带对抗性加固测试，捕获了 3 个实际 Bug，售价 149 美元。",
-   "type": "Web 应用",
-   "topic": "工程实践",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-10-10",
-   "score": 6.1,
-   "rel": 6,
-   "firstSeen": "2026-10-10"
-  },
-  {
    "url": "https://www.v2ex.com/t/1246852#reply0",
    "title": "AI 僵尸拥抱视频工具 aizombie.app",
    "titleEn": "Built an AI zombie hug tool — aizombie.app: 2 photos → ~20s vertical clip, guest checkout $9.90",
@@ -4005,20 +4089,6 @@
    "firstSeen": "2026-09-30"
   },
   {
-   "url": "https://www.interviewbasecamp.com/",
-   "title": "Interview Basecamp 面试准备",
-   "titleEn": "Show HN: Interview Basecamp – prep from a role or a job description",
-   "summary": "Interview Basecamp 推出双模式面试准备工具：基于角色的通用能力演练与基于职位描述的针对性练习。系统结合能力模型与 LLM 生成定制化课程，帮助用户高效应对技术面试，提升求职成功率。",
-   "type": "Web 应用",
-   "topic": "求职工具",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-03",
-   "score": 6.2,
-   "rel": 6,
-   "firstSeen": "2026-10-03"
-  },
-  {
    "url": "https://www.v2ex.com/t/1245905#reply0",
    "title": "做了一个浏览器本地 GIF 压缩工具 CompressGIF，支持目标体积和 API / MCP",
    "titleEn": "",
@@ -4045,20 +4115,6 @@
    "score": 6.7,
    "rel": 7,
    "firstSeen": "2026-09-30"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1246071#reply2",
-   "title": "最近真的被 Opus 5.5 惊艳到了，特别是做视频，异常勇猛。",
-   "titleEn": "",
-   "summary": "用户分享对 Anthropic Claude Opus 5.5 模型的主观评价，特别强调该模型在视频生成任务中表现“异常勇猛”，令人惊艳。正文缺乏具体的技术参数、测试数据或可复现的结论，仅为一篇简短的体验反馈帖，无详细的技术栈或实现细节描述。",
-   "type": "内容生成",
-   "topic": "模型体验",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-02",
-   "score": 6.2,
-   "rel": 8,
-   "firstSeen": "2026-10-02"
   },
   {
    "url": "https://www.v2ex.com/t/1245809#reply0",
@@ -4131,34 +4187,6 @@
    "firstSeen": "2026-09-30"
   },
   {
-   "url": "https://ledge.sh",
-   "title": "Ledge.sh：可执行 Shell 命令的 Markdown 笔记本",
-   "titleEn": "Show HN: Ledge.sh – Runnable Markdown Notes",
-   "summary": "Ledge.sh 允许用户在 Markdown 笔记中直接运行 Shell、代码及 SQL 命令，解决笔记与终端之间的割裂。开发者将其作为日常工具使用，实现频繁执行命令与知识管理的无缝整合，类似 cmux 的终端管理体验。",
-   "type": "桌面工具",
-   "topic": "效率工具",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-09-30",
-   "score": 6.2,
-   "rel": 6,
-   "firstSeen": "2026-09-30"
-  },
-  {
-   "url": "https://www.reddit.com/r/SideProject/comments/1wu1jd9/i_built_an_android_app_that_warns_me_before_i_run/",
-   "title": "OpenRouter 额度预警 Android 应用",
-   "titleEn": "I built an Android app that warns me before I run out of OpenRouter credits (BYOK, no account)",
-   "summary": "开发者推出一款 Android 应用，用于监控 OpenRouter 余额。支持 BYOK 模式，无需注册账户。应用提供余额百分比、当日及月度消费统计，并在额度耗尽前触发低余额通知，避免工作流中断。",
-   "type": "移动 App",
-   "topic": "效率工具",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-09-30",
-   "score": 6.2,
-   "rel": 6,
-   "firstSeen": "2026-09-30"
-  },
-  {
    "url": "https://www.v2ex.com/t/1245591#reply11",
    "title": "我用 AI 解决了 Java 开发里几个困扰多年的问题",
    "titleEn": "",
@@ -4183,34 +4211,6 @@
    "src": "apps",
    "lastSeen": "2026-09-29",
    "score": 6.3,
-   "rel": 6,
-   "firstSeen": "2026-09-29"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1245582#reply0",
-   "title": "最近看到 Hotel Lobby AI 挺火，顺手做了个教程 + Prompt 工具",
-   "titleEn": "",
-   "summary": "站点提供 Hotel Lobby AI 视频制作全流程教程，包含免费 Prompt 生成器。对比 Kling、Higgsfield 等方案，整理免费低成本做法，解答换脸、人物一致性等常见问题，借助 Codex 开发，降低新手入门门槛。",
-   "type": "效率工具",
-   "topic": "教程工具",
-   "block": "V2EX 分享创造",
-   "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29",
-   "src": "apps",
-   "score": 6.2,
-   "rel": 6
-  },
-  {
-   "url": "https://www.v2ex.com/t/1245616#reply0",
-   "title": "做了一个 Hotel Lobby AI 视频生成器，欢迎大家试用和反馈",
-   "titleEn": "",
-   "summary": "开发者推出 Migos AI 网站，利用两张人物照片生成特定风格的 AI 双人视频。产品支持在线预览与下载，采用一次性购买积分模式，单条视频售价 5 美元，目前处于早期阶段，正征集用户反馈以优化流程与模板。",
-   "type": "内容生成",
-   "topic": "视频生成工具",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-09-29",
-   "score": 6.2,
    "rel": 6,
    "firstSeen": "2026-09-29"
   }
