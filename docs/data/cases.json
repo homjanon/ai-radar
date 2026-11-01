@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-31 08:10",
+ "updated": "2026-11-01 08:10",
  "count": 300,
  "types": [
   "Agent 工作流",
@@ -115,6 +115,20 @@
    "firstSeen": "2026-10-31"
   },
   {
+   "url": "https://github.com/marlandoj/muse-zouroboros",
+   "title": "Zouroboros：为 Muse 提供多模型路由与持久记忆软件工厂",
+   "titleEn": "Show HN: Muse Zouroboros, gives Muse a software factory",
+   "summary": "基于 Muse 的工作区扩展，集成 7 种 Harness 路由 Claude、Hermes、Codex 等模型。核心是持久化记忆层，支持跨会话状态保持，提供社区版与托管版。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-01",
+   "score": 8.4,
+   "rel": 9,
+   "firstSeen": "2026-11-01"
+  },
+  {
    "url": "https://github.com/TheWariend/CleanSlate",
    "title": "CleanSlate：支持共享程序记忆的多平台AI工作区",
    "titleEn": "Show HN: Open-source AI workspace with shared procedural memory",
@@ -129,6 +143,20 @@
    "firstSeen": "2026-10-29"
   },
   {
+   "url": "https://www.reddit.com/r/SideProject/comments/1xkmvdn/i_built_a_claude_code_workflow_for_people_who/",
+   "title": "Meta-XoT-OSS-Rail：面向非开发者的 Claude Code 自动化工作流",
+   "titleEn": "I built a Claude Code workflow for people who know what they want to build, but not how to build it",
+   "summary": "开源 Claude Code 插件，将软件开发过程转化为评分游戏。Agent 的目标不再是写代码，而是通过步骤得分最大化完成整个开发流程，减少非技术用户的干预需求。",
+   "type": "Agent 工作流",
+   "topic": "Agent 工作流",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-11-01",
+   "score": 8.2,
+   "rel": 9,
+   "firstSeen": "2026-11-01"
+  },
+  {
    "url": "https://www.v2ex.com/t/1253312#reply3",
    "title": "开源一个家庭试卷工作台",
    "titleEn": "",
@@ -141,6 +169,34 @@
    "score": 8.3,
    "rel": 6,
    "firstSeen": "2026-10-31"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1253461#reply0",
+   "title": "做了个给 2D 游戏用的 AI 精灵图生成器：一张角色图生成待机、攻击动画，直接导出精灵图和 JSON",
+   "titleEn": "",
+   "summary": "开发 SpriteCanvas 工具，利用 AI 从单张参考图生成 35 帧以上的 2D 游戏角色动画，支持像素风统一调色板导出，直接生成 Phaser/PixiJS 可用的 PNG 与 JSON 图集，并提供免费试用积分。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-01",
+   "score": 8.0,
+   "rel": 8,
+   "firstSeen": "2026-11-01"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1253442#reply0",
+   "title": "[分享创造] 让 agent 反复渲染比对，是我目前找到的最笨但最稳的办法",
+   "titleEn": "",
+   "summary": "分享利用 Agent 自动化处理“图片转 PPT”的工作流，核心策略是让 Agent 循环执行“渲染-比对-修正”，通过量化差异而非模型自述来确保版式对齐，单张图需迭代十几轮以解决大尺寸图慢及长条图错位问题。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-01",
+   "score": 8.0,
+   "rel": 8,
+   "firstSeen": "2026-11-01"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1xixt2x/opensourcing_httpforgecore_mit_the_api_testing/",
@@ -211,6 +267,20 @@
    "score": 7.8,
    "rel": 7,
    "firstSeen": "2026-10-31"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1xkn1sh/i_got_tired_of_30_open_tabs_killing_my_train_of/",
+   "title": "writenode：基于 MCP 连接的浏览器笔记与记忆网络",
+   "titleEn": "I got tired of 30+ open tabs killing my train of thought, so I built ⚪ writenode",
+   "summary": "浏览器扩展工具，将零散笔记转化为互连节点网络，保持与当前阅读内容的上下文关联。内置 MCP 连接器，允许 Claude 在会话间读写笔记，实现主动记忆管理。",
+   "type": "浏览器插件",
+   "topic": "Agent 框架",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-11-01",
+   "score": 7.4,
+   "rel": 8,
+   "firstSeen": "2026-11-01"
   },
   {
    "url": "https://www.v2ex.com/t/1252390#reply0",
@@ -3083,20 +3153,6 @@
    "firstSeen": "2026-10-11"
   },
   {
-   "url": "https://www.v2ex.com/t/1247746#reply1",
-   "title": "做了个 Mistral AI 工作空间，聊天、对话管理和成本估算都放到了一起",
-   "titleEn": "",
-   "summary": "作者发布独立项目 mistrallarge4.io，集成 Mistral 模型对话、提示词配置、历史管理、成本估算及 API 接入指南。支持流式输出、Markdown、JSON 格式及云同步功能，提供中英文界面与移动端适配。",
-   "type": "Web 应用",
-   "topic": "工具发布",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-11",
-   "score": 6.2,
-   "rel": 6,
-   "firstSeen": "2026-10-11"
-  },
-  {
    "url": "https://github.com/vayungodara/cliproxy-rs",
    "title": "Cliproxy-rs 统一 LLM 代理网关",
    "titleEn": "Show HN: Cliproxy-rs, a Rust port of the CLIProxyAPI LLM subscription proxy",
@@ -3193,20 +3249,6 @@
    "score": 8.7,
    "rel": 9,
    "firstSeen": "2026-09-30"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1247463#reply2",
-   "title": "做了个深度集成 Herdr 的 iOS SSH / Mosh 终端 Tenimon，邀请 V 友 TestFlight 体验",
-   "titleEn": "",
-   "summary": "iOS 终端应用 Tenimon，支持 SSH/Mosh 及深度集成 Herdr 代理任务管理，具备图片/语音输入、分屏及端口转发功能，计划免费基础版加一次性买断。",
-   "type": "移动 App",
-   "topic": "移动 App",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-10",
-   "score": 6.2,
-   "rel": 6,
-   "firstSeen": "2026-10-10"
   },
   {
    "url": "https://www.v2ex.com/t/1246434#reply5",
@@ -3475,20 +3517,6 @@
    "firstSeen": "2026-09-30"
   },
   {
-   "url": "https://www.v2ex.com/t/1246997#reply1",
-   "title": "一个人做了 8 个月的摸鱼修仙文字游戏,2000 用户了,来分享一下",
-   "titleEn": "",
-   "summary": "独立开发者分享耗时 8 个月打造的修仙文字游戏开发历程，累计用户达 2000 人。文中推荐开源 AI 助手 OpenAgent，强调 Go 原生实现性能提升及 Agent 流程优化带来的 Token 节省优势。",
-   "type": "其他",
-   "topic": "独立开发",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-08",
-   "score": 6.2,
-   "rel": 6,
-   "firstSeen": "2026-10-08"
-  },
-  {
    "url": "https://www.v2ex.com/t/1246628#reply2",
    "title": "做了一个把照片转成短视频的网页工具，想听听大家的使用反馈",
    "titleEn": "",
@@ -3655,20 +3683,6 @@
    "score": 6.7,
    "rel": 7,
    "firstSeen": "2026-10-05"
-  },
-  {
-   "url": "https://www.reddit.com/r/SideProject/comments/1wzhdl3/i_need_your_thoughts/",
-   "title": "Wingbird：集成 Tinder 等平台的 iMessage AI 约会助手",
-   "titleEn": "I need your thoughts!!",
-   "summary": "Wingbird 是一款运行在 iMessage 中的 AI 助手，可连接 Tinder、Hinge 等约会应用。它追踪聊天对象，在对话停滞时建议回复，并协助预订餐厅及安排日程。该工具试图通过自动化社交流程提升约会效率，引发关于 AI 介入人际关系的讨论。",
-   "type": "移动 App",
-   "topic": "AI 应用",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-10-07",
-   "score": 6.2,
-   "rel": 6,
-   "firstSeen": "2026-10-07"
   },
   {
    "url": "https://www.v2ex.com/t/1246299#reply0",
@@ -3878,20 +3892,6 @@
    "score": 6.5,
    "rel": 6,
    "firstSeen": "2026-10-04"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1246438#reply2",
-   "title": "[问书] 自主学习网站",
-   "titleEn": "",
-   "summary": "开源项目 ask-book 将电子书蒸馏为技能，支持对话式学习与模型配置，具备本地书架功能及技能导入导出能力。",
-   "type": "Agent 工作流",
-   "topic": "开源权重",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-05",
-   "score": 6.2,
-   "rel": 7,
-   "firstSeen": "2026-10-05"
   },
   {
    "url": "https://github.com/linuztx/alter-zero",
