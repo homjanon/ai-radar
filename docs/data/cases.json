@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-01 08:10",
+ "updated": "2026-11-02 08:10",
  "count": 300,
  "types": [
   "Agent 工作流",
@@ -16,6 +16,34 @@
   "移动 App"
  ],
  "cases": [
+  {
+   "url": "https://www.v2ex.com/t/1253609#reply0",
+   "title": "做了个开源工具：输入会议名，把十年论文变成可点击的趋势报告（CVPR、ECTC 示例）",
+   "titleEn": "",
+   "summary": "开源工具 paper-trends 利用 OpenAlex 数据，通过 TF-IDF+NMF 分析生成会议论文趋势报告。支持从关键词追踪至机构与具体论文，可视化展示技术演变，如 CVPR 中扩散模型论文数量变化，代码 MIT 协议开源。",
+   "type": "数据分析",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-02",
+   "score": 9.3,
+   "rel": 8,
+   "firstSeen": "2026-11-02"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1253622#reply0",
+   "title": "把 DeepSeek 的 Super-agent 思路做成一个人的桌面助手： AnyModelBot，首个开箱即用的 DeepSeek Super Agent",
+   "titleEn": "",
+   "summary": "开源桌面助手 AnyModelBot 实现了 DeepSeek Super Agent 思路，支持后台任务、定时规则及“需要你”提醒机制。集成 70+ 模型，支持微信/飞书连接，具备本地优先、文件操作及沙箱执行能力，MIT 协议开源。",
+   "type": "桌面工具",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-02",
+   "score": 9.0,
+   "rel": 9,
+   "firstSeen": "2026-11-02"
+  },
   {
    "url": "https://www.fastbrowse.ai/",
    "title": "Show HN：Fastbrowse基于System 1模型的浏览器Agent",
@@ -197,6 +225,20 @@
    "score": 8.0,
    "rel": 8,
    "firstSeen": "2026-11-01"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1253627#reply0",
+   "title": "做了一个网页旁的画布：收藏带来源，圈出细节交给 Codex / Claude Code",
+   "titleEn": "",
+   "summary": "开源项目 Galta 提供网页旁无限画布，支持收藏带来源图片并圈出细节，直接连接 Codex 或 Claude Code 在画布中工作。旨在解决从视觉参考到 Agent 执行的模糊环节，需 Chrome 141+ 及 Mac 环境。",
+   "type": "Web 应用",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-02",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-11-02"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1xixt2x/opensourcing_httpforgecore_mit_the_api_testing/",
@@ -423,6 +465,20 @@
    "firstSeen": "2026-10-29"
   },
   {
+   "url": "https://www.v2ex.com/t/1253615#reply0",
+   "title": "给开源 AI 雷达做了 WorkBuddy 技能，想把选型从名单变成可核查记录",
+   "titleEn": "",
+   "summary": "开发者发布 WorkBuddy 技能“开源 AI 项目研究与选型”，通过结构化提问区分事实、建议与未知项。该技能基于公开数据，旨在解决 AI 助手在技术选型中证据缺失、标准模糊的问题，支持核对许可与替代方案。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-02",
+   "score": 6.7,
+   "rel": 7,
+   "firstSeen": "2026-11-02"
+  },
+  {
    "url": "https://www.reddit.com/r/SideProject/comments/1xgc6g6/a_shared_brain_for_your_team_and_your_coding/",
    "title": "Cairn 团队知识微服务",
    "titleEn": "A shared brain for your team and your coding agents: decisions and gotchas with sources, so nobody guesses",
@@ -491,6 +547,20 @@
    "score": 6.9,
    "rel": 5,
    "firstSeen": "2026-10-30"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1253614#reply0",
+   "title": "做了个 AI 说唱视频生成器：传一张照片，出一段对口型的 Rap 表演（免费预览，单条 $3.99）",
+   "titleEn": "",
+   "summary": "一站式 AI 说唱视频生成工具，用户只需上传 1-2 张照片或输入主题，即可生成 12 秒对口型 Rap 视频。底层采用 AI 原创人声与 beat 以规避版权，提供多种节日与双人对战模板，单条视频付费模式。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-02",
+   "score": 6.2,
+   "rel": 6,
+   "firstSeen": "2026-11-02"
   },
   {
    "url": "https://huggingface.co/spaces/black-forest-labs/flux-3-image-klein",
@@ -2033,20 +2103,6 @@
    "firstSeen": "2026-10-12"
   },
   {
-   "url": "https://paceorpause.com/",
-   "title": "节奏或暂停：探索公众对AI发展立场的地图",
-   "titleEn": "Show HN: Pace or Pause – Explore where people stand on AI development",
-   "summary": "该网站汇编了哲学家、AI研究者及政治人物对AI发展节奏的立场，将其分为“停止”与“暂停”两派，提供在线测试与详细档案，直观展示知名人士在AI治理议题上的具体观点分布。",
-   "type": "Web 应用",
-   "topic": "行业观点",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-21",
-   "score": 6.2,
-   "rel": 6,
-   "firstSeen": "2026-10-21"
-  },
-  {
    "url": "https://www.reddit.com/r/SideProject/comments/1x4epqb/made_a_little_project_that_lets_you_watch_how_a/",
    "title": "Attention Galaxy：浏览器内运行的微型 LLM 注意力可视化",
    "titleEn": "Made a little project that lets you watch how a tiny LLM thinks, runs fully in your browser",
@@ -2269,20 +2325,6 @@
    "score": 7.1,
    "rel": 6,
    "firstSeen": "2026-10-15"
-  },
-  {
-   "url": "https://www.reddit.com/r/SideProject/comments/1x9fdz1/i_upgraded_almighty_with_ai_and_launcher/",
-   "title": "Almighty：集成 AI 助手与启动器的 macOS 系统增强工具",
-   "titleEn": "I upgraded Almighty with AI and launcher",
-   "summary": "Almighty 新增 AI 助手 Zeus 和启动器功能，支持运行 107 种系统修改技巧，可对接 Apple Intelligence、Ollama 等本地或云端模型。",
-   "type": "桌面工具",
-   "topic": "桌面工具",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-10-19",
-   "score": 6.2,
-   "rel": 7,
-   "firstSeen": "2026-10-19"
   },
   {
    "url": "https://github.com/triggeredcode/lucid",
@@ -2859,34 +2901,6 @@
    "firstSeen": "2026-10-05"
   },
   {
-   "url": "https://wonderhop.io/en/",
-   "title": "Wonderhop：每日多语言猜测游戏",
-   "titleEn": "Show HN: Wonderhop – A daily game: guess what most people say, or what none do",
-   "summary": "无需注册的多语言问答游戏，利用AI裁判在1秒内核实开放文本答案的有效性，并根据玩家输入动态更新答案概率及内容列表。",
-   "type": "Web 应用",
-   "topic": "Agent 框架",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-14",
-   "score": 6.2,
-   "rel": 6,
-   "firstSeen": "2026-10-14"
-  },
-  {
-   "url": "https://railspike.dev/",
-   "title": "Railspike：Rails编码Agent提示系统",
-   "titleEn": "Show HN: Railspike, a coding agent prompting system I've been using for 2 years",
-   "summary": "一套针对Rails生态系统构建的编码Agent提示系统，开发者已持续使用两年，旨在提升LLM在复杂代码库中的理解与生成质量。",
-   "type": "Agent 工作流",
-   "topic": "Agent 框架",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-14",
-   "score": 6.2,
-   "rel": 7,
-   "firstSeen": "2026-10-14"
-  },
-  {
    "url": "https://agentability.org/",
    "title": "AgentAbility：AI 智能体每日执行 10 项网络事务实验",
    "titleEn": "Show HN: An AI agent runs ten web errands a day, every transcript published",
@@ -3137,20 +3151,6 @@
    "score": 8.4,
    "rel": 9,
    "firstSeen": "2026-10-02"
-  },
-  {
-   "url": "https://www.reddit.com/r/SideProject/comments/1x2sff6/i_made_dory_to_stop_reexplaining_my_projects/",
-   "title": "Dory：跨模型 AI 对话上下文持久化与同步笔记工具",
-   "titleEn": "I made Dory to stop re-explaining my projects every time I start a new chat",
-   "summary": "为浏览器与代码项目设计双端工具，通过单文件或仓库 wiki 记录项目决策与上下文。提供 Claude Code 插件与 Codex 指令，解决切换模型时重复解释项目背景的痛点，MIT 开源。",
-   "type": "其他",
-   "topic": "Agent 框架",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-10-11",
-   "score": 6.2,
-   "rel": 7,
-   "firstSeen": "2026-10-11"
   },
   {
    "url": "https://github.com/vayungodara/cliproxy-rs",
