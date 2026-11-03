@@ -1,11 +1,10 @@
 {
- "updated": "2026-11-02 08:10",
+ "updated": "2026-11-03 08:10",
  "count": 300,
  "types": [
   "Agent 工作流",
   "CLI 工具",
   "Web 应用",
-  "Web应用",
   "其他",
   "内容生成",
   "效率工具",
@@ -29,6 +28,20 @@
    "score": 9.3,
    "rel": 8,
    "firstSeen": "2026-11-02"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1253952#reply3",
+   "title": "AI 错题本",
+   "titleEn": "",
+   "summary": "一款私有化 AI 错题管理工具，通过视觉模型转录题目、几何校验及独立解题验伪等质量链，实现拍照录入、自动归档及针对性出卷。",
+   "type": "其他",
+   "topic": "Agent 工作流",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-03",
+   "score": 8.8,
+   "rel": 9,
+   "firstSeen": "2026-11-03"
   },
   {
    "url": "https://www.v2ex.com/t/1253622#reply0",
@@ -101,6 +114,20 @@
    "firstSeen": "2026-10-29"
   },
   {
+   "url": "https://www.v2ex.com/t/1253933#reply0",
+   "title": "[分享创造] 我让模型输出的元素清单长什么样，以及为什么必须先写清单再渲染",
+   "titleEn": "",
+   "summary": "在图片转 PPT 工具中，要求 LLM 先输出包含坐标、尺寸等属性的 JSON 元素清单再渲染，以此明确契约、便于定位错误并解决小字遗漏问题。",
+   "type": "其他",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-03",
+   "score": 8.0,
+   "rel": 8,
+   "firstSeen": "2026-11-03"
+  },
+  {
    "url": "https://www.v2ex.com/t/1252682#reply0",
    "title": "一个人做开源 AI 桌面办公助手： 7 天初版， 6 个月还在迭代",
    "titleEn": "",
@@ -171,6 +198,48 @@
    "firstSeen": "2026-10-29"
   },
   {
+   "url": "https://www.reddit.com/r/SideProject/comments/1xmdcjb/amazon_shut_down_mturk_so_i_built_the_research/",
+   "title": "Populiva：针对 LLM 干扰的研究受试者平台",
+   "titleEn": "Amazon shut down MTurk, so I built the research participant platform I wanted. Roast it",
+   "summary": "亚马逊关停 MTurk 后推出的学术研究受试者平台。核心功能包括验证回答者是否为人类（非 LLM 生成），显示验证等级、任务耗时及行为标记，并支持自动退款欺诈行为，签署来源报告。",
+   "type": "Web 应用",
+   "topic": "AI 应用",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-11-03",
+   "score": 7.8,
+   "rel": 7,
+   "firstSeen": "2026-11-03"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1253979#reply1",
+   "title": "🚀我在安卓设备上复刻了豆包手机功能！最懂你的安卓 AI 助手 Kitten 来了！",
+   "titleEn": "",
+   "summary": "开源项目 Kitten 通过特权进程与无障碍权限在安卓副屏复刻 AI 操作 APP 功能，支持自定义 AI API 接入，实现视觉识别与自动化任务执行。",
+   "type": "移动 App",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-03",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-11-03"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1253963#reply0",
+   "title": "Karpathy 花了 2 小时做 HackerTube，我用 10 分钟复刻了一版",
+   "titleEn": "",
+   "summary": "开发者利用 Codex 10 分钟复刻 Karpathy 的 HackerTube 视频推荐站，基于 HN 数据筛选 4600+ 个视频，支持多语言、离线本地存储及按推荐强度排序。",
+   "type": "Web 应用",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-03",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-11-03"
+  },
+  {
    "url": "https://www.reddit.com/r/SideProject/comments/1xkmvdn/i_built_a_claude_code_workflow_for_people_who/",
    "title": "Meta-XoT-OSS-Rail：面向非开发者的 Claude Code 自动化工作流",
    "titleEn": "I built a Claude Code workflow for people who know what they want to build, but not how to build it",
@@ -197,6 +266,20 @@
    "score": 8.3,
    "rel": 6,
    "firstSeen": "2026-10-31"
+  },
+  {
+   "url": "https://github.com/harisharandangi/textocad",
+   "title": "TextoCAD：文本生成参数化 CAD 模型",
+   "titleEn": "Show HN: TextoCAD – Text to editable CAD (STEP/STL), runs locally with your key",
+   "summary": "开源文本转 CAD 引擎，用英语描述零件即可生成带命名尺寸的 CadQuery/OpenSCAD 脚本。支持导出 STEP/STL/GLB 格式，允许使用本地 API Key，用于 3D 打印和机械设计。",
+   "type": "模型与推理",
+   "topic": "AI 应用",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-03",
+   "score": 7.5,
+   "rel": 7,
+   "firstSeen": "2026-11-03"
   },
   {
    "url": "https://www.v2ex.com/t/1253461#reply0",
@@ -325,6 +408,20 @@
    "firstSeen": "2026-11-01"
   },
   {
+   "url": "https://sspai.com/post/118240",
+   "title": "派评 | 近期值得关注的 App",
+   "titleEn": "",
+   "summary": "评测 macOS 本地 AI Agent 工具 Local Code，集成 Ollama 与 Qwen 模型，支持语音交互与插件微调，指出消费级硬件在推理速度上的瓶颈。",
+   "type": "桌面工具",
+   "topic": "模型与推理",
+   "block": "少数派",
+   "src": "apps",
+   "lastSeen": "2026-11-03",
+   "score": 6.9,
+   "rel": 7,
+   "firstSeen": "2026-11-03"
+  },
+  {
    "url": "https://www.v2ex.com/t/1252390#reply0",
    "title": "Railse：一个人同时开几个 AI 编程 agent，审批推到手机上点一下",
    "titleEn": "",
@@ -421,6 +518,20 @@
    "score": 8.5,
    "rel": 7,
    "firstSeen": "2026-10-27"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1253962#reply0",
+   "title": "做了一个 ChatGPT 划线收藏插件 HighLights，把有价值的片段留下来，邀请大家试用",
+   "titleEn": "",
+   "summary": "Chrome 插件 HighLights 允许用户在 ChatGPT 中划线收藏内容并添加批注，支持笔记本管理、云端同步及 Markdown/JSON 导出至 Obsidian 等工具。",
+   "type": "浏览器插件",
+   "topic": "效率工具",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-03",
+   "score": 6.7,
+   "rel": 7,
+   "firstSeen": "2026-11-03"
   },
   {
    "url": "https://github.com/Coverage-Cat/consumer-agent-testing-tool",
@@ -533,6 +644,34 @@
    "score": 7.1,
    "rel": 6,
    "firstSeen": "2026-10-30"
+  },
+  {
+   "url": "https://spielerando.com/en",
+   "title": "Spielerando：代码助手游戏开发工作台",
+   "titleEn": "Show HN: Spielerando: A game creation workbench for coding assistants",
+   "summary": "为编码助手（Coding Assistant）提供游戏开发蓝图、证明模板和机械逻辑工具的工作台。旨在减少开发新项目时的重复造轮子，通过预置结构节省 Token 消耗。",
+   "type": "Agent 工作流",
+   "topic": "Agent 工具",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-03",
+   "score": 6.2,
+   "rel": 6,
+   "firstSeen": "2026-11-03"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1253984#reply2",
+   "title": "基于 cloudflare 造的邮件 web 服务 mailroom",
+   "titleEn": "",
+   "summary": "开源项目 Mailroom 利用 Cloudflare Email Service 实现自托管邮件中心，支持多域名管理、1000 封/日发送限额及 Webhook 集成，部署成本约 5 美元/月。",
+   "type": "Web 应用",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-03",
+   "score": 6.2,
+   "rel": 6,
+   "firstSeen": "2026-11-03"
   },
   {
    "url": "https://www.v2ex.com/t/1253018#reply1",
@@ -815,20 +954,6 @@
    "firstSeen": "2026-10-31"
   },
   {
-   "url": "https://www.v2ex.com/t/1253291#reply0",
-   "title": "把之前发过的第一版宝可梦精灵，继续做成了一个可以自由创造精灵的「涅瓦世界」",
-   "titleEn": "",
-   "summary": "「涅瓦世界」允许用户通过 Prompt 原创生成宝可梦式精灵，包括属性、技能与数值。用户可在虚拟世界中探索、对战其他玩家创造的精灵，强调数值随机性与互动性。",
-   "type": "Web 应用",
-   "topic": "内容生成",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-31",
-   "score": 6.2,
-   "rel": 6,
-   "firstSeen": "2026-10-31"
-  },
-  {
    "url": "https://www.reddit.com/r/SideProject/comments/1xemwml/im_building_my_own_coding_agent_by_combining_the/",
    "title": "Kelpie Code：整合多工具优势的个人编码 Agent",
    "titleEn": "I'm building my own coding agent by combining the best ideas I've found in other tools",
@@ -1095,34 +1220,6 @@
    "firstSeen": "2026-10-26"
   },
   {
-   "url": "https://www.v2ex.com/t/1252710#reply0",
-   "title": "做了个相亲题材的安卓小游戏，找人帮忙内测",
-   "titleEn": "",
-   "summary": "开发者基于被催婚痛点制作像素风《相亲模拟器》，通过左右滑卡机制体验7种体面结局。代码由Claude辅助生成，游戏无联网、无广告且不收集数据，目前处于Google Play封闭测试阶段，需12人测满14天。",
-   "type": "移动 App",
-   "topic": "独立游戏",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-29",
-   "score": 6.2,
-   "rel": 6,
-   "firstSeen": "2026-10-29"
-  },
-  {
-   "url": "https://www.reddit.com/r/SideProject/comments/1xi497o/built_a_daily_history_storytelling_platform_using/",
-   "title": "利用AI编码代理构建每日历史故事平台Neugil",
-   "titleEn": "Built a daily history storytelling platform using AI coding tools",
-   "summary": "开发者采用Spec驱动方法及自动化测试构建Neugil平台，利用AI代理完成从历史研究、写作、绘图到视频制作的全流程内容生产与自动发布。",
-   "type": "Web应用",
-   "topic": "工程实践",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-10-29",
-   "score": 6.2,
-   "rel": 6,
-   "firstSeen": "2026-10-29"
-  },
-  {
    "url": "https://www.reddit.com/r/SideProject/comments/1xh7q5e/i_built_a_tool_that_keeps_the_same_aigenerated/",
    "title": "AI 模型实验室：保持角色面部一致性的生成工具",
    "titleEn": "I built a tool that keeps the same AI-generated face across every photo and video (identity prompt + 1 reference photo). Looking for feedback",
@@ -1249,20 +1346,6 @@
    "firstSeen": "2026-10-20"
   },
   {
-   "url": "https://www.v2ex.com/t/1252367#reply1",
-   "title": "用 Web Components 做了个全栈框架 Gemkit，首屏 JS 26KB， SSR 性能和 SvelteKit 差不多",
-   "titleEn": "",
-   "summary": "作者基于 Web Components 开发全栈框架 Gemkit，实现 SSR 与流式渲染，实测首屏 JS 仅 26KB，性能接近 SvelteKit，已开源。",
-   "type": "其他",
-   "topic": "开源生态",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-28",
-   "score": 6.2,
-   "rel": 5,
-   "firstSeen": "2026-10-28"
-  },
-  {
    "url": "https://github.com/vercel-labs/eve-agent-python-template",
    "title": "Eve Python Agent模板：Vercel开源项目",
    "titleEn": "Show HN: Eve Python Agent Template",
@@ -1375,34 +1458,6 @@
    "firstSeen": "2026-10-18"
   },
   {
-   "url": "https://www.v2ex.com/t/1252070#reply0",
-   "title": "最近做了个好玩的 AI Rap Video Generator - rapvideo.io 欢迎大家免费来玩",
-   "titleEn": "",
-   "summary": "rapvideo.io 是一个 AI 说唱视频生成器，用户上传 1-2 张照片并选择预设场景，即可生成带原生音频的 5-15 秒 MP4 视频。基于 Seedance 2.0 mini 模型，提供 12 种风格模板，支持 4K 分辨率，采用一次性 Credit 付费模式。",
-   "type": "Web 应用",
-   "topic": "内容生成",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-27",
-   "score": 6.2,
-   "rel": 6,
-   "firstSeen": "2026-10-27"
-  },
-  {
-   "url": "https://www.reddit.com/r/SideProject/comments/1xgd6wy/after_a_few_months_of_nights_and_weekends_my_beat/",
-   "title": "移动端音乐创作应用 PadLoop",
-   "titleEn": "After a few months of nights and weekends, my beat maker app is on Android AND iPhone",
-   "summary": "独立开发者在数周内完成 PadLoop 开发并双端上线。该应用通过智能对齐机制，让新手能轻松制作 16 轨道音乐循环，单买价格为 9.99 欧元。",
-   "type": "移动 App",
-   "topic": "移动开发",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-10-27",
-   "score": 6.2,
-   "rel": 6,
-   "firstSeen": "2026-10-27"
-  },
-  {
    "url": "https://kat-assessment.com/",
    "title": "客户端自适应认知测试，通过微犹豫识别 AI 作弊",
    "titleEn": "Show HN: A client-side adaptive cognitive test measuring micro-hesitations",
@@ -1513,20 +1568,6 @@
    "score": 8.4,
    "rel": 9,
    "firstSeen": "2026-10-17"
-  },
-  {
-   "url": "https://www.reddit.com/r/SideProject/comments/1xfgutx/home_inventory_app_that_names_what_you_shoot_down/",
-   "title": "家庭库存应用：自动识别品牌并追踪物品存放位置",
-   "titleEn": "Home inventory app that names what you shoot down to the brand, then tells you which box it's in",
-   "summary": "这款库存应用通过拍照自动识别物品品牌并生成描述，记录物品所在的盒子位置。支持通过自然语言搜索查找物品，提供免费广告版或通过输入 AI Key 解锁付费功能，简化家庭物品管理。",
-   "type": "移动 App",
-   "topic": "AI 应用",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-10-26",
-   "score": 6.2,
-   "rel": 6,
-   "firstSeen": "2026-10-26"
   },
   {
    "url": "https://www.v2ex.com/t/1248533#reply0",
@@ -1669,34 +1710,6 @@
    "firstSeen": "2026-10-23"
   },
   {
-   "url": "https://www.v2ex.com/t/1251364#reply1",
-   "title": "最近 WorkBuddy 一直比较火，发现可以帮上自己的大忙",
-   "titleEn": "",
-   "summary": "利用 WorkBuddy 实现公众号全自动发文，因 IP 白名单限制开发 MCP 服务转发素材，成功盘活 20 多个闲置公众号账号，实现定时生成与一键发布。",
-   "type": "其他",
-   "topic": "Agent 工作流",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-24",
-   "score": 6.2,
-   "rel": 6,
-   "firstSeen": "2026-10-24"
-  },
-  {
-   "url": "https://gasfree.app/",
-   "title": "Gasfree.app：浏览器端合成器机架与节点编辑器",
-   "titleEn": "Show HN: Gasfree.app a Rack of Synthetizers in the Browser",
-   "summary": "开发者利用Web Audio API和Claude协助，在浏览器中复刻Moog等经典合成器，支持节点式自定义合成及MIDI，代码已开源至GitHub。",
-   "type": "Web 应用",
-   "topic": "Agent 工作流",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-24",
-   "score": 6.2,
-   "rel": 6,
-   "firstSeen": "2026-10-24"
-  },
-  {
    "url": "https://www.v2ex.com/t/1250762#reply1",
    "title": "RUST+ GPUI 海量图片管理",
    "titleEn": "",
@@ -1751,20 +1764,6 @@
    "score": 7.1,
    "rel": 8,
    "firstSeen": "2026-10-19"
-  },
-  {
-   "url": "https://github.com/crasmarum/CNet",
-   "title": "CNet：纯 C++/CUDA 复值神经网络框架",
-   "titleEn": "Show HN: CNET – Complex-valued neural networks from scratch in C++/CUDA",
-   "summary": "CNet 是一个从零实现的复值神经网络库，使用 C++ 和 CUDA 编写。支持复数张量运算，无高级框架依赖，旨在底层实现复数域下的深度学习模型训练与推理。",
-   "type": "模型与推理",
-   "topic": "模型与推理",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-23",
-   "score": 6.2,
-   "rel": 7,
-   "firstSeen": "2026-10-23"
   },
   {
    "url": "https://www.v2ex.com/t/1247724#reply0",
