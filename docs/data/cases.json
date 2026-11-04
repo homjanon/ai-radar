@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-03 08:10",
+ "updated": "2026-11-04 08:10",
  "count": 300,
  "types": [
   "Agent 工作流",
@@ -58,6 +58,90 @@
    "firstSeen": "2026-11-02"
   },
   {
+   "url": "https://www.reddit.com/r/SideProject/comments/1xn7smj/i_made_roar_a_browser_with_an_agent_and_a_local/",
+   "title": "Roar：集成本地模型与 Agent 的 macOS 浏览器",
+   "titleEn": "I made Roar: a browser with an agent and a local model. Free during beta.",
+   "summary": "Roar 是一款 macOS 浏览器，内置 Agent 允许用自然语言控制导航、点击和提取。模型通过 MLX 在 Apple Silicon 本地运行，亦可选连云端 API。数据本地存储，个人使用免费。",
+   "type": "桌面工具",
+   "topic": "Agent 应用",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-11-04",
+   "score": 8.4,
+   "rel": 9,
+   "firstSeen": "2026-11-04"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1xn799l/i_built_an_opensource_codex_control_center_for_vs/",
+   "title": "AgentPilot：Codex 的 VS Code 控制中枢",
+   "titleEn": "I built an open-source Codex control center for VS Code",
+   "summary": "AgentPilot 是开源 VS Code 扩展，聚合 Codex 聊天、Token 用量分析、模型建议及 Telegram/Windows 通知。支持本地优先仪表盘，首个候选版本已发布，旨在管理 Agent 会话流。",
+   "type": "浏览器插件",
+   "topic": "开发者工具",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-11-04",
+   "score": 8.4,
+   "rel": 8,
+   "firstSeen": "2026-11-04"
+  },
+  {
+   "url": "https://modelpeers.com",
+   "title": "Modelpeers：AI 模型与 Agent 变更追踪日志",
+   "titleEn": "Show HN: Modelpeers – a changelog for the AI models and agents you use",
+   "summary": "Modelpeers 自动监控主流 AI 厂商的变更日志、废弃页面及定价页。每数小时通过双重模型验证页面差异，目前追踪约 400 条变更。数据显示 OpenAI 未来半年计划下线 12 项服务，帮助用户跟踪依赖的模型状态。",
+   "type": "Web 应用",
+   "topic": "开发工具",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-04",
+   "score": 8.4,
+   "rel": 9,
+   "firstSeen": "2026-11-04"
+  },
+  {
+   "url": "https://hecer.github.io/llvm-vulkan/",
+   "title": "LLVM Vulkan：基于 GPU 计算的 LLVM 编译器加速",
+   "titleEn": "Show HN: LLVM Vulkan 1.1 – Drop-In LLVM Passes on Vulkan Compute",
+   "summary": "该开源项目实现了 LLVM 中端优化（如 GVN、CSE）的 Vulkan 计算着色器加速。支持零配置 Clang -O2 集成，可在浏览器离线运行。提供 109 行基准测试数据，涵盖 CPU 和 GPU 硬件对比。",
+   "type": "CLI 工具",
+   "topic": "编译优化",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-04",
+   "score": 8.3,
+   "rel": 8,
+   "firstSeen": "2026-11-04"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1254267#reply0",
+   "title": "给 Claude Code 点「允许」一天要切几十次窗口，我把它搬到灵动岛上了",
+   "titleEn": "",
+   "summary": "开发者制作 macOS 工具将 Claude Code、Cursor 等 AI 代理的权限确认界面集成至屏幕顶部灵动岛，支持快捷键操作、状态监控及跳回终端，原生 Swift 实现仅占 40MB 内存。",
+   "type": "桌面工具",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-04",
+   "score": 8.2,
+   "rel": 8,
+   "firstSeen": "2026-11-04"
+  },
+  {
+   "url": "https://github.com/anima-universe/character-ai-chat-exporter",
+   "title": "Character.AI 聊天记录本地导出开源扩展",
+   "titleEn": "Show HN: Export your Character.AI chats in minutes – open-source, runs locally",
+   "summary": "针对 Character.AI 破产及官方导出缓慢（需 3-4 周且链接 7 天失效）的问题，开发了一个开源浏览器扩展。利用本地会话直接调用 Web API，单次请求导出 JSON 和纯文本数据，保留对话者与时间戳，无需服务器。",
+   "type": "浏览器插件",
+   "topic": "数据备份",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-04",
+   "score": 8.1,
+   "rel": 6,
+   "firstSeen": "2026-11-04"
+  },
+  {
    "url": "https://www.fastbrowse.ai/",
    "title": "Show HN：Fastbrowse基于System 1模型的浏览器Agent",
    "titleEn": "Show HN: Fastbrowse, Browser agent that picks clicks with a System One model",
@@ -84,6 +168,20 @@
    "score": 9.2,
    "rel": 8,
    "firstSeen": "2026-10-31"
+  },
+  {
+   "url": "https://sspai.com/post/118240",
+   "title": "派评 | 近期值得关注的 App",
+   "titleEn": "",
+   "summary": "评测 macOS 本地优先 AI Agent 工具 Local Code，支持 Qwen 等本地模型运行，提供项目对话、插件微调及硬件卸载功能，指出消费级 NPU 在低算力 Mac 上推理速度瓶颈明显。",
+   "type": "桌面工具",
+   "topic": "产品评测",
+   "block": "少数派",
+   "src": "apps",
+   "lastSeen": "2026-11-04",
+   "score": 8.0,
+   "rel": 8,
+   "firstSeen": "2026-11-03"
   },
   {
    "url": "https://www.v2ex.com/t/1253294#reply0",
@@ -140,6 +238,20 @@
    "score": 9.4,
    "rel": 9,
    "firstSeen": "2026-10-29"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1xn93rz/i_built_a_stick_figure_that_lives_on_my_mac/",
+   "title": "Mac 桌面小人：基于本地 LLM 的互动宠物",
+   "titleEn": "I built a stick figure that lives on my Mac desktop, fights my cursor, and keeps a diary about how I treat it",
+   "summary": "一款用 Rust 编写的 macOS 原生应用，小人生活在透明覆盖层中，可与光标互动、撕取屏幕文字。使用本地 Ollama 运行 Llama 3.2 1B 模型，根据记忆生成情绪并撰写日记，全程无云端数据。",
+   "type": "桌面工具",
+   "topic": "端侧智能",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-11-04",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-11-04"
   },
   {
    "url": "https://www.v2ex.com/t/1252038#reply2",
@@ -380,6 +492,20 @@
    "firstSeen": "2026-10-30"
   },
   {
+   "url": "https://www.v2ex.com/t/1254270#reply1",
+   "title": "RanklyBee：把 SEO 内容、外链、AI 可见度和获客线索放进一个平台",
+   "titleEn": "",
+   "summary": "RanklyBee 集成内容日历、外链追踪、AI 搜索可见度监测及 Search Console 数据分析，支持发布至主流 CMS，提供 MCP 服务接入 Claude，并自动发现社区购买意向话题。",
+   "type": "Web 应用",
+   "topic": "产品发布",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-04",
+   "score": 6.9,
+   "rel": 7,
+   "firstSeen": "2026-11-04"
+  },
+  {
    "url": "https://www.v2ex.com/t/1253333#reply0",
    "title": "不想再为了改一句英文切去 ChatGPT 了，我做了个在任何输入框里一键搞定的 Mac 工具",
    "titleEn": "",
@@ -408,18 +534,32 @@
    "firstSeen": "2026-11-01"
   },
   {
-   "url": "https://sspai.com/post/118240",
-   "title": "派评 | 近期值得关注的 App",
-   "titleEn": "",
-   "summary": "评测 macOS 本地 AI Agent 工具 Local Code，集成 Ollama 与 Qwen 模型，支持语音交互与插件微调，指出消费级硬件在推理速度上的瓶颈。",
-   "type": "桌面工具",
-   "topic": "模型与推理",
-   "block": "少数派",
+   "url": "https://www.reddit.com/r/SideProject/comments/1xn82ix/mit_fieldsync_opensource_offlinefirst_inspection/",
+   "title": "FieldSync：开源离线优先移动巡检应用架构",
+   "titleEn": "[MIT] FieldSync — Open-source offline-first inspection app with SQLite outbox & field-level 3-way merge",
+   "summary": "FieldSync 是 MIT 协议的开源参考实现，采用 React Native 和 SQLite 构建离线优先架构。核心特性包括本地写入日志、字段级三向合并算法及幂等同步账本，解决弱网环境数据丢失和冲突问题。",
+   "type": "其他",
+   "topic": "工程实践",
+   "block": "r/SideProject",
    "src": "apps",
-   "lastSeen": "2026-11-03",
-   "score": 6.9,
+   "lastSeen": "2026-11-04",
+   "score": 6.7,
+   "rel": 5,
+   "firstSeen": "2026-11-04"
+  },
+  {
+   "url": "https://github.com/argeuthiesen/claudinho",
+   "title": "Claudinho：基于 ESP32 的 Claude Code 桌面助手",
+   "titleEn": "Show HN: Claudinho – Claude Code's mascot on an ESP32, driven by hooks",
+   "summary": "Claudinho 是一个基于 ESP32 和 3D 打印外壳的物理装置，通过 hooks 机制连接 Claude Code。它能根据编码状态（思考、打字、提交）做出相应动画反应，并在浏览器中提供无需硬件的 Live demo。",
+   "type": "其他",
+   "topic": "硬件交互",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-04",
+   "score": 6.7,
    "rel": 7,
-   "firstSeen": "2026-11-03"
+   "firstSeen": "2026-11-04"
   },
   {
    "url": "https://www.v2ex.com/t/1252390#reply0",
@@ -534,6 +674,20 @@
    "firstSeen": "2026-11-03"
   },
   {
+   "url": "https://huggingface.co/spaces/LiquidAI/LFM3-Omni-2B-WebGPU",
+   "title": "Spaces 应用：LiquidAI/LFM3-Omni-2B-WebGPU",
+   "titleEn": "",
+   "summary": "LiquidAI 开源应用 LFM3-Omni-2B-WebGPU，基于 Static 技术栈，支持 WebGPU 运行，已获 94 点赞。",
+   "type": "Web 应用",
+   "topic": "工程实践",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-11-04",
+   "score": 6.4,
+   "rel": 7,
+   "firstSeen": "2026-11-04"
+  },
+  {
    "url": "https://github.com/Coverage-Cat/consumer-agent-testing-tool",
    "title": "CATT：测试 Agent 互操作性的开源工具",
    "titleEn": "Show HN: CATT 0.2.1: Test agents/services against a Muse/Instinct-alike, in CI",
@@ -646,34 +800,6 @@
    "firstSeen": "2026-10-30"
   },
   {
-   "url": "https://spielerando.com/en",
-   "title": "Spielerando：代码助手游戏开发工作台",
-   "titleEn": "Show HN: Spielerando: A game creation workbench for coding assistants",
-   "summary": "为编码助手（Coding Assistant）提供游戏开发蓝图、证明模板和机械逻辑工具的工作台。旨在减少开发新项目时的重复造轮子，通过预置结构节省 Token 消耗。",
-   "type": "Agent 工作流",
-   "topic": "Agent 工具",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-11-03",
-   "score": 6.2,
-   "rel": 6,
-   "firstSeen": "2026-11-03"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1253984#reply2",
-   "title": "基于 cloudflare 造的邮件 web 服务 mailroom",
-   "titleEn": "",
-   "summary": "开源项目 Mailroom 利用 Cloudflare Email Service 实现自托管邮件中心，支持多域名管理、1000 封/日发送限额及 Webhook 集成，部署成本约 5 美元/月。",
-   "type": "Web 应用",
-   "topic": "工程实践",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-11-03",
-   "score": 6.2,
-   "rel": 6,
-   "firstSeen": "2026-11-03"
-  },
-  {
    "url": "https://www.v2ex.com/t/1253018#reply1",
    "title": "因为想统一看自己全部券商账户，我做了一个叫 Catfolio 持仓追踪 iOS App",
    "titleEn": "",
@@ -686,20 +812,6 @@
    "score": 6.9,
    "rel": 5,
    "firstSeen": "2026-10-30"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1253614#reply0",
-   "title": "做了个 AI 说唱视频生成器：传一张照片，出一段对口型的 Rap 表演（免费预览，单条 $3.99）",
-   "titleEn": "",
-   "summary": "一站式 AI 说唱视频生成工具，用户只需上传 1-2 张照片或输入主题，即可生成 12 秒对口型 Rap 视频。底层采用 AI 原创人声与 beat 以规避版权，提供多种节日与双人对战模板，单条视频付费模式。",
-   "type": "Web 应用",
-   "topic": "内容生成",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-11-02",
-   "score": 6.2,
-   "rel": 6,
-   "firstSeen": "2026-11-02"
   },
   {
    "url": "https://huggingface.co/spaces/black-forest-labs/flux-3-image-klein",
@@ -938,20 +1050,6 @@
    "score": 8.4,
    "rel": 9,
    "firstSeen": "2026-10-22"
-  },
-  {
-   "url": "https://www.reddit.com/r/SideProject/comments/1xju2rh/my_side_project_just_got_its_own_vs_code_extension/",
-   "title": "副项目optimAIzr推出VS Code扩展追踪AI编码使用",
-   "titleEn": "My side project just got its own VS Code extension",
-   "summary": "开发者为开源工具optimAIzr发布v0.13.0及VS Code扩展，用于追踪Claude Code、Codex等AI编码工具的使用情况。提供上下文用量、缓存倒计时和节省成本分析，完全本地运行。",
-   "type": "桌面工具",
-   "topic": "效率工具",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-10-31",
-   "score": 6.2,
-   "rel": 6,
-   "firstSeen": "2026-10-31"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1xemwml/im_building_my_own_coding_agent_by_combining_the/",
@@ -2116,34 +2214,6 @@
    "firstSeen": "2026-10-13"
   },
   {
-   "url": "https://barn.ope.cool",
-   "title": "barn.app：macOS 上的 Agent 监控数字流甲板",
-   "titleEn": "Show HN: barn.app – a digital stream deck like agent monitoring tool for macOS",
-   "summary": "barn.app 是一款 macOS 实用工具，模拟 Elgato Stream Deck 的交互体验，用于被动监控 AI Agent 的运行状态。作者旨在提供更便携的 Agent 状态可视化方案，摆脱硬件束缚。",
-   "type": "桌面工具",
-   "topic": "Agent 工具",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-20",
-   "score": 6.3,
-   "rel": 7,
-   "firstSeen": "2026-10-20"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1250127#reply0",
-   "title": "OhMyGame 开源 10 天拿到 936 个 star 的一个小复盘",
-   "titleEn": "",
-   "summary": "团队复盘 AI 游戏工具 OhMyGame 开源初期表现：10 天获 936 Star、113 Fork。主要流量来自 X 平台（占比 54%），GitHub 站内引流有限。项目迭代快，合并 131 个 PR，重点回应简体界面等反馈。",
-   "type": "内容生成",
-   "topic": "开源生态",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-20",
-   "score": 6.3,
-   "rel": 5,
-   "firstSeen": "2026-10-20"
-  },
-  {
    "url": "https://guessthellm.com/",
    "title": "猜LLM：通过回答辨别模型的游戏",
    "titleEn": "Show HN: Guess the LLM – read an answer and guess which model wrote it",
@@ -2676,34 +2746,6 @@
    "firstSeen": "2026-10-11"
   },
   {
-   "url": "https://www.v2ex.com/t/1248872#reply0",
-   "title": "做了一个 A 股信息整理工具，把指标、涨停复盘和新闻分别导出成卡片",
-   "titleEn": "",
-   "summary": "开发者分享「大AK线智能助理」的原生下载功能，将市场指标、涨停梯队、财经晚报整理成三种卡片导出。文章详述了导出时间、界面状态、链接元数据及缓存版本等四个易踩坑的工程边界细节。",
-   "type": "Web 应用",
-   "topic": "工程实践",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-15",
-   "score": 6.3,
-   "rel": 5,
-   "firstSeen": "2026-10-15"
-  },
-  {
-   "url": "https://www.reddit.com/r/SideProject/comments/1x66ujb/my_turntable_cant_sit_next_to_my_laptop_so_i_put/",
-   "title": "将黑胶唱机嵌入 Mac 壁纸的动态音乐可视化应用",
-   "titleEn": "My turntable can't sit next to my laptop, so I put it inside it",
-   "summary": "开发者将 1979 年 Technics 唱机 3D 重建为 Mac 动态壁纸。播放音乐时唱臂随曲目移动，专辑封面显示在支架上，房间光影随时间和天气变化。使用 Blender 渲染，Swift 开发，CPU 占用率仅 3%。",
-   "type": "桌面工具",
-   "topic": "创意开发",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-10-15",
-   "score": 6.3,
-   "rel": 5,
-   "firstSeen": "2026-10-15"
-  },
-  {
    "url": "https://www.reddit.com/r/SideProject/comments/1x58yth/i_made_a_menu_bar_app_that_frees_the_ram_your_ai/",
    "title": "baa：Mac菜单栏内存清理工具",
    "titleEn": "i made a menu bar app that frees the RAM your AI agents forgot about 🐏",
@@ -2912,20 +2954,6 @@
    "score": 7.7,
    "rel": 8,
    "firstSeen": "2026-10-07"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1248247#reply3",
-   "title": "做了一个原生的 macOS Vaultwarden 客户端：基于 MyGo ，主窗口零 WebView，支持 Touch ID 与系统级 AutoFill",
-   "titleEn": "",
-   "summary": "开发者开源 MyGo Vaultwarden，基于 Go 和 MyGo 框架构建 macOS 原生密码管理工具，内存占用低，支持 Touch ID 认证及系统级自动填充。",
-   "type": "桌面工具",
-   "topic": "工程实践",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-13",
-   "score": 6.3,
-   "rel": 5,
-   "firstSeen": "2026-10-13"
   },
   {
    "url": "https://www.sortbot.io",
@@ -4172,20 +4200,6 @@
    "firstSeen": "2026-09-29"
   },
   {
-   "url": "https://huggingface.co/spaces/nvidia/nemotron-diarization",
-   "title": "Spaces 应用：nvidia/nemotron-diarization",
-   "titleEn": "",
-   "summary": "NVIDIA官方Hugging Face Spaces应用，部署Nemotron说话人分离（Diarization）模型。技术栈Docker，创建时间2026年9月1日，点赞92。用于音频数据中区分不同说话人，属于语音处理与数据分析领域。",
-   "type": "数据分析",
-   "topic": "模型发布",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-09-30",
-   "score": 6.3,
-   "rel": 8,
-   "firstSeen": "2026-09-30"
-  },
-  {
    "url": "https://www.v2ex.com/t/1245591#reply11",
    "title": "我用 AI 解决了 Java 开发里几个困扰多年的问题",
    "titleEn": "",
@@ -4198,20 +4212,6 @@
    "src": "apps",
    "score": 6.4,
    "rel": 7
-  },
-  {
-   "url": "https://www.v2ex.com/t/1245602#reply6",
-   "title": "做了一个每天查看新游戏的网站，包含一些小工具",
-   "titleEn": "",
-   "summary": "网站 New Games Hub 每日从指定信息源提取新游戏，运行一个多月收录超千条记录。支持 Steam 登录生成愿望单日历，利用向量嵌入与余弦相似度召回相似游戏，提供 RSS、Webhook 及浏览器推送通知，内容可溯源。",
-   "type": "数据分析",
-   "topic": "资讯聚合",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-09-29",
-   "score": 6.3,
-   "rel": 6,
-   "firstSeen": "2026-09-29"
   }
  ]
 }
