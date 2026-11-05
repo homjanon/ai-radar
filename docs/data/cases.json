@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-04 08:10",
+ "updated": "2026-11-05 08:10",
  "count": 300,
  "types": [
   "Agent 工作流",
@@ -16,6 +16,20 @@
  ],
  "cases": [
   {
+   "url": "https://www.v2ex.com/t/1254551#reply0",
+   "title": "开源了一个 agent 技能，能把扫描件和手机拍的文档重建成矢量 PDF（附对照实验）",
+   "titleEn": "",
+   "summary": "开源 Skill 将扫描文档重建为可搜索、矢量化的 PDF，通过脚本自动化像素测量与校对。对照实验显示，Haiku/Fable 模型得分从 0.84 升至 0.99，Sonnet 耗时降低 37%。支持 Claude Code 与 Codex。",
+   "type": "Agent 工作流",
+   "topic": "论文方法",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-05",
+   "score": 9.8,
+   "rel": 9,
+   "firstSeen": "2026-11-05"
+  },
+  {
    "url": "https://www.v2ex.com/t/1253609#reply0",
    "title": "做了个开源工具：输入会议名，把十年论文变成可点击的趋势报告（CVPR、ECTC 示例）",
    "titleEn": "",
@@ -28,6 +42,20 @@
    "score": 9.3,
    "rel": 8,
    "firstSeen": "2026-11-02"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1254571#reply1",
+   "title": "做了一个逆向 Agent，专门解决无人值守和高难样本",
+   "titleEn": "",
+   "summary": "开源逆向工程 Agent，基于强化学习牵引，支持 WEB、PE、ELF、APK 及固件分析。能自动沉淀分析方法，解决 AI 在复杂逆向任务中跑偏或误判完成的问题，GitHub 仓库已公开，邀请用户用真实样本交流。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-05",
+   "score": 8.4,
+   "rel": 9,
+   "firstSeen": "2026-11-05"
   },
   {
    "url": "https://www.v2ex.com/t/1253952#reply3",
@@ -114,6 +142,62 @@
    "firstSeen": "2026-11-04"
   },
   {
+   "url": "https://brainpot.cloud/",
+   "title": "Multiplayer Context：团队共享AI记忆库Brainpot",
+   "titleEn": "Show HN: Multiplayer context – a brainpot if you will",
+   "summary": "为Claude、ChatGPT等工具提供共享上下文的SaaS服务。团队成员的AI可读写共享“事实库”，支持权限管理与版本控制，默认加密，支持导出Markdown/JSON。",
+   "type": "效率工具",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-05",
+   "score": 8.0,
+   "rel": 8,
+   "firstSeen": "2026-11-05"
+  },
+  {
+   "url": "https://host0.ai",
+   "title": "Host0：AI生成软件的简易托管服务",
+   "titleEn": "Show HN: I built a hosting for small AI-generated software",
+   "summary": "服务将AI代理生成的HTML、Markdown等转换为可分享链接。支持Claude Code、Cursor等，通过Bash脚本或MCP连接器一键部署。免费版可用，Pro版9美元/月。",
+   "type": "效率工具",
+   "topic": "工程实践",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-05",
+   "score": 8.0,
+   "rel": 8,
+   "firstSeen": "2026-11-05"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1254549#reply2",
+   "title": "做了个 Pi-Work：让 AI 真正操作工具，并把整个工作环境打包带走",
+   "titleEn": "",
+   "summary": "Pi-Work 基于 QEMU MicroVM 构建 AI 工作环境，实现环境隔离、命令执行及 .work 文件跨机迁移。支持自然语言驱动 AI 操作工具，提供 GUI 降低配置门槛，当前为 x86-64 MVP 阶段。",
+   "type": "桌面工具",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-05",
+   "score": 8.0,
+   "rel": 8,
+   "firstSeen": "2026-11-05"
+  },
+  {
+   "url": "https://github.com/zoghlamimostafa/BrowserForge-MCP",
+   "title": "BrowserForge：基于本地浏览器的AI代理与API生成工具",
+   "titleEn": "Show HN: BrowserForge – AI agents use your real browser, you approve the clicks",
+   "summary": "本地优先的浏览器扩展与MCP服务器，允许AI代理通过真实Firefox/Chrome执行操作，并对关键行为进行人工审批。可将浏览流量转化为API文档和客户端代码。",
+   "type": "浏览器插件",
+   "topic": "工程实践",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-05",
+   "score": 8.0,
+   "rel": 8,
+   "firstSeen": "2026-11-05"
+  },
+  {
    "url": "https://www.v2ex.com/t/1254267#reply0",
    "title": "给 Claude Code 点「允许」一天要切几十次窗口，我把它搬到灵动岛上了",
    "titleEn": "",
@@ -198,6 +282,20 @@
    "firstSeen": "2026-10-31"
   },
   {
+   "url": "https://huggingface.co/spaces/LiquidAI/LFM3-Omni-2B-WebGPU",
+   "title": "Spaces 应用：LiquidAI/LFM3-Omni-2B-WebGPU",
+   "titleEn": "",
+   "summary": "LiquidAI 发布 LFM3-Omni-2B 模型的 WebGPU 前端演示，采用静态技术栈。该应用允许在浏览器端通过 WebGPU 加速运行该 2B 参数量的多模态模型，降低部署门槛。",
+   "type": "Web 应用",
+   "topic": "模型与推理",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-11-05",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-11-04"
+  },
+  {
    "url": "https://www.reddit.com/r/SideProject/comments/1xi30ov/zephium_a_fast_opensource_fullyfeatured_browser/",
    "title": "Zephium：面向Agent协作的高性能Rust开源浏览器",
    "titleEn": "Zephium: A fast, open-source, fully-featured browser and work environment (canvas), reimagined for you and your agents.",
@@ -266,6 +364,20 @@
    "score": 10.0,
    "rel": 9,
    "firstSeen": "2026-10-27"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1254557#reply0",
+   "title": "做了个免登录、AI 能直接提交的 AI 导航站",
+   "titleEn": "",
+   "summary": "构建 aisaasdir.com 导航站，支持免登录直接提交链接，并通过/submit.md 接口让 Claude Code、Codex 等 Agent 自动读取说明完成提交、打标及验证，无需人工填表，支持挂 Badge 获取 Dofollow 链接。",
+   "type": "Web 应用",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-05",
+   "score": 7.4,
+   "rel": 8,
+   "firstSeen": "2026-11-05"
   },
   {
    "url": "https://www.v2ex.com/t/1253311#reply1",
@@ -350,6 +462,48 @@
    "score": 7.7,
    "rel": 8,
    "firstSeen": "2026-11-03"
+  },
+  {
+   "url": "https://getchronosphere.com/",
+   "title": "Chronosphere：理解大型PR的逻辑重建工具",
+   "titleEn": "Show HN: Chronosphere, a tool for understanding large PRs",
+   "summary": "工具将大型Pull Request重建为逻辑步骤，重现开发者思维过程。集成GitHub和OpenRouter，也可通过Skill集成在代理中使用，不上传代码至中心服务器。",
+   "type": "CLI 工具",
+   "topic": "工程实践",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-05",
+   "score": 7.2,
+   "rel": 7,
+   "firstSeen": "2026-11-05"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1254570#reply0",
+   "title": "为了更舒服的用 PA 搞了点小玩意",
+   "titleEn": "",
+   "summary": "开发者推出两个开源工具优化 Prompt Assembly 体验：secure-input 实现 AI 安全获取/发送 Token；另一工具为 PA 增加 Webhook，支持通过 MCP Events 触发自动化流程。",
+   "type": "Agent 工作流",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-05",
+   "score": 7.2,
+   "rel": 7,
+   "firstSeen": "2026-11-05"
+  },
+  {
+   "url": "https://getcinnamon.ai/",
+   "title": "Cinnamon：面向家庭与私密场景的AI代理",
+   "titleEn": "Show HN: Cinnamon – safer AI agent for household, private and shared context",
+   "summary": "一款面向家庭、私密及共享场景的AI代理，计划、预订、提醒并监控任务。支持多达五人协作，操作前始终征求许可。团队曾任职于Facebook、Instagram和Amazon，提供25次免费试用。",
+   "type": "移动 App",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-05",
+   "score": 7.2,
+   "rel": 7,
+   "firstSeen": "2026-11-05"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1xkmvdn/i_built_a_claude_code_workflow_for_people_who/",
@@ -490,6 +644,20 @@
    "score": 8.2,
    "rel": 9,
    "firstSeen": "2026-10-30"
+  },
+  {
+   "url": "https://sspai.com/post/115819",
+   "title": "微诗：从诗入画、且唱且行，这款免费 app 把诗装进手机",
+   "titleEn": "",
+   "summary": "独立开发者十年磨一剑重写“微诗”App，集成 AI 辅助开发、Suno 音乐生成及 TTS 朗读。重做过程消耗约 2 万美元 Token 成本，无融资无收费，实现了从古诗词检索到视听内容的完整体验。",
+   "type": "移动 App",
+   "topic": "开发者故事",
+   "block": "少数派",
+   "src": "apps",
+   "lastSeen": "2026-11-05",
+   "score": 6.7,
+   "rel": 5,
+   "firstSeen": "2026-11-05"
   },
   {
    "url": "https://www.v2ex.com/t/1254270#reply1",
@@ -672,20 +840,6 @@
    "score": 6.7,
    "rel": 7,
    "firstSeen": "2026-11-03"
-  },
-  {
-   "url": "https://huggingface.co/spaces/LiquidAI/LFM3-Omni-2B-WebGPU",
-   "title": "Spaces 应用：LiquidAI/LFM3-Omni-2B-WebGPU",
-   "titleEn": "",
-   "summary": "LiquidAI 开源应用 LFM3-Omni-2B-WebGPU，基于 Static 技术栈，支持 WebGPU 运行，已获 94 点赞。",
-   "type": "Web 应用",
-   "topic": "工程实践",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-11-04",
-   "score": 6.4,
-   "rel": 7,
-   "firstSeen": "2026-11-04"
   },
   {
    "url": "https://github.com/Coverage-Cat/consumer-agent-testing-tool",
@@ -938,20 +1092,6 @@
    "score": 8.0,
    "rel": 8,
    "firstSeen": "2026-10-24"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1253290#reply2",
-   "title": "Voilà pro 支持离线实时输入了",
-   "titleEn": "",
-   "summary": "Voilà Pro 更新支持离线实时输入与混合语言转录。采用本地模型避免数据上传，支持中英法混输，仅限 Apple Silicon 芯片且需 16GB 内存，提供实时语音转文字体验。",
-   "type": "移动 App",
-   "topic": "效率工具",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-31",
-   "score": 6.3,
-   "rel": 5,
-   "firstSeen": "2026-10-31"
   },
   {
    "url": "https://rabin-a.github.io/mcp-router/#benchmark",
@@ -1316,34 +1456,6 @@
    "score": 6.9,
    "rel": 5,
    "firstSeen": "2026-10-26"
-  },
-  {
-   "url": "https://www.reddit.com/r/SideProject/comments/1xh7q5e/i_built_a_tool_that_keeps_the_same_aigenerated/",
-   "title": "AI 模型实验室：保持角色面部一致性的生成工具",
-   "titleEn": "I built a tool that keeps the same AI-generated face across every photo and video (identity prompt + 1 reference photo). Looking for feedback",
-   "summary": "该工具通过身份提示词加参考照片生成六角度参考包，确保后续生成的图片或视频中角色面部保持一致。支持说话模式同步口型及 60 秒提示词构建器，技术栈包含 Next.js 和 Redis 队列。",
-   "type": "Web 应用",
-   "topic": "内容生成",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-10-28",
-   "score": 6.4,
-   "rel": 7,
-   "firstSeen": "2026-10-28"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1252371#reply0",
-   "title": "做了一个把照片变成 Angry Dance 视频的小网站",
-   "titleEn": "",
-   "summary": "该网站利用 AI 将上传照片转化为 14 秒固定的厨房愤怒舞蹈视频，支持付费生成，无需提示词，展示了单图视频生成的具体应用场景。",
-   "type": "Web 应用",
-   "topic": "内容生成",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-28",
-   "score": 6.4,
-   "rel": 7,
-   "firstSeen": "2026-10-28"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1xgbqbp/i_built_an_offline_research_assistant_not_another/",
@@ -2086,34 +2198,6 @@
    "score": 7.7,
    "rel": 8,
    "firstSeen": "2026-10-15"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1250465#reply1",
-   "title": "做了个双人 AI 跳舞小项目：本人四肢不协调，但照片可以先出道",
-   "titleEn": "",
-   "summary": "开发者发布 A20 AI 项目，支持输入两张照片生成双人舞蹈视频，提供全身或换脸模式，目前前端已上线，视频生成后端接入中。",
-   "type": "Web 应用",
-   "topic": "内容生成",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-21",
-   "score": 6.3,
-   "rel": 7,
-   "firstSeen": "2026-10-21"
-  },
-  {
-   "url": "https://sspai.com/post/116430",
-   "title": "在 iPhone 上用 Rime：我为什么做了「紫毫」输入法",
-   "titleEn": "",
-   "summary": "基于 Rime 引擎的 iOS 输入法紫毫，内置雾凇拼音及本地纠错模型，支持自定义方案导入与 iCloud 同步，打字数据本地处理，无广告。",
-   "type": "移动 App",
-   "topic": "移动工具",
-   "block": "少数派",
-   "src": "apps",
-   "lastSeen": "2026-10-21",
-   "score": 6.3,
-   "rel": 5,
-   "firstSeen": "2026-10-21"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1x4g9c2/i_rebuilt_a_mac_app_i_released_11_years_ago_this/",
@@ -3362,20 +3446,6 @@
    "firstSeen": "2026-10-05"
   },
   {
-   "url": "https://www.v2ex.com/t/1246852#reply0",
-   "title": "AI 僵尸拥抱视频工具 aizombie.app",
-   "titleEn": "Built an AI zombie hug tool — aizombie.app: 2 photos → ~20s vertical clip, guest checkout $9.90",
-   "summary": "aizombie.app 将病毒式“僵尸爱情故事”趋势转化为付费产品。用户上传两张照片，约 20 秒生成 15 镜头的 9:16 竖屏视频，含音效，适配 TikTok/Reels。采用一次性付费 9.90 美元模式。",
-   "type": "内容生成",
-   "topic": "内容生成",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-08",
-   "score": 6.5,
-   "rel": 6,
-   "firstSeen": "2026-10-08"
-  },
-  {
    "url": "https://www.reddit.com/r/SideProject/comments/1wtrl7v/every_halloween_our_game_studio_tries_to_do/",
    "title": "325 个 AI 模型设计怪物并进行拳击联赛",
    "titleEn": "Every Halloween our game studio tries to do something fun. This year we asked 325 AI models to design monsters and write their brains, then put the mo",
@@ -3544,20 +3614,6 @@
    "firstSeen": "2026-09-30"
   },
   {
-   "url": "https://www.v2ex.com/t/1246628#reply2",
-   "title": "做了一个把照片转成短视频的网页工具，想听听大家的使用反馈",
-   "titleEn": "",
-   "summary": "上线 TurnImageIntoVideo，支持上传照片并描述动作生成短视频。中英双语界面，旨在收集用户对图片上传、生成流程及结果符合度的反馈，优化基于模型的视频生成体验。",
-   "type": "Web 应用",
-   "topic": "内容生成",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-07",
-   "score": 6.4,
-   "rel": 7,
-   "firstSeen": "2026-10-07"
-  },
-  {
    "url": "https://www.v2ex.com/t/1246147#reply0",
    "title": "让 AI 全流程开发的加密货币网格交易系统，已在 Backpack 实盘运行 3 天",
    "titleEn": "",
@@ -3668,20 +3724,6 @@
    "score": 7.2,
    "rel": 7,
    "firstSeen": "2026-10-03"
-  },
-  {
-   "url": "https://www.reddit.com/r/SideProject/comments/1wyn4r6/slideshowphotos_makes_it_easy_to_display_photos/",
-   "title": "展示 Slideshow.photos 照片幻灯片展示工具",
-   "titleEn": "Slideshow.photos makes it easy to display photos on a screen",
-   "summary": "开发者结合 Claude 构建了 Slideshow.photos，一款简化活动照片展示的网页应用。它允许用户轻松创建幻灯片，并穿插组织或赞助商 Logo，旨在解决现有解决方案外观不佳且操作复杂的问题，提升活动视觉呈现体验。",
-   "type": "Web 应用",
-   "topic": "内容生成",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-10-06",
-   "score": 6.5,
-   "rel": 6,
-   "firstSeen": "2026-10-06"
   },
   {
    "url": "https://www.v2ex.com/t/1246422#reply1",
@@ -3907,20 +3949,6 @@
    "firstSeen": "2026-10-01"
   },
   {
-   "url": "https://digitup.dev",
-   "title": "AI 构建网站的安全泄漏检测工具",
-   "titleEn": "Show HN: I built a vibe coded website checker for leaked secrets",
-   "summary": "开发者发布 digitup 工具，针对 AI 生成网站提供纯文本安全审计。它能自动识别客户数据泄露、私钥暴露等隐患，并生成修复建议与持续监控报告，无需阅读代码即可确保站点安全。",
-   "type": "Web 应用",
-   "topic": "工程实践",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-04",
-   "score": 6.5,
-   "rel": 6,
-   "firstSeen": "2026-10-04"
-  },
-  {
    "url": "https://github.com/linuztx/alter-zero",
    "title": "Alter Zero：面向终端的高效编码与安全 Agent",
    "titleEn": "Show HN: Alter Zero – RAM-efficient agent for coding, security and automation",
@@ -4074,20 +4102,6 @@
    "rel": 7
   },
   {
-   "url": "https://sspai.com/post/114945",
-   "title": "别再把攻略全甩给 AI：国庆七天河南自驾，我是这样用 Agent 的",
-   "titleEn": "",
-   "summary": "作者分享使用 AI Agent（如 Zcode）辅助制定国庆河南七日自驾攻略的实践。通过 AI 处理复杂信息流，解决酒店、门票及营业时间等核对难题，并优化 Notion 行程记录。展示了 Agent 在行程规划、信息整合及文案校对中的具体应用场景与效果。",
-   "type": "Agent 工作流",
-   "topic": "应用案例",
-   "block": "少数派",
-   "src": "apps",
-   "lastSeen": "2026-10-02",
-   "score": 6.5,
-   "rel": 6,
-   "firstSeen": "2026-09-30"
-  },
-  {
    "url": "https://www.reddit.com/r/SideProject/comments/1wtqx2o/i_made_a_visual_tour_of_my_codingagent_workspace/",
    "title": "Mefi Studio：可视化编码 Agent 工作区",
    "titleEn": "I made a visual tour of my coding-agent workspace. What would make the work easier to follow?",
@@ -4198,20 +4212,6 @@
    "score": 6.7,
    "rel": 7,
    "firstSeen": "2026-09-29"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1245591#reply11",
-   "title": "我用 AI 解决了 Java 开发里几个困扰多年的问题",
-   "titleEn": "",
-   "summary": "开发者利用 AI 构建工具，输入数据库表结构即可生成完整的 Java Bean，包括 getter、setter 及构造函数等。还开发 Agent 实现 JSON 与 XML 自动转换，计划引入 AI 判断字符串拼接策略，旨在提升 Java 工程效率。",
-   "type": "效率工具",
-   "topic": "AI 编程",
-   "block": "V2EX 分享创造",
-   "lastSeen": "2026-09-29",
-   "firstSeen": "2026-09-29",
-   "src": "apps",
-   "score": 6.4,
-   "rel": 7
   }
  ]
 }
