@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-05 08:10",
+ "updated": "2026-11-06 08:10",
  "count": 300,
  "types": [
   "Agent 工作流",
@@ -30,6 +30,34 @@
    "firstSeen": "2026-11-05"
   },
   {
+   "url": "https://eremoterra.com/",
+   "title": "Eremoterra：基于 MCP 的开放世界文字冒险游戏",
+   "titleEn": "Show HN: Open-world text adventure played through AI agents",
+   "summary": "实验性项目，将游戏逻辑封装在 MCP 中。玩家操控 Agent 在模拟地球（2.33 亿地块）中探索，服务端返回事实而非叙事。使用 Rust 和 RocksDB，地图内存映射 1.9GB，实现实时天气与潮汐模拟。",
+   "type": "Web 应用",
+   "topic": "Agent 应用",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-06",
+   "score": 8.7,
+   "rel": 9,
+   "firstSeen": "2026-11-06"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1xoxxr2/agentofficehq_an_opensource_workspace_to_monitor/",
+   "title": "AgentOfficeHQ：多智能体工作流监控开源工作台",
+   "titleEn": "AgentOfficeHQ: An open-source workspace to monitor and visualize multi-agent workflows",
+   "summary": "开源项目旨在解决多智能体系统状态追踪混乱的问题。提供本地优先的可视化界面，实时跟踪智能体状态、日志及执行管道，支持模块化连接自定义工作流，保留用户对数据和环境的完全控制权。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-11-06",
+   "score": 8.4,
+   "rel": 8,
+   "firstSeen": "2026-11-06"
+  },
+  {
    "url": "https://www.v2ex.com/t/1253609#reply0",
    "title": "做了个开源工具：输入会议名，把十年论文变成可点击的趋势报告（CVPR、ECTC 示例）",
    "titleEn": "",
@@ -56,6 +84,20 @@
    "score": 8.4,
    "rel": 9,
    "firstSeen": "2026-11-05"
+  },
+  {
+   "url": "https://huggingface.co/spaces/LiquidAI/LFM3-Omni-2B-WebGPU",
+   "title": "Spaces 应用：LiquidAI/LFM3-Omni-2B-WebGPU",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces 上的静态应用，展示 LiquidAI 的 LFM3-Omni-2B 模型在 WebGPU 环境下的推理能力。该应用创建于 2026 年 10 月 29 日，获得 114 个点赞。",
+   "type": "Web 应用",
+   "topic": "模型推理",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-11-06",
+   "score": 8.1,
+   "rel": 9,
+   "firstSeen": "2026-11-04"
   },
   {
    "url": "https://www.v2ex.com/t/1253952#reply3",
@@ -128,6 +170,20 @@
    "firstSeen": "2026-11-04"
   },
   {
+   "url": "https://www.v2ex.com/t/1254841#reply0",
+   "title": "GPT image 2.6 生成 GIF 动图在线工具来了",
+   "titleEn": "",
+   "summary": "针对 ChatGPT 新发布的 image2.6 模型，开发者上线在线工具 gptimage26.ai，支持生成图片、GIF 动图及 SVG 矢量图。工具允许上传参考图，调整比例与质量，并整理了多场景提示词供免费试用，支持社交媒体配图及游戏视觉原型制作。",
+   "type": "Web 应用",
+   "topic": "模型发布",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-06",
+   "score": 7.8,
+   "rel": 9,
+   "firstSeen": "2026-11-06"
+  },
+  {
    "url": "https://hecer.github.io/llvm-vulkan/",
    "title": "LLVM Vulkan：基于 GPU 计算的 LLVM 编译器加速",
    "titleEn": "Show HN: LLVM Vulkan 1.1 – Drop-In LLVM Passes on Vulkan Compute",
@@ -198,6 +254,20 @@
    "firstSeen": "2026-11-05"
   },
   {
+   "url": "https://www.v2ex.com/t/1254855#reply0",
+   "title": "最近做了个 MOSS-Image 在线生图工具，可以拖框指定海报上的文字位置",
+   "titleEn": "",
+   "summary": "开发者将 OpenMOSS 开源模型接入 Web 端，推出 MossImage Studio 在线工具。核心功能支持在画布上拖拽框体指定标题、日期等文字位置，解决提示词无法精确控制文字布局的问题。目前免费生成 3 张图，无需安装 ComfyUI。",
+   "type": "Web 应用",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-06",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-11-06"
+  },
+  {
    "url": "https://www.v2ex.com/t/1254267#reply0",
    "title": "给 Claude Code 点「允许」一天要切几十次窗口，我把它搬到灵动岛上了",
    "titleEn": "",
@@ -254,6 +324,20 @@
    "firstSeen": "2026-10-31"
   },
   {
+   "url": "https://www.v2ex.com/t/1254853#reply0",
+   "title": "做了个 5 MB 的原生 API 客户端 CurlGo，不自动装插件",
+   "titleEn": "",
+   "summary": "CurlGo 是一款面向 Agent 的 macOS 原生 API 客户端，安装包仅 4.97 MB。它集成 HTTP/SSE/WebSocket，支持导入 Postman/Bruno 集合及 curl 命令，断言检查通过后写入环境变量。严格不自动安装插件或修改 Copilot 配置，MIT 开源。",
+   "type": "桌面工具",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-06",
+   "score": 7.5,
+   "rel": 7,
+   "firstSeen": "2026-11-06"
+  },
+  {
    "url": "https://sspai.com/post/118240",
    "title": "派评 | 近期值得关注的 App",
    "titleEn": "",
@@ -280,20 +364,6 @@
    "score": 9.1,
    "rel": 7,
    "firstSeen": "2026-10-31"
-  },
-  {
-   "url": "https://huggingface.co/spaces/LiquidAI/LFM3-Omni-2B-WebGPU",
-   "title": "Spaces 应用：LiquidAI/LFM3-Omni-2B-WebGPU",
-   "titleEn": "",
-   "summary": "LiquidAI 发布 LFM3-Omni-2B 模型的 WebGPU 前端演示，采用静态技术栈。该应用允许在浏览器端通过 WebGPU 加速运行该 2B 参数量的多模态模型，降低部署门槛。",
-   "type": "Web 应用",
-   "topic": "模型与推理",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-11-05",
-   "score": 7.7,
-   "rel": 8,
-   "firstSeen": "2026-11-04"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1xi30ov/zephium_a_fast_opensource_fullyfeatured_browser/",
@@ -352,6 +422,20 @@
    "firstSeen": "2026-11-04"
   },
   {
+   "url": "https://HackerRepos.fyi/",
+   "title": "HackerRepos：追踪 HN 提及仓库的可视化趋势工具",
+   "titleEn": "Show HN: HackerRepos – HackerTube for repos mentioned on HN",
+   "summary": "作者受 HackerBooks 启发开发 HackerRepos，索引 5.7 万个仓库及 66.7 万次 HN 提及。提供全榜、推荐及趋势板块，仿 Finviz 用色彩网格展示当前热议仓库的情感倾向（如利好或批判），点击可查看具体讨论摘要。",
+   "type": "Web 应用",
+   "topic": "开发者工具",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-06",
+   "score": 7.2,
+   "rel": 7,
+   "firstSeen": "2026-11-06"
+  },
+  {
    "url": "https://www.v2ex.com/t/1252038#reply2",
    "title": "开源了一个 MCP 治理网关： Jev 判 0.94、d3 判 0.70，两个判官说不同的话时怎么办",
    "titleEn": "",
@@ -406,6 +490,20 @@
    "score": 8.4,
    "rel": 9,
    "firstSeen": "2026-11-01"
+  },
+  {
+   "url": "https://bisimia.com",
+   "title": "Bisimia：浏览器内运行的 TLA+ 模型检查环境",
+   "titleEn": "Show HN: Bisimia – A TLA+ environment that runs in the browser",
+   "summary": "基于 GraalVM 在浏览器本地运行真实 TLC 引擎，实现 TLA+ 规格编写与模型检查。相比 CheerpJ 方案，中位性能提升 22 倍，最高达 70 倍，保持与官方工具行为一致。",
+   "type": "Web 应用",
+   "topic": "形式化验证",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-06",
+   "score": 7.1,
+   "rel": 6,
+   "firstSeen": "2026-11-06"
   },
   {
    "url": "https://github.com/TheWariend/CleanSlate",
@@ -534,6 +632,34 @@
    "firstSeen": "2026-10-31"
   },
   {
+   "url": "https://mattduran.dev/firedemo/fire/woolsey-2018",
+   "title": "浏览器内 WebGPU 模拟洛杉矶山火",
+   "titleEn": "Show HN: Simulating three LA wildfires in the browser with WebGPU",
+   "summary": "使用 WebGPU 在浏览器中运行山火模拟，重现 2018 年 Woolsey 大火。作为盲测研究而非预测工具，模型预估 0 栋建筑损毁，而实际记录为 1705 栋受损或毁坏，展示模型局限性与可视化能力。",
+   "type": "Web 应用",
+   "topic": "科学可视化",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-06",
+   "score": 6.8,
+   "rel": 6,
+   "firstSeen": "2026-11-06"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1254858#reply7",
+   "title": "花了 6 年搭了一个去中心化的社交网络作品",
+   "titleEn": "",
+   "summary": "开发者历经 6 年构建去中心化社交网络 Peers-Touch，采用联邦架构无中心服务器，支持端到端加密。项目涉及 Go/Rust 等 5 种语言，代码量超 80 万行，后期借助 Trae AI 辅助开发，已开源并预留 Agent 扩展接口。",
+   "type": "Web 应用",
+   "topic": "开源项目",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-06",
+   "score": 6.8,
+   "rel": 6,
+   "firstSeen": "2026-11-06"
+  },
+  {
    "url": "https://github.com/harisharandangi/textocad",
    "title": "TextoCAD：文本生成参数化 CAD 模型",
    "titleEn": "Show HN: TextoCAD – Text to editable CAD (STEP/STL), runs locally with your key",
@@ -602,6 +728,20 @@
    "score": 8.5,
    "rel": 7,
    "firstSeen": "2026-10-30"
+  },
+  {
+   "url": "https://makermaker.ai/breakthroughs/inference/simulation/",
+   "title": "推理业务模拟器：租 GPU 与令牌服务体验",
+   "titleEn": "Show HN: Inference business simulator – don't go broke, rent GPUs, serve tokens",
+   "summary": "模拟 LLM 推理初创公司的经营状况，用户需管理 GPU 租赁成本与令牌供应需求，体验在算力涨价波动和市场竞争中避免破产的过程。",
+   "type": "Web 应用",
+   "topic": "AI 基础设施",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-06",
+   "score": 6.7,
+   "rel": 7,
+   "firstSeen": "2026-11-06"
   },
   {
    "url": "https://www.v2ex.com/t/1252080#reply0",
@@ -1108,20 +1248,6 @@
    "firstSeen": "2026-10-17"
   },
   {
-   "url": "https://www.v2ex.com/t/1253010#reply0",
-   "title": "做了个成人向私人影库，顺手开源了，欢迎试用",
-   "titleEn": "",
-   "summary": "开源私人影库 Alexandria，支持本地及 NAS 媒体管理，提供专题关系图和观影台功能。特色在于支持接入本地 Ollama 作为“智能馆长”，提供智能推荐与搜索，兼顾成人内容需求。",
-   "type": "Web 应用",
-   "topic": "开源项目",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-30",
-   "score": 6.5,
-   "rel": 6,
-   "firstSeen": "2026-10-30"
-  },
-  {
    "url": "https://www.v2ex.com/t/1251722#reply0",
    "title": "做了一个 AI 图片创作工作台，想听听大家的使用反馈",
    "titleEn": "",
@@ -1500,20 +1626,6 @@
    "firstSeen": "2026-10-20"
   },
   {
-   "url": "https://www.reddit.com/r/SideProject/comments/1xgc3da/built_a_free_tool_that_tells_you_if_chatgpt/",
-   "title": "visible4ai：AI 引用检查工具",
-   "titleEn": "built a free tool that tells you if ChatGPT recommends your app/site",
-   "summary": "开发者构建了工具，通过调用 GPT 等主流模型 API 检测特定 URL 是否被 AI 索引或引用，并提供优化爬虫屏蔽及 llms.txt 的修复建议。",
-   "type": "效率工具",
-   "topic": "AI 营销应用",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-10-27",
-   "score": 6.5,
-   "rel": 6,
-   "firstSeen": "2026-10-27"
-  },
-  {
    "url": "https://deepsearch.ing/",
    "title": "DeepSearch：基于 DeepSeek API 的自托管搜索引擎",
    "titleEn": "Show HN: DeepSearch – Search engine built on DeepSeek API",
@@ -1624,20 +1736,6 @@
    "score": 7.2,
    "rel": 8,
    "firstSeen": "2026-10-23"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1251690#reply2",
-   "title": "vibe 做了个小网站，追踪 Github 热点仓库的",
-   "titleEn": "",
-   "summary": "开发者制作了开源项目追踪网站 OpenPulse，支持按语言与 Topic 筛选 GitHub 近期高 Star 增长仓库，并提供中小规模活跃项目的发掘页面。",
-   "type": "Web 应用",
-   "topic": "开源权重",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-26",
-   "score": 6.5,
-   "rel": 6,
-   "firstSeen": "2026-10-26"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1xenall/i_built_three_free_browser_tools_for_checking/",
@@ -1906,20 +2004,6 @@
    "firstSeen": "2026-10-16"
   },
   {
-   "url": "https://www.v2ex.com/t/1251052#reply0",
-   "title": "做了近 10 年合租车主，我开源了自己的订阅账本 Calends",
-   "titleEn": "",
-   "summary": "开源工具 Calends 针对订阅合租场景提供账本管理，支持跨区涨价记录与代付追踪，集成 MCP 接口允许 AI 助手（如 Grok）自动解析邮箱邮件更新订阅，提供 AI 创建、查询与维护功能。",
-   "type": "其他",
-   "topic": "开源项目",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-23",
-   "score": 6.5,
-   "rel": 7,
-   "firstSeen": "2026-10-23"
-  },
-  {
    "url": "https://www.v2ex.com/t/1250762#reply1",
    "title": "RUST+ GPUI 海量图片管理",
    "titleEn": "",
@@ -2002,20 +2086,6 @@
    "score": 7.2,
    "rel": 8,
    "firstSeen": "2026-10-18"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1250428#reply0",
-   "title": "[开源了一个小工具] AI 回答写好了，怎么发到聊天框？我做了一个开源工具 md2chat",
-   "titleEn": "",
-   "summary": "开源工具 md2chat 将 Markdown 中的表格、公式转为图片，文字保留可编辑，适配微信、钉钉等平台，支持快捷键及整段转图片分享。",
-   "type": "其他",
-   "topic": "效率工具",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-21",
-   "score": 6.5,
-   "rel": 6,
-   "firstSeen": "2026-10-21"
   },
   {
    "url": "https://www.v2ex.com/t/1247918#reply0",
@@ -2438,20 +2508,6 @@
    "firstSeen": "2026-10-15"
   },
   {
-   "url": "https://hardwareos.ai",
-   "title": "HardwareOS：将提示词转化为可接线的硬件项目",
-   "titleEn": "Show HN: Turn a prompt into a hardware project you can wire up and flash",
-   "summary": "硬件设计工具 HardwareOS 将自然语言需求映射为包含 4000+ 板卡、20000+ 零件索引的构建计划，支持固件生成与接线路径规划，降低硬件原型开发门槛。",
-   "type": "Web 应用",
-   "topic": "工具发布",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-18",
-   "score": 6.5,
-   "rel": 6,
-   "firstSeen": "2026-10-18"
-  },
-  {
    "url": "https://www.v2ex.com/t/1249490#reply1",
    "title": "分享一个 Python 音频转文字命令行工具，支持 Whisper 本地转录",
    "titleEn": "",
@@ -2534,20 +2590,6 @@
    "score": 8.5,
    "rel": 9,
    "firstSeen": "2026-10-08"
-  },
-  {
-   "url": "https://huggingface.co/spaces/Viggle/Qwen-Image-2.1-viggle-turbo",
-   "title": "Spaces 应用：Viggle/Qwen-Image-2.1-viggle-turbo",
-   "titleEn": "",
-   "summary": "Viggle 团队发布 Qwen-Image-2.1 Viggle Turbo 应用，结合通义千问图像模型与 Viggle 动作驱动技术，提供在线角色动画生成。",
-   "type": "模型与推理",
-   "topic": "模型与推理",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-16",
-   "score": 6.5,
-   "rel": 8,
-   "firstSeen": "2026-09-30"
   },
   {
    "url": "https://www.v2ex.com/t/1247891#reply0",
@@ -2830,20 +2872,6 @@
    "firstSeen": "2026-10-11"
   },
   {
-   "url": "https://www.reddit.com/r/SideProject/comments/1x58yth/i_made_a_menu_bar_app_that_frees_the_ram_your_ai/",
-   "title": "baa：Mac菜单栏内存清理工具",
-   "titleEn": "i made a menu bar app that frees the RAM your AI agents forgot about 🐏",
-   "summary": "开源Mac菜单栏应用，专门识别并释放AI Agent遗留的后台进程（如Gradle、无头浏览器）占用的RAM，支持磁盘清理且数据本地化。",
-   "type": "桌面工具",
-   "topic": "工程实践",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-10-14",
-   "score": 6.5,
-   "rel": 6,
-   "firstSeen": "2026-10-14"
-  },
-  {
    "url": "https://www.v2ex.com/t/1248221#reply0",
    "title": "做了一个通用版的无限画布 | OpenWorkgraph",
    "titleEn": "",
@@ -2954,34 +2982,6 @@
    "score": 8.2,
    "rel": 8,
    "firstSeen": "2026-10-06"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1248222#reply0",
-   "title": "[开源]FreeControl 2 - 新的 scrcpy GUI",
-   "titleEn": "",
-   "summary": "开发者发布 Rust 版 FreeControl 2，为 scrcpy 提供图形界面，支持多设备管理及参数预设，全代码由 AI 辅助生成，软件体积约 6MB。",
-   "type": "CLI 工具",
-   "topic": "工程实践",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-13",
-   "score": 6.5,
-   "rel": 6,
-   "firstSeen": "2026-10-13"
-  },
-  {
-   "url": "https://huggingface.co/spaces/FineEnvs/multi-harness-rl",
-   "title": "Spaces 应用：FineEnvs/multi-harness-rl",
-   "titleEn": "",
-   "summary": "Hugging Face Spaces 应用，采用 Docker 技术栈，支持多执行环境强化学习，创建于 2026 年 8 月。",
-   "type": "模型与推理",
-   "topic": "模型发布",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-13",
-   "score": 6.5,
-   "rel": 8,
-   "firstSeen": "2026-10-13"
   },
   {
    "url": "https://www.v2ex.com/t/1247928#reply2",
