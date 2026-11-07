@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-06 08:10",
+ "updated": "2026-11-07 08:10",
  "count": 300,
  "types": [
   "Agent 工作流",
@@ -44,6 +44,34 @@
    "firstSeen": "2026-11-06"
   },
   {
+   "url": "https://ajx.dev/",
+   "title": "AJX：AI Agent产品可用性测试工具",
+   "titleEn": "Show HN: AJX – Find out where AI agents get stuck using your product",
+   "summary": "AJX是一个CLI和技能包，通过外层循环控制内层Agent运行，模拟用户从Agent视角使用产品。它提供改进建议，减少Agent完成任务所需的Token和重试次数，支持Claude、Codex等Harness。",
+   "type": "CLI 工具",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-07",
+   "score": 8.4,
+   "rel": 9,
+   "firstSeen": "2026-11-07"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1255111#reply3",
+   "title": "做了个 Claude Code CLI 侧边栏",
+   "titleEn": "",
+   "summary": "Claude Code CLI 插件 panel，通过开源仓库 agent-plugins 安装，提供会话上下文、子 Agent 状态、PR/Issue 链接及额度显示等侧边栏信息。",
+   "type": "其他",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-07",
+   "score": 8.2,
+   "rel": 9,
+   "firstSeen": "2026-11-07"
+  },
+  {
    "url": "https://www.reddit.com/r/SideProject/comments/1xoxxr2/agentofficehq_an_opensource_workspace_to_monitor/",
    "title": "AgentOfficeHQ：多智能体工作流监控开源工作台",
    "titleEn": "AgentOfficeHQ: An open-source workspace to monitor and visualize multi-agent workflows",
@@ -56,6 +84,20 @@
    "score": 8.4,
    "rel": 8,
    "firstSeen": "2026-11-06"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1255117#reply2",
+   "title": "做了一个开源的 YouTube 桌面客户端 Lumtub：原生播放，推荐在本地跑，支持 Windows / Linux / macOS",
+   "titleEn": "",
+   "summary": "开源 YouTube 客户端 Lumtub，基于 mpv 原生播放支持 8K，推荐算法本地运行保护隐私，支持双语字幕及 AI 总结，GPL-3.0 许可，跨平台。",
+   "type": "桌面工具",
+   "topic": "开源工具",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-07",
+   "score": 8.1,
+   "rel": 6,
+   "firstSeen": "2026-11-07"
   },
   {
    "url": "https://www.v2ex.com/t/1253609#reply0",
@@ -89,13 +131,13 @@
    "url": "https://huggingface.co/spaces/LiquidAI/LFM3-Omni-2B-WebGPU",
    "title": "Spaces 应用：LiquidAI/LFM3-Omni-2B-WebGPU",
    "titleEn": "",
-   "summary": "Hugging Face Spaces 上的静态应用，展示 LiquidAI 的 LFM3-Omni-2B 模型在 WebGPU 环境下的推理能力。该应用创建于 2026 年 10 月 29 日，获得 114 个点赞。",
-   "type": "Web 应用",
-   "topic": "模型推理",
+   "summary": "LiquidAI 发布的 LFM3-Omni-2B 模型 WebGPU 演示，基于静态技术栈，点赞 124，创建于 2026 年 10 月，支持端侧推理。",
+   "type": "其他",
+   "topic": "模型与推理",
    "block": "HF Spaces",
    "src": "apps",
-   "lastSeen": "2026-11-06",
-   "score": 8.1,
+   "lastSeen": "2026-11-07",
+   "score": 7.8,
    "rel": 9,
    "firstSeen": "2026-11-04"
   },
@@ -112,6 +154,20 @@
    "score": 8.8,
    "rel": 9,
    "firstSeen": "2026-11-03"
+  },
+  {
+   "url": "https://news.ycombinator.com/item?id=50399637",
+   "title": "HN用户AI Agent工作流映射分析",
+   "titleEn": "Show HN: I asked HN about AI agentic setups, here are 750 of the comments mapped",
+   "summary": "开发者使用Claude解析了Hacker News上750条关于AI Agent工作流的评论，生成交互式网站展示用户使用的工具、模型、订阅方案及优缺点。代码已开源。",
+   "type": "Web 应用",
+   "topic": "数据分析",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-07",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-11-07"
   },
   {
    "url": "https://www.v2ex.com/t/1253622#reply0",
@@ -196,6 +252,34 @@
    "score": 8.3,
    "rel": 8,
    "firstSeen": "2026-11-04"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1255104#reply0",
+   "title": "做了个 Agent 版的「Adobe + Office 全家桶」，能在 codex、claude code 中直接使用",
+   "titleEn": "",
+   "summary": "EasyRunCraft 整合 13 个开源编辑器，支持文档/表格/PDF 等，通过 MCP 接入 Agent，内置 AI 助手，手动编辑免费，AI 操作按积分计费。",
+   "type": "Web 应用",
+   "topic": "Agent 应用",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-07",
+   "score": 7.5,
+   "rel": 8,
+   "firstSeen": "2026-11-07"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1255093#reply0",
+   "title": "做了个 Chrome 插件 LookRecipe：从网页图片提取提示词，再用自己的照片生成同款",
+   "titleEn": "",
+   "summary": "Chrome 插件 LookRecipe，从图片分析“摄影配方”（光线、构图等），支持编辑提示词并生成同款风格图，含人物卡、套图功能，积分制收费。",
+   "type": "浏览器插件",
+   "topic": "内容生成",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-07",
+   "score": 7.5,
+   "rel": 7,
+   "firstSeen": "2026-11-07"
   },
   {
    "url": "https://brainpot.cloud/",
@@ -532,6 +616,34 @@
    "score": 7.8,
    "rel": 7,
    "firstSeen": "2026-11-03"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1255089#reply0",
+   "title": "做了个 AI 视频小工具：一张照片生成「无边泳池火烈鸟」视频",
+   "titleEn": "",
+   "summary": "AI 视频工具 Infinity Pool，上传单人照片即可生成固定场景的“无边泳池火烈鸟”12 秒视频，支持 480p/720p，积分制收费，基于 TanStack Start。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-07",
+   "score": 6.8,
+   "rel": 6,
+   "firstSeen": "2026-11-07"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1xprnq7/i_build_an_ai_marketing_tool_apple_ads_still/",
+   "title": "苹果广告消耗争议与AI营销工具Soclo",
+   "titleEn": "I build an AI marketing tool. Apple Ads still burned £1,069.88 of my launch budget in under two days.",
+   "summary": "英国独立创始人抱怨苹果广告两天消耗1069英镑仅带来15次安装，客服称预算非上限。同时推广其AI营销工具Soclo，可生成多平台广告内容，并提及另一款视频生成工具Brix36。",
+   "type": "Agent 工作流",
+   "topic": "商业运营",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-11-07",
+   "score": 6.8,
+   "rel": 6,
+   "firstSeen": "2026-11-07"
   },
   {
    "url": "https://www.v2ex.com/t/1253979#reply1",
@@ -2410,20 +2522,6 @@
    "firstSeen": "2026-10-15"
   },
   {
-   "url": "https://www.v2ex.com/t/1249669#reply0",
-   "title": "做了一个 Zombie Couple Video：上传两张照片，生成 13 秒的 AI 丧尸情侣重逢短视频",
-   "titleEn": "",
-   "summary": "上线了一款名为Zombie Couple Video的Web工具，用户上传两张人像照片，AI生成13秒竖屏重逢短视频。内置两个故事模板，采用积分制购买，无需安装App。",
-   "type": "内容生成",
-   "topic": "AI 视频",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-18",
-   "score": 6.6,
-   "rel": 8,
-   "firstSeen": "2026-10-18"
-  },
-  {
    "url": "https://www.v2ex.com/t/1249501#reply0",
    "title": "做了个 macOS 原生 Emby 观影助手： TMDB 搜索找片、片单浏览、入库核对与外部播放",
    "titleEn": "",
@@ -3376,20 +3474,6 @@
    "firstSeen": "2026-10-05"
   },
   {
-   "url": "https://www.v2ex.com/t/1247006#reply33",
-   "title": "因为不会做 App 图标，我做了个收了 1.8 万个真实图标的网站",
-   "titleEn": "",
-   "summary": "独立开发网站 AppLore，聚合 1.8 万真实 App 图标，支持按颜色、风格筛选及 AI 语义搜索（如“记账 App 用的可爱小猪”）。采用内存向量计算加速搜索，提供图标生成与尺寸导出功能。",
-   "type": "Web 应用",
-   "topic": "设计工具",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-08",
-   "score": 6.6,
-   "rel": 6,
-   "firstSeen": "2026-10-08"
-  },
-  {
    "url": "https://www.v2ex.com/t/1246327#reply0",
    "title": "给 Touch Bar 做了个新用途：直接看 Codex / Claude Code 是在工作，还是已经做完",
    "titleEn": "",
@@ -3472,34 +3556,6 @@
    "score": 7.8,
    "rel": 7,
    "firstSeen": "2026-10-02"
-  },
-  {
-   "url": "https://www.reddit.com/r/SideProject/comments/1wzfwz1/i_built_free_audio_tools_that_run_entirely_in_the/",
-   "title": "AudioDrop：浏览器端本地运行的音频分轨与转换工具",
-   "titleEn": "I built free audio tools that run entirely in the browser (stem splitter, vocal remove and file converter)",
-   "summary": "AudioDrop 是一套完全在浏览器本地运行的免费音频工具，包括人声/鼓/贝斯分轨（基于 HTDemucs）、人声移除及格式转换。首次使用需下载约 166MB 模型，之后可离线使用。无需注册且无水印，解决了用户上传音频至云端 GPU 隐私及效率痛点。",
-   "type": "Web 应用",
-   "topic": "开源工具",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-10-07",
-   "score": 6.6,
-   "rel": 6,
-   "firstSeen": "2026-10-07"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1246676#reply0",
-   "title": "做了个小工具：两张照片生成 Hotel Lobby 风格的 AI 短视频",
-   "titleEn": "",
-   "summary": "开发 MyHotelLobbyAI，上传两张照片即可生成 8 秒 720p 竖屏 AI 短视频，自动匹配配乐。简化通用 AI 工具繁琐流程，按条收费 5.99 美元，照片 24 小时后自动删除。",
-   "type": "Web 应用",
-   "topic": "内容生成",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-07",
-   "score": 6.6,
-   "rel": 6,
-   "firstSeen": "2026-10-07"
   },
   {
    "url": "https://denizlihub.com/",
@@ -4130,20 +4186,6 @@
    "firstSeen": "2026-09-30"
   },
   {
-   "url": "https://www.v2ex.com/t/1245905#reply0",
-   "title": "做了一个浏览器本地 GIF 压缩工具 CompressGIF，支持目标体积和 API / MCP",
-   "titleEn": "",
-   "summary": "CompressGIF 利用 Gifsicle WebAssembly 在浏览器本地压缩 GIF，保护隐私。提供质量、体积及目标大小三种模式，支持颜色数调整。此外提供 REST API 和 MCP 服务，便于接入自动化流程，适用于 README 及演示素材优化。",
-   "type": "Web 应用",
-   "topic": "效率工具",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-01",
-   "score": 6.6,
-   "rel": 6,
-   "firstSeen": "2026-10-01"
-  },
-  {
    "url": "https://github.com/zie1ony/jev-talks",
    "title": "Jev 模型通过多轮问答生成文本",
    "titleEn": "Show HN: I made Jev to talk",
@@ -4155,48 +4197,6 @@
    "lastSeen": "2026-09-30",
    "score": 6.7,
    "rel": 7,
-   "firstSeen": "2026-09-30"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1245809#reply0",
-   "title": "在使用 Skill 进行项目开发后，做一个 pdf 文档转在线测试的网页工具，希望大家多指点",
-   "titleEn": "",
-   "summary": "开发者引入 Skill 体系改善软件开发质量，重点加强测试驱动与代码审查环节。基于此方法论构建了 PDF 文档转在线测试的网页工具，声称项目推进速度显著提升。文章对比了传统手动流程与新体系的差异，强调规范化开发对质量与效率的帮助。",
-   "type": "Web 应用",
-   "topic": "工程实践",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-09-30",
-   "score": 6.6,
-   "rel": 7,
-   "firstSeen": "2026-09-30"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1245669#reply0",
-   "title": "云雀工坊: 字幕/翻译/配音/合成视频/对口型",
-   "titleEn": "",
-   "summary": "Golang 开源桌面工具“云雀工坊”支持视频字幕生成、翻译及配音合成。采用本地部署听写模型，结合必应/谷歌或自定义大模型进行翻译，支持 Edge TTS 或自定义声音合成。Mac 安装包仅 23MB，可离线处理。",
-   "type": "桌面工具",
-   "topic": "开源工具",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-09-30",
-   "score": 6.6,
-   "rel": 6,
-   "firstSeen": "2026-09-30"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1245817#reply0",
-   "title": "做了个 Migos AI 双人说唱视频生成器，上传两张照片就能进橙色录音棚",
-   "titleEn": "",
-   "summary": "Migos AI 专用于生成双人录音棚说唱视频，用户上传两张照片即可明确指定左右人物角色，避免串脸。支持 4-15 秒时长及多种画幅分辨率，参考原视频动作音轨，具备任务超时恢复及失败不扣积分功能，简化了特定场景的视频生成流程。",
-   "type": "Web 应用",
-   "topic": "内容生成",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-09-30",
-   "score": 6.6,
-   "rel": 5,
    "firstSeen": "2026-09-30"
   },
   {
