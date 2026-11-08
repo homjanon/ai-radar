@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-07 08:10",
+ "updated": "2026-11-08 08:10",
  "count": 300,
  "types": [
   "Agent 工作流",
@@ -16,6 +16,20 @@
  ],
  "cases": [
   {
+   "url": "https://www.v2ex.com/t/1255214#reply3",
+   "title": "[开源] agent-hub：统一管理 Codex / Claude Code，还能通过微信派活",
+   "titleEn": "",
+   "summary": "agent-hub 升级为统一管理工作台，集成 Codex 和 Claude Code。支持通过本地 Web 界面或 CLI 调度 Agent，并创新性地通过腾讯 WorkBuddy 实现微信远程派活，形成“主控-Worker”架构。",
+   "type": "效率工具",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-08",
+   "score": 9.7,
+   "rel": 9,
+   "firstSeen": "2026-11-08"
+  },
+  {
    "url": "https://www.v2ex.com/t/1254551#reply0",
    "title": "开源了一个 agent 技能，能把扫描件和手机拍的文档重建成矢量 PDF（附对照实验）",
    "titleEn": "",
@@ -28,6 +42,34 @@
    "score": 9.8,
    "rel": 9,
    "firstSeen": "2026-11-05"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1255223#reply0",
+   "title": "一键让你的云端 agent， grok bot，本地 codex，本地 cc，全部互相连接起来",
+   "titleEn": "",
+   "summary": "开源项目 myco 旨在实现多 Agent 互通，支持将云端（Claude、Grok）与本地（Codex、CC）Agent 连接。通过 VPS 或 Tailscale 中转，允许一个 Agent 唤醒并指令另一个 Agent，实现任务自动化流转。",
+   "type": "其他",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-08",
+   "score": 8.4,
+   "rel": 9,
+   "firstSeen": "2026-11-08"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1255227#reply0",
+   "title": "X/twitter 运营必用 Skill, 可以审查发帖, 也可以问问题",
+   "titleEn": "",
+   "summary": "For You Skills 是基于 X/Twitter 公开推荐代码整理的 AI 技能包，支持在 Claude Code 等工具中查询发帖策略、审查草稿。知识库包含 8 个技能，强调依据源码提供建议，并明确标注证据边界。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-08",
+   "score": 8.2,
+   "rel": 8,
+   "firstSeen": "2026-11-08"
   },
   {
    "url": "https://eremoterra.com/",
@@ -56,6 +98,34 @@
    "score": 8.4,
    "rel": 9,
    "firstSeen": "2026-11-07"
+  },
+  {
+   "url": "https://github.com/alielmorsy/ywza",
+   "title": "Ywza：本地化计算机操作 Agent",
+   "titleEn": "Show HN: Ywza, a computer-use agent for your own PC, drivable from anywhere",
+   "summary": "Ywza 是一个本地运行的 Agent 工具，让 AI 模型通过 P2P 连接控制用户的 PC，通过解析窗口元素列表而非截图来降低 Token 消耗，支持连接本地 LLM。",
+   "type": "CLI 工具",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-08",
+   "score": 8.0,
+   "rel": 8,
+   "firstSeen": "2026-11-08"
+  },
+  {
+   "url": "https://nosaka.ai/sentient/",
+   "title": "Sentient：非黑盒编码代理监控工具",
+   "titleEn": "Show HN: Sentient, Your Coding Agent Shouldn't Be a Black Box",
+   "summary": "开源工具 Sentient 通过 Linux 内核层追踪 Claude Code 等编码代理的底层命令执行，提供本地只读 Web UI 可视化，旨在防止代理意外删除数据库等生产环境事故。",
+   "type": "桌面工具",
+   "topic": "Agent 安全",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-08",
+   "score": 8.0,
+   "rel": 8,
+   "firstSeen": "2026-11-08"
   },
   {
    "url": "https://www.v2ex.com/t/1255111#reply3",
@@ -98,6 +168,20 @@
    "score": 8.1,
    "rel": 6,
    "firstSeen": "2026-11-07"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1255246#reply5",
+   "title": "Herdr 的终端界面能把事情做好。Shepi 让你在 Mac 上用得更愉快。",
+   "titleEn": "",
+   "summary": "Shepi 是 Herdr 的原生 Mac 客户端，与终端版共享同一工作空间，用于管理多个 AI 编程 Agent（如 Claude Code、Codex）。支持实时状态同步、任务交接及 macOS 通知，无需迁移现有会话。",
+   "type": "桌面工具",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-08",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-11-08"
   },
   {
    "url": "https://www.v2ex.com/t/1253609#reply0",
@@ -464,6 +548,34 @@
    "firstSeen": "2026-10-29"
   },
   {
+   "url": "https://www.v2ex.com/t/1255278#reply0",
+   "title": "[分享创造] 做了个把游戏录像整理成原型开发计划的小工具",
+   "titleEn": "",
+   "summary": "开源 CLI 工具 rea-game 利用 FFmpeg 提取游戏录像帧，辅助人工将观察转化为结构化 Markdown 报告，生成原型开发计划。项目采用 MIT 许可，本地运行无需 API，专注证据整理而非自动视频理解。",
+   "type": "CLI 工具",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-08",
+   "score": 6.8,
+   "rel": 6,
+   "firstSeen": "2026-11-08"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1255258#reply0",
+   "title": "用 AI 做了个智能导航 咖喱饭导航",
+   "titleEn": "",
+   "summary": "基于 AI 的智能导航网站，自动抓取新提交网站并进行属性分析（归类、费用等），支持 AI 搜索推荐及用户评分。后台显示当日处理近 6000 次请求，AI 调用超 1400 次，主要基于 Token 消耗计费。",
+   "type": "Web 应用",
+   "topic": "AI 应用",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-08",
+   "score": 6.8,
+   "rel": 6,
+   "firstSeen": "2026-11-08"
+  },
+  {
    "url": "https://www.v2ex.com/t/1253933#reply0",
    "title": "[分享创造] 我让模型输出的元素清单长什么样，以及为什么必须先写清单再渲染",
    "titleEn": "",
@@ -546,6 +658,20 @@
    "score": 7.4,
    "rel": 8,
    "firstSeen": "2026-11-05"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1255272#reply0",
+   "title": "做了一个 llama-server 的多开工具",
+   "titleEn": "",
+   "summary": "基于 WinUI3 开发的 llama-server GUI 封装工具，支持多实例管理、系统托盘最小化及 Windows 11 风格界面，简化了原本通过批处理脚本启动多个本地大模型服务端的繁琐流程。",
+   "type": "桌面工具",
+   "topic": "模型与推理",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-08",
+   "score": 6.7,
+   "rel": 7,
+   "firstSeen": "2026-11-08"
   },
   {
    "url": "https://www.v2ex.com/t/1253311#reply1",
@@ -1318,20 +1444,6 @@
    "firstSeen": "2026-10-28"
   },
   {
-   "url": "https://www.v2ex.com/t/1252996#reply1",
-   "title": "[开源] Monkey： macOS 拼音输入法，支持复用 ChatGPT 订阅的中译英",
-   "titleEn": "",
-   "summary": "开源 macOS 输入法 Monkey 基于 librime，创新支持复用 ChatGPT 订阅额度进行中译英。在输入框内直接预览英文，无需复制粘贴。凭据存储在 Keychain，隐私安全。",
-   "type": "桌面工具",
-   "topic": "效率工具",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-30",
-   "score": 6.6,
-   "rel": 5,
-   "firstSeen": "2026-10-30"
-  },
-  {
    "url": "https://github.com/Arthur031221/Token-Beggar",
    "title": "Token Beggar：自动路由子任务至低成本模型的编排工具",
    "titleEn": "Show HN: Token Beggar, route coding agent subtasks to cheaper models",
@@ -1514,20 +1626,6 @@
    "firstSeen": "2026-10-26"
   },
   {
-   "url": "https://strandedtoken.trade/",
-   "title": "Stranded：解决 ERC-20 代币因缺 Gas 卡死的问题",
-   "titleEn": "Show HN: Stranded, move ERC-20 tokens out of a wallet that has no ETH for gas",
-   "summary": "Stranded 工具允许用户将无 ETH 支付 Gas 的钱包中的 ERC-20 代币转出。其原理是通过交换少量代币为测试 ETH 来支付 Gas，由中继者发送交易。目前在 Arbitrum Sepolia 测试网运行，每 4 小时限制一次。",
-   "type": "Web 应用",
-   "topic": "区块链工具",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-28",
-   "score": 6.6,
-   "rel": 6,
-   "firstSeen": "2026-10-28"
-  },
-  {
    "url": "https://sspai.com/post/114741",
    "title": "60 元打造你的 vibe coding 神器：小米蓝牙遥控器 2 pro",
    "titleEn": "",
@@ -1696,20 +1794,6 @@
    "firstSeen": "2026-10-26"
   },
   {
-   "url": "https://www.reddit.com/r/SideProject/comments/1xgbqbp/i_built_an_offline_research_assistant_not_another/",
-   "title": "Cursiv：离线科研助手",
-   "titleEn": "I built an offline research assistant, not another AI chatbot.",
-   "summary": "开源工具 Cursiv 结合了本地大模型、检索及防篡改笔记本，构建 USB 可移植工作区，专为不依赖云端的科研人员设计。",
-   "type": "其他",
-   "topic": "开源工具",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-10-27",
-   "score": 6.6,
-   "rel": 6,
-   "firstSeen": "2026-10-27"
-  },
-  {
    "url": "https://www.reddit.com/r/SideProject/comments/1xc348y/were_building_ai_agents_that_run_a_solo_businesss/",
    "title": "Braind - 面向微型企业的 AI 后台代理",
    "titleEn": "We’re building AI agents that run a solo business’s back office, but nothing goes out without your OK. Looking for honest feedback on the idea + page",
@@ -1876,20 +1960,6 @@
    "score": 8.4,
    "rel": 8,
    "firstSeen": "2026-10-18"
-  },
-  {
-   "url": "https://kat-assessment.com/",
-   "title": "客户端自适应认知测试，通过微犹豫识别 AI 作弊",
-   "titleEn": "Show HN: A client-side adaptive cognitive test measuring micro-hesitations",
-   "summary": "行为科学家开发客户端认知自适应引擎（CAT），通过测量“切换成本”和“错误后减速”等生物特征识别认知状态。利用毫秒级响应时间动态调整题目，旨在比传统静态测试更难被 LLM 或机器人作弊，已构建 JS/SVG 原型。",
-   "type": "Web 应用",
-   "topic": "论文方法",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-25",
-   "score": 6.6,
-   "rel": 6,
-   "firstSeen": "2026-10-25"
   },
   {
    "url": "https://www.v2ex.com/t/1251380#reply1",
@@ -2116,20 +2186,6 @@
    "firstSeen": "2026-10-16"
   },
   {
-   "url": "https://www.v2ex.com/t/1250762#reply1",
-   "title": "RUST+ GPUI 海量图片管理",
-   "titleEn": "",
-   "summary": "基于 Rust 和 GPUI 开发的本地图片管理工具，支持 50w 图片流畅浏览。集成本地大模型实现语义搜索、人脸识别及文字识别，支持 API 生图功能。",
-   "type": "桌面工具",
-   "topic": "工程实践",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-22",
-   "score": 6.6,
-   "rel": 6,
-   "firstSeen": "2026-10-22"
-  },
-  {
    "url": "https://www.v2ex.com/t/1249433#reply0",
    "title": "做了个有点偏门的小网站，用两张照片生成丧尸情侣重逢视频",
    "titleEn": "",
@@ -2240,20 +2296,6 @@
    "score": 8.6,
    "rel": 8,
    "firstSeen": "2026-10-12"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1250164#reply0",
-   "title": "[开源&极重] Kokoro 探针 1.0 版发布，你没用过的博客式探针",
-   "titleEn": "",
-   "summary": "Kokoro 发布 1.0 版本，采用 Hub+Agent 架构。支持面板下发测试展示三网线路，提供点赞留言及「我想买它」交互。内置 AI 辅助主题生成、远程增 SWAP、面板一键迁移功能，部署仅需执行安装脚本，无需编译环境。",
-   "type": "桌面工具",
-   "topic": "工程实践",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-20",
-   "score": 6.6,
-   "rel": 5,
-   "firstSeen": "2026-10-20"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1x9gfq2/lila_a_windows_voice_assistant_what_job_would/",
@@ -4061,20 +4103,6 @@
    "firstSeen": "2026-09-29"
   },
   {
-   "url": "https://github.com/sampsn/pair.nvim",
-   "title": "Pair.nvim：兼顾代码控制与Agent辅助的插件",
-   "titleEn": "Show HN: Pair.nvim – Agent assistance while staying in the codebase",
-   "summary": "Pair.nvim插件解决Agent编码中代码库知识退化问题，保留对话与研究辅助的同时，增强用户对生成代码的控制力与介入深度。",
-   "type": "CLI 工具",
-   "topic": "Agent 框架",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-02",
-   "score": 6.7,
-   "rel": 7,
-   "firstSeen": "2026-10-02"
-  },
-  {
    "url": "https://www.v2ex.com/t/1245660#reply0",
    "title": "opus5.5 一句话就复刻了这两天很火的 destroy any website 的游戏",
    "titleEn": "",
@@ -4184,34 +4212,6 @@
    "score": 6.9,
    "rel": 7,
    "firstSeen": "2026-09-30"
-  },
-  {
-   "url": "https://github.com/zie1ony/jev-talks",
-   "title": "Jev 模型通过多轮问答生成文本",
-   "titleEn": "Show HN: I made Jev to talk",
-   "summary": "展示了一种通过向 Jev 模型提出多个是/否问题来确定下一最佳单词的方法，从而生成合理文本。这是一种探索性实验，展示了如何通过简单的交互界面挖掘语言模型的潜力，无需复杂的提示词工程。",
-   "type": "Web 应用",
-   "topic": "模型与推理",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-09-30",
-   "score": 6.7,
-   "rel": 7,
-   "firstSeen": "2026-09-30"
-  },
-  {
-   "url": "https://sliderino.embornal.com/",
-   "title": "Sliderino：面向 Agent 时代的演示软件",
-   "titleEn": "Show HN: Sliderino, presentation software for the age of agents",
-   "summary": "Agent-first 的演示软件，通过基础原语组合生成视觉幻灯片，支持 CLI 和 MCP 接口操作，意外发现 Shader 填充功能使用率较高，优化 AI 迭代效率。",
-   "type": "桌面工具",
-   "topic": "Agent 框架",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-09-29",
-   "score": 6.7,
-   "rel": 7,
-   "firstSeen": "2026-09-29"
   }
  ]
 }
