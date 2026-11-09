@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-08 08:10",
+ "updated": "2026-11-09 08:10",
  "count": 300,
  "types": [
   "Agent 工作流",
@@ -30,6 +30,34 @@
    "firstSeen": "2026-11-08"
   },
   {
+   "url": "https://github.com/ozkl/ruxis",
+   "title": "ruxis：由 Claude Opus 5.5 编写、可运行 Ubuntu 的 Rust Unix 内核",
+   "titleEn": "Show HN: A kernel written in Rust that can boot Ubuntu with Plasma desktop",
+   "summary": "ruxis 是一个由 Claude Opus 5.5 编写的类 Unix Rust 内核，兼容 Linux 用户空间，支持 x86_64 和 arm64 架构。成功引导 Ubuntu 24.04（含 systemd、GNOME/KDE 桌面、浏览器及常用工具），并支持容器命名空间与 cgroup v2。",
+   "type": "模型与推理",
+   "topic": "模型能力",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-09",
+   "score": 9.0,
+   "rel": 9,
+   "firstSeen": "2026-11-09"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1xrc6ak/i_made_a_opensource_memory_and_asset_library_for/",
+   "title": "AssetRAG：为 Claude Code 构建的本地优先开源工程记忆库",
+   "titleEn": "I made a open-source memory and asset library for Claude Code so it stops reinventing everything AssetRAG",
+   "summary": "AssetRAG 是面向 Claude Code 等 MCP 客户端的本地优先开源记忆系统。它存储可复用代码资产、已验证 Bug 修复方案及工程剧本，支持许可证检查与沙盒测试，旨在减少 AI 代理重复生成代码和调试已知错误。",
+   "type": "CLI 工具",
+   "topic": "Agent 工具",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-11-09",
+   "score": 9.0,
+   "rel": 8,
+   "firstSeen": "2026-11-09"
+  },
+  {
    "url": "https://www.v2ex.com/t/1254551#reply0",
    "title": "开源了一个 agent 技能，能把扫描件和手机拍的文档重建成矢量 PDF（附对照实验）",
    "titleEn": "",
@@ -44,6 +72,20 @@
    "firstSeen": "2026-11-05"
   },
   {
+   "url": "https://www.reddit.com/r/SideProject/comments/1xrbext/nodeai_v310_ga_is_live/",
+   "title": "NodeAI V3.1.0：提供自主代理执行控制权与审计功能的架构",
+   "titleEn": "NodeAI V3.1.0 GA is live",
+   "summary": "NodeAI 发布 V3.1.0 正式版，专注于自主代理执行的控制与治理。支持任务分解、并行/串行依赖管理、跨模型资源分配、独立验证及对抗性审查，并提供加密执行收据以实现可审计性，解决代理黑盒问题。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-11-09",
+   "score": 8.4,
+   "rel": 9,
+   "firstSeen": "2026-11-09"
+  },
+  {
    "url": "https://www.v2ex.com/t/1255223#reply0",
    "title": "一键让你的云端 agent， grok bot，本地 codex，本地 cc，全部互相连接起来",
    "titleEn": "",
@@ -56,6 +98,20 @@
    "score": 8.4,
    "rel": 9,
    "firstSeen": "2026-11-08"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1255401#reply3",
+   "title": "想要 Claude Code 控制 Codex， Deepseek 控制 Claude Code, Grob Bot 控制一切，用这个， So easy",
+   "titleEn": "",
+   "summary": "开源项目 myco 实现多 Agent 互联，支持云端 Claude、Codex、Grok 互相唤醒调用。提供 VPS/CF/Tailscale 中转方案，含 Mac/Win 可视化管理软件，简化多模型协作流程。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-09",
+   "score": 8.0,
+   "rel": 8,
+   "firstSeen": "2026-11-09"
   },
   {
    "url": "https://www.v2ex.com/t/1255227#reply0",
@@ -168,6 +224,20 @@
    "score": 8.1,
    "rel": 6,
    "firstSeen": "2026-11-07"
+  },
+  {
+   "url": "https://github.com/SafeScript/safescript",
+   "title": "SafeScript：用于执行不可信代码的安全 JavaScript 子集",
+   "titleEn": "Show HN: SafeScript, a safe version of JavaScript for executing untrusted code",
+   "summary": "SafeScript 是 JavaScript 的严格安全子集，禁用了 eval、new、全局变量等危险特性，可编译为纯 JS 或 PHP，编译器仅需 48KB。旨在提供类似 JSON 的安全计算交换标准，适用于 Web 服务器处理、插件脚本及 AI 代理工具。",
+   "type": "CLI 工具",
+   "topic": "开源代码",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-09",
+   "score": 7.5,
+   "rel": 7,
+   "firstSeen": "2026-11-09"
   },
   {
    "url": "https://www.v2ex.com/t/1255246#reply5",
@@ -546,6 +616,20 @@
    "score": 9.7,
    "rel": 9,
    "firstSeen": "2026-10-29"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1xrc4r9/i_built_kalynt_an_opensource_desktop_ide_with/",
+   "title": "Kalynt：支持本地 AI 运行与 P2P 协作的开源桌面 IDE",
+   "titleEn": "I built Kalynt, an open-source desktop IDE with local AI and peer-to-peer collaboration",
+   "summary": "Kalynt 是一款跨平台开源桌面 IDE，集成代码编辑器、终端、Git 及 AI 代理功能。支持在本地运行大模型或连接云服务商 API，内置 P2P 工作区协作功能，无需订阅或账号，源代码采用 AGPL-3.0 协议。",
+   "type": "桌面工具",
+   "topic": "开发者工具",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-11-09",
+   "score": 6.7,
+   "rel": 7,
+   "firstSeen": "2026-11-09"
   },
   {
    "url": "https://www.v2ex.com/t/1255278#reply0",
@@ -3446,48 +3530,6 @@
    "firstSeen": "2026-10-03"
   },
   {
-   "url": "https://whofundsoss.com",
-   "title": "WhoFundsOSS：开源资助公司公开排名",
-   "titleEn": "Show HN: WhoFundsOSS, a public ranking of companies that fund open source",
-   "summary": "WhoFundsOSS 每月统计 844 家公司的公开开源资助数据，仅计入已公布金额，前 200 名总额 910 万美元，Posit 以 76.24 万美元居首，Sentry 捐赠 75 万美元但隐瞒细节。",
-   "type": "数据分析",
-   "topic": "行业分析",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-08",
-   "score": 6.7,
-   "rel": 5,
-   "firstSeen": "2026-10-08"
-  },
-  {
-   "url": "https://github.com/dib-artificial/Pluto",
-   "title": "Pluto AI 模型：面向通用智能的自然语言模型",
-   "titleEn": "Show HN: Pluto AI model, run tiny MUCUs hardware control of natural language",
-   "summary": "开源项目 Pluto 展示了一个设计指向通用智能的小型自然语言模型，使用 MUCU 硬件控制，支持运行微型模型进行基础 NLP 任务，代码托管于 GitHub 并附有详细文档。",
-   "type": "模型与推理",
-   "topic": "开源模型",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-08",
-   "score": 6.7,
-   "rel": 7,
-   "firstSeen": "2026-10-08"
-  },
-  {
-   "url": "https://stayleet.com/",
-   "title": "StayLeet：在 AI 编码时代保持技能敏锐",
-   "titleEn": "Show HN: StayLeet – keeping skills sharp in AI coding era",
-   "summary": "针对 AI 取代代码生成的现状，开发 StayLeet 项目以维持开发者技术判断力。重点练习非代码编写技能，如计算机科学基础、系统思维等，帮助开发者有效审查和评估 AI 输出质量，避免技能退化。",
-   "type": "Web 应用",
-   "topic": "开发者教育",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-08",
-   "score": 6.7,
-   "rel": 7,
-   "firstSeen": "2026-10-08"
-  },
-  {
    "url": "https://www.v2ex.com/t/1245659#reply0",
    "title": "Kling 4.0 可能又是王炸",
    "titleEn": "",
@@ -3824,34 +3866,6 @@
    "firstSeen": "2026-10-03"
   },
   {
-   "url": "https://www.v2ex.com/t/1246422#reply1",
-   "title": "[开源] 小伴：像给豆包打电话一样，打开浏览器就能和 AI 语音聊天",
-   "titleEn": "",
-   "summary": "开源项目小伴实现浏览器端 AI 语音通话，支持打断、语速调节及口语练习，MIT 协议允许本地部署或在线体验。",
-   "type": "Web 应用",
-   "topic": "模型发布",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-05",
-   "score": 6.7,
-   "rel": 7,
-   "firstSeen": "2026-10-05"
-  },
-  {
-   "url": "https://redactpdf.ai",
-   "title": "Redactpdf.ai：开源 AI 驱动的 PDF 敏感信息脱敏工具",
-   "titleEn": "Show HN: Redactpdf.ai: Open-source AI-based PDF redaction tool",
-   "summary": "Redactpdf.ai 是一个开源项目，允许用户上传 PDF 文件，AI 自动识别并建议遮蔽敏感信息（如护照、证件号）。用户确认后可下载脱敏文件，数据在处理一小时内删除，保障隐私。",
-   "type": "Web 应用",
-   "topic": "隐私安全",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-05",
-   "score": 6.7,
-   "rel": 7,
-   "firstSeen": "2026-10-05"
-  },
-  {
    "url": "https://www.v2ex.com/t/1246299#reply0",
    "title": "[我的搜索-桌面版] 一款呼出搜索工具，支持网站/文本类/插件",
    "titleEn": "",
@@ -3906,20 +3920,6 @@
    "score": 7.7,
    "rel": 8,
    "firstSeen": "2026-09-30"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1246312#reply9",
-   "title": "[开源] 我把《杀戮尖塔 2》移植到了网页端",
-   "titleEn": "",
-   "summary": "开发者利用 AI 将《杀戮尖塔 2》移植至网页端。鉴于原游戏资源超 1G，AI 辅助优化了资源加载以兼顾质量与速度。开源项目解决了网页端适配难点，提供在线游玩地址及演示视频，体现了 AI 在大型项目逆向移植中的工程实践价值。",
-   "type": "其他",
-   "topic": "开源生态",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-04",
-   "score": 6.7,
-   "rel": 7,
-   "firstSeen": "2026-10-04"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1wtxzrw/bruto_a_task_board_that_lives_in_your_repo_for/",
