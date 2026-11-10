@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-09 08:10",
+ "updated": "2026-11-10 08:10",
  "count": 300,
  "types": [
   "Agent 工作流",
@@ -15,6 +15,34 @@
   "移动 App"
  ],
  "cases": [
+  {
+   "url": "https://github.com/voyager-so/vork",
+   "title": "Vork：面向 Agent 的无头 3D 与 VFX 引擎",
+   "titleEn": "Show HN: Vork – headless 3D and VFX engine for agents",
+   "summary": "Vork 是一个 Agent 原生 3D 引擎，允许 Agent 通过代码完整定义场景、着色器和物理，核心 API 仅约 2500 tokens。相比 Blender 等人类工具，它支持真实物理模拟（如黑洞引力透镜），打破传统引擎对光直线传播的简化假设。",
+   "type": "模型与推理",
+   "topic": "模型与推理",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-10",
+   "score": 9.4,
+   "rel": 10,
+   "firstSeen": "2026-11-10"
+  },
+  {
+   "url": "https://twitter.com/jalcowastaken/status/2119922971599057366",
+   "title": "Drop：面向 AI Agent 的自托管开源文件传输工具",
+   "titleEn": "Show HN: Drop, self hosted, OSS file transfer for agents",
+   "summary": "Drop 是一个自托管、开源的文件传输界面，专为 AI Agent 设计。Agent 可通过 Skills 原生理解并读取链接，支持发送文件、文件夹、Diff 或 Superwhisper 笔记，生成美观的 Web 链接供人类或 Agent 访问，解决多模态交互中的数据传递痛点。",
+   "type": "其他",
+   "topic": "Agent 工具",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-10",
+   "score": 9.1,
+   "rel": 9,
+   "firstSeen": "2026-11-10"
+  },
   {
    "url": "https://www.v2ex.com/t/1255214#reply3",
    "title": "[开源] agent-hub：统一管理 Codex / Claude Code，还能通过微信派活",
@@ -58,6 +86,20 @@
    "firstSeen": "2026-11-09"
   },
   {
+   "url": "https://nibiashara.com/agent-index",
+   "title": "AI 代理访问本地商业目录实时数据报告",
+   "titleEn": "Show HN: Live counts of AI assistants reading a diaspora business directory",
+   "summary": "Nibiashara 目录显示，过去 30 天内有 177,912 次 Agent API 请求，涉及 457 个独立客户端。主要流量来自 Meta、Apple 和 OpenAI 爬虫，其中 7 天内 AI 阅读达 5,319 次。该目录通过 MCP 和 A2A 协议向 AI 代理提供机器可读的商业信息。",
+   "type": "数据分析",
+   "topic": "Agent 生态",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-10",
+   "score": 8.7,
+   "rel": 9,
+   "firstSeen": "2026-11-10"
+  },
+  {
    "url": "https://www.v2ex.com/t/1254551#reply0",
    "title": "开源了一个 agent 技能，能把扫描件和手机拍的文档重建成矢量 PDF（附对照实验）",
    "titleEn": "",
@@ -70,6 +112,20 @@
    "score": 9.8,
    "rel": 9,
    "firstSeen": "2026-11-05"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1255681#reply0",
+   "title": "Cyber API： Rust + GPUI 构建的原生 API 客户端",
+   "titleEn": "",
+   "summary": "开源项目 Cyber API 基于 Rust 与 GPUI 引擎，支持 REST、GraphQL、gRPC 及 WebSocket，提供原生桌面与 WebAssembly 版本，内置 AI 助手及 Postman 兼容导入，告别 Electron 卡顿。",
+   "type": "CLI 工具",
+   "topic": "开源权重",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-10",
+   "score": 8.3,
+   "rel": 8,
+   "firstSeen": "2026-11-10"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1xrbext/nodeai_v310_ga_is_live/",
@@ -98,6 +154,20 @@
    "score": 8.4,
    "rel": 9,
    "firstSeen": "2026-11-08"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1xs7c61/i_built_an_app_that_tracks_politicians_stock/",
+   "title": "追踪政客股票交易 App：5/7 组合跑赢标普 500",
+   "titleEn": "I built an app that tracks politicians' stock trades. Even copied weeks late, 5 out of 7 beat the S&P 500.",
+   "summary": "法国开发者利用 LLM 解析国会手动披露的复杂文件，构建了跟踪政客股票组合的 App。尽管存在滞后，近 12 个月 7 个测试组合中 5 个跑赢 S&P 500。项目核心在于处理股票拆股、退市等金融数据清洗难题，而非数据本身。",
+   "type": "数据分析",
+   "topic": "应用发布",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-11-10",
+   "score": 7.8,
+   "rel": 8,
+   "firstSeen": "2026-11-10"
   },
   {
    "url": "https://www.v2ex.com/t/1255401#reply3",
@@ -154,6 +224,20 @@
    "score": 8.4,
    "rel": 9,
    "firstSeen": "2026-11-07"
+  },
+  {
+   "url": "https://fetchindex.com/calculator/",
+   "title": "FetchIndex：19 家数据抓取 API 成本计算器",
+   "titleEn": "Show HN: FetchIndex – cost calculator for 19 scraping and search APIs",
+   "summary": "FetchIndex 提供 19 家主流数据抓取和搜索 API（如 Zyte、Scrapfly、ScrapingDog）的成本对比计算器。基于 2026-11-04 数据，展示不同场景下的单价及免费额度限制，帮助用户根据请求量选择最具性价比的数据源。",
+   "type": "Web 应用",
+   "topic": "工程实践",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-10",
+   "score": 7.5,
+   "rel": 7,
+   "firstSeen": "2026-11-10"
   },
   {
    "url": "https://github.com/alielmorsy/ywza",
@@ -408,6 +492,20 @@
    "firstSeen": "2026-11-04"
   },
   {
+   "url": "https://www.v2ex.com/t/1255659#reply0",
+   "title": "为了和邻居拼山姆，我用 AI 做了个小程序",
+   "titleEn": "",
+   "summary": "利用 AI 辅助开发微信小程序“拼拼账单”，解决山姆拼单中物品认领、费用均摊及收货提醒痛点，支持限购设置与自动分账计算，认证费 30 元，一周内完成上线。",
+   "type": "移动 App",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-10",
+   "score": 6.8,
+   "rel": 6,
+   "firstSeen": "2026-11-10"
+  },
+  {
    "url": "https://www.v2ex.com/t/1255104#reply0",
    "title": "做了个 Agent 版的「Adobe + Office 全家桶」，能在 codex、claude code 中直接使用",
    "titleEn": "",
@@ -518,6 +616,20 @@
    "score": 8.2,
    "rel": 8,
    "firstSeen": "2026-11-04"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1255677#reply3",
+   "title": "[开源] 写了个 Antigravity 进程级代理补丁（附 IDE 插件），不挂 TUN、不动内网路由~",
+   "titleEn": "",
+   "summary": "开源工具 Antigravity Proxy 通过 Hook 网络连接实现 Windows 下 IDE、桌面版及 CLI 独立代理，支持 SOCKS5/HTTP 协议，提供 VS 插件管理，避免修改系统路由配置。",
+   "type": "桌面工具",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-10",
+   "score": 6.7,
+   "rel": 5,
+   "firstSeen": "2026-11-10"
   },
   {
    "url": "https://github.com/anima-universe/character-ai-chat-exporter",
@@ -2018,20 +2130,6 @@
    "firstSeen": "2026-10-23"
   },
   {
-   "url": "https://www.reddit.com/r/SideProject/comments/1xenall/i_built_three_free_browser_tools_for_checking/",
-   "title": "三款免费在线工具校验 AI 生成的建筑图纸与模型",
-   "titleEn": "I built three free browser tools for checking AI-generated drawings, models, and permit packages. No signup, files stay in your browser.",
-   "summary": "开发者发布三款浏览器端免费工具：BIM Validate 校验 IFC 模型，Permit Validate 对照 12 个佛州辖区检查许可包，Revision Compare 对比 PDF 差异。所有文件本地处理无需注册，旨在填补 AI 快速生成内容后的审查缺口。",
-   "type": "Web 应用",
-   "topic": "工程实践",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-10-25",
-   "score": 6.7,
-   "rel": 5,
-   "firstSeen": "2026-10-25"
-  },
-  {
    "url": "https://vstorm-co.github.io/vstormos-landing/",
    "title": "Vstorm AgenticOS：企业级开源 AI Agent 平台",
    "titleEn": "Show HN: Put AI to work across your company",
@@ -2114,20 +2212,6 @@
    "score": 7.4,
    "rel": 8,
    "firstSeen": "2026-10-21"
-  },
-  {
-   "url": "https://www.reddit.com/r/SideProject/comments/1xdsnrq/narrative_deck_an_ai_agent_skill_that_builds/",
-   "title": "Narrative Deck：生成交互式滚动叙事演示的AI Agent技能",
-   "titleEn": "Narrative Deck - An AI agent skill that builds interactive scrollytelling presentations in plain web technologies",
-   "summary": "Narrative Deck是AI编码Agent技能，基于故事框架与编辑效果生成零依赖的HTML/CSS/JS滚动叙事页面，支持静态托管与响应式设计。",
-   "type": "Agent 工作流",
-   "topic": "Agent 框架",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-10-24",
-   "score": 6.7,
-   "rel": 7,
-   "firstSeen": "2026-10-24"
   },
   {
    "url": "https://github.com/FramY2/ctxwise",
@@ -2732,20 +2816,6 @@
    "firstSeen": "2026-10-15"
   },
   {
-   "url": "https://www.v2ex.com/t/1249490#reply1",
-   "title": "分享一个 Python 音频转文字命令行工具，支持 Whisper 本地转录",
-   "titleEn": "",
-   "summary": "发布 Python 工具 cykk-audio-transcriber，支持本地 Whisper 模型或 OpenAI API 转录音频。可导出 SRT/TXT 等格式，可选 DeepL 翻译，需 Python 3.11+ 及 FFmpeg。",
-   "type": "CLI 工具",
-   "topic": "CLI 工具",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-17",
-   "score": 6.7,
-   "rel": 7,
-   "firstSeen": "2026-10-17"
-  },
-  {
    "url": "https://github.com/sonukapoor/warpdom",
    "title": "Warpdom：比 jsdom 更快且结果一致的 DOM 测试环境",
    "titleEn": "Show HN: Warpdom – drop-in jsdom replacement for Vitest and Jest",
@@ -2788,20 +2858,6 @@
    "firstSeen": "2026-10-14"
   },
   {
-   "url": "https://www.v2ex.com/t/1249184#reply4",
-   "title": "花了不到 200 元用 vibe coding 做的 ffee 在线工具小站，大家看看还可以吧",
-   "titleEn": "",
-   "summary": "非专业开发者使用 DeepSeek 桌面 Agent 以极低成本快速构建多语言在线工具站，分享了 AI 自动翻译导致代码变量名被误译及模型版本成本控制经验。",
-   "type": "Web 应用",
-   "topic": "工程实践",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-16",
-   "score": 6.7,
-   "rel": 7,
-   "firstSeen": "2026-10-16"
-  },
-  {
    "url": "https://www.v2ex.com/t/1247068#reply1",
    "title": "把 Jev 接进 AI 日程助手做了 48 组对照，结果反而变差了",
    "titleEn": "",
@@ -2828,20 +2884,6 @@
    "score": 7.4,
    "rel": 8,
    "firstSeen": "2026-10-12"
-  },
-  {
-   "url": "https://www.lection.app",
-   "title": "Lection：通过自然语言描述从网页提取数据表格",
-   "titleEn": "Show HN: Lection – describe the data you want, get a table from any web page",
-   "summary": "Lection 是浏览器扩展，允许用户用自然语言描述所需数据，自动从任意网页提取并生成表格。支持 Y Combinator 等网站，提供 Chrome 扩展及在线服务，旨在简化网页数据抓取流程。",
-   "type": "浏览器插件",
-   "topic": "数据提取工具",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-15",
-   "score": 6.7,
-   "rel": 7,
-   "firstSeen": "2026-10-15"
   },
   {
    "url": "https://github.com/wanderingstan/vibeconf-app",
@@ -3096,20 +3138,6 @@
    "firstSeen": "2026-10-11"
   },
   {
-   "url": "https://www.v2ex.com/t/1248221#reply0",
-   "title": "做了一个通用版的无限画布 | OpenWorkgraph",
-   "titleEn": "",
-   "summary": "开发者发布 OpenWorkgraph 无限画布，支持图、文、视频展示，并增加通用执行节点和可视化交互节点，目前主要配合 Codex 等 Agent 使用。",
-   "type": "Web 应用",
-   "topic": "Agent 框架",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-13",
-   "score": 6.7,
-   "rel": 7,
-   "firstSeen": "2026-10-13"
-  },
-  {
    "url": "https://ototo.dev/",
    "title": "展示 Ototo 小模型代码探索卸载工具",
    "titleEn": "Show HN: Ototo: Offload code exploration to a smaller model from Claude et al.",
@@ -3208,20 +3236,6 @@
    "firstSeen": "2026-10-06"
   },
   {
-   "url": "https://www.v2ex.com/t/1247928#reply2",
-   "title": "[开源] CPA-Bar : 多 CPA / CPAMP 原生桌面管理客户端，常驻菜单栏，支持 MacOS/Windows/ Linux ，完全开源",
-   "titleEn": "",
-   "summary": "开源桌面应用 CPA-Bar 支持 macOS/Win/Linux，常驻菜单栏管理多 CPA 实例，具备账号密钥、额度统计及隐私功能，密钥存系统钥匙串无遥测，提供应用内签名更新。",
-   "type": "桌面工具",
-   "topic": "工程实践",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-12",
-   "score": 6.7,
-   "rel": 7,
-   "firstSeen": "2026-10-12"
-  },
-  {
    "url": "https://www.v2ex.com/t/1247738#reply0",
    "title": "做了个让照片动起来的小工具，支持老照片、宠物和插画，欢迎 V 友试试",
    "titleEn": "",
@@ -3276,20 +3290,6 @@
    "score": 8.2,
    "rel": 9,
    "firstSeen": "2026-10-05"
-  },
-  {
-   "url": "https://github.com/academa-labs/manimgx",
-   "title": "ManimGX：基于 Rust/wgpu 的高性能 3D 数学视频引擎",
-   "titleEn": "Show HN: ManimGX – Manim's API on a Rust/wgpu engine, for 3D videos in Python",
-   "summary": "开源库兼容 Manim CE API，采用 Rust 与 wgpu 底层渲染，体积仅 65-110MB。支持跨平台及浏览器端 Pyodide 运行，渲染速度较原生引擎快近百倍，内置公式支持。",
-   "type": "模型与推理",
-   "topic": "开源项目",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-11",
-   "score": 6.7,
-   "rel": 5,
-   "firstSeen": "2026-10-11"
   },
   {
    "url": "https://www.v2ex.com/t/1247482#reply0",
