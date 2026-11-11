@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-10 08:10",
+ "updated": "2026-11-11 08:10",
  "count": 300,
  "types": [
   "Agent 工作流",
@@ -100,6 +100,34 @@
    "firstSeen": "2026-11-10"
   },
   {
+   "url": "https://github.com/TensorRails/warmctl",
+   "title": "Warmctl：vLLM推理快速冷启动工具",
+   "titleEn": "Show HN: Warmctl – Fast cold starts for vLLM inference",
+   "summary": "TensorRails发布Warmctl工具，旨在解决vLLM推理服务的冷启动延迟问题。通过优化资源加载策略，加速模型从空闲到就绪状态的时间，提升推理部署效率。",
+   "type": "CLI 工具",
+   "topic": "模型与推理",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-11",
+   "score": 8.2,
+   "rel": 9,
+   "firstSeen": "2026-11-11"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1xsysox/buildbakery_a_cloud_build_service_for_ios_android/",
+   "title": "BuildBakery云构建服务",
+   "titleEn": "BuildBakery - A cloud build service for iOS, Android and desktop apps",
+   "summary": "BuildBakery支持iOS等多平台云构建。通过推送分支中的bakery.yaml配置执行构建，自动签名并分发。提供MCP服务器接口，允许Claude Code等AI工具直接触发构建和读取日志。",
+   "type": "效率工具",
+   "topic": "工程实践",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-11-11",
+   "score": 8.2,
+   "rel": 8,
+   "firstSeen": "2026-11-11"
+  },
+  {
    "url": "https://www.v2ex.com/t/1254551#reply0",
    "title": "开源了一个 agent 技能，能把扫描件和手机拍的文档重建成矢量 PDF（附对照实验）",
    "titleEn": "",
@@ -168,6 +196,20 @@
    "score": 7.8,
    "rel": 8,
    "firstSeen": "2026-11-10"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1256010#reply1",
+   "title": "写了一个可以清理 claude code 和 codex 会话存储的工具: cc-clean",
+   "titleEn": "",
+   "summary": "开源工具 cc-clean 专门清理 Claude Code 和 Codex 的会话存储，通过移除 Base64 图片、冗余字段和旧快照来释放磁盘空间，同时保留核心会话记录以供恢复。",
+   "type": "CLI 工具",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-11",
+   "score": 7.5,
+   "rel": 7,
+   "firstSeen": "2026-11-11"
   },
   {
    "url": "https://www.v2ex.com/t/1255401#reply3",
@@ -350,6 +392,20 @@
    "score": 9.3,
    "rel": 8,
    "firstSeen": "2026-11-02"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1255935#reply0",
+   "title": "自己攒了个 AI 说唱站，从 topic 到词、歌、视频都能走",
+   "titleEn": "",
+   "summary": "AI 说唱生成站 Rapvio 支持从主题到歌词、MP3 及 10-15 秒短视频的全流程生成。对比测试了 MiniMax、Kling 等视频模型，指出 MiniMax h3 性价比最高。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-11",
+   "score": 6.9,
+   "rel": 7,
+   "firstSeen": "2026-11-11"
   },
   {
    "url": "https://www.v2ex.com/t/1254571#reply1",
@@ -1682,48 +1738,6 @@
    "firstSeen": "2026-10-26"
   },
   {
-   "url": "https://www.v2ex.com/t/1252709#reply0",
-   "title": "一个 Alma 的 Android 客户端",
-   "titleEn": "",
-   "summary": "针对Alma官方未提供Android客户端的现状，开发者开源了基于GitHub的安卓版。该应用重实现桌面版relay接口，支持Remote Access以在外连接本地Alma实例，适配折叠屏并模拟Duo模糊特效，代码开源供社区使用。",
-   "type": "移动 App",
-   "topic": "开源工具",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-29",
-   "score": 6.7,
-   "rel": 7,
-   "firstSeen": "2026-10-29"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1252701#reply0",
-   "title": "做了个 MiniCPM OCR 在线工具：把图片和 PDF 转成可编辑的文字、表格和公式",
-   "titleEn": "",
-   "summary": "基于OpenBMB的MiniCPM-OCR-1.0构建的在线文档识别服务。支持上传图片/PDF，提取中英文、表格及LaTeX公式，提供原文对照编辑与Word/Markdown导出。该独立网站非ModelBest官方，强调校对体验。",
-   "type": "Web 应用",
-   "topic": "内容生成",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-29",
-   "score": 6.7,
-   "rel": 7,
-   "firstSeen": "2026-10-29"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1252689#reply0",
-   "title": "做了个把照片变成说唱 MV 的小站，咪咪也能来段说唱 😂（送兑换码）",
-   "titleEn": "",
-   "summary": "独立开发者发布rap-video.ai，基于Veo 3.1与Cloudflare Workers技术栈，实现照片转说唱视频。支持酒店、Rap Battle、宠物等风格，提供5个免费兑换码。基础设施成本极低，面向社交娱乐场景。",
-   "type": "Web 应用",
-   "topic": "内容生成",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-29",
-   "score": 6.7,
-   "rel": 7,
-   "firstSeen": "2026-10-29"
-  },
-  {
    "url": "https://embodsi.com/",
    "title": "Embodsi - 浏览器中的大模型驱动多端3D社交世界",
    "titleEn": "Show HN: Embodsi – Embodied Super Intelligence",
@@ -1946,20 +1960,6 @@
    "score": 8.2,
    "rel": 7,
    "firstSeen": "2026-10-21"
-  },
-  {
-   "url": "https://github.com/sam-mfb/kashkeshet",
-   "title": "Kashkeshet：极简 Agent 聊天服务",
-   "titleEn": "Show HN: Kashkeshet – non-opinionated agent-to-agent chat MCP server in Rust",
-   "summary": "基于 Rust 和 MCP 的开源服务器，为 AI 代理提供极简的聊天与身份原语，允许代理在本地网络中自由组建社会结构。",
-   "type": "其他",
-   "topic": "Agent 框架",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-27",
-   "score": 6.7,
-   "rel": 7,
-   "firstSeen": "2026-10-27"
   },
   {
    "url": "https://huggingface.co/coolcoder613/omnivoice-latin-lora-1",
