@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-11 08:10",
+ "updated": "2026-11-12 08:10",
  "count": 300,
  "types": [
   "Agent 工作流",
@@ -15,6 +15,20 @@
   "移动 App"
  ],
  "cases": [
+  {
+   "url": "https://www.v2ex.com/t/1256266#reply0",
+   "title": "我用 10 天，把 Super-agent 架构做成了一个 7×24 小时在线的产品",
+   "titleEn": "",
+   "summary": "基于 DeepSeek Harness 团队的 Super-agent 架构，开发者在 10 天内将其落地为 7×24 在线 SaaS 产品。系统实现存算分离、云端 Loop 与重状态解耦，支持水平扩展，具备连续、高效与主动的 Agent 系统特征。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-12",
+   "score": 9.4,
+   "rel": 10,
+   "firstSeen": "2026-11-12"
+  },
   {
    "url": "https://github.com/voyager-so/vork",
    "title": "Vork：面向 Agent 的无头 3D 与 VFX 引擎",
@@ -126,6 +140,20 @@
    "score": 8.2,
    "rel": 8,
    "firstSeen": "2026-11-11"
+  },
+  {
+   "url": "https://huggingface.co/spaces/JCisHERE/wan2-2-i2v-v3",
+   "title": "Spaces 应用：JCisHERE/wan2-2-i2v-v3",
+   "titleEn": "",
+   "summary": "基于 Gradio 构建的 Wan2.2 图像转视频生成演示应用，支持通过参数调节控制运动幅度与细节保留度。该应用利用开源模型实现了从静态图像到动态视频的快速生成服务。",
+   "type": "模型与推理",
+   "topic": "模型与推理",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-11-12",
+   "score": 7.8,
+   "rel": 9,
+   "firstSeen": "2026-11-12"
   },
   {
    "url": "https://www.v2ex.com/t/1254551#reply0",
@@ -268,6 +296,20 @@
    "firstSeen": "2026-11-07"
   },
   {
+   "url": "https://huggingface.co/spaces/joelniklaus/harness-leaderboard",
+   "title": "Spaces 应用：joelniklaus/harness-leaderboard",
+   "titleEn": "",
+   "summary": "基于 Docker 技术栈构建的 AI 测试框架 Harness 性能排行榜应用，通过可视化面板对比不同模型在基准测试中的表现。该工具为研究人员提供直观的模型效能对比与开源复现支持。",
+   "type": "数据分析",
+   "topic": "模型与推理",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-11-12",
+   "score": 7.1,
+   "rel": 8,
+   "firstSeen": "2026-11-12"
+  },
+  {
    "url": "https://fetchindex.com/calculator/",
    "title": "FetchIndex：19 家数据抓取 API 成本计算器",
    "titleEn": "Show HN: FetchIndex – cost calculator for 19 scraping and search APIs",
@@ -324,6 +366,34 @@
    "firstSeen": "2026-11-07"
   },
   {
+   "url": "https://www.v2ex.com/t/1256286#reply1",
+   "title": "做了个在线去人声的工具，从原曲里拆出伴奏和人声两轨",
+   "titleEn": "",
+   "summary": "开发在线工具 VoiceRemover，基于 htdemucs 模型分离人声与伴奏，支持 150 秒内出结果。提供去人声、提取人声及去背景音乐三个入口，免费用户每日限 1 首，付费订阅支持高额度与无水印导出。",
+   "type": "Web 应用",
+   "topic": "音频处理",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-12",
+   "score": 6.9,
+   "rel": 5,
+   "firstSeen": "2026-11-12"
+  },
+  {
+   "url": "https://github.com/adeptads/agent-skills",
+   "title": "AdeptAds：面向 Google Ads 的 Agent 技能与插件",
+   "titleEn": "Show HN: Agent skill and Claude/Codex plugins for Google Ads campaigns",
+   "summary": "开源项目提供 Claude Code 和 Codex 插件，允许 AI Agent 直接构建 Google Ads 广告活动。用户只需提供简报，Agent 即可自动执行投放逻辑，无需手动切换广告后台标签页，实现了从创意到投放的自动化闭环。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-12",
+   "score": 6.9,
+   "rel": 7,
+   "firstSeen": "2026-11-12"
+  },
+  {
    "url": "https://www.reddit.com/r/SideProject/comments/1xoxxr2/agentofficehq_an_opensource_workspace_to_monitor/",
    "title": "AgentOfficeHQ：多智能体工作流监控开源工作台",
    "titleEn": "AgentOfficeHQ: An open-source workspace to monitor and visualize multi-agent workflows",
@@ -350,6 +420,34 @@
    "score": 8.1,
    "rel": 6,
    "firstSeen": "2026-11-07"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1xtv5kh/my_side_project_finds_clients_for_freelancers/",
+   "title": "自由职业者客户匹配工具：LLM 区分买卖方，95 页实战",
+   "titleEn": "My side project finds clients for freelancers. Comment your service and I'll run it free (95 done by hand, some things broke)",
+   "summary": "使用 Laravel + Livewire + Chrome 扩展 + LLM 构建的匹配工具。LLM 用于过滤帖子，区分“出售服务”与“购买需求”。开发者手动测试 95 个页面，发现 AI 在理解“一次性佣金”等语境及细分领域匹配上存在明显误判。",
+   "type": "效率工具",
+   "topic": "行业应用",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-11-12",
+   "score": 6.8,
+   "rel": 7,
+   "firstSeen": "2026-11-12"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1256285#reply0",
+   "title": "写了个本地安全提取 ChatGPT Account ID 的油猴脚本，避免直接复制 /api/auth/session 泄露完整 Token",
+   "titleEn": "",
+   "summary": "发布本地油猴脚本安全提取 ChatGPT 账户 ID，避免直接复制 API 接口导致 Token 泄露。仓库附带针对 OpenAI 新套餐策略的额度计算、卡片风控排查指南及 Python 连接测试工具，供用户自查订阅异常。",
+   "type": "浏览器插件",
+   "topic": "安全脚本",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-12",
+   "score": 6.8,
+   "rel": 6,
+   "firstSeen": "2026-11-12"
   },
   {
    "url": "https://github.com/SafeScript/safescript",
@@ -912,20 +1010,6 @@
    "firstSeen": "2026-11-05"
   },
   {
-   "url": "https://www.v2ex.com/t/1255272#reply0",
-   "title": "做了一个 llama-server 的多开工具",
-   "titleEn": "",
-   "summary": "基于 WinUI3 开发的 llama-server GUI 封装工具，支持多实例管理、系统托盘最小化及 Windows 11 风格界面，简化了原本通过批处理脚本启动多个本地大模型服务端的繁琐流程。",
-   "type": "桌面工具",
-   "topic": "模型与推理",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-11-08",
-   "score": 6.7,
-   "rel": 7,
-   "firstSeen": "2026-11-08"
-  },
-  {
    "url": "https://www.v2ex.com/t/1253311#reply1",
    "title": "做了个小工具 cc-pair：让 Claude Code 和 Codex 互相 review 代码",
    "titleEn": "",
@@ -1220,20 +1304,6 @@
    "firstSeen": "2026-10-30"
   },
   {
-   "url": "https://makermaker.ai/breakthroughs/inference/simulation/",
-   "title": "推理业务模拟器：租 GPU 与令牌服务体验",
-   "titleEn": "Show HN: Inference business simulator – don't go broke, rent GPUs, serve tokens",
-   "summary": "模拟 LLM 推理初创公司的经营状况，用户需管理 GPU 租赁成本与令牌供应需求，体验在算力涨价波动和市场竞争中避免破产的过程。",
-   "type": "Web 应用",
-   "topic": "AI 基础设施",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-11-06",
-   "score": 6.7,
-   "rel": 7,
-   "firstSeen": "2026-11-06"
-  },
-  {
    "url": "https://www.v2ex.com/t/1252080#reply0",
    "title": "开源了 QuireKit：在浏览器里真正分页的文档编辑器框架（Canvas 排版 + ProseMirror 语义， DOCX 往返）",
    "titleEn": "",
@@ -1276,20 +1346,6 @@
    "firstSeen": "2026-10-30"
   },
   {
-   "url": "https://sspai.com/post/115819",
-   "title": "微诗：从诗入画、且唱且行，这款免费 app 把诗装进手机",
-   "titleEn": "",
-   "summary": "独立开发者十年磨一剑重写“微诗”App，集成 AI 辅助开发、Suno 音乐生成及 TTS 朗读。重做过程消耗约 2 万美元 Token 成本，无融资无收费，实现了从古诗词检索到视听内容的完整体验。",
-   "type": "移动 App",
-   "topic": "开发者故事",
-   "block": "少数派",
-   "src": "apps",
-   "lastSeen": "2026-11-05",
-   "score": 6.7,
-   "rel": 5,
-   "firstSeen": "2026-11-05"
-  },
-  {
    "url": "https://www.v2ex.com/t/1254270#reply1",
    "title": "RanklyBee：把 SEO 内容、外链、AI 可见度和获客线索放进一个平台",
    "titleEn": "",
@@ -1330,34 +1386,6 @@
    "score": 7.4,
    "rel": 8,
    "firstSeen": "2026-11-01"
-  },
-  {
-   "url": "https://www.reddit.com/r/SideProject/comments/1xn82ix/mit_fieldsync_opensource_offlinefirst_inspection/",
-   "title": "FieldSync：开源离线优先移动巡检应用架构",
-   "titleEn": "[MIT] FieldSync — Open-source offline-first inspection app with SQLite outbox & field-level 3-way merge",
-   "summary": "FieldSync 是 MIT 协议的开源参考实现，采用 React Native 和 SQLite 构建离线优先架构。核心特性包括本地写入日志、字段级三向合并算法及幂等同步账本，解决弱网环境数据丢失和冲突问题。",
-   "type": "其他",
-   "topic": "工程实践",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-11-04",
-   "score": 6.7,
-   "rel": 5,
-   "firstSeen": "2026-11-04"
-  },
-  {
-   "url": "https://github.com/argeuthiesen/claudinho",
-   "title": "Claudinho：基于 ESP32 的 Claude Code 桌面助手",
-   "titleEn": "Show HN: Claudinho – Claude Code's mascot on an ESP32, driven by hooks",
-   "summary": "Claudinho 是一个基于 ESP32 和 3D 打印外壳的物理装置，通过 hooks 机制连接 Claude Code。它能根据编码状态（思考、打字、提交）做出相应动画反应，并在浏览器中提供无需硬件的 Live demo。",
-   "type": "其他",
-   "topic": "硬件交互",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-11-04",
-   "score": 6.7,
-   "rel": 7,
-   "firstSeen": "2026-11-04"
   },
   {
    "url": "https://www.v2ex.com/t/1252390#reply0",
@@ -1458,20 +1486,6 @@
    "firstSeen": "2026-10-27"
   },
   {
-   "url": "https://www.v2ex.com/t/1253962#reply0",
-   "title": "做了一个 ChatGPT 划线收藏插件 HighLights，把有价值的片段留下来，邀请大家试用",
-   "titleEn": "",
-   "summary": "Chrome 插件 HighLights 允许用户在 ChatGPT 中划线收藏内容并添加批注，支持笔记本管理、云端同步及 Markdown/JSON 导出至 Obsidian 等工具。",
-   "type": "浏览器插件",
-   "topic": "效率工具",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-11-03",
-   "score": 6.7,
-   "rel": 7,
-   "firstSeen": "2026-11-03"
-  },
-  {
    "url": "https://github.com/Coverage-Cat/consumer-agent-testing-tool",
    "title": "CATT：测试 Agent 互操作性的开源工具",
    "titleEn": "Show HN: CATT 0.2.1: Test agents/services against a Muse/Instinct-alike, in CI",
@@ -1512,20 +1526,6 @@
    "score": 7.7,
    "rel": 8,
    "firstSeen": "2026-10-29"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1253615#reply0",
-   "title": "给开源 AI 雷达做了 WorkBuddy 技能，想把选型从名单变成可核查记录",
-   "titleEn": "",
-   "summary": "开发者发布 WorkBuddy 技能“开源 AI 项目研究与选型”，通过结构化提问区分事实、建议与未知项。该技能基于公开数据，旨在解决 AI 助手在技术选型中证据缺失、标准模糊的问题，支持核对许可与替代方案。",
-   "type": "Agent 工作流",
-   "topic": "Agent 框架",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-11-02",
-   "score": 6.7,
-   "rel": 7,
-   "firstSeen": "2026-11-02"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1xgc6g6/a_shared_brain_for_your_team_and_your_coding/",
