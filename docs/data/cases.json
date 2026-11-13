@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-12 08:10",
+ "updated": "2026-11-13 08:10",
  "count": 300,
  "types": [
   "Agent 工作流",
@@ -28,6 +28,20 @@
    "score": 9.4,
    "rel": 10,
    "firstSeen": "2026-11-12"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1256587#reply0",
+   "title": "一次 AI Agent 全程介入光学工程的尝试。我们希望 AI Agent 可以在光学工程师提出需求后，尽可能完整、独立的完成后续工作。因此我们制作了 os-optics 和 os-optics-kit，开放在 GitHub 和 PyPi。",
+   "titleEn": "",
+   "summary": "开源光学仿真库 os-optics 支持 AI Agent 独立设计光学系统，内置 3000+ 元件库，兼容主流 LLM 与光学模拟框架，实现从设计到 BOM 的全流程自动化。",
+   "type": "Agent 工作流",
+   "topic": "Agent 应用",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-13",
+   "score": 9.0,
+   "rel": 9,
+   "firstSeen": "2026-11-13"
   },
   {
    "url": "https://github.com/voyager-so/vork",
@@ -70,6 +84,20 @@
    "score": 9.7,
    "rel": 9,
    "firstSeen": "2026-11-08"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1256579#reply0",
+   "title": "用了这么久 Codex，你知道哪个项目、哪个会话最吃 Token 吗？",
+   "titleEn": "",
+   "summary": "开源桌面工具 Codex Usage Desktop 监控 Codex 的 Token 消耗，提供项目排名、会话级用量分析及订阅额度估算，支持 macOS 和 Windows。",
+   "type": "桌面工具",
+   "topic": "效率工具",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-13",
+   "score": 8.0,
+   "rel": 8,
+   "firstSeen": "2026-11-13"
   },
   {
    "url": "https://github.com/ozkl/ruxis",
@@ -198,6 +226,20 @@
    "firstSeen": "2026-11-09"
   },
   {
+   "url": "https://github.com/clumsy-ug/agentview-chat",
+   "title": "Agentview Chat：为 Claude Code 后台会话提供聊天 UI",
+   "titleEn": "Show HN: Agentview Chat – a chat UI for Claude Code background sessions",
+   "summary": "Agentview Chat 是 Windows 下的免费 MIT 开源应用，为 Claude Code 后台会话提供聊天界面，支持格式化阅读代码与表格，并允许通过点击选项或输入框进行回复。",
+   "type": "桌面工具",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-13",
+   "score": 7.2,
+   "rel": 8,
+   "firstSeen": "2026-11-13"
+  },
+  {
    "url": "https://www.v2ex.com/t/1255223#reply0",
    "title": "一键让你的云端 agent， grok bot，本地 codex，本地 cc，全部互相连接起来",
    "titleEn": "",
@@ -282,6 +324,20 @@
    "firstSeen": "2026-11-06"
   },
   {
+   "url": "https://www.v2ex.com/t/1256621#reply0",
+   "title": "大家好，最近上线了一个自己写的 Android App，叫「知己」。",
+   "titleEn": "",
+   "summary": "「知己」是本地化 AI 助手 App，整合待办、记账、笔记等功能，支持智能体模式调用本地工具，兼容 OpenAI 接口，数据本地存储。",
+   "type": "移动 App",
+   "topic": "移动应用",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-13",
+   "score": 6.9,
+   "rel": 7,
+   "firstSeen": "2026-11-13"
+  },
+  {
    "url": "https://ajx.dev/",
    "title": "AJX：AI Agent产品可用性测试工具",
    "titleEn": "Show HN: AJX – Find out where AI agents get stuck using your product",
@@ -294,20 +350,6 @@
    "score": 8.4,
    "rel": 9,
    "firstSeen": "2026-11-07"
-  },
-  {
-   "url": "https://huggingface.co/spaces/joelniklaus/harness-leaderboard",
-   "title": "Spaces 应用：joelniklaus/harness-leaderboard",
-   "titleEn": "",
-   "summary": "基于 Docker 技术栈构建的 AI 测试框架 Harness 性能排行榜应用，通过可视化面板对比不同模型在基准测试中的表现。该工具为研究人员提供直观的模型效能对比与开源复现支持。",
-   "type": "数据分析",
-   "topic": "模型与推理",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-11-12",
-   "score": 7.1,
-   "rel": 8,
-   "firstSeen": "2026-11-12"
   },
   {
    "url": "https://fetchindex.com/calculator/",
@@ -772,20 +814,6 @@
    "firstSeen": "2026-11-04"
   },
   {
-   "url": "https://www.v2ex.com/t/1255677#reply3",
-   "title": "[开源] 写了个 Antigravity 进程级代理补丁（附 IDE 插件），不挂 TUN、不动内网路由~",
-   "titleEn": "",
-   "summary": "开源工具 Antigravity Proxy 通过 Hook 网络连接实现 Windows 下 IDE、桌面版及 CLI 独立代理，支持 SOCKS5/HTTP 协议，提供 VS 插件管理，避免修改系统路由配置。",
-   "type": "桌面工具",
-   "topic": "工程实践",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-11-10",
-   "score": 6.7,
-   "rel": 5,
-   "firstSeen": "2026-11-10"
-  },
-  {
    "url": "https://github.com/anima-universe/character-ai-chat-exporter",
    "title": "Character.AI 聊天记录本地导出开源扩展",
    "titleEn": "Show HN: Export your Character.AI chats in minutes – open-source, runs locally",
@@ -882,20 +910,6 @@
    "score": 9.7,
    "rel": 9,
    "firstSeen": "2026-10-29"
-  },
-  {
-   "url": "https://www.reddit.com/r/SideProject/comments/1xrc4r9/i_built_kalynt_an_opensource_desktop_ide_with/",
-   "title": "Kalynt：支持本地 AI 运行与 P2P 协作的开源桌面 IDE",
-   "titleEn": "I built Kalynt, an open-source desktop IDE with local AI and peer-to-peer collaboration",
-   "summary": "Kalynt 是一款跨平台开源桌面 IDE，集成代码编辑器、终端、Git 及 AI 代理功能。支持在本地运行大模型或连接云服务商 API，内置 P2P 工作区协作功能，无需订阅或账号，源代码采用 AGPL-3.0 协议。",
-   "type": "桌面工具",
-   "topic": "开发者工具",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-11-09",
-   "score": 6.7,
-   "rel": 7,
-   "firstSeen": "2026-11-09"
   },
   {
    "url": "https://www.v2ex.com/t/1255278#reply0",
@@ -4157,20 +4171,6 @@
    "score": 7.3,
    "rel": 7,
    "firstSeen": "2026-09-29"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1245914#reply1",
-   "title": "[FormulaAI] 更新：新增 VBA 代码生成 + 免登录使用",
-   "titleEn": "",
-   "summary": "FormulaAI 更新新增 VBA 代码生成功能，利用 DeepSeek 结合表格列名信息生成可运行代码，解决 Excel 宏编写门槛。同时支持免登录使用，匿名用户享有临时额度。该工具将 AI 代码生成应用于办公自动化场景，提升数据处理效率。",
-   "type": "数据分析",
-   "topic": "效率工具",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-01",
-   "score": 6.8,
-   "rel": 6,
-   "firstSeen": "2026-10-01"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1wt641g/looking_for_1020_genai_developers_to_test_a/",
