@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-13 08:10",
+ "updated": "2026-11-14 08:10",
  "count": 300,
  "types": [
   "Agent 工作流",
@@ -15,6 +15,20 @@
   "移动 App"
  ],
  "cases": [
+  {
+   "url": "https://www.v2ex.com/t/1256953#reply0",
+   "title": "开源了 Browser Hands：让 Codex/Cursor 也能用上 Claude 官方插件级浏览器操作",
+   "titleEn": "",
+   "summary": "开源工具 Browser Hands 通过 Chrome 扩展与本地 MCP Server，让 Codex 等 Agent 接管已登录的 Chrome 浏览器。支持多 Agent 并行标签组隔离、Cookie 复用及小模型快速路由以节省 Token。",
+   "type": "浏览器插件",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-14",
+   "score": 9.7,
+   "rel": 9,
+   "firstSeen": "2026-11-14"
+  },
   {
    "url": "https://www.v2ex.com/t/1256266#reply0",
    "title": "我用 10 天，把 Super-agent 架构做成了一个 7×24 小时在线的产品",
@@ -100,6 +114,20 @@
    "firstSeen": "2026-11-13"
   },
   {
+   "url": "https://www.reddit.com/r/SideProject/comments/1xvm1ew/built_a_shared_project_state_so_different_ai/",
+   "title": "Perdua：解决多 AI 工具间上下文丢失的共享项目状态工具",
+   "titleEn": "built a shared 'project state' so different AI tools stop forgetting what we're working on",
+   "summary": "Perdua 是一款 AI 记忆工具，创建共享的“项目状态”层，使 Claude、Cursor 和 ChatGPT 等不同 Agent 工具在任务切换时能读写相同状态，避免重复解释背景，目前仅限欧盟用户。",
+   "type": "Web 应用",
+   "topic": "Agent 框架",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-11-14",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-11-14"
+  },
+  {
    "url": "https://github.com/ozkl/ruxis",
    "title": "ruxis：由 Claude Opus 5.5 编写、可运行 Ubuntu 的 Rust Unix 内核",
    "titleEn": "Show HN: A kernel written in Rust that can boot Ubuntu with Plasma desktop",
@@ -170,20 +198,6 @@
    "firstSeen": "2026-11-11"
   },
   {
-   "url": "https://huggingface.co/spaces/JCisHERE/wan2-2-i2v-v3",
-   "title": "Spaces 应用：JCisHERE/wan2-2-i2v-v3",
-   "titleEn": "",
-   "summary": "基于 Gradio 构建的 Wan2.2 图像转视频生成演示应用，支持通过参数调节控制运动幅度与细节保留度。该应用利用开源模型实现了从静态图像到动态视频的快速生成服务。",
-   "type": "模型与推理",
-   "topic": "模型与推理",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-11-12",
-   "score": 7.8,
-   "rel": 9,
-   "firstSeen": "2026-11-12"
-  },
-  {
    "url": "https://www.v2ex.com/t/1254551#reply0",
    "title": "开源了一个 agent 技能，能把扫描件和手机拍的文档重建成矢量 PDF（附对照实验）",
    "titleEn": "",
@@ -224,6 +238,34 @@
    "score": 8.4,
    "rel": 9,
    "firstSeen": "2026-11-09"
+  },
+  {
+   "url": "https://sspai.com/post/118512",
+   "title": "在快 AI 时代，我是怎么把 Mole 做成一款「慢产品」的？",
+   "titleEn": "",
+   "summary": "Mole 开发者通过安装 853 款 Mac 软件进行手动及 Agent 辅助测试，补充清理规则与单元测试。反思 AI 时代产品竞争力源于细节打磨，而非单纯功能堆砌，Windows 版已发布。",
+   "type": "桌面工具",
+   "topic": "产品方法论",
+   "block": "少数派",
+   "src": "apps",
+   "lastSeen": "2026-11-14",
+   "score": 7.1,
+   "rel": 6,
+   "firstSeen": "2026-11-14"
+  },
+  {
+   "url": "https://github.com/Satvik-jain/customer-intelligence-toolkit",
+   "title": "Claude Code 客户智能与变现工具包",
+   "titleEn": "Show HN: Customer Intelligence and Monetization Toolkit for Claude Code",
+   "summary": "该工具包为 Claude Code 提供 9 个专项技能，涵盖客户模拟、消费者心理、市场映射等，将客户问题转化为结构化的研究计划和 GTM 策略，区分假设、外部研究与真实证据。",
+   "type": "Agent 工作流",
+   "topic": "Agent 插件",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-14",
+   "score": 7.0,
+   "rel": 7,
+   "firstSeen": "2026-11-14"
   },
   {
    "url": "https://github.com/clumsy-ug/agentview-chat",
@@ -3656,34 +3698,6 @@
    "firstSeen": "2026-10-02"
   },
   {
-   "url": "https://denizlihub.com/",
-   "title": "展示 40 种纯客户端浏览器 Web 工具集",
-   "titleEn": "Show HN: DenizliHub – 40 client-side web tools running 100% in the browser",
-   "summary": "开发者发布 DenizliHub，一个包含 40 余种工具的纯客户端 Web 套件，覆盖 PDF 处理、图像编辑、AI OCR 及开发者工具。所有功能均在浏览器本地运行，零服务器数据留存，依托 Cloudflare Edge 实现毫秒级响应。",
-   "type": "Web 应用",
-   "topic": "效率工具",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-06",
-   "score": 6.8,
-   "rel": 6,
-   "firstSeen": "2026-10-06"
-  },
-  {
-   "url": "https://github.com/filippofinke/sideloop",
-   "title": "展示 Sideloop 侧载 iOS 应用自动重签工具",
-   "titleEn": "Show HN: Sideloop – Re-sign sideloaded iOS apps over Wi-Fi before they expire",
-   "summary": "Sideloop 是一款自托管 Web 服务，用于管理侧载 iOS 应用的签名生命周期。它支持在 7 天签名过期前，通过 Wi-Fi 自动重新安装 IPAs，解决免费 Apple ID 侧载应用频繁失效的问题，支持 Linux amd64/arm64 架构。",
-   "type": "Web 应用",
-   "topic": "工程实践",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-06",
-   "score": 6.8,
-   "rel": 6,
-   "firstSeen": "2026-10-06"
-  },
-  {
    "url": "https://grist.lol/",
    "title": "Grist：基于Opencode v2的开源编码框架",
    "titleEn": "Show HN: Grist, open source coding harness",
@@ -3878,20 +3892,6 @@
    "score": 7.2,
    "rel": 7,
    "firstSeen": "2026-10-03"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1246299#reply0",
-   "title": "[我的搜索-桌面版] 一款呼出搜索工具，支持网站/文本类/插件",
-   "titleEn": "",
-   "summary": "my-search-desktop 是基于 Rust 开发的桌面搜索工具，支持订阅 GitHub 源数据并递归解析。内置 Pi Agent 插件，支持多模型、流式对话及工具调用，兼具文件搜索与录屏功能。通过插件市场可安装扩展，为开发者提供聚合搜索与 AI 辅助效率方案。",
-   "type": "桌面工具",
-   "topic": "效率工具",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-04",
-   "score": 6.8,
-   "rel": 7,
-   "firstSeen": "2026-10-04"
   },
   {
    "url": "https://www.v2ex.com/t/1245909#reply1",
