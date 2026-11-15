@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-14 08:10",
+ "updated": "2026-11-15 08:10",
  "count": 300,
  "types": [
   "Agent 工作流",
@@ -58,6 +58,62 @@
    "firstSeen": "2026-11-13"
   },
   {
+   "url": "https://sspai.com/post/118512",
+   "title": "在快 AI 时代，我是怎么把 Mole 做成一款「慢产品」的？",
+   "titleEn": "",
+   "summary": "Mole 开发者分享了从 1.13 到 1.19 的迭代经验，强调通过安装 853 款软件进行人工与 Agent 辅助测试来优化卸载规则，GitHub Star 达 73.9K。",
+   "type": "桌面工具",
+   "topic": "工程实践",
+   "block": "少数派",
+   "src": "apps",
+   "lastSeen": "2026-11-15",
+   "score": 8.3,
+   "rel": 8,
+   "firstSeen": "2026-11-14"
+  },
+  {
+   "url": "https://tryenzo.ai",
+   "title": "Enzo：Mac 本地端语音助手与回忆工具",
+   "titleEn": "Show HN: Enzo – Dictation, meeting diarization, and recall for Mac, on-device",
+   "summary": "Enzo 驻留 Mac 刘海区域，提供即时听写、会议说话人分离及屏幕文字回忆功能。支持离线运行，通过 Right ⌘ 调用，可连接邮件、日历等应用，检索基于语义而非精确匹配。",
+   "type": "桌面工具",
+   "topic": "工程实践",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-15",
+   "score": 8.2,
+   "rel": 8,
+   "firstSeen": "2026-11-15"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1xwg2tb/i_built_enzo_a_dictation_meeting_and_recall_app/",
+   "title": "Enzo：Mac 本地端语音记录与回忆应用",
+   "titleEn": "I built Enzo - a dictation, meeting, and recall app for Mac, runs on-device",
+   "summary": "Enzo 是 Mac 端应用，基于本地运行语音模型进行即时听写和会议记录，延迟约 100ms。提供屏幕文字回忆功能，数据加密本地存储，30 天后自动删除，支持 Apple Silicon。",
+   "type": "桌面工具",
+   "topic": "工程实践",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-11-15",
+   "score": 8.2,
+   "rel": 8,
+   "firstSeen": "2026-11-15"
+  },
+  {
+   "url": "https://letthembuild.com",
+   "title": "LetThemBuild：多模型并行协作编码工具",
+   "titleEn": "Show HN: LetThemBuild – Claude Code, Codex, Gemini and OpenRouter in Parallel",
+   "summary": "LetThemBuild 是一款 Linux 桌面工具，支持并行运行 Claude、GPT、Gemini 和 Grok。主模型生成代码，其他模型自动审查并运行检查，最终在本地生成分支供用户合并，支持云端持续运行。",
+   "type": "桌面工具",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-15",
+   "score": 8.0,
+   "rel": 8,
+   "firstSeen": "2026-11-15"
+  },
+  {
    "url": "https://github.com/voyager-so/vork",
    "title": "Vork：面向 Agent 的无头 3D 与 VFX 引擎",
    "titleEn": "Show HN: Vork – headless 3D and VFX engine for agents",
@@ -84,6 +140,20 @@
    "score": 9.1,
    "rel": 9,
    "firstSeen": "2026-11-10"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1257121#reply8",
+   "title": "做了个能打断的 AI 语音面试陪练，求拍砖",
+   "titleEn": "",
+   "summary": "独立开发者推出支持全双工实时对话的 AI 语音面试陪练工具，具备打断功能，提供技术面试官和英语私教角色，新用户可免费体验 10 分钟。",
+   "type": "Web 应用",
+   "topic": "Agent 应用",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-15",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-11-15"
   },
   {
    "url": "https://www.v2ex.com/t/1255214#reply3",
@@ -170,6 +240,20 @@
    "firstSeen": "2026-11-10"
   },
   {
+   "url": "https://www.v2ex.com/t/1257094#reply0",
+   "title": "给 dsh 写了个工作区插件，文件、搜索、git 都在对话里",
+   "titleEn": "",
+   "summary": "开发者为 dsh 客户端编写了 workspace-ide 插件，集成文件树、全文搜索和 Git 功能，支持 30+ 语言语法高亮，通过 GitHub Actions 发布，MIT 协议开源。",
+   "type": "浏览器插件",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-15",
+   "score": 7.2,
+   "rel": 7,
+   "firstSeen": "2026-11-15"
+  },
+  {
    "url": "https://github.com/TensorRails/warmctl",
    "title": "Warmctl：vLLM推理快速冷启动工具",
    "titleEn": "Show HN: Warmctl – Fast cold starts for vLLM inference",
@@ -226,6 +310,34 @@
    "firstSeen": "2026-11-10"
   },
   {
+   "url": "https://huggingface.co/spaces/MiniMaxAI/minimax-h3-image",
+   "title": "Spaces 应用：MiniMaxAI/minimax-h3-image",
+   "titleEn": "",
+   "summary": "MiniMax 官方在 Hugging Face Spaces 上线的 H3-Image 图像生成演示应用，使用 Gradio 界面，创建于 2026 年 11 月 9 日，点赞数 95。",
+   "type": "Web 应用",
+   "topic": "模型演示",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-11-15",
+   "score": 7.0,
+   "rel": 8,
+   "firstSeen": "2026-11-15"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1257110#reply0",
+   "title": "一个人做了个照片对口型唱 Rap 的小站，踩了不少坑，求拍砖",
+   "titleEn": "",
+   "summary": "独立开发者利用 Seedance 2.0 视频模型和 TanStack Start 架构，上线了照片对口型生成 Rap 视频的网站，支持双人对唱，出片耗时 2-4 分钟。",
+   "type": "Web 应用",
+   "topic": "内容生成",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-15",
+   "score": 6.9,
+   "rel": 7,
+   "firstSeen": "2026-11-15"
+  },
+  {
    "url": "https://www.reddit.com/r/SideProject/comments/1xrbext/nodeai_v310_ga_is_live/",
    "title": "NodeAI V3.1.0：提供自主代理执行控制权与审计功能的架构",
    "titleEn": "NodeAI V3.1.0 GA is live",
@@ -238,20 +350,6 @@
    "score": 8.4,
    "rel": 9,
    "firstSeen": "2026-11-09"
-  },
-  {
-   "url": "https://sspai.com/post/118512",
-   "title": "在快 AI 时代，我是怎么把 Mole 做成一款「慢产品」的？",
-   "titleEn": "",
-   "summary": "Mole 开发者通过安装 853 款 Mac 软件进行手动及 Agent 辅助测试，补充清理规则与单元测试。反思 AI 时代产品竞争力源于细节打磨，而非单纯功能堆砌，Windows 版已发布。",
-   "type": "桌面工具",
-   "topic": "产品方法论",
-   "block": "少数派",
-   "src": "apps",
-   "lastSeen": "2026-11-14",
-   "score": 7.1,
-   "rel": 6,
-   "firstSeen": "2026-11-14"
   },
   {
    "url": "https://github.com/Satvik-jain/customer-intelligence-toolkit",
@@ -2536,34 +2634,6 @@
    "firstSeen": "2026-10-19"
   },
   {
-   "url": "https://www.v2ex.com/t/1249847#reply2",
-   "title": "通过丢几个参考链接，让 grok bot 直接做了个 AI 导航站，大概十几轮对话，做完直接部署。",
-   "titleEn": "",
-   "summary": "作者利用 Grok 机器人通过十几轮对话快速生成并部署了 AI 导航站 meetnewai.com，重点记录了域名选择耗时占 99% 的过程，站点样式借鉴现有设计。",
-   "type": "Web 应用",
-   "topic": "工程实践",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-19",
-   "score": 6.8,
-   "rel": 8,
-   "firstSeen": "2026-10-19"
-  },
-  {
-   "url": "https://github.com/hybroai/hybro",
-   "title": "Hybro：开源 AI 智能体互操作引擎",
-   "titleEn": "Show HN: Hybro – an open interoperability engine for AI agents",
-   "summary": "Hybro 是一个开源项目，旨在连接不同的 AI 智能体和框架，让它们能够协同工作，实现跨系统的互操作性。",
-   "type": "其他",
-   "topic": "Agent 框架",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-19",
-   "score": 6.8,
-   "rel": 8,
-   "firstSeen": "2026-10-19"
-  },
-  {
    "url": "https://github.com/enkiruntime/enki_llm",
    "title": "Enki LLM：纯Rust推理引擎",
    "titleEn": "Show HN: Enki LLM A pure rust (even kernels) with live GPU/CPU brain migration",
@@ -2788,20 +2858,6 @@
    "firstSeen": "2026-10-15"
   },
   {
-   "url": "https://www.v2ex.com/t/1249501#reply0",
-   "title": "做了个 macOS 原生 Emby 观影助手： TMDB 搜索找片、片单浏览、入库核对与外部播放",
-   "titleEn": "",
-   "summary": "开发者制作 macOS 原生工具 Emby Companion，集成 TMDB 搜索与豆瓣/IMDb 榜单。核心功能为自动核对 Emby 媒体库入库状态，识别缺片缺集，并支持 Infuse 等播放器调用及进度同步。",
-   "type": "桌面工具",
-   "topic": "桌面工具",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-17",
-   "score": 6.8,
-   "rel": 6,
-   "firstSeen": "2026-10-17"
-  },
-  {
    "url": "https://pulseos.finance",
    "title": "Pulse Local：本地运行的Mac预算应用",
    "titleEn": "Show HN: Pulse Local, a Mac budgeting app whose AI models run on your machine",
@@ -3024,34 +3080,6 @@
    "score": 8.4,
    "rel": 9,
    "firstSeen": "2026-10-08"
-  },
-  {
-   "url": "https://www.reddit.com/r/SideProject/comments/1x5ah0a/i_built_a_full_novelwriting_and_booktypesetting/",
-   "title": "Pepino：全流程小说创作与排版工具",
-   "titleEn": "I built a full novel-writing and book-typesetting app that anyone can try without creating an account",
-   "summary": "基于浏览器的写作工作台，集成章节管理、故事圣经、视觉大纲及书籍排版引擎，无需注册即可使用，AI专注于检查长篇作品连续性。",
-   "type": "Web 应用",
-   "topic": "效率工具",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-10-14",
-   "score": 6.8,
-   "rel": 6,
-   "firstSeen": "2026-10-14"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1248556#reply1",
-   "title": "好久不见 我做了一个支持全平台的《石器时代》 remake 因为怀念那样的时光和氛围感",
-   "titleEn": "",
-   "summary": "基于 Godot 和 AI 辅助开发的《石器时代》复刻项目，支持全平台原生运行及 VR 头显。具备私服功能如自动练级、刷怪传送，跨平台数据同步，代码开源。",
-   "type": "移动 App",
-   "topic": "独立开发",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-14",
-   "score": 6.8,
-   "rel": 6,
-   "firstSeen": "2026-10-14"
   },
   {
    "url": "https://www.shpyrd.io",
@@ -3362,20 +3390,6 @@
    "firstSeen": "2026-10-10"
   },
   {
-   "url": "https://github.com/brianlzhou/arc-browser-use",
-   "title": "让 Codex 浏览器控制适配 Arc 的补丁",
-   "titleEn": "Show HN: A patch to make Codex's browser control work in Arc",
-   "summary": "项目解决了 OpenAI Codex 在 Arc 浏览器中因 Tab 分组 API 差异导致的连接停滞问题。通过下载并修补 ChatGPT 扩展的两个小代码段，使 Codex 能正常控制 Arc 浏览器标签页。",
-   "type": "浏览器插件",
-   "topic": "AI 编程",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-10",
-   "score": 6.8,
-   "rel": 7,
-   "firstSeen": "2026-10-10"
-  },
-  {
    "url": "https://rhyvenai.com",
    "title": "Rhyven：面向 Agent 的市场平台",
    "titleEn": "Show HN: Rhyven – A marketplace for agents",
@@ -3556,20 +3570,6 @@
    "score": 7.8,
    "rel": 8,
    "firstSeen": "2026-10-04"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1247005#reply0",
-   "title": "BioPlot.ai：一句话画出可编辑的 MAPK 通路图（draw.io + bio_*，不是死 PNG）",
-   "titleEn": "",
-   "summary": "BioPlot.ai 通过自然语言生成可编辑 draw.io 生物通路图，图元含 bio_* 语义标签，支持导出 SVG/PDF。区别于 BioRender 位图模式，解决科研插图难以修改与语义缺失痛点。目前邀请制，前 100 名用户享有优惠。",
-   "type": "Web 应用",
-   "topic": "内容生成",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-08",
-   "score": 6.8,
-   "rel": 6,
-   "firstSeen": "2026-10-08"
   },
   {
    "url": "https://television.run/",
