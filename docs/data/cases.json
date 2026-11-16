@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-15 08:10",
+ "updated": "2026-11-16 08:10",
  "count": 300,
  "types": [
   "Agent 工作流",
@@ -72,6 +72,20 @@
    "firstSeen": "2026-11-14"
   },
   {
+   "url": "https://www.v2ex.com/t/1257277#reply0",
+   "title": "Story Timeline：把小说的设定和时间线存进 SQLite，让 AI 智能体通过 GraphQL 读写",
+   "titleEn": "",
+   "summary": "开发者开源 Story Timeline，将小说设定存入 SQLite，支持时间线视图及因果逻辑。通过 GraphQL API 供 AI 读写，解决长篇创作中人物认知与时间线矛盾问题，支持倒叙分离存储。",
+   "type": "Web 应用",
+   "topic": "开源项目",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-16",
+   "score": 8.0,
+   "rel": 8,
+   "firstSeen": "2026-11-16"
+  },
+  {
    "url": "https://tryenzo.ai",
    "title": "Enzo：Mac 本地端语音助手与回忆工具",
    "titleEn": "Show HN: Enzo – Dictation, meeting diarization, and recall for Mac, on-device",
@@ -126,6 +140,48 @@
    "score": 9.4,
    "rel": 10,
    "firstSeen": "2026-11-10"
+  },
+  {
+   "url": "https://github.com/itsmeyaw/skillset",
+   "title": "Skillset：Agent 技能集合的管理与安装工具",
+   "titleEn": "Show HN: Skillset: Easily curate and install agent skills collection",
+   "summary": "Skillset 是一个 CLI 工具，作为 Vercel Skill CLI 的封装层，允许用户通过 JSON 文件将编程、后端架构等技能分组为集合，并在项目需要时批量安装。旨在解决全局安装占用上下文及手动安装繁琐的问题。",
+   "type": "CLI 工具",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-16",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-11-16"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1257246#reply0",
+   "title": "做了 Genjutsu AI：上传一段视频和一张照片，把人换进去，动作和原声不动",
+   "titleEn": "",
+   "summary": "Genjutsu AI 允许上传视频与照片替换人物，保留原动作与声音。单场景限时 15 秒，720p 输出，按积分计费。无需提示词，自动切分场景，适合快速生成定制视频内容。",
+   "type": "Web 应用",
+   "topic": "视频生成",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-16",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-11-16"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1xx9z7s/i_built_a_free_tool_that_checks_whether_chatgpt/",
+   "title": "WebsiteSpa：检测 AI 模型能否发现你的网站",
+   "titleEn": "I built a free tool that checks whether ChatGPT, Gemini and Perplexity can find your website",
+   "summary": "免费工具 WebsiteSpa 允许用户输入 URL，检测 ChatGPT、Gemini 和 Perplexity 是否能通过 AI 爬虫访问、读取和理解该网站。它提供 AI 就绪评分，按影响力排序发现项，并解释为何 AI 未推荐该站点。",
+   "type": "Web 应用",
+   "topic": "AI 搜索",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-11-16",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-11-16"
   },
   {
    "url": "https://twitter.com/jalcowastaken/status/2119922971599057366",
@@ -308,20 +364,6 @@
    "score": 8.3,
    "rel": 8,
    "firstSeen": "2026-11-10"
-  },
-  {
-   "url": "https://huggingface.co/spaces/MiniMaxAI/minimax-h3-image",
-   "title": "Spaces 应用：MiniMaxAI/minimax-h3-image",
-   "titleEn": "",
-   "summary": "MiniMax 官方在 Hugging Face Spaces 上线的 H3-Image 图像生成演示应用，使用 Gradio 界面，创建于 2026 年 11 月 9 日，点赞数 95。",
-   "type": "Web 应用",
-   "topic": "模型演示",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-11-15",
-   "score": 7.0,
-   "rel": 8,
-   "firstSeen": "2026-11-15"
   },
   {
    "url": "https://www.v2ex.com/t/1257110#reply0",
@@ -2228,20 +2270,6 @@
    "firstSeen": "2026-10-16"
   },
   {
-   "url": "https://www.v2ex.com/t/1251575#reply0",
-   "title": "用 380 行 Python 给公司做了个离线知识库（带出处、带权限）",
-   "titleEn": "",
-   "summary": "开发者用 380 行 Python 实现了一个零依赖的离线知识库，支持 Markdown 导入及权限控制。系统采用 BM25 加 TF-IDF 双路召回，回答默认抽取式，确保不编造内容并附带原文出处。",
-   "type": "数据分析",
-   "topic": "工程实践",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-25",
-   "score": 6.8,
-   "rel": 7,
-   "firstSeen": "2026-10-25"
-  },
-  {
    "url": "https://github.com/Arthur031221/AiSniff",
    "title": "AiSniff：基于规则识别AI写作模式的文本分析工具",
    "titleEn": "Show HN: AiSniff, underline the phrases in a text that read like AI wrote them",
@@ -2296,20 +2324,6 @@
    "score": 8.4,
    "rel": 8,
    "firstSeen": "2026-10-18"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1251380#reply1",
-   "title": "[分享创造] 我做了个图片转可编辑 PPT 的工具，聊聊三类图的实际结果",
-   "titleEn": "",
-   "summary": "开源工具 img2ppt 将图片转可编辑 PPT，实测文字流程图效果稳定但耗时 20-40 分钟，照片类仅支持区域替换，超大图处理不稳定，提供在线版供免费试用。",
-   "type": "Web 应用",
-   "topic": "内容生成",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-24",
-   "score": 6.8,
-   "rel": 6,
-   "firstSeen": "2026-10-24"
   },
   {
    "url": "https://www.v2ex.com/t/1250462#reply0",
@@ -2618,20 +2632,6 @@
    "score": 8.6,
    "rel": 8,
    "firstSeen": "2026-10-12"
-  },
-  {
-   "url": "https://www.reddit.com/r/SideProject/comments/1x9gfq2/lila_a_windows_voice_assistant_what_job_would/",
-   "title": "Lila：面向 Windows 的本地语音助手，正在征集实际使用场景",
-   "titleEn": "Lila - a Windows voice assistant. What job would make this useful to you?",
-   "summary": "Lila 是一个运行在 Windows 本地的语音助手，能操作用户的应用程序与文件。开发者正在征集用户实际办公痛点以优化功能。",
-   "type": "桌面工具",
-   "topic": "语音助手",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-10-19",
-   "score": 6.8,
-   "rel": 8,
-   "firstSeen": "2026-10-19"
   },
   {
    "url": "https://github.com/enkiruntime/enki_llm",

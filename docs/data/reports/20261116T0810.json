@@ -1,12 +1,12 @@
 {
- "generated_at": "2026-10-16 08:11",
+ "generated_at": "2026-11-16 08:10",
  "counts": {
-  "total": 167,
-  "repeat": 44,
+  "total": 136,
+  "repeat": 71,
   "byLevel": {
    "top": 15,
-   "watch": 58,
-   "normal": 94
+   "watch": 48,
+   "normal": 73
   }
  },
  "sources": [
@@ -18,7 +18,7 @@
    "raw": 10,
    "diag": [
     "openai.com:desc中位151<300跳过",
-    "rsshub.ktachibana.party:OK(10条/desc5370)"
+    "rsshub.ktachibana.party:OK(10条/desc6654)"
    ]
   },
   {
@@ -28,7 +28,7 @@
    "n": 3,
    "raw": 10,
    "diag": [
-    "rsshub.ktachibana.party:OK(10条/desc11192)"
+    "rsshub.ktachibana.party:OK(10条/desc9523)"
    ]
   },
   {
@@ -38,38 +38,38 @@
    "n": 3,
    "raw": 10,
    "diag": [
-    "rsshub.ktachibana.party:OK(10条/desc7638)"
+    "rsshub.ktachibana.party:OK(10条/desc3289)"
    ]
   },
   {
    "id": "deepmind-blog",
    "ok": true,
    "via": "deepmind.google",
-   "n": 5,
+   "n": 6,
    "raw": 100,
    "diag": [
-    "deepmind.google:OK(100条/desc106)"
+    "deepmind.google:OK(100条/desc107)"
    ]
   },
   {
    "id": "google-ai-blog",
    "ok": true,
    "via": "blog.google",
-   "n": 3,
+   "n": 6,
    "raw": 20,
    "diag": [
-    "blog.google:OK(20条/desc116)"
+    "blog.google:OK(20条/desc120)"
    ]
   },
   {
    "id": "hf-blog",
    "ok": true,
    "via": "rsshub.ktachibana.party",
-   "n": 5,
+   "n": 8,
    "raw": 14,
    "diag": [
     "huggingface.co:desc中位0<500跳过",
-    "rsshub.ktachibana.party:OK(14条/desc8954)"
+    "rsshub.ktachibana.party:OK(14条/desc11362)"
    ]
   },
   {
@@ -77,30 +77,29 @@
    "ok": true,
    "via": "rsshub.ktachibana.party",
    "n": 10,
-   "raw": 87,
+   "raw": 34,
    "diag": [
     "huggingface.co:ParseError2",
-    "rsshub.ktachibana.party:OK(87条/desc1477)"
+    "rsshub.ktachibana.party:OK(34条/desc1493)"
    ]
   },
   {
    "id": "arxiv-cs-cl",
-   "ok": true,
-   "via": "export.arxiv.org",
-   "n": 8,
-   "raw": 301,
+   "ok": false,
+   "via": null,
+   "n": 0,
    "diag": [
-    "export.arxiv.org:OK(301条/desc1396)"
+    "export.arxiv.org:RuntimeError"
    ]
   },
   {
    "id": "llm-leaderboard",
    "ok": true,
    "via": "raw.githubusercontent.com",
-   "n": 12,
-   "raw": 12,
+   "n": 5,
+   "raw": 5,
    "diag": [
-    "raw.githubusercontent.com:OK(12条/desc39)"
+    "raw.githubusercontent.com:OK(5条/desc45)"
    ]
   },
   {
@@ -128,7 +127,7 @@
    "n": 6,
    "raw": 20,
    "diag": [
-    "hnrss.org:OK(20条/desc170)"
+    "hnrss.org:OK(20条/desc173)"
    ]
   },
   {
@@ -138,7 +137,7 @@
    "n": 6,
    "raw": 20,
    "diag": [
-    "hnrss.org:OK(20条/desc159)"
+    "hnrss.org:OK(20条/desc153)"
    ]
   },
   {
@@ -146,29 +145,29 @@
    "ok": true,
    "via": "mshibanami.github.io",
    "n": 6,
-   "raw": 15,
+   "raw": 17,
    "diag": [
-    "mshibanami.github.io:OK(15条/desc11155)"
+    "mshibanami.github.io:OK(17条/desc10393)"
    ]
   },
   {
    "id": "github-releases",
    "ok": true,
    "via": "github.com",
-   "n": 5,
+   "n": 3,
    "raw": 10,
    "diag": [
-    "github.com:OK(10条/desc131)"
+    "github.com:OK(10条/desc212)"
    ]
   },
   {
    "id": "simonwillison",
    "ok": true,
    "via": "simonwillison.net",
-   "n": 6,
+   "n": 5,
    "raw": 30,
    "diag": [
-    "simonwillison.net:OK(30条/desc834)"
+    "simonwillison.net:OK(30条/desc957)"
    ]
   },
   {
@@ -188,17 +187,17 @@
    "n": 3,
    "raw": 10,
    "diag": [
-    "rsshub.ktachibana.party:OK(10条/desc3974)"
+    "rsshub.ktachibana.party:OK(10条/desc4268)"
    ]
   },
   {
    "id": "leiphone-ai",
    "ok": true,
    "via": "rsshub.ktachibana.party",
-   "n": 4,
+   "n": 5,
    "raw": 10,
    "diag": [
-    "rsshub.ktachibana.party:OK(10条/desc4447)"
+    "rsshub.ktachibana.party:OK(10条/desc5508)"
    ]
   },
   {
@@ -208,7 +207,7 @@
    "n": 6,
    "raw": 30,
    "diag": [
-    "rsshub.ktachibana.party:OK(30条/desc3691)"
+    "rsshub.ktachibana.party:OK(30条/desc3725)"
    ]
   },
   {
@@ -218,7 +217,7 @@
    "n": 6,
    "raw": 30,
    "diag": [
-    "rsshub.ktachibana.party:OK(30条/desc2758)"
+    "rsshub.ktachibana.party:OK(30条/desc2591)"
    ]
   },
   {
@@ -231,7 +230,7 @@
     "rsshub.ktachibana.party:HTTPError429",
     "rsshub.rssforever.com:HTTPError503",
     "rss.injahow.cn:HTTPError404",
-    "rsshub.isrss.com:OK(20条/desc455)"
+    "rsshub.isrss.com:OK(20条/desc440)"
    ]
   },
   {
@@ -241,7 +240,7 @@
    "n": 8,
    "raw": 20,
    "diag": [
-    "hnrss.org:OK(20条/desc147)"
+    "hnrss.org:OK(20条/desc152)"
    ]
   },
   {
@@ -249,9 +248,9 @@
    "ok": true,
    "via": "www.v2ex.com",
    "n": 10,
-   "raw": 40,
+   "raw": 50,
    "diag": [
-    "www.v2ex.com:OK(40条/desc469)"
+    "www.v2ex.com:OK(50条/desc616)"
    ]
   },
   {
@@ -261,18 +260,18 @@
    "n": 8,
    "raw": 25,
    "diag": [
-    "www.reddit.com:OK(25条/desc651)"
+    "www.reddit.com:OK(25条/desc1083)"
    ]
   },
   {
    "id": "rh-sspai",
    "ok": true,
    "via": "rsshub.rssforever.com",
-   "n": 6,
+   "n": 3,
    "raw": 10,
    "diag": [
     "rsshub.ktachibana.party:HTTPError429",
-    "rsshub.rssforever.com:OK(10条/desc4931)"
+    "rsshub.rssforever.com:OK(10条/desc6765)"
    ]
   },
   {
@@ -289,12 +288,18 @@
    "id": "_aihot",
    "ok": true,
    "via": "aihot.news",
-   "n": 21,
-   "raw": 26,
+   "n": 1,
+   "raw": 1,
    "diag": [
     "HTTP200"
    ]
   }
  ],
- "degraded": []
+ "degraded": [
+  {
+   "id": "arxiv-cs-cl",
+   "lane": "paper",
+   "reason": "export.arxiv.org:RuntimeError"
+  }
+ ]
 }
