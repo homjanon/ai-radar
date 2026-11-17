@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-16 08:10",
+ "updated": "2026-11-17 08:10",
  "count": 300,
  "types": [
   "Agent 工作流",
@@ -28,6 +28,20 @@
    "score": 9.7,
    "rel": 9,
    "firstSeen": "2026-11-14"
+  },
+  {
+   "url": "https://standardsupport.dev/",
+   "title": "Standard Support：AI 智能体提交工单的交互规范",
+   "titleEn": "Show HN: Standard Support – a convention for AI agents to file support tickets",
+   "summary": "DocSpring 提出 Standard Support 规范（草案 0.2），允许 AI Agent 代表用户向服务商提交支持工单、提问及追踪回复。该规范定义了支持帮助、开启工单等标准接口，旨在实现人与 AI 客服的跨平台互通。",
+   "type": "其他",
+   "topic": "Agent 协议",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-17",
+   "score": 8.2,
+   "rel": 8,
+   "firstSeen": "2026-11-17"
   },
   {
    "url": "https://www.v2ex.com/t/1256266#reply0",
@@ -86,6 +100,20 @@
    "firstSeen": "2026-11-16"
   },
   {
+   "url": "https://github.com/formgong/dead-forms-study",
+   "title": "研究：105 个 AI 构建的表单中 27 个提交失败",
+   "titleEn": "Show HN: We submitted 105 AI-built contact forms – 27 said \"sent\", sent nothing",
+   "summary": "一项研究测试了 105 个由 AI 生成的联系人表单，发现 27 个显示“已发送”但实际未收到数据。该研究记录了 AI 在构建完整 Web 应用时常见的“假成功”陷阱，强调了后端验证的重要性。",
+   "type": "数据分析",
+   "topic": "工程实践",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-17",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-11-17"
+  },
+  {
    "url": "https://tryenzo.ai",
    "title": "Enzo：Mac 本地端语音助手与回忆工具",
    "titleEn": "Show HN: Enzo – Dictation, meeting diarization, and recall for Mac, on-device",
@@ -112,6 +140,20 @@
    "score": 8.2,
    "rel": 8,
    "firstSeen": "2026-11-15"
+  },
+  {
+   "url": "https://www.reddit.com/r/SideProject/comments/1xy2xw0/speeku_a_fully_offline_brazilian_portuguese/",
+   "title": "Speeku：完全离线运行的巴西葡萄牙语口语课程",
+   "titleEn": "Speeku - a fully offline Brazilian Portuguese course with a speaking check that runs on your phone",
+   "summary": "Speeku 是一款离线语言学习应用，包含 1,500 节课程和 16,500 道练习。其核心采用本地运行的 espeak-ng 和小模型进行口语发音对比，无需上传数据，实现真正的隐私保护。",
+   "type": "移动 App",
+   "topic": "端侧 AI",
+   "block": "r/SideProject",
+   "src": "apps",
+   "lastSeen": "2026-11-17",
+   "score": 7.5,
+   "rel": 7,
+   "firstSeen": "2026-11-17"
   },
   {
    "url": "https://letthembuild.com",
@@ -1808,34 +1850,6 @@
    "firstSeen": "2026-10-26"
   },
   {
-   "url": "https://www.v2ex.com/t/1252994#reply0",
-   "title": "万圣节快到了, 拿 Claude 做了个小鬼抓南瓜的在线游戏",
-   "titleEn": "",
-   "summary": "开发者利用 Claude 协助开发在线多人游戏《Trick or Treat Run》。采用 three.js 与 Blender 程序化生成资产，后端使用 Cloudflare Workers 和 Durable Objects 处理匹配与游戏逻辑。",
-   "type": "Web 应用",
-   "topic": "Agent 应用",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-30",
-   "score": 6.8,
-   "rel": 6,
-   "firstSeen": "2026-10-30"
-  },
-  {
-   "url": "https://huggingface.co/spaces/glitchlab/MiniMax-H3-Turbo-Lora-UNCENSORED-Workflow",
-   "title": "Spaces 应用：glitchlab/MiniMax-H3-Turbo-Lora-UNCENSORED-Workflow",
-   "titleEn": "",
-   "summary": "HuggingFace 平台上的 Gradio 工作流应用，集成 MiniMax-H3-Turbo 模型及 LoRA 适配器。支持无审查内容生成，点赞数 570，创建于 2026 年 9 月。",
-   "type": "模型与推理",
-   "topic": "模型应用",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-30",
-   "score": 6.8,
-   "rel": 8,
-   "firstSeen": "2026-10-30"
-  },
-  {
    "url": "https://www.v2ex.com/t/1251556#reply1",
    "title": "两天上线第一个出海 AI 工具站（英文 AI 同人生成器），记录一下过程和踩的坑",
    "titleEn": "",
@@ -2030,20 +2044,6 @@
    "score": 7.1,
    "rel": 6,
    "firstSeen": "2026-10-26"
-  },
-  {
-   "url": "https://sspai.com/post/114741",
-   "title": "60 元打造你的 vibe coding 神器：小米蓝牙遥控器 2 pro",
-   "titleEn": "",
-   "summary": "利用小米电视蓝牙语音遥控器 2 Pro（约 60 元）作为 AI 编程手持控制器。实现 Push-to-Talk 语音输入 Prompt，通过方向键切换终端 Tab 及 Workspace，OK 键确认，返回键中断。支持 macOS 和 Windows，免键鼠操作。",
-   "type": "其他",
-   "topic": "工程实践",
-   "block": "少数派",
-   "src": "apps",
-   "lastSeen": "2026-10-27",
-   "score": 6.8,
-   "rel": 6,
-   "firstSeen": "2026-10-27"
   },
   {
    "url": "https://www.v2ex.com/t/1251396#reply0",
