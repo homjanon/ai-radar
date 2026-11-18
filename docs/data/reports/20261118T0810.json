@@ -1,12 +1,12 @@
 {
- "generated_at": "2026-10-18 08:10",
+ "generated_at": "2026-11-18 08:10",
  "counts": {
-  "total": 137,
-  "repeat": 78,
+  "total": 149,
+  "repeat": 49,
   "byLevel": {
    "top": 15,
-   "watch": 48,
-   "normal": 74
+   "watch": 52,
+   "normal": 82
   }
  },
  "sources": [
@@ -18,7 +18,7 @@
    "raw": 10,
    "diag": [
     "openai.com:desc中位151<300跳过",
-    "rsshub.ktachibana.party:OK(10条/desc4823)"
+    "rsshub.ktachibana.party:OK(10条/desc6859)"
    ]
   },
   {
@@ -28,7 +28,7 @@
    "n": 3,
    "raw": 10,
    "diag": [
-    "rsshub.ktachibana.party:OK(10条/desc11192)"
+    "rsshub.ktachibana.party:OK(10条/desc7080)"
    ]
   },
   {
@@ -38,27 +38,28 @@
    "n": 3,
    "raw": 10,
    "diag": [
-    "rsshub.ktachibana.party:OK(10条/desc7638)"
+    "rsshub.ktachibana.party:OK(10条/desc3289)"
    ]
   },
   {
    "id": "deepmind-blog",
    "ok": true,
-   "via": "deepmind.google",
-   "n": 5,
+   "via": "rsshub.ktachibana.party",
+   "n": 3,
    "raw": 100,
    "diag": [
-    "deepmind.google:OK(100条/desc106)"
+    "deepmind.google:ParseError4",
+    "rsshub.ktachibana.party:OK(100条/desc6576)"
    ]
   },
   {
    "id": "google-ai-blog",
    "ok": true,
    "via": "blog.google",
-   "n": 3,
+   "n": 6,
    "raw": 20,
    "diag": [
-    "blog.google:OK(20条/desc116)"
+    "blog.google:OK(20条/desc120)"
    ]
   },
   {
@@ -69,7 +70,7 @@
    "raw": 14,
    "diag": [
     "huggingface.co:desc中位0<500跳过",
-    "rsshub.ktachibana.party:OK(14条/desc9945)"
+    "rsshub.ktachibana.party:OK(14条/desc11061)"
    ]
   },
   {
@@ -77,10 +78,10 @@
    "ok": true,
    "via": "rsshub.ktachibana.party",
    "n": 10,
-   "raw": 84,
+   "raw": 40,
    "diag": [
     "huggingface.co:ParseError2",
-    "rsshub.ktachibana.party:OK(84条/desc1500)"
+    "rsshub.ktachibana.party:OK(40条/desc1510)"
    ]
   },
   {
@@ -96,10 +97,10 @@
    "id": "llm-leaderboard",
    "ok": true,
    "via": "raw.githubusercontent.com",
-   "n": 12,
-   "raw": 12,
+   "n": 6,
+   "raw": 6,
    "diag": [
-    "raw.githubusercontent.com:OK(12条/desc38)"
+    "raw.githubusercontent.com:OK(6条/desc45)"
    ]
   },
   {
@@ -127,7 +128,7 @@
    "n": 6,
    "raw": 20,
    "diag": [
-    "hnrss.org:OK(20条/desc160)"
+    "hnrss.org:OK(20条/desc161)"
    ]
   },
   {
@@ -137,7 +138,7 @@
    "n": 6,
    "raw": 20,
    "diag": [
-    "hnrss.org:OK(20条/desc148)"
+    "hnrss.org:OK(20条/desc151)"
    ]
   },
   {
@@ -145,19 +146,19 @@
    "ok": true,
    "via": "mshibanami.github.io",
    "n": 6,
-   "raw": 15,
+   "raw": 16,
    "diag": [
-    "mshibanami.github.io:OK(15条/desc14200)"
+    "mshibanami.github.io:OK(16条/desc11593)"
    ]
   },
   {
    "id": "github-releases",
    "ok": true,
    "via": "github.com",
-   "n": 4,
+   "n": 3,
    "raw": 10,
    "diag": [
-    "github.com:OK(10条/desc174)"
+    "github.com:OK(10条/desc146)"
    ]
   },
   {
@@ -167,7 +168,7 @@
    "n": 6,
    "raw": 30,
    "diag": [
-    "simonwillison.net:OK(30条/desc835)"
+    "simonwillison.net:OK(30条/desc1071)"
    ]
   },
   {
@@ -187,7 +188,7 @@
    "n": 3,
    "raw": 10,
    "diag": [
-    "rsshub.ktachibana.party:OK(10条/desc4732)"
+    "rsshub.ktachibana.party:OK(10条/desc4268)"
    ]
   },
   {
@@ -197,7 +198,7 @@
    "n": 3,
    "raw": 10,
    "diag": [
-    "rsshub.ktachibana.party:OK(10条/desc4819)"
+    "rsshub.ktachibana.party:OK(10条/desc5584)"
    ]
   },
   {
@@ -207,7 +208,7 @@
    "n": 6,
    "raw": 30,
    "diag": [
-    "rsshub.ktachibana.party:OK(30条/desc4427)"
+    "rsshub.ktachibana.party:OK(30条/desc3939)"
    ]
   },
   {
@@ -217,22 +218,20 @@
    "n": 6,
    "raw": 30,
    "diag": [
-    "rsshub.ktachibana.party:OK(30条/desc2848)"
+    "rsshub.ktachibana.party:OK(30条/desc2205)"
    ]
   },
   {
    "id": "solidot",
-   "ok": false,
-   "via": null,
-   "n": 0,
+   "ok": true,
+   "via": "rsshub.isrss.com",
+   "n": 5,
+   "raw": 20,
    "diag": [
     "rsshub.ktachibana.party:HTTPError429",
     "rsshub.rssforever.com:HTTPError503",
     "rss.injahow.cn:HTTPError404",
-    "rsshub.isrss.com:HTTPError502",
-    "rsshub.umzzz.com:HTTPError503",
-    "hub.slarker.me:TimeoutError",
-    "rsshub-balancer.virworks.moe:HTTPError502"
+    "rsshub.isrss.com:OK(20条/desc417)"
    ]
   },
   {
@@ -252,17 +251,16 @@
    "n": 10,
    "raw": 50,
    "diag": [
-    "www.v2ex.com:OK(50条/desc448)"
+    "www.v2ex.com:OK(50条/desc651)"
    ]
   },
   {
    "id": "reddit-sideproject",
-   "ok": true,
-   "via": "www.reddit.com",
-   "n": 8,
-   "raw": 25,
+   "ok": false,
+   "via": null,
+   "n": 0,
    "diag": [
-    "www.reddit.com:OK(25条/desc597)"
+    "www.reddit.com:HTTPError404"
    ]
   },
   {
@@ -273,7 +271,7 @@
    "raw": 10,
    "diag": [
     "rsshub.ktachibana.party:HTTPError429",
-    "rsshub.rssforever.com:OK(10条/desc4117)"
+    "rsshub.rssforever.com:OK(10条/desc5140)"
    ]
   },
   {
@@ -290,8 +288,8 @@
    "id": "_aihot",
    "ok": true,
    "via": "aihot.news",
-   "n": 3,
-   "raw": 3,
+   "n": 23,
+   "raw": 28,
    "diag": [
     "HTTP200"
    ]
@@ -304,9 +302,9 @@
    "reason": "export.arxiv.org:RuntimeError"
   },
   {
-   "id": "solidot",
-   "lane": "cn",
-   "reason": "rsshub.ktachibana.party:HTTPError429; rsshub.rssforever.com:HTTPError503; rss.injahow.cn:HTTPError404; rsshub.isrss.com:HTTPError502; rsshub.umzzz.com:HTTPError503; hub.slarker.me:TimeoutError; rsshub"
+   "id": "reddit-sideproject",
+   "lane": "apps",
+   "reason": "www.reddit.com:HTTPError404"
   }
  ]
 }

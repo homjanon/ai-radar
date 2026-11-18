@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-17 08:10",
+ "updated": "2026-11-18 08:10",
  "count": 300,
  "types": [
   "Agent 工作流",
@@ -16,6 +16,34 @@
  ],
  "cases": [
   {
+   "url": "https://www.v2ex.com/t/1257839#reply0",
+   "title": "[开源] 分享一个我做的跳广告插件，利用 AI 跳过 B 站视频内的广告",
+   "titleEn": "",
+   "summary": "开源浏览器插件 VideoAdGuard 利用 AI 自动识别并跳过 B 站视频广告。支持无字幕视频的语音转文字识别，使用 Cloudflare KV 云端缓存。技术栈包含 minimax 模型和 System One 模型（Jev），声称高召回率。作者正在调研使用 LLM 判断 AI 生成文案的可能性，以减少低质内容。",
+   "type": "浏览器插件",
+   "topic": "Agent 应用",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-18",
+   "score": 8.7,
+   "rel": 8,
+   "firstSeen": "2026-11-18"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1257829#reply7",
+   "title": "Pi Bot 上线了！",
+   "titleEn": "",
+   "summary": "桌面应用 Pi Bot 支持多 Bot 群组协作，可为写码、调研、文档角色分配不同模型（支持本地 Ollama/LM Studio 及云端 API）。功能包括任务拆解、文件读写、命令执行、MCP 接入及 Android 远程执行。提供 macOS/Windows/Linux 桌面端及 Android APK，聊天记录本地存储，支持沙箱权限控制。",
+   "type": "桌面工具",
+   "topic": "Agent 应用",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-18",
+   "score": 8.7,
+   "rel": 9,
+   "firstSeen": "2026-11-18"
+  },
+  {
    "url": "https://www.v2ex.com/t/1256953#reply0",
    "title": "开源了 Browser Hands：让 Codex/Cursor 也能用上 Claude 官方插件级浏览器操作",
    "titleEn": "",
@@ -28,6 +56,34 @@
    "score": 9.7,
    "rel": 9,
    "firstSeen": "2026-11-14"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1257835#reply0",
+   "title": "基于 TwitCanva 做了个 AI 画布：右侧 Chat 可以直接改左侧画布，但两边有时会对不齐",
+   "titleEn": "",
+   "summary": "EaseGen AI 画布基于开源 TwitCanva 开发，实现右侧 Chat 与左侧画布节点联动。通过对话直接增删改画布节点，无需手动操作 UI。当前挑战在于状态同步，Chat 确认三视图后画布修改未实时同步导致分叉。作者探索公共文档作为单一数据源以解决同步问题，项目已上线并支持视频图片生成。",
+   "type": "Web 应用",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-18",
+   "score": 8.4,
+   "rel": 9,
+   "firstSeen": "2026-11-18"
+  },
+  {
+   "url": "https://sspai.com/post/119148",
+   "title": "派评 | 近期值得关注的 App",
+   "titleEn": "",
+   "summary": "介绍 Dalibre 电子书管理工具，兼容 Calibre 书库结构，支持 macOS/Windows/Linux。特色是内置 MCP 服务，允许 Claude、Cursor 等 AI Agent 直接调用工具执行书籍搜索、元数据修改及整理。安装包轻量（约 10MB），提供插件市场及 EPUB 编辑功能。",
+   "type": "桌面工具",
+   "topic": "Agent 应用",
+   "block": "少数派",
+   "src": "apps",
+   "lastSeen": "2026-11-18",
+   "score": 8.2,
+   "rel": 9,
+   "firstSeen": "2026-11-18"
   },
   {
    "url": "https://standardsupport.dev/",
@@ -58,6 +114,34 @@
    "firstSeen": "2026-11-12"
   },
   {
+   "url": "https://github.com/avelone123123/shard",
+   "title": "Shard：基于局域网的多机分布式本地 LLM 推理引擎",
+   "titleEn": "Show HN: Shard – Distributed AI Inference Across Multiple Computers",
+   "summary": "Shard 是一个分布式推理引擎，通过 PyTorch 和 llama.cpp 将局域网内多台机器的 GPU 显存与内存池化。支持 C++20 和 AVX2 SIMD 内核加速，旨在构建共享的本地 AI 基础设施以运行大模型。",
+   "type": "CLI 工具",
+   "topic": "模型推理",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-18",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-11-18"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1257870#reply0",
+   "title": "ConvoExport：把一条 ChatGPT / Claude 对话导出为 Markdown、DOCX 或打印页",
+   "titleEn": "",
+   "summary": "开发者推出本地优先的浏览器扩展 ConvoExport，可将 ChatGPT 或 Claude 整条对话导出为 Markdown、DOCX 或 PDF。实测验证了 ChatGPT 公开页导出功能，发现需等待 30 秒水合完成才能正确识别角色。扩展完全在本地运行，不上传数据，Edge 商店审核中，Pro 版计划定价 19.9 元。",
+   "type": "浏览器插件",
+   "topic": "工具开发",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-18",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-11-18"
+  },
+  {
    "url": "https://www.v2ex.com/t/1256587#reply0",
    "title": "一次 AI Agent 全程介入光学工程的尝试。我们希望 AI Agent 可以在光学工程师提出需求后，尽可能完整、独立的完成后续工作。因此我们制作了 os-optics 和 os-optics-kit，开放在 GitHub 和 PyPi。",
    "titleEn": "",
@@ -84,6 +168,20 @@
    "score": 8.3,
    "rel": 8,
    "firstSeen": "2026-11-14"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1257854#reply0",
+   "title": "YouTube Transcript Export：把单个视频的字幕导出成 TXT / Markdown / SRT / VTT",
+   "titleEn": "",
+   "summary": "浏览器扩展 YouTube Transcript Export 可将视频字幕导出为 TXT、Markdown、SRT、VTT 四种格式。实测发现 YouTube DOM 结构变更，旧选择器失效，新选择器针对 transcript-segment-view-model 进行适配。数据中心 IP 拉取字幕为空，需住宅 IP。Edge 商店审核中，Pro 版计划 19.9 元。",
+   "type": "浏览器插件",
+   "topic": "数据获取",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-18",
+   "score": 7.5,
+   "rel": 7,
+   "firstSeen": "2026-11-18"
   },
   {
    "url": "https://www.v2ex.com/t/1257277#reply0",
@@ -140,6 +238,20 @@
    "score": 8.2,
    "rel": 8,
    "firstSeen": "2026-11-15"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1257836#reply0",
+   "title": "ConvoExport：把一条 ChatGPT / Claude 对话导出成 Markdown、DOCX 或打印版",
+   "titleEn": "",
+   "summary": "ConvoExport 是 Edge 浏览器扩展，将 ChatGPT/Claude 对话导出为 Markdown、DOCX 或打印版，保留角色顺序。实测 14 回合对话导出 6KB，5 回合导出 30KB，发现页面加载后需等待 30 秒水合完成才能正确识别角色。Claude 适配器因 Cloudflare 拦截暂未真站实测。本地运行无数据上传。",
+   "type": "浏览器插件",
+   "topic": "工具开发",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-18",
+   "score": 7.4,
+   "rel": 8,
+   "firstSeen": "2026-11-18"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1xy2xw0/speeku_a_fully_offline_brazilian_portuguese/",
@@ -266,6 +378,20 @@
    "score": 9.7,
    "rel": 9,
    "firstSeen": "2026-11-08"
+  },
+  {
+   "url": "https://www.mdkit.ai",
+   "title": "MDKit：跨平台的 AI 技能文件共享与管理菜单栏应用",
+   "titleEn": "Show HN: Dropbox for AI Skill Files",
+   "summary": "开发者构建 mdkit 菜单栏应用，用于在云端存储、版本控制和分享 AI 技能 Markdown 文件。支持通过邮件共享并设置查看或编辑权限，目前处于测试阶段，免费支持 Windows 和 Mac 系统。",
+   "type": "桌面工具",
+   "topic": "效率工具",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-18",
+   "score": 6.9,
+   "rel": 7,
+   "firstSeen": "2026-11-18"
   },
   {
    "url": "https://www.v2ex.com/t/1256579#reply0",
@@ -688,34 +814,6 @@
    "firstSeen": "2026-11-07"
   },
   {
-   "url": "https://www.reddit.com/r/SideProject/comments/1xtv5kh/my_side_project_finds_clients_for_freelancers/",
-   "title": "自由职业者客户匹配工具：LLM 区分买卖方，95 页实战",
-   "titleEn": "My side project finds clients for freelancers. Comment your service and I'll run it free (95 done by hand, some things broke)",
-   "summary": "使用 Laravel + Livewire + Chrome 扩展 + LLM 构建的匹配工具。LLM 用于过滤帖子，区分“出售服务”与“购买需求”。开发者手动测试 95 个页面，发现 AI 在理解“一次性佣金”等语境及细分领域匹配上存在明显误判。",
-   "type": "效率工具",
-   "topic": "行业应用",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-11-12",
-   "score": 6.8,
-   "rel": 7,
-   "firstSeen": "2026-11-12"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1256285#reply0",
-   "title": "写了个本地安全提取 ChatGPT Account ID 的油猴脚本，避免直接复制 /api/auth/session 泄露完整 Token",
-   "titleEn": "",
-   "summary": "发布本地油猴脚本安全提取 ChatGPT 账户 ID，避免直接复制 API 接口导致 Token 泄露。仓库附带针对 OpenAI 新套餐策略的额度计算、卡片风控排查指南及 Python 连接测试工具，供用户自查订阅异常。",
-   "type": "浏览器插件",
-   "topic": "安全脚本",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-11-12",
-   "score": 6.8,
-   "rel": 6,
-   "firstSeen": "2026-11-12"
-  },
-  {
    "url": "https://github.com/SafeScript/safescript",
    "title": "SafeScript：用于执行不可信代码的安全 JavaScript 子集",
    "titleEn": "Show HN: SafeScript, a safe version of JavaScript for executing untrusted code",
@@ -910,20 +1008,6 @@
    "score": 8.3,
    "rel": 8,
    "firstSeen": "2026-11-04"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1255659#reply0",
-   "title": "为了和邻居拼山姆，我用 AI 做了个小程序",
-   "titleEn": "",
-   "summary": "利用 AI 辅助开发微信小程序“拼拼账单”，解决山姆拼单中物品认领、费用均摊及收货提醒痛点，支持限购设置与自动分账计算，认证费 30 元，一周内完成上线。",
-   "type": "移动 App",
-   "topic": "Agent 框架",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-11-10",
-   "score": 6.8,
-   "rel": 6,
-   "firstSeen": "2026-11-10"
   },
   {
    "url": "https://www.v2ex.com/t/1255104#reply0",
@@ -1136,34 +1220,6 @@
    "firstSeen": "2026-10-29"
   },
   {
-   "url": "https://www.v2ex.com/t/1255278#reply0",
-   "title": "[分享创造] 做了个把游戏录像整理成原型开发计划的小工具",
-   "titleEn": "",
-   "summary": "开源 CLI 工具 rea-game 利用 FFmpeg 提取游戏录像帧，辅助人工将观察转化为结构化 Markdown 报告，生成原型开发计划。项目采用 MIT 许可，本地运行无需 API，专注证据整理而非自动视频理解。",
-   "type": "CLI 工具",
-   "topic": "工程实践",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-11-08",
-   "score": 6.8,
-   "rel": 6,
-   "firstSeen": "2026-11-08"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1255258#reply0",
-   "title": "用 AI 做了个智能导航 咖喱饭导航",
-   "titleEn": "",
-   "summary": "基于 AI 的智能导航网站，自动抓取新提交网站并进行属性分析（归类、费用等），支持 AI 搜索推荐及用户评分。后台显示当日处理近 6000 次请求，AI 调用超 1400 次，主要基于 Token 消耗计费。",
-   "type": "Web 应用",
-   "topic": "AI 应用",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-11-08",
-   "score": 6.8,
-   "rel": 6,
-   "firstSeen": "2026-11-08"
-  },
-  {
    "url": "https://www.v2ex.com/t/1253933#reply0",
    "title": "[分享创造] 我让模型输出的元素清单长什么样，以及为什么必须先写清单再渲染",
    "titleEn": "",
@@ -1318,34 +1374,6 @@
    "firstSeen": "2026-11-03"
   },
   {
-   "url": "https://www.v2ex.com/t/1255089#reply0",
-   "title": "做了个 AI 视频小工具：一张照片生成「无边泳池火烈鸟」视频",
-   "titleEn": "",
-   "summary": "AI 视频工具 Infinity Pool，上传单人照片即可生成固定场景的“无边泳池火烈鸟”12 秒视频，支持 480p/720p，积分制收费，基于 TanStack Start。",
-   "type": "Web 应用",
-   "topic": "内容生成",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-11-07",
-   "score": 6.8,
-   "rel": 6,
-   "firstSeen": "2026-11-07"
-  },
-  {
-   "url": "https://www.reddit.com/r/SideProject/comments/1xprnq7/i_build_an_ai_marketing_tool_apple_ads_still/",
-   "title": "苹果广告消耗争议与AI营销工具Soclo",
-   "titleEn": "I build an AI marketing tool. Apple Ads still burned £1,069.88 of my launch budget in under two days.",
-   "summary": "英国独立创始人抱怨苹果广告两天消耗1069英镑仅带来15次安装，客服称预算非上限。同时推广其AI营销工具Soclo，可生成多平台广告内容，并提及另一款视频生成工具Brix36。",
-   "type": "Agent 工作流",
-   "topic": "商业运营",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-11-07",
-   "score": 6.8,
-   "rel": 6,
-   "firstSeen": "2026-11-07"
-  },
-  {
    "url": "https://www.v2ex.com/t/1253979#reply1",
    "title": "🚀我在安卓设备上复刻了豆包手机功能！最懂你的安卓 AI 助手 Kitten 来了！",
    "titleEn": "",
@@ -1442,34 +1470,6 @@
    "score": 8.3,
    "rel": 6,
    "firstSeen": "2026-10-31"
-  },
-  {
-   "url": "https://mattduran.dev/firedemo/fire/woolsey-2018",
-   "title": "浏览器内 WebGPU 模拟洛杉矶山火",
-   "titleEn": "Show HN: Simulating three LA wildfires in the browser with WebGPU",
-   "summary": "使用 WebGPU 在浏览器中运行山火模拟，重现 2018 年 Woolsey 大火。作为盲测研究而非预测工具，模型预估 0 栋建筑损毁，而实际记录为 1705 栋受损或毁坏，展示模型局限性与可视化能力。",
-   "type": "Web 应用",
-   "topic": "科学可视化",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-11-06",
-   "score": 6.8,
-   "rel": 6,
-   "firstSeen": "2026-11-06"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1254858#reply7",
-   "title": "花了 6 年搭了一个去中心化的社交网络作品",
-   "titleEn": "",
-   "summary": "开发者历经 6 年构建去中心化社交网络 Peers-Touch，采用联邦架构无中心服务器，支持端到端加密。项目涉及 Go/Rust 等 5 种语言，代码量超 80 万行，后期借助 Trae AI 辅助开发，已开源并预留 Agent 扩展接口。",
-   "type": "Web 应用",
-   "topic": "开源项目",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-11-06",
-   "score": 6.8,
-   "rel": 6,
-   "firstSeen": "2026-11-06"
   },
   {
    "url": "https://github.com/harisharandangi/textocad",
