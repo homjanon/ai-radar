@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-18 08:10",
+ "updated": "2026-11-19 08:10",
  "count": 300,
  "types": [
   "Agent 工作流",
@@ -44,6 +44,20 @@
    "firstSeen": "2026-11-18"
   },
   {
+   "url": "https://github.com/gabrielvfonseca/replica",
+   "title": "Replica：macOS 上为 AI Agent 提供毫秒级工作区隔离",
+   "titleEn": "Show HN: 100ms copy-on-write workspaces for AI agents on macOS",
+   "summary": "Replica 利用 APFS 写时复制机制，为 AI Agent 每次运行创建独立的 Git 检出副本，创建耗时仅毫秒级。自动清理机制限制磁盘占用，解决 macOS 上 Agent 频繁文件操作导致的性能瓶颈。",
+   "type": "CLI 工具",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-19",
+   "score": 8.4,
+   "rel": 9,
+   "firstSeen": "2026-11-19"
+  },
+  {
    "url": "https://www.v2ex.com/t/1256953#reply0",
    "title": "开源了 Browser Hands：让 Codex/Cursor 也能用上 Claude 官方插件级浏览器操作",
    "titleEn": "",
@@ -56,6 +70,20 @@
    "score": 9.7,
    "rel": 9,
    "firstSeen": "2026-11-14"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1258122#reply0",
+   "title": "[开源] 给 Sub2API 做了个降智巡检工具，支持自动剔除、冷却复测、通过恢复",
+   "titleEn": "",
+   "summary": "开源工具基于 Drool Router 二次开发，为 Sub2API 提供模型质量巡检。支持定时出题、自动剔除异常账号、冷却后复测恢复。内置逻辑、JSON 等测试题，支持 Docker Compose 独立部署，无需修改网关源码，可自定义巡检策略。",
+   "type": "CLI 工具",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-19",
+   "score": 8.2,
+   "rel": 8,
+   "firstSeen": "2026-11-19"
   },
   {
    "url": "https://www.v2ex.com/t/1257835#reply0",
@@ -254,6 +282,20 @@
    "firstSeen": "2026-11-18"
   },
   {
+   "url": "https://github.com/holmesworcester/karaoke-is-all-you-need/",
+   "title": "Karaoke Is All You Need：AI 生成卡拉 OK 演示",
+   "titleEn": "Show HN: Karaoke Is All You Need",
+   "summary": "作者利用 Astra 模型一次性生成可演唱的卡拉 OK 伴奏，仅需微调美学细节。项目包含 Agent 技能定义文件，展示了大模型在音乐音频生成任务中的一次成功率及具体应用路径。",
+   "type": "内容生成",
+   "topic": "AI 应用",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-19",
+   "score": 7.1,
+   "rel": 8,
+   "firstSeen": "2026-11-19"
+  },
+  {
    "url": "https://www.reddit.com/r/SideProject/comments/1xy2xw0/speeku_a_fully_offline_brazilian_portuguese/",
    "title": "Speeku：完全离线运行的巴西葡萄牙语口语课程",
    "titleEn": "Speeku - a fully offline Brazilian Portuguese course with a speaking check that runs on your phone",
@@ -280,6 +322,20 @@
    "score": 8.0,
    "rel": 8,
    "firstSeen": "2026-11-15"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1258109#reply4",
+   "title": "Skill Stow：一个尽量做得清晰、顺手的 macOS AI Skill 管理器",
+   "titleEn": "",
+   "summary": "Skill Stow 是 macOS 原生 AI Skill 管理器，基于 Go 开发。支持扫描 32 个 Agent 目录，统一视图管理 Claude Code 等工具的 Skill。具备权限检查、GitHub 导入、版本对比及本地日志统计功能，MIT 开源，无遥测，支持 macOS 12+。",
+   "type": "桌面工具",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-19",
+   "score": 7.0,
+   "rel": 8,
+   "firstSeen": "2026-11-19"
   },
   {
    "url": "https://github.com/voyager-so/vork",
@@ -3446,20 +3502,6 @@
    "firstSeen": "2026-10-09"
   },
   {
-   "url": "https://www.reddit.com/r/SideProject/comments/1x15v4u/i_created_an_opensource_version_of_dots/",
-   "title": "invisible_dots：开源可自托管 Dots 替代方案",
-   "titleEn": "I created an open-source version of Dots",
-   "summary": "针对 Grok 与 Dots 浏览器易被反爬检测且无法自托管的问题，开发者开源 invisible_dots，支持自托管并集成规避反爬检测的浏览器。",
-   "type": "Agent 工作流",
-   "topic": "开源权重",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-10-09",
-   "score": 6.9,
-   "rel": 7,
-   "firstSeen": "2026-10-09"
-  },
-  {
    "url": "https://www.v2ex.com/t/1246199#reply0",
    "title": "用 kite 让 Claude Code 自己开会话派活给别的 Claude Code，记录一下今天实际跑的情况",
    "titleEn": "",
@@ -3528,20 +3570,6 @@
    "score": 7.7,
    "rel": 8,
    "firstSeen": "2026-10-05"
-  },
-  {
-   "url": "https://github.com/dkremsa/claude-pacer",
-   "title": "Pacer：监测 AI 编码订阅剩余时长的工具",
-   "titleEn": "Show HN: Pacer – will your AI coding subscription last until the reset?",
-   "summary": "Pacer 是一个 GitHub 开源工具，旨在帮助用户监测 Claude 等 AI 编码订阅的使用限额，预判订阅周期内的额度耗尽时间，避免服务中断。",
-   "type": "CLI 工具",
-   "topic": "效率工具",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-08",
-   "score": 6.9,
-   "rel": 7,
-   "firstSeen": "2026-10-08"
   },
   {
    "url": "https://www.v2ex.com/t/1246075#reply0",
@@ -4184,34 +4212,6 @@
    "firstSeen": "2026-09-29",
    "score": 7.2,
    "rel": 7
-  },
-  {
-   "url": "https://www.reddit.com/r/SideProject/comments/1wtqx2o/i_made_a_visual_tour_of_my_codingagent_workspace/",
-   "title": "Mefi Studio：可视化编码 Agent 工作区",
-   "titleEn": "I made a visual tour of my coding-agent workspace. What would make the work easier to follow?",
-   "summary": "开发者展示 Mefi Studio，一个免费的 Windows 工作区，用于追踪编码 Agent 的任务、会话及决策点。界面支持从想法到执行的可视化流转，旨在降低用户理解 Agent 工作流的门槛。",
-   "type": "桌面工具",
-   "topic": "Agent 框架",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-09-30",
-   "score": 6.9,
-   "rel": 7,
-   "firstSeen": "2026-09-30"
-  },
-  {
-   "url": "https://www.reddit.com/r/SideProject/comments/1wu1izz/mindmap_ai_an_ai_mind_map_maker_that_now_renders/",
-   "title": "MindMap AI 支持 LaTeX 公式与 Markdown 渲染",
-   "titleEn": "MindMap AI - an AI mind map maker that now renders LaTeX formulas and Markdown notes on nodes",
-   "summary": "MindMap AI 上线新特性，允许在思维导图节点中直接渲染 LaTeX 公式和 Markdown 笔记。该功能适用于物理、化学等学科知识梳理，支持用户手动输入分支或 AI 生成内容，提升专业领域知识管理效率。",
-   "type": "Web 应用",
-   "topic": "Agent 框架",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-09-30",
-   "score": 6.9,
-   "rel": 7,
-   "firstSeen": "2026-09-30"
   }
  ]
 }
