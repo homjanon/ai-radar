@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-19 08:10",
+ "updated": "2026-11-20 08:10",
  "count": 300,
  "types": [
   "Agent 工作流",
@@ -86,6 +86,20 @@
    "firstSeen": "2026-11-19"
   },
   {
+   "url": "https://github.com/samvallad33/vestige",
+   "title": "Rust 编写的无 LLM 确定性 Agent 记忆引擎 Vestige",
+   "titleEn": "Show HN: A deterministic agent memory engine in Rust with no LLM",
+   "summary": "Vestige 是用 Rust 编写的确定性 Agent 记忆引擎，明确不使用 LLM。该项目旨在为 AI Agent 提供可预测、低延迟且可靠的内存管理机制，通过代码逻辑而非概率模型处理状态，开源地址在 GitHub 上。",
+   "type": "CLI 工具",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-20",
+   "score": 7.9,
+   "rel": 9,
+   "firstSeen": "2026-11-20"
+  },
+  {
    "url": "https://www.v2ex.com/t/1257835#reply0",
    "title": "基于 TwitCanva 做了个 AI 画布：右侧 Chat 可以直接改左侧画布，但两边有时会对不齐",
    "titleEn": "",
@@ -98,6 +112,20 @@
    "score": 8.4,
    "rel": 9,
    "firstSeen": "2026-11-18"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1258373#reply4",
+   "title": "自己部署 BiRefNet 做了个抠图网站，第一张图冷启动要等十几秒",
+   "titleEn": "",
+   "summary": "开发者基于 BiRefNet 模型部署抠图网站 clearbg.org，作为 remove.bg 关闭后的替代方案。支持 API 兼容与网页操作，实现边缘细化优化。目前主要挑战是 GPU 冷启动导致首图等待 11-17 秒，细物体抠图仍受限。",
+   "type": "Web 应用",
+   "topic": "模型与推理",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-20",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-11-20"
   },
   {
    "url": "https://sspai.com/post/119148",
@@ -126,6 +154,20 @@
    "score": 8.2,
    "rel": 8,
    "firstSeen": "2026-11-17"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1258361#reply1",
+   "title": "给 Google Antigravity 做了套状态监控套件：支持 2.0 桌面端右侧常驻面板 + CLI 状态栏（实时 tok/s 速度趋势、缓存命中率、剩余额度，100% 本地只读零风控）",
+   "titleEn": "",
+   "summary": "开发者为 Google Antigravity 工具开发本地状态监控套件 agy-statusline。支持实时显示 tok/s 速度、缓存命中率及额度余量，覆盖桌面端与 CLI，代码 100% 本地只读，解决模型响应延迟监控黑盒问题。",
+   "type": "CLI 工具",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-20",
+   "score": 7.4,
+   "rel": 8,
+   "firstSeen": "2026-11-20"
   },
   {
    "url": "https://www.v2ex.com/t/1256266#reply0",
@@ -168,6 +210,34 @@
    "score": 7.7,
    "rel": 8,
    "firstSeen": "2026-11-18"
+  },
+  {
+   "url": "https://starbright.quickthoughts.ca/",
+   "title": "15MB 浏览器端语音转录模型 Starbright",
+   "titleEn": "Show HN: 15MB transcription model that runs in the browser/device",
+   "summary": "Starbright 是一个 15MB 大小的语音转录模型，专为在浏览器或设备端直接运行设计。该模型旨在解决网站集成转录功能时的隐私和加载速度问题，实现本地化 AI 语音处理，目前仅有少量社区反馈。",
+   "type": "模型与推理",
+   "topic": "模型与推理",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-20",
+   "score": 7.2,
+   "rel": 8,
+   "firstSeen": "2026-11-20"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1258374#reply1",
+   "title": "给大家分享一下 Tarobird 的 Codex、Claude Code 、DSH 、AGY、KIMI 互相调度功能",
+   "titleEn": "",
+   "summary": "开源 IM 工具 Tarobird 展示多模型协作功能，支持 Codex、Claude Code 等模型互相调度。示例中通过指令让模型间进行多轮讨论并整合结果，解决单一模型思考局限，提升复杂任务处理质量，代码已开源。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-20",
+   "score": 7.2,
+   "rel": 8,
+   "firstSeen": "2026-11-20"
   },
   {
    "url": "https://www.v2ex.com/t/1256587#reply0",
@@ -3082,20 +3152,6 @@
    "firstSeen": "2026-10-07"
   },
   {
-   "url": "https://sugabots.ai/",
-   "title": "Sugabots：人与AI Agent协作群聊",
-   "titleEn": "Show HN: Sugabots – Group chats where your team and AI agents work together",
-   "summary": "开源协作工具，允许团队成员与多个AI Agent在同一聊天频道内协同工作，支持自由选择模型与工具，MIT协议且支持自托管。",
-   "type": "Agent 工作流",
-   "topic": "Agent 框架",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-14",
-   "score": 6.9,
-   "rel": 7,
-   "firstSeen": "2026-10-14"
-  },
-  {
    "url": "https://github.com/lateos-ai/reflex",
    "title": "Show HN：Reflex 冷启动 GGUF 推理引擎",
    "titleEn": "Show HN: Reflex – a cold-start GGUF engine that runs Aleph Alpha's Kolibri-1",
@@ -3178,20 +3234,6 @@
    "score": 8.7,
    "rel": 9,
    "firstSeen": "2026-10-06"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1248246#reply0",
-   "title": "用 Claude Opus 5.5 做了个动效视频工具，哪里不满意只改哪里，不用整条重新生成",
-   "titleEn": "",
-   "summary": "基于 Claude Opus 5.5 构建视频生成工具 Tellcut，支持通过局部编辑指令修改特定片段，保留其余部分不变，适用于产品宣传及演示视频制作。",
-   "type": "Web 应用",
-   "topic": "内容生成",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-13",
-   "score": 6.9,
-   "rel": 7,
-   "firstSeen": "2026-10-13"
   },
   {
    "url": "https://www.reddit.com/r/SideProject/comments/1x1zrng/we_did_it/",
@@ -3376,20 +3418,6 @@
    "firstSeen": "2026-10-06"
   },
   {
-   "url": "https://www.v2ex.com/t/1247738#reply0",
-   "title": "做了个让照片动起来的小工具，支持老照片、宠物和插画，欢迎 V 友试试",
-   "titleEn": "",
-   "summary": "发布 AI Photo Animator 网站，整合 Seedance、可灵等多款视频模型，支持通过提示词或模板将静态照片转化为短视频。提供积分制计费，涵盖老照片复活、宠物动态及风景流动等场景。",
-   "type": "Web 应用",
-   "topic": "内容生成",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-11",
-   "score": 6.9,
-   "rel": 7,
-   "firstSeen": "2026-10-11"
-  },
-  {
    "url": "https://www.v2ex.com/t/1246437#reply1",
    "title": "[开源] Precedent Loop：让 Agnet 换个会话也记得项目里踩过的坑",
    "titleEn": "",
@@ -3432,20 +3460,6 @@
    "firstSeen": "2026-10-05"
   },
   {
-   "url": "https://www.v2ex.com/t/1247482#reply0",
-   "title": "参考 OpenAI 工程博客的配图，做了个画技术图的 Agent Skill",
-   "titleEn": "",
-   "summary": "开发者从 OpenAI 工程博客提取配图风格，封装为 Agent Skill，支持生成白底细线技术架构图，提供 GitHub 源码及在线动画演示环境。",
-   "type": "Agent 工作流",
-   "topic": "Agent 框架",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-10",
-   "score": 6.9,
-   "rel": 7,
-   "firstSeen": "2026-10-10"
-  },
-  {
    "url": "https://rhyvenai.com",
    "title": "Rhyven：面向 Agent 的市场平台",
    "titleEn": "Show HN: Rhyven – A marketplace for agents",
@@ -3486,20 +3500,6 @@
    "score": 7.4,
    "rel": 8,
    "firstSeen": "2026-10-07"
-  },
-  {
-   "url": "https://wuwei.us/pages/page-json",
-   "title": "Page.json：跨平台 UI 表示开放标准",
-   "titleEn": "Show HN: Page.json – An open standard for representing UI",
-   "summary": "Page.json 将 UI 描述为 JSON 树，标准化跨应用界面数据，支持人类与 AI 编辑，可渲染为网页、移动端或富文本，解耦界面与模型供应商。",
-   "type": "其他",
-   "topic": "Agent 框架",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-09",
-   "score": 6.9,
-   "rel": 7,
-   "firstSeen": "2026-10-09"
   },
   {
    "url": "https://www.v2ex.com/t/1246199#reply0",
