@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-20 08:10",
+ "updated": "2026-11-21 08:10",
  "count": 300,
  "types": [
   "Agent 工作流",
@@ -15,6 +15,20 @@
   "移动 App"
  ],
  "cases": [
+  {
+   "url": "https://www.v2ex.com/t/1258680#reply1",
+   "title": "开源一个 Agent 长期记忆系统：262k 多跳 48.3%，高于 CAR 论文报告的 41%",
+   "titleEn": "",
+   "summary": "中医学学生开源 Agent 长期记忆系统 WhaleYing Memory，在无独显轻薄本上完成开发。其在 MemoryAgentBench 262k 多跳测试中取得 48.3% 准确率，显著优于 CAR 基线 41% 及其他主流记忆方案，单跳成绩亦达 93%。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-21",
+   "score": 10.0,
+   "rel": 9,
+   "firstSeen": "2026-11-21"
+  },
   {
    "url": "https://www.v2ex.com/t/1257839#reply0",
    "title": "[开源] 分享一个我做的跳广告插件，利用 AI 跳过 B 站视频内的广告",
@@ -168,6 +182,34 @@
    "score": 7.4,
    "rel": 8,
    "firstSeen": "2026-11-20"
+  },
+  {
+   "url": "https://xsquads.ai",
+   "title": "XSquads：知识工作者的自主 AI 代理团队",
+   "titleEn": "Show HN: XSquads– Set a mission, agents work on it autonomously in your harness",
+   "summary": "XSquads 定位为知识工作的生产力倍增器，允许用户设定任务后由多角色 AI 代理（如增长负责人、内容写手、线索研究员）在本地文件上自主执行。用户可审查结果，覆盖营销、运营等场景，旨在减轻重复性办公负担。",
+   "type": "Agent 工作流",
+   "topic": "Agent 工作流",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-21",
+   "score": 7.1,
+   "rel": 8,
+   "firstSeen": "2026-11-21"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1258656#reply0",
+   "title": "为了反向薅 A/羊毛，我做了个 claude 网页版 agent 的 PC 和 iOS 客户端",
+   "titleEn": "",
+   "summary": "开源项目 myco 通过监听 claude.ai 原生 Agent 消息并调用本地 CLI，实现了 PC 与 iOS 端控制。无需代理即可使用订阅额度，支持多 Agent 协作、远程终端及自动化工作流，MIT 协议开放，旨在绕过封号限制并利用云端算力。",
+   "type": "Web 应用",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-21",
+   "score": 7.0,
+   "rel": 7,
+   "firstSeen": "2026-11-21"
   },
   {
    "url": "https://www.v2ex.com/t/1256266#reply0",
@@ -2354,20 +2396,6 @@
    "firstSeen": "2026-10-25"
   },
   {
-   "url": "https://www.v2ex.com/t/1251588#reply0",
-   "title": "分享一个用 Rust 写的开源 2D CAD： CADCraft",
-   "titleEn": "",
-   "summary": "CADCraft 是一款基于 Rust 开发的开源 2D CAD 工具，支持多平台运行及 DWG/DXF 格式。其特色在于提供 MCP、JSON 控制和无头 CLI 接口，允许 AI Agent 直接创建图纸、检查实体并渲染截图。",
-   "type": "桌面工具",
-   "topic": "工程实践",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-25",
-   "score": 6.9,
-   "rel": 8,
-   "firstSeen": "2026-10-25"
-  },
-  {
    "url": "https://www.v2ex.com/t/1250158#reply0",
    "title": "[开源] 做了个本地 AI 小说写作工具，把伏笔和正文连起来",
    "titleEn": "",
@@ -2732,20 +2760,6 @@
    "firstSeen": "2026-10-12"
   },
   {
-   "url": "https://generativespotting.com/",
-   "title": "Gspot：自动检测语言框架的代码检查工具",
-   "titleEn": "Show HN: Gspot, a tool to lint gstack code",
-   "summary": "Gspot 能自动识别仓库中的 JS、TS、Python、Swift 等语言及框架，自动配置 Linter 和 Agent 规则，并支持模板分享。",
-   "type": "CLI 工具",
-   "topic": "工程实践",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-19",
-   "score": 6.9,
-   "rel": 7,
-   "firstSeen": "2026-10-19"
-  },
-  {
    "url": "https://www.v2ex.com/t/1247889#reply0",
    "title": "一张照片生成 Bulin 47 爆款 freestyle 视频：一个跑在 Cloudflare Workers 上的小项目复盘",
    "titleEn": "",
@@ -2898,20 +2912,6 @@
    "score": 9.0,
    "rel": 8,
    "firstSeen": "2026-10-10"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1249674#reply1",
-   "title": "肝了一周，把 Lovart 和 TapNow 的交互结合起来做了款产品",
-   "titleEn": "",
-   "summary": "开发者推出了名为YourArt的AI设计素材生成平台，融合了Lovart和TapNow的交互逻辑。该支持GPT Image 2.5等模型，主打按量付费无过期机制，解决了传统积分制痛点。",
-   "type": "内容生成",
-   "topic": "AI 应用",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-18",
-   "score": 6.9,
-   "rel": 8,
-   "firstSeen": "2026-10-18"
   },
   {
    "url": "https://www.v2ex.com/t/1247906#reply1",
