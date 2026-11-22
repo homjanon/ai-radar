@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-21 08:10",
+ "updated": "2026-11-22 08:10",
  "count": 300,
  "types": [
   "Agent 工作流",
@@ -28,6 +28,62 @@
    "score": 10.0,
    "rel": 9,
    "firstSeen": "2026-11-21"
+  },
+  {
+   "url": "https://keepplain.com/blame",
+   "title": "KeepPlain：追踪 AI Agent 代码生成会话",
+   "titleEn": "Show HN: Git blame for AI code, down to the agent session",
+   "summary": "KeepPlain 是一个 Git 扩展工具，能够将 AI 生成的代码行追溯至具体的 Agent 会话（如 Claude Code、Cursor 等）。通过 Git Hooks 注入会话 ID，用户可查看 Prompt、Agent 初始尝试及修改原因，个人使用免费。",
+   "type": "CLI 工具",
+   "topic": "开发工具",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-22",
+   "score": 8.7,
+   "rel": 9,
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "url": "https://github.com/Yelar/noclip",
+   "title": "2.11 亿参数 Backrooms 世界模型游戏引擎",
+   "titleEn": "Show HN: A playable world model of the Backrooms",
+   "summary": "使用 2.11 亿参数的 Transformer 作为游戏引擎，基于 440 小时 PyTorch 模拟数据训练。模型在预训练自编码器潜空间中通过流匹配生成帧，支持 NVIDIA GPU 运行，能根据输入绘制下一帧，灵感源自 Oasis Minecraft。",
+   "type": "模型与推理",
+   "topic": "模型发布",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-22",
+   "score": 8.7,
+   "rel": 9,
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1258819#reply0",
+   "title": "开源了一个纯本地桌面工具 Mingle：没有服务器，把你的 AI Agent 请进微信、飞书、Slack 等聊天软件",
+   "titleEn": "",
+   "summary": "MIT 开源桌面工具 Mingle 实现将本地 AI Agent 接入微信、飞书等聊天软件。零服务器架构，数据存本机，支持跨 IM 共享同一 Agent 记忆，可并行处理任务并保持即时响应，目前处于 v0.4.8 早期阶段。",
+   "type": "桌面工具",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-22",
+   "score": 8.7,
+   "rel": 8,
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "url": "https://jurakovic.github.io/passdroid/",
+   "title": "复活 2012 年开源密码管理器 Passdroid",
+   "titleEn": "Show HN: Reviving a 2012 open-source password manager for modern Android",
+   "summary": "开发者将 2012 年的 Android 密码管理器 Passdroid 移植至现代环境，新增 TOTP 双因素认证与指纹解锁功能。应用无网络权限，采用 AES-256 加密与 60 万次迭代 PBKDF2，大部分代码由 Claude Code 生成，设计决策由人工把控。",
+   "type": "移动 App",
+   "topic": "开源应用",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-22",
+   "score": 8.7,
+   "rel": 8,
+   "firstSeen": "2026-11-22"
   },
   {
    "url": "https://www.v2ex.com/t/1257839#reply0",
@@ -98,6 +154,20 @@
    "score": 8.2,
    "rel": 8,
    "firstSeen": "2026-11-19"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1258818#reply1",
+   "title": "同时开着三个 AI Agent，它们轮流等我点「同意」，于是我做了个统一通知的手表 App",
+   "titleEn": "",
+   "summary": "开发者制作 xalfred 手表及手机 App，作为 AI Agent 统一通知平台。通过 MCP 协议接收多个 Agent 的状态、审批请求及报错，支持在 Apple Watch 上完成同意、选择等操作，解决多 Agent 并行时的注意力瓶颈。",
+   "type": "移动 App",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-22",
+   "score": 7.4,
+   "rel": 8,
+   "firstSeen": "2026-11-22"
   },
   {
    "url": "https://github.com/samvallad33/vestige",
@@ -1990,20 +2060,6 @@
    "firstSeen": "2026-10-30"
   },
   {
-   "url": "https://www.v2ex.com/t/1253018#reply1",
-   "title": "因为想统一看自己全部券商账户，我做了一个叫 Catfolio 持仓追踪 iOS App",
-   "titleEn": "",
-   "summary": "开发者推出 iOS 应用 Catfolio，聚合多券商账户数据，无需手动录入。支持计算 TWR/MWR 收益，提供 ETF 穿透查看单股敞口，并内置 AI 助手及 MCP 服务接口，可连接 Claude 等工具。",
-   "type": "移动 App",
-   "topic": "移动应用",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-30",
-   "score": 6.9,
-   "rel": 5,
-   "firstSeen": "2026-10-30"
-  },
-  {
    "url": "https://huggingface.co/spaces/black-forest-labs/flux-3-image-klein",
    "title": "Spaces 应用：black-forest-labs/flux-3-image-klein",
    "titleEn": "",
@@ -2172,20 +2228,6 @@
    "firstSeen": "2026-10-20"
   },
   {
-   "url": "https://www.v2ex.com/t/1252045#reply1",
-   "title": "支持 vim 风格操作的 V2EX 阅读页",
-   "titleEn": "",
-   "summary": "基于 AI Vibe Coding 开发的 V2EX 论坛轻量阅读页，支持 Vim 键位浏览、AI 总结及屏蔽功能。全栈由 DeepSeek-v4.1-flash 在 5 小时内生成，后端使用 Go，前端迭代耗时较长，项目开源且附完整会话记录。",
-   "type": "Web 应用",
-   "topic": "工程实践",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-27",
-   "score": 6.9,
-   "rel": 7,
-   "firstSeen": "2026-10-27"
-  },
-  {
    "url": "https://www.v2ex.com/t/1250433#reply3",
    "title": "EdgeEver：全端开源知识库，支持 Cloudflare / Docker 自托管，原生打通 MCP 与 ACP 联动",
    "titleEn": "",
@@ -2326,34 +2368,6 @@
    "firstSeen": "2026-10-21"
   },
   {
-   "url": "https://huggingface.co/coolcoder613/omnivoice-latin-lora-1",
-   "title": "Show HN: 基于微调 OmniVoice 的古拉丁语 TTS",
-   "titleEn": "Show HN: Classical Latin TTS",
-   "summary": "开发者微调了 OmniVoice 模型以实现古拉丁语的恢复古典发音。该方案是目前最成功的拉丁语 TTS 尝试之一，已在 Hugging Face Spaces 上提供演示，展示了语音合成在低资源语言上的应用效果。",
-   "type": "模型与推理",
-   "topic": "语音模型",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-26",
-   "score": 6.9,
-   "rel": 7,
-   "firstSeen": "2026-10-26"
-  },
-  {
-   "url": "https://github.com/trevorah/simdown",
-   "title": "Simdown：利用 SIMD 指令加速 Markdown 解析至 1GB/s",
-   "titleEn": "Show HN: simdown – use SIMD to parse Markdown at ~1 GB/s",
-   "summary": "Simdown 是一个 Go 语言编写的 Markdown 解析器，利用 ARM64 (NEON) 的 SIMD 指令将解析速度提升至约 1GB/s。在回退路径下仍比 cmark 和 goldmark 快，其设计参考了 SIMD JSON 解析论文。",
-   "type": "CLI 工具",
-   "topic": "性能优化",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-26",
-   "score": 6.9,
-   "rel": 5,
-   "firstSeen": "2026-10-26"
-  },
-  {
    "url": "https://www.reddit.com/r/SideProject/comments/1xc348y/were_building_ai_agents_that_run_a_solo_businesss/",
    "title": "Braind - 面向微型企业的 AI 后台代理",
    "titleEn": "We’re building AI agents that run a solo business’s back office, but nothing goes out without your OK. Looking for honest feedback on the idea + page",
@@ -2380,20 +2394,6 @@
    "score": 8.2,
    "rel": 8,
    "firstSeen": "2026-10-20"
-  },
-  {
-   "url": "https://deepsearch.ing/",
-   "title": "DeepSearch：基于 DeepSeek API 的自托管搜索引擎",
-   "titleEn": "Show HN: DeepSearch – Search engine built on DeepSeek API",
-   "summary": "开源项目 DeepSearch 基于 DeepSeek 搜索 API 构建网页搜索引擎，支持时间、语言及精确匹配等高级操作符。用户仅需配置本地凭据即可使用，支持 Switch 到 Ask 模式获取生成式回答。项目已开源供自托管，开发者建议下一步构建本地记忆客户端。",
-   "type": "Web 应用",
-   "topic": "开源项目",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-25",
-   "score": 6.9,
-   "rel": 7,
-   "firstSeen": "2026-10-25"
   },
   {
    "url": "https://www.v2ex.com/t/1250158#reply0",
