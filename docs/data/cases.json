@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-22 08:10",
+ "updated": "2026-11-23 08:10",
  "count": 300,
  "types": [
   "Agent 工作流",
@@ -28,6 +28,20 @@
    "score": 10.0,
    "rel": 9,
    "firstSeen": "2026-11-21"
+  },
+  {
+   "url": "https://github.com/ltrgoddard/gall",
+   "title": "Gall：在24GB内存M2上运行Inkling 2 Mini的推理引擎",
+   "titleEn": "Show HN: Gall – Inkling 2 Mini on 24GB M2, frees RAM between messages",
+   "summary": "作者自研Gall推理引擎，通过Q3量化和“响应后卸载模型保留KV缓存”策略，在24GB RAM的MacBook Air上运行Inkling 2 Mini，空闲时仅占50MB内存，实现近乎即时响应。",
+   "type": "其他",
+   "topic": "模型与推理",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-23",
+   "score": 8.7,
+   "rel": 9,
+   "firstSeen": "2026-11-23"
   },
   {
    "url": "https://keepplain.com/blame",
@@ -84,6 +98,62 @@
    "score": 8.7,
    "rel": 8,
    "firstSeen": "2026-11-22"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1258961#reply1",
+   "title": "写了个生成插画头像的 Skill：统一画风，换构图和配色（附效果图）",
+   "titleEn": "",
+   "summary": "开源 Skill 工具 illustration-logo-skill 通过约束流程与画面风格，利用 Agent 生成统一画风的人物插画。支持多张独立输出，涵盖不同构图与配色，适用于头像及项目标识设计。",
+   "type": "内容生成",
+   "topic": "Agent 工作流",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-23",
+   "score": 7.8,
+   "rel": 8,
+   "firstSeen": "2026-11-23"
+  },
+  {
+   "url": "https://github.com/buberlo/aaf-gate",
+   "title": "Aaf-gate：现有智能体运行时的策略门控与紧急停止开关",
+   "titleEn": "Show HN: Aaf-gate – policy gate and kill switch for existing agent runtimes",
+   "summary": "Aaf-gate是一个确定性策略层，位于工具调用之前，支持按工具类（读、写、草稿）允许或拒绝操作，并提供紧急停止和防篡改审计，主要适配Hermes Agent。",
+   "type": "其他",
+   "topic": "安全合规",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-23",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-11-23"
+  },
+  {
+   "url": "https://trixapp.ai/",
+   "title": "Trix：显示各编码智能体状态的终端工作区",
+   "titleEn": "Show HN:Trix - A terminal workspace that shows which coding agent needs you",
+   "summary": "Trix是一款终端工具，支持并排运行Claude Code、Codex等多个编码智能体，通过智能体主动上报状态而非屏幕抓取，直观显示谁在运行、谁在等待权限或已完成。",
+   "type": "桌面工具",
+   "topic": "工具生态",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-23",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-11-23"
+  },
+  {
+   "url": "https://github.com/sebion7125/pi-protokoll",
+   "title": "Pi-protokoll：基于逐轮协议的长会话快速压缩扩展",
+   "titleEn": "Show HN: Pi-protokoll – Per-turn protocols for fast compaction in Pi",
+   "summary": "Pi-protokoll是Pi的扩展，在每轮对话结束时由模型生成短协议，压缩时基于分层协议而非重读全部历史，解决了本地模型长会话压缩慢、上下文过载的问题。",
+   "type": "Agent 工作流",
+   "topic": "工程实践",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-23",
+   "score": 7.5,
+   "rel": 7,
+   "firstSeen": "2026-11-23"
   },
   {
    "url": "https://www.v2ex.com/t/1257839#reply0",
@@ -198,6 +268,20 @@
    "firstSeen": "2026-11-18"
   },
   {
+   "url": "https://www.v2ex.com/t/1258970#reply6",
+   "title": "用 Deepseek 从 0 开始 3 小时，造了个轮子，iOS 代理工具",
+   "titleEn": "",
+   "summary": "作者利用 DeepSeek 辅助在 3 小时内开发并上架了 iOS 代理工具 wproxy，支持 VMess、VLESS、Trojan、Shadowsocks 及 SOCKS5 协议，具备全局与分段路由功能，无广告且数据本地化。",
+   "type": "移动 App",
+   "topic": "AI 编程案例",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-23",
+   "score": 7.0,
+   "rel": 7,
+   "firstSeen": "2026-11-23"
+  },
+  {
    "url": "https://www.v2ex.com/t/1258373#reply4",
    "title": "自己部署 BiRefNet 做了个抠图网站，第一张图冷启动要等十几秒",
    "titleEn": "",
@@ -224,6 +308,20 @@
    "score": 8.2,
    "rel": 9,
    "firstSeen": "2026-11-18"
+  },
+  {
+   "url": "https://thegit.ai/tour",
+   "title": "TheGitAI：支持计算机控制的跨平台CLI/桌面智能体",
+   "titleEn": "Show HN: TheGitAI CLI/Desktop Agent with Computer Control on Linux (Wayland+X11)",
+   "summary": "TheGitAI是支持CLI和桌面的AI编码智能体，具备直接操作桌面应用的能力，支持在Linux/macOS独立后台屏幕运行，实现人与机器同时使用电脑而互不干扰。",
+   "type": "桌面工具",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-23",
+   "score": 6.9,
+   "rel": 7,
+   "firstSeen": "2026-11-23"
   },
   {
    "url": "https://standardsupport.dev/",
@@ -618,20 +716,6 @@
    "firstSeen": "2026-11-08"
   },
   {
-   "url": "https://www.mdkit.ai",
-   "title": "MDKit：跨平台的 AI 技能文件共享与管理菜单栏应用",
-   "titleEn": "Show HN: Dropbox for AI Skill Files",
-   "summary": "开发者构建 mdkit 菜单栏应用，用于在云端存储、版本控制和分享 AI 技能 Markdown 文件。支持通过邮件共享并设置查看或编辑权限，目前处于测试阶段，免费支持 Windows 和 Mac 系统。",
-   "type": "桌面工具",
-   "topic": "效率工具",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-11-18",
-   "score": 6.9,
-   "rel": 7,
-   "firstSeen": "2026-11-18"
-  },
-  {
    "url": "https://www.v2ex.com/t/1256579#reply0",
    "title": "用了这么久 Codex，你知道哪个项目、哪个会话最吃 Token 吗？",
    "titleEn": "",
@@ -772,20 +856,6 @@
    "firstSeen": "2026-11-10"
   },
   {
-   "url": "https://www.v2ex.com/t/1257110#reply0",
-   "title": "一个人做了个照片对口型唱 Rap 的小站，踩了不少坑，求拍砖",
-   "titleEn": "",
-   "summary": "独立开发者利用 Seedance 2.0 视频模型和 TanStack Start 架构，上线了照片对口型生成 Rap 视频的网站，支持双人对唱，出片耗时 2-4 分钟。",
-   "type": "Web 应用",
-   "topic": "内容生成",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-11-15",
-   "score": 6.9,
-   "rel": 7,
-   "firstSeen": "2026-11-15"
-  },
-  {
    "url": "https://www.reddit.com/r/SideProject/comments/1xrbext/nodeai_v310_ga_is_live/",
    "title": "NodeAI V3.1.0：提供自主代理执行控制权与审计功能的架构",
    "titleEn": "NodeAI V3.1.0 GA is live",
@@ -912,20 +982,6 @@
    "firstSeen": "2026-11-06"
   },
   {
-   "url": "https://www.v2ex.com/t/1256621#reply0",
-   "title": "大家好，最近上线了一个自己写的 Android App，叫「知己」。",
-   "titleEn": "",
-   "summary": "「知己」是本地化 AI 助手 App，整合待办、记账、笔记等功能，支持智能体模式调用本地工具，兼容 OpenAI 接口，数据本地存储。",
-   "type": "移动 App",
-   "topic": "移动应用",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-11-13",
-   "score": 6.9,
-   "rel": 7,
-   "firstSeen": "2026-11-13"
-  },
-  {
    "url": "https://ajx.dev/",
    "title": "AJX：AI Agent产品可用性测试工具",
    "titleEn": "Show HN: AJX – Find out where AI agents get stuck using your product",
@@ -996,34 +1052,6 @@
    "firstSeen": "2026-11-07"
   },
   {
-   "url": "https://www.v2ex.com/t/1256286#reply1",
-   "title": "做了个在线去人声的工具，从原曲里拆出伴奏和人声两轨",
-   "titleEn": "",
-   "summary": "开发在线工具 VoiceRemover，基于 htdemucs 模型分离人声与伴奏，支持 150 秒内出结果。提供去人声、提取人声及去背景音乐三个入口，免费用户每日限 1 首，付费订阅支持高额度与无水印导出。",
-   "type": "Web 应用",
-   "topic": "音频处理",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-11-12",
-   "score": 6.9,
-   "rel": 5,
-   "firstSeen": "2026-11-12"
-  },
-  {
-   "url": "https://github.com/adeptads/agent-skills",
-   "title": "AdeptAds：面向 Google Ads 的 Agent 技能与插件",
-   "titleEn": "Show HN: Agent skill and Claude/Codex plugins for Google Ads campaigns",
-   "summary": "开源项目提供 Claude Code 和 Codex 插件，允许 AI Agent 直接构建 Google Ads 广告活动。用户只需提供简报，Agent 即可自动执行投放逻辑，无需手动切换广告后台标签页，实现了从创意到投放的自动化闭环。",
-   "type": "Agent 工作流",
-   "topic": "Agent 框架",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-11-12",
-   "score": 6.9,
-   "rel": 7,
-   "firstSeen": "2026-11-12"
-  },
-  {
    "url": "https://www.reddit.com/r/SideProject/comments/1xoxxr2/agentofficehq_an_opensource_workspace_to_monitor/",
    "title": "AgentOfficeHQ：多智能体工作流监控开源工作台",
    "titleEn": "AgentOfficeHQ: An open-source workspace to monitor and visualize multi-agent workflows",
@@ -1092,20 +1120,6 @@
    "score": 9.3,
    "rel": 8,
    "firstSeen": "2026-11-02"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1255935#reply0",
-   "title": "自己攒了个 AI 说唱站，从 topic 到词、歌、视频都能走",
-   "titleEn": "",
-   "summary": "AI 说唱生成站 Rapvio 支持从主题到歌词、MP3 及 10-15 秒短视频的全流程生成。对比测试了 MiniMax、Kling 等视频模型，指出 MiniMax h3 性价比最高。",
-   "type": "Web 应用",
-   "topic": "内容生成",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-11-11",
-   "score": 6.9,
-   "rel": 7,
-   "firstSeen": "2026-11-11"
   },
   {
    "url": "https://www.v2ex.com/t/1254571#reply1",
@@ -1820,20 +1834,6 @@
    "score": 8.2,
    "rel": 9,
    "firstSeen": "2026-10-30"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1254270#reply1",
-   "title": "RanklyBee：把 SEO 内容、外链、AI 可见度和获客线索放进一个平台",
-   "titleEn": "",
-   "summary": "RanklyBee 集成内容日历、外链追踪、AI 搜索可见度监测及 Search Console 数据分析，支持发布至主流 CMS，提供 MCP 服务接入 Claude，并自动发现社区购买意向话题。",
-   "type": "Web 应用",
-   "topic": "产品发布",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-11-04",
-   "score": 6.9,
-   "rel": 7,
-   "firstSeen": "2026-11-04"
   },
   {
    "url": "https://www.v2ex.com/t/1253333#reply0",
