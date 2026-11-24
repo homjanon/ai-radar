@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-23 08:10",
+ "updated": "2026-11-24 08:10",
  "count": 300,
  "types": [
   "Agent 工作流",
@@ -30,6 +30,20 @@
    "firstSeen": "2026-11-21"
   },
   {
+   "url": "https://github.com/kunko-ai-labs/judge-audit",
+   "title": "Judge-audit：AI 评判器校准审计开源工具",
+   "titleEn": "Show HN: Judge-audit – open-source calibration audits for AI judges",
+   "summary": "开源 Python 工具，将 AI 模型的置信度转化为可辩护的决策边界，提供校准审计功能，支持 Apache-2.0 协议，CI/CD 集成完善，适用于 LLM 评估场景。",
+   "type": "其他",
+   "topic": "模型评估",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-24",
+   "score": 8.7,
+   "rel": 8,
+   "firstSeen": "2026-11-24"
+  },
+  {
    "url": "https://github.com/ltrgoddard/gall",
    "title": "Gall：在24GB内存M2上运行Inkling 2 Mini的推理引擎",
    "titleEn": "Show HN: Gall – Inkling 2 Mini on 24GB M2, frees RAM between messages",
@@ -42,6 +56,20 @@
    "score": 8.7,
    "rel": 9,
    "firstSeen": "2026-11-23"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1259274#reply6",
+   "title": "[开源] 语阅 Yuyue：用 Rust + 原生界面写的本地看书、听书软件，免登录无广告",
+   "titleEn": "",
+   "summary": "开源本地阅读软件 Yuyue 发布 0.1.0 版，基于 Rust 和原生 UI，支持多格式电子书及离线 TTS。特色功能包括无缝视听切换、广播剧模式及防剧透 AI 问答，数据本地存储，无广告无后台。",
+   "type": "桌面工具",
+   "topic": "开源工具",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-24",
+   "score": 8.3,
+   "rel": 6,
+   "firstSeen": "2026-11-24"
   },
   {
    "url": "https://keepplain.com/blame",
@@ -112,6 +140,20 @@
    "score": 7.8,
    "rel": 8,
    "firstSeen": "2026-11-23"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1259258#reply0",
+   "title": "[分享创造] 做了套给 AI CLI 用的 iTerm2 配置，先解决日志太吵",
+   "titleEn": "",
+   "summary": "针对 AI Agent 长任务输出，优化 iTerm2 配置：通过 Triggers 对 ERROR/WARN 等关键词自动染色，映射 Shift+Enter 用于多行输入，支持 Cmd-click 解析路径和 Git SHA。旨在提升终端监控 Agent 任务的效率。",
+   "type": "CLI 工具",
+   "topic": "工程实践",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-24",
+   "score": 7.5,
+   "rel": 7,
+   "firstSeen": "2026-11-24"
   },
   {
    "url": "https://github.com/buberlo/aaf-gate",
@@ -308,20 +350,6 @@
    "score": 8.2,
    "rel": 9,
    "firstSeen": "2026-11-18"
-  },
-  {
-   "url": "https://thegit.ai/tour",
-   "title": "TheGitAI：支持计算机控制的跨平台CLI/桌面智能体",
-   "titleEn": "Show HN: TheGitAI CLI/Desktop Agent with Computer Control on Linux (Wayland+X11)",
-   "summary": "TheGitAI是支持CLI和桌面的AI编码智能体，具备直接操作桌面应用的能力，支持在Linux/macOS独立后台屏幕运行，实现人与机器同时使用电脑而互不干扰。",
-   "type": "桌面工具",
-   "topic": "Agent 框架",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-11-23",
-   "score": 6.9,
-   "rel": 7,
-   "firstSeen": "2026-11-23"
   },
   {
    "url": "https://standardsupport.dev/",
@@ -3544,20 +3572,6 @@
    "firstSeen": "2026-10-05"
   },
   {
-   "url": "https://www.v2ex.com/t/1246848#reply1",
-   "title": "分享个给 AI 写页面用的 React 组件库",
-   "titleEn": "",
-   "summary": "开源 React Auto Components 组件库，专为 AI 生成前端页面设计。封装表单、表格及增删改查功能，提供 AI 可读文档及错误码，固定常用交互细节，减少 AI 生成重复 JSX 代码，降低 Token 消耗。",
-   "type": "Web 应用",
-   "topic": "开源生态",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-08",
-   "score": 7.0,
-   "rel": 7,
-   "firstSeen": "2026-10-08"
-  },
-  {
    "url": "https://www.v2ex.com/t/1246418#reply0",
    "title": "开源 Bibo：成本极低，内置笔记、文件、任务和日历的 personal agent",
    "titleEn": "",
@@ -3877,20 +3891,6 @@
    "lastSeen": "2026-09-30",
    "score": 8.0,
    "rel": 8,
-   "firstSeen": "2026-09-30"
-  },
-  {
-   "url": "https://huggingface.co/spaces/Qwen/Qwen-Image-2.1",
-   "title": "Spaces 应用：Qwen/Qwen-Image-2.1",
-   "titleEn": "",
-   "summary": "Hugging Face Spaces 官方上线 Qwen-Image-2.1 模型应用。采用 Gradio 技术栈，获得 360 点赞。该应用提供 Qwen 系列最新图像生成模型的在线推理服务，便于开发者与用户直接体验模型在图像生成任务上的性能，属于官方开源模型演示。",
-   "type": "Web 应用",
-   "topic": "模型发布",
-   "block": "HF Spaces",
-   "src": "apps",
-   "lastSeen": "2026-10-04",
-   "score": 7.0,
-   "rel": 9,
    "firstSeen": "2026-09-30"
   },
   {
