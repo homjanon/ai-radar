@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-24 08:10",
+ "updated": "2026-11-25 08:10",
  "count": 300,
  "types": [
   "Agent 工作流",
@@ -42,6 +42,20 @@
    "score": 8.7,
    "rel": 8,
    "firstSeen": "2026-11-24"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1259556#reply0",
+   "title": "[开源] Antigravity 上下文与 Token 统计面板 Pulse v0.10.0（全新毛玻璃 UI / 一键汉化 / 免 TUN 切代理）",
+   "titleEn": "",
+   "summary": "开源工具 Pulse v0.10.0 为 Antigravity 提供上下文监控，支持对话压缩标注、模型花费排行、CSV 导出及 12 个本地代理节点切换。",
+   "type": "浏览器插件",
+   "topic": "效率工具",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-25",
+   "score": 8.2,
+   "rel": 7,
+   "firstSeen": "2026-11-25"
   },
   {
    "url": "https://github.com/ltrgoddard/gall",
@@ -126,6 +140,34 @@
    "score": 8.7,
    "rel": 8,
    "firstSeen": "2026-11-22"
+  },
+  {
+   "url": "https://agentde.github.io/agentde/",
+   "title": "AgentDE 原生 macOS 智能体管理应用",
+   "titleEn": "Show HN: AgentDE, small and native macOS app for agent-heavy dev work",
+   "summary": "开源 macOS 原生应用，专为 Claude Code 和 Codex 设计，通过读取会话注册表展示多 Agent 状态（工作中/需介入/完成），支持快捷键快速跳转。",
+   "type": "桌面工具",
+   "topic": "Agent 框架",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-25",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-11-25"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1259583#reply0",
+   "title": "朴捷——协同办公的新方式",
+   "titleEn": "",
+   "summary": "朴捷 2.0 上线，主打项目协同与管理个人 Agent 结合，通过云端共享上下文、操作审计及权限控制，解决团队 Agent 协作与监管问题。",
+   "type": "效率工具",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-25",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-11-25"
   },
   {
    "url": "https://www.v2ex.com/t/1258961#reply1",
@@ -2228,20 +2270,6 @@
    "firstSeen": "2026-10-25"
   },
   {
-   "url": "https://github.com/VenoM9078/gradientdeck-skill",
-   "title": "GradientDeck：设计技能插件",
-   "titleEn": "Show HN: GradientDeck – a design skill for coding agents",
-   "summary": "GradientDeck 是一个 MIT 协议的开源设计技能包，通过预定义的设计规范，解决 AI 生成网页千篇一律（如紫色渐变）的问题。",
-   "type": "其他",
-   "topic": "工程实践",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-27",
-   "score": 7.0,
-   "rel": 7,
-   "firstSeen": "2026-10-27"
-  },
-  {
    "url": "https://www.reddit.com/r/SideProject/comments/1xaa3io/i_built_vibio_desktop_basically_claude_code_and/",
    "title": "Vibio Desktop：多 Agent 协同工作的 macOS 应用",
    "titleEn": "I built Vibio Desktop, basically Claude Code and Codex agents working as a crew (Mac, free early access)",
@@ -2450,20 +2478,6 @@
    "score": 9.2,
    "rel": 9,
    "firstSeen": "2026-10-16"
-  },
-  {
-   "url": "https://github.com/Arthur031221/AiSniff",
-   "title": "AiSniff：基于规则识别AI写作模式的文本分析工具",
-   "titleEn": "Show HN: AiSniff, underline the phrases in a text that read like AI wrote them",
-   "summary": "工具AiSniff通过JSON规则库识别中英文AI写作模式，提供Web/CLI/Agent技能接口，不依赖大模型调用，能标记特征短语并建议改写。",
-   "type": "CLI 工具",
-   "topic": "内容生成",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-24",
-   "score": 7.0,
-   "rel": 7,
-   "firstSeen": "2026-10-24"
   },
   {
    "url": "https://github.com/XAGI-Lab/melra",
@@ -2828,20 +2842,6 @@
    "score": 8.0,
    "rel": 8,
    "firstSeen": "2026-10-14"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1249654#reply0",
-   "title": "Pebrel v2.2.1&2.2.2 更好看的 agent 终端 UI 界面及更好看的 markdown",
-   "titleEn": "",
-   "summary": "Pebrel是一个Agent终端UI项目，v2.2版本更新了界面字体、终端搜索、Markdown美化及文件目录粘性设计。旨在弥补Windows终端体验不足，提供类似Mac的分屏与命令补齐功能。",
-   "type": "CLI 工具",
-   "topic": "开源项目",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-10-18",
-   "score": 7.0,
-   "rel": 9,
-   "firstSeen": "2026-10-18"
   },
   {
    "url": "https://github.com/aisixteen/fantastic",
