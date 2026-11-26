@@ -401,8 +401,15 @@ def main():
                 _names = [x["name"] for x in _bc]
                 check(_names[0] == "gemini-3.5-flash-lite",
                       f"专用链首选 gemini-3.5-flash-lite（实际 {_names[0]}）", problems)
-                check("agnes-3.0-flash" not in _names,
-                      "专用链不含摘要链首模型（否则等于没分离）", problems)
+                # 2026-11-26 起这条守卫锁的是**原因**而不是模型名：
+                # 正文比摘要长一个量级，推理模型放进来会慢/被 max_tokens 截断。
+                # agnes-2.5-flash 于 11-30 下线后，末档只能用 3.0，那就必须关思考。
+                _agnes = [x for x in _bc if "agnes" in x["model"]]
+                check(all((x.get("params") or {}).get("chat_template_kwargs", {})
+                          .get("enable_thinking") is False for x in _agnes),
+                      "专用链里的 agnes 档必须关思考（推理模型 + 长正文 = 慢/截断）", problems)
+                check("agnes-2.5-flash" not in [x["model"] for x in _bc],
+                      "专用链已无 agnes-2.5-flash（官方 2026-11-30 下线）", problems)
                 check(all(x.get("key_env") and x.get("base") and x.get("model") for x in _bc),
                       "专用链每档字段齐全（key_env/base/model）", problems)
             # 回退：未配置专用链时必须仍能用全局链，老配置不能因此失效

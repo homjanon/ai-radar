@@ -667,11 +667,12 @@ def _call_body_batch(batch, tcfg):
 
     ★ 2026-10-08：改用**独立模型链**（body.models），与摘要/打分链物理分离。
       分工依据（学自 portfolio 的「导语由下一个模型生成」）：
-        · 摘要链首模型 agnes-3.0-flash 是推理模型，长输入易 90s 超时；
-          正文比摘要长一个量级（实测 5 条 × 1200 字），把它摘出去两头受益；
         · 两条链走不同的 Key 配额池（agnes 不限量 / gemini 约 20 RPD），
           一条限流不拖累另一条；
-        · 首选 gemini-3.5-flash-lite（最轻），gemini-3-flash、agnes-2.5-flash 顺延备用。
+        · 首选 gemini-3.5-flash-lite（最轻），把 agnes 的不限量额度留给 141 条摘要。
+      ★ 2026-11-26：末档已是 agnes-3.0-flash **关思考**（原 agnes-2.5-flash 于 11-30 下线）。
+        这条链本来明确排除 3.0 —— 推理模型 + 正文比摘要长一个量级 = 易超时；
+        关思考（chat_template_kwargs.enable_thinking=false）就是为了把这条排除理由消掉。
       回退：body.models 未配置时仍用全局链，保证老配置不会因此失效。
     """
     bcfg = tcfg.get("body") or {}
@@ -697,6 +698,10 @@ def _call_body_batch(batch, tcfg):
             # 5 条 × 1200 字原文 → 中文约等量字符，加上思考预算，给足
             "max_tokens": 16000,
         }
+        # 每档模型可用 params 覆写请求体（配置驱动，改链不用改代码）。
+        # 当前唯一用途：agnes-3.0-flash 是推理模型，长输入慢/易被 max_tokens 截断，
+        # 末档关掉思考（chat_template_kwargs.enable_thinking=false），做法与 portfolio 仓一致。
+        payload.update(m.get("params") or {})
         try:
             req = urllib.request.Request(
                 m["base"].rstrip("/") + "/chat/completions",
@@ -935,6 +940,9 @@ def _call_llm_batch(batch, tcfg, mode, want_type=False):
             "temperature": 0.2,
             "max_tokens": 12000,          # 给足：思考链 + 25 条的 JSON 会吃不少预算
         }
+        # 每档模型可用 params 覆写请求体（配置驱动，改链不用改代码）。
+        # 当前唯一用途：末档 agnes-3.0-flash 关思考，见 sources.json 的 models_note。
+        payload.update(m.get("params") or {})
         try:
             req = urllib.request.Request(
                 m["base"].rstrip("/") + "/chat/completions",

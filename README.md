@@ -50,9 +50,12 @@ LLM 按**语言 × 是否应用案例**四组拆批（英文 `translate` / 中�
 「要 type」与「不要 type」）—— 指令一旦混批，模型会整批统一处理：要么英文标题漏译，
 要么给新闻也硬塞一个「应用形态」。模型链逐档降级，全失败也不空窗。
 
-**链序**：`agnes-3.0-flash → gemini-3.5-flash-lite → gemini-3-flash → agnes-2.5-flash` ——
+**链序**：`agnes-3.0-flash → gemini-3.5-flash-lite → gemini-3-flash → agnes-3.0-flash(关思考)` ——
 免费不限量的放首位，两个 gemini 额度互相独立、居中互为备份（`gemini-3-flash` 免费额度约
 20 RPD 且与 `news-feed` 共用同一个 `GEMINI_API_KEY`，一天多跑几轮就会耗尽，故不排首位）。
+末档原为 `agnes-2.5-flash`，官方公告 **2026-11-30 下线**，故改为 `agnes-3.0-flash` 并
+`chat_template_kwargs.enable_thinking=false` 关思考 —— 它与首档是**同一模型的两种执行模式**
+（首档带思考、末档关思考），不是重复档。
 
 **配额熔断**：某模型一旦返回 429/配额类错误，本轮不再对它重试（否则剩下的每一批都要白撞
 一次），直接降级到下一档；新进程自动复位。非配额类错误（如 503 高需求）仍会在下一批重试
@@ -125,13 +128,16 @@ LLM 按**语言 × 是否应用案例**四组拆批（英文 `translate` / 中�
 | 兜底上限 | 20 条（`max_items`） | 阈值异常时不会爆量 |
 
 **独立模型链**（`translate.body.models`，2026-10-08 加）：正文翻译**不复用摘要链**，
-而是单开一条 `gemini-3.5-flash-lite → gemini-3-flash → agnes-2.5-flash`。三个理由：
+而是单开一条 `gemini-3.5-flash-lite → gemini-3-flash → agnes-3.0-flash(关思考)`。两个理由：
 
-1. 摘要链首模型 `agnes-3.0-flash` 是**推理模型，长输入易 90s 超时**；正文比摘要长一个
-   量级（实测 5 条 × 1200 字），把它从正文链摘出去两头受益；
-2. 两条链走**不同的 Key 配额池**（agnes 不限量 / gemini 约 20 RPD），一条限流不拖累另一条；
-3. 首选最轻的 `gemini-3.5-flash-lite`，把 agnes 的无限额度留给 141 条摘要 ——
+1. 两条链走**不同的 Key 配额池**（agnes 不限量 / gemini 约 20 RPD），一条限流不拖累另一条；
+2. 首选最轻的 `gemini-3.5-flash-lite`，把 agnes 的无限额度留给 141 条摘要 ——
    即"减轻首选模型压力"。思路学自 portfolio 仓的「导语由下一个模型生成」。
+
+> **2026-11-26**：末档原为 `agnes-2.5-flash`（官方 2026-11-30 下线），改为 `agnes-3.0-flash`
+> 并 `enable_thinking=false` 关思考。这条链原本明确排除 3.0，理由是「推理模型 + 正文比摘要长
+> 一个量级 = 易超时」——关思考正是为了把这条排除理由消掉。冒烟测试的守卫也从
+> 「正文链不许出现 3.0」改成「正文链里的 agnes 必须关思考」，锁原因而不锁名字。
 
 未配置 `body.models` 时**自动回退全局链**，老配置不会因此失效（冒烟测试有锁）。
 
