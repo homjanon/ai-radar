@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-25 08:10",
+ "updated": "2026-11-26 08:10",
  "count": 300,
  "types": [
   "Agent 工作流",
@@ -15,6 +15,20 @@
   "移动 App"
  ],
  "cases": [
+  {
+   "url": "https://www.v2ex.com/t/1259844#reply0",
+   "title": "开源了一个能打电话、边聊边干的 Personal Agent，手机上能独立跑，求拍砖",
+   "titleEn": "",
+   "summary": "Nova 是开源个人助手 v1.0，支持前脑语音交互与后脑任务执行分离，具备记忆抽取、主动提醒及多设备接力功能，支持在移动端独立运行完整 Agent 逻辑，代码以 GPL-3.0 开源。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-26",
+   "score": 9.7,
+   "rel": 9,
+   "firstSeen": "2026-11-26"
+  },
   {
    "url": "https://www.v2ex.com/t/1258680#reply1",
    "title": "开源一个 Agent 长期记忆系统：262k 多跳 48.3%，高于 CAR 论文报告的 41%",
@@ -140,6 +154,20 @@
    "score": 8.7,
    "rel": 8,
    "firstSeen": "2026-11-22"
+  },
+  {
+   "url": "https://dchub.cloud/connect",
+   "title": "DC Hub：数据中心与能源基础设施 MCP 服务器",
+   "titleEn": "Show HN: Data center, power, land, fiber and capacity",
+   "summary": "DC Hub 提供托管 MCP 服务器，整合数据中心、电力、土地、光纤及容量数据。支持 Claude、ChatGPT、Grok、VS Code 等客户端一键连接，通过 API 查询资源分布，辅助基础设施决策。",
+   "type": "Agent 工作流",
+   "topic": "MCP 生态",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-26",
+   "score": 7.5,
+   "rel": 8,
+   "firstSeen": "2026-11-26"
   },
   {
    "url": "https://agentde.github.io/agentde/",
@@ -674,20 +702,6 @@
    "firstSeen": "2026-11-15"
   },
   {
-   "url": "https://www.v2ex.com/t/1258109#reply4",
-   "title": "Skill Stow：一个尽量做得清晰、顺手的 macOS AI Skill 管理器",
-   "titleEn": "",
-   "summary": "Skill Stow 是 macOS 原生 AI Skill 管理器，基于 Go 开发。支持扫描 32 个 Agent 目录，统一视图管理 Claude Code 等工具的 Skill。具备权限检查、GitHub 导入、版本对比及本地日志统计功能，MIT 开源，无遥测，支持 macOS 12+。",
-   "type": "桌面工具",
-   "topic": "Agent 框架",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-11-19",
-   "score": 7.0,
-   "rel": 8,
-   "firstSeen": "2026-11-19"
-  },
-  {
    "url": "https://github.com/voyager-so/vork",
    "title": "Vork：面向 Agent 的无头 3D 与 VFX 引擎",
    "titleEn": "Show HN: Vork – headless 3D and VFX engine for agents",
@@ -938,20 +952,6 @@
    "score": 8.4,
    "rel": 9,
    "firstSeen": "2026-11-09"
-  },
-  {
-   "url": "https://github.com/Satvik-jain/customer-intelligence-toolkit",
-   "title": "Claude Code 客户智能与变现工具包",
-   "titleEn": "Show HN: Customer Intelligence and Monetization Toolkit for Claude Code",
-   "summary": "该工具包为 Claude Code 提供 9 个专项技能，涵盖客户模拟、消费者心理、市场映射等，将客户问题转化为结构化的研究计划和 GTM 策略，区分假设、外部研究与真实证据。",
-   "type": "Agent 工作流",
-   "topic": "Agent 插件",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-11-14",
-   "score": 7.0,
-   "rel": 7,
-   "firstSeen": "2026-11-14"
   },
   {
    "url": "https://github.com/clumsy-ug/agentview-chat",
