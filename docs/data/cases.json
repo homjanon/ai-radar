@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26 08:10",
+ "updated": "2026-11-27 08:10",
  "count": 300,
  "types": [
   "Agent 工作流",
@@ -30,6 +30,20 @@
    "firstSeen": "2026-11-26"
   },
   {
+   "url": "https://www.v2ex.com/t/1260116#reply0",
+   "title": "os-optics v0.14.0 版本更新",
+   "titleEn": "",
+   "summary": "os-optics 核心引擎更新至 0.14.0，光学材料库扩展至 1244 种，新增镜头设计 Agent 工作流与开源镜头库，非严格任务计算速度提升 8-15 倍，Skill 增至 21 个。",
+   "type": "Agent 工作流",
+   "topic": "Agent 框架",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-27",
+   "score": 8.7,
+   "rel": 9,
+   "firstSeen": "2026-11-27"
+  },
+  {
    "url": "https://www.v2ex.com/t/1258680#reply1",
    "title": "开源一个 Agent 长期记忆系统：262k 多跳 48.3%，高于 CAR 论文报告的 41%",
    "titleEn": "",
@@ -56,6 +70,20 @@
    "score": 8.7,
    "rel": 8,
    "firstSeen": "2026-11-24"
+  },
+  {
+   "url": "https://github.com/aigeano/kaju",
+   "title": "Kaju：与 Claude Code 协同注释、评论及协作工具",
+   "titleEn": "Show HN: Kaju – Annotate, comment and collaborate with Claude Code",
+   "summary": "Kaju 是一个开源项目，允许用户在对 Claude Code 生成的代码进行注释、评论和协作时，直接与 AI 交互，实现人机协同的代码审查流程。",
+   "type": "CLI 工具",
+   "topic": "Agent 工具",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-27",
+   "score": 7.7,
+   "rel": 8,
+   "firstSeen": "2026-11-27"
   },
   {
    "url": "https://www.v2ex.com/t/1259556#reply0",
@@ -196,6 +224,20 @@
    "score": 7.7,
    "rel": 8,
    "firstSeen": "2026-11-25"
+  },
+  {
+   "url": "https://github.com/octelium/cordium",
+   "title": "Cordium：基于 Kubernetes 的无密钥安全远程访问沙箱平台",
+   "titleEn": "Show HN: Sandbox platform on Kubernetes for secure remote access without secrets",
+   "summary": "Cordium 是一个自托管的开源沙箱平台，利用 Octelium ZTNA 客户端实现基于身份的“无密钥”安全访问，使沙箱内应用无需持有凭据即可连接上游资源。",
+   "type": "其他",
+   "topic": "基础设施",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-27",
+   "score": 7.1,
+   "rel": 6,
+   "firstSeen": "2026-11-27"
   },
   {
    "url": "https://www.v2ex.com/t/1258961#reply1",
@@ -380,20 +422,6 @@
    "firstSeen": "2026-11-18"
   },
   {
-   "url": "https://www.v2ex.com/t/1258970#reply6",
-   "title": "用 Deepseek 从 0 开始 3 小时，造了个轮子，iOS 代理工具",
-   "titleEn": "",
-   "summary": "作者利用 DeepSeek 辅助在 3 小时内开发并上架了 iOS 代理工具 wproxy，支持 VMess、VLESS、Trojan、Shadowsocks 及 SOCKS5 协议，具备全局与分段路由功能，无广告且数据本地化。",
-   "type": "移动 App",
-   "topic": "AI 编程案例",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-11-23",
-   "score": 7.0,
-   "rel": 7,
-   "firstSeen": "2026-11-23"
-  },
-  {
    "url": "https://www.v2ex.com/t/1258373#reply4",
    "title": "自己部署 BiRefNet 做了个抠图网站，第一张图冷启动要等十几秒",
    "titleEn": "",
@@ -461,20 +489,6 @@
    "lastSeen": "2026-11-21",
    "score": 7.1,
    "rel": 8,
-   "firstSeen": "2026-11-21"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1258656#reply0",
-   "title": "为了反向薅 A/羊毛，我做了个 claude 网页版 agent 的 PC 和 iOS 客户端",
-   "titleEn": "",
-   "summary": "开源项目 myco 通过监听 claude.ai 原生 Agent 消息并调用本地 CLI，实现了 PC 与 iOS 端控制。无需代理即可使用订阅额度，支持多 Agent 协作、远程终端及自动化工作流，MIT 协议开放，旨在绕过封号限制并利用云端算力。",
-   "type": "Web 应用",
-   "topic": "Agent 框架",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-11-21",
-   "score": 7.0,
-   "rel": 7,
    "firstSeen": "2026-11-21"
   },
   {
@@ -4152,20 +4166,6 @@
    "type": "内容生成",
    "topic": "模型与推理",
    "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-09-30",
-   "score": 7.1,
-   "rel": 8,
-   "firstSeen": "2026-09-30"
-  },
-  {
-   "url": "https://github.com/mastaan66/foreman",
-   "title": "Foreman：具备预算控制的 Agent 编排系统",
-   "titleEn": "Show HN: Built agent orchestration system, Director->{workers }",
-   "summary": "开发者展示了 Foreman，一个基于 Director-Worker 架构的 Agent 编排系统。该系统集成了严格的预算控制功能和终端用户界面（TUI），旨在优化多智能体任务执行过程中的资源管理与成本监控。",
-   "type": "Agent 工作流",
-   "topic": "Agent 框架",
-   "block": "Show HN",
    "src": "apps",
    "lastSeen": "2026-09-30",
    "score": 7.1,
