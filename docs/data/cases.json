@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-27 08:10",
+ "updated": "2026-11-28 08:10",
  "count": 300,
  "types": [
   "Agent 工作流",
@@ -30,6 +30,34 @@
    "firstSeen": "2026-11-26"
   },
   {
+   "url": "https://www.v2ex.com/t/1260446#reply0",
+   "title": "Casdoor 这一个月：Keycloak、Auth0、Okta 能迁了，AI Agent 也能通过 MCP 来管",
+   "titleEn": "",
+   "summary": "Casdoor 新增 Keycloak/Auth0/Okta 迁移插件及 MCP 工具，开源版提供 15 个 MCP 工具，支持 Agent 进行 IAM 管理并具备 dryRun 等安全护栏。",
+   "type": "其他",
+   "topic": "开源项目",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-28",
+   "score": 9.0,
+   "rel": 9,
+   "firstSeen": "2026-11-28"
+  },
+  {
+   "url": "https://vending-bench-game.flo.st",
+   "title": "Vending Bench：面向 AI Agent 的开放式商业基准游戏",
+   "titleEn": "Show HN: Vending Bench – The Game",
+   "summary": "开发者将 Prosus Vending Bench 做成可玩网页游戏，玩家需找供应商、定价并管理现金流。基准 3.0 版含 30 个交易日、1500 欧元初始资金，并公布 Gemini、GPT、Claude 等模型基线成绩。",
+   "type": "Web 应用",
+   "topic": "基准评测",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-28",
+   "score": 8.7,
+   "rel": 9,
+   "firstSeen": "2026-11-28"
+  },
+  {
    "url": "https://www.v2ex.com/t/1260116#reply0",
    "title": "os-optics v0.14.0 版本更新",
    "titleEn": "",
@@ -42,6 +70,34 @@
    "score": 8.7,
    "rel": 9,
    "firstSeen": "2026-11-27"
+  },
+  {
+   "url": "https://sspai.com/post/116773",
+   "title": "App+1｜Agora：开源、易用、好用，给 Android 用户的 LLM 聊天工具",
+   "titleEn": "",
+   "summary": "推荐开源 Android 应用 Agora，支持 BYOK 接入多厂商 LLM API，界面逻辑接近 Kimi/豆包，填补了移动端开源 LLM 客户端空白。",
+   "type": "移动 App",
+   "topic": "移动应用",
+   "block": "少数派",
+   "src": "apps",
+   "lastSeen": "2026-11-28",
+   "score": 8.4,
+   "rel": 8,
+   "firstSeen": "2026-11-28"
+  },
+  {
+   "url": "https://www.v2ex.com/t/1260460#reply0",
+   "title": "一个把你几 k GitHub star 利用起来的工具",
+   "titleEn": "",
+   "summary": "开源工具 StarStack 基于语义搜索 GitHub 收藏，提供 CLI、Web 后台及 MCP 服务，支持快速查找曾关注的仓库及备注。",
+   "type": "CLI 工具",
+   "topic": "工具开发",
+   "block": "V2EX 分享创造",
+   "src": "apps",
+   "lastSeen": "2026-11-28",
+   "score": 8.0,
+   "rel": 8,
+   "firstSeen": "2026-11-28"
   },
   {
    "url": "https://www.v2ex.com/t/1258680#reply1",
@@ -70,6 +126,20 @@
    "score": 8.7,
    "rel": 8,
    "firstSeen": "2026-11-24"
+  },
+  {
+   "url": "https://hypereffect.dev/demo/",
+   "title": "安全嵌入服务端驱动 UI 的声明式语言",
+   "titleEn": "Show HN: I made a language for apps to embed arbitrary server-driven UIs safely",
+   "summary": "作者设计了一种语言，允许应用安全嵌入任意服务端驱动的 UI。通过信号同步与元素声明，客户端无需硬编码界面，由服务端动态下发结构、绑定逻辑及校验规则。",
+   "type": "CLI 工具",
+   "topic": "工程实践",
+   "block": "Show HN",
+   "src": "apps",
+   "lastSeen": "2026-11-28",
+   "score": 7.5,
+   "rel": 7,
+   "firstSeen": "2026-11-28"
   },
   {
    "url": "https://github.com/aigeano/kaju",
@@ -126,6 +196,20 @@
    "score": 8.3,
    "rel": 6,
    "firstSeen": "2026-11-24"
+  },
+  {
+   "url": "https://huggingface.co/spaces/MiniMaxAI/minimax-h3-image",
+   "title": "Spaces 应用：MiniMaxAI/minimax-h3-image",
+   "titleEn": "",
+   "summary": "Hugging Face Spaces 应用，技术栈为 Gradio，点赞 387，创建于 2026-11-09，为 MiniMax 图像生成模型官方或社区演示。",
+   "type": "模型与推理",
+   "topic": "模型演示",
+   "block": "HF Spaces",
+   "src": "apps",
+   "lastSeen": "2026-11-28",
+   "score": 7.2,
+   "rel": 9,
+   "firstSeen": "2026-11-28"
   },
   {
    "url": "https://keepplain.com/blame",
@@ -2312,20 +2396,6 @@
    "firstSeen": "2026-10-21"
   },
   {
-   "url": "https://machinefabric.com/quickrust/",
-   "title": "QuickRust：取代 cargo 以加速 Rust 构建并集中管理缓存",
-   "titleEn": "Show HN: QuickRust replaces cargo, sets up sccache, centralizes build cache",
-   "summary": "QuickRust 是一个 cargo 替代工具，通过集中式缓存、并行前端和早期截断策略加速 Rust 构建。它自动管理磁盘空间，记录构建时间与空间消耗，且无需额外配置即可提升编译效率。",
-   "type": "CLI 工具",
-   "topic": "开发工具",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-26",
-   "score": 7.1,
-   "rel": 6,
-   "firstSeen": "2026-10-26"
-  },
-  {
    "url": "https://www.v2ex.com/t/1251396#reply0",
    "title": "自己用 AI 写代码写到肉疼，干脆做了一个多模型网关 + 网页聊天，聊聊踩过的坑",
    "titleEn": "",
@@ -2760,20 +2830,6 @@
    "firstSeen": "2026-10-13"
   },
   {
-   "url": "https://www.reddit.com/r/SideProject/comments/1x9gygi/ai_tools_look_impressive_in_demos_how_do_you_know/",
-   "title": "CrashTest AI：通过结构化测试评估 AI 工具可靠性的平台",
-   "titleEn": "AI tools look impressive in demos. How do you know which ones to trust?",
-   "summary": "CrashTest AI 通过模拟真实工作条件对 AI 工具进行结构化测试，收集证据并分析结果，为用户提供基于实证而非演示的信任评估。",
-   "type": "Web 应用",
-   "topic": "AI 评估",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-10-19",
-   "score": 7.1,
-   "rel": 8,
-   "firstSeen": "2026-10-19"
-  },
-  {
    "url": "https://www.v2ex.com/t/1247724#reply0",
    "title": "[开源]做了个给 AI Agent 玩的三国 SLG，主打让你自己的 AI 替你玩。",
    "titleEn": "",
@@ -2984,20 +3040,6 @@
    "firstSeen": "2026-10-13"
   },
   {
-   "url": "https://guessthellm.com/",
-   "title": "猜LLM：通过回答辨别模型的游戏",
-   "titleEn": "Show HN: Guess the LLM – read an answer and guess which model wrote it",
-   "summary": "作者制作了一款游戏，让来自不同前沿实验室的模型回答相同问题，玩家通过阅读答案猜测是哪个模型生成的。作者自测得分仅为5/10，并邀请他人参与挑战以测试人类区分AI模型输出的能力。",
-   "type": "Web 应用",
-   "topic": "模型评测",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-16",
-   "score": 7.1,
-   "rel": 8,
-   "firstSeen": "2026-10-16"
-  },
-  {
    "url": "https://www.v2ex.com/t/1248849#reply0",
    "title": "给爱车安排一次「毒液出场」：做了个 Venom Car AI，让黑色黏液把车组装出来",
    "titleEn": "",
@@ -3093,20 +3135,6 @@
    "lastSeen": "2026-10-15",
    "score": 7.2,
    "rel": 7,
-   "firstSeen": "2026-10-15"
-  },
-  {
-   "url": "https://github.com/sonukapoor/warpdom",
-   "title": "Warpdom：比 jsdom 更快且结果一致的 DOM 测试环境",
-   "titleEn": "Show HN: Warpdom – drop-in jsdom replacement for Vitest and Jest",
-   "summary": "Warpdom 是 jsdom 的替代品，专为 Vitest 和 Jest 设计。在 23 个开源套件（约 43,600 个测试）中，其测试结果与 jsdom 一致，且速度中位数快 1.27 倍（最高 1.89 倍），基于 WHATWG 规范编写。",
-   "type": "模型与推理",
-   "topic": "测试框架",
-   "block": "Show HN",
-   "src": "apps",
-   "lastSeen": "2026-10-15",
-   "score": 7.1,
-   "rel": 6,
    "firstSeen": "2026-10-15"
   },
   {
@@ -3556,20 +3584,6 @@
    "score": 8.4,
    "rel": 9,
    "firstSeen": "2026-10-03"
-  },
-  {
-   "url": "https://www.reddit.com/r/SideProject/comments/1x0m2di/browsesprint_researching_why_codex_browser_tasks/",
-   "title": "BrowseSprint：研究 Codex 浏览器任务延迟原因",
-   "titleEn": "BrowseSprint - researching why Codex browser tasks take so long",
-   "summary": "作者发起 BrowseSprint 研究项目，旨在分析 Codex 执行浏览器任务时慢的具体环节，如重复读取、重试机制及操作间隔，目前仅处于调研报名阶段。",
-   "type": "Agent 工作流",
-   "topic": "Agent 研究",
-   "block": "r/SideProject",
-   "src": "apps",
-   "lastSeen": "2026-10-08",
-   "score": 7.1,
-   "rel": 8,
-   "firstSeen": "2026-10-08"
   },
   {
    "url": "https://shlexball.com/",
@@ -4157,20 +4171,6 @@
    "score": 7.4,
    "rel": 8,
    "firstSeen": "2026-09-29"
-  },
-  {
-   "url": "https://www.v2ex.com/t/1245660#reply0",
-   "title": "opus5.5 一句话就复刻了这两天很火的 destroy any website 的游戏",
-   "titleEn": "",
-   "summary": "用户反馈使用 Opus 5.5 模型仅通过一句话指令，成功复刻了近期流行的“破坏任何网站”小游戏。该案例展示了当前大模型在代码生成与创意实现上的强大能力，无需复杂提示词即可完成开发。",
-   "type": "内容生成",
-   "topic": "模型与推理",
-   "block": "V2EX 分享创造",
-   "src": "apps",
-   "lastSeen": "2026-09-30",
-   "score": 7.1,
-   "rel": 8,
-   "firstSeen": "2026-09-30"
   },
   {
    "url": "https://sspai.com/post/114749",
